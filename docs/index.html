@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/app.css?v=20260715-4">
+  <link rel="stylesheet" href="./assets/css/app.css?v=20260715-6">
 </head>
 <body>
   <div class="ambient ambient-a"></div>
@@ -29,6 +29,30 @@
       </div>
     </header>
 
+    <section class="number-roller" aria-labelledby="roller-title">
+      <div class="roller-copy">
+        <p class="section-label">QUICK NUMBER</p>
+        <h2 id="roller-title">三位数<br>随机滚动器</h2>
+        <p>每一位都从 0–9 独立随机生成，数字可以重复。点一下，让今天的灵感转起来。</p>
+      </div>
+      <div class="roller-machine">
+        <div class="roller-topline">
+          <span>RANDOM / 000–999</span>
+          <span class="roller-light" aria-hidden="true"></span>
+        </div>
+        <div class="digit-window" aria-hidden="true">
+          <span class="digit" data-digit>0</span>
+          <span class="digit" data-digit>0</span>
+          <span class="digit" data-digit>0</span>
+        </div>
+        <p id="roller-result" class="sr-only" aria-live="polite">当前号码：000</p>
+        <button id="roll-button" class="roll-button" type="button">
+          <span>生成三位数</span><span aria-hidden="true">↗</span>
+        </button>
+        <p class="roller-note">独立随机 · 允许重复 · 仅供娱乐</p>
+      </div>
+    </section>
+
     <section id="status" class="notice">正在读取最新数据……</section>
     <section id="games" class="games" aria-live="polite"></section>
 
@@ -47,6 +71,6 @@
     <footer><span>体彩号码实验室</span><span>理性购彩 · 未成年人不得购彩</span></footer>
   </main>
   <div id="toast" class="toast" role="status"></div>
-  <script src="./assets/js/app.js?v=20260715-4"></script>
+  <script src="./assets/js/app.js?v=20260715-5"></script>
 </body>
 </html>

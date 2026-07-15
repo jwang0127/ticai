@@ -1,5 +1,47 @@
 const $ = selector => document.querySelector(selector);
 
+function randomDigit() {
+  if (!window.crypto?.getRandomValues) return Math.floor(Math.random() * 10);
+  const value = new Uint8Array(1);
+  do window.crypto.getRandomValues(value); while (value[0] >= 250);
+  return value[0] % 10;
+}
+
+function initRoller() {
+  const button = $("#roll-button");
+  const digits = [...document.querySelectorAll("[data-digit]")];
+  const result = $("#roller-result");
+  if (!button || digits.length !== 3) return;
+
+  button.addEventListener("click", () => {
+    button.disabled = true;
+    button.firstElementChild.textContent = "滚动中…";
+    const finalDigits = [randomDigit(), randomDigit(), randomDigit()];
+    const intervals = digits.map((digit, index) => {
+      digit.classList.add("spinning");
+      return window.setInterval(() => {
+        digit.textContent = randomDigit();
+      }, 55 + index * 10);
+    });
+
+    digits.forEach((digit, index) => {
+      window.setTimeout(() => {
+        window.clearInterval(intervals[index]);
+        digit.textContent = finalDigits[index];
+        digit.classList.remove("spinning");
+        if (index === digits.length - 1) {
+          const number = finalDigits.join("");
+          result.textContent = `本次生成号码：${number}`;
+          button.disabled = false;
+          button.firstElementChild.textContent = "再生成一次";
+        }
+      }, 650 + index * 220);
+    });
+  });
+}
+
+initRoller();
+
 function formatLatest(key, numbers) {
   return key === "dlt"
     ? `${numbers.slice(0, 5).join(" ")} + ${numbers.slice(5).join(" ")}`
