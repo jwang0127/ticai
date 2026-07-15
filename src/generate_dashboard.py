@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / "config" / "games.json"
 DATA_PATH = ROOT / "data" / "processed" / "draws.json"
 OUTPUT_PATH = ROOT / "docs" / "assets" / "data" / "dashboard.json"
+REVIEWS_PATH = ROOT / "data" / "processed" / "model_reviews.json"
 TZ = ZoneInfo("Asia/Shanghai")
 
 
@@ -37,10 +38,12 @@ def weighted_counts(rows: list[dict], position: int) -> Counter[int]:
 
 
 def relative_confidences(scores: list[float]) -> list[int]:
-    low, high = min(scores), max(scores)
-    if math.isclose(low, high):
-        return [64] * len(scores)
-    return [round(52 + (score - low) / (high - low) * 25) for score in scores]
+    """Return strictly rank-based display scores; these are never draw odds."""
+    if not scores:
+        return []
+    if len(scores) == 1:
+        return [64]
+    return [round(77 - index * 25 / (len(scores) - 1)) for index in range(len(scores))]
 
 
 def stable_rng(game: str, issue: str) -> random.Random:
@@ -52,28 +55,98 @@ def score_digit(number: int, counts: Counter[int], total: float) -> float:
     return (counts[number] + 0.65) / (total + 6.5)
 
 
-def generate_digits(game: str, rows: list[dict], digits: int, issue: str) -> tuple[list[dict], list[float]]:
-    rng = stable_rng(game, issue)
+def position_omissions(rows: list[dict], position: int) -> dict[int, int]:
+    result: dict[int, int] = {}
+    for digit in range(10):
+        result[digit] = len(rows)
+        for index, row in enumerate(rows):
+            if position < len(row["numbers"]) and int(row["numbers"][position]) == digit:
+                result[digit] = index
+                break
+    return result
+
+
+def mixed_digit_components(rows: list[dict], digits: int) -> tuple[list[Counter[int]], list[float], list[dict[int, int]], list[float], list[float]]:
+    """Build hot/cold signals without treating either as predictive certainty."""
     position_counts = [weighted_counts(rows, position) for position in range(digits)]
     totals = [sum(counter.values()) for counter in position_counts]
-    pool: dict[str, float] = {}
+    omissions = [position_omissions(rows, position) for position in range(digits)]
+    means: list[float] = []
+    scales: list[float] = []
+    for pos, counter in enumerate(position_counts):
+        probabilities = [score_digit(n, counter, totals[pos]) for n in range(10)]
+        mean = sum(probabilities) / 10
+        scale = math.sqrt(sum((value - mean) ** 2 for value in probabilities) / 10) or 1.0
+        means.append(mean)
+        scales.append(scale)
+    return position_counts, totals, omissions, means, scales
 
-    for _ in range(5000):
-        values = []
-        log_score = 0.0
-        for pos in range(digits):
-            weights = [score_digit(n, position_counts[pos], totals[pos]) for n in range(10)]
-            value = rng.choices(range(10), weights=weights, k=1)[0]
-            values.append(value)
-            log_score += math.log(weights[value])
-        number = "".join(map(str, values))
-        # Gentle shape regularization; no historical pattern can predict a random draw.
-        unique_ratio = len(set(values)) / digits
-        score = log_score + 0.08 * unique_ratio - 0.01 * abs(sum(values) - 4.5 * digits)
-        pool[number] = max(pool.get(number, -999), score)
 
-    ranked = sorted(pool.items(), key=lambda pair: pair[1], reverse=True)[:5]
-    return [{"number": number} for number, _ in ranked], [score for _, score in ranked]
+def mixed_number_score(values: list[int], components: tuple) -> tuple[float, float]:
+    position_counts, totals, omissions, means, scales = components
+    score = 0.0
+    heat_values = []
+    for pos, value in enumerate(values):
+        probability = score_digit(value, position_counts[pos], totals[pos])
+        heat_z = (probability - means[pos]) / scales[pos]
+        heat_values.append(heat_z)
+        # Keep a majority hot-frequency signal, cap omission compensation, and
+        # only punish the most crowded tail. This is a mixed model, not all-cold.
+        score += 0.58 * math.log(probability)
+        score += 0.075 * min(omissions[pos][value], 8)
+        score -= 0.22 * max(0.0, heat_z - 0.85) ** 2
+    unique_ratio = len(set(values)) / len(values)
+    score += 0.09 * unique_ratio - 0.012 * abs(sum(values) - 4.5 * len(values))
+    return score, sum(heat_values) / len(heat_values)
+
+
+def diversified_rank(scored: list[tuple[str, float, float]], limit: int) -> list[tuple[str, float, float]]:
+    """Greedily avoid returning near-duplicates while preserving model rank."""
+    remaining = sorted(scored, key=lambda item: item[1], reverse=True)
+    selected: list[tuple[str, float, float]] = []
+    while remaining and len(selected) < limit:
+        best = max(
+            remaining,
+            key=lambda item: item[1] - 0.34 * max(
+                (sum(a == b for a, b in zip(item[0], chosen[0])) for chosen in selected),
+                default=0,
+            ),
+        )
+        selected.append(best)
+        remaining.remove(best)
+    return selected
+
+
+def generate_digit_profile(rows: list[dict], digits: int, profile: str, limit: int = 5) -> list[tuple[str, float, float]]:
+    components = mixed_digit_components(rows, digits)
+    scored = []
+    for number in range(10 ** digits):
+        text = f"{number:0{digits}d}"
+        score, heat = mixed_number_score([int(value) for value in text], components)
+        if profile == "hot" and heat <= 0.25:
+            continue
+        if profile == "cold" and heat >= -0.25:
+            continue
+        if profile == "balanced" and not (-0.25 <= heat <= 0.25):
+            continue
+        profile_score = score
+        if profile == "balanced":
+            profile_score -= 0.12 * abs(heat)
+        elif profile == "hot":
+            profile_score += 0.12 * min(heat, 1.5)
+        else:
+            profile_score += 0.10 * min(-heat, 1.5)
+        scored.append((text, profile_score, heat))
+    return diversified_rank(scored, limit)
+
+
+def generate_digits(game: str, rows: list[dict], digits: int, issue: str) -> tuple[list[dict], list[float]]:
+    del game, issue  # deterministic from the verified history snapshot
+    ranked = generate_digit_profile(rows, digits, "balanced", 5)
+    candidates = []
+    for number, _, heat in ranked:
+        candidates.append({"number": number, "mix_label": "冷热均衡"})
+    return candidates, [score for _, score, _ in ranked]
 
 
 def weighted_number_counts(rows: list[dict], start: int, end: int) -> Counter[int]:
@@ -197,21 +270,20 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
         position_hot.append(str(counter.most_common(1)[0][0]))
     return {
         "sample": sample,
-        "summary": f"最近{sample}期按位置统计并加入时间衰减；各位置当前最高权重数字依次为{' · '.join(position_hot)}。",
+        "summary": f"最近{sample}期按位置统计并加入时间衰减。新模型保留热门支撑，同时惩罚极端拥挤，并对中冷数字给予有上限的补偿；各位置当前热门参考为{' · '.join(position_hot)}。",
         "signals": [
             {"label": "综合活跃数字", "value": " · ".join(hot)},
             {"label": "各位置最高权重", "value": " · ".join(position_hot)},
             {"label": "较长遗漏", "value": "、".join(omitted)},
         ],
-        "method": ["最近100期位置频率", "指数衰减与遗漏期数", "和值、跨度及重复形态约束"],
+        "method": ["58%热门频率基础", "极热惩罚与封顶冷号补偿", "候选差异化与结构温和约束"],
     }
 
 
 def three_digit_group_candidates(
     game_name: str, rows: list[dict], group_type: str, target_issue: str, draw_at: datetime
 ) -> list[dict]:
-    position_counts = [weighted_counts(rows, position) for position in range(3)]
-    totals = [sum(counter.values()) for counter in position_counts]
+    components = mixed_digit_components(rows, 3)
     scored: dict[str, float] = {}
     for number in range(1000):
         digits = [int(value) for value in f"{number:03d}"]
@@ -223,10 +295,8 @@ def three_digit_group_candidates(
         unique_orders = set(permutations(digits))
         likelihood = 0.0
         for order in unique_orders:
-            likelihood += math.prod(
-                score_digit(value, position_counts[pos], totals[pos])
-                for pos, value in enumerate(order)
-            )
+            order_score, _ = mixed_number_score(list(order), components)
+            likelihood += math.exp(order_score)
         canonical = "".join(map(str, sorted(digits)))
         scored[canonical] = max(scored.get(canonical, 0.0), likelihood)
     ranked = sorted(scored.items(), key=lambda pair: pair[1], reverse=True)[:3]
@@ -256,6 +326,7 @@ def main() -> None:
     args = parse_args()
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     source_data = json.loads(DATA_PATH.read_text(encoding="utf-8"))
+    model_reviews = json.loads(REVIEWS_PATH.read_text(encoding="utf-8")) if REVIEWS_PATH.exists() else {}
     selected = [game.strip() for game in args.games.split(",") if game.strip()]
     invalid = [game for game in selected if game not in config["games"]]
     if invalid:
@@ -281,7 +352,10 @@ def main() -> None:
         rows = source_data["draws"][game]
         latest = rows[0]
         target_issue = str(int(latest["issue"]) + 1)
-        draw_at = next_draw(now, cfg["draw_weekdays"], time(hour, minute))
+        latest_draw_at = datetime.combine(datetime.fromisoformat(latest["draw_date"]).date(), time(hour, minute), tzinfo=TZ)
+        # Once the official result exists, the target must be scheduled after it
+        # even if this script is run on a machine whose wall clock is earlier.
+        draw_at = next_draw(max(now, latest_draw_at), cfg["draw_weekdays"], time(hour, minute))
         if game == "dlt":
             candidates, scores = generate_dlt(rows, target_issue)
         else:
@@ -311,6 +385,7 @@ def main() -> None:
             "top_candidates": enriched[:3],
             "review": build_review(game, rows),
             "analysis": build_analysis(game, rows),
+            "model_review": model_reviews.get(game),
         }
         if game in ("pl3", "fc3d"):
             direct = []
@@ -321,6 +396,26 @@ def main() -> None:
                 "group3": {"name": "组选3", "description": "两位数字相同，顺序不限", "candidates": three_digit_group_candidates(cfg["name"], rows, "group3", target_issue, draw_at)},
                 "group6": {"name": "组选6", "description": "三位数字各不相同，顺序不限", "candidates": three_digit_group_candidates(cfg["name"], rows, "group6", target_issue, draw_at)},
             }
+        if game in ("pl3", "pl5", "fc3d"):
+            zones = {}
+            for profile, zone_name, description in (
+                ("hot", "热门专区", "保留近期位置频率支撑，但已限制极端追热"),
+                ("cold", "冷门专区", "选取相对低热度组合，遗漏补偿设有上限"),
+            ):
+                ranked_zone = generate_digit_profile(rows, cfg["digits"], profile, 3)
+                zone_scores = [score for _, score, _ in ranked_zone]
+                zone_confidences = relative_confidences(zone_scores)
+                zone_candidates = []
+                for rank, ((number, _, _), confidence) in enumerate(zip(ranked_zone, zone_confidences), start=1):
+                    zone_candidates.append({
+                        "number": number,
+                        "rank": rank,
+                        "confidence": confidence,
+                        "mix_label": zone_name.replace("专区", ""),
+                        "copy_text": f"{cfg['name']} {zone_name}｜第{target_issue}期｜候选{rank}：{number}｜模型相对评分 {confidence}%｜下一期开奖：{draw_at:%Y-%m-%d %H:%M}（北京时间）",
+                    })
+                zones[profile] = {"name": zone_name, "description": description, "candidates": zone_candidates}
+            output["games"][game]["strategy_zones"] = zones
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")

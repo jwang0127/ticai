@@ -5,7 +5,7 @@ from datetime import datetime, time
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from src.generate_dashboard import next_draw, three_digit_group_candidates
+from src.generate_dashboard import generate_digit_profile, next_draw, three_digit_group_candidates
 
 TZ = ZoneInfo("Asia/Shanghai")
 
@@ -48,11 +48,20 @@ class DetailPageTests(unittest.TestCase):
 
     def test_fc3d_official_history_and_groups(self):
         self.assertEqual(len(self.fc3d_rows), 100)
-        self.assertEqual(self.fc3d_rows[0]["issue"], "2026185")
+        self.assertEqual(self.fc3d_rows[0]["issue"], "2026186")
         draw_at = datetime(2026, 7, 15, 21, 15, tzinfo=TZ)
         candidates = three_digit_group_candidates("福彩3D", self.fc3d_rows, "group3", "2026186", draw_at)
         self.assertEqual(len(candidates), 3)
         self.assertTrue(all("福彩3D 组选3" in item["copy_text"] for item in candidates))
+
+    def test_hot_and_cold_profiles_are_separate(self):
+        hot = generate_digit_profile(self.fc3d_rows, 3, "hot", 3)
+        cold = generate_digit_profile(self.fc3d_rows, 3, "cold", 3)
+        self.assertEqual(len(hot), 3)
+        self.assertEqual(len(cold), 3)
+        self.assertTrue(all(item[2] > 0.25 for item in hot))
+        self.assertTrue(all(item[2] < -0.25 for item in cold))
+        self.assertFalse({item[0] for item in hot} & {item[0] for item in cold})
 
 
 if __name__ == "__main__":

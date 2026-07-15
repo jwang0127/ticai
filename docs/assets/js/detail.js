@@ -21,8 +21,39 @@ function picksHtml(candidates) {
     <article class="pick">
       <div class="pick-rank">TOP 0${item.rank}</div>
       <div class="pick-number">${escapeHtml(numberText(item))}</div>
+      ${item.mix_label ? `<div class="mix-label">${escapeHtml(item.mix_label)}</div>` : ""}
       <div class="score">模型相对评分 ${item.confidence}%</div>
     </article>`).join("")}</div>`;
+}
+
+function modelReviewHtml(review) {
+  if (!review) return "";
+  const calibration = review.calibration_hits?.length
+    ? `<div class="review-callout">反热校准池：${escapeHtml(review.calibration_candidates.join("、"))}；命中 ${escapeHtml(review.calibration_hits.join("、"))}。单次命中不代表冷号更易开出。</div>`
+    : "";
+  return `<section class="section">
+    <div class="section-head"><div><p class="section-label">MODEL REVIEW</p><h2>第${escapeHtml(review.issue)}期模型复盘</h2></div><p class="section-note">${escapeHtml(review.summary)}</p></div>
+    <div class="metrics model-review-metrics">
+      <div class="metric"><span>开奖号</span><strong>${escapeHtml(review.actual)}</strong></div>
+      <div class="metric"><span>原模型直选命中</span><strong>${escapeHtml(review.exact_hits)} / ${escapeHtml(review.previous_candidates.length)}</strong></div>
+      <div class="metric wide"><span>原候选</span><strong>${escapeHtml(review.previous_candidates.join(" · "))}</strong></div>
+    </div>
+    ${calibration}
+    <p class="review-lesson">本期修正：${escapeHtml(review.lesson)}</p>
+  </section>`;
+}
+
+function strategyZonesHtml(game) {
+  if (!game.strategy_zones) return "";
+  return `<section class="section strategy-zones">
+    <div class="section-head"><div><p class="section-label">HOT / COLD ZONES</p><h2>热门与冷门分区</h2></div><p class="section-note">两区独立排序、独立复制；均衡主推荐仍显示在上方。</p></div>
+    <div class="zone-grid">${Object.values(game.strategy_zones).map(zone => `
+      <div class="zone-card ${zone.name.includes("冷门") ? "cold-zone" : "hot-zone"}">
+        <div class="play-title"><h3>${escapeHtml(zone.name)}</h3><span>${escapeHtml(zone.description)}</span></div>
+        ${picksHtml(zone.candidates)}
+        <button class="copy-bundle" data-copy="${encodeURIComponent(bundleText(game, zone.name, zone.candidates))}">复制${escapeHtml(zone.name)}全部3组</button>
+      </div>`).join("")}</div>
+  </section>`;
 }
 
 function bundleText(game, label, candidates) {
@@ -80,10 +111,12 @@ async function load() {
       <div class="section-head"><div><p class="section-label">TOP CANDIDATES</p><h2>最高评分结果</h2></div><p class="section-note">评分仅用于本页候选内部排序。三位数字玩法按直选、组选3、组选6分别计算。</p></div>
       ${playTypesHtml(game)}
     </section>
+    ${strategyZonesHtml(game)}
     <section class="section">
       <div class="section-head"><div><p class="section-label">LAST DRAW REVIEW</p><h2>${escapeHtml(game.review.title)}</h2></div><p class="section-note">${escapeHtml(game.review.summary)}</p></div>
       <div class="metrics">${game.review.metrics.map(item => `<div class="metric"><span>${escapeHtml(item.label)}</span><strong>${escapeHtml(item.value)}</strong></div>`).join("")}</div>
     </section>
+    ${modelReviewHtml(game.model_review)}
     <section class="section analysis-grid">
       <div><p class="section-label">MODEL ANALYSIS / ${game.analysis.sample} DRAWS</p><h2>本期分析</h2><p class="analysis-summary">${escapeHtml(game.analysis.summary)}</p></div>
       <div><div class="signals">${game.analysis.signals.map(item => `<div class="signal"><span>${escapeHtml(item.label)}</span><strong>${escapeHtml(item.value)}</strong></div>`).join("")}</div><div class="methods">${game.analysis.method.map(item => `<span>${escapeHtml(item)}</span>`).join("")}</div></div>

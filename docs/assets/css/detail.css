@@ -30,6 +30,7 @@ h2 { margin: 10px 0 0; font-size: clamp(32px, 5vw, 54px); letter-spacing: -.055e
 .pick-rank { color: var(--muted); font: 11px/1 "DM Mono", monospace; }
 .pick-number { margin: 40px 0 16px; font: 500 clamp(19px, 2.4vw, 29px)/1.2 "DM Mono", monospace; white-space: nowrap; }
 .score { color: var(--red); font: 500 12px/1 "DM Mono", monospace; }
+.mix-label { display: inline-block; margin: -5px 0 14px; padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 11px; }
 .copy { width: 100%; margin-top: 22px; padding: 10px 12px; color: white; background: var(--ink); border: 0; border-radius: 8px; cursor: pointer; font-weight: 700; }
 .copy:hover { background: var(--blue); }
 .copy-bundle { width: 100%; margin-top: 12px; padding: 13px 16px; color: white; background: var(--ink); border: 0; border-radius: 9px; cursor: pointer; font-weight: 700; }
@@ -42,6 +43,16 @@ h2 { margin: 10px 0 0; font-size: clamp(32px, 5vw, 54px); letter-spacing: -.055e
 .metric { padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.4); }
 .metric span { display: block; color: var(--muted); font-size: 11px; }
 .metric strong { display: block; margin-top: 12px; font: 500 25px/1 "DM Mono", monospace; }
+.model-review-metrics { grid-template-columns: .7fr .8fr 2.5fr; }
+.review-callout { margin-top: 16px; padding: 16px 18px; border-left: 3px solid var(--red); background: rgba(255,255,255,.45); line-height: 1.7; }
+.review-lesson { margin: 16px 0 0; color: var(--muted); line-height: 1.7; }
+.zone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.zone-card { padding: 22px; border: 1px solid var(--line); border-radius: 16px; }
+.hot-zone { background: rgba(255, 245, 238, .55); }
+.cold-zone { background: rgba(235, 244, 255, .55); }
+.zone-card .picks { grid-template-columns: 1fr; }
+.zone-card .pick { min-height: 0; }
+.zone-card .pick-number { margin: 22px 0 12px; }
 .analysis-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 50px; }
 .analysis-summary { font-size: 18px; line-height: 1.85; }
 .signals { display: grid; gap: 10px; }
@@ -57,7 +68,7 @@ h2 { margin: 10px 0 0; font-size: clamp(32px, 5vw, 54px); letter-spacing: -.055e
 @media (max-width: 760px) {
   .shell { width: calc(100% - 24px); }
   .hero, .analysis-grid { grid-template-columns: 1fr; gap: 28px; }
-  .picks, .metrics { grid-template-columns: 1fr; }
+  .picks, .metrics, .model-review-metrics, .zone-grid { grid-template-columns: 1fr; }
   .section-head { display: block; }
   .section-note { margin-top: 12px; }
   .signal { grid-template-columns: 1fr; gap: 5px; }
