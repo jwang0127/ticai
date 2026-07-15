@@ -48,6 +48,9 @@ h1 em { color: var(--blue); font-style: normal; }
 .draw-time { display: flex; align-items: center; gap: 7px; margin: 0; color: var(--blue); font-size: 13px; font-weight: 700; }
 .draw-time::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
 .schedule { margin: 7px 0 0 14px; color: var(--muted); font-size: 11px; }
+.detail-link { display: inline-flex; align-items: center; gap: 6px; margin: 14px 0 0 14px; color: var(--ink); font-size: 12px; font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--ink); }
+.detail-link span { color: var(--blue); }
+.detail-link:hover { color: var(--blue); border-color: var(--blue); }
 .latest { margin-top: 20px; padding: 14px; background: rgba(23,26,23,.045); border-radius: 10px; }
 .meta { color: var(--muted); font-size: 11px; }
 .latest-number { margin-top: 7px; font: 500 17px/1.4 "DM Mono", monospace; letter-spacing: .04em; }
@@ -87,4 +90,3 @@ footer { display: flex; justify-content: space-between; padding: 24px 0 36px; bo
   .candidate-number { font-size: 13px; }
   footer { gap: 20px; }
 }
-

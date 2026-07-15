@@ -64,6 +64,7 @@ async function load() {
           <h2>${escapeHtml(game.name)}</h2>
           <p class="draw-time">${escapeHtml(game.next_draw_display)}</p>
           <p class="schedule">${escapeHtml(game.schedule_note)}</p>
+          <a class="detail-link" href="./${key}/">查看复盘与分析 <span>↗</span></a>
           <div class="latest">
             <div class="meta">上期 ${escapeHtml(game.latest_issue)} · ${escapeHtml(game.latest_draw_date)}</div>
             <div class="latest-number">${escapeHtml(formatLatest(key, game.latest_numbers))}</div>
@@ -101,4 +102,3 @@ async function load() {
 load().catch(error => {
   $("#status").textContent = `页面数据加载失败：${error.message}`;
 });
-
