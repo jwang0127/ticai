@@ -1,0 +1,30 @@
+{
+  "official_api": "https://webapi.sporttery.cn/gateway/lottery/getHistoryPageListV1.qry",
+  "official_results_page": "https://www.lottery.gov.cn/kjxx/",
+  "timezone": "Asia/Shanghai",
+  "draw_time": "21:25",
+  "games": {
+    "dlt": {
+      "name": "超级大乐透",
+      "game_no": "85",
+      "draw_weekdays": [0, 2, 5],
+      "front_count": 5,
+      "back_count": 2,
+      "front_range": [1, 35],
+      "back_range": [1, 12]
+    },
+    "pl3": {
+      "name": "排列3",
+      "game_no": "35",
+      "draw_weekdays": [0, 1, 2, 3, 4, 5, 6],
+      "digits": 3
+    },
+    "pl5": {
+      "name": "排列5",
+      "game_no": "350133",
+      "draw_weekdays": [0, 1, 2, 3, 4, 5, 6],
+      "digits": 5
+    }
+  }
+}
+

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="超级大乐透、排列3、排列5公开开奖数据与娱乐候选排序。">
+  <title>体彩号码实验室</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/app.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+  <main class="shell">
+    <header class="hero">
+      <div class="brand"><span class="brand-mark">体</span><span>LOTTERY LAB · 2026</span></div>
+      <div class="hero-grid">
+        <div>
+          <p class="kicker">公开数据 · 统计实验 · 每日更新</p>
+          <h1>把随机，<br><em>看得更清楚。</em></h1>
+        </div>
+        <div class="hero-aside">
+          <p>超级大乐透、排列3、排列5</p>
+          <p>每个玩法仅保留 5 个最终候选。每一条结果均可直接复制，并自动带上玩法与开奖时间。</p>
+          <div id="generated" class="sync-pill"><span></span>载入数据中</div>
+        </div>
+      </div>
+    </header>
+
+    <section id="status" class="notice">正在读取最新数据……</section>
+    <section id="games" class="games" aria-live="polite"></section>
+
+    <section class="method">
+      <div>
+        <p class="section-label">ABOUT THE SCORE</p>
+        <h2>相对评分，<br>不是中奖概率。</h2>
+      </div>
+      <div>
+        <p id="disclaimer"></p>
+        <p class="source-line">开奖数据优先来自中国体育彩票官方接口；若接口暂时不可用，保留上一次已核验数据，绝不虚构“最新开奖号”。</p>
+        <div id="sources" class="sources"></div>
+      </div>
+    </section>
+
+    <footer><span>体彩号码实验室</span><span>理性购彩 · 未成年人不得购彩</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>
+
