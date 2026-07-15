@@ -299,7 +299,7 @@ def three_digit_group_candidates(
             likelihood += math.exp(order_score)
         canonical = "".join(map(str, sorted(digits)))
         scored[canonical] = max(scored.get(canonical, 0.0), likelihood)
-    ranked = sorted(scored.items(), key=lambda pair: pair[1], reverse=True)[:3]
+    ranked = sorted(scored.items(), key=lambda pair: pair[1], reverse=True)[:5]
     confidences = relative_confidences([score for _, score in ranked])
     label = "组选3" if group_type == "group3" else "组选6"
     return [
@@ -382,14 +382,14 @@ def main() -> None:
             "next_draw_display": f"{draw_at:%Y年%m月%d日 %H:%M}（北京时间）",
             "schedule_note": "每周一、三、六开奖" if game == "dlt" else "每日开奖（休市日除外）",
             "candidates": enriched,
-            "top_candidates": enriched[:3],
+            "top_candidates": enriched[:5],
             "review": build_review(game, rows),
             "analysis": build_analysis(game, rows),
             "model_review": model_reviews.get(game),
         }
         if game in ("pl3", "fc3d"):
             direct = []
-            for item in enriched[:3]:
+            for item in enriched[:5]:
                 direct.append({**item, "copy_text": item["copy_text"].replace(f"{cfg['name']} ", f"{cfg['name']} 直选｜", 1)})
             output["games"][game]["play_types"] = {
                 "direct": {"name": "直选", "description": "数字与顺序均需一致", "candidates": direct},
@@ -402,7 +402,7 @@ def main() -> None:
                 ("hot", "热门专区", "保留近期位置频率支撑，但已限制极端追热"),
                 ("cold", "冷门专区", "选取相对低热度组合，遗漏补偿设有上限"),
             ):
-                ranked_zone = generate_digit_profile(rows, cfg["digits"], profile, 3)
+                ranked_zone = generate_digit_profile(rows, cfg["digits"], profile, 5)
                 zone_scores = [score for _, score, _ in ranked_zone]
                 zone_confidences = relative_confidences(zone_scores)
                 zone_candidates = []

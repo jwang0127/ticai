@@ -93,7 +93,7 @@ async function load() {
   const entries = Object.entries(payload.games);
 
   $("#games").innerHTML = entries.map(([key, game], index) => {
-    const candidates = (game.top_candidates || game.candidates).slice(0, 3);
+    const candidates = (game.top_candidates || game.candidates).slice(0, 5);
     const allText = [
       `${game.name} 第${game.target_issue}期`,
       `下一期开奖：${game.next_draw_display}`,
@@ -121,13 +121,13 @@ async function load() {
               <span class="score">${item.confidence}%</span>
             </div>`).join("")}
         </div>
-        <button class="copy-all" data-copy="${encodeURIComponent(allText)}">复制${escapeHtml(game.name)}全部3组</button>
+        <button class="copy-all" data-copy="${encodeURIComponent(allText)}">复制${escapeHtml(game.name)}全部5组</button>
       </article>`;
   }).join("");
 
   document.addEventListener("click", event => {
     const button = event.target.closest("[data-copy]");
-    if (button) copy(decodeURIComponent(button.dataset.copy), "全部3组");
+    if (button) copy(decodeURIComponent(button.dataset.copy), "全部5组");
   });
 
   $("#disclaimer").textContent = payload.disclaimer;

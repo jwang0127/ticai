@@ -12,8 +12,11 @@ body { margin: 0; color: var(--ink); background: var(--paper); font-family: "Not
 body::before { content: ""; position: fixed; z-index: -1; width: 520px; height: 520px; right: -180px; top: -220px; border-radius: 50%; background: rgba(34,91,214,.16); filter: blur(90px); }
 button, a { font: inherit; }
 .shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; padding: 28px 0 60px; }
-.topbar { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
 .back { color: var(--ink); text-decoration: none; font-size: 13px; font-weight: 700; }
+.game-nav { display: flex; flex-wrap: wrap; gap: 9px; }
+.game-nav a { padding: 11px 15px; color: var(--ink); background: rgba(255,255,255,.6); border: 1px solid var(--line); border-radius: 10px; text-decoration: none; font-size: 13px; font-weight: 800; }
+.game-nav a:hover { color: white; background: var(--blue); border-color: var(--blue); }
 .updated { color: var(--muted); font: 11px/1 "DM Mono", monospace; }
 .hero { display: grid; grid-template-columns: 1fr .7fr; gap: 70px; align-items: end; padding: 64px 0 52px; }
 .eyebrow, .section-label { color: var(--red); font: 500 11px/1.4 "DM Mono", monospace; letter-spacing: .13em; }
@@ -25,7 +28,7 @@ h1 { margin: 13px 0 0; font-size: clamp(54px, 8vw, 96px); line-height: .95; lett
 .section-head { display: flex; justify-content: space-between; gap: 30px; align-items: end; margin-bottom: 24px; }
 h2 { margin: 10px 0 0; font-size: clamp(32px, 5vw, 54px); letter-spacing: -.055em; }
 .section-note { max-width: 480px; color: var(--muted); font-size: 13px; line-height: 1.7; }
-.picks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.picks { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 12px; }
 .pick { position: relative; padding: 24px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
 .pick-rank { color: var(--muted); font: 11px/1 "DM Mono", monospace; }
 .pick-number { margin: 40px 0 16px; font: 500 clamp(19px, 2.4vw, 29px)/1.2 "DM Mono", monospace; white-space: nowrap; }
@@ -33,7 +36,7 @@ h2 { margin: 10px 0 0; font-size: clamp(32px, 5vw, 54px); letter-spacing: -.055e
 .mix-label { display: inline-block; margin: -5px 0 14px; padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 11px; }
 .copy { width: 100%; margin-top: 22px; padding: 10px 12px; color: white; background: var(--ink); border: 0; border-radius: 8px; cursor: pointer; font-weight: 700; }
 .copy:hover { background: var(--blue); }
-.copy-bundle { width: 100%; margin-top: 12px; padding: 13px 16px; color: white; background: var(--ink); border: 0; border-radius: 9px; cursor: pointer; font-weight: 700; }
+.copy-bundle { width: 100%; min-height: 58px; margin-top: 16px; padding: 17px 22px; color: white; background: var(--ink); border: 0; border-radius: 12px; cursor: pointer; font-size: 16px; font-weight: 900; }
 .copy-bundle:hover { background: var(--blue); }
 .play-block + .play-block { margin-top: 34px; }
 .play-title { display: flex; gap: 12px; align-items: baseline; margin-bottom: 13px; }
@@ -70,6 +73,9 @@ h2 { margin: 10px 0 0; font-size: clamp(32px, 5vw, 54px); letter-spacing: -.055e
   .hero, .analysis-grid { grid-template-columns: 1fr; gap: 28px; }
   .picks, .metrics, .model-review-metrics, .zone-grid { grid-template-columns: 1fr; }
   .section-head { display: block; }
+  .topbar { align-items: flex-start; flex-direction: column; }
+  .game-nav { width: 100%; display: grid; grid-template-columns: repeat(2, 1fr); }
+  .game-nav a:first-child { grid-column: 1 / -1; text-align: center; }
   .section-note { margin-top: 12px; }
   .signal { grid-template-columns: 1fr; gap: 5px; }
 }

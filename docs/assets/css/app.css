@@ -83,7 +83,7 @@ h1 em { color: var(--blue); font-style: normal; }
 .score { color: var(--red); font: 500 11px/1 "DM Mono", monospace; white-space: nowrap; }
 .copy-one { grid-column: 2 / 4; justify-self: start; padding: 0; color: var(--muted); background: none; border: 0; cursor: pointer; font-size: 11px; transition: color .2s; }
 .copy-one:hover { color: var(--blue); }
-.copy-all { margin: auto 22px 22px; padding: 12px 15px; border: 1px solid var(--ink); border-radius: 9px; color: white; background: var(--ink); cursor: pointer; font-weight: 700; transition: transform .18s, background .18s; }
+.copy-all { min-height: 58px; margin: auto 22px 22px; padding: 17px 20px; border: 1px solid var(--ink); border-radius: 12px; color: white; background: var(--ink); cursor: pointer; font-size: 16px; font-weight: 900; transition: transform .18s, background .18s; }
 .copy-all:hover { transform: translateY(-2px); background: var(--blue); border-color: var(--blue); }
 
 .method { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; padding: 72px 0; border-top: 1px solid var(--line); }

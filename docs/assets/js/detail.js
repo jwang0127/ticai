@@ -17,7 +17,7 @@ function latestText(numbers) {
 }
 
 function picksHtml(candidates) {
-  return `<div class="picks">${candidates.slice(0, 3).map(item => `
+  return `<div class="picks">${candidates.slice(0, 5).map(item => `
     <article class="pick">
       <div class="pick-rank">TOP 0${item.rank}</div>
       <div class="pick-number">${escapeHtml(numberText(item))}</div>
@@ -51,7 +51,7 @@ function strategyZonesHtml(game) {
       <div class="zone-card ${zone.name.includes("冷门") ? "cold-zone" : "hot-zone"}">
         <div class="play-title"><h3>${escapeHtml(zone.name)}</h3><span>${escapeHtml(zone.description)}</span></div>
         ${picksHtml(zone.candidates)}
-        <button class="copy-bundle" data-copy="${encodeURIComponent(bundleText(game, zone.name, zone.candidates))}">复制${escapeHtml(zone.name)}全部3组</button>
+        <button class="copy-bundle" data-copy="${encodeURIComponent(bundleText(game, zone.name, zone.candidates))}">复制${escapeHtml(zone.name)}全部5组</button>
       </div>`).join("")}</div>
   </section>`;
 }
@@ -60,7 +60,7 @@ function bundleText(game, label, candidates) {
   return [
     `${game.name}${label ? ` ${label}` : ""}｜第${game.target_issue}期`,
     `下一期开奖：${game.next_draw_display}`,
-    ...candidates.slice(0, 3).map(item =>
+    ...candidates.slice(0, 5).map(item =>
       `候选${item.rank}：${numberText(item)}｜模型相对评分 ${item.confidence}%`
     ),
     "提示：相对评分不是真实中奖概率，不构成购彩建议。"
@@ -70,13 +70,13 @@ function bundleText(game, label, candidates) {
 function playTypesHtml(game) {
   if (!game.play_types) {
     return `${picksHtml(game.top_candidates)}
-      <button class="copy-bundle" data-copy="${encodeURIComponent(bundleText(game, "", game.top_candidates))}">复制全部3组结果</button>`;
+      <button class="copy-bundle" data-copy="${encodeURIComponent(bundleText(game, "", game.top_candidates))}">复制全部5组结果</button>`;
   }
   return Object.values(game.play_types).map(play => `
     <div class="play-block">
       <div class="play-title"><h3>${escapeHtml(play.name)}</h3><span>${escapeHtml(play.description)}</span></div>
       ${picksHtml(play.candidates)}
-      <button class="copy-bundle" data-copy="${encodeURIComponent(bundleText(game, play.name, play.candidates))}">复制${escapeHtml(play.name)}全部3组</button>
+      <button class="copy-bundle" data-copy="${encodeURIComponent(bundleText(game, play.name, play.candidates))}">复制${escapeHtml(play.name)}全部5组</button>
     </div>`).join("");
 }
 
@@ -89,7 +89,7 @@ async function copyText(text) {
     document.body.append(area); area.select(); document.execCommand("copy"); area.remove();
   }
   const toast = $("#toast");
-  toast.textContent = "全部3组已复制"; toast.classList.add("show");
+  toast.textContent = "全部5组已复制"; toast.classList.add("show");
   clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove("show"), 1600);
 }
 
@@ -102,10 +102,10 @@ async function load() {
   const generated = new Date(game.generated_at || payload.generated_at).toLocaleString("zh-CN", { hour12: false });
 
   $("#app").innerHTML = `<div class="shell">
-    <nav class="topbar"><a class="back" href="../">← 返回首页</a><span class="updated">UPDATED ${escapeHtml(generated)}</span></nav>
+    <nav class="topbar"><div class="game-nav"><a href="../">首页</a><a href="../dlt/">超级大乐透</a><a href="../pl3/">排列3</a><a href="../pl5/">排列5</a><a href="../fc3d/">福彩3D</a></div><span class="updated">UPDATED ${escapeHtml(generated)}</span></nav>
     <header class="hero">
       <div><p class="eyebrow">LOTTERY DETAIL / ${escapeHtml(gameKey.toUpperCase())}</p><h1>${escapeHtml(game.name)}</h1></div>
-      <div class="hero-meta"><div>第 ${escapeHtml(game.target_issue)} 期 · 仅展示最高评分 3 组</div><div class="next">${escapeHtml(game.next_draw_display)}</div><div>${escapeHtml(game.schedule_note)}</div><div class="latest">上期 ${escapeHtml(game.latest_issue)}｜${escapeHtml(latestText(game.latest_numbers))}</div></div>
+      <div class="hero-meta"><div>第 ${escapeHtml(game.target_issue)} 期 · 展示5组候选</div><div class="next">${escapeHtml(game.next_draw_display)}</div><div>${escapeHtml(game.schedule_note)}</div><div class="latest">上期 ${escapeHtml(game.latest_issue)}｜${escapeHtml(latestText(game.latest_numbers))}</div></div>
     </header>
     <section class="section">
       <div class="section-head"><div><p class="section-label">TOP CANDIDATES</p><h2>最高评分结果</h2></div><p class="section-note">评分仅用于本页候选内部排序。三位数字玩法按直选、组选3、组选6分别计算。</p></div>
