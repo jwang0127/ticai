@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-15T11:29:43+08:00",
-  "source_status": "official_api",
+  "updated_at": "2026-07-15T11:38:26+08:00",
+  "source_status": "cached_verified_data",
   "draws": {
     "dlt": [
       {
@@ -3331,5 +3331,9 @@
       "role": "接口受限时交叉核验"
     }
   ],
-  "errors": {}
+  "errors": {
+    "dlt": "官方接口请求失败: HTTP Error 567: Unknown Status",
+    "pl5": "官方接口请求失败: HTTP Error 567: Unknown Status",
+    "pl3": "官方接口请求失败: HTTP Error 567: Unknown Status"
+  }
 }
