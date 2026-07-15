@@ -6,12 +6,12 @@ on:
       games:
         description: "要更新的玩法"
         required: true
-        default: "dlt,pl3,pl5"
+        default: "dlt,pl3,pl5,fc3d"
         type: choice
         options:
-          - "dlt,pl3,pl5"
+          - "dlt,pl3,pl5,fc3d"
           - "dlt"
-          - "pl3,pl5"
+          - "pl3,pl5,fc3d"
   schedule:
     # PL3/PL5: daily at 22:10 Beijing, after the 21:25 draw.
     - cron: "10 14 * * *"
@@ -49,9 +49,9 @@ jobs:
           elif [[ "${{ github.event.schedule }}" == "10 0 * * 0,2,5" ]]; then
             echo "games=dlt" >> "$GITHUB_OUTPUT"
           elif [[ "${{ github.event_name }}" == "schedule" ]]; then
-            echo "games=pl3,pl5" >> "$GITHUB_OUTPUT"
+            echo "games=pl3,pl5,fc3d" >> "$GITHUB_OUTPUT"
           else
-            echo "games=dlt,pl3,pl5" >> "$GITHUB_OUTPUT"
+            echo "games=dlt,pl3,pl5,fc3d" >> "$GITHUB_OUTPUT"
           fi
       - name: Fetch official draw history (preserve verified cache on failure)
         if: github.event_name != 'push'

@@ -146,7 +146,7 @@ def build_review(game: str, rows: list[dict]) -> dict:
         "summary": (
             f"开奖号{''.join(map(str, latest))}，和值{sum(latest)}、跨度{max(latest) - min(latest)}，"
             f"奇偶比{sum(n % 2 for n in latest)}:{sum(n % 2 == 0 for n in latest)}。"
-            + (f"排列3形态为{digit_shape(latest)}。" if game == "pl3" else f"包含{len(set(latest))}个不同数字。")
+            + (f"三位数形态为{digit_shape(latest)}。" if game in ("pl3", "fc3d") else f"包含{len(set(latest))}个不同数字。")
         ),
         "metrics": [
             {"label": "和值", "value": str(sum(latest))},
@@ -207,8 +207,8 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
     }
 
 
-def pl3_group_candidates(
-    rows: list[dict], group_type: str, target_issue: str, draw_at: datetime
+def three_digit_group_candidates(
+    game_name: str, rows: list[dict], group_type: str, target_issue: str, draw_at: datetime
 ) -> list[dict]:
     position_counts = [weighted_counts(rows, position) for position in range(3)]
     totals = [sum(counter.values()) for counter in position_counts]
@@ -238,7 +238,7 @@ def pl3_group_candidates(
             "rank": rank,
             "confidence": confidence,
             "copy_text": (
-                f"排列3 {label}｜第{target_issue}期｜候选{rank}：{number}｜"
+                f"{game_name} {label}｜第{target_issue}期｜候选{rank}：{number}｜"
                 f"模型相对评分 {confidence}%｜下一期开奖：{draw_at:%Y-%m-%d %H:%M}（北京时间）"
             ),
         }
@@ -248,7 +248,7 @@ def pl3_group_candidates(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="生成体彩数据看板")
-    parser.add_argument("--games", default="dlt,pl3,pl5", help="只刷新指定玩法，逗号分隔")
+    parser.add_argument("--games", default="dlt,pl3,pl5,fc3d", help="只刷新指定玩法，逗号分隔")
     return parser.parse_args()
 
 
@@ -261,7 +261,6 @@ def main() -> None:
     if invalid:
         raise SystemExit(f"未知玩法: {', '.join(invalid)}")
     now = datetime.now(TZ)
-    hour, minute = map(int, config["draw_time"].split(":"))
     try:
         previous_output = json.loads(OUTPUT_PATH.read_text(encoding="utf-8")) if OUTPUT_PATH.exists() else {}
     except json.JSONDecodeError:
@@ -278,6 +277,7 @@ def main() -> None:
 
     for game in selected:
         cfg = config["games"][game]
+        hour, minute = map(int, cfg.get("draw_time", config["draw_time"]).split(":"))
         rows = source_data["draws"][game]
         latest = rows[0]
         target_issue = str(int(latest["issue"]) + 1)
@@ -312,14 +312,14 @@ def main() -> None:
             "review": build_review(game, rows),
             "analysis": build_analysis(game, rows),
         }
-        if game == "pl3":
+        if game in ("pl3", "fc3d"):
             direct = []
             for item in enriched[:3]:
-                direct.append({**item, "copy_text": item["copy_text"].replace("排列3 ", "排列3 直选｜", 1)})
+                direct.append({**item, "copy_text": item["copy_text"].replace(f"{cfg['name']} ", f"{cfg['name']} 直选｜", 1)})
             output["games"][game]["play_types"] = {
                 "direct": {"name": "直选", "description": "数字与顺序均需一致", "candidates": direct},
-                "group3": {"name": "组选3", "description": "两位数字相同，顺序不限", "candidates": pl3_group_candidates(rows, "group3", target_issue, draw_at)},
-                "group6": {"name": "组选6", "description": "三位数字各不相同，顺序不限", "candidates": pl3_group_candidates(rows, "group6", target_issue, draw_at)},
+                "group3": {"name": "组选3", "description": "两位数字相同，顺序不限", "candidates": three_digit_group_candidates(cfg["name"], rows, "group3", target_issue, draw_at)},
+                "group6": {"name": "组选6", "description": "三位数字各不相同，顺序不限", "candidates": three_digit_group_candidates(cfg["name"], rows, "group6", target_issue, draw_at)},
             }
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)

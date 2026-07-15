@@ -5,7 +5,7 @@ from datetime import datetime, time
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from src.generate_dashboard import next_draw, pl3_group_candidates
+from src.generate_dashboard import next_draw, three_digit_group_candidates
 
 TZ = ZoneInfo("Asia/Shanghai")
 
@@ -28,11 +28,13 @@ class DetailPageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         root = Path(__file__).resolve().parents[1]
-        cls.rows = json.loads((root / "data/processed/draws.json").read_text(encoding="utf-8"))["draws"]["pl3"]
+        draws = json.loads((root / "data/processed/draws.json").read_text(encoding="utf-8"))["draws"]
+        cls.rows = draws["pl3"]
+        cls.fc3d_rows = draws["fc3d"]
 
     def test_group3_candidates_are_unique_and_valid(self):
         draw_at = datetime(2026, 7, 15, 21, 25, tzinfo=TZ)
-        candidates = pl3_group_candidates(self.rows, "group3", "26186", draw_at)
+        candidates = three_digit_group_candidates("排列3", self.rows, "group3", "26186", draw_at)
         self.assertEqual(len({item["number"] for item in candidates}), 3)
         for item in candidates:
             self.assertEqual(sorted(Counter(item["number"]).values()), [1, 2])
@@ -40,9 +42,17 @@ class DetailPageTests(unittest.TestCase):
 
     def test_group6_candidates_are_unique_and_valid(self):
         draw_at = datetime(2026, 7, 15, 21, 25, tzinfo=TZ)
-        candidates = pl3_group_candidates(self.rows, "group6", "26186", draw_at)
+        candidates = three_digit_group_candidates("排列3", self.rows, "group6", "26186", draw_at)
         self.assertEqual(len({item["number"] for item in candidates}), 3)
         self.assertTrue(all(len(set(item["number"])) == 3 for item in candidates))
+
+    def test_fc3d_official_history_and_groups(self):
+        self.assertEqual(len(self.fc3d_rows), 100)
+        self.assertEqual(self.fc3d_rows[0]["issue"], "2026185")
+        draw_at = datetime(2026, 7, 15, 21, 15, tzinfo=TZ)
+        candidates = three_digit_group_candidates("福彩3D", self.fc3d_rows, "group3", "2026186", draw_at)
+        self.assertEqual(len(candidates), 3)
+        self.assertTrue(all("福彩3D 组选3" in item["copy_text"] for item in candidates))
 
 
 if __name__ == "__main__":

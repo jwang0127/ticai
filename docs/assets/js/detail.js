@@ -77,7 +77,7 @@ async function load() {
       <div class="hero-meta"><div>第 ${escapeHtml(game.target_issue)} 期 · 仅展示最高评分 3 组</div><div class="next">${escapeHtml(game.next_draw_display)}</div><div>${escapeHtml(game.schedule_note)}</div><div class="latest">上期 ${escapeHtml(game.latest_issue)}｜${escapeHtml(latestText(game.latest_numbers))}</div></div>
     </header>
     <section class="section">
-      <div class="section-head"><div><p class="section-label">TOP CANDIDATES</p><h2>最高评分结果</h2></div><p class="section-note">评分仅用于本页候选内部排序。排列3按直选、组选3、组选6分别计算。</p></div>
+      <div class="section-head"><div><p class="section-label">TOP CANDIDATES</p><h2>最高评分结果</h2></div><p class="section-note">评分仅用于本页候选内部排序。三位数字玩法按直选、组选3、组选6分别计算。</p></div>
       ${playTypesHtml(game)}
     </section>
     <section class="section">

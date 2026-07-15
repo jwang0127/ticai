@@ -39,9 +39,9 @@ h1 em { color: var(--blue); font-style: normal; }
 .sync-pill span { width: 7px; height: 7px; background: #28a66a; border-radius: 50%; box-shadow: 0 0 0 4px rgba(40,166,106,.12); }
 
 .notice { margin: 22px 0; padding: 13px 16px; border: 1px solid var(--line); border-radius: 10px; color: var(--muted); font-size: 13px; }
-.games { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding-bottom: 54px; }
+.games { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; padding-bottom: 54px; }
 .game-card { display: flex; flex-direction: column; min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; backdrop-filter: blur(18px); box-shadow: 0 20px 60px rgba(40,38,30,.04); }
-.game-card:nth-child(2) { transform: translateY(18px); }
+.game-card:nth-child(even) { transform: translateY(18px); }
 .game-head { padding: 22px; border-bottom: 1px solid var(--line); }
 .game-index { display: flex; justify-content: space-between; color: var(--muted); font: 500 11px/1 "DM Mono", monospace; }
 .game-head h2 { margin: 28px 0 8px; font-size: 27px; letter-spacing: -.04em; }
@@ -79,7 +79,7 @@ footer { display: flex; justify-content: space-between; padding: 24px 0 36px; bo
 @media (max-width: 920px) {
   .hero-grid, .method { grid-template-columns: 1fr; gap: 32px; }
   .games { grid-template-columns: 1fr; }
-  .game-card:nth-child(2) { transform: none; }
+  .game-card:nth-child(even) { transform: none; }
 }
 @media (max-width: 560px) {
   .shell { width: min(100% - 24px, 1280px); }

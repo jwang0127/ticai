@@ -1,6 +1,8 @@
 {
   "official_api": "https://webapi.sporttery.cn/gateway/lottery/getHistoryPageListV1.qry",
   "official_results_page": "https://www.lottery.gov.cn/kjxx/",
+  "welfare_api": "https://www.cwl.gov.cn/cwl_admin/front/cwlkj/search/kjxx/findDrawNotice",
+  "welfare_results_page": "https://www.cwl.gov.cn/ygkj/wqkjgg/3d/",
   "timezone": "Asia/Shanghai",
   "draw_time": "21:25",
   "games": {
@@ -24,7 +26,13 @@
       "game_no": "350133",
       "draw_weekdays": [0, 1, 2, 3, 4, 5, 6],
       "digits": 5
+    },
+    "fc3d": {
+      "name": "福彩3D",
+      "provider": "cwl",
+      "draw_time": "21:15",
+      "draw_weekdays": [0, 1, 2, 3, 4, 5, 6],
+      "digits": 3
     }
   }
 }
-

@@ -141,11 +141,44 @@ def fetch_game(game: str, cfg: dict[str, Any], api: str) -> list[dict[str, Any]]
     return sorted(result, key=lambda row: row["issue"], reverse=True)
 
 
+def fetch_fc3d(api: str, results_page: str) -> list[dict[str, Any]]:
+    request = Request(
+        f"{api}?{urlencode({'name': '3d', 'issueCount': '100'})}",
+        headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/126 Safari/537.36",
+            "Accept": "application/json, text/plain, */*",
+            "Referer": results_page,
+        },
+    )
+    error: Exception | None = None
+    for attempt in range(2):
+        try:
+            with urlopen(request, timeout=12) as response:
+                payload = json.loads(response.read().decode("utf-8"))
+            rows = payload.get("result", [])
+            if not rows:
+                raise ValueError("中国福彩网接口未返回3D开奖列表")
+            result = []
+            for row in rows:
+                numbers = [value.strip() for value in str(row.get("red", "")).split(",") if value.strip()]
+                validate("fc3d", numbers, {"name": "福彩3D", "digits": 3})
+                issue = str(row.get("code", ""))
+                draw_date = str(row.get("date", ""))[:10]
+                if not issue or not draw_date:
+                    raise ValueError("福彩3D开奖数据缺少期号或日期")
+                result.append({"issue": issue, "draw_date": draw_date, "numbers": numbers})
+            return sorted(result, key=lambda row: row["issue"], reverse=True)
+        except (HTTPError, URLError, TimeoutError, ValueError, json.JSONDecodeError) as exc:
+            error = exc
+            time.sleep(2**attempt)
+    raise RuntimeError(f"中国福彩网接口请求失败: {error}")
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="抓取体彩开奖历史")
     parser.add_argument(
         "--games",
-        default="dlt,pl3,pl5",
+        default="dlt,pl3,pl5,fc3d",
         help="逗号分隔的玩法代码，例如 pl3,pl5",
     )
     return parser.parse_args()
@@ -165,11 +198,14 @@ def main() -> None:
     # The three games are independent. Parallel requests keep a blocked upstream
     # from holding a scheduled GitHub Pages build for several minutes.
     with ThreadPoolExecutor(max_workers=len(selected)) as executor:
-        futures = {
-            executor.submit(fetch_game, game, config["games"][game], config["official_api"]):
-            (game, config["games"][game])
-            for game in selected
-        }
+        futures = {}
+        for game in selected:
+            cfg = config["games"][game]
+            if cfg.get("provider") == "cwl":
+                future = executor.submit(fetch_fc3d, config["welfare_api"], config["welfare_results_page"])
+            else:
+                future = executor.submit(fetch_game, game, cfg, config["official_api"])
+            futures[future] = (game, cfg)
         for future in as_completed(futures):
             game, cfg = futures[future]
             try:
@@ -183,12 +219,22 @@ def main() -> None:
     if missing:
         raise SystemExit(f"没有可保留的数据: {', '.join(missing)}")
 
+    sources = list(previous.get("sources", []))
+    if "fc3d" in selected and not any(source.get("url") == config["welfare_results_page"] for source in sources):
+        sources.append(
+            {
+                "name": "中国福利彩票3D开奖信息",
+                "url": config["welfare_results_page"],
+                "role": "福彩3D官方开奖来源",
+            }
+        )
     output = {
         **previous,
         "updated_at": datetime.now(TZ).isoformat(timespec="seconds"),
         "source_status": "official_api" if not errors else "cached_verified_data",
         "errors": errors,
         "draws": draws,
+        "sources": sources,
     }
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
