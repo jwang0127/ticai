@@ -22,16 +22,30 @@ function picksHtml(candidates) {
       <div class="pick-rank">TOP 0${item.rank}</div>
       <div class="pick-number">${escapeHtml(numberText(item))}</div>
       <div class="score">模型相对评分 ${item.confidence}%</div>
-      <button class="copy" data-copy="${encodeURIComponent(item.copy_text)}">复制完整结果</button>
     </article>`).join("")}</div>`;
 }
 
+function bundleText(game, label, candidates) {
+  return [
+    `${game.name}${label ? ` ${label}` : ""}｜第${game.target_issue}期`,
+    `下一期开奖：${game.next_draw_display}`,
+    ...candidates.slice(0, 3).map(item =>
+      `候选${item.rank}：${numberText(item)}｜模型相对评分 ${item.confidence}%`
+    ),
+    "提示：相对评分不是真实中奖概率，不构成购彩建议。"
+  ].join("\n");
+}
+
 function playTypesHtml(game) {
-  if (!game.play_types) return picksHtml(game.top_candidates);
+  if (!game.play_types) {
+    return `${picksHtml(game.top_candidates)}
+      <button class="copy-bundle" data-copy="${encodeURIComponent(bundleText(game, "", game.top_candidates))}">复制全部3组结果</button>`;
+  }
   return Object.values(game.play_types).map(play => `
     <div class="play-block">
       <div class="play-title"><h3>${escapeHtml(play.name)}</h3><span>${escapeHtml(play.description)}</span></div>
       ${picksHtml(play.candidates)}
+      <button class="copy-bundle" data-copy="${encodeURIComponent(bundleText(game, play.name, play.candidates))}">复制${escapeHtml(play.name)}全部3组</button>
     </div>`).join("");
 }
 
@@ -44,7 +58,7 @@ async function copyText(text) {
     document.body.append(area); area.select(); document.execCommand("copy"); area.remove();
   }
   const toast = $("#toast");
-  toast.textContent = "结果已复制"; toast.classList.add("show");
+  toast.textContent = "全部3组已复制"; toast.classList.add("show");
   clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove("show"), 1600);
 }
 

@@ -32,6 +32,8 @@ h2 { margin: 10px 0 0; font-size: clamp(32px, 5vw, 54px); letter-spacing: -.055e
 .score { color: var(--red); font: 500 12px/1 "DM Mono", monospace; }
 .copy { width: 100%; margin-top: 22px; padding: 10px 12px; color: white; background: var(--ink); border: 0; border-radius: 8px; cursor: pointer; font-weight: 700; }
 .copy:hover { background: var(--blue); }
+.copy-bundle { width: 100%; margin-top: 12px; padding: 13px 16px; color: white; background: var(--ink); border: 0; border-radius: 9px; cursor: pointer; font-weight: 700; }
+.copy-bundle:hover { background: var(--blue); }
 .play-block + .play-block { margin-top: 34px; }
 .play-title { display: flex; gap: 12px; align-items: baseline; margin-bottom: 13px; }
 .play-title h3 { margin: 0; font-size: 21px; }

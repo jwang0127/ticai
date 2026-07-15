@@ -51,10 +51,11 @@ async function load() {
   const entries = Object.entries(payload.games);
 
   $("#games").innerHTML = entries.map(([key, game], index) => {
+    const candidates = (game.top_candidates || game.candidates).slice(0, 3);
     const allText = [
       `${game.name} 第${game.target_issue}期`,
       `下一期开奖：${game.next_draw_display}`,
-      ...game.candidates.map(item => `候选${item.rank}：${formatCandidate(key, item)}｜模型相对评分 ${item.confidence}%`),
+      ...candidates.map(item => `候选${item.rank}：${formatCandidate(key, item)}｜模型相对评分 ${item.confidence}%`),
       "提示：相对评分不是真实中奖概率，不构成购彩建议。"
     ].join("\n");
     return `
@@ -71,21 +72,20 @@ async function load() {
           </div>
         </div>
         <div class="candidates">
-          ${game.candidates.map(item => `
+          ${candidates.map(item => `
             <div class="candidate">
               <span class="rank">0${item.rank}</span>
               <span class="candidate-number">${escapeHtml(formatCandidate(key, item))}</span>
               <span class="score">${item.confidence}%</span>
-              <button class="copy-one" data-copy="${encodeURIComponent(item.copy_text)}">复制含玩法名称的结果 ↗</button>
             </div>`).join("")}
         </div>
-        <button class="copy-all" data-copy="${encodeURIComponent(allText)}">复制${escapeHtml(game.name)}全部结果</button>
+        <button class="copy-all" data-copy="${encodeURIComponent(allText)}">复制${escapeHtml(game.name)}全部3组</button>
       </article>`;
   }).join("");
 
   document.addEventListener("click", event => {
     const button = event.target.closest("[data-copy]");
-    if (button) copy(decodeURIComponent(button.dataset.copy), button.classList.contains("copy-all") ? "全部结果" : "候选结果");
+    if (button) copy(decodeURIComponent(button.dataset.copy), "全部3组");
   });
 
   $("#disclaimer").textContent = payload.disclaimer;
