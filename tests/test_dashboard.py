@@ -5,7 +5,13 @@ from datetime import datetime, time
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from src.generate_dashboard import generate_digit_profile, next_draw, three_digit_group_candidates
+from src.generate_dashboard import (
+    digit_confidences,
+    generate_digit_profile,
+    generate_pl5_from_pl3,
+    next_draw,
+    three_digit_group_candidates,
+)
 
 TZ = ZoneInfo("Asia/Shanghai")
 
@@ -30,6 +36,7 @@ class DetailPageTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         draws = json.loads((root / "data/processed/draws.json").read_text(encoding="utf-8"))["draws"]
         cls.rows = draws["pl3"]
+        cls.pl5_rows = draws["pl5"]
         cls.fc3d_rows = draws["fc3d"]
 
     def test_group3_candidates_are_unique_and_valid(self):
@@ -62,6 +69,41 @@ class DetailPageTests(unittest.TestCase):
         self.assertTrue(all(item[2] > 0.25 for item in hot))
         self.assertTrue(all(item[2] < -0.25 for item in cold))
         self.assertFalse({item[0] for item in hot} & {item[0] for item in cold})
+
+        hot_scores = digit_confidences(self.fc3d_rows, 3, [item[0] for item in hot])
+        cold_scores = digit_confidences(self.fc3d_rows, 3, [item[0] for item in cold])
+        self.assertGreater(min(hot_scores), max(cold_scores))
+
+    def test_global_top_overlaps_hot_zone(self):
+        global_top = generate_digit_profile(self.fc3d_rows, 3, "global", 5)
+        hot = generate_digit_profile(self.fc3d_rows, 3, "hot", 5)
+        self.assertTrue({item[0] for item in global_top} & {item[0] for item in hot})
+
+    def test_generated_zone_scores_share_one_global_scale(self):
+        root = Path(__file__).resolve().parents[1]
+        games = json.loads(
+            (root / "docs/assets/data/dashboard.json").read_text(encoding="utf-8")
+        )["games"]
+        for key in ("pl3", "pl5", "fc3d"):
+            game = games[key]
+            main = game["top_candidates"]
+            hot = game["strategy_zones"]["hot"]["candidates"]
+            cold = game["strategy_zones"]["cold"]["candidates"]
+            self.assertTrue({item["number"] for item in main} & {item["number"] for item in hot})
+            self.assertGreater(
+                min(item["confidence"] for item in hot),
+                max(item["confidence"] for item in cold),
+            )
+            for candidates in (main, hot, cold):
+                scores = [item["confidence"] for item in candidates]
+                self.assertEqual(scores, sorted(scores, reverse=True))
+
+    def test_pl5_is_built_from_matching_pl3_prefixes(self):
+        for profile in ("global", "hot", "cold"):
+            pl3 = generate_digit_profile(self.rows, 3, profile, 5)
+            pl5 = generate_pl5_from_pl3(self.rows, self.pl5_rows, profile, 5)
+            self.assertEqual({item[0] for item in pl3}, {item[0][:3] for item in pl5})
+            self.assertTrue(all(len(item[0]) == 5 for item in pl5))
 
 
 if __name__ == "__main__":

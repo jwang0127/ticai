@@ -46,7 +46,7 @@ function modelReviewHtml(review) {
 function strategyZonesHtml(game) {
   if (!game.strategy_zones) return "";
   return `<section class="section strategy-zones">
-    <div class="section-head"><div><p class="section-label">HOT / COLD ZONES</p><h2>热门与冷门分区</h2></div><p class="section-note">两区独立排序、独立复制；均衡主推荐仍显示在上方。</p></div>
+    <div class="section-head"><div><p class="section-label">HOT / COLD ZONES</p><h2>热门与冷门分区</h2></div><p class="section-note">所有分区使用同一全局评分尺度；最高评分榜会与热门区自然重合，冷门区只作低热覆盖。</p></div>
     <div class="zone-grid">${Object.values(game.strategy_zones).map(zone => `
       <div class="zone-card ${zone.name.includes("冷门") ? "cold-zone" : "hot-zone"}">
         <div class="play-title"><h3>${escapeHtml(zone.name)}</h3><span>${escapeHtml(zone.description)}</span></div>

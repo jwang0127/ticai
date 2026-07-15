@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import bisect
 import hashlib
 import json
 import math
@@ -38,12 +39,13 @@ def weighted_counts(rows: list[dict], position: int) -> Counter[int]:
 
 
 def relative_confidences(scores: list[float]) -> list[int]:
-    """Return strictly rank-based display scores; these are never draw odds."""
+    """Scale comparable raw scores within one candidate pool."""
     if not scores:
         return []
-    if len(scores) == 1:
-        return [64]
-    return [round(77 - index * 25 / (len(scores) - 1)) for index in range(len(scores))]
+    low, high = min(scores), max(scores)
+    if math.isclose(low, high):
+        return [64] * len(scores)
+    return [round(52 + (score - low) / (high - low) * 25, 1) for score in scores]
 
 
 def stable_rng(game: str, issue: str) -> random.Random:
@@ -100,6 +102,30 @@ def mixed_number_score(values: list[int], components: tuple) -> tuple[float, flo
     return score, sum(heat_values) / len(heat_values)
 
 
+def digit_support_score(values: list[int], components: tuple) -> float:
+    """Common cross-zone support scale based only on positional frequency."""
+    position_counts, totals, _, _, _ = components
+    return sum(
+        math.log(score_digit(value, position_counts[pos], totals[pos]))
+        for pos, value in enumerate(values)
+    ) / len(values)
+
+
+def digit_confidences(rows: list[dict], digits: int, numbers: list[str]) -> list[float]:
+    """Map every displayed digit candidate onto the same global percentile scale."""
+    components = mixed_digit_components(rows, digits)
+    population = sorted(
+        digit_support_score([int(value) for value in f"{number:0{digits}d}"], components)
+        for number in range(10 ** digits)
+    )
+    result = []
+    for number in numbers:
+        support = digit_support_score([int(value) for value in number], components)
+        percentile = bisect.bisect_right(population, support) / len(population)
+        result.append(round(35 + 43 * percentile, 1))
+    return result
+
+
 def diversified_rank(scored: list[tuple[str, float, float]], limit: int) -> list[tuple[str, float, float]]:
     """Greedily avoid returning near-duplicates while preserving model rank."""
     remaining = sorted(scored, key=lambda item: item[1], reverse=True)
@@ -114,7 +140,7 @@ def diversified_rank(scored: list[tuple[str, float, float]], limit: int) -> list
         )
         selected.append(best)
         remaining.remove(best)
-    return selected
+    return sorted(selected, key=lambda item: item[1], reverse=True)
 
 
 def generate_digit_profile(rows: list[dict], digits: int, profile: str, limit: int = 5) -> list[tuple[str, float, float]]:
@@ -123,30 +149,64 @@ def generate_digit_profile(rows: list[dict], digits: int, profile: str, limit: i
     for number in range(10 ** digits):
         text = f"{number:0{digits}d}"
         score, heat = mixed_number_score([int(value) for value in text], components)
+        support = digit_support_score([int(value) for value in text], components)
         if profile == "hot" and heat <= 0.25:
             continue
         if profile == "cold" and heat >= -0.25:
             continue
         if profile == "balanced" and not (-0.25 <= heat <= 0.25):
             continue
-        profile_score = score
-        if profile == "balanced":
-            profile_score -= 0.12 * abs(heat)
-        elif profile == "hot":
-            profile_score += 0.12 * min(heat, 1.5)
-        else:
-            profile_score += 0.10 * min(-heat, 1.5)
+        # The global and hot lists rank on the exact same support score, so
+        # genuine top results naturally overlap the hot zone. Cold coverage is
+        # selected with the mixed score, but displayed on the same support scale.
+        profile_score = score if profile in ("cold", "balanced") else support
         scored.append((text, profile_score, heat))
     return diversified_rank(scored, limit)
 
 
 def generate_digits(game: str, rows: list[dict], digits: int, issue: str) -> tuple[list[dict], list[float]]:
     del game, issue  # deterministic from the verified history snapshot
-    ranked = generate_digit_profile(rows, digits, "balanced", 5)
+    ranked = generate_digit_profile(rows, digits, "global", 5)
     candidates = []
     for number, _, heat in ranked:
-        candidates.append({"number": number, "mix_label": "冷热均衡"})
+        band = "热门支撑" if heat > 0.25 else "冷门保护" if heat < -0.25 else "冷热均衡"
+        candidates.append({"number": number, "mix_label": band})
     return candidates, [score for _, score, _ in ranked]
+
+
+def generate_pl5_from_pl3(
+    pl3_rows: list[dict], pl5_rows: list[dict], profile: str, limit: int = 5
+) -> list[tuple[str, float, float]]:
+    """Build PL5 explicitly as a PL3 prefix plus a two-digit 00-99 tail."""
+    prefixes = generate_digit_profile(pl3_rows, 3, profile, limit)
+    components = mixed_digit_components(pl5_rows, 5)
+    selected: list[tuple[str, float, float]] = []
+    used_tails: list[str] = []
+    for prefix, _, _ in prefixes:
+        choices = []
+        for tail_number in range(100):
+            tail = f"{tail_number:02d}"
+            number = prefix + tail
+            values = [int(value) for value in number]
+            mixed, heat = mixed_number_score(values, components)
+            support = digit_support_score(values, components)
+            if profile == "hot" and heat <= 0.25:
+                continue
+            if profile == "cold" and heat >= -0.25:
+                continue
+            selection = mixed if profile == "cold" else support
+            # Encourage tail coverage without breaking the PL3-prefix contract.
+            selection -= 0.10 * max(
+                (sum(a == b for a, b in zip(tail, chosen)) for chosen in used_tails),
+                default=0,
+            )
+            choices.append((number, selection, heat, tail, support))
+        if not choices:
+            raise RuntimeError(f"排列5无法为排列3前缀 {prefix} 生成 {profile} 尾号")
+        best = max(choices, key=lambda item: item[1])
+        selected.append((best[0], best[4] if profile != "cold" else best[1], best[2]))
+        used_tails.append(best[3])
+    return selected
 
 
 def weighted_number_counts(rows: list[dict], start: int, end: int) -> Counter[int]:
@@ -268,15 +328,16 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
     for pos in range(len(rows[0]["numbers"])):
         counter = weighted_counts(rows[:sample], pos)
         position_hot.append(str(counter.most_common(1)[0][0]))
+    structure_note = "排列5先继承同一期排列3前三位候选，再独立计算00–99后两位；" if game == "pl5" else ""
     return {
         "sample": sample,
-        "summary": f"最近{sample}期按位置统计并加入时间衰减。新模型保留热门支撑，同时惩罚极端拥挤，并对中冷数字给予有上限的补偿；各位置当前热门参考为{' · '.join(position_hot)}。",
+        "summary": f"{structure_note}最近{sample}期按位置统计并加入时间衰减。最高评分榜与热门区统一按全局位置频率支持度排序；冷门区仅作低热覆盖，并使用同一全局尺度显示较低支持分；各位置当前热门参考为{' · '.join(position_hot)}。",
         "signals": [
             {"label": "综合活跃数字", "value": " · ".join(hot)},
             {"label": "各位置最高权重", "value": " · ".join(position_hot)},
             {"label": "较长遗漏", "value": "、".join(omitted)},
         ],
-        "method": ["58%热门频率基础", "极热惩罚与封顶冷号补偿", "候选差异化与结构温和约束"],
+        "method": ["全量号码池统一评分", "热门与主榜同尺度排序", "冷门遗漏补偿封顶且不抬高显示分"],
     }
 
 
@@ -358,10 +419,23 @@ def main() -> None:
         draw_at = next_draw(max(now, latest_draw_at), cfg["draw_weekdays"], time(hour, minute))
         if game == "dlt":
             candidates, scores = generate_dlt(rows, target_issue)
+        elif game == "pl5":
+            ranked_pl5 = sorted(
+                generate_pl5_from_pl3(source_data["draws"]["pl3"], rows, "global", 5),
+                key=lambda item: item[1],
+                reverse=True,
+            )
+            candidates = []
+            for number, score, heat in ranked_pl5:
+                band = "热门支撑" if heat > 0.25 else "冷门保护" if heat < -0.25 else "冷热均衡"
+                candidates.append({"number": number, "mix_label": band})
+            scores = [score for _, score, _ in ranked_pl5]
         else:
             candidates, scores = generate_digits(game, rows, cfg["digits"], target_issue)
 
-        confidences = relative_confidences(scores)
+        confidences = relative_confidences(scores) if game == "dlt" else digit_confidences(
+            rows, cfg["digits"], [candidate["number"] for candidate in candidates]
+        )
         enriched = []
         for rank, (candidate, confidence) in enumerate(zip(candidates, confidences), start=1):
             text_value = candidate_text(game, candidate)
@@ -402,11 +476,19 @@ def main() -> None:
                 ("hot", "热门专区", "保留近期位置频率支撑，但已限制极端追热"),
                 ("cold", "冷门专区", "选取相对低热度组合，遗漏补偿设有上限"),
             ):
-                ranked_zone = generate_digit_profile(rows, cfg["digits"], profile, 5)
-                zone_scores = [score for _, score, _ in ranked_zone]
-                zone_confidences = relative_confidences(zone_scores)
+                ranked_zone = (
+                    generate_pl5_from_pl3(source_data["draws"]["pl3"], rows, profile, 5)
+                    if game == "pl5"
+                    else generate_digit_profile(rows, cfg["digits"], profile, 5)
+                )
+                zone_confidences = digit_confidences(
+                    rows, cfg["digits"], [number for number, _, _ in ranked_zone]
+                )
                 zone_candidates = []
-                for rank, ((number, _, _), confidence) in enumerate(zip(ranked_zone, zone_confidences), start=1):
+                ranked_display = sorted(
+                    zip(ranked_zone, zone_confidences), key=lambda item: item[1], reverse=True
+                )
+                for rank, ((number, _, _), confidence) in enumerate(ranked_display, start=1):
                     zone_candidates.append({
                         "number": number,
                         "rank": rank,
