@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import re
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -93,9 +94,9 @@ def request_payload(url: str, params: dict[str, str]) -> dict[str, Any]:
     }
     error: Exception | None = None
     request = Request(f"{url}?{urlencode(params)}", headers=headers)
-    for attempt in range(3):
+    for attempt in range(2):
         try:
-            with urlopen(request, timeout=25) as response:
+            with urlopen(request, timeout=12) as response:
                 payload = json.loads(response.read().decode("utf-8"))
             if not isinstance(payload, dict):
                 raise ValueError("接口未返回 JSON 对象")
@@ -145,13 +146,21 @@ def main() -> None:
     draws = dict(previous.get("draws", {}))
     errors: dict[str, str] = {}
 
-    for game, cfg in config["games"].items():
-        try:
-            draws[game] = fetch_game(game, cfg, config["official_api"])
-            print(f"[OK] {cfg['name']}: {draws[game][0]['issue']}")
-        except Exception as exc:  # Preserve last verified data, never invent a result.
-            errors[game] = str(exc)
-            print(f"[KEEP] {cfg['name']}: {exc}")
+    # The three games are independent. Parallel requests keep a blocked upstream
+    # from holding a scheduled GitHub Pages build for several minutes.
+    with ThreadPoolExecutor(max_workers=len(config["games"])) as executor:
+        futures = {
+            executor.submit(fetch_game, game, cfg, config["official_api"]): (game, cfg)
+            for game, cfg in config["games"].items()
+        }
+        for future in as_completed(futures):
+            game, cfg = futures[future]
+            try:
+                draws[game] = future.result()
+                print(f"[OK] {cfg['name']}: {draws[game][0]['issue']}")
+            except Exception as exc:  # Preserve last verified data, never invent a result.
+                errors[game] = str(exc)
+                print(f"[KEEP] {cfg['name']}: {exc}")
 
     missing = [game for game in config["games"] if not draws.get(game)]
     if missing:
