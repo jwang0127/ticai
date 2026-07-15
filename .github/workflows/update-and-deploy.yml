@@ -2,11 +2,21 @@ name: Update and deploy lottery dashboard
 
 on:
   workflow_dispatch:
+    inputs:
+      games:
+        description: "要更新的玩法"
+        required: true
+        default: "dlt,pl3,pl5"
+        type: choice
+        options:
+          - "dlt,pl3,pl5"
+          - "dlt"
+          - "pl3,pl5"
   schedule:
-    # Beijing time 08:10, 20:50 and 22:10. The last run refreshes results after drawing.
-    - cron: "10 0 * * *"
-    - cron: "50 12 * * *"
+    # PL3/PL5: daily at 22:10 Beijing, after the 21:25 draw.
     - cron: "10 14 * * *"
+    # DLT: 08:10 Beijing on Sun/Tue/Fri, one day before Mon/Wed/Sat draws.
+    - cron: "10 0 * * 0,2,5"
   push:
     branches: [main]
 
@@ -30,11 +40,25 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      - name: Select update scope
+        id: scope
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "games=${{ inputs.games }}" >> "$GITHUB_OUTPUT"
+          elif [[ "${{ github.event.schedule }}" == "10 0 * * 0,2,5" ]]; then
+            echo "games=dlt" >> "$GITHUB_OUTPUT"
+          elif [[ "${{ github.event_name }}" == "schedule" ]]; then
+            echo "games=pl3,pl5" >> "$GITHUB_OUTPUT"
+          else
+            echo "games=dlt,pl3,pl5" >> "$GITHUB_OUTPUT"
+          fi
       - name: Fetch official draw history (preserve verified cache on failure)
         if: github.event_name != 'push'
-        run: python src/fetch_draws.py
+        run: python src/fetch_draws.py --games "${{ steps.scope.outputs.games }}"
       - name: Generate dashboard and copy-ready results
-        run: python src/generate_dashboard.py
+        if: github.event_name != 'push'
+        run: python src/generate_dashboard.py --games "${{ steps.scope.outputs.games }}"
       - name: Save refreshed data
         if: github.event_name != 'push'
         run: |

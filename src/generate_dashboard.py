@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import math
 import random
 from collections import Counter
+from itertools import permutations
 from datetime import datetime, time, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -112,20 +114,170 @@ def candidate_text(game: str, candidate: dict) -> str:
     return candidate["number"]
 
 
+def digit_shape(values: list[int]) -> str:
+    unique = len(set(values))
+    if len(values) == 3:
+        return {1: "豹子", 2: "组选3", 3: "组选6"}[unique]
+    return f"{unique}个不同数字"
+
+
+def build_review(game: str, rows: list[dict]) -> dict:
+    latest = [int(value) for value in rows[0]["numbers"]]
+    previous = [int(value) for value in rows[1]["numbers"]]
+    if game == "dlt":
+        front, back = latest[:5], latest[5:]
+        previous_front = set(previous[:5])
+        return {
+            "title": f"第{rows[0]['issue']}期结构复盘",
+            "summary": (
+                f"前区和值{sum(front)}、跨度{max(front) - min(front)}，"
+                f"奇偶比{sum(n % 2 for n in front)}:{sum(n % 2 == 0 for n in front)}；"
+                f"后区和值{sum(back)}。与前一期前区重号{len(set(front) & previous_front)}个。"
+            ),
+            "metrics": [
+                {"label": "前区和值", "value": str(sum(front))},
+                {"label": "前区跨度", "value": str(max(front) - min(front))},
+                {"label": "前区奇偶", "value": f"{sum(n % 2 for n in front)}:{sum(n % 2 == 0 for n in front)}"},
+                {"label": "后区和值", "value": str(sum(back))},
+            ],
+        }
+    return {
+        "title": f"第{rows[0]['issue']}期结构复盘",
+        "summary": (
+            f"开奖号{''.join(map(str, latest))}，和值{sum(latest)}、跨度{max(latest) - min(latest)}，"
+            f"奇偶比{sum(n % 2 for n in latest)}:{sum(n % 2 == 0 for n in latest)}。"
+            + (f"排列3形态为{digit_shape(latest)}。" if game == "pl3" else f"包含{len(set(latest))}个不同数字。")
+        ),
+        "metrics": [
+            {"label": "和值", "value": str(sum(latest))},
+            {"label": "跨度", "value": str(max(latest) - min(latest))},
+            {"label": "奇偶", "value": f"{sum(n % 2 for n in latest)}:{sum(n % 2 == 0 for n in latest)}"},
+            {"label": "不同数字", "value": str(len(set(latest)))},
+        ],
+    }
+
+
+def omission(rows: list[dict], start: int, end: int, values: range) -> list[tuple[int, int]]:
+    result = []
+    for target in values:
+        missed = len(rows)
+        for index, row in enumerate(rows):
+            if target in [int(value) for value in row["numbers"][start:end]]:
+                missed = index
+                break
+        result.append((target, missed))
+    return sorted(result, key=lambda pair: pair[1], reverse=True)
+
+
+def build_analysis(game: str, rows: list[dict]) -> dict:
+    sample = min(100, len(rows))
+    if game == "dlt":
+        front = weighted_number_counts(rows[:sample], 0, 5)
+        back = weighted_number_counts(rows[:sample], 5, 7)
+        hot_front = [f"{n:02d}" for n, _ in front.most_common(5)]
+        hot_back = [f"{n:02d}" for n, _ in back.most_common(3)]
+        omitted = [f"{n:02d}（{miss}期）" for n, miss in omission(rows[:sample], 0, 5, range(1, 36))[:5]]
+        return {
+            "sample": sample,
+            "summary": f"最近{sample}期采用指数衰减频率，前后区分别统计；当前前区相对活跃号为{'、'.join(hot_front)}，后区为{'、'.join(hot_back)}。",
+            "signals": [
+                {"label": "前区相对活跃", "value": " · ".join(hot_front)},
+                {"label": "后区相对活跃", "value": " · ".join(hot_back)},
+                {"label": "前区较长遗漏", "value": "、".join(omitted)},
+            ],
+            "method": ["最近100期指数衰减频率", "前区与后区独立建模", "和值、奇偶与跨度温和约束"],
+        }
+
+    all_counts = Counter(int(value) for row in rows[:sample] for value in row["numbers"])
+    hot = [str(n) for n, _ in all_counts.most_common(5)]
+    omitted = [f"{n}（{miss}期）" for n, miss in omission(rows[:sample], 0, len(rows[0]["numbers"]), range(10))[:3]]
+    position_hot = []
+    for pos in range(len(rows[0]["numbers"])):
+        counter = weighted_counts(rows[:sample], pos)
+        position_hot.append(str(counter.most_common(1)[0][0]))
+    return {
+        "sample": sample,
+        "summary": f"最近{sample}期按位置统计并加入时间衰减；各位置当前最高权重数字依次为{' · '.join(position_hot)}。",
+        "signals": [
+            {"label": "综合活跃数字", "value": " · ".join(hot)},
+            {"label": "各位置最高权重", "value": " · ".join(position_hot)},
+            {"label": "较长遗漏", "value": "、".join(omitted)},
+        ],
+        "method": ["最近100期位置频率", "指数衰减与遗漏期数", "和值、跨度及重复形态约束"],
+    }
+
+
+def pl3_group_candidates(
+    rows: list[dict], group_type: str, target_issue: str, draw_at: datetime
+) -> list[dict]:
+    position_counts = [weighted_counts(rows, position) for position in range(3)]
+    totals = [sum(counter.values()) for counter in position_counts]
+    scored: dict[str, float] = {}
+    for number in range(1000):
+        digits = [int(value) for value in f"{number:03d}"]
+        counts = sorted(Counter(digits).values())
+        if group_type == "group3" and counts != [1, 2]:
+            continue
+        if group_type == "group6" and counts != [1, 1, 1]:
+            continue
+        unique_orders = set(permutations(digits))
+        likelihood = 0.0
+        for order in unique_orders:
+            likelihood += math.prod(
+                score_digit(value, position_counts[pos], totals[pos])
+                for pos, value in enumerate(order)
+            )
+        canonical = "".join(map(str, sorted(digits)))
+        scored[canonical] = max(scored.get(canonical, 0.0), likelihood)
+    ranked = sorted(scored.items(), key=lambda pair: pair[1], reverse=True)[:3]
+    confidences = relative_confidences([score for _, score in ranked])
+    label = "组选3" if group_type == "group3" else "组选6"
+    return [
+        {
+            "number": number,
+            "rank": rank,
+            "confidence": confidence,
+            "copy_text": (
+                f"排列3 {label}｜第{target_issue}期｜候选{rank}：{number}｜"
+                f"模型相对评分 {confidence}%｜下一期开奖：{draw_at:%Y-%m-%d %H:%M}（北京时间）"
+            ),
+        }
+        for rank, ((number, _), confidence) in enumerate(zip(ranked, confidences), start=1)
+    ]
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="生成体彩数据看板")
+    parser.add_argument("--games", default="dlt,pl3,pl5", help="只刷新指定玩法，逗号分隔")
+    return parser.parse_args()
+
+
 def main() -> None:
+    args = parse_args()
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     source_data = json.loads(DATA_PATH.read_text(encoding="utf-8"))
+    selected = [game.strip() for game in args.games.split(",") if game.strip()]
+    invalid = [game for game in selected if game not in config["games"]]
+    if invalid:
+        raise SystemExit(f"未知玩法: {', '.join(invalid)}")
     now = datetime.now(TZ)
     hour, minute = map(int, config["draw_time"].split(":"))
+    try:
+        previous_output = json.loads(OUTPUT_PATH.read_text(encoding="utf-8")) if OUTPUT_PATH.exists() else {}
+    except json.JSONDecodeError:
+        # A generated file can contain merge markers during a rebase; rebuild it
+        # entirely from the verified source data instead of preserving fragments.
+        previous_output = {}
     output = {
         "generated_at": now.isoformat(timespec="seconds"),
         "source_status": source_data.get("source_status", "unknown"),
         "disclaimer": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。模型置信度仅表示本页 5 个候选之间的相对评分，不是真实中奖概率。",
-        "games": {},
+        "games": dict(previous_output.get("games", {})),
         "sources": source_data.get("sources", []),
     }
 
-    for game, cfg in config["games"].items():
+    for game in selected:
+        cfg = config["games"][game]
         rows = source_data["draws"][game]
         latest = rows[0]
         target_issue = str(int(latest["issue"]) + 1)
@@ -147,6 +299,7 @@ def main() -> None:
 
         output["games"][game] = {
             "name": cfg["name"],
+            "generated_at": now.isoformat(timespec="seconds"),
             "latest_issue": latest["issue"],
             "latest_draw_date": latest["draw_date"],
             "latest_numbers": latest["numbers"],
@@ -155,7 +308,19 @@ def main() -> None:
             "next_draw_display": f"{draw_at:%Y年%m月%d日 %H:%M}（北京时间）",
             "schedule_note": "每周一、三、六开奖" if game == "dlt" else "每日开奖（休市日除外）",
             "candidates": enriched,
+            "top_candidates": enriched[:3],
+            "review": build_review(game, rows),
+            "analysis": build_analysis(game, rows),
         }
+        if game == "pl3":
+            direct = []
+            for item in enriched[:3]:
+                direct.append({**item, "copy_text": item["copy_text"].replace("排列3 ", "排列3 直选｜", 1)})
+            output["games"][game]["play_types"] = {
+                "direct": {"name": "直选", "description": "数字与顺序均需一致", "candidates": direct},
+                "group3": {"name": "组选3", "description": "两位数字相同，顺序不限", "candidates": pl3_group_candidates(rows, "group3", target_issue, draw_at)},
+                "group6": {"name": "组选6", "description": "三位数字各不相同，顺序不限", "candidates": pl3_group_candidates(rows, "group6", target_issue, draw_at)},
+            }
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -164,4 +329,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

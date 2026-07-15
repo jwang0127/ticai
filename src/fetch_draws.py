@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import time
@@ -140,18 +141,34 @@ def fetch_game(game: str, cfg: dict[str, Any], api: str) -> list[dict[str, Any]]
     return sorted(result, key=lambda row: row["issue"], reverse=True)
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="抓取体彩开奖历史")
+    parser.add_argument(
+        "--games",
+        default="dlt,pl3,pl5",
+        help="逗号分隔的玩法代码，例如 pl3,pl5",
+    )
+    return parser.parse_args()
+
+
 def main() -> None:
+    args = parse_args()
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+    selected = [game.strip() for game in args.games.split(",") if game.strip()]
+    invalid = [game for game in selected if game not in config["games"]]
+    if invalid:
+        raise SystemExit(f"未知玩法: {', '.join(invalid)}")
     previous = json.loads(OUTPUT_PATH.read_text(encoding="utf-8")) if OUTPUT_PATH.exists() else {"draws": {}}
     draws = dict(previous.get("draws", {}))
     errors: dict[str, str] = {}
 
     # The three games are independent. Parallel requests keep a blocked upstream
     # from holding a scheduled GitHub Pages build for several minutes.
-    with ThreadPoolExecutor(max_workers=len(config["games"])) as executor:
+    with ThreadPoolExecutor(max_workers=len(selected)) as executor:
         futures = {
-            executor.submit(fetch_game, game, cfg, config["official_api"]): (game, cfg)
-            for game, cfg in config["games"].items()
+            executor.submit(fetch_game, game, config["games"][game], config["official_api"]):
+            (game, config["games"][game])
+            for game in selected
         }
         for future in as_completed(futures):
             game, cfg = futures[future]
@@ -162,7 +179,7 @@ def main() -> None:
                 errors[game] = str(exc)
                 print(f"[KEEP] {cfg['name']}: {exc}")
 
-    missing = [game for game in config["games"] if not draws.get(game)]
+    missing = [game for game in selected if not draws.get(game)]
     if missing:
         raise SystemExit(f"没有可保留的数据: {', '.join(missing)}")
 
