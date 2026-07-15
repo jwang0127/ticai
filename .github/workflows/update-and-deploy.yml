@@ -31,6 +31,7 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - name: Fetch official draw history (preserve verified cache on failure)
+        if: github.event_name != 'push'
         run: python src/fetch_draws.py
       - name: Generate dashboard and copy-ready results
         run: python src/generate_dashboard.py
