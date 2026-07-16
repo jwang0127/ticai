@@ -55,9 +55,9 @@ class DetailPageTests(unittest.TestCase):
 
     def test_fc3d_official_history_and_groups(self):
         self.assertEqual(len(self.fc3d_rows), 100)
-        self.assertEqual(self.fc3d_rows[0]["issue"], "2026186")
+        self.assertEqual(self.fc3d_rows[0]["issue"], "2026187")
         draw_at = datetime(2026, 7, 15, 21, 15, tzinfo=TZ)
-        candidates = three_digit_group_candidates("福彩3D", self.fc3d_rows, "group3", "2026186", draw_at)
+        candidates = three_digit_group_candidates("福彩3D", self.fc3d_rows, "group3", "2026188", draw_at)
         self.assertEqual(len(candidates), 5)
         self.assertTrue(all("福彩3D 组选3" in item["copy_text"] for item in candidates))
 

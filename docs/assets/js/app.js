@@ -136,9 +136,12 @@ async function load() {
   ).join("");
   const generated = new Date(payload.generated_at).toLocaleString("zh-CN", { hour12: false });
   $("#generated").innerHTML = `<span></span>页面生成于 ${generated}`;
-  $("#status").textContent = payload.source_status === "official_api"
-    ? "官方开奖接口同步成功 · 下一期开奖时间已按北京时间自动计算"
-    : "官方接口当前受限 · 页面使用上一次已交叉核验数据，下一期开奖时间已自动计算";
+  const statusMessages = {
+    official_api: "官方开奖接口同步成功 · 下一期开奖时间已按北京时间自动计算",
+    user_confirmed_result: "人工确认开奖结果已同步 · 下一期开奖时间已按北京时间自动计算",
+  };
+  $("#status").textContent = statusMessages[payload.source_status]
+    || "官方接口当前受限 · 页面使用上一次已交叉核验数据，下一期开奖时间已自动计算";
 }
 
 load().catch(error => {

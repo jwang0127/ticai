@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-15T23:43:56+08:00",
-  "source_status": "cached_verified_data",
+  "updated_at": "2026-07-16T21:40:00+08:00",
+  "source_status": "user_confirmed_result",
   "draws": {
     "dlt": [
       {
@@ -1306,6 +1306,15 @@
     ],
     "pl3": [
       {
+        "issue": "26187",
+        "draw_date": "2026-07-16",
+        "numbers": [
+          "0",
+          "8",
+          "6"
+        ]
+      },
+      {
         "issue": "26186",
         "draw_date": "2026-07-15",
         "numbers": [
@@ -2194,20 +2203,22 @@
           "4",
           "7",
           "4"
-        ]
-      },
-      {
-        "issue": "26087",
-        "draw_date": "2026-04-07",
-        "numbers": [
-          "0",
-          "7",
-          "0"
         ]
       }
     ],
     "pl5": [
       {
+        "issue": "26187",
+        "draw_date": "2026-07-16",
+        "numbers": [
+          "0",
+          "8",
+          "6",
+          "7",
+          "8"
+        ]
+      },
+      {
         "issue": "26186",
         "draw_date": "2026-07-15",
         "numbers": [
@@ -3295,20 +3306,18 @@
           "5",
           "9"
         ]
-      },
-      {
-        "issue": "26087",
-        "draw_date": "2026-04-07",
-        "numbers": [
-          "0",
-          "7",
-          "0",
-          "7",
-          "6"
-        ]
       }
     ],
     "fc3d": [
+      {
+        "issue": "2026187",
+        "draw_date": "2026-07-16",
+        "numbers": [
+          "0",
+          "2",
+          "3"
+        ]
+      },
       {
         "issue": "2026186",
         "draw_date": "2026-07-15",
@@ -4199,15 +4208,6 @@
           "0",
           "8"
         ]
-      },
-      {
-        "issue": "2026087",
-        "draw_date": "2026-04-07",
-        "numbers": [
-          "9",
-          "1",
-          "1"
-        ]
       }
     ]
   },
@@ -4238,9 +4238,5 @@
       "role": "福彩3D官方开奖来源"
     }
   ],
-  "errors": {
-    "fc3d": "中国福彩网接口请求失败: HTTP Error 403: Forbidden",
-    "pl5": "官方接口请求失败: HTTP Error 567: Unknown Status",
-    "pl3": "官方接口请求失败: HTTP Error 567: Unknown Status"
-  }
+  "errors": {}
 }
