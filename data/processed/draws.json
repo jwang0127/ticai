@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-17T11:31:08+08:00",
+  "updated_at": "2026-07-17T23:23:55+08:00",
   "source_status": "cached_verified_data",
   "draws": {
     "dlt": [
@@ -4239,6 +4239,8 @@
     }
   ],
   "errors": {
-    "dlt": "官方接口请求失败: HTTP Error 567: Unknown Status"
+    "fc3d": "中国福彩网接口请求失败: HTTP Error 403: Forbidden",
+    "pl3": "官方接口请求失败: HTTP Error 567: Unknown Status",
+    "pl5": "官方接口请求失败: HTTP Error 567: Unknown Status"
   }
 }
