@@ -105,6 +105,34 @@ class DetailPageTests(unittest.TestCase):
             self.assertEqual({item[0] for item in pl3}, {item[0][:3] for item in pl5})
             self.assertTrue(all(len(item[0]) == 5 for item in pl5))
 
+    def test_copy_text_contains_only_name_and_number(self):
+        root = Path(__file__).resolve().parents[1]
+        games = json.loads(
+            (root / "docs/assets/data/dashboard.json").read_text(encoding="utf-8")
+        )["games"]
+
+        def check(items, prefix):
+            for item in items:
+                self.assertTrue(item["copy_text"].startswith(f"{prefix} "))
+                self.assertNotIn("｜", item["copy_text"])
+                self.assertNotIn("期", item["copy_text"])
+                self.assertNotIn("%", item["copy_text"])
+                self.assertNotIn("开奖", item["copy_text"])
+
+        for game in games.values():
+            check(game["top_candidates"], game["name"])
+            for play in game.get("play_types", {}).values():
+                check(play["candidates"], f"{game['name']} {play['name']}")
+            for zone in game.get("strategy_zones", {}).values():
+                check(zone["candidates"], f"{game['name']} {zone['name']}")
+
+    def test_homepage_has_all_game_navigation_buttons(self):
+        root = Path(__file__).resolve().parents[1]
+        homepage = (root / "docs/index.html").read_text(encoding="utf-8")
+        for path, name in (("dlt", "超级大乐透"), ("pl3", "排列3"), ("pl5", "排列5"), ("fc3d", "福彩3D")):
+            self.assertIn(f'href="./{path}/"', homepage)
+            self.assertIn(name, homepage)
+
 
 if __name__ == "__main__":
     unittest.main()

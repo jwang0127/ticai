@@ -28,8 +28,13 @@ button, a { font: inherit; }
 .shell { width: min(1280px, calc(100% - 40px)); margin: 0 auto; }
 
 .hero { padding: 30px 0 54px; border-bottom: 1px solid var(--line); }
+.hero-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .brand { display: flex; align-items: center; gap: 12px; font: 500 12px/1 "DM Mono", monospace; letter-spacing: .15em; }
 .brand-mark { display: grid; place-items: center; width: 31px; height: 31px; color: white; background: var(--ink); border-radius: 50%; font: 900 16px/1 "Noto Sans SC"; }
+.theme-nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 9px; }
+.theme-nav a { padding: 11px 15px; color: var(--ink); background: rgba(255,255,255,.62); border: 1px solid var(--line); border-radius: 10px; text-decoration: none; font-size: 13px; font-weight: 800; transition: color .18s, background .18s, border-color .18s, transform .18s; }
+.theme-nav a:hover { color: white; background: var(--blue); border-color: var(--blue); transform: translateY(-2px); }
+.theme-nav a:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
 .hero-grid { display: grid; grid-template-columns: 1.55fr .7fr; align-items: end; gap: 80px; margin-top: 54px; }
 .kicker, .section-label { font: 500 12px/1.4 "DM Mono", monospace; letter-spacing: .12em; color: var(--red); }
 h1 { margin: 15px 0 0; font-size: clamp(48px, 7.4vw, 104px); line-height: .98; letter-spacing: -.065em; font-weight: 900; }
@@ -98,12 +103,16 @@ footer { display: flex; justify-content: space-between; padding: 24px 0 36px; bo
 .toast.show { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 920px) {
+  .hero-top { align-items: flex-start; flex-direction: column; }
+  .theme-nav { width: 100%; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .theme-nav a { text-align: center; }
   .hero-grid, .number-roller, .method { grid-template-columns: 1fr; gap: 32px; }
   .games { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .shell { width: min(100% - 24px, 1280px); }
   .hero { padding-top: 18px; }
+  .theme-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero-grid { margin-top: 42px; }
   h1 { font-size: 49px; }
   .number-roller { padding: 34px 0; gap: 24px; }

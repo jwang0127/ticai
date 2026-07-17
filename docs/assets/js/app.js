@@ -94,12 +94,9 @@ async function load() {
 
   $("#games").innerHTML = entries.map(([key, game], index) => {
     const candidates = (game.top_candidates || game.candidates).slice(0, 5);
-    const allText = [
-      `${game.name} 第${game.target_issue}期`,
-      `下一期开奖：${game.next_draw_display}`,
-      ...candidates.map(item => `候选${item.rank}：${formatCandidate(key, item)}｜模型相对评分 ${item.confidence}%`),
-      "提示：相对评分不是真实中奖概率，不构成购彩建议。"
-    ].join("\n");
+    const allText = candidates
+      .map(item => `${game.name} ${formatCandidate(key, item)}`)
+      .join("\n");
     return `
       <article class="game-card">
         <div class="game-head">

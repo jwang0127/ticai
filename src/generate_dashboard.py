@@ -368,10 +368,7 @@ def three_digit_group_candidates(
             "number": number,
             "rank": rank,
             "confidence": confidence,
-            "copy_text": (
-                f"{game_name} {label}｜第{target_issue}期｜候选{rank}：{number}｜"
-                f"模型相对评分 {confidence}%｜下一期开奖：{draw_at:%Y-%m-%d %H:%M}（北京时间）"
-            ),
+            "copy_text": f"{game_name} {label} {number}",
         }
         for rank, ((number, _), confidence) in enumerate(zip(ranked, confidences), start=1)
     ]
@@ -439,10 +436,7 @@ def main() -> None:
         enriched = []
         for rank, (candidate, confidence) in enumerate(zip(candidates, confidences), start=1):
             text_value = candidate_text(game, candidate)
-            copy_text = (
-                f"{cfg['name']} 第{target_issue}期｜候选{rank}：{text_value}｜"
-                f"模型相对评分 {confidence}%｜下一期开奖：{draw_at:%Y-%m-%d %H:%M}（北京时间）"
-            )
+            copy_text = f"{cfg['name']} {text_value}"
             enriched.append({**candidate, "rank": rank, "confidence": confidence, "copy_text": copy_text})
 
         output["games"][game] = {
@@ -464,7 +458,7 @@ def main() -> None:
         if game in ("pl3", "fc3d"):
             direct = []
             for item in enriched[:5]:
-                direct.append({**item, "copy_text": item["copy_text"].replace(f"{cfg['name']} ", f"{cfg['name']} 直选｜", 1)})
+                direct.append({**item, "copy_text": f"{cfg['name']} 直选 {item['number']}"})
             output["games"][game]["play_types"] = {
                 "direct": {"name": "直选", "description": "数字与顺序均需一致", "candidates": direct},
                 "group3": {"name": "组选3", "description": "两位数字相同，顺序不限", "candidates": three_digit_group_candidates(cfg["name"], rows, "group3", target_issue, draw_at)},
@@ -494,7 +488,7 @@ def main() -> None:
                         "rank": rank,
                         "confidence": confidence,
                         "mix_label": zone_name.replace("专区", ""),
-                        "copy_text": f"{cfg['name']} {zone_name}｜第{target_issue}期｜候选{rank}：{number}｜模型相对评分 {confidence}%｜下一期开奖：{draw_at:%Y-%m-%d %H:%M}（北京时间）",
+                        "copy_text": f"{cfg['name']} {zone_name} {number}",
                     })
                 zones[profile] = {"name": zone_name, "description": description, "candidates": zone_candidates}
             output["games"][game]["strategy_zones"] = zones

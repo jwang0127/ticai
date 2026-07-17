@@ -57,14 +57,10 @@ function strategyZonesHtml(game) {
 }
 
 function bundleText(game, label, candidates) {
-  return [
-    `${game.name}${label ? ` ${label}` : ""}｜第${game.target_issue}期`,
-    `下一期开奖：${game.next_draw_display}`,
-    ...candidates.slice(0, 5).map(item =>
-      `候选${item.rank}：${numberText(item)}｜模型相对评分 ${item.confidence}%`
-    ),
-    "提示：相对评分不是真实中奖概率，不构成购彩建议。"
-  ].join("\n");
+  const name = `${game.name}${label ? ` ${label}` : ""}`;
+  return candidates.slice(0, 5)
+    .map(item => `${name} ${numberText(item)}`)
+    .join("\n");
 }
 
 function playTypesHtml(game) {

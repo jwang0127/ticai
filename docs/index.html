@@ -8,14 +8,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/app.css?v=20260715-6">
+  <link rel="stylesheet" href="./assets/css/app.css?v=20260717-1">
 </head>
 <body>
   <div class="ambient ambient-a"></div>
   <div class="ambient ambient-b"></div>
   <main class="shell">
     <header class="hero">
-      <div class="brand"><span class="brand-mark">体</span><span>LOTTERY LAB · 2026</span></div>
+      <div class="hero-top">
+        <div class="brand"><span class="brand-mark">体</span><span>LOTTERY LAB · 2026</span></div>
+        <nav class="theme-nav" aria-label="玩法导航">
+          <a href="./dlt/">超级大乐透</a>
+          <a href="./pl3/">排列3</a>
+          <a href="./pl5/">排列5</a>
+          <a href="./fc3d/">福彩3D</a>
+        </nav>
+      </div>
       <div class="hero-grid">
         <div>
           <p class="kicker">公开数据 · 统计实验 · 每日更新</p>
@@ -23,7 +31,7 @@
         </div>
         <div class="hero-aside">
           <p>超级大乐透、排列3、排列5、福彩3D</p>
-          <p>每个玩法仅保留 5 个最终候选。每一条结果均可直接复制，并自动带上玩法与开奖时间。</p>
+          <p>每个玩法仅保留 5 个最终候选。复制内容只保留玩法名称和候选数字。</p>
           <div id="generated" class="sync-pill"><span></span>载入数据中</div>
         </div>
       </div>
@@ -71,6 +79,6 @@
     <footer><span>体彩号码实验室</span><span>理性购彩 · 未成年人不得购彩</span></footer>
   </main>
   <div id="toast" class="toast" role="status"></div>
-  <script src="./assets/js/app.js?v=20260715-5"></script>
+  <script src="./assets/js/app.js?v=20260717-1"></script>
 </body>
 </html>
