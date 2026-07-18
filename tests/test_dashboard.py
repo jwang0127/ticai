@@ -7,6 +7,7 @@ from zoneinfo import ZoneInfo
 
 from src.generate_dashboard import (
     digit_confidences,
+    generate_composite_recommendations,
     generate_digit_profile,
     generate_pl5_from_pl3,
     next_draw,
@@ -82,23 +83,33 @@ class DetailPageTests(unittest.TestCase):
                 for right in numbers[left_index + 1:]:
                     self.assertLessEqual(sum(a == b for a, b in zip(left, right)), 1)
 
-    def test_generated_zone_scores_share_one_global_scale(self):
+    def test_generated_composite_lists_replace_hot_cold_zones(self):
         root = Path(__file__).resolve().parents[1]
         games = json.loads(
             (root / "docs/assets/data/dashboard.json").read_text(encoding="utf-8")
         )["games"]
-        for key in ("pl3", "pl5", "fc3d"):
+        expected = {
+            "pl3": (8, {"global": 5, "cold": 2, "hot": 1}),
+            "pl5": (6, {"global": 4, "cold": 1, "hot": 1}),
+            "fc3d": (8, {"global": 5, "cold": 2, "hot": 1}),
+        }
+        for key, (count, source_counts) in expected.items():
             game = games[key]
-            main = game["top_candidates"]
-            hot = game["strategy_zones"]["hot"]["candidates"]
-            cold = game["strategy_zones"]["cold"]["candidates"]
-            self.assertGreater(
-                min(item["confidence"] for item in hot),
-                max(item["confidence"] for item in cold),
-            )
-            for candidates in (main, hot, cold):
-                scores = [item["confidence"] for item in candidates]
-                self.assertEqual(scores, sorted(scores, reverse=True))
+            candidates = game["top_candidates"]
+            self.assertEqual(len(candidates), count)
+            self.assertEqual(len({item["number"] for item in candidates}), count)
+            self.assertNotIn("strategy_zones", game)
+            self.assertEqual(Counter(item["source"] for item in candidates), source_counts)
+            scores = [item["confidence"] for item in candidates]
+            self.assertEqual(scores, sorted(scores, reverse=True))
+
+    def test_composite_generator_uses_requested_quotas(self):
+        pl3, _ = generate_composite_recommendations("pl3", self.rows, self.rows)
+        pl5, _ = generate_composite_recommendations("pl5", self.pl5_rows, self.rows)
+        fc3d, _ = generate_composite_recommendations("fc3d", self.fc3d_rows, self.rows)
+        self.assertEqual(Counter(item["source"] for item in pl3), {"global": 5, "cold": 2, "hot": 1})
+        self.assertEqual(Counter(item["source"] for item in pl5), {"global": 4, "cold": 1, "hot": 1})
+        self.assertEqual(Counter(item["source"] for item in fc3d), {"global": 5, "cold": 2, "hot": 1})
 
     def test_pl5_is_built_from_matching_pl3_prefixes(self):
         for profile in ("global", "hot", "cold"):
@@ -148,6 +159,10 @@ class DetailPageTests(unittest.TestCase):
         self.assertIn('$("#draw-board").innerHTML', homepage_script)
         self.assertIn('cache: "no-store"', homepage_script)
         self.assertIn("game.target_issue", homepage_script)
+        self.assertIn("const candidates = game.top_candidates || game.candidates;", homepage_script)
+        self.assertIn("candidates.length", homepage_script)
+        self.assertNotIn("strategyZonesHtml", detail_script)
+        self.assertIn("game.top_candidates.length", detail_script)
         for script in (homepage_script, detail_script):
             self.assertIn("下一期开奖时间", script)
             self.assertIn("game.next_draw_display", script)

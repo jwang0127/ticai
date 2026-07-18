@@ -104,7 +104,9 @@ h1 em { color: var(--blue); font-style: normal; }
 .candidate { display: grid; grid-template-columns: 27px minmax(0,1fr) auto; align-items: center; gap: 7px; padding: 14px 0; border-bottom: 1px solid var(--line); }
 .candidate:last-child { border: 0; }
 .rank { color: var(--muted); font: 500 11px/1 "DM Mono", monospace; }
+.candidate-main { display: grid; gap: 5px; min-width: 0; }
 .candidate-number { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 500 15px/1.3 "DM Mono", monospace; letter-spacing: .015em; }
+.candidate-label { color: var(--muted); font-size: 10px; }
 .score { color: var(--red); font: 500 11px/1 "DM Mono", monospace; white-space: nowrap; }
 .copy-one { grid-column: 2 / 4; justify-self: start; padding: 0; color: var(--muted); background: none; border: 0; cursor: pointer; font-size: 11px; transition: color .2s; }
 .copy-one:hover { color: var(--blue); }

@@ -106,7 +106,7 @@ async function load() {
     </tr>`).join("");
 
   $("#games").innerHTML = entries.map(([key, game], index) => {
-    const candidates = (game.top_candidates || game.candidates).slice(0, 5);
+    const candidates = game.top_candidates || game.candidates;
     const allText = candidates
       .map(item => `${game.name} ${formatCandidate(key, item)}`)
       .join("\n");
@@ -130,17 +130,20 @@ async function load() {
           ${candidates.map(item => `
             <div class="candidate">
               <span class="rank">0${item.rank}</span>
-              <span class="candidate-number">${escapeHtml(formatCandidate(key, item))}</span>
+              <span class="candidate-main">
+                <span class="candidate-number">${escapeHtml(formatCandidate(key, item))}</span>
+                <span class="candidate-label">${escapeHtml(item.mix_label || "综合推荐")}</span>
+              </span>
               <span class="score">${item.confidence}%</span>
             </div>`).join("")}
         </div>
-        <button class="copy-all" data-copy="${encodeURIComponent(allText)}">复制${escapeHtml(game.name)}全部5组</button>
+        <button class="copy-all" data-copy="${encodeURIComponent(allText)}">复制${escapeHtml(game.name)}全部${candidates.length}组</button>
       </article>`;
   }).join("");
 
   document.addEventListener("click", event => {
     const button = event.target.closest("[data-copy]");
-    if (button) copy(decodeURIComponent(button.dataset.copy), "全部5组");
+    if (button) copy(decodeURIComponent(button.dataset.copy), "综合推荐");
   });
 
   $("#disclaimer").textContent = payload.disclaimer;

@@ -230,6 +230,52 @@ def generate_pl5_from_pl3(
     return selected
 
 
+def generate_composite_recommendations(
+    game: str, rows: list[dict], pl3_rows: list[dict]
+) -> tuple[list[dict], list[float]]:
+    """Merge the main, cold-protection, and hot-observation pools into one list."""
+    digits = len(rows[0]["numbers"])
+    quotas = (
+        ("global", 4 if game == "pl5" else 5),
+        ("cold", 1 if game == "pl5" else 2),
+        ("hot", 1),
+    )
+    labels = {
+        "global": "综合主榜",
+        "cold": "冷门保护",
+        "hot": "热门观察",
+    }
+    selected: list[dict] = []
+    used: set[str] = set()
+    for profile, quota in quotas:
+        ranked = (
+            generate_pl5_from_pl3(pl3_rows, rows, profile, 5)
+            if game == "pl5"
+            else generate_digit_profile(rows, digits, profile, 5)
+        )
+        added = 0
+        for number, _, _ in ranked:
+            if number in used:
+                continue
+            selected.append({"number": number, "mix_label": labels[profile], "source": profile})
+            used.add(number)
+            added += 1
+            if added == quota:
+                break
+        if added != quota:
+            raise RuntimeError(f"{game} 无法生成足够的 {labels[profile]} 候选")
+
+    # Re-rank the merged list on one common score; source labels describe why a
+    # hedge entered the list, not a separate probability claim.
+    components = mixed_digit_components(rows, digits)
+    scored = [
+        (candidate, global_candidate_score([int(value) for value in candidate["number"]], components))
+        for candidate in selected
+    ]
+    scored.sort(key=lambda item: item[1], reverse=True)
+    return [candidate for candidate, _ in scored], [score for _, score in scored]
+
+
 def weighted_number_counts(rows: list[dict], start: int, end: int) -> Counter[int]:
     counts: Counter[int] = Counter()
     for index, row in enumerate(rows):
@@ -352,13 +398,13 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
     structure_note = "排列5先继承同一期排列3前三位候选，再独立计算00–99后两位；" if game == "pl5" else ""
     return {
         "sample": sample,
-        "summary": f"{structure_note}最近{sample}期按位置统计并采用18期指数衰减。主榜加入封顶遗漏补偿与候选分散约束；热门区、冷门区继续用于观察相对热度；各位置当前热门参考为{' · '.join(position_hot)}。",
+        "summary": f"{structure_note}最近{sample}期按位置统计并采用18期指数衰减。最终推荐已把综合主榜、冷门保护和热门观察合并为唯一清单，不再分区展示；各位置当前热门参考为{' · '.join(position_hot)}。",
         "signals": [
             {"label": "综合活跃数字", "value": " · ".join(hot)},
             {"label": "各位置最高权重", "value": " · ".join(position_hot)},
             {"label": "较长遗漏", "value": "、".join(omitted)},
         ],
-        "method": ["最近80个跨玩法样本滚动回测", "18期衰减与遗漏补偿封顶", "强化5组候选按位分散"],
+        "method": ["最近60期逐期滚动回测", "18期衰减与遗漏补偿封顶", "5至8注综合清单与候选分散"],
     }
 
 
@@ -420,7 +466,7 @@ def main() -> None:
     output = {
         "generated_at": now.isoformat(timespec="seconds"),
         "source_status": source_data.get("source_status", "unknown"),
-        "disclaimer": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。模型置信度仅表示本页 5 个候选之间的相对评分，不是真实中奖概率。",
+        "disclaimer": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。模型相对评分仅表示本页综合候选之间的排序，不是真实中奖概率。",
         "games": dict(previous_output.get("games", {})),
         "sources": source_data.get("sources", []),
     }
@@ -437,19 +483,10 @@ def main() -> None:
         draw_at = next_draw(max(now, latest_draw_at), cfg["draw_weekdays"], time(hour, minute))
         if game == "dlt":
             candidates, scores = generate_dlt(rows, target_issue)
-        elif game == "pl5":
-            ranked_pl5 = sorted(
-                generate_pl5_from_pl3(source_data["draws"]["pl3"], rows, "global", 5),
-                key=lambda item: item[1],
-                reverse=True,
-            )
-            candidates = []
-            for number, score, heat in ranked_pl5:
-                band = "热门支撑" if heat > 0.25 else "冷门保护" if heat < -0.25 else "冷热均衡"
-                candidates.append({"number": number, "mix_label": band})
-            scores = [score for _, score, _ in ranked_pl5]
         else:
-            candidates, scores = generate_digits(game, rows, cfg["digits"], target_issue)
+            candidates, scores = generate_composite_recommendations(
+                game, rows, source_data["draws"]["pl3"]
+            )
 
         # Main-list scores are relative to the backtested ranking model. Strategy
         # zones below keep their separate common hot/cold support scale.
@@ -471,48 +508,20 @@ def main() -> None:
             "next_draw_display": f"{draw_at:%Y年%m月%d日 %H:%M}（北京时间）",
             "schedule_note": "每周一、三、六开奖" if game == "dlt" else "每日开奖（休市日除外）",
             "candidates": enriched,
-            "top_candidates": enriched[:5],
+            "top_candidates": enriched,
             "review": build_review(game, rows),
             "analysis": build_analysis(game, rows),
             "model_review": model_reviews.get(game),
         }
         if game in ("pl3", "fc3d"):
             direct = []
-            for item in enriched[:5]:
+            for item in enriched:
                 direct.append({**item, "copy_text": f"{cfg['name']} 直选 {item['number']}"})
             output["games"][game]["play_types"] = {
                 "direct": {"name": "直选", "description": "数字与顺序均需一致", "candidates": direct},
                 "group3": {"name": "组选3", "description": "两位数字相同，顺序不限", "candidates": three_digit_group_candidates(cfg["name"], rows, "group3", target_issue, draw_at)},
                 "group6": {"name": "组选6", "description": "三位数字各不相同，顺序不限", "candidates": three_digit_group_candidates(cfg["name"], rows, "group6", target_issue, draw_at)},
             }
-        if game in ("pl3", "pl5", "fc3d"):
-            zones = {}
-            for profile, zone_name, description in (
-                ("hot", "热门专区", "保留近期位置频率支撑，但已限制极端追热"),
-                ("cold", "冷门专区", "选取相对低热度组合，遗漏补偿设有上限"),
-            ):
-                ranked_zone = (
-                    generate_pl5_from_pl3(source_data["draws"]["pl3"], rows, profile, 5)
-                    if game == "pl5"
-                    else generate_digit_profile(rows, cfg["digits"], profile, 5)
-                )
-                zone_confidences = digit_confidences(
-                    rows, cfg["digits"], [number for number, _, _ in ranked_zone]
-                )
-                zone_candidates = []
-                ranked_display = sorted(
-                    zip(ranked_zone, zone_confidences), key=lambda item: item[1], reverse=True
-                )
-                for rank, ((number, _, _), confidence) in enumerate(ranked_display, start=1):
-                    zone_candidates.append({
-                        "number": number,
-                        "rank": rank,
-                        "confidence": confidence,
-                        "mix_label": zone_name.replace("专区", ""),
-                        "copy_text": f"{cfg['name']} {zone_name} {number}",
-                    })
-                zones[profile] = {"name": zone_name, "description": description, "candidates": zone_candidates}
-            output["games"][game]["strategy_zones"] = zones
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
