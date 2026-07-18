@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-18T22:52:07+08:00",
-  "source_status": "official_api",
+  "generated_at": "2026-07-18T23:08:39+08:00",
+  "source_status": "cached_verified_data",
   "disclaimer": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。模型相对评分仅表示本页综合候选之间的排序，不是真实中奖概率。",
   "games": {
     "dlt": {
@@ -249,7 +249,7 @@
     },
     "pl3": {
       "name": "排列3",
-      "generated_at": "2026-07-18T22:52:07+08:00",
+      "generated_at": "2026-07-18T23:08:39+08:00",
       "latest_issue": "26189",
       "latest_draw_date": "2026-07-18",
       "latest_numbers": [
@@ -602,7 +602,7 @@
     },
     "pl5": {
       "name": "排列5",
-      "generated_at": "2026-07-18T22:52:07+08:00",
+      "generated_at": "2026-07-18T23:08:39+08:00",
       "latest_issue": "26189",
       "latest_draw_date": "2026-07-18",
       "latest_numbers": [
@@ -780,7 +780,7 @@
     },
     "fc3d": {
       "name": "福彩3D",
-      "generated_at": "2026-07-18T22:52:07+08:00",
+      "generated_at": "2026-07-18T23:08:39+08:00",
       "latest_issue": "2026189",
       "latest_draw_date": "2026-07-18",
       "latest_numbers": [
