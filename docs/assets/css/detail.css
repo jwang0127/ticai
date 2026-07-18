@@ -22,13 +22,16 @@ button, a { font: inherit; }
 .eyebrow, .section-label { color: var(--red); font: 500 11px/1.4 "DM Mono", monospace; letter-spacing: .13em; }
 h1 { margin: 13px 0 0; font-size: clamp(54px, 8vw, 96px); line-height: .95; letter-spacing: -.065em; }
 .hero-meta { color: var(--muted); line-height: 1.8; }
-.next { color: var(--blue); font-size: 19px; font-weight: 900; }
+.next-draw { display: grid; gap: 2px; margin: 8px 0; }
+.next-draw span { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+.next-draw time { color: var(--blue); font-size: 19px; font-weight: 900; }
 .latest { margin-top: 18px; font: 500 16px/1.5 "DM Mono", monospace; color: var(--ink); }
 .section { padding: 50px 0; border-top: 1px solid var(--line); }
 .section-head { display: flex; justify-content: space-between; gap: 30px; align-items: end; margin-bottom: 24px; }
 h2 { margin: 10px 0 0; font-size: clamp(32px, 5vw, 54px); letter-spacing: -.055em; }
 .section-note { max-width: 480px; color: var(--muted); font-size: 13px; line-height: 1.7; }
 .picks { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 12px; }
+body[data-game="dlt"] .picks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .pick { position: relative; padding: 24px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
 .pick-rank { color: var(--muted); font: 11px/1 "DM Mono", monospace; }
 .pick-number { margin: 40px 0 16px; font: 500 clamp(19px, 2.4vw, 29px)/1.2 "DM Mono", monospace; white-space: nowrap; }

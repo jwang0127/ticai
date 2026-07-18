@@ -55,9 +55,9 @@ class DetailPageTests(unittest.TestCase):
 
     def test_fc3d_official_history_and_groups(self):
         self.assertEqual(len(self.fc3d_rows), 100)
-        self.assertEqual(self.fc3d_rows[0]["issue"], "2026187")
+        self.assertEqual(self.fc3d_rows[0]["issue"], "2026189")
         draw_at = datetime(2026, 7, 15, 21, 15, tzinfo=TZ)
-        candidates = three_digit_group_candidates("福彩3D", self.fc3d_rows, "group3", "2026188", draw_at)
+        candidates = three_digit_group_candidates("福彩3D", self.fc3d_rows, "group3", "2026189", draw_at)
         self.assertEqual(len(candidates), 5)
         self.assertTrue(all("福彩3D 组选3" in item["copy_text"] for item in candidates))
 
@@ -74,10 +74,13 @@ class DetailPageTests(unittest.TestCase):
         cold_scores = digit_confidences(self.fc3d_rows, 3, [item[0] for item in cold])
         self.assertGreater(min(hot_scores), max(cold_scores))
 
-    def test_global_top_overlaps_hot_zone(self):
-        global_top = generate_digit_profile(self.fc3d_rows, 3, "global", 5)
-        hot = generate_digit_profile(self.fc3d_rows, 3, "hot", 5)
-        self.assertTrue({item[0] for item in global_top} & {item[0] for item in hot})
+    def test_global_top_is_positionally_diverse(self):
+        for rows in (self.rows, self.fc3d_rows):
+            numbers = [item[0] for item in generate_digit_profile(rows, 3, "global", 5)]
+            self.assertEqual(len(numbers), 5)
+            for left_index, left in enumerate(numbers):
+                for right in numbers[left_index + 1:]:
+                    self.assertLessEqual(sum(a == b for a, b in zip(left, right)), 1)
 
     def test_generated_zone_scores_share_one_global_scale(self):
         root = Path(__file__).resolve().parents[1]
@@ -89,7 +92,6 @@ class DetailPageTests(unittest.TestCase):
             main = game["top_candidates"]
             hot = game["strategy_zones"]["hot"]["candidates"]
             cold = game["strategy_zones"]["cold"]["candidates"]
-            self.assertTrue({item["number"] for item in main} & {item["number"] for item in hot})
             self.assertGreater(
                 min(item["confidence"] for item in hot),
                 max(item["confidence"] for item in cold),
@@ -132,6 +134,24 @@ class DetailPageTests(unittest.TestCase):
         for path, name in (("dlt", "超级大乐透"), ("pl3", "排列3"), ("pl5", "排列5"), ("fc3d", "福彩3D")):
             self.assertIn(f'href="./{path}/"', homepage)
             self.assertIn(name, homepage)
+
+    def test_next_draw_time_is_rendered_on_home_and_detail_pages(self):
+        root = Path(__file__).resolve().parents[1]
+        homepage = (root / "docs/index.html").read_text(encoding="utf-8")
+        homepage_script = (root / "docs/assets/js/app.js").read_text(encoding="utf-8")
+        detail_script = (root / "docs/assets/js/detail.js").read_text(encoding="utf-8")
+        self.assertIn('id="draw-board"', homepage)
+        self.assertIn('class="draw-board-table"', homepage)
+        for heading in ("玩法", "目标期号", "下一期开奖时间", "开奖安排"):
+            self.assertIn(heading, homepage)
+        self.assertIn("NEXT DRAW BOARD", homepage)
+        self.assertIn('$("#draw-board").innerHTML', homepage_script)
+        self.assertIn('cache: "no-store"', homepage_script)
+        self.assertIn("game.target_issue", homepage_script)
+        for script in (homepage_script, detail_script):
+            self.assertIn("下一期开奖时间", script)
+            self.assertIn("game.next_draw_display", script)
+            self.assertIn("game.next_draw_at", script)
 
 
 if __name__ == "__main__":

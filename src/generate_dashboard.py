@@ -18,6 +18,10 @@ DATA_PATH = ROOT / "data" / "processed" / "draws.json"
 OUTPUT_PATH = ROOT / "docs" / "assets" / "data" / "dashboard.json"
 REVIEWS_PATH = ROOT / "data" / "processed" / "model_reviews.json"
 TZ = ZoneInfo("Asia/Shanghai")
+RECENCY_DECAY = 18
+GLOBAL_OMISSION_WEIGHT = 0.06
+GLOBAL_UNIQUE_WEIGHT = 0.06
+GLOBAL_DIVERSITY_PENALTY = 1.2
 
 
 def next_draw(now: datetime, weekdays: list[int], draw_clock: time) -> datetime:
@@ -34,7 +38,7 @@ def weighted_counts(rows: list[dict], position: int) -> Counter[int]:
     for index, row in enumerate(rows):
         if position >= len(row["numbers"]):
             continue
-        counts[int(row["numbers"][position])] += math.exp(-index / 24)
+        counts[int(row["numbers"][position])] += math.exp(-index / RECENCY_DECAY)
     return counts
 
 
@@ -111,6 +115,17 @@ def digit_support_score(values: list[int], components: tuple) -> float:
     ) / len(values)
 
 
+def global_candidate_score(values: list[int], components: tuple) -> float:
+    """Score the main pool with backtested recency, omission, and shape terms."""
+    position_counts, totals, omissions, _, _ = components
+    score = sum(
+        math.log(score_digit(value, position_counts[pos], totals[pos]))
+        + GLOBAL_OMISSION_WEIGHT * min(omissions[pos][value], 8)
+        for pos, value in enumerate(values)
+    )
+    return score + GLOBAL_UNIQUE_WEIGHT * len(set(values)) / len(values)
+
+
 def digit_confidences(rows: list[dict], digits: int, numbers: list[str]) -> list[float]:
     """Map every displayed digit candidate onto the same global percentile scale."""
     components = mixed_digit_components(rows, digits)
@@ -126,14 +141,16 @@ def digit_confidences(rows: list[dict], digits: int, numbers: list[str]) -> list
     return result
 
 
-def diversified_rank(scored: list[tuple[str, float, float]], limit: int) -> list[tuple[str, float, float]]:
+def diversified_rank(
+    scored: list[tuple[str, float, float]], limit: int, diversity_penalty: float = 0.34
+) -> list[tuple[str, float, float]]:
     """Greedily avoid returning near-duplicates while preserving model rank."""
     remaining = sorted(scored, key=lambda item: item[1], reverse=True)
     selected: list[tuple[str, float, float]] = []
     while remaining and len(selected) < limit:
         best = max(
             remaining,
-            key=lambda item: item[1] - 0.34 * max(
+            key=lambda item: item[1] - diversity_penalty * max(
                 (sum(a == b for a, b in zip(item[0], chosen[0])) for chosen in selected),
                 default=0,
             ),
@@ -156,12 +173,16 @@ def generate_digit_profile(rows: list[dict], digits: int, profile: str, limit: i
             continue
         if profile == "balanced" and not (-0.25 <= heat <= 0.25):
             continue
-        # The global and hot lists rank on the exact same support score, so
-        # genuine top results naturally overlap the hot zone. Cold coverage is
-        # selected with the mixed score, but displayed on the same support scale.
-        profile_score = score if profile in ("cold", "balanced") else support
+        # The main pool uses a rolling-backtest score and stronger diversity;
+        # hot and cold remain descriptive strategy zones on the common scale.
+        profile_score = (
+            global_candidate_score([int(value) for value in text], components)
+            if profile == "global"
+            else score if profile in ("cold", "balanced") else support
+        )
         scored.append((text, profile_score, heat))
-    return diversified_rank(scored, limit)
+    diversity_penalty = GLOBAL_DIVERSITY_PENALTY if profile == "global" else 0.34
+    return diversified_rank(scored, limit, diversity_penalty)
 
 
 def generate_digits(game: str, rows: list[dict], digits: int, issue: str) -> tuple[list[dict], list[float]]:
@@ -331,13 +352,13 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
     structure_note = "排列5先继承同一期排列3前三位候选，再独立计算00–99后两位；" if game == "pl5" else ""
     return {
         "sample": sample,
-        "summary": f"{structure_note}最近{sample}期按位置统计并加入时间衰减。最高评分榜与热门区统一按全局位置频率支持度排序；冷门区仅作低热覆盖，并使用同一全局尺度显示较低支持分；各位置当前热门参考为{' · '.join(position_hot)}。",
+        "summary": f"{structure_note}最近{sample}期按位置统计并采用18期指数衰减。主榜加入封顶遗漏补偿与候选分散约束；热门区、冷门区继续用于观察相对热度；各位置当前热门参考为{' · '.join(position_hot)}。",
         "signals": [
             {"label": "综合活跃数字", "value": " · ".join(hot)},
             {"label": "各位置最高权重", "value": " · ".join(position_hot)},
             {"label": "较长遗漏", "value": "、".join(omitted)},
         ],
-        "method": ["全量号码池统一评分", "热门与主榜同尺度排序", "冷门遗漏补偿封顶且不抬高显示分"],
+        "method": ["最近80个跨玩法样本滚动回测", "18期衰减与遗漏补偿封顶", "强化5组候选按位分散"],
     }
 
 
@@ -430,9 +451,9 @@ def main() -> None:
         else:
             candidates, scores = generate_digits(game, rows, cfg["digits"], target_issue)
 
-        confidences = relative_confidences(scores) if game == "dlt" else digit_confidences(
-            rows, cfg["digits"], [candidate["number"] for candidate in candidates]
-        )
+        # Main-list scores are relative to the backtested ranking model. Strategy
+        # zones below keep their separate common hot/cold support scale.
+        confidences = relative_confidences(scores)
         enriched = []
         for rank, (candidate, confidence) in enumerate(zip(candidates, confidences), start=1):
             text_value = candidate_text(game, candidate)

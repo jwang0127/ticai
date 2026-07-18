@@ -101,7 +101,7 @@ async function load() {
     <nav class="topbar"><div class="game-nav"><a href="../">首页</a><a href="../dlt/">超级大乐透</a><a href="../pl3/">排列3</a><a href="../pl5/">排列5</a><a href="../fc3d/">福彩3D</a></div><span class="updated">UPDATED ${escapeHtml(generated)}</span></nav>
     <header class="hero">
       <div><p class="eyebrow">LOTTERY DETAIL / ${escapeHtml(gameKey.toUpperCase())}</p><h1>${escapeHtml(game.name)}</h1></div>
-      <div class="hero-meta"><div>第 ${escapeHtml(game.target_issue)} 期 · 展示5组候选</div><div class="next">${escapeHtml(game.next_draw_display)}</div><div>${escapeHtml(game.schedule_note)}</div><div class="latest">上期 ${escapeHtml(game.latest_issue)}｜${escapeHtml(latestText(game.latest_numbers))}</div></div>
+      <div class="hero-meta"><div>第 ${escapeHtml(game.target_issue)} 期 · 展示5组候选</div><div class="next-draw"><span>下一期开奖时间</span><time datetime="${escapeHtml(game.next_draw_at)}">${escapeHtml(game.next_draw_display)}</time></div><div>${escapeHtml(game.schedule_note)}</div><div class="latest">上期 ${escapeHtml(game.latest_issue)}｜${escapeHtml(latestText(game.latest_numbers))}</div></div>
     </header>
     <section class="section">
       <div class="section-head"><div><p class="section-label">TOP CANDIDATES</p><h2>最高评分结果</h2></div><p class="section-note">评分仅用于本页候选内部排序。三位数字玩法按直选、组选3、组选6分别计算。</p></div>

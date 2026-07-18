@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/app.css?v=20260717-1">
+  <link rel="stylesheet" href="./assets/css/app.css?v=20260718-1">
 </head>
 <body>
   <div class="ambient ambient-a"></div>
@@ -61,6 +61,30 @@
       </div>
     </section>
 
+    <section class="draw-board" aria-labelledby="draw-board-title">
+      <div class="draw-board-head">
+        <div>
+          <p class="section-label">NEXT DRAW BOARD</p>
+          <h2 id="draw-board-title">下一期开奖时间</h2>
+        </div>
+        <p class="draw-board-note">四个彩种的下期时间汇总，均为北京时间；遇休市或官方调整时，以官方公告为准。</p>
+      </div>
+      <div class="draw-board-table-wrap">
+        <table class="draw-board-table">
+          <thead>
+            <tr>
+              <th scope="col">玩法</th>
+              <th scope="col">目标期号</th>
+              <th scope="col">下一期开奖时间</th>
+              <th scope="col">开奖安排</th>
+            </tr>
+          </thead>
+          <tbody id="draw-board" aria-live="polite"></tbody>
+        </table>
+      </div>
+      <p class="draw-board-refresh">页面每次刷新都会跳过缓存，读取最新生成的开奖时间数据。</p>
+    </section>
+
     <section id="status" class="notice">正在读取最新数据……</section>
     <section id="games" class="games" aria-live="polite"></section>
 
@@ -79,6 +103,6 @@
     <footer><span>体彩号码实验室</span><span>理性购彩 · 未成年人不得购彩</span></footer>
   </main>
   <div id="toast" class="toast" role="status"></div>
-  <script src="./assets/js/app.js?v=20260717-1"></script>
+  <script src="./assets/js/app.js?v=20260718-1"></script>
 </body>
 </html>

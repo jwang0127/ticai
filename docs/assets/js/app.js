@@ -92,6 +92,19 @@ async function load() {
   const payload = await response.json();
   const entries = Object.entries(payload.games);
 
+  $("#draw-board").innerHTML = entries.map(([key, game], index) => `
+    <tr>
+      <td data-label="玩法">
+        <a class="draw-board-game" href="./${key}/">
+          <span class="draw-board-index">DRAW / 0${index + 1}</span>
+          <strong>${escapeHtml(game.name)}</strong>
+        </a>
+      </td>
+      <td data-label="目标期号"><span class="draw-board-issue">${escapeHtml(game.target_issue)}</span></td>
+      <td data-label="下一期开奖时间"><time datetime="${escapeHtml(game.next_draw_at)}">${escapeHtml(game.next_draw_display)}</time></td>
+      <td data-label="开奖安排"><span class="draw-board-schedule">${escapeHtml(game.schedule_note)}</span></td>
+    </tr>`).join("");
+
   $("#games").innerHTML = entries.map(([key, game], index) => {
     const candidates = (game.top_candidates || game.candidates).slice(0, 5);
     const allText = candidates
@@ -102,7 +115,10 @@ async function load() {
         <div class="game-head">
           <div class="game-index"><span>0${index + 1}</span><span>TARGET / ${escapeHtml(game.target_issue)}</span></div>
           <h2>${escapeHtml(game.name)}</h2>
-          <p class="draw-time">${escapeHtml(game.next_draw_display)}</p>
+          <div class="draw-time">
+            <span>下一期开奖时间</span>
+            <time datetime="${escapeHtml(game.next_draw_at)}">${escapeHtml(game.next_draw_display)}</time>
+          </div>
           <p class="schedule">${escapeHtml(game.schedule_note)}</p>
           <a class="detail-link" href="./${key}/">查看复盘与分析 <span>↗</span></a>
           <div class="latest">
