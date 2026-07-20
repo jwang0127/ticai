@@ -6,10 +6,14 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from src.generate_dashboard import (
+    DIGIT_MODELS,
+    build_analysis,
     digit_confidences,
     generate_composite_recommendations,
     generate_digit_profile,
     generate_pl5_from_pl3,
+    generate_qxc,
+    generate_ssq,
     next_draw,
     three_digit_group_candidates,
 )
@@ -39,6 +43,32 @@ class DetailPageTests(unittest.TestCase):
         cls.rows = draws["pl3"]
         cls.pl5_rows = draws["pl5"]
         cls.fc3d_rows = draws["fc3d"]
+        cls.qxc_rows = draws["qxc"]
+        cls.ssq_rows = draws["ssq"]
+
+    def test_each_game_family_has_its_own_model(self):
+        self.assertNotEqual(DIGIT_MODELS["pl35"], DIGIT_MODELS["fc3d"])
+        qxc, _ = generate_qxc(self.qxc_rows)
+        ssq, _ = generate_ssq(self.ssq_rows, "2026083")
+        self.assertEqual(len(qxc), 8)
+        self.assertTrue(all(len(item["number"]) == 7 for item in qxc))
+        self.assertEqual(len(ssq), 5)
+        for item in ssq:
+            self.assertEqual(len(item["red"]), 6)
+            self.assertEqual(item["red"], sorted(set(item["red"])))
+            self.assertEqual(len(item["blue"]), 1)
+
+    def test_position_analysis_is_explicit_for_direct_digit_games(self):
+        expected = {
+            "pl3": ["百位", "十位", "个位"],
+            "pl5": ["万位", "千位", "百位", "十位", "个位"],
+            "fc3d": ["百位", "十位", "个位"],
+        }
+        rows = {"pl3": self.rows, "pl5": self.pl5_rows, "fc3d": self.fc3d_rows}
+        for game, labels in expected.items():
+            analysis = build_analysis(game, rows[game])
+            self.assertEqual([item["position"] for item in analysis["position_analysis"]], labels)
+            self.assertTrue(all(len(item["hot_digits"]) == 3 for item in analysis["position_analysis"]))
 
     def test_group3_candidates_are_unique_and_valid(self):
         draw_at = datetime(2026, 7, 15, 21, 25, tzinfo=TZ)
@@ -56,7 +86,7 @@ class DetailPageTests(unittest.TestCase):
 
     def test_fc3d_official_history_and_groups(self):
         self.assertEqual(len(self.fc3d_rows), 100)
-        self.assertEqual(self.fc3d_rows[0]["issue"], "2026189")
+        self.assertEqual(self.fc3d_rows[0]["issue"], "2026190")
         draw_at = datetime(2026, 7, 15, 21, 15, tzinfo=TZ)
         candidates = three_digit_group_candidates("福彩3D", self.fc3d_rows, "group3", "2026189", draw_at)
         self.assertEqual(len(candidates), 5)
@@ -142,7 +172,7 @@ class DetailPageTests(unittest.TestCase):
     def test_homepage_has_all_game_navigation_buttons(self):
         root = Path(__file__).resolve().parents[1]
         homepage = (root / "docs/index.html").read_text(encoding="utf-8")
-        for path, name in (("dlt", "超级大乐透"), ("pl3", "排列3"), ("pl5", "排列5"), ("fc3d", "福彩3D")):
+        for path, name in (("dlt", "超级大乐透"), ("pl3", "排列3"), ("pl5", "排列5"), ("fc3d", "福彩3D"), ("qxc", "体彩7星彩"), ("ssq", "福彩双色球")):
             self.assertIn(f'href="./{path}/"', homepage)
             self.assertIn(name, homepage)
 

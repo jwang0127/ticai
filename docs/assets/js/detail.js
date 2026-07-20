@@ -8,12 +8,25 @@ function escapeHtml(value) {
 }
 
 function numberText(item) {
+  if (gameKey === "ssq") return `${item.red.map(n => String(n).padStart(2, "0")).join(" ")} + ${item.blue.map(n => String(n).padStart(2, "0")).join(" ")}`;
   if (gameKey !== "dlt") return item.number;
   return `${item.front.map(n => String(n).padStart(2, "0")).join(" ")} + ${item.back.map(n => String(n).padStart(2, "0")).join(" ")}`;
 }
 
 function latestText(numbers) {
-  return gameKey === "dlt" ? `${numbers.slice(0, 5).join(" ")} + ${numbers.slice(5).join(" ")}` : numbers.join("");
+  if (gameKey === "dlt") return `${numbers.slice(0, 5).join(" ")} + ${numbers.slice(5).join(" ")}`;
+  if (gameKey === "ssq") return `${numbers.slice(0, 6).join(" ")} + ${numbers.slice(6).join(" ")}`;
+  return numbers.join("");
+}
+
+function positionAnalysisHtml(analysis) {
+  if (!analysis.position_analysis) return "";
+  return `<div class="position-grid">${analysis.position_analysis.map(item => `
+    <article class="position-card">
+      <span>${escapeHtml(item.position)}</span>
+      <strong>${escapeHtml(item.hot_digits.join(" · "))}</strong>
+      <small>较长遗漏 ${item.omitted_digits.map(value => `${escapeHtml(value.digit)}（${value.miss}期）`).join("、")}</small>
+    </article>`).join("")}</div>`;
 }
 
 function picksHtml(candidates) {
@@ -85,7 +98,7 @@ async function load() {
   const generated = new Date(game.generated_at || payload.generated_at).toLocaleString("zh-CN", { hour12: false });
 
   $("#app").innerHTML = `<div class="shell">
-    <nav class="topbar"><div class="game-nav"><a href="../">首页</a><a href="../dlt/">超级大乐透</a><a href="../pl3/">排列3</a><a href="../pl5/">排列5</a><a href="../fc3d/">福彩3D</a></div><span class="updated">UPDATED ${escapeHtml(generated)}</span></nav>
+    <nav class="topbar"><div class="game-nav"><a href="../">首页</a><a href="../dlt/">超级大乐透</a><a href="../pl3/">排列3</a><a href="../pl5/">排列5</a><a href="../fc3d/">福彩3D</a><a href="../qxc/">体彩7星彩</a><a href="../ssq/">福彩双色球</a></div><span class="updated">UPDATED ${escapeHtml(generated)}</span></nav>
     <header class="hero">
       <div><p class="eyebrow">LOTTERY DETAIL / ${escapeHtml(gameKey.toUpperCase())}</p><h1>${escapeHtml(game.name)}</h1></div>
       <div class="hero-meta"><div>第 ${escapeHtml(game.target_issue)} 期 · 综合推荐 ${game.top_candidates.length} 注</div><div class="next-draw"><span>下一期开奖时间</span><time datetime="${escapeHtml(game.next_draw_at)}">${escapeHtml(game.next_draw_display)}</time></div><div>${escapeHtml(game.schedule_note)}</div><div class="latest">上期 ${escapeHtml(game.latest_issue)}｜${escapeHtml(latestText(game.latest_numbers))}</div></div>
@@ -100,9 +113,10 @@ async function load() {
     </section>
     ${modelReviewHtml(game.model_review)}
     <section class="section analysis-grid">
-      <div><p class="section-label">MODEL ANALYSIS / ${game.analysis.sample} DRAWS</p><h2>本期分析</h2><p class="analysis-summary">${escapeHtml(game.analysis.summary)}</p></div>
+      <div><p class="section-label">MODEL ANALYSIS / ${game.analysis.sample} DRAWS</p><h2>本期分析</h2><p class="model-name">${escapeHtml(game.analysis.model_name || "独立统计模型")}</p><p class="analysis-summary">${escapeHtml(game.analysis.summary)}</p></div>
       <div><div class="signals">${game.analysis.signals.map(item => `<div class="signal"><span>${escapeHtml(item.label)}</span><strong>${escapeHtml(item.value)}</strong></div>`).join("")}</div><div class="methods">${game.analysis.method.map(item => `<span>${escapeHtml(item)}</span>`).join("")}</div></div>
     </section>
+    ${positionAnalysisHtml(game.analysis)}
     <div class="disclaimer">${escapeHtml(payload.disclaimer)}</div>
   </div>`;
   document.addEventListener("click", event => {

@@ -32,6 +32,7 @@ h2 { margin: 10px 0 0; font-size: clamp(32px, 5vw, 54px); letter-spacing: -.055e
 .section-note { max-width: 480px; color: var(--muted); font-size: 13px; line-height: 1.7; }
 .picks { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 12px; }
 body[data-game="dlt"] .picks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+body[data-game="ssq"] .picks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .pick { position: relative; padding: 24px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
 .pick-rank { color: var(--muted); font: 11px/1 "DM Mono", monospace; }
 .pick-number { margin: 40px 0 16px; font: 500 clamp(19px, 2.4vw, 29px)/1.2 "DM Mono", monospace; white-space: nowrap; }
@@ -61,6 +62,11 @@ body[data-game="dlt"] .picks { grid-template-columns: repeat(2, minmax(0, 1fr));
 .zone-card .pick-number { margin: 22px 0 12px; }
 .analysis-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 50px; }
 .analysis-summary { font-size: 18px; line-height: 1.85; }
+.model-name { display: inline-block; margin: 18px 0 0; padding: 7px 10px; color: var(--blue); border: 1px solid rgba(34,91,214,.28); border-radius: 99px; font-size: 12px; font-weight: 800; }
+.position-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 10px; padding: 0 0 50px; }
+.position-card { padding: 18px; background: rgba(255,255,255,.55); border: 1px solid var(--line); border-radius: 13px; }
+.position-card span, .position-card small { display: block; color: var(--muted); font-size: 11px; }
+.position-card strong { display: block; margin: 13px 0; font: 500 23px/1 "DM Mono", monospace; }
 .signals { display: grid; gap: 10px; }
 .signal { display: grid; grid-template-columns: 130px 1fr; gap: 18px; padding: 15px 0; border-bottom: 1px solid var(--line); }
 .signal span { color: var(--muted); font-size: 12px; }

@@ -60,7 +60,7 @@ def tokens_from(row: dict[str, Any], game: str) -> list[str]:
     else:
         raise ValueError("未找到开奖号码字段")
 
-    if game == "dlt":
+    if game in ("dlt", "ssq"):
         return [part.zfill(2) for part in parts]
     if len(parts) == 1:
         return list(parts[0])
@@ -81,6 +81,14 @@ def validate(game: str, numbers: list[str], cfg: dict[str, Any]) -> None:
             raise ValueError(f"大乐透前区号码越界: {numbers}")
         if not all(cfg["back_range"][0] <= n <= cfg["back_range"][1] for n in back):
             raise ValueError(f"大乐透后区号码越界: {numbers}")
+    elif game == "ssq":
+        if len(values) != 7:
+            raise ValueError(f"双色球号码数量错误: {numbers}")
+        red, blue = values[:6], values[6:]
+        if red != sorted(red) or len(set(red)) != 6:
+            raise ValueError(f"双色球红球错误: {numbers}")
+        if not all(1 <= n <= 33 for n in red) or not all(1 <= n <= 16 for n in blue):
+            raise ValueError(f"双色球号码越界: {numbers}")
     elif len(values) != cfg["digits"] or not all(0 <= n <= 9 for n in values):
         raise ValueError(f"{cfg['name']}号码错误: {numbers}")
 
@@ -141,9 +149,11 @@ def fetch_game(game: str, cfg: dict[str, Any], api: str) -> list[dict[str, Any]]
     return sorted(result, key=lambda row: row["issue"], reverse=True)
 
 
-def fetch_fc3d(api: str, results_page: str) -> list[dict[str, Any]]:
+def fetch_welfare_game(game: str, cfg: dict[str, Any], api: str, default_results_page: str) -> list[dict[str, Any]]:
+    welfare_name = cfg.get("welfare_name", "3d")
+    results_page = cfg.get("results_page", default_results_page)
     request = Request(
-        f"{api}?{urlencode({'name': '3d', 'issueCount': '100'})}",
+        f"{api}?{urlencode({'name': welfare_name, 'issueCount': '100'})}",
         headers={
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/126 Safari/537.36",
             "Accept": "application/json, text/plain, */*",
@@ -157,28 +167,30 @@ def fetch_fc3d(api: str, results_page: str) -> list[dict[str, Any]]:
                 payload = json.loads(response.read().decode("utf-8"))
             rows = payload.get("result", [])
             if not rows:
-                raise ValueError("中国福彩网接口未返回3D开奖列表")
+                raise ValueError(f"中国福彩网接口未返回{cfg['name']}开奖列表")
             result = []
             for row in rows:
-                numbers = [value.strip() for value in str(row.get("red", "")).split(",") if value.strip()]
-                validate("fc3d", numbers, {"name": "福彩3D", "digits": 3})
+                red = [value.strip() for value in str(row.get("red", "")).split(",") if value.strip()]
+                blue = [value.strip() for value in str(row.get("blue", "")).split(",") if value.strip()]
+                numbers = red + blue if game == "ssq" else red
+                validate(game, numbers, cfg)
                 issue = str(row.get("code", ""))
                 draw_date = str(row.get("date", ""))[:10]
                 if not issue or not draw_date:
-                    raise ValueError("福彩3D开奖数据缺少期号或日期")
+                    raise ValueError(f"{cfg['name']}开奖数据缺少期号或日期")
                 result.append({"issue": issue, "draw_date": draw_date, "numbers": numbers})
             return sorted(result, key=lambda row: row["issue"], reverse=True)
         except (HTTPError, URLError, TimeoutError, ValueError, json.JSONDecodeError) as exc:
             error = exc
             time.sleep(2**attempt)
-    raise RuntimeError(f"中国福彩网接口请求失败: {error}")
+    raise RuntimeError(f"中国福彩网{cfg['name']}接口请求失败: {error}")
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="抓取体彩开奖历史")
     parser.add_argument(
         "--games",
-        default="dlt,pl3,pl5,fc3d",
+        default="dlt,pl3,pl5,fc3d,qxc,ssq",
         help="逗号分隔的玩法代码，例如 pl3,pl5",
     )
     return parser.parse_args()
@@ -202,7 +214,13 @@ def main() -> None:
         for game in selected:
             cfg = config["games"][game]
             if cfg.get("provider") == "cwl":
-                future = executor.submit(fetch_fc3d, config["welfare_api"], config["welfare_results_page"])
+                future = executor.submit(
+                    fetch_welfare_game,
+                    game,
+                    cfg,
+                    config["welfare_api"],
+                    config["welfare_results_page"],
+                )
             else:
                 future = executor.submit(fetch_game, game, cfg, config["official_api"])
             futures[future] = (game, cfg)
@@ -220,14 +238,13 @@ def main() -> None:
         raise SystemExit(f"没有可保留的数据: {', '.join(missing)}")
 
     sources = list(previous.get("sources", []))
-    if "fc3d" in selected and not any(source.get("url") == config["welfare_results_page"] for source in sources):
-        sources.append(
-            {
-                "name": "中国福利彩票3D开奖信息",
-                "url": config["welfare_results_page"],
-                "role": "福彩3D官方开奖来源",
-            }
-        )
+    for game in selected:
+        cfg = config["games"][game]
+        if cfg.get("provider") != "cwl":
+            continue
+        results_page = cfg.get("results_page", config["welfare_results_page"])
+        if not any(source.get("url") == results_page for source in sources):
+            sources.append({"name": f"中国福利彩票{cfg['name'].removeprefix('福彩')}开奖信息", "url": results_page, "role": f"{cfg['name']}官方开奖来源"})
     output = {
         **previous,
         "updated_at": datetime.now(TZ).isoformat(timespec="seconds"),

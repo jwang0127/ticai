@@ -43,12 +43,15 @@ function initRoller() {
 initRoller();
 
 function formatLatest(key, numbers) {
-  return key === "dlt"
-    ? `${numbers.slice(0, 5).join(" ")} + ${numbers.slice(5).join(" ")}`
-    : numbers.join("");
+  if (key === "dlt") return `${numbers.slice(0, 5).join(" ")} + ${numbers.slice(5).join(" ")}`;
+  if (key === "ssq") return `${numbers.slice(0, 6).join(" ")} + ${numbers.slice(6).join(" ")}`;
+  return numbers.join("");
 }
 
 function formatCandidate(key, item) {
+  if (key === "ssq") {
+    return `${item.red.map(n => String(n).padStart(2, "0")).join(" ")} + ${item.blue.map(n => String(n).padStart(2, "0")).join(" ")}`;
+  }
   if (key !== "dlt") return item.number;
   const front = item.front.map(n => String(n).padStart(2, "0")).join(" ");
   const back = item.back.map(n => String(n).padStart(2, "0")).join(" ");

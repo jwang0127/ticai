@@ -33,6 +33,24 @@
       "draw_time": "21:15",
       "draw_weekdays": [0, 1, 2, 3, 4, 5, 6],
       "digits": 3
+    },
+    "qxc": {
+      "name": "体彩7星彩",
+      "game_no": "04",
+      "draw_weekdays": [1, 4, 6],
+      "digits": 7
+    },
+    "ssq": {
+      "name": "福彩双色球",
+      "provider": "cwl",
+      "welfare_name": "ssq",
+      "results_page": "https://www.cwl.gov.cn/ygkj/wqkjgg/ssq/",
+      "draw_time": "21:15",
+      "draw_weekdays": [1, 3, 6],
+      "red_count": 6,
+      "blue_count": 1,
+      "red_range": [1, 33],
+      "blue_range": [1, 16]
     }
   }
 }

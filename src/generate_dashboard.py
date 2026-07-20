@@ -7,7 +7,7 @@ import json
 import math
 import random
 from collections import Counter
-from itertools import permutations
+from itertools import combinations, permutations
 from datetime import datetime, time, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -21,7 +21,23 @@ TZ = ZoneInfo("Asia/Shanghai")
 RECENCY_DECAY = 18
 GLOBAL_OMISSION_WEIGHT = 0.06
 GLOBAL_UNIQUE_WEIGHT = 0.06
-GLOBAL_DIVERSITY_PENALTY = 1.2
+# A 60-draw rolling comparison across PL3, PL5, and FC3D showed that 1.6
+# modestly improves per-position coverage without changing the core signals.
+GLOBAL_DIVERSITY_PENALTY = 1.6
+
+# 排列3/排列5共享位置模型；福彩3D使用独立参数。7星彩和双色球另有专用生成器。
+DIGIT_MODELS = {
+    "pl35": {"decay": 18, "frequency": 0.58, "omission": 0.075, "crowding": 0.22,
+             "sum": 0.012, "unique": 0.09, "global_omission": 0.06,
+             "global_unique": 0.06, "diversity": 1.6},
+    "fc3d": {"decay": 13, "frequency": 0.66, "omission": 0.045, "crowding": 0.30,
+             "sum": 0.008, "unique": 0.13, "global_omission": 0.035,
+             "global_unique": 0.10, "diversity": 1.85},
+}
+
+
+def digit_model(game: str) -> dict:
+    return DIGIT_MODELS["fc3d" if game == "fc3d" else "pl35"]
 
 
 def next_draw(now: datetime, weekdays: list[int], draw_clock: time) -> datetime:
@@ -33,12 +49,12 @@ def next_draw(now: datetime, weekdays: list[int], draw_clock: time) -> datetime:
     raise RuntimeError("无法计算下一期开奖时间")
 
 
-def weighted_counts(rows: list[dict], position: int) -> Counter[int]:
+def weighted_counts(rows: list[dict], position: int, decay: float = RECENCY_DECAY) -> Counter[int]:
     counts: Counter[int] = Counter()
     for index, row in enumerate(rows):
         if position >= len(row["numbers"]):
             continue
-        counts[int(row["numbers"][position])] += math.exp(-index / RECENCY_DECAY)
+        counts[int(row["numbers"][position])] += math.exp(-index / decay)
     return counts
 
 
@@ -72,9 +88,10 @@ def position_omissions(rows: list[dict], position: int) -> dict[int, int]:
     return result
 
 
-def mixed_digit_components(rows: list[dict], digits: int) -> tuple[list[Counter[int]], list[float], list[dict[int, int]], list[float], list[float]]:
+def mixed_digit_components(rows: list[dict], digits: int, model: dict | None = None) -> tuple[list[Counter[int]], list[float], list[dict[int, int]], list[float], list[float]]:
     """Build hot/cold signals without treating either as predictive certainty."""
-    position_counts = [weighted_counts(rows, position) for position in range(digits)]
+    model = model or DIGIT_MODELS["pl35"]
+    position_counts = [weighted_counts(rows, position, model["decay"]) for position in range(digits)]
     totals = [sum(counter.values()) for counter in position_counts]
     omissions = [position_omissions(rows, position) for position in range(digits)]
     means: list[float] = []
@@ -88,7 +105,8 @@ def mixed_digit_components(rows: list[dict], digits: int) -> tuple[list[Counter[
     return position_counts, totals, omissions, means, scales
 
 
-def mixed_number_score(values: list[int], components: tuple) -> tuple[float, float]:
+def mixed_number_score(values: list[int], components: tuple, model: dict | None = None) -> tuple[float, float]:
+    model = model or DIGIT_MODELS["pl35"]
     position_counts, totals, omissions, means, scales = components
     score = 0.0
     heat_values = []
@@ -98,11 +116,11 @@ def mixed_number_score(values: list[int], components: tuple) -> tuple[float, flo
         heat_values.append(heat_z)
         # Keep a majority hot-frequency signal, cap omission compensation, and
         # only punish the most crowded tail. This is a mixed model, not all-cold.
-        score += 0.58 * math.log(probability)
-        score += 0.075 * min(omissions[pos][value], 8)
-        score -= 0.22 * max(0.0, heat_z - 0.85) ** 2
+        score += model["frequency"] * math.log(probability)
+        score += model["omission"] * min(omissions[pos][value], 8)
+        score -= model["crowding"] * max(0.0, heat_z - 0.85) ** 2
     unique_ratio = len(set(values)) / len(values)
-    score += 0.09 * unique_ratio - 0.012 * abs(sum(values) - 4.5 * len(values))
+    score += model["unique"] * unique_ratio - model["sum"] * abs(sum(values) - 4.5 * len(values))
     return score, sum(heat_values) / len(heat_values)
 
 
@@ -115,18 +133,19 @@ def digit_support_score(values: list[int], components: tuple) -> float:
     ) / len(values)
 
 
-def global_candidate_score(values: list[int], components: tuple) -> float:
+def global_candidate_score(values: list[int], components: tuple, model: dict | None = None) -> float:
     """Score the main pool with backtested recency, omission, and shape terms."""
+    model = model or DIGIT_MODELS["pl35"]
     position_counts, totals, omissions, _, _ = components
     score = sum(
         math.log(score_digit(value, position_counts[pos], totals[pos]))
-        + GLOBAL_OMISSION_WEIGHT * min(omissions[pos][value], 8)
+        + model["global_omission"] * min(omissions[pos][value], 8)
         for pos, value in enumerate(values)
     )
-    return score + GLOBAL_UNIQUE_WEIGHT * len(set(values)) / len(values)
+    return score + model["global_unique"] * len(set(values)) / len(values)
 
 
-def digit_confidences(rows: list[dict], digits: int, numbers: list[str]) -> list[float]:
+def digit_confidences(rows: list[dict], digits: int, numbers: list[str], game: str = "pl3") -> list[float]:
     """Map every displayed digit candidate onto the same global percentile scale."""
     components = mixed_digit_components(rows, digits)
     population = sorted(
@@ -160,12 +179,15 @@ def diversified_rank(
     return sorted(selected, key=lambda item: item[1], reverse=True)
 
 
-def generate_digit_profile(rows: list[dict], digits: int, profile: str, limit: int = 5) -> list[tuple[str, float, float]]:
-    components = mixed_digit_components(rows, digits)
+def generate_digit_profile(
+    rows: list[dict], digits: int, profile: str, limit: int = 5, game: str = "pl3"
+) -> list[tuple[str, float, float]]:
+    model = digit_model(game)
+    components = mixed_digit_components(rows, digits, model)
     scored = []
     for number in range(10 ** digits):
         text = f"{number:0{digits}d}"
-        score, heat = mixed_number_score([int(value) for value in text], components)
+        score, heat = mixed_number_score([int(value) for value in text], components, model)
         support = digit_support_score([int(value) for value in text], components)
         if profile == "hot" and heat <= 0.25:
             continue
@@ -176,18 +198,18 @@ def generate_digit_profile(rows: list[dict], digits: int, profile: str, limit: i
         # The main pool uses a rolling-backtest score and stronger diversity;
         # hot and cold remain descriptive strategy zones on the common scale.
         profile_score = (
-            global_candidate_score([int(value) for value in text], components)
+            global_candidate_score([int(value) for value in text], components, model)
             if profile == "global"
             else score if profile in ("cold", "balanced") else support
         )
         scored.append((text, profile_score, heat))
-    diversity_penalty = GLOBAL_DIVERSITY_PENALTY if profile == "global" else 0.34
+    diversity_penalty = model["diversity"] if profile == "global" else 0.34
     return diversified_rank(scored, limit, diversity_penalty)
 
 
 def generate_digits(game: str, rows: list[dict], digits: int, issue: str) -> tuple[list[dict], list[float]]:
     del game, issue  # deterministic from the verified history snapshot
-    ranked = generate_digit_profile(rows, digits, "global", 5)
+    ranked = generate_digit_profile(rows, digits, "global", 5, game)
     candidates = []
     for number, _, heat in ranked:
         band = "热门支撑" if heat > 0.25 else "冷门保护" if heat < -0.25 else "冷热均衡"
@@ -251,7 +273,7 @@ def generate_composite_recommendations(
         ranked = (
             generate_pl5_from_pl3(pl3_rows, rows, profile, 5)
             if game == "pl5"
-            else generate_digit_profile(rows, digits, profile, 5)
+            else generate_digit_profile(rows, digits, profile, 5, game)
         )
         added = 0
         for number, _, _ in ranked:
@@ -267,9 +289,9 @@ def generate_composite_recommendations(
 
     # Re-rank the merged list on one common score; source labels describe why a
     # hedge entered the list, not a separate probability claim.
-    components = mixed_digit_components(rows, digits)
+    components = mixed_digit_components(rows, digits, digit_model(game))
     scored = [
-        (candidate, global_candidate_score([int(value) for value in candidate["number"]], components))
+        (candidate, global_candidate_score([int(value) for value in candidate["number"]], components, digit_model(game)))
         for candidate in selected
     ]
     scored.sort(key=lambda item: item[1], reverse=True)
@@ -306,11 +328,78 @@ def generate_dlt(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
     return candidates, [score for _, score in ranked]
 
 
+def generate_qxc(rows: list[dict]) -> tuple[list[dict], list[float]]:
+    """7星彩专用七位置束搜索，避免套用三位数枚举模型。"""
+    decay = 27
+    counters = [weighted_counts(rows, pos, decay) for pos in range(7)]
+    totals = [sum(counter.values()) for counter in counters]
+    omissions = [position_omissions(rows, pos) for pos in range(7)]
+    beam: list[tuple[str, float]] = [("", 0.0)]
+    for pos in range(7):
+        expanded = []
+        for prefix, prefix_score in beam:
+            for digit in range(10):
+                probability = score_digit(digit, counters[pos], totals[pos])
+                score = prefix_score + 0.78 * math.log(probability)
+                score += 0.032 * min(omissions[pos][digit], 10)
+                if prefix and int(prefix[-1]) == digit:
+                    score -= 0.08
+                expanded.append((prefix + str(digit), score))
+        beam = sorted(expanded, key=lambda item: item[1], reverse=True)[:350]
+    scored = [(number, score - 0.006 * abs(sum(map(int, number)) - 31.5), 0.0) for number, score in beam]
+    ranked = diversified_rank(scored, 8, 1.15)
+    candidates = [
+        {"number": number, "mix_label": "七位独立位置模型", "source": "qxc_position"}
+        for number, _, _ in ranked
+    ]
+    return candidates, [score for _, score, _ in ranked]
+
+
+def weighted_pair_counts(rows: list[dict], end: int, decay: float) -> Counter[tuple[int, int]]:
+    counts: Counter[tuple[int, int]] = Counter()
+    for index, row in enumerate(rows):
+        weight = math.exp(-index / decay)
+        values = sorted(int(value) for value in row["numbers"][:end])
+        for pair in combinations(values, 2):
+            counts[pair] += weight
+    return counts
+
+
+def generate_ssq(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]:
+    """双色球专用红蓝分区模型，加入红球共现与三区覆盖。"""
+    rng = stable_rng("ssq", issue)
+    red_counts = weighted_number_counts(rows, 0, 6)
+    blue_counts = weighted_number_counts(rows, 6, 7)
+    pair_counts = weighted_pair_counts(rows, 6, 30)
+    red_total, blue_total = sum(red_counts.values()), sum(blue_counts.values())
+    pool: dict[tuple[tuple[int, ...], int], float] = {}
+    for _ in range(16000):
+        red = sorted(rng.sample(range(1, 34), 6))
+        blue = rng.randint(1, 16)
+        score = sum(math.log((red_counts[n] + 0.72) / (red_total + 23.76)) for n in red)
+        score += 0.055 * sum(pair_counts[pair] for pair in combinations(red, 2))
+        score += math.log((blue_counts[blue] + 0.70) / (blue_total + 11.2))
+        zone_counts = [sum(1 for n in red if low <= n <= high) for low, high in ((1, 11), (12, 22), (23, 33))]
+        score += 0.10 if all(zone_counts) else -0.30
+        score -= 0.0025 * abs(sum(red) - 102)
+        pool[(tuple(red), blue)] = score
+    ranked = sorted(pool.items(), key=lambda item: item[1], reverse=True)[:5]
+    candidates = [
+        {"red": list(key[0]), "blue": [key[1]], "mix_label": "红蓝分区共现模型", "source": "ssq_zone"}
+        for key, _ in ranked
+    ]
+    return candidates, [score for _, score in ranked]
+
+
 def candidate_text(game: str, candidate: dict) -> str:
     if game == "dlt":
         front = " ".join(f"{value:02d}" for value in candidate["front"])
         back = " ".join(f"{value:02d}" for value in candidate["back"])
         return f"{front} + {back}"
+    if game == "ssq":
+        red = " ".join(f"{value:02d}" for value in candidate["red"])
+        blue = " ".join(f"{value:02d}" for value in candidate["blue"])
+        return f"{red} + {blue}"
     return candidate["number"]
 
 
@@ -324,21 +413,25 @@ def digit_shape(values: list[int]) -> str:
 def build_review(game: str, rows: list[dict]) -> dict:
     latest = [int(value) for value in rows[0]["numbers"]]
     previous = [int(value) for value in rows[1]["numbers"]]
-    if game == "dlt":
+    if game in ("dlt", "ssq"):
         front, back = latest[:5], latest[5:]
+        if game == "ssq":
+            front, back = latest[:6], latest[6:]
         previous_front = set(previous[:5])
+        if game == "ssq":
+            previous_front = set(previous[:6])
         return {
             "title": f"第{rows[0]['issue']}期结构复盘",
             "summary": (
-                f"前区和值{sum(front)}、跨度{max(front) - min(front)}，"
+                f"{'红球' if game == 'ssq' else '前区'}和值{sum(front)}、跨度{max(front) - min(front)}，"
                 f"奇偶比{sum(n % 2 for n in front)}:{sum(n % 2 == 0 for n in front)}；"
-                f"后区和值{sum(back)}。与前一期前区重号{len(set(front) & previous_front)}个。"
+                f"{'蓝球' if game == 'ssq' else '后区'}号码{'、'.join(map(str, back))}。与前一期{'红球' if game == 'ssq' else '前区'}重号{len(set(front) & previous_front)}个。"
             ),
             "metrics": [
-                {"label": "前区和值", "value": str(sum(front))},
-                {"label": "前区跨度", "value": str(max(front) - min(front))},
-                {"label": "前区奇偶", "value": f"{sum(n % 2 for n in front)}:{sum(n % 2 == 0 for n in front)}"},
-                {"label": "后区和值", "value": str(sum(back))},
+                {"label": "红球和值" if game == "ssq" else "前区和值", "value": str(sum(front))},
+                {"label": "红球跨度" if game == "ssq" else "前区跨度", "value": str(max(front) - min(front))},
+                {"label": "红球奇偶" if game == "ssq" else "前区奇偶", "value": f"{sum(n % 2 for n in front)}:{sum(n % 2 == 0 for n in front)}"},
+                {"label": "蓝球" if game == "ssq" else "后区和值", "value": "、".join(map(str, back)) if game == "ssq" else str(sum(back))},
             ],
         }
     return {
@@ -388,30 +481,63 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
             "method": ["最近100期指数衰减频率", "前区与后区独立建模", "和值、奇偶与跨度温和约束"],
         }
 
+    if game == "ssq":
+        red = weighted_number_counts(rows[:sample], 0, 6)
+        blue = weighted_number_counts(rows[:sample], 6, 7)
+        hot_red = [f"{n:02d}" for n, _ in red.most_common(6)]
+        hot_blue = [f"{n:02d}" for n, _ in blue.most_common(3)]
+        return {
+            "sample": sample,
+            "model_name": "双色球红蓝分区共现模型",
+            "summary": f"最近{sample}期将6个红球、1个蓝球完全分开建模；红球同时计算号码频率、两两共现和三区覆盖，蓝球只使用自己的1–16历史序列。",
+            "signals": [
+                {"label": "红球相对活跃", "value": " · ".join(hot_red)},
+                {"label": "蓝球相对活跃", "value": " · ".join(hot_blue)},
+                {"label": "红球结构", "value": "1–11 / 12–22 / 23–33三区覆盖"},
+            ],
+            "method": ["红球与蓝球独立", "红球两两共现", "三区覆盖与和值温和约束"],
+        }
+
     all_counts = Counter(int(value) for row in rows[:sample] for value in row["numbers"])
     hot = [str(n) for n, _ in all_counts.most_common(5)]
     omitted = [f"{n}（{miss}期）" for n, miss in omission(rows[:sample], 0, len(rows[0]["numbers"]), range(10))[:3]]
     position_hot = []
+    position_analysis = []
+    labels = {3: ["百位", "十位", "个位"], 5: ["万位", "千位", "百位", "十位", "个位"], 7: ["第一位", "第二位", "第三位", "第四位", "第五位", "第六位", "第七位"]}[len(rows[0]["numbers"])]
+    model = digit_model(game) if game in ("pl3", "pl5", "fc3d") else {"decay": 27}
     for pos in range(len(rows[0]["numbers"])):
-        counter = weighted_counts(rows[:sample], pos)
-        position_hot.append(str(counter.most_common(1)[0][0]))
+        counter = weighted_counts(rows[:sample], pos, model["decay"])
+        ranked = [str(value) for value, _ in counter.most_common(3)]
+        missed = position_omissions(rows[:sample], pos)
+        longest = sorted(missed.items(), key=lambda item: item[1], reverse=True)[:2]
+        position_hot.append(ranked[0])
+        position_analysis.append({
+            "position": labels[pos],
+            "hot_digits": ranked,
+            "omitted_digits": [{"digit": str(value), "miss": miss} for value, miss in longest],
+        })
     structure_note = "排列5先继承同一期排列3前三位候选，再独立计算00–99后两位；" if game == "pl5" else ""
+    model_name = {"pl3": "排列3/排列5共享位置模型", "pl5": "排列3/排列5共享位置模型", "fc3d": "福彩3D独立位置模型", "qxc": "7星彩七位置束搜索模型"}[game]
     return {
         "sample": sample,
-        "summary": f"{structure_note}最近{sample}期按位置统计并采用18期指数衰减。最终推荐已把综合主榜、冷门保护和热门观察合并为唯一清单，不再分区展示；各位置当前热门参考为{' · '.join(position_hot)}。",
+        "model_name": model_name,
+        "summary": f"{structure_note}最近{sample}期按每一个位置分别统计，绝不把号码只当作无序集合。各位置当前热门参考为{' · '.join(position_hot)}。",
         "signals": [
             {"label": "综合活跃数字", "value": " · ".join(hot)},
             {"label": "各位置最高权重", "value": " · ".join(position_hot)},
             {"label": "较长遗漏", "value": "、".join(omitted)},
         ],
-        "method": ["最近60期逐期滚动回测", "18期衰减与遗漏补偿封顶", "5至8注综合清单与候选分散"],
+        "position_analysis": position_analysis,
+        "method": (["七位独立频率与遗漏", "逐位束搜索", "相邻重号与和值温和约束"] if game == "qxc" else ["逐位置频率与遗漏", f"{model['decay']}期衰减参数", "5至8注综合清单与候选分散"]),
     }
 
 
 def three_digit_group_candidates(
     game_name: str, rows: list[dict], group_type: str, target_issue: str, draw_at: datetime
 ) -> list[dict]:
-    components = mixed_digit_components(rows, 3)
+    game = "fc3d" if "福彩" in game_name else "pl3"
+    model = digit_model(game)
+    components = mixed_digit_components(rows, 3, model)
     scored: dict[str, float] = {}
     for number in range(1000):
         digits = [int(value) for value in f"{number:03d}"]
@@ -423,7 +549,7 @@ def three_digit_group_candidates(
         unique_orders = set(permutations(digits))
         likelihood = 0.0
         for order in unique_orders:
-            order_score, _ = mixed_number_score(list(order), components)
+            order_score, _ = mixed_number_score(list(order), components, model)
             likelihood += math.exp(order_score)
         canonical = "".join(map(str, sorted(digits)))
         scored[canonical] = max(scored.get(canonical, 0.0), likelihood)
@@ -443,7 +569,7 @@ def three_digit_group_candidates(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="生成体彩数据看板")
-    parser.add_argument("--games", default="dlt,pl3,pl5,fc3d", help="只刷新指定玩法，逗号分隔")
+    parser.add_argument("--games", default="dlt,pl3,pl5,fc3d,qxc,ssq", help="只刷新指定玩法，逗号分隔")
     return parser.parse_args()
 
 
@@ -483,6 +609,10 @@ def main() -> None:
         draw_at = next_draw(max(now, latest_draw_at), cfg["draw_weekdays"], time(hour, minute))
         if game == "dlt":
             candidates, scores = generate_dlt(rows, target_issue)
+        elif game == "qxc":
+            candidates, scores = generate_qxc(rows)
+        elif game == "ssq":
+            candidates, scores = generate_ssq(rows, target_issue)
         else:
             candidates, scores = generate_composite_recommendations(
                 game, rows, source_data["draws"]["pl3"]
@@ -506,7 +636,11 @@ def main() -> None:
             "target_issue": target_issue,
             "next_draw_at": draw_at.isoformat(timespec="minutes"),
             "next_draw_display": f"{draw_at:%Y年%m月%d日 %H:%M}（北京时间）",
-            "schedule_note": "每周一、三、六开奖" if game == "dlt" else "每日开奖（休市日除外）",
+            "schedule_note": {
+                "dlt": "每周一、三、六开奖",
+                "qxc": "每周二、五、日开奖",
+                "ssq": "每周二、四、日开奖",
+            }.get(game, "每日开奖（休市日除外）"),
             "candidates": enriched,
             "top_candidates": enriched,
             "review": build_review(game, rows),
