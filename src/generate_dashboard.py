@@ -7,7 +7,7 @@ import json
 import math
 import random
 from collections import Counter
-from itertools import combinations, permutations
+from itertools import combinations
 from datetime import datetime, time, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -298,10 +298,10 @@ def generate_composite_recommendations(
     return [candidate for candidate, _ in scored], [score for _, score in scored]
 
 
-def weighted_number_counts(rows: list[dict], start: int, end: int) -> Counter[int]:
+def weighted_number_counts(rows: list[dict], start: int, end: int, decay: float = 24) -> Counter[int]:
     counts: Counter[int] = Counter()
     for index, row in enumerate(rows):
-        weight = math.exp(-index / 24)
+        weight = math.exp(-index / decay)
         for value in row["numbers"][start:end]:
             counts[int(value)] += weight
     return counts
@@ -391,6 +391,55 @@ def generate_ssq(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
     return candidates, [score for _, score in ranked]
 
 
+def generate_kl8(rows: list[dict]) -> tuple[list[dict], list[float]]:
+    """快乐8“选五”专用模型：单号强度、遗漏、共现和四区覆盖。"""
+    counts = weighted_number_counts(rows, 0, 20, 25)
+    total = sum(counts.values())
+    pair_counts = weighted_pair_counts(rows, 20, 32)
+    missed = {number: len(rows) for number in range(1, 81)}
+    for number in range(1, 81):
+        for index, row in enumerate(rows):
+            if number in [int(value) for value in row["numbers"]]:
+                missed[number] = index
+                break
+
+    individual = {
+        number: math.log((counts[number] + 0.75) / (total + 60))
+        + 0.024 * min(missed[number], 12)
+        for number in range(1, 81)
+    }
+    # 先保留单号支持度最高的28个号码，再完整枚举其中的五数组合。
+    pool = sorted(individual, key=individual.get, reverse=True)[:28]
+    scored: list[tuple[tuple[int, ...], float]] = []
+    for values in combinations(pool, 5):
+        ordered = tuple(sorted(values))
+        zones = {min((number - 1) // 20, 3) for number in ordered}
+        odd_count = sum(number % 2 for number in ordered)
+        score = sum(individual[number] for number in ordered)
+        score += 0.020 * sum(pair_counts[pair] for pair in combinations(ordered, 2))
+        score += 0.16 if len(zones) >= 3 else -0.20
+        score += 0.08 if odd_count in (2, 3) else -0.08
+        score -= 0.0018 * abs(sum(ordered) - 202.5)
+        scored.append((ordered, score))
+
+    remaining = sorted(scored, key=lambda item: item[1], reverse=True)[:2500]
+    selected: list[tuple[tuple[int, ...], float]] = []
+    while remaining and len(selected) < 5:
+        best = max(
+            remaining,
+            key=lambda item: item[1]
+            - 0.52 * max((len(set(item[0]) & set(chosen[0])) for chosen in selected), default=0),
+        )
+        selected.append(best)
+        remaining.remove(best)
+    selected.sort(key=lambda item: item[1], reverse=True)
+    candidates = [
+        {"numbers": list(values), "mix_label": "选五独立模型", "source": "kl8_pick5"}
+        for values, _ in selected
+    ]
+    return candidates, [score for _, score in selected]
+
+
 def candidate_text(game: str, candidate: dict) -> str:
     if game == "dlt":
         front = " ".join(f"{value:02d}" for value in candidate["front"])
@@ -400,19 +449,34 @@ def candidate_text(game: str, candidate: dict) -> str:
         red = " ".join(f"{value:02d}" for value in candidate["red"])
         blue = " ".join(f"{value:02d}" for value in candidate["blue"])
         return f"{red} + {blue}"
+    if game == "kl8":
+        return " ".join(f"{value:02d}" for value in candidate["numbers"])
     return candidate["number"]
 
 
 def digit_shape(values: list[int]) -> str:
     unique = len(set(values))
     if len(values) == 3:
-        return {1: "豹子", 2: "组选3", 3: "组选6"}[unique]
+        return {1: "三位相同", 2: "两位相同", 3: "三位不同"}[unique]
     return f"{unique}个不同数字"
 
 
 def build_review(game: str, rows: list[dict]) -> dict:
     latest = [int(value) for value in rows[0]["numbers"]]
     previous = [int(value) for value in rows[1]["numbers"]]
+    if game == "kl8":
+        zones = [sum(1 for n in latest if low <= n <= high) for low, high in ((1, 20), (21, 40), (41, 60), (61, 80))]
+        overlap = len(set(latest) & set(previous))
+        return {
+            "title": f"第{rows[0]['issue']}期结构复盘",
+            "summary": f"本期开出20个号码，四区比为{' : '.join(map(str, zones))}，奇偶比{sum(n % 2 for n in latest)}:{sum(n % 2 == 0 for n in latest)}，与前一期重号{overlap}个。",
+            "metrics": [
+                {"label": "号码和值", "value": str(sum(latest))},
+                {"label": "四区比", "value": " : ".join(map(str, zones))},
+                {"label": "奇偶比", "value": f"{sum(n % 2 for n in latest)}:{sum(n % 2 == 0 for n in latest)}"},
+                {"label": "与前期重号", "value": str(overlap)},
+            ],
+        }
     if game in ("dlt", "ssq"):
         front, back = latest[:5], latest[5:]
         if game == "ssq":
@@ -498,6 +562,22 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
             "method": ["红球与蓝球独立", "红球两两共现", "三区覆盖与和值温和约束"],
         }
 
+    if game == "kl8":
+        counts = weighted_number_counts(rows[:sample], 0, 20, 25)
+        hot = [f"{number:02d}" for number, _ in counts.most_common(10)]
+        omitted = [f"{number:02d}（{miss}期）" for number, miss in omission(rows[:sample], 0, 20, range(1, 81))[:6]]
+        return {
+            "sample": sample,
+            "model_name": "快乐8选五独立模型",
+            "summary": f"最近{sample}期以1–80单号衰减频率、遗漏封顶和两两共现为主，并约束每组5个号码覆盖至少三个区间。五组之间主动降低重合，扩大号码覆盖。",
+            "signals": [
+                {"label": "相对活跃号码", "value": " · ".join(hot)},
+                {"label": "较长遗漏", "value": "、".join(omitted)},
+                {"label": "组合目标", "value": "选五 · 每组5个号码 · 共5组"},
+            ],
+            "method": ["25期单号衰减", "32期号码共现", "四区与奇偶温和约束", "五组候选分散"],
+        }
+
     all_counts = Counter(int(value) for row in rows[:sample] for value in row["numbers"])
     hot = [str(n) for n, _ in all_counts.most_common(5)]
     omitted = [f"{n}（{miss}期）" for n, miss in omission(rows[:sample], 0, len(rows[0]["numbers"]), range(10))[:3]]
@@ -532,44 +612,9 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
     }
 
 
-def three_digit_group_candidates(
-    game_name: str, rows: list[dict], group_type: str, target_issue: str, draw_at: datetime
-) -> list[dict]:
-    game = "fc3d" if "福彩" in game_name else "pl3"
-    model = digit_model(game)
-    components = mixed_digit_components(rows, 3, model)
-    scored: dict[str, float] = {}
-    for number in range(1000):
-        digits = [int(value) for value in f"{number:03d}"]
-        counts = sorted(Counter(digits).values())
-        if group_type == "group3" and counts != [1, 2]:
-            continue
-        if group_type == "group6" and counts != [1, 1, 1]:
-            continue
-        unique_orders = set(permutations(digits))
-        likelihood = 0.0
-        for order in unique_orders:
-            order_score, _ = mixed_number_score(list(order), components, model)
-            likelihood += math.exp(order_score)
-        canonical = "".join(map(str, sorted(digits)))
-        scored[canonical] = max(scored.get(canonical, 0.0), likelihood)
-    ranked = sorted(scored.items(), key=lambda pair: pair[1], reverse=True)[:5]
-    confidences = relative_confidences([score for _, score in ranked])
-    label = "组选3" if group_type == "group3" else "组选6"
-    return [
-        {
-            "number": number,
-            "rank": rank,
-            "confidence": confidence,
-            "copy_text": f"{game_name} {label} {number}",
-        }
-        for rank, ((number, _), confidence) in enumerate(zip(ranked, confidences), start=1)
-    ]
-
-
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="生成体彩数据看板")
-    parser.add_argument("--games", default="dlt,pl3,pl5,fc3d,qxc,ssq", help="只刷新指定玩法，逗号分隔")
+    parser.add_argument("--games", default="dlt,pl3,pl5,fc3d,qxc,ssq,kl8", help="只刷新指定玩法，逗号分隔")
     return parser.parse_args()
 
 
@@ -613,6 +658,8 @@ def main() -> None:
             candidates, scores = generate_qxc(rows)
         elif game == "ssq":
             candidates, scores = generate_ssq(rows, target_issue)
+        elif game == "kl8":
+            candidates, scores = generate_kl8(rows)
         else:
             candidates, scores = generate_composite_recommendations(
                 game, rows, source_data["draws"]["pl3"]
@@ -640,6 +687,7 @@ def main() -> None:
                 "dlt": "每周一、三、六开奖",
                 "qxc": "每周二、五、日开奖",
                 "ssq": "每周二、四、日开奖",
+                "kl8": "每日21:30开奖（休市日除外）",
             }.get(game, "每日开奖（休市日除外）"),
             "candidates": enriched,
             "top_candidates": enriched,
@@ -647,16 +695,6 @@ def main() -> None:
             "analysis": build_analysis(game, rows),
             "model_review": model_reviews.get(game),
         }
-        if game in ("pl3", "fc3d"):
-            direct = []
-            for item in enriched:
-                direct.append({**item, "copy_text": f"{cfg['name']} 直选 {item['number']}"})
-            output["games"][game]["play_types"] = {
-                "direct": {"name": "直选", "description": "数字与顺序均需一致", "candidates": direct},
-                "group3": {"name": "组选3", "description": "两位数字相同，顺序不限", "candidates": three_digit_group_candidates(cfg["name"], rows, "group3", target_issue, draw_at)},
-                "group6": {"name": "组选6", "description": "三位数字各不相同，顺序不限", "candidates": three_digit_group_candidates(cfg["name"], rows, "group6", target_issue, draw_at)},
-            }
-
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[OK] 已生成 {OUTPUT_PATH}")

@@ -45,10 +45,12 @@ initRoller();
 function formatLatest(key, numbers) {
   if (key === "dlt") return `${numbers.slice(0, 5).join(" ")} + ${numbers.slice(5).join(" ")}`;
   if (key === "ssq") return `${numbers.slice(0, 6).join(" ")} + ${numbers.slice(6).join(" ")}`;
+  if (key === "kl8") return numbers.join(" ");
   return numbers.join("");
 }
 
 function formatCandidate(key, item) {
+  if (key === "kl8") return item.numbers.map(n => String(n).padStart(2, "0")).join(" ");
   if (key === "ssq") {
     return `${item.red.map(n => String(n).padStart(2, "0")).join(" ")} + ${item.blue.map(n => String(n).padStart(2, "0")).join(" ")}`;
   }

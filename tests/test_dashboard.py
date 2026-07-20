@@ -11,11 +11,11 @@ from src.generate_dashboard import (
     digit_confidences,
     generate_composite_recommendations,
     generate_digit_profile,
+    generate_kl8,
     generate_pl5_from_pl3,
     generate_qxc,
     generate_ssq,
     next_draw,
-    three_digit_group_candidates,
 )
 
 TZ = ZoneInfo("Asia/Shanghai")
@@ -45,6 +45,7 @@ class DetailPageTests(unittest.TestCase):
         cls.fc3d_rows = draws["fc3d"]
         cls.qxc_rows = draws["qxc"]
         cls.ssq_rows = draws["ssq"]
+        cls.kl8_rows = draws["kl8"]
 
     def test_each_game_family_has_its_own_model(self):
         self.assertNotEqual(DIGIT_MODELS["pl35"], DIGIT_MODELS["fc3d"])
@@ -70,27 +71,31 @@ class DetailPageTests(unittest.TestCase):
             self.assertEqual([item["position"] for item in analysis["position_analysis"]], labels)
             self.assertTrue(all(len(item["hot_digits"]) == 3 for item in analysis["position_analysis"]))
 
-    def test_group3_candidates_are_unique_and_valid(self):
-        draw_at = datetime(2026, 7, 15, 21, 25, tzinfo=TZ)
-        candidates = three_digit_group_candidates("排列3", self.rows, "group3", "26186", draw_at)
-        self.assertEqual(len({item["number"] for item in candidates}), 5)
+    def test_kl8_pick_five_model_outputs_five_valid_groups(self):
+        candidates, scores = generate_kl8(self.kl8_rows)
+        self.assertEqual(len(candidates), 5)
+        self.assertEqual(scores, sorted(scores, reverse=True))
+        groups = []
         for item in candidates:
-            self.assertEqual(sorted(Counter(item["number"]).values()), [1, 2])
-            self.assertIn("排列3 组选3", item["copy_text"])
+            numbers = item["numbers"]
+            self.assertEqual(len(numbers), 5)
+            self.assertEqual(numbers, sorted(set(numbers)))
+            self.assertTrue(all(1 <= number <= 80 for number in numbers))
+            groups.append(set(numbers))
+        self.assertTrue(all(len(left & right) <= 3 for index, left in enumerate(groups) for right in groups[index + 1:]))
 
-    def test_group6_candidates_are_unique_and_valid(self):
-        draw_at = datetime(2026, 7, 15, 21, 25, tzinfo=TZ)
-        candidates = three_digit_group_candidates("排列3", self.rows, "group6", "26186", draw_at)
-        self.assertEqual(len({item["number"] for item in candidates}), 5)
-        self.assertTrue(all(len(set(item["number"])) == 3 for item in candidates))
-
-    def test_fc3d_official_history_and_groups(self):
+    def test_fc3d_official_history(self):
         self.assertEqual(len(self.fc3d_rows), 100)
         self.assertEqual(self.fc3d_rows[0]["issue"], "2026190")
-        draw_at = datetime(2026, 7, 15, 21, 15, tzinfo=TZ)
-        candidates = three_digit_group_candidates("福彩3D", self.fc3d_rows, "group3", "2026189", draw_at)
-        self.assertEqual(len(candidates), 5)
-        self.assertTrue(all("福彩3D 组选3" in item["copy_text"] for item in candidates))
+
+    def test_generated_output_has_only_direct_lists(self):
+        root = Path(__file__).resolve().parents[1]
+        text = (root / "docs/assets/data/dashboard.json").read_text(encoding="utf-8")
+        games = json.loads(text)["games"]
+        self.assertNotIn("play_types", games["pl3"])
+        self.assertNotIn("play_types", games["fc3d"])
+        for suffix in ("3", "6"):
+            self.assertNotIn("组选" + suffix, text)
 
     def test_hot_and_cold_profiles_are_separate(self):
         hot = generate_digit_profile(self.fc3d_rows, 3, "hot", 5)
@@ -172,7 +177,7 @@ class DetailPageTests(unittest.TestCase):
     def test_homepage_has_all_game_navigation_buttons(self):
         root = Path(__file__).resolve().parents[1]
         homepage = (root / "docs/index.html").read_text(encoding="utf-8")
-        for path, name in (("dlt", "超级大乐透"), ("pl3", "排列3"), ("pl5", "排列5"), ("fc3d", "福彩3D"), ("qxc", "体彩7星彩"), ("ssq", "福彩双色球")):
+        for path, name in (("dlt", "超级大乐透"), ("pl3", "排列3"), ("pl5", "排列5"), ("fc3d", "福彩3D"), ("qxc", "体彩7星彩"), ("ssq", "福彩双色球"), ("kl8", "福彩快乐8")):
             self.assertIn(f'href="./{path}/"', homepage)
             self.assertIn(name, homepage)
 

@@ -8,6 +8,7 @@ function escapeHtml(value) {
 }
 
 function numberText(item) {
+  if (gameKey === "kl8") return item.numbers.map(n => String(n).padStart(2, "0")).join(" ");
   if (gameKey === "ssq") return `${item.red.map(n => String(n).padStart(2, "0")).join(" ")} + ${item.blue.map(n => String(n).padStart(2, "0")).join(" ")}`;
   if (gameKey !== "dlt") return item.number;
   return `${item.front.map(n => String(n).padStart(2, "0")).join(" ")} + ${item.back.map(n => String(n).padStart(2, "0")).join(" ")}`;
@@ -16,6 +17,7 @@ function numberText(item) {
 function latestText(numbers) {
   if (gameKey === "dlt") return `${numbers.slice(0, 5).join(" ")} + ${numbers.slice(5).join(" ")}`;
   if (gameKey === "ssq") return `${numbers.slice(0, 6).join(" ")} + ${numbers.slice(6).join(" ")}`;
+  if (gameKey === "kl8") return numbers.join(" ");
   return numbers.join("");
 }
 
@@ -98,7 +100,7 @@ async function load() {
   const generated = new Date(game.generated_at || payload.generated_at).toLocaleString("zh-CN", { hour12: false });
 
   $("#app").innerHTML = `<div class="shell">
-    <nav class="topbar"><div class="game-nav"><a href="../">首页</a><a href="../dlt/">超级大乐透</a><a href="../pl3/">排列3</a><a href="../pl5/">排列5</a><a href="../fc3d/">福彩3D</a><a href="../qxc/">体彩7星彩</a><a href="../ssq/">福彩双色球</a></div><span class="updated">UPDATED ${escapeHtml(generated)}</span></nav>
+    <nav class="topbar"><div class="game-nav"><a href="../">首页</a><a href="../dlt/">超级大乐透</a><a href="../pl3/">排列3</a><a href="../pl5/">排列5</a><a href="../fc3d/">福彩3D</a><a href="../qxc/">体彩7星彩</a><a href="../ssq/">福彩双色球</a><a href="../kl8/">福彩快乐8</a></div><span class="updated">UPDATED ${escapeHtml(generated)}</span></nav>
     <header class="hero">
       <div><p class="eyebrow">LOTTERY DETAIL / ${escapeHtml(gameKey.toUpperCase())}</p><h1>${escapeHtml(game.name)}</h1></div>
       <div class="hero-meta"><div>第 ${escapeHtml(game.target_issue)} 期 · 综合推荐 ${game.top_candidates.length} 注</div><div class="next-draw"><span>下一期开奖时间</span><time datetime="${escapeHtml(game.next_draw_at)}">${escapeHtml(game.next_draw_display)}</time></div><div>${escapeHtml(game.schedule_note)}</div><div class="latest">上期 ${escapeHtml(game.latest_issue)}｜${escapeHtml(latestText(game.latest_numbers))}</div></div>

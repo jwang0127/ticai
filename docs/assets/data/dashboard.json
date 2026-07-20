@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-07-20T09:59:06+08:00",
+  "generated_at": "2026-07-20T18:18:19+08:00",
   "source_status": "official_api",
   "disclaimer": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。模型相对评分仅表示本页综合候选之间的排序，不是真实中奖概率。",
   "games": {
     "dlt": {
       "name": "超级大乐透",
-      "generated_at": "2026-07-20T09:59:06+08:00",
+      "generated_at": "2026-07-20T18:18:19+08:00",
       "latest_issue": "26080",
       "latest_draw_date": "2026-07-18",
       "latest_numbers": [
@@ -249,7 +249,7 @@
     },
     "pl3": {
       "name": "排列3",
-      "generated_at": "2026-07-20T09:59:06+08:00",
+      "generated_at": "2026-07-20T18:18:19+08:00",
       "latest_issue": "26190",
       "latest_draw_date": "2026-07-19",
       "latest_numbers": [
@@ -395,7 +395,7 @@
       ],
       "review": {
         "title": "第26190期结构复盘",
-        "summary": "开奖号554，和值14、跨度1，奇偶比2:1。三位数形态为组选3。",
+        "summary": "开奖号554，和值14、跨度1，奇偶比2:1。三位数形态为两位相同。",
         "metrics": [
           {
             "label": "和值",
@@ -510,159 +510,14 @@
         ],
         "exact_hits": 0,
         "position_hits": 2,
-        "group3_hits": 0,
         "direct_miss_streak": 5,
-        "summary": "第26190期开奖号554，上一版8组直选均未完整命中；候选524命中百位5和个位4，组选3池未覆盖4、5、5组合。",
+        "summary": "第26190期开奖号554，上一版8组直选均未完整命中；候选524命中百位5和个位4。",
         "lesson": "将554纳入滚动窗口。60期滚动比较显示，提高主候选分散度能小幅改善位置覆盖，因此只把差异化惩罚由1.2调至1.6；不因单期重号而追双5。"
-      },
-      "play_types": {
-        "direct": {
-          "name": "直选",
-          "description": "数字与顺序均需一致",
-          "candidates": [
-            {
-              "number": "355",
-              "mix_label": "综合主榜",
-              "source": "global",
-              "rank": 1,
-              "confidence": 77.0,
-              "copy_text": "排列3 直选 355"
-            },
-            {
-              "number": "182",
-              "mix_label": "综合主榜",
-              "source": "global",
-              "rank": 2,
-              "confidence": 69.1,
-              "copy_text": "排列3 直选 182"
-            },
-            {
-              "number": "816",
-              "mix_label": "综合主榜",
-              "source": "global",
-              "rank": 3,
-              "confidence": 64.3,
-              "copy_text": "排列3 直选 816"
-            },
-            {
-              "number": "554",
-              "mix_label": "热门观察",
-              "source": "hot",
-              "rank": 4,
-              "confidence": 58.5,
-              "copy_text": "排列3 直选 554"
-            },
-            {
-              "number": "819",
-              "mix_label": "冷门保护",
-              "source": "cold",
-              "rank": 5,
-              "confidence": 58.3,
-              "copy_text": "排列3 直选 819"
-            },
-            {
-              "number": "823",
-              "mix_label": "冷门保护",
-              "source": "cold",
-              "rank": 6,
-              "confidence": 57.1,
-              "copy_text": "排列3 直选 823"
-            },
-            {
-              "number": "024",
-              "mix_label": "综合主榜",
-              "source": "global",
-              "rank": 7,
-              "confidence": 56.4,
-              "copy_text": "排列3 直选 024"
-            },
-            {
-              "number": "547",
-              "mix_label": "综合主榜",
-              "source": "global",
-              "rank": 8,
-              "confidence": 52.0,
-              "copy_text": "排列3 直选 547"
-            }
-          ]
-        },
-        "group3": {
-          "name": "组选3",
-          "description": "两位数字相同，顺序不限",
-          "candidates": [
-            {
-              "number": "118",
-              "rank": 1,
-              "confidence": 77.0,
-              "copy_text": "排列3 组选3 118"
-            },
-            {
-              "number": "228",
-              "rank": 2,
-              "confidence": 68.7,
-              "copy_text": "排列3 组选3 228"
-            },
-            {
-              "number": "112",
-              "rank": 3,
-              "confidence": 55.9,
-              "copy_text": "排列3 组选3 112"
-            },
-            {
-              "number": "113",
-              "rank": 4,
-              "confidence": 55.4,
-              "copy_text": "排列3 组选3 113"
-            },
-            {
-              "number": "338",
-              "rank": 5,
-              "confidence": 52.0,
-              "copy_text": "排列3 组选3 338"
-            }
-          ]
-        },
-        "group6": {
-          "name": "组选6",
-          "description": "三位数字各不相同，顺序不限",
-          "candidates": [
-            {
-              "number": "128",
-              "rank": 1,
-              "confidence": 77.0,
-              "copy_text": "排列3 组选6 128"
-            },
-            {
-              "number": "138",
-              "rank": 2,
-              "confidence": 75.5,
-              "copy_text": "排列3 组选6 138"
-            },
-            {
-              "number": "238",
-              "rank": 3,
-              "confidence": 74.7,
-              "copy_text": "排列3 组选6 238"
-            },
-            {
-              "number": "123",
-              "rank": 4,
-              "confidence": 70.4,
-              "copy_text": "排列3 组选6 123"
-            },
-            {
-              "number": "139",
-              "rank": 5,
-              "confidence": 52.0,
-              "copy_text": "排列3 组选6 139"
-            }
-          ]
-        }
       }
     },
     "pl5": {
       "name": "排列5",
-      "generated_at": "2026-07-20T09:59:06+08:00",
+      "generated_at": "2026-07-20T18:18:19+08:00",
       "latest_issue": "26190",
       "latest_draw_date": "2026-07-19",
       "latest_numbers": [
@@ -934,7 +789,7 @@
     },
     "fc3d": {
       "name": "福彩3D",
-      "generated_at": "2026-07-20T09:59:06+08:00",
+      "generated_at": "2026-07-20T18:18:19+08:00",
       "latest_issue": "2026190",
       "latest_draw_date": "2026-07-19",
       "latest_numbers": [
@@ -1080,7 +935,7 @@
       ],
       "review": {
         "title": "第2026190期结构复盘",
-        "summary": "开奖号026，和值8、跨度6，奇偶比0:3。三位数形态为组选6。",
+        "summary": "开奖号026，和值8、跨度6，奇偶比0:3。三位数形态为三位不同。",
         "metrics": [
           {
             "label": "和值",
@@ -1195,159 +1050,14 @@
         ],
         "exact_hits": 0,
         "position_hits": 1,
-        "group6_hits": 1,
         "direct_miss_streak": 5,
-        "summary": "第2026190期开奖号026，上一版8组直选均未完整命中，单注最多命中1个位置；组选6池包含026组合，组选命中。",
-        "lesson": "保留组选池对顺序不确定性的覆盖价值，并把026纳入最近100期窗口。主候选仅增强差异化，不因本期组选命中而提高所谓中奖概率。"
-      },
-      "play_types": {
-        "direct": {
-          "name": "直选",
-          "description": "数字与顺序均需一致",
-          "candidates": [
-            {
-              "number": "928",
-              "mix_label": "综合主榜",
-              "source": "global",
-              "rank": 1,
-              "confidence": 77.0,
-              "copy_text": "福彩3D 直选 928"
-            },
-            {
-              "number": "022",
-              "mix_label": "热门观察",
-              "source": "hot",
-              "rank": 2,
-              "confidence": 72.8,
-              "copy_text": "福彩3D 直选 022"
-            },
-            {
-              "number": "062",
-              "mix_label": "综合主榜",
-              "source": "global",
-              "rank": 3,
-              "confidence": 67.9,
-              "copy_text": "福彩3D 直选 062"
-            },
-            {
-              "number": "603",
-              "mix_label": "综合主榜",
-              "source": "global",
-              "rank": 4,
-              "confidence": 62.8,
-              "copy_text": "福彩3D 直选 603"
-            },
-            {
-              "number": "895",
-              "mix_label": "综合主榜",
-              "source": "global",
-              "rank": 5,
-              "confidence": 58.6,
-              "copy_text": "福彩3D 直选 895"
-            },
-            {
-              "number": "537",
-              "mix_label": "综合主榜",
-              "source": "global",
-              "rank": 6,
-              "confidence": 54.9,
-              "copy_text": "福彩3D 直选 537"
-            },
-            {
-              "number": "610",
-              "mix_label": "冷门保护",
-              "source": "cold",
-              "rank": 7,
-              "confidence": 54.6,
-              "copy_text": "福彩3D 直选 610"
-            },
-            {
-              "number": "801",
-              "mix_label": "冷门保护",
-              "source": "cold",
-              "rank": 8,
-              "confidence": 52.0,
-              "copy_text": "福彩3D 直选 801"
-            }
-          ]
-        },
-        "group3": {
-          "name": "组选3",
-          "description": "两位数字相同，顺序不限",
-          "candidates": [
-            {
-              "number": "066",
-              "rank": 1,
-              "confidence": 77.0,
-              "copy_text": "福彩3D 组选3 066"
-            },
-            {
-              "number": "366",
-              "rank": 2,
-              "confidence": 68.2,
-              "copy_text": "福彩3D 组选3 366"
-            },
-            {
-              "number": "006",
-              "rank": 3,
-              "confidence": 61.5,
-              "copy_text": "福彩3D 组选3 006"
-            },
-            {
-              "number": "336",
-              "rank": 4,
-              "confidence": 54.1,
-              "copy_text": "福彩3D 组选3 336"
-            },
-            {
-              "number": "266",
-              "rank": 5,
-              "confidence": 52.0,
-              "copy_text": "福彩3D 组选3 266"
-            }
-          ]
-        },
-        "group6": {
-          "name": "组选6",
-          "description": "三位数字各不相同，顺序不限",
-          "candidates": [
-            {
-              "number": "036",
-              "rank": 1,
-              "confidence": 77.0,
-              "copy_text": "福彩3D 组选6 036"
-            },
-            {
-              "number": "069",
-              "rank": 2,
-              "confidence": 74.4,
-              "copy_text": "福彩3D 组选6 069"
-            },
-            {
-              "number": "068",
-              "rank": 3,
-              "confidence": 55.7,
-              "copy_text": "福彩3D 组选6 068"
-            },
-            {
-              "number": "369",
-              "rank": 4,
-              "confidence": 54.5,
-              "copy_text": "福彩3D 组选6 369"
-            },
-            {
-              "number": "039",
-              "rank": 5,
-              "confidence": 52.0,
-              "copy_text": "福彩3D 组选6 039"
-            }
-          ]
-        }
+        "summary": "第2026190期开奖号026，上一版8组直选均未完整命中，单注最多命中1个位置。",
+        "lesson": "把026纳入最近100期窗口并继续逐位置分析。主候选仅增强差异化，不因单期结果提高所谓中奖概率。"
       }
     },
     "qxc": {
       "name": "体彩7星彩",
-      "generated_at": "2026-07-20T09:59:06+08:00",
+      "generated_at": "2026-07-20T18:18:19+08:00",
       "latest_issue": "26082",
       "latest_draw_date": "2026-07-19",
       "latest_numbers": [
@@ -1673,7 +1383,7 @@
     },
     "ssq": {
       "name": "福彩双色球",
-      "generated_at": "2026-07-20T09:59:06+08:00",
+      "generated_at": "2026-07-20T18:18:19+08:00",
       "latest_issue": "2026082",
       "latest_draw_date": "2026-07-19",
       "latest_numbers": [
@@ -1920,6 +1630,230 @@
         ]
       },
       "model_review": null
+    },
+    "kl8": {
+      "name": "福彩快乐8",
+      "generated_at": "2026-07-20T18:18:19+08:00",
+      "latest_issue": "2026190",
+      "latest_draw_date": "2026-07-19",
+      "latest_numbers": [
+        "02",
+        "03",
+        "07",
+        "10",
+        "23",
+        "30",
+        "32",
+        "39",
+        "40",
+        "41",
+        "42",
+        "44",
+        "45",
+        "46",
+        "51",
+        "53",
+        "59",
+        "61",
+        "67",
+        "80"
+      ],
+      "target_issue": "2026191",
+      "next_draw_at": "2026-07-20T21:30+08:00",
+      "next_draw_display": "2026年07月20日 21:30（北京时间）",
+      "schedule_note": "每日21:30开奖（休市日除外）",
+      "candidates": [
+        {
+          "numbers": [
+            11,
+            12,
+            33,
+            62,
+            69
+          ],
+          "mix_label": "选五独立模型",
+          "source": "kl8_pick5",
+          "rank": 1,
+          "confidence": 77.0,
+          "copy_text": "福彩快乐8 11 12 33 62 69"
+        },
+        {
+          "numbers": [
+            12,
+            33,
+            38,
+            39,
+            77
+          ],
+          "mix_label": "选五独立模型",
+          "source": "kl8_pick5",
+          "rank": 2,
+          "confidence": 65.9,
+          "copy_text": "福彩快乐8 12 33 38 39 77"
+        },
+        {
+          "numbers": [
+            1,
+            12,
+            42,
+            69,
+            73
+          ],
+          "mix_label": "选五独立模型",
+          "source": "kl8_pick5",
+          "rank": 3,
+          "confidence": 63.3,
+          "copy_text": "福彩快乐8 01 12 42 69 73"
+        },
+        {
+          "numbers": [
+            12,
+            27,
+            30,
+            61,
+            77
+          ],
+          "mix_label": "选五独立模型",
+          "source": "kl8_pick5",
+          "rank": 4,
+          "confidence": 56.4,
+          "copy_text": "福彩快乐8 12 27 30 61 77"
+        },
+        {
+          "numbers": [
+            30,
+            33,
+            39,
+            42,
+            73
+          ],
+          "mix_label": "选五独立模型",
+          "source": "kl8_pick5",
+          "rank": 5,
+          "confidence": 52.0,
+          "copy_text": "福彩快乐8 30 33 39 42 73"
+        }
+      ],
+      "top_candidates": [
+        {
+          "numbers": [
+            11,
+            12,
+            33,
+            62,
+            69
+          ],
+          "mix_label": "选五独立模型",
+          "source": "kl8_pick5",
+          "rank": 1,
+          "confidence": 77.0,
+          "copy_text": "福彩快乐8 11 12 33 62 69"
+        },
+        {
+          "numbers": [
+            12,
+            33,
+            38,
+            39,
+            77
+          ],
+          "mix_label": "选五独立模型",
+          "source": "kl8_pick5",
+          "rank": 2,
+          "confidence": 65.9,
+          "copy_text": "福彩快乐8 12 33 38 39 77"
+        },
+        {
+          "numbers": [
+            1,
+            12,
+            42,
+            69,
+            73
+          ],
+          "mix_label": "选五独立模型",
+          "source": "kl8_pick5",
+          "rank": 3,
+          "confidence": 63.3,
+          "copy_text": "福彩快乐8 01 12 42 69 73"
+        },
+        {
+          "numbers": [
+            12,
+            27,
+            30,
+            61,
+            77
+          ],
+          "mix_label": "选五独立模型",
+          "source": "kl8_pick5",
+          "rank": 4,
+          "confidence": 56.4,
+          "copy_text": "福彩快乐8 12 27 30 61 77"
+        },
+        {
+          "numbers": [
+            30,
+            33,
+            39,
+            42,
+            73
+          ],
+          "mix_label": "选五独立模型",
+          "source": "kl8_pick5",
+          "rank": 5,
+          "confidence": 52.0,
+          "copy_text": "福彩快乐8 30 33 39 42 73"
+        }
+      ],
+      "review": {
+        "title": "第2026190期结构复盘",
+        "summary": "本期开出20个号码，四区比为4 : 5 : 8 : 3，奇偶比11:9，与前一期重号3个。",
+        "metrics": [
+          {
+            "label": "号码和值",
+            "value": "775"
+          },
+          {
+            "label": "四区比",
+            "value": "4 : 5 : 8 : 3"
+          },
+          {
+            "label": "奇偶比",
+            "value": "11:9"
+          },
+          {
+            "label": "与前期重号",
+            "value": "3"
+          }
+        ]
+      },
+      "analysis": {
+        "sample": 100,
+        "model_name": "快乐8选五独立模型",
+        "summary": "最近100期以1–80单号衰减频率、遗漏封顶和两两共现为主，并约束每组5个号码覆盖至少三个区间。五组之间主动降低重合，扩大号码覆盖。",
+        "signals": [
+          {
+            "label": "相对活跃号码",
+            "value": "12 · 33 · 69 · 11 · 30 · 27 · 39 · 23 · 42 · 61"
+          },
+          {
+            "label": "较长遗漏",
+            "value": "70（14期）、16（13期）、47（12期）、54（12期）、19（10期）、36（10期）"
+          },
+          {
+            "label": "组合目标",
+            "value": "选五 · 每组5个号码 · 共5组"
+          }
+        ],
+        "method": [
+          "25期单号衰减",
+          "32期号码共现",
+          "四区与奇偶温和约束",
+          "五组候选分散"
+        ]
+      },
+      "model_review": null
     }
   },
   "sources": [
@@ -1952,6 +1886,11 @@
       "name": "中国福利彩票双色球开奖信息",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/ssq/",
       "role": "福彩双色球官方开奖来源"
+    },
+    {
+      "name": "中国福利彩票快乐8开奖信息",
+      "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/kl8/",
+      "role": "福彩快乐8官方开奖来源"
     }
   ]
 }

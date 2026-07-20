@@ -89,6 +89,11 @@ def validate(game: str, numbers: list[str], cfg: dict[str, Any]) -> None:
             raise ValueError(f"双色球红球错误: {numbers}")
         if not all(1 <= n <= 33 for n in red) or not all(1 <= n <= 16 for n in blue):
             raise ValueError(f"双色球号码越界: {numbers}")
+    elif game == "kl8":
+        if len(values) != cfg["draw_count"] or len(set(values)) != cfg["draw_count"]:
+            raise ValueError(f"快乐8号码数量或重复错误: {numbers}")
+        if values != sorted(values) or not all(cfg["number_range"][0] <= n <= cfg["number_range"][1] for n in values):
+            raise ValueError(f"快乐8号码顺序或范围错误: {numbers}")
     elif len(values) != cfg["digits"] or not all(0 <= n <= 9 for n in values):
         raise ValueError(f"{cfg['name']}号码错误: {numbers}")
 
@@ -190,7 +195,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="抓取体彩开奖历史")
     parser.add_argument(
         "--games",
-        default="dlt,pl3,pl5,fc3d,qxc,ssq",
+        default="dlt,pl3,pl5,fc3d,qxc,ssq,kl8",
         help="逗号分隔的玩法代码，例如 pl3,pl5",
     )
     return parser.parse_args()

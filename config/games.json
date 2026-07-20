@@ -51,6 +51,17 @@
       "blue_count": 1,
       "red_range": [1, 33],
       "blue_range": [1, 16]
+    },
+    "kl8": {
+      "name": "福彩快乐8",
+      "provider": "cwl",
+      "welfare_name": "kl8",
+      "results_page": "https://www.cwl.gov.cn/ygkj/wqkjgg/kl8/",
+      "draw_time": "21:30",
+      "draw_weekdays": [0, 1, 2, 3, 4, 5, 6],
+      "draw_count": 20,
+      "number_range": [1, 80],
+      "pick_count": 5
     }
   }
 }
