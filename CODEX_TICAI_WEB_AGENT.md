@@ -6,6 +6,8 @@
 
 > 福彩3D扩展：`docs/fc3d/` 使用中国福利彩票官方接口，展示直选、组选3、组选6各3组以及最近100期复盘分析；每日21:15开奖，并在当晚自动更新下一期。
 
+> **强制更新规则：** 任一彩种或玩法的开奖数据更新后，必须立即重新运行该玩法的看板生成流程，刷新 `target_issue`、`next_draw_at` 和 `next_draw_display`。完成前必须核验最新期号已经递增到下一目标期，且“下一期开奖时间”符合该玩法在 `config/games.json` 中配置的开奖星期与时间；不得只更新开奖结果、复盘或候选号码而保留旧的下一期开奖时间。即使本次只更新一个玩法，也必须对该玩法执行 `python src/generate_dashboard.py --games <game>` 并检查 `docs/assets/data/dashboard.json` 中上述字段。
+
 > 目标仓库：`https://github.com/jwang0127/ticai`  
 > 发布地址：`https://jwang0127.github.io/ticai/`  
 > 页面只展示：超级大乐透、排列3、排列5各 5 个最终候选结果、模型置信度、上期开奖号码。

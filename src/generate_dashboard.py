@@ -24,6 +24,7 @@ GLOBAL_UNIQUE_WEIGHT = 0.06
 # A 60-draw rolling comparison across PL3, PL5, and FC3D showed that 1.6
 # modestly improves per-position coverage without changing the core signals.
 GLOBAL_DIVERSITY_PENALTY = 1.6
+DLT_DIVERSITY_PENALTY = 0.06
 
 # 排列3/排列5共享位置模型；福彩3D使用独立参数。7星彩和双色球另有专用生成器。
 DIGIT_MODELS = {
@@ -323,9 +324,30 @@ def generate_dlt(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
         score += 0.025 if 1 <= sum(n % 2 for n in front) <= 4 else -0.025
         pool[(tuple(front), tuple(back))] = score
 
-    ranked = sorted(pool.items(), key=lambda pair: pair[1], reverse=True)[:5]
-    candidates = [{"front": list(key[0]), "back": list(key[1])} for key, _ in ranked]
-    return candidates, [score for _, score in ranked]
+    # Select from a broad high-score pool instead of returning five near-copies.
+    # A 60-draw rolling comparison improved both front/back union coverage at
+    # this modest penalty while preserving the underlying frequency score.
+    remaining = sorted(pool.items(), key=lambda pair: pair[1], reverse=True)[:1000]
+    selected: list[tuple[tuple[tuple[int, ...], tuple[int, ...]], float]] = []
+    while remaining and len(selected) < 5:
+        best = max(
+            remaining,
+            key=lambda item: item[1]
+            - DLT_DIVERSITY_PENALTY
+            * max(
+                (
+                    len(set(item[0][0]) & set(chosen[0][0]))
+                    + 0.8 * len(set(item[0][1]) & set(chosen[0][1]))
+                    for chosen in selected
+                ),
+                default=0.0,
+            ),
+        )
+        selected.append(best)
+        remaining.remove(best)
+    selected.sort(key=lambda pair: pair[1], reverse=True)
+    candidates = [{"front": list(key[0]), "back": list(key[1])} for key, _ in selected]
+    return candidates, [score for _, score in selected]
 
 
 def generate_qxc(rows: list[dict]) -> tuple[list[dict], list[float]]:

@@ -10,6 +10,7 @@ from src.generate_dashboard import (
     build_analysis,
     digit_confidences,
     generate_composite_recommendations,
+    generate_dlt,
     generate_digit_profile,
     generate_kl8,
     generate_pl5_from_pl3,
@@ -41,6 +42,7 @@ class DetailPageTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         draws = json.loads((root / "data/processed/draws.json").read_text(encoding="utf-8"))["draws"]
         cls.rows = draws["pl3"]
+        cls.dlt_rows = draws["dlt"]
         cls.pl5_rows = draws["pl5"]
         cls.fc3d_rows = draws["fc3d"]
         cls.qxc_rows = draws["qxc"]
@@ -58,6 +60,15 @@ class DetailPageTests(unittest.TestCase):
             self.assertEqual(len(item["red"]), 6)
             self.assertEqual(item["red"], sorted(set(item["red"])))
             self.assertEqual(len(item["blue"]), 1)
+
+    def test_dlt_candidates_are_diversified(self):
+        candidates, scores = generate_dlt(self.dlt_rows, "26082")
+        self.assertEqual(len(candidates), 5)
+        self.assertEqual(scores, sorted(scores, reverse=True))
+        front_union = set().union(*(set(item["front"]) for item in candidates))
+        back_union = set().union(*(set(item["back"]) for item in candidates))
+        self.assertGreaterEqual(len(front_union), 10)
+        self.assertGreaterEqual(len(back_union), 5)
 
     def test_position_analysis_is_explicit_for_direct_digit_games(self):
         expected = {
@@ -86,7 +97,7 @@ class DetailPageTests(unittest.TestCase):
 
     def test_fc3d_official_history(self):
         self.assertEqual(len(self.fc3d_rows), 100)
-        self.assertEqual(self.fc3d_rows[0]["issue"], "2026190")
+        self.assertEqual(self.fc3d_rows[0]["issue"], "2026191")
 
     def test_generated_output_has_only_direct_lists(self):
         root = Path(__file__).resolve().parents[1]
