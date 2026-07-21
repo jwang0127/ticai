@@ -97,7 +97,7 @@ class DetailPageTests(unittest.TestCase):
 
     def test_fc3d_official_history(self):
         self.assertEqual(len(self.fc3d_rows), 100)
-        self.assertEqual(self.fc3d_rows[0]["issue"], "2026191")
+        self.assertEqual(self.fc3d_rows[0]["issue"], "2026192")
 
     def test_generated_output_has_only_direct_lists(self):
         root = Path(__file__).resolve().parents[1]
