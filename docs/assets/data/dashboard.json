@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-21T21:56:48+08:00",
-  "source_status": "official_api",
+  "generated_at": "2026-07-21T23:50:41+08:00",
+  "source_status": "cached_verified_data",
   "disclaimer": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。模型相对评分仅表示本页综合候选之间的排序，不是真实中奖概率。",
   "games": {
     "dlt": {
@@ -248,7 +248,7 @@
     },
     "pl3": {
       "name": "排列3",
-      "generated_at": "2026-07-21T21:56:48+08:00",
+      "generated_at": "2026-07-21T23:50:41+08:00",
       "latest_issue": "26192",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -515,7 +515,7 @@
     },
     "pl5": {
       "name": "排列5",
-      "generated_at": "2026-07-21T21:56:48+08:00",
+      "generated_at": "2026-07-21T23:50:41+08:00",
       "latest_issue": "26192",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -786,7 +786,7 @@
     },
     "fc3d": {
       "name": "福彩3D",
-      "generated_at": "2026-07-21T21:56:48+08:00",
+      "generated_at": "2026-07-21T23:50:41+08:00",
       "latest_issue": "2026192",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -1053,7 +1053,7 @@
     },
     "qxc": {
       "name": "体彩7星彩",
-      "generated_at": "2026-07-21T21:56:48+08:00",
+      "generated_at": "2026-07-21T23:50:41+08:00",
       "latest_issue": "26083",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -1396,7 +1396,7 @@
     },
     "ssq": {
       "name": "福彩双色球",
-      "generated_at": "2026-07-21T21:56:48+08:00",
+      "generated_at": "2026-07-21T23:50:41+08:00",
       "latest_issue": "2026083",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -1660,7 +1660,7 @@
     },
     "kl8": {
       "name": "福彩快乐8",
-      "generated_at": "2026-07-21T21:56:48+08:00",
+      "generated_at": "2026-07-21T23:50:41+08:00",
       "latest_issue": "2026191",
       "latest_draw_date": "2026-07-20",
       "latest_numbers": [
