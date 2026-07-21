@@ -3,87 +3,116 @@
     "issue": "26081",
     "actual": "08 16 18 24 34 + 09 12",
     "previous_candidates": [
-      "13 15 19 21 26 + 10 11",
-      "13 14 15 21 26 + 02 11",
-      "06 10 12 13 21 + 08 11",
-      "06 13 20 22 26 + 04 11",
-      "04 13 18 23 26 + 05 11"
+      "10 13 18 24 26 + 11 12",
+      "05 13 21 26 27 + 02 11",
+      "04 13 15 21 24 + 07 12",
+      "10 13 20 26 27 + 04 11",
+      "13 21 23 26 28 + 02 04"
     ],
     "exact_hits": 0,
-    "best_front_hits": 1,
-    "best_back_hits": 0,
-    "summary": "第26081期完整号码为08 16 18 24 34 + 09 12，上一版5组均未完整命中；第5组前区覆盖18，后区没有覆盖09或12。",
-    "lesson": "上一版候选重叠偏高。60期滚动比较支持从高分池中加入0.06的重叠惩罚，以改善前后区联合覆盖；不因本期大号集中而追随。"
+    "best_number_hits": 3,
+    "summary": "26081 actual result was 08 16 18 24 34 + 09 12; the previous pool reached 3 matching numbers at best.",
+    "lesson": "The result is included in the rolling window. Keep the current parameters and candidate diversification without chasing one draw."
   },
   "pl3": {
-    "issue": "26191",
-    "actual": "069",
+    "issue": "26192",
+    "actual": "306",
     "previous_candidates": [
       "355",
+      "055",
       "182",
       "816",
-      "554",
-      "819",
-      "823",
-      "024",
-      "547"
+      "047",
+      "813",
+      "391",
+      "524"
     ],
     "exact_hits": 0,
-    "position_hits": 1,
-    "direct_miss_streak": 6,
-    "summary": "第26191期开奖号069，上一版8组直选均未完整命中；候选819命中个位9，候选024命中百位0，单注最多命中1个位置。",
-    "lesson": "把069纳入滚动窗口。当前排列3/5共享位置模型在分段回测中的覆盖仍优于回退方案，因此保持18期衰减和1.6候选分散度，不追本期069顺子形态。"
+    "best_number_hits": 1,
+    "summary": "26192 actual result was 306; the previous pool reached 1 matching position at best.",
+    "lesson": "The result is included in the rolling window. Keep the shared positional model and diversified candidate pool."
   },
   "pl5": {
-    "issue": "26191",
-    "actual": "06989",
+    "issue": "26192",
+    "actual": "30614",
     "previous_candidates": [
-      "35570",
-      "18272",
-      "55472",
-      "02473",
-      "81678",
-      "82314"
+      "35579",
+      "18270",
+      "05579",
+      "81672",
+      "04778",
+      "81344"
     ],
     "exact_hits": 0,
-    "best_position_hits": 1,
-    "direct_miss_streak": 6,
-    "summary": "第26191期开奖号06989，上一版6组直选均未完整命中；候选02473命中万位0，实际前三位069不在同一期排列3前缀池中。",
-    "lesson": "继续使用排列3共享前三位与排列5独立尾号评分，并保留候选分散；不因本期89尾号或双9结构进行单期追随。"
+    "best_number_hits": 3,
+    "summary": "26192 actual result was 30614; the previous pool reached 3 matching positions at best.",
+    "lesson": "Keep the shared first-three-position signal with independent tail scoring; do not chase the single-draw ending."
   },
   "fc3d": {
-    "issue": "2026191",
-    "actual": "906",
+    "issue": "2026192",
+    "actual": "425",
     "previous_candidates": [
-      "928",
-      "022",
-      "062",
-      "603",
-      "895",
+      "926",
+      "968",
+      "068",
+      "602",
+      "893",
+      "630",
       "537",
-      "610",
-      "801"
+      "817"
     ],
     "exact_hits": 0,
-    "position_hits": 1,
-    "direct_miss_streak": 6,
-    "summary": "第2026191期开奖号906，上一版8组直选均未完整命中；候选928命中百位9，候选603命中十位0，单注最多命中1个位置。",
-    "lesson": "把906纳入独立滚动窗口。福彩3D当前13期衰减独立参数在60期分段回测中继续优于共享旧参数，因此保持不变，不追与排列3倒序相近的单期巧合。"
+    "best_number_hits": 1,
+    "summary": "2026192 actual result was 425; the previous pool reached 1 matching position at best.",
+    "lesson": "Keep the independent FC3D positional parameters and diversified pool without chasing a single shape."
+  },
+  "qxc": {
+    "issue": "26083",
+    "actual": "5219632",
+    "previous_candidates": [
+      "3481523",
+      "7681522",
+      "3491562",
+      "3459522",
+      "3652562",
+      "7492522",
+      "4581562",
+      "3582322"
+    ],
+    "exact_hits": 0,
+    "best_number_hits": 6,
+    "summary": "26083 actual result was 5219632; the previous pool reached 6 matching positions at best.",
+    "lesson": "Keep the seven-position constraint search and avoid overfitting the latest pattern."
+  },
+  "ssq": {
+    "issue": "2026083",
+    "actual": "07 14 15 23 28 33 + 03",
+    "previous_candidates": [
+      "08 14 16 24 27 32 + 04",
+      "07 14 21 24 28 32 + 01",
+      "01 03 08 21 24 30 + 01",
+      "01 11 22 24 25 29 + 04",
+      "03 16 24 27 29 32 + 04"
+    ],
+    "exact_hits": 0,
+    "best_number_hits": 3,
+    "summary": "2026083 actual result was 07 14 15 23 28 33 + 03; the previous pool reached 3 matching numbers at best.",
+    "lesson": "Keep the red-blue separated model and zone coverage; do not chase a single draw."
   },
   "kl8": {
     "issue": "2026191",
     "actual": "01 02 05 06 13 15 23 28 32 34 37 42 45 46 53 55 71 73 75 77",
     "previous_candidates": [
-      "11 12 33 62 69",
-      "12 33 38 39 77",
-      "01 12 42 69 73",
-      "12 27 30 61 77",
-      "30 33 39 42 73"
+      "11 12 33 42 69",
+      "12 27 33 38 77",
+      "02 12 23 73 77",
+      "02 30 33 39 61",
+      "01 12 27 30 59"
     ],
     "exact_hits": 0,
-    "best_number_hits": 3,
-    "union_number_hits": 4,
-    "summary": "第2026191期开出20个号码，上一版5组选五均未完整命中；候选01 12 42 69 73覆盖01、42、73三个号码，全部候选合计覆盖4个不同开奖号。",
-    "lesson": "将本期结果纳入最近100期窗口。40期滚动比较显示当前0.52候选重叠惩罚已经处于稳定平台，平均最佳覆盖2.15个、联合覆盖3.45个，因此不因单期覆盖3个而继续加权。"
+    "best_number_hits": 4,
+    "union_number_hits": 6,
+    "summary": "2026191 actual result was compared with the previous five-number pool; the best group reached 4 and the union reached 6 matches.",
+    "lesson": "Keep the pick-five model, rolling window, and overlap control; do not add weight from one draw."
   }
 }
