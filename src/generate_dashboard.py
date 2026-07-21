@@ -536,6 +536,46 @@ def build_review(game: str, rows: list[dict]) -> dict:
     }
 
 
+def build_model_review(game: str, latest: dict, prediction: dict) -> dict:
+    """Compare the predictions saved before the latest draw with its result."""
+    actual = [int(value) for value in latest["numbers"]]
+    candidates = prediction.get("top_candidates", prediction.get("candidates", []))
+
+    def values(candidate: dict) -> list[int]:
+        if game == "dlt":
+            return [int(value) for value in candidate["front"] + candidate["back"]]
+        if game == "ssq":
+            return [int(value) for value in candidate["red"] + candidate["blue"]]
+        if game == "kl8":
+            return [int(value) for value in candidate["numbers"]]
+        return [int(value) for value in candidate["number"]]
+
+    def display(candidate: dict) -> str:
+        return candidate_text(game, candidate)
+
+    hit_counts = [len(set(values(candidate)) & set(actual)) for candidate in candidates]
+    exact_hits = sum(values(candidate) == actual for candidate in candidates)
+    review = {
+        "issue": latest["issue"],
+        "actual": display({
+            "front": actual[:5], "back": actual[5:],
+            "red": actual[:6], "blue": actual[6:],
+            "numbers": actual, "number": "".join(latest["numbers"]),
+        }) if game in ("dlt", "ssq", "kl8") else "".join(latest["numbers"]),
+        "previous_candidates": [display(candidate) for candidate in candidates],
+        "exact_hits": exact_hits,
+        "best_number_hits": max(hit_counts, default=0),
+        "summary": (
+            f"Issue {latest['issue']} actual result {display({'front': actual[:5], 'back': actual[5:], 'red': actual[:6], 'blue': actual[6:], 'numbers': actual, 'number': ''.join(latest['numbers'])}) if game in ('dlt', 'ssq', 'kl8') else ''.join(latest['numbers'])}; "
+            f"the previous candidate pool reached {max(hit_counts, default=0)} matching numbers at best."
+        ),
+        "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape.",
+    }
+    if game == "kl8":
+        review["union_number_hits"] = len(set().union(*(set(values(candidate)) for candidate in candidates)) & set(actual))
+    return review
+
+
 def omission(rows: list[dict], start: int, end: int, values: range) -> list[tuple[int, int]]:
     result = []
     for target in values:
@@ -656,6 +696,7 @@ def main() -> None:
         # A generated file can contain merge markers during a rebase; rebuild it
         # entirely from the verified source data instead of preserving fragments.
         previous_output = {}
+    previous_games = previous_output.get("games", {})
     output = {
         "generated_at": now.isoformat(timespec="seconds"),
         "source_status": source_data.get("source_status", "unknown"),
@@ -717,8 +758,13 @@ def main() -> None:
             "analysis": build_analysis(game, rows),
             "model_review": model_reviews.get(game),
         }
+        previous_game = previous_games.get(game, {})
+        if previous_game.get("target_issue") == latest["issue"]:
+            model_reviews[game] = build_model_review(game, latest, previous_game)
+            output["games"][game]["model_review"] = model_reviews[game]
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
+    REVIEWS_PATH.write_text(json.dumps(model_reviews, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[OK] 已生成 {OUTPUT_PATH}")
 
 
