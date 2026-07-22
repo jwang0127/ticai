@@ -206,6 +206,12 @@ class DetailPageTests(unittest.TestCase):
             self.assertEqual(len(item["results"]), 3)
             self.assertEqual(item["result"], "；".join(scheme["result"] for scheme in item["results"]))
             self.assertEqual(item["copy_text"], f"{item['name']} {item['result']}")
+            if item["game"] == "kl8":
+                for scheme in item["results"]:
+                    values = scheme["result"].split()
+                    self.assertEqual(len(values), 10)
+                    self.assertEqual(len(set(values)), 10)
+                    self.assertTrue(all(len(value) == 2 and 0 <= int(value) <= 99 for value in values))
         homepage_script = (root / "docs/assets/js/app.js").read_text(encoding="utf-8")
         self.assertIn('id="daily-results-list"', (root / "docs/index.html").read_text(encoding="utf-8"))
         self.assertIn("data-daily-copy", homepage_script)

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T18:35:27+08:00",
+  "generated_at": "2026-07-22T18:48:17+08:00",
   "daily_results_date": "2026-07-22",
   "daily_results": [
     {
@@ -125,22 +125,22 @@
     {
       "game": "kl8",
       "name": "福彩快乐8",
-      "result": "07 14 31 34 48 52 70 72；04 12 28 53 59 61 65 79；02 04 06 24 32 37 53 56",
+      "result": "06 13 30 33 47 51 69 71 91 98；03 11 27 52 60 78 79 81 85 98；01 03 05 23 31 36 52 55 79 86",
       "results": [
         {
-          "result": "07 14 31 34 48 52 70 72",
+          "result": "06 13 30 33 47 51 69 71 91 98",
           "scheme": "西方数秘"
         },
         {
-          "result": "04 12 28 53 59 61 65 79",
+          "result": "03 11 27 52 60 78 79 81 85 98",
           "scheme": "塔罗占星"
         },
         {
-          "result": "02 04 06 24 32 37 53 56",
+          "result": "01 03 05 23 31 36 52 55 79 86",
           "scheme": "六壬"
         }
       ],
-      "copy_text": "福彩快乐8 07 14 31 34 48 52 70 72；04 12 28 53 59 61 65 79；02 04 06 24 32 37 53 56"
+      "copy_text": "福彩快乐8 06 13 30 33 47 51 69 71 91 98；03 11 27 52 60 78 79 81 85 98；01 03 05 23 31 36 52 55 79 86"
     }
   ],
   "source_status": "official_api",
@@ -148,7 +148,7 @@
   "games": {
     "dlt": {
       "name": "超级大乐透",
-      "generated_at": "2026-07-22T18:35:27+08:00",
+      "generated_at": "2026-07-22T18:48:17+08:00",
       "latest_issue": "26081",
       "latest_draw_date": "2026-07-20",
       "latest_numbers": [
@@ -391,7 +391,7 @@
     },
     "pl3": {
       "name": "排列3",
-      "generated_at": "2026-07-22T18:35:27+08:00",
+      "generated_at": "2026-07-22T18:48:17+08:00",
       "latest_issue": "26192",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -658,7 +658,7 @@
     },
     "pl5": {
       "name": "排列5",
-      "generated_at": "2026-07-22T18:35:27+08:00",
+      "generated_at": "2026-07-22T18:48:17+08:00",
       "latest_issue": "26192",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -929,7 +929,7 @@
     },
     "fc3d": {
       "name": "福彩3D",
-      "generated_at": "2026-07-22T18:35:27+08:00",
+      "generated_at": "2026-07-22T18:48:17+08:00",
       "latest_issue": "2026192",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -1196,7 +1196,7 @@
     },
     "qxc": {
       "name": "体彩7星彩",
-      "generated_at": "2026-07-22T18:35:27+08:00",
+      "generated_at": "2026-07-22T18:48:17+08:00",
       "latest_issue": "26083",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -1539,7 +1539,7 @@
     },
     "ssq": {
       "name": "福彩双色球",
-      "generated_at": "2026-07-22T18:35:27+08:00",
+      "generated_at": "2026-07-22T18:48:17+08:00",
       "latest_issue": "2026083",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -1803,7 +1803,7 @@
     },
     "kl8": {
       "name": "福彩快乐8",
-      "generated_at": "2026-07-22T18:35:27+08:00",
+      "generated_at": "2026-07-22T18:48:17+08:00",
       "latest_issue": "2026192",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [

@@ -524,7 +524,7 @@ def generate_daily_results(draw_date: str, config: dict) -> list[dict]:
                 blue = rng.randint(1, 16)
                 value = f"{' '.join(f'{n:02d}' for n in red)} + {blue:02d}"
             elif game == "kl8":
-                value = " ".join(f"{n:02d}" for n in sorted(rng.sample(range(1, 81), 8)))
+                value = " ".join(f"{n:02d}" for n in sorted(rng.sample(range(100), 10)))
             else:
                 digits = cfg["digits"]
                 value = "".join(str(rng.randrange(10)) for _ in range(digits))
