@@ -31,6 +31,16 @@ function positionAnalysisHtml(analysis) {
     </article>`).join("")}</div>`;
 }
 
+function positionAnalysisHtml(analysis) {
+  if (!analysis.position_analysis) return "";
+  return `<div class="position-grid">${analysis.position_analysis.map(item => {
+    const hot = item.hot_digits || item.hot_numbers || [];
+    const omitted = item.omitted_digits || [];
+    return `<article class="position-card"><span>${escapeHtml(item.position)}</span><strong>${escapeHtml(hot.join(" 路 "))}</strong><small>${omitted.map(value => `${escapeHtml(value.digit)}（${value.miss}期）`).join("、")}</small></article>`;
+  }).join("")}</div>`;
+}
+
+
 function picksHtml(candidates) {
   return `<div class="picks">${candidates.map(item => `
     <article class="pick">
@@ -57,6 +67,13 @@ function modelReviewHtml(review) {
     <p class="review-lesson">本期修正：${escapeHtml(review.lesson)}</p>
   </section>`;
 }
+
+function modelReviewHtml(review) {
+  if (!review) return "";
+  const positions = review.position_pool_coverage == null ? "" : `<div class="metric"><span>按位候选覆盖</span><strong>${review.position_pool_coverage} / ${review.position_count}</strong></div>`;
+  return `<section class="section"><div class="section-head"><div><p class="section-label">MODEL REVIEW</p><h2>第${escapeHtml(review.issue)}期模型复盘</h2></div><p class="section-note">${escapeHtml(review.summary)}</p></div><div class="metrics model-review-metrics"><div class="metric"><span>直选完整命中</span><strong>${review.exact_hits} / ${review.previous_candidates.length}</strong></div>${positions}<div class="metric wide"><span>原候选</span><strong>${escapeHtml(review.previous_candidates.join(" 路 "))}</strong></div></div><p class="review-lesson">${escapeHtml(review.lesson)}</p></section>`;
+}
+
 
 function bundleText(game, label, candidates) {
   const name = `${game.name}${label ? ` ${label}` : ""}`;

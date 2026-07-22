@@ -55,7 +55,7 @@ jobs:
           fi
       - name: Fetch official draw history (preserve verified cache on failure)
         if: github.event_name != 'push'
-        run: python src/fetch_draws.py --games "${{ steps.scope.outputs.games }}"
+        run: python src/fetch_draws.py --games "${{ steps.scope.outputs.games }}" --history-limit 2000
       - name: Generate dashboard and copy-ready results
         if: github.event_name != 'push'
         run: python src/generate_dashboard.py --games "${{ steps.scope.outputs.games }}"

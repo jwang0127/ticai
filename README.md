@@ -22,7 +22,7 @@
 
 ```powershell
 python -m pip install -r requirements.txt
-python src/fetch_draws.py
+python src/fetch_draws.py --history-limit 2000
 python src/generate_dashboard.py
 python -m http.server 8000 -d docs
 ```

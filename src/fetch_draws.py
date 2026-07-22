@@ -154,11 +154,40 @@ def fetch_game(game: str, cfg: dict[str, Any], api: str) -> list[dict[str, Any]]
     return sorted(result, key=lambda row: row["issue"], reverse=True)
 
 
-def fetch_welfare_game(game: str, cfg: dict[str, Any], api: str, default_results_page: str) -> list[dict[str, Any]]:
+def fetch_game_limited(game: str, cfg: dict[str, Any], api: str, history_limit: int) -> list[dict[str, Any]]:
+    """Fetch a bounded official history with page-level validation."""
+    result: list[dict[str, Any]] = []
+    pages = (history_limit + 99) // 100
+    for page_no in range(1, pages + 1):
+        payload = request_payload(api, {
+            "gameNo": str(cfg["game_no"]), "provinceId": "0", "pageSize": "100",
+            "pageNo": str(page_no), "isVerify": "1",
+        })
+        rows = find_rows(payload)
+        if not rows:
+            break
+        for row in rows:
+            numbers = tokens_from(row, game)
+            validate(game, numbers, cfg)
+            issue = pick(row, "lotteryDrawNum", "drawNum", "issue", "issueNo", "term")
+            draw_date = pick(row, "lotteryDrawTime", "drawTime", "drawDate", "date")
+            if not issue or not draw_date:
+                raise ValueError("official draw row is missing issue or date")
+            result.append({"issue": str(issue), "draw_date": str(draw_date)[:10], "numbers": numbers})
+            if len(result) >= history_limit:
+                break
+        if len(result) >= history_limit or len(rows) < 100:
+            break
+    if not result:
+        raise ValueError("official endpoint returned no draw rows")
+    return sorted(result[:history_limit], key=lambda row: row["issue"], reverse=True)
+
+
+def fetch_welfare_game(game: str, cfg: dict[str, Any], api: str, default_results_page: str, history_limit: int = 100) -> list[dict[str, Any]]:
     welfare_name = cfg.get("welfare_name", "3d")
     results_page = cfg.get("results_page", default_results_page)
     request = Request(
-        f"{api}?{urlencode({'name': welfare_name, 'issueCount': '100'})}",
+        f"{api}?{urlencode({'name': welfare_name, 'issueCount': str(min(history_limit, 5000))})}",
         headers={
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/126 Safari/537.36",
             "Accept": "application/json, text/plain, */*",
@@ -198,11 +227,14 @@ def parse_args() -> argparse.Namespace:
         default="dlt,pl3,pl5,fc3d,qxc,ssq,kl8",
         help="逗号分隔的玩法代码，例如 pl3,pl5",
     )
+    parser.add_argument("--history-limit", type=int, default=100, help="每个玩法抓取的历史期数")
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
+    if args.history_limit < 1:
+        raise SystemExit("--history-limit must be positive")
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     selected = [game.strip() for game in args.games.split(",") if game.strip()]
     invalid = [game for game in selected if game not in config["games"]]
@@ -225,9 +257,10 @@ def main() -> None:
                     cfg,
                     config["welfare_api"],
                     config["welfare_results_page"],
+                    args.history_limit,
                 )
             else:
-                future = executor.submit(fetch_game, game, cfg, config["official_api"])
+                future = executor.submit(fetch_game_limited, game, cfg, config["official_api"], args.history_limit)
             futures[future] = (game, cfg)
         for future in as_completed(futures):
             game, cfg = futures[future]

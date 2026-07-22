@@ -28,30 +28,34 @@ GLOBAL_UNIQUE_WEIGHT = 0.06
 # modestly improves per-position coverage without changing the core signals.
 GLOBAL_DIVERSITY_PENALTY = 1.6
 DLT_DIVERSITY_PENALTY = 0.06
-WINDOW_BLEND = ((30, 0.25), (60, 0.35), (100, 0.40))
+WINDOW_BLEND = ((50, 0.15), (100, 0.20), (300, 0.20), (500, 0.20), (1000, 0.15), (1500, 0.10))
 
 # 排列3/排列5共享位置模型；福彩3D使用独立参数。7星彩和双色球另有专用生成器。
 DIGIT_MODELS = {
     # Selected from rolling top-3 positional coverage on each game's own
     # history. PL3 and FC3D are deliberately calibrated separately.
-    "pl35": {"decay": 13, "frequency": 0.58, "omission": 0.075, "crowding": 0.22,
-             "sum": 0.012, "unique": 0.09, "global_omission": 0.06,
-             "global_unique": 0.06, "diversity": 1.6},
+    "pl3": {"decay": 13, "frequency": 0.58, "omission": 0.050, "crowding": 0.18,
+            "sum": 0.0, "unique": 0.0, "global_omission": 0.045,
+            "global_unique": 0.0, "diversity": 1.6},
+    "pl5": {"decay": 18, "frequency": 0.55, "omission": 0.045, "crowding": 0.16,
+            "sum": 0.0, "unique": 0.0, "global_omission": 0.040,
+            "global_unique": 0.0, "diversity": 1.45},
     "fc3d": {"decay": 18, "frequency": 0.66, "omission": 0.045, "crowding": 0.30,
-             "sum": 0.008, "unique": 0.13, "global_omission": 0.035,
-             "global_unique": 0.10, "diversity": 1.85},
+             "sum": 0.0, "unique": 0.0, "global_omission": 0.035,
+             "global_unique": 0.0, "diversity": 1.85},
 }
 
 BACKTEST_DECAYS = (8, 13, 18, 24, 30, 45, 60)
+BACKTEST_WINDOWS = (100, 300, 500, 1000, 1500)
 
 
-def rolling_digit_backtest(rows: list[dict], digits: int, decay: int, folds: int = 60) -> dict:
+def rolling_digit_backtest(rows: list[dict], digits: int, decay: int, window_size: int, folds: int = 120) -> dict:
     """Evaluate positional top-three coverage without using the held-out draw."""
-    limit = min(folds, max(0, len(rows) - 1))
+    limit = min(folds, max(0, len(rows) - window_size))
     hits = 0
     total = 0
     for index in range(1, limit + 1):
-        train = rows[index : index + min(100, len(rows) - index)]
+        train = rows[index : index + window_size]
         actual = rows[index - 1]["numbers"]
         for position in range(digits):
             counts: Counter[int] = Counter()
@@ -65,20 +69,70 @@ def rolling_digit_backtest(rows: list[dict], digits: int, decay: int, folds: int
 def calibrate_digit_model(game: str, rows: list[dict], digits: int) -> dict:
     """Return the isolated model plus rolling-backtest evidence for the game."""
     base = dict(digit_model(game))
-    scores = {str(decay): rolling_digit_backtest(rows, digits, decay) for decay in BACKTEST_DECAYS}
-    chosen = max(
-        BACKTEST_DECAYS,
-        key=lambda decay: (
-            scores[str(decay)]["positional_top3_hit_rate"],
-            -abs(decay - base["decay"]),
+    windows = [window for window in BACKTEST_WINDOWS if window < len(rows)] or [max(1, len(rows) - 1)]
+    scores = {
+        f"{decay}@{window}": rolling_digit_backtest(rows, digits, decay, window)
+        for decay in BACKTEST_DECAYS for window in windows
+    }
+    chosen_decay, chosen_window = max(
+        ((decay, window) for decay in BACKTEST_DECAYS for window in windows),
+        key=lambda pair: (
+            scores[f"{pair[0]}@{pair[1]}"]["positional_top3_hit_rate"],
+            int(pair[1] >= 300),
+            -pair[1],
+            -abs(pair[0] - base["decay"]),
         ),
     )
-    base["decay"] = chosen
-    return {"parameters": base, "backtest": scores, "selected_decay": chosen}
+    base["decay"] = chosen_decay
+    base["window_size"] = chosen_window
+    return {"parameters": base, "backtest": scores, "selected_decay": chosen_decay, "selected_window": chosen_window}
+
+
+def rolling_pool_backtest(game: str, rows: list[dict], window_size: int, folds: int = 120) -> dict:
+    """Evaluate position/set coverage against a simple frequency baseline."""
+    limit = min(folds, max(0, len(rows) - window_size))
+    hits = total = 0
+    for index in range(1, limit + 1):
+        train = rows[index:index + window_size]
+        actual = rows[index - 1]["numbers"]
+        if game == "dlt":
+            specs = [(pos, 10) for pos in range(5)] + [(pos, 4) for pos in range(5, 7)]
+        elif game == "ssq":
+            specs = [(0, 18), (6, 5)]
+        elif game == "kl8":
+            specs = [(0, 40)]
+        else:
+            specs = [(pos, 3) for pos in range(len(actual))]
+        for pos, top_k in specs:
+            counts = Counter()
+            if game in ("ssq", "kl8") and pos in (0, 6):
+                for row in train:
+                    values = row["numbers"][:6] if game == "ssq" and pos == 0 else row["numbers"][-1:] if game == "ssq" else row["numbers"]
+                    for value in values:
+                        counts[int(value)] += 1
+                target_values = [int(value) for value in (actual[:6] if game == "ssq" and pos == 0 else actual[-1:] if game == "ssq" else actual)]
+                hits += len(set(target_values) & {n for n, _ in counts.most_common(top_k)})
+                total += len(target_values)
+            else:
+                for row in train:
+                    counts[int(row["numbers"][pos])] += 1
+                hits += int(int(actual[pos]) in {n for n, _ in counts.most_common(top_k)})
+                total += 1
+    return {"folds": limit, "pool_coverage": round(hits / total, 4) if total else 0.0}
+
+
+def calibrate_set_model(game: str, rows: list[dict]) -> dict:
+    windows = [window for window in BACKTEST_WINDOWS if window < len(rows)] or [max(1, len(rows) - 1)]
+    scores = {str(window): rolling_pool_backtest(game, rows, window) for window in windows}
+    chosen = max(
+        windows,
+        key=lambda window: (scores[str(window)]["pool_coverage"], int(window >= 300), -window),
+    )
+    return {"selected_window": chosen, "backtest": scores}
 
 
 def digit_model(game: str) -> dict:
-    return DIGIT_MODELS["fc3d" if game == "fc3d" else "pl35"]
+    return DIGIT_MODELS[game if game in ("pl3", "pl5", "fc3d") else "pl3"]
 
 
 def next_draw(now: datetime, weekdays: list[int], draw_clock: time) -> datetime:
@@ -99,13 +153,16 @@ def weighted_counts(rows: list[dict], position: int, decay: float = RECENCY_DECA
     return counts
 
 
-def blended_position_counts(rows: list[dict], position: int, decay: float) -> Counter[int]:
+def blended_position_counts(rows: list[dict], position: int, decay: float, max_window: int | None = None, value_range: range | None = None) -> Counter[int]:
     """Blend short, medium, and full available windows within cached history."""
     result: Counter[int] = Counter()
-    for size, share in WINDOW_BLEND:
+    active = [(size, share) for size, share in WINDOW_BLEND if max_window is None or size <= max_window]
+    total_share = sum(share for _, share in active) or 1.0
+    for size, share in active:
+        share /= total_share
         counts = weighted_counts(rows[: min(size, len(rows))], position, decay)
         total = sum(counts.values()) or 1.0
-        for digit in range(10):
+        for digit in value_range or range(10):
             result[digit] += share * counts[digit] / total
     return result
 
@@ -142,8 +199,8 @@ def position_omissions(rows: list[dict], position: int) -> dict[int, int]:
 
 def mixed_digit_components(rows: list[dict], digits: int, model: dict | None = None) -> tuple[list[Counter[int]], list[float], list[dict[int, int]], list[float], list[float]]:
     """Build hot/cold signals without treating either as predictive certainty."""
-    model = model or DIGIT_MODELS["pl35"]
-    position_counts = [blended_position_counts(rows, position, model["decay"]) for position in range(digits)]
+    model = model or DIGIT_MODELS["pl3"]
+    position_counts = [blended_position_counts(rows, position, model["decay"], model.get("window_size")) for position in range(digits)]
     totals = [sum(counter.values()) for counter in position_counts]
     omissions = [position_omissions(rows, position) for position in range(digits)]
     means: list[float] = []
@@ -158,7 +215,7 @@ def mixed_digit_components(rows: list[dict], digits: int, model: dict | None = N
 
 
 def mixed_number_score(values: list[int], components: tuple, model: dict | None = None) -> tuple[float, float]:
-    model = model or DIGIT_MODELS["pl35"]
+    model = model or DIGIT_MODELS["pl3"]
     position_counts, totals, omissions, means, scales = components
     score = 0.0
     heat_values = []
@@ -169,10 +226,9 @@ def mixed_number_score(values: list[int], components: tuple, model: dict | None 
         # Keep a majority hot-frequency signal, cap omission compensation, and
         # only punish the most crowded tail. This is a mixed model, not all-cold.
         score += model["frequency"] * math.log(probability)
-        score += model["omission"] * min(omissions[pos][value], 8)
+        omission_distance = abs(min(omissions[pos][value], 20) - 9.0) / 9.0
+        score -= model["omission"] * omission_distance
         score -= model["crowding"] * max(0.0, heat_z - 0.85) ** 2
-    unique_ratio = len(set(values)) / len(values)
-    score += model["unique"] * unique_ratio - model["sum"] * abs(sum(values) - 4.5 * len(values))
     return score, sum(heat_values) / len(heat_values)
 
 
@@ -186,20 +242,20 @@ def digit_support_score(values: list[int], components: tuple) -> float:
 
 
 def global_candidate_score(values: list[int], components: tuple, model: dict | None = None) -> float:
-    """Score the main pool with backtested recency, omission, and shape terms."""
-    model = model or DIGIT_MODELS["pl35"]
+    """Score direct numbers by position; no unordered-set or total-sum terms."""
+    model = model or DIGIT_MODELS["pl3"]
     position_counts, totals, omissions, _, _ = components
     score = sum(
         math.log(score_digit(value, position_counts[pos], totals[pos]))
-        + model["global_omission"] * min(omissions[pos][value], 8)
+            - model["global_omission"] * abs(min(omissions[pos][value], 20) - 9.0) / 9.0
         for pos, value in enumerate(values)
     )
-    return score + model["global_unique"] * len(set(values)) / len(values)
+    return score
 
 
 def digit_confidences(rows: list[dict], digits: int, numbers: list[str], game: str = "pl3") -> list[float]:
     """Map every displayed digit candidate onto the same global percentile scale."""
-    components = mixed_digit_components(rows, digits, digit_model(game))
+    components = mixed_digit_components(rows, digits, calibrate_digit_model(game, rows, digits)["parameters"])
     population = sorted(
         digit_support_score([int(value) for value in f"{number:0{digits}d}"], components)
         for number in range(10 ** digits)
@@ -272,7 +328,7 @@ def generate_digits(game: str, rows: list[dict], digits: int, issue: str) -> tup
 def generate_pl5_from_pl3(
     pl3_rows: list[dict], pl5_rows: list[dict], profile: str, limit: int = 5
 ) -> list[tuple[str, float, float]]:
-    """Build PL5 explicitly as a PL3 prefix plus a two-digit 00-99 tail."""
+    """Legacy helper retained for compatibility; production PL5 never calls it."""
     prefixes = generate_digit_profile(pl3_rows, 3, profile, limit)
     components = mixed_digit_components(pl5_rows, 5)
     selected: list[tuple[str, float, float]] = []
@@ -350,6 +406,26 @@ def generate_composite_recommendations(
     return [candidate for candidate, _ in scored], [score for _, score in scored]
 
 
+def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict], list[float]]:
+    """Direct-digit output from one position-only ensemble, with neutral digits allowed."""
+    digits = len(rows[0]["numbers"])
+    limit = 6 if game == "pl5" else 8
+    ranked = generate_digit_profile(rows, digits, "global", limit, game)
+    candidates = []
+    for number, _, heat in ranked:
+        label = "位置综合-中性" if -0.25 <= heat <= 0.25 else "位置综合-偏热" if heat > 0.25 else "位置综合-偏冷"
+        candidates.append({"number": number, "mix_label": label, "source": "position_ensemble"})
+    return candidates, [score for _, score, _ in ranked]
+
+
+def generate_composite_recommendations(
+    game: str, rows: list[dict], pl3_rows: list[dict] | None = None
+) -> tuple[list[dict], list[float]]:
+    """Compatibility wrapper; every direct-digit game now uses its own rows."""
+    del pl3_rows
+    return generate_positional_ensemble(game, rows)
+
+
 def weighted_number_counts(rows: list[dict], start: int, end: int, decay: float = 24) -> Counter[int]:
     counts: Counter[int] = Counter()
     for index, row in enumerate(rows):
@@ -361,8 +437,11 @@ def weighted_number_counts(rows: list[dict], start: int, end: int, decay: float 
 
 def generate_dlt(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]:
     rng = stable_rng("dlt", issue)
-    front_counts = blended_number_counts(rows, 0, 5)
-    back_counts = blended_number_counts(rows, 5, 7)
+    window = calibrate_set_model("dlt", rows)["selected_window"]
+    front_counts = blended_number_counts(rows, 0, 5, 24, window)
+    back_counts = blended_number_counts(rows, 5, 7, 24, window)
+    front_rank_counts = [blended_position_counts(rows, pos, 24, window, range(1, 36)) for pos in range(5)]
+    back_rank_counts = [blended_position_counts(rows, pos + 5, 24, window, range(1, 13)) for pos in range(2)]
     front_total, back_total = sum(front_counts.values()), sum(back_counts.values())
     pool: dict[tuple[tuple[int, ...], tuple[int, ...]], float] = {}
 
@@ -371,6 +450,8 @@ def generate_dlt(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
         back = sorted(rng.sample(range(1, 13), 2))
         score = sum(math.log((front_counts[n] + 0.8) / (front_total + 28)) for n in front)
         score += sum(math.log((back_counts[n] + 0.8) / (back_total + 9.6)) for n in back)
+        score += sum(math.log((front_rank_counts[pos][n] + 0.08) / (sum(front_rank_counts[pos].values()) + 0.8)) for pos, n in enumerate(front))
+        score += sum(math.log((back_rank_counts[pos][n] + 0.08) / (sum(back_rank_counts[pos].values()) + 0.8)) for pos, n in enumerate(back))
         score -= 0.003 * abs(sum(front) - 90)
         score += 0.025 if 1 <= sum(n % 2 for n in front) <= 4 else -0.025
         pool[(tuple(front), tuple(back))] = score
@@ -404,7 +485,8 @@ def generate_dlt(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
 def generate_qxc(rows: list[dict]) -> tuple[list[dict], list[float]]:
     """7星彩专用七位置束搜索，避免套用三位数枚举模型。"""
     decay = 27
-    counters = [blended_position_counts(rows, pos, decay) for pos in range(7)]
+    window = calibrate_set_model("qxc", rows)["selected_window"]
+    counters = [blended_position_counts(rows, pos, decay, window) for pos in range(7)]
     totals = [sum(counter.values()) for counter in counters]
     omissions = [position_omissions(rows, pos) for pos in range(7)]
     beam: list[tuple[str, float]] = [("", 0.0)]
@@ -438,10 +520,13 @@ def weighted_pair_counts(rows: list[dict], end: int, decay: float) -> Counter[tu
     return counts
 
 
-def blended_number_counts(rows: list[dict], start: int, end: int, decay: float = 24) -> Counter[int]:
+def blended_number_counts(rows: list[dict], start: int, end: int, decay: float = 24, max_window: int | None = None) -> Counter[int]:
     """Blend short, medium, and full cached windows for set-based games."""
     result: Counter[int] = Counter()
-    for size, share in WINDOW_BLEND:
+    active = [(size, share) for size, share in WINDOW_BLEND if max_window is None or size <= max_window]
+    total_share = sum(share for _, share in active) or 1.0
+    for size, share in active:
+        share /= total_share
         counts = weighted_number_counts(rows[: min(size, len(rows))], start, end, decay)
         for number, value in counts.items():
             result[number] += share * value
@@ -451,8 +536,9 @@ def blended_number_counts(rows: list[dict], start: int, end: int, decay: float =
 def generate_ssq(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]:
     """双色球专用红蓝分区模型，加入红球共现与三区覆盖。"""
     rng = stable_rng("ssq", issue)
-    red_counts = blended_number_counts(rows, 0, 6)
-    blue_counts = blended_number_counts(rows, 6, 7)
+    window = calibrate_set_model("ssq", rows)["selected_window"]
+    red_counts = blended_number_counts(rows, 0, 6, 24, window)
+    blue_counts = blended_number_counts(rows, 6, 7, 24, window)
     pair_counts = weighted_pair_counts(rows, 6, 30)
     red_total, blue_total = sum(red_counts.values()), sum(blue_counts.values())
     pool: dict[tuple[tuple[int, ...], int], float] = {}
@@ -476,7 +562,8 @@ def generate_ssq(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
 
 def generate_kl8(rows: list[dict], pick_count: int = 5) -> tuple[list[dict], list[float]]:
     """快乐8“选五”专用模型：单号强度、遗漏、共现和四区覆盖。"""
-    counts = blended_number_counts(rows, 0, 20, 25)
+    window = calibrate_set_model("kl8", rows)["selected_window"]
+    counts = blended_number_counts(rows, 0, 20, 25, window)
     total = sum(counts.values())
     pair_counts = weighted_pair_counts(rows, 20, 32)
     missed = {number: len(rows) for number in range(1, 81)}
@@ -555,7 +642,7 @@ def candidate_text(game: str, candidate: dict) -> str:
 
 
 def _module_rng(draw_date: str, game: str, scheme: int) -> random.Random:
-    seed = hashlib.sha256(f"daily:{draw_date}:{game}:{scheme}:v2.1".encode()).hexdigest()
+    seed = hashlib.sha256(f"daily:{draw_date}:{game}:{scheme}:v2.2:independent".encode()).hexdigest()
     return random.Random(int(seed[:16], 16))
 
 
@@ -567,7 +654,7 @@ def generate_daily_results(draw_date: str, config: dict) -> list[dict]:
     claim or a replacement for the statistical candidates above.
     """
     results = []
-    methods = ("西方数秘", "塔罗占星", "六壬")
+    methods = ("日期哈希映射", "独立位置映射", "中性约束映射")
     for game, cfg in config["games"].items():
         values = []
         schemes = []
@@ -678,6 +765,12 @@ def build_model_review(game: str, latest: dict, prediction: dict) -> dict:
 
     hit_counts = [len(set(values(candidate)) & set(actual)) for candidate in candidates]
     exact_hits = sum(values(candidate) == actual for candidate in candidates)
+    position_hits = []
+    position_pool_hits = []
+    for position, target in enumerate(actual):
+        candidate_values = [values(candidate)[position] for candidate in candidates if position < len(values(candidate))]
+        position_hits.append(sum(value == target for value in candidate_values))
+        position_pool_hits.append(int(target in set(candidate_values)))
     review = {
         "issue": latest["issue"],
         "actual": display({
@@ -688,6 +781,9 @@ def build_model_review(game: str, latest: dict, prediction: dict) -> dict:
         "previous_candidates": [display(candidate) for candidate in candidates],
         "exact_hits": exact_hits,
         "best_number_hits": max(hit_counts, default=0),
+        "position_candidate_hits": position_hits,
+        "position_pool_coverage": sum(position_pool_hits),
+        "position_count": len(actual),
         "summary": (
             f"Issue {latest['issue']} actual result {display({'front': actual[:5], 'back': actual[5:], 'red': actual[:6], 'blue': actual[6:], 'numbers': actual, 'number': ''.join(latest['numbers'])}) if game in ('dlt', 'ssq', 'kl8') else ''.join(latest['numbers'])}; "
             f"the previous candidate pool reached {max(hit_counts, default=0)} matching numbers at best."
@@ -712,16 +808,28 @@ def omission(rows: list[dict], start: int, end: int, values: range) -> list[tupl
 
 
 def build_analysis(game: str, rows: list[dict]) -> dict:
-    sample = min(100, len(rows))
+    sample = min(2000, len(rows))
+    set_calibration = calibrate_set_model(game, rows) if game in ("dlt", "qxc", "ssq", "kl8") else None
     if game == "dlt":
-        front = blended_number_counts(rows[:sample], 0, 5)
-        back = blended_number_counts(rows[:sample], 5, 7)
+        window = set_calibration["selected_window"]
+        front = blended_number_counts(rows[:sample], 0, 5, 24, window)
+        back = blended_number_counts(rows[:sample], 5, 7, 24, window)
+        rank_analysis = []
+        for pos in range(5):
+            counter = blended_position_counts(rows[:sample], pos, 24, window, range(1, 36))
+            rank_analysis.append({"position": f"前区第{pos + 1}位", "hot_numbers": [f"{n:02d}" for n, _ in counter.most_common(3)]})
+        for pos in range(2):
+            counter = blended_position_counts(rows[:sample], pos + 5, 24, window, range(1, 13))
+            rank_analysis.append({"position": f"后区第{pos + 1}位", "hot_numbers": [f"{n:02d}" for n, _ in counter.most_common(3)]})
         hot_front = [f"{n:02d}" for n, _ in front.most_common(5)]
         hot_back = [f"{n:02d}" for n, _ in back.most_common(3)]
         omitted = [f"{n:02d}（{miss}期）" for n, miss in omission(rows[:sample], 0, 5, range(1, 36))[:5]]
         return {
             "sample": sample,
             "summary": f"最近{sample}期采用指数衰减频率，前后区分别统计；当前前区相对活跃号为{'、'.join(hot_front)}，后区为{'、'.join(hot_back)}。",
+            "position_analysis": rank_analysis,
+            "selected_window": window,
+            "backtest": set_calibration["backtest"],
             "signals": [
                 {"label": "前区相对活跃", "value": " · ".join(hot_front)},
                 {"label": "后区相对活跃", "value": " · ".join(hot_back)},
@@ -731,13 +839,16 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
         }
 
     if game == "ssq":
-        red = blended_number_counts(rows[:sample], 0, 6)
-        blue = blended_number_counts(rows[:sample], 6, 7)
+        window = set_calibration["selected_window"]
+        red = blended_number_counts(rows[:sample], 0, 6, 24, window)
+        blue = blended_number_counts(rows[:sample], 6, 7, 24, window)
         hot_red = [f"{n:02d}" for n, _ in red.most_common(6)]
         hot_blue = [f"{n:02d}" for n, _ in blue.most_common(3)]
         return {
             "sample": sample,
             "model_name": "双色球红蓝分区共现模型",
+            "selected_window": window,
+            "backtest": set_calibration["backtest"],
             "summary": f"最近{sample}期将6个红球、1个蓝球完全分开建模；红球同时计算号码频率、两两共现和三区覆盖，蓝球只使用自己的1–16历史序列。",
             "signals": [
                 {"label": "红球相对活跃", "value": " · ".join(hot_red)},
@@ -748,12 +859,15 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
         }
 
     if game == "kl8":
-        counts = blended_number_counts(rows[:sample], 0, 20, 25)
+        window = set_calibration["selected_window"]
+        counts = blended_number_counts(rows[:sample], 0, 20, 25, window)
         hot = [f"{number:02d}" for number, _ in counts.most_common(10)]
         omitted = [f"{number:02d}（{miss}期）" for number, miss in omission(rows[:sample], 0, 20, range(1, 81))[:6]]
         return {
             "sample": sample,
             "model_name": "快乐8选五独立模型",
+            "selected_window": window,
+            "backtest": set_calibration["backtest"],
             "summary": f"最近{sample}期以1–80单号衰减频率、遗漏封顶和两两共现为主，并约束每组5个号码覆盖至少三个区间。五组之间主动降低重合，扩大号码覆盖。",
             "signals": [
                 {"label": "相对活跃号码", "value": " · ".join(hot)},
@@ -769,8 +883,8 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
     position_hot = []
     position_analysis = []
     labels = {3: ["百位", "十位", "个位"], 5: ["万位", "千位", "百位", "十位", "个位"], 7: ["第一位", "第二位", "第三位", "第四位", "第五位", "第六位", "第七位"]}[len(rows[0]["numbers"])]
-    calibration = calibrate_digit_model(game, rows, len(rows[0]["numbers"])) if game in ("pl3", "pl5", "fc3d") else None
-    model = calibration["parameters"] if calibration else {"decay": 27}
+    calibration = calibrate_digit_model(game, rows, len(rows[0]["numbers"])) if game in ("pl3", "pl5", "fc3d") else set_calibration
+    model = calibration["parameters"] if game in ("pl3", "pl5", "fc3d") else {"decay": 27}
     for pos in range(len(rows[0]["numbers"])):
         counter = weighted_counts(rows[:sample], pos, model["decay"])
         ranked = [str(value) for value, _ in counter.most_common(3)]
@@ -783,7 +897,7 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
             "omitted_digits": [{"digit": str(value), "miss": miss} for value, miss in longest],
         })
     structure_note = "排列5先继承同一期排列3前三位候选，再独立计算00–99后两位；" if game == "pl5" else ""
-    model_name = {"pl3": "排列3/排列5共享位置模型", "pl5": "排列3/排列5共享位置模型", "fc3d": "福彩3D独立位置模型", "qxc": "7星彩七位置束搜索模型"}[game]
+    model_name = {"pl3": "排列3独立三位置模型", "pl5": "排列5独立五位置模型", "fc3d": "福彩3D独立三位置模型", "qxc": "7星彩七位置束搜索模型"}[game]
     return {
         "sample": sample,
         "model_name": model_name,
@@ -795,7 +909,8 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
         ],
         "position_analysis": position_analysis,
         "backtest": calibration["backtest"] if calibration else None,
-        "selected_decay": calibration["selected_decay"] if calibration else None,
+        "selected_decay": calibration.get("selected_decay") if game in ("pl3", "pl5", "fc3d") else None,
+        "selected_window": calibration.get("selected_window") if calibration else None,
         "method": (["七位独立频率与遗漏", "逐位束搜索", "相邻重号与和值温和约束"] if game == "qxc" else ["逐位置频率与遗漏", f"{model['decay']}期衰减参数", "5至8注综合清单与候选分散"]),
     }
 
@@ -826,6 +941,7 @@ def main() -> None:
     output = {
         "generated_at": now.isoformat(timespec="seconds"),
         "daily_results_date": now.date().isoformat(),
+        "daily_model_version": "v2.2-independent-date-game-schemes",
         "daily_results": generate_daily_results(now.date().isoformat(), config),
         "source_status": source_data.get("source_status", "unknown"),
         "disclaimer": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。模型相对评分仅表示本页综合候选之间的排序，不是真实中奖概率。",
@@ -859,9 +975,7 @@ def main() -> None:
             candidates = [candidate for candidate, _ in ranked_plays[:5]]
             scores = [score for _, score in ranked_plays[:5]]
         else:
-            candidates, scores = generate_composite_recommendations(
-                game, rows, source_data["draws"]["pl3"]
-            )
+            candidates, scores = generate_positional_ensemble(game, rows)
 
         # Main-list scores are relative to the backtested ranking model. Strategy
         # zones below keep their separate common hot/cold support scale.
@@ -875,6 +989,9 @@ def main() -> None:
 
         output["games"][game] = {
             "name": cfg["name"],
+            "model_version": "v3.0-positional-rolling-ensemble",
+            "history_count": len(rows),
+            "model_scope": "前区/后区排序位独立" if game == "dlt" else "每一位独立评分" if game in ("pl3", "pl5", "fc3d", "qxc") else "玩法专用结构模型",
             "generated_at": now.isoformat(timespec="seconds"),
             "latest_issue": latest["issue"],
             "latest_draw_date": latest["draw_date"],

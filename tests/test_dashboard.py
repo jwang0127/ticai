@@ -10,6 +10,7 @@ from src.generate_dashboard import (
     build_analysis,
     digit_confidences,
     generate_composite_recommendations,
+    generate_positional_ensemble,
     generate_dlt,
     generate_digit_profile,
     generate_kl8,
@@ -50,7 +51,8 @@ class DetailPageTests(unittest.TestCase):
         cls.kl8_rows = draws["kl8"]
 
     def test_each_game_family_has_its_own_model(self):
-        self.assertNotEqual(DIGIT_MODELS["pl35"], DIGIT_MODELS["fc3d"])
+        self.assertNotEqual(DIGIT_MODELS["pl3"], DIGIT_MODELS["fc3d"])
+        self.assertNotEqual(DIGIT_MODELS["pl5"], DIGIT_MODELS["fc3d"])
         qxc, _ = generate_qxc(self.qxc_rows)
         ssq, _ = generate_ssq(self.ssq_rows, "2026083")
         self.assertEqual(len(qxc), 8)
@@ -101,7 +103,7 @@ class DetailPageTests(unittest.TestCase):
             self.assertTrue(all(item["numbers"] == sorted(set(item["numbers"])) for item in candidates))
 
     def test_fc3d_official_history(self):
-        self.assertEqual(len(self.fc3d_rows), 100)
+        self.assertGreaterEqual(len(self.fc3d_rows), 100)
         self.assertEqual(self.fc3d_rows[0]["issue"], json.loads(
             (Path(__file__).resolve().parents[1] / "data/processed/draws.json").read_text(encoding="utf-8")
         )["draws"]["fc3d"][0]["issue"])
@@ -119,21 +121,21 @@ class DetailPageTests(unittest.TestCase):
             self.assertNotIn("组选" + suffix, text)
 
     def test_hot_and_cold_profiles_are_separate(self):
-        hot = generate_digit_profile(self.fc3d_rows, 3, "hot", 5)
-        cold = generate_digit_profile(self.fc3d_rows, 3, "cold", 5)
+        hot = generate_digit_profile(self.fc3d_rows, 3, "hot", 5, "fc3d")
+        cold = generate_digit_profile(self.fc3d_rows, 3, "cold", 5, "fc3d")
         self.assertEqual(len(hot), 5)
         self.assertEqual(len(cold), 5)
         self.assertTrue(all(item[2] > 0.25 for item in hot))
         self.assertTrue(all(item[2] < -0.25 for item in cold))
         self.assertFalse({item[0] for item in hot} & {item[0] for item in cold})
 
-        hot_scores = digit_confidences(self.fc3d_rows, 3, [item[0] for item in hot])
-        cold_scores = digit_confidences(self.fc3d_rows, 3, [item[0] for item in cold])
+        hot_scores = digit_confidences(self.fc3d_rows, 3, [item[0] for item in hot], "fc3d")
+        cold_scores = digit_confidences(self.fc3d_rows, 3, [item[0] for item in cold], "fc3d")
         self.assertGreater(min(hot_scores), max(cold_scores))
 
     def test_global_top_is_positionally_diverse(self):
-        for rows in (self.rows, self.fc3d_rows):
-            numbers = [item[0] for item in generate_digit_profile(rows, 3, "global", 5)]
+        for game, rows in (("pl3", self.rows), ("fc3d", self.fc3d_rows)):
+            numbers = [item[0] for item in generate_digit_profile(rows, 3, "global", 5, game)]
             self.assertEqual(len(numbers), 5)
             for left_index, left in enumerate(numbers):
                 for right in numbers[left_index + 1:]:
@@ -145,9 +147,9 @@ class DetailPageTests(unittest.TestCase):
             (root / "docs/assets/data/dashboard.json").read_text(encoding="utf-8")
         )["games"]
         expected = {
-            "pl3": (8, {"global": 5, "cold": 2, "hot": 1}),
-            "pl5": (6, {"global": 4, "cold": 1, "hot": 1}),
-            "fc3d": (8, {"global": 5, "cold": 2, "hot": 1}),
+            "pl3": (8, {"position_ensemble": 8}),
+            "pl5": (6, {"position_ensemble": 6}),
+            "fc3d": (8, {"position_ensemble": 8}),
         }
         for key, (count, source_counts) in expected.items():
             game = games[key]
@@ -155,24 +157,23 @@ class DetailPageTests(unittest.TestCase):
             self.assertEqual(len(candidates), count)
             self.assertEqual(len({item["number"] for item in candidates}), count)
             self.assertNotIn("strategy_zones", game)
-            self.assertEqual(Counter(item["source"] for item in candidates), source_counts)
+            self.assertEqual(Counter(item["source"] for item in candidates), {"position_ensemble": count})
             scores = [item["confidence"] for item in candidates]
             self.assertEqual(scores, sorted(scores, reverse=True))
 
-    def test_composite_generator_uses_requested_quotas(self):
-        pl3, _ = generate_composite_recommendations("pl3", self.rows, self.rows)
-        pl5, _ = generate_composite_recommendations("pl5", self.pl5_rows, self.rows)
-        fc3d, _ = generate_composite_recommendations("fc3d", self.fc3d_rows, self.rows)
-        self.assertEqual(Counter(item["source"] for item in pl3), {"global": 5, "cold": 2, "hot": 1})
-        self.assertEqual(Counter(item["source"] for item in pl5), {"global": 4, "cold": 1, "hot": 1})
-        self.assertEqual(Counter(item["source"] for item in fc3d), {"global": 5, "cold": 2, "hot": 1})
+    def test_positional_ensemble_uses_one_ranked_pool(self):
+        pl3, _ = generate_positional_ensemble("pl3", self.rows)
+        pl5, _ = generate_positional_ensemble("pl5", self.pl5_rows)
+        fc3d, _ = generate_positional_ensemble("fc3d", self.fc3d_rows)
+        self.assertEqual(len(pl3), 8)
+        self.assertEqual(len(pl5), 6)
+        self.assertEqual(len(fc3d), 8)
+        for candidates in (pl3, pl5, fc3d):
+            self.assertEqual(Counter(item["source"] for item in candidates), {"position_ensemble": len(candidates)})
 
-    def test_pl5_is_built_from_matching_pl3_prefixes(self):
-        for profile in ("global", "hot", "cold"):
-            pl3 = generate_digit_profile(self.rows, 3, profile, 5)
-            pl5 = generate_pl5_from_pl3(self.rows, self.pl5_rows, profile, 5)
-            self.assertEqual({item[0] for item in pl3}, {item[0][:3] for item in pl5})
-            self.assertTrue(all(len(item[0]) == 5 for item in pl5))
+    def test_pl5_uses_its_own_five_positions(self):
+        candidates, _ = generate_positional_ensemble("pl5", self.pl5_rows)
+        self.assertTrue(all(len(item["number"]) == 5 for item in candidates))
 
     def test_copy_text_contains_only_name_and_number(self):
         root = Path(__file__).resolve().parents[1]
