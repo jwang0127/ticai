@@ -97,6 +97,14 @@ async function load() {
   const payload = await response.json();
   const entries = Object.entries(payload.games);
 
+  $("#daily-results-date").textContent = payload.daily_results_date || "";
+  $("#daily-results-list").innerHTML = (payload.daily_results || []).map(item => `
+    <article class="daily-result">
+      <span class="daily-result-name">${escapeHtml(item.name)}</span>
+      <span class="daily-result-value">${escapeHtml(item.result)}</span>
+      <button class="daily-result-copy" type="button" data-daily-copy="${encodeURIComponent(item.copy_text)}" aria-label="复制${escapeHtml(item.name)}结果">复制</button>
+    </article>`).join("");
+
   $("#draw-board").innerHTML = entries.map(([key, game], index) => `
     <tr>
       <td data-label="玩法">
@@ -149,6 +157,8 @@ async function load() {
   document.addEventListener("click", event => {
     const button = event.target.closest("[data-copy]");
     if (button) copy(decodeURIComponent(button.dataset.copy), "综合推荐");
+    const dailyButton = event.target.closest("[data-daily-copy]");
+    if (dailyButton) copy(decodeURIComponent(dailyButton.dataset.dailyCopy), "结果");
   });
 
   $("#disclaimer").textContent = payload.disclaimer;

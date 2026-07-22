@@ -8,16 +8,19 @@ import math
 import random
 from collections import Counter
 from itertools import combinations
-from datetime import datetime, time, timedelta
+from datetime import datetime, time, timedelta, timezone
 from pathlib import Path
-from zoneinfo import ZoneInfo
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / "config" / "games.json"
 DATA_PATH = ROOT / "data" / "processed" / "draws.json"
 OUTPUT_PATH = ROOT / "docs" / "assets" / "data" / "dashboard.json"
 REVIEWS_PATH = ROOT / "data" / "processed" / "model_reviews.json"
-TZ = ZoneInfo("Asia/Shanghai")
+try:
+    TZ = ZoneInfo("Asia/Shanghai")
+except ZoneInfoNotFoundError:
+    TZ = timezone(timedelta(hours=8))
 RECENCY_DECAY = 18
 GLOBAL_OMISSION_WEIGHT = 0.06
 GLOBAL_UNIQUE_WEIGHT = 0.06
@@ -413,7 +416,7 @@ def generate_ssq(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
     return candidates, [score for _, score in ranked]
 
 
-def generate_kl8(rows: list[dict]) -> tuple[list[dict], list[float]]:
+def generate_kl8(rows: list[dict], pick_count: int = 5) -> tuple[list[dict], list[float]]:
     """快乐8“选五”专用模型：单号强度、遗漏、共现和四区覆盖。"""
     counts = weighted_number_counts(rows, 0, 20, 25)
     total = sum(counts.values())
@@ -431,17 +434,22 @@ def generate_kl8(rows: list[dict]) -> tuple[list[dict], list[float]]:
         for number in range(1, 81)
     }
     # 先保留单号支持度最高的28个号码，再完整枚举其中的五数组合。
-    pool = sorted(individual, key=individual.get, reverse=True)[:28]
+    if not 5 <= pick_count <= 10:
+        raise ValueError(f"快乐8选N仅支持5至10，收到: {pick_count}")
+    pool = sorted(individual, key=individual.get, reverse=True)[:32]
+    rng = stable_rng(f"kl8-pick{pick_count}", str(len(rows)))
     scored: list[tuple[tuple[int, ...], float]] = []
-    for values in combinations(pool, 5):
+    sample_count = 9000 if pick_count >= 8 else 6000
+    for _ in range(sample_count):
+        values = rng.sample(pool, pick_count)
         ordered = tuple(sorted(values))
         zones = {min((number - 1) // 20, 3) for number in ordered}
         odd_count = sum(number % 2 for number in ordered)
         score = sum(individual[number] for number in ordered)
         score += 0.020 * sum(pair_counts[pair] for pair in combinations(ordered, 2))
-        score += 0.16 if len(zones) >= 3 else -0.20
-        score += 0.08 if odd_count in (2, 3) else -0.08
-        score -= 0.0018 * abs(sum(ordered) - 202.5)
+        score += 0.16 if len(zones) >= min(4, max(3, pick_count // 3)) else -0.20
+        score += 0.08 if abs(odd_count - pick_count / 2) <= 1 else -0.08
+        score -= 0.0018 * abs(sum(ordered) - pick_count * 40.5)
         scored.append((ordered, score))
 
     remaining = sorted(scored, key=lambda item: item[1], reverse=True)[:2500]
@@ -456,10 +464,22 @@ def generate_kl8(rows: list[dict]) -> tuple[list[dict], list[float]]:
         remaining.remove(best)
     selected.sort(key=lambda item: item[1], reverse=True)
     candidates = [
-        {"numbers": list(values), "mix_label": "选五独立模型", "source": "kl8_pick5"}
+        {"numbers": list(values), "mix_label": f"选{pick_count}独立模型", "source": f"kl8_pick{pick_count}"}
         for values, _ in selected
     ]
     return candidates, [score for _, score in selected]
+
+
+def generate_kl8_play_types(rows: list[dict], pick_counts: list[int]) -> dict[str, dict]:
+    result = {}
+    for pick_count in pick_counts:
+        candidates, scores = generate_kl8(rows, pick_count)
+        result[str(pick_count)] = {
+            "name": f"选{pick_count}",
+            "description": f"每注{pick_count}个号码，共5注",
+            "candidates": (candidates, scores),
+        }
+    return result
 
 
 def candidate_text(game: str, candidate: dict) -> str:
@@ -474,6 +494,46 @@ def candidate_text(game: str, candidate: dict) -> str:
     if game == "kl8":
         return " ".join(f"{value:02d}" for value in candidate["numbers"])
     return candidate["number"]
+
+
+def _module_rng(draw_date: str, game: str, scheme: int) -> random.Random:
+    seed = hashlib.sha256(f"daily:{draw_date}:{game}:{scheme}:v2.1".encode()).hexdigest()
+    return random.Random(int(seed[:16], 16))
+
+
+def generate_daily_results(draw_date: str, config: dict) -> list[dict]:
+    """Create the date-bound, reproducible cultural-number module output.
+
+    The page deliberately exposes only the game name and result.  The result is
+    a deterministic number mapping for the requested date, not a probability
+    claim or a replacement for the statistical candidates above.
+    """
+    results = []
+    methods = ("西方数秘", "塔罗占星", "六壬")
+    for game, cfg in config["games"].items():
+        for scheme, method in enumerate(methods, start=1):
+            rng = _module_rng(draw_date, game, scheme)
+            if game == "dlt":
+                front = sorted(rng.sample(range(1, 36), 5))
+                back = sorted(rng.sample(range(1, 13), 2))
+                value = f"{' '.join(f'{n:02d}' for n in front)} + {' '.join(f'{n:02d}' for n in back)}"
+            elif game == "ssq":
+                red = sorted(rng.sample(range(1, 34), 6))
+                blue = rng.randint(1, 16)
+                value = f"{' '.join(f'{n:02d}' for n in red)} + {blue:02d}"
+            elif game == "kl8":
+                value = " ".join(f"{n:02d}" for n in sorted(rng.sample(range(1, 81), 8)))
+            else:
+                digits = cfg["digits"]
+                value = "".join(str(rng.randrange(10)) for _ in range(digits))
+            results.append({
+                "game": game,
+                "name": cfg["name"],
+                "result": value,
+                "copy_text": f"{cfg['name']} {value}",
+                "scheme": method,
+            })
+    return results
 
 
 def digit_shape(values: list[int]) -> str:
@@ -699,6 +759,8 @@ def main() -> None:
     previous_games = previous_output.get("games", {})
     output = {
         "generated_at": now.isoformat(timespec="seconds"),
+        "daily_results_date": now.date().isoformat(),
+        "daily_results": generate_daily_results(now.date().isoformat(), config),
         "source_status": source_data.get("source_status", "unknown"),
         "disclaimer": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。模型相对评分仅表示本页综合候选之间的排序，不是真实中奖概率。",
         "games": dict(previous_output.get("games", {})),
@@ -722,7 +784,8 @@ def main() -> None:
         elif game == "ssq":
             candidates, scores = generate_ssq(rows, target_issue)
         elif game == "kl8":
-            candidates, scores = generate_kl8(rows)
+            play_types = generate_kl8_play_types(rows, cfg.get("pick_counts", [5, 6, 7, 8, 9, 10]))
+            candidates, scores = play_types[str(cfg.get("pick_count", 5))]["candidates"]
         else:
             candidates, scores = generate_composite_recommendations(
                 game, rows, source_data["draws"]["pl3"]
@@ -736,6 +799,21 @@ def main() -> None:
             text_value = candidate_text(game, candidate)
             copy_text = f"{cfg['name']} {text_value}"
             enriched.append({**candidate, "rank": rank, "confidence": confidence, "copy_text": copy_text})
+
+        enriched_play_types = {}
+        if game == "kl8":
+            for key, play in play_types.items():
+                play_candidates, play_scores = play["candidates"]
+                play_confidences = relative_confidences(play_scores)
+                enriched_play_types[key] = {
+                    "name": play["name"],
+                    "description": play["description"],
+                    "candidates": [
+                        {**candidate, "rank": rank, "confidence": confidence,
+                         "copy_text": f"{cfg['name']} {play['name']} {candidate_text(game, candidate)}"}
+                        for rank, (candidate, confidence) in enumerate(zip(play_candidates, play_confidences), start=1)
+                    ],
+                }
 
         output["games"][game] = {
             "name": cfg["name"],
@@ -754,6 +832,7 @@ def main() -> None:
             }.get(game, "每日开奖（休市日除外）"),
             "candidates": enriched,
             "top_candidates": enriched,
+            **({"play_types": enriched_play_types} if game == "kl8" else {}),
             "review": build_review(game, rows),
             "analysis": build_analysis(game, rows),
             "model_review": model_reviews.get(game),

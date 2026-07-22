@@ -94,6 +94,11 @@ class DetailPageTests(unittest.TestCase):
             self.assertTrue(all(1 <= number <= 80 for number in numbers))
             groups.append(set(numbers))
         self.assertTrue(all(len(left & right) <= 3 for index, left in enumerate(groups) for right in groups[index + 1:]))
+        for pick_count in range(6, 11):
+            candidates, _ = generate_kl8(self.kl8_rows, pick_count)
+            self.assertEqual(len(candidates), 5)
+            self.assertTrue(all(len(item["numbers"]) == pick_count for item in candidates))
+            self.assertTrue(all(item["numbers"] == sorted(set(item["numbers"])) for item in candidates))
 
     def test_fc3d_official_history(self):
         self.assertEqual(len(self.fc3d_rows), 100)
@@ -191,6 +196,17 @@ class DetailPageTests(unittest.TestCase):
         for path, name in (("dlt", "超级大乐透"), ("pl3", "排列3"), ("pl5", "排列5"), ("fc3d", "福彩3D"), ("qxc", "体彩7星彩"), ("ssq", "福彩双色球"), ("kl8", "福彩快乐8")):
             self.assertIn(f'href="./{path}/"', homepage)
             self.assertIn(name, homepage)
+
+    def test_daily_results_are_date_bound_and_copy_ready(self):
+        root = Path(__file__).resolve().parents[1]
+        payload = json.loads((root / "docs/assets/data/dashboard.json").read_text(encoding="utf-8"))
+        self.assertRegex(payload["daily_results_date"], r"^\d{4}-\d{2}-\d{2}$")
+        self.assertEqual(len(payload["daily_results"]), 21)
+        for item in payload["daily_results"]:
+            self.assertEqual(item["copy_text"], f"{item['name']} {item['result']}")
+        homepage_script = (root / "docs/assets/js/app.js").read_text(encoding="utf-8")
+        self.assertIn('id="daily-results-list"', (root / "docs/index.html").read_text(encoding="utf-8"))
+        self.assertIn("data-daily-copy", homepage_script)
 
     def test_next_draw_time_is_rendered_on_home_and_detail_pages(self):
         root = Path(__file__).resolve().parents[1]
