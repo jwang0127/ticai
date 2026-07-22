@@ -110,6 +110,9 @@ class DetailPageTests(unittest.TestCase):
         games = json.loads(text)["games"]
         self.assertNotIn("play_types", games["pl3"])
         self.assertNotIn("play_types", games["fc3d"])
+        self.assertNotIn("play_types", games["kl8"])
+        self.assertEqual(len(games["kl8"]["top_candidates"]), 5)
+        self.assertGreater(len({item["pick_count"] for item in games["kl8"]["top_candidates"]}), 1)
         for suffix in ("3", "6"):
             self.assertNotIn("组选" + suffix, text)
 
@@ -211,7 +214,7 @@ class DetailPageTests(unittest.TestCase):
                     values = scheme["result"].split()
                     self.assertEqual(len(values), 10)
                     self.assertEqual(len(set(values)), 10)
-                    self.assertTrue(all(len(value) == 2 and 0 <= int(value) <= 99 for value in values))
+                    self.assertTrue(all(len(value) == 2 and 1 <= int(value) <= 80 for value in values))
         homepage_script = (root / "docs/assets/js/app.js").read_text(encoding="utf-8")
         self.assertIn('id="daily-results-list"', (root / "docs/index.html").read_text(encoding="utf-8"))
         self.assertIn("data-daily-copy", homepage_script)

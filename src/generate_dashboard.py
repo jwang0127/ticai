@@ -524,7 +524,7 @@ def generate_daily_results(draw_date: str, config: dict) -> list[dict]:
                 blue = rng.randint(1, 16)
                 value = f"{' '.join(f'{n:02d}' for n in red)} + {blue:02d}"
             elif game == "kl8":
-                value = " ".join(f"{n:02d}" for n in sorted(rng.sample(range(100), 10)))
+                value = " ".join(f"{n:02d}" for n in sorted(rng.sample(range(1, 81), 10)))
             else:
                 digits = cfg["digits"]
                 value = "".join(str(rng.randrange(10)) for _ in range(digits))
@@ -790,7 +790,13 @@ def main() -> None:
             candidates, scores = generate_ssq(rows, target_issue)
         elif game == "kl8":
             play_types = generate_kl8_play_types(rows, cfg.get("pick_counts", [5, 6, 7, 8, 9, 10]))
-            candidates, scores = play_types[str(cfg.get("pick_count", 5))]["candidates"]
+            ranked_plays = []
+            for key, play in play_types.items():
+                play_candidates, play_scores = play["candidates"]
+                ranked_plays.append((play_candidates[0] | {"pick_count": int(key), "play_name": play["name"]}, relative_confidences(play_scores)[0]))
+            ranked_plays.sort(key=lambda item: item[1], reverse=True)
+            candidates = [candidate for candidate, _ in ranked_plays[:5]]
+            scores = [score for _, score in ranked_plays[:5]]
         else:
             candidates, scores = generate_composite_recommendations(
                 game, rows, source_data["draws"]["pl3"]
@@ -802,23 +808,9 @@ def main() -> None:
         enriched = []
         for rank, (candidate, confidence) in enumerate(zip(candidates, confidences), start=1):
             text_value = candidate_text(game, candidate)
-            copy_text = f"{cfg['name']} {text_value}"
+            play_prefix = f"{candidate['play_name']} " if game == "kl8" else ""
+            copy_text = f"{cfg['name']} {play_prefix}{text_value}"
             enriched.append({**candidate, "rank": rank, "confidence": confidence, "copy_text": copy_text})
-
-        enriched_play_types = {}
-        if game == "kl8":
-            for key, play in play_types.items():
-                play_candidates, play_scores = play["candidates"]
-                play_confidences = relative_confidences(play_scores)
-                enriched_play_types[key] = {
-                    "name": play["name"],
-                    "description": play["description"],
-                    "candidates": [
-                        {**candidate, "rank": rank, "confidence": confidence,
-                         "copy_text": f"{cfg['name']} {play['name']} {candidate_text(game, candidate)}"}
-                        for rank, (candidate, confidence) in enumerate(zip(play_candidates, play_confidences), start=1)
-                    ],
-                }
 
         output["games"][game] = {
             "name": cfg["name"],
@@ -837,7 +829,6 @@ def main() -> None:
             }.get(game, "每日开奖（休市日除外）"),
             "candidates": enriched,
             "top_candidates": enriched,
-            **({"play_types": enriched_play_types} if game == "kl8" else {}),
             "review": build_review(game, rows),
             "analysis": build_analysis(game, rows),
             "model_review": model_reviews.get(game),
