@@ -100,19 +100,19 @@
     "lesson": "Keep the red-blue separated model and zone coverage; do not chase a single draw."
   },
   "kl8": {
-    "issue": "2026192",
-    "actual": "04 10 12 15 16 18 19 27 28 32 36 46 49 51 54 62 69 70 73 75",
+    "issue": "2026191",
+    "actual": "01 02 05 06 13 15 23 28 32 34 37 42 45 46 53 55 71 73 75 77",
     "previous_candidates": [
-      "12 33 39 42 61",
-      "02 12 57 59 69",
-      "06 27 33 62 69",
-      "11 23 30 69 76",
-      "02 27 38 73 77"
+      "11 12 33 42 69",
+      "12 27 33 38 77",
+      "02 12 23 73 77",
+      "02 30 33 39 61",
+      "01 12 27 30 59"
     ],
     "exact_hits": 0,
-    "best_number_hits": 3,
-    "summary": "Issue 2026192 actual result 04 10 12 15 16 18 19 27 28 32 36 46 49 51 54 62 69 70 73 75; the previous candidate pool reached 3 matching numbers at best.",
-    "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape.",
-    "union_number_hits": 5
+    "best_number_hits": 4,
+    "union_number_hits": 6,
+    "summary": "2026191 actual result was compared with the previous five-number pool; the best group reached 4 and the union reached 6 matches.",
+    "lesson": "Keep the pick-five model, rolling window, and overlap control; do not add weight from one draw."
   }
 }

@@ -1,161 +1,11 @@
 {
-  "generated_at": "2026-07-22T18:20:41+08:00",
-  "daily_results_date": "2026-07-22",
-  "daily_results": [
-    {
-      "game": "dlt",
-      "name": "超级大乐透",
-      "result": "17 19 25 28 30 + 08 11",
-      "copy_text": "超级大乐透 17 19 25 28 30 + 08 11",
-      "scheme": "西方数秘"
-    },
-    {
-      "game": "dlt",
-      "name": "超级大乐透",
-      "result": "01 08 28 29 31 + 03 05",
-      "copy_text": "超级大乐透 01 08 28 29 31 + 03 05",
-      "scheme": "塔罗占星"
-    },
-    {
-      "game": "dlt",
-      "name": "超级大乐透",
-      "result": "05 06 09 20 22 + 03 11",
-      "copy_text": "超级大乐透 05 06 09 20 22 + 03 11",
-      "scheme": "六壬"
-    },
-    {
-      "game": "pl3",
-      "name": "排列3",
-      "result": "872",
-      "copy_text": "排列3 872",
-      "scheme": "西方数秘"
-    },
-    {
-      "game": "pl3",
-      "name": "排列3",
-      "result": "397",
-      "copy_text": "排列3 397",
-      "scheme": "塔罗占星"
-    },
-    {
-      "game": "pl3",
-      "name": "排列3",
-      "result": "616",
-      "copy_text": "排列3 616",
-      "scheme": "六壬"
-    },
-    {
-      "game": "pl5",
-      "name": "排列5",
-      "result": "30840",
-      "copy_text": "排列5 30840",
-      "scheme": "西方数秘"
-    },
-    {
-      "game": "pl5",
-      "name": "排列5",
-      "result": "60648",
-      "copy_text": "排列5 60648",
-      "scheme": "塔罗占星"
-    },
-    {
-      "game": "pl5",
-      "name": "排列5",
-      "result": "07711",
-      "copy_text": "排列5 07711",
-      "scheme": "六壬"
-    },
-    {
-      "game": "fc3d",
-      "name": "福彩3D",
-      "result": "408",
-      "copy_text": "福彩3D 408",
-      "scheme": "西方数秘"
-    },
-    {
-      "game": "fc3d",
-      "name": "福彩3D",
-      "result": "597",
-      "copy_text": "福彩3D 597",
-      "scheme": "塔罗占星"
-    },
-    {
-      "game": "fc3d",
-      "name": "福彩3D",
-      "result": "432",
-      "copy_text": "福彩3D 432",
-      "scheme": "六壬"
-    },
-    {
-      "game": "qxc",
-      "name": "体彩7星彩",
-      "result": "2374283",
-      "copy_text": "体彩7星彩 2374283",
-      "scheme": "西方数秘"
-    },
-    {
-      "game": "qxc",
-      "name": "体彩7星彩",
-      "result": "0640945",
-      "copy_text": "体彩7星彩 0640945",
-      "scheme": "塔罗占星"
-    },
-    {
-      "game": "qxc",
-      "name": "体彩7星彩",
-      "result": "2030198",
-      "copy_text": "体彩7星彩 2030198",
-      "scheme": "六壬"
-    },
-    {
-      "game": "ssq",
-      "name": "福彩双色球",
-      "result": "06 09 10 20 24 30 + 03",
-      "copy_text": "福彩双色球 06 09 10 20 24 30 + 03",
-      "scheme": "西方数秘"
-    },
-    {
-      "game": "ssq",
-      "name": "福彩双色球",
-      "result": "03 14 19 23 25 26 + 01",
-      "copy_text": "福彩双色球 03 14 19 23 25 26 + 01",
-      "scheme": "塔罗占星"
-    },
-    {
-      "game": "ssq",
-      "name": "福彩双色球",
-      "result": "16 20 26 31 32 33 + 16",
-      "copy_text": "福彩双色球 16 20 26 31 32 33 + 16",
-      "scheme": "六壬"
-    },
-    {
-      "game": "kl8",
-      "name": "福彩快乐8",
-      "result": "07 14 31 34 48 52 70 72",
-      "copy_text": "福彩快乐8 07 14 31 34 48 52 70 72",
-      "scheme": "西方数秘"
-    },
-    {
-      "game": "kl8",
-      "name": "福彩快乐8",
-      "result": "04 12 28 53 59 61 65 79",
-      "copy_text": "福彩快乐8 04 12 28 53 59 61 65 79",
-      "scheme": "塔罗占星"
-    },
-    {
-      "game": "kl8",
-      "name": "福彩快乐8",
-      "result": "02 04 06 24 32 37 53 56",
-      "copy_text": "福彩快乐8 02 04 06 24 32 37 53 56",
-      "scheme": "六壬"
-    }
-  ],
-  "source_status": "official_api",
+  "generated_at": "2026-07-21T23:50:41+08:00",
+  "source_status": "cached_verified_data",
   "disclaimer": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。模型相对评分仅表示本页综合候选之间的排序，不是真实中奖概率。",
   "games": {
     "dlt": {
       "name": "超级大乐透",
-      "generated_at": "2026-07-22T18:20:41+08:00",
+      "generated_at": "2026-07-21T21:56:48+08:00",
       "latest_issue": "26081",
       "latest_draw_date": "2026-07-20",
       "latest_numbers": [
@@ -398,7 +248,7 @@
     },
     "pl3": {
       "name": "排列3",
-      "generated_at": "2026-07-22T18:20:41+08:00",
+      "generated_at": "2026-07-21T23:50:41+08:00",
       "latest_issue": "26192",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -665,7 +515,7 @@
     },
     "pl5": {
       "name": "排列5",
-      "generated_at": "2026-07-22T18:20:41+08:00",
+      "generated_at": "2026-07-21T23:50:41+08:00",
       "latest_issue": "26192",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -936,7 +786,7 @@
     },
     "fc3d": {
       "name": "福彩3D",
-      "generated_at": "2026-07-22T18:20:41+08:00",
+      "generated_at": "2026-07-21T23:50:41+08:00",
       "latest_issue": "2026192",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -1203,7 +1053,7 @@
     },
     "qxc": {
       "name": "体彩7星彩",
-      "generated_at": "2026-07-22T18:20:41+08:00",
+      "generated_at": "2026-07-21T23:50:41+08:00",
       "latest_issue": "26083",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -1546,7 +1396,7 @@
     },
     "ssq": {
       "name": "福彩双色球",
-      "generated_at": "2026-07-22T18:20:41+08:00",
+      "generated_at": "2026-07-21T23:50:41+08:00",
       "latest_issue": "2026083",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -1810,731 +1660,198 @@
     },
     "kl8": {
       "name": "福彩快乐8",
-      "generated_at": "2026-07-22T18:20:41+08:00",
-      "latest_issue": "2026192",
-      "latest_draw_date": "2026-07-21",
+      "generated_at": "2026-07-21T23:50:41+08:00",
+      "latest_issue": "2026191",
+      "latest_draw_date": "2026-07-20",
       "latest_numbers": [
-        "04",
-        "10",
-        "12",
+        "01",
+        "02",
+        "05",
+        "06",
+        "13",
         "15",
-        "16",
-        "18",
-        "19",
-        "27",
+        "23",
         "28",
         "32",
-        "36",
+        "34",
+        "37",
+        "42",
+        "45",
         "46",
-        "49",
-        "51",
-        "54",
-        "62",
-        "69",
-        "70",
+        "53",
+        "55",
+        "71",
         "73",
-        "75"
+        "75",
+        "77"
       ],
-      "target_issue": "2026193",
+      "target_issue": "2026192",
       "next_draw_at": "2026-07-22T21:30+08:00",
       "next_draw_display": "2026年07月22日 21:30（北京时间）",
       "schedule_note": "每日21:30开奖（休市日除外）",
       "candidates": [
         {
           "numbers": [
-            10,
+            11,
             12,
-            27,
             33,
-            73
+            42,
+            69
           ],
-          "mix_label": "选5独立模型",
+          "mix_label": "选五独立模型",
           "source": "kl8_pick5",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩快乐8 10 12 27 33 73"
+          "copy_text": "福彩快乐8 11 12 33 42 69"
+        },
+        {
+          "numbers": [
+            12,
+            27,
+            33,
+            38,
+            77
+          ],
+          "mix_label": "选五独立模型",
+          "source": "kl8_pick5",
+          "rank": 2,
+          "confidence": 64.7,
+          "copy_text": "福彩快乐8 12 27 33 38 77"
+        },
+        {
+          "numbers": [
+            2,
+            12,
+            23,
+            73,
+            77
+          ],
+          "mix_label": "选五独立模型",
+          "source": "kl8_pick5",
+          "rank": 3,
+          "confidence": 58.1,
+          "copy_text": "福彩快乐8 02 12 23 73 77"
+        },
+        {
+          "numbers": [
+            2,
+            30,
+            33,
+            39,
+            61
+          ],
+          "mix_label": "选五独立模型",
+          "source": "kl8_pick5",
+          "rank": 4,
+          "confidence": 54.7,
+          "copy_text": "福彩快乐8 02 30 33 39 61"
         },
         {
           "numbers": [
             1,
             12,
-            32,
-            69,
-            77
-          ],
-          "mix_label": "选5独立模型",
-          "source": "kl8_pick5",
-          "rank": 2,
-          "confidence": 72.3,
-          "copy_text": "福彩快乐8 01 12 32 69 77"
-        },
-        {
-          "numbers": [
-            11,
+            27,
             30,
-            42,
-            62,
-            69
+            59
           ],
-          "mix_label": "选5独立模型",
-          "source": "kl8_pick5",
-          "rank": 3,
-          "confidence": 66.1,
-          "copy_text": "福彩快乐8 11 30 42 62 69"
-        },
-        {
-          "numbers": [
-            6,
-            33,
-            38,
-            42,
-            77
-          ],
-          "mix_label": "选5独立模型",
-          "source": "kl8_pick5",
-          "rank": 4,
-          "confidence": 61.9,
-          "copy_text": "福彩快乐8 06 33 38 42 77"
-        },
-        {
-          "numbers": [
-            2,
-            18,
-            23,
-            39,
-            77
-          ],
-          "mix_label": "选5独立模型",
+          "mix_label": "选五独立模型",
           "source": "kl8_pick5",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩快乐8 02 18 23 39 77"
+          "copy_text": "福彩快乐8 01 12 27 30 59"
         }
       ],
       "top_candidates": [
         {
           "numbers": [
-            10,
+            11,
             12,
-            27,
             33,
-            73
+            42,
+            69
           ],
-          "mix_label": "选5独立模型",
+          "mix_label": "选五独立模型",
           "source": "kl8_pick5",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩快乐8 10 12 27 33 73"
+          "copy_text": "福彩快乐8 11 12 33 42 69"
+        },
+        {
+          "numbers": [
+            12,
+            27,
+            33,
+            38,
+            77
+          ],
+          "mix_label": "选五独立模型",
+          "source": "kl8_pick5",
+          "rank": 2,
+          "confidence": 64.7,
+          "copy_text": "福彩快乐8 12 27 33 38 77"
+        },
+        {
+          "numbers": [
+            2,
+            12,
+            23,
+            73,
+            77
+          ],
+          "mix_label": "选五独立模型",
+          "source": "kl8_pick5",
+          "rank": 3,
+          "confidence": 58.1,
+          "copy_text": "福彩快乐8 02 12 23 73 77"
+        },
+        {
+          "numbers": [
+            2,
+            30,
+            33,
+            39,
+            61
+          ],
+          "mix_label": "选五独立模型",
+          "source": "kl8_pick5",
+          "rank": 4,
+          "confidence": 54.7,
+          "copy_text": "福彩快乐8 02 30 33 39 61"
         },
         {
           "numbers": [
             1,
             12,
-            32,
-            69,
-            77
-          ],
-          "mix_label": "选5独立模型",
-          "source": "kl8_pick5",
-          "rank": 2,
-          "confidence": 72.3,
-          "copy_text": "福彩快乐8 01 12 32 69 77"
-        },
-        {
-          "numbers": [
-            11,
+            27,
             30,
-            42,
-            62,
-            69
+            59
           ],
-          "mix_label": "选5独立模型",
-          "source": "kl8_pick5",
-          "rank": 3,
-          "confidence": 66.1,
-          "copy_text": "福彩快乐8 11 30 42 62 69"
-        },
-        {
-          "numbers": [
-            6,
-            33,
-            38,
-            42,
-            77
-          ],
-          "mix_label": "选5独立模型",
-          "source": "kl8_pick5",
-          "rank": 4,
-          "confidence": 61.9,
-          "copy_text": "福彩快乐8 06 33 38 42 77"
-        },
-        {
-          "numbers": [
-            2,
-            18,
-            23,
-            39,
-            77
-          ],
-          "mix_label": "选5独立模型",
+          "mix_label": "选五独立模型",
           "source": "kl8_pick5",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩快乐8 02 18 23 39 77"
+          "copy_text": "福彩快乐8 01 12 27 30 59"
         }
       ],
-      "play_types": {
-        "5": {
-          "name": "选5",
-          "description": "每注5个号码，共5注",
-          "candidates": [
-            {
-              "numbers": [
-                10,
-                12,
-                27,
-                33,
-                73
-              ],
-              "mix_label": "选5独立模型",
-              "source": "kl8_pick5",
-              "rank": 1,
-              "confidence": 77.0,
-              "copy_text": "福彩快乐8 选5 10 12 27 33 73"
-            },
-            {
-              "numbers": [
-                1,
-                12,
-                32,
-                69,
-                77
-              ],
-              "mix_label": "选5独立模型",
-              "source": "kl8_pick5",
-              "rank": 2,
-              "confidence": 72.3,
-              "copy_text": "福彩快乐8 选5 01 12 32 69 77"
-            },
-            {
-              "numbers": [
-                11,
-                30,
-                42,
-                62,
-                69
-              ],
-              "mix_label": "选5独立模型",
-              "source": "kl8_pick5",
-              "rank": 3,
-              "confidence": 66.1,
-              "copy_text": "福彩快乐8 选5 11 30 42 62 69"
-            },
-            {
-              "numbers": [
-                6,
-                33,
-                38,
-                42,
-                77
-              ],
-              "mix_label": "选5独立模型",
-              "source": "kl8_pick5",
-              "rank": 4,
-              "confidence": 61.9,
-              "copy_text": "福彩快乐8 选5 06 33 38 42 77"
-            },
-            {
-              "numbers": [
-                2,
-                18,
-                23,
-                39,
-                77
-              ],
-              "mix_label": "选5独立模型",
-              "source": "kl8_pick5",
-              "rank": 5,
-              "confidence": 52.0,
-              "copy_text": "福彩快乐8 选5 02 18 23 39 77"
-            }
-          ]
-        },
-        "6": {
-          "name": "选6",
-          "description": "每注6个号码，共5注",
-          "candidates": [
-            {
-              "numbers": [
-                1,
-                11,
-                12,
-                42,
-                69,
-                73
-              ],
-              "mix_label": "选6独立模型",
-              "source": "kl8_pick6",
-              "rank": 1,
-              "confidence": 77.0,
-              "copy_text": "福彩快乐8 选6 01 11 12 42 69 73"
-            },
-            {
-              "numbers": [
-                6,
-                33,
-                38,
-                39,
-                57,
-                69
-              ],
-              "mix_label": "选6独立模型",
-              "source": "kl8_pick6",
-              "rank": 2,
-              "confidence": 61.5,
-              "copy_text": "福彩快乐8 选6 06 33 38 39 57 69"
-            },
-            {
-              "numbers": [
-                2,
-                23,
-                30,
-                33,
-                44,
-                77
-              ],
-              "mix_label": "选6独立模型",
-              "source": "kl8_pick6",
-              "rank": 3,
-              "confidence": 61.0,
-              "copy_text": "福彩快乐8 选6 02 23 30 33 44 77"
-            },
-            {
-              "numbers": [
-                10,
-                12,
-                27,
-                33,
-                46,
-                59
-              ],
-              "mix_label": "选6独立模型",
-              "source": "kl8_pick6",
-              "rank": 4,
-              "confidence": 60.3,
-              "copy_text": "福彩快乐8 选6 10 12 27 33 46 59"
-            },
-            {
-              "numbers": [
-                18,
-                27,
-                38,
-                49,
-                61,
-                62
-              ],
-              "mix_label": "选6独立模型",
-              "source": "kl8_pick6",
-              "rank": 5,
-              "confidence": 52.0,
-              "copy_text": "福彩快乐8 选6 18 27 38 49 61 62"
-            }
-          ]
-        },
-        "7": {
-          "name": "选7",
-          "description": "每注7个号码，共5注",
-          "candidates": [
-            {
-              "numbers": [
-                1,
-                12,
-                42,
-                59,
-                62,
-                69,
-                73
-              ],
-              "mix_label": "选7独立模型",
-              "source": "kl8_pick7",
-              "rank": 1,
-              "confidence": 77.0,
-              "copy_text": "福彩快乐8 选7 01 12 42 59 62 69 73"
-            },
-            {
-              "numbers": [
-                6,
-                10,
-                12,
-                27,
-                33,
-                49,
-                73
-              ],
-              "mix_label": "选7独立模型",
-              "source": "kl8_pick7",
-              "rank": 2,
-              "confidence": 70.2,
-              "copy_text": "福彩快乐8 选7 06 10 12 27 33 49 73"
-            },
-            {
-              "numbers": [
-                2,
-                23,
-                27,
-                33,
-                39,
-                61,
-                77
-              ],
-              "mix_label": "选7独立模型",
-              "source": "kl8_pick7",
-              "rank": 3,
-              "confidence": 59.8,
-              "copy_text": "福彩快乐8 选7 02 23 27 33 39 61 77"
-            },
-            {
-              "numbers": [
-                11,
-                12,
-                18,
-                33,
-                35,
-                38,
-                76
-              ],
-              "mix_label": "选7独立模型",
-              "source": "kl8_pick7",
-              "rank": 4,
-              "confidence": 55.6,
-              "copy_text": "福彩快乐8 选7 11 12 18 33 35 38 76"
-            },
-            {
-              "numbers": [
-                11,
-                27,
-                30,
-                32,
-                46,
-                57,
-                69
-              ],
-              "mix_label": "选7独立模型",
-              "source": "kl8_pick7",
-              "rank": 5,
-              "confidence": 52.0,
-              "copy_text": "福彩快乐8 选7 11 27 30 32 46 57 69"
-            }
-          ]
-        },
-        "8": {
-          "name": "选8",
-          "description": "每注8个号码，共5注",
-          "candidates": [
-            {
-              "numbers": [
-                12,
-                27,
-                33,
-                38,
-                42,
-                49,
-                69,
-                73
-              ],
-              "mix_label": "选8独立模型",
-              "source": "kl8_pick8",
-              "rank": 1,
-              "confidence": 77.0,
-              "copy_text": "福彩快乐8 选8 12 27 33 38 42 49 69 73"
-            },
-            {
-              "numbers": [
-                1,
-                12,
-                18,
-                30,
-                42,
-                45,
-                59,
-                61
-              ],
-              "mix_label": "选8独立模型",
-              "source": "kl8_pick8",
-              "rank": 2,
-              "confidence": 61.4,
-              "copy_text": "福彩快乐8 选8 01 12 18 30 42 45 59 61"
-            },
-            {
-              "numbers": [
-                11,
-                15,
-                18,
-                32,
-                33,
-                59,
-                62,
-                69
-              ],
-              "mix_label": "选8独立模型",
-              "source": "kl8_pick8",
-              "rank": 3,
-              "confidence": 60.1,
-              "copy_text": "福彩快乐8 选8 11 15 18 32 33 59 62 69"
-            },
-            {
-              "numbers": [
-                6,
-                11,
-                23,
-                30,
-                39,
-                61,
-                62,
-                77
-              ],
-              "mix_label": "选8独立模型",
-              "source": "kl8_pick8",
-              "rank": 4,
-              "confidence": 58.5,
-              "copy_text": "福彩快乐8 选8 06 11 23 30 39 61 62 77"
-            },
-            {
-              "numbers": [
-                1,
-                2,
-                11,
-                45,
-                46,
-                55,
-                69,
-                76
-              ],
-              "mix_label": "选8独立模型",
-              "source": "kl8_pick8",
-              "rank": 5,
-              "confidence": 52.0,
-              "copy_text": "福彩快乐8 选8 01 02 11 45 46 55 69 76"
-            }
-          ]
-        },
-        "9": {
-          "name": "选9",
-          "description": "每注9个号码，共5注",
-          "candidates": [
-            {
-              "numbers": [
-                1,
-                11,
-                12,
-                30,
-                33,
-                42,
-                69,
-                73,
-                77
-              ],
-              "mix_label": "选9独立模型",
-              "source": "kl8_pick9",
-              "rank": 1,
-              "confidence": 77.0,
-              "copy_text": "福彩快乐8 选9 01 11 12 30 33 42 69 73 77"
-            },
-            {
-              "numbers": [
-                6,
-                10,
-                12,
-                33,
-                39,
-                61,
-                62,
-                69,
-                76
-              ],
-              "mix_label": "选9独立模型",
-              "source": "kl8_pick9",
-              "rank": 2,
-              "confidence": 62.0,
-              "copy_text": "福彩快乐8 选9 06 10 12 33 39 61 62 69 76"
-            },
-            {
-              "numbers": [
-                6,
-                12,
-                18,
-                27,
-                32,
-                42,
-                45,
-                57,
-                73
-              ],
-              "mix_label": "选9独立模型",
-              "source": "kl8_pick9",
-              "rank": 3,
-              "confidence": 58.3,
-              "copy_text": "福彩快乐8 选9 06 12 18 27 32 42 45 57 73"
-            },
-            {
-              "numbers": [
-                2,
-                12,
-                23,
-                27,
-                38,
-                39,
-                46,
-                61,
-                73
-              ],
-              "mix_label": "选9独立模型",
-              "source": "kl8_pick9",
-              "rank": 4,
-              "confidence": 57.5,
-              "copy_text": "福彩快乐8 选9 02 12 23 27 38 39 46 61 73"
-            },
-            {
-              "numbers": [
-                2,
-                10,
-                15,
-                18,
-                27,
-                32,
-                49,
-                62,
-                69
-              ],
-              "mix_label": "选9独立模型",
-              "source": "kl8_pick9",
-              "rank": 5,
-              "confidence": 52.0,
-              "copy_text": "福彩快乐8 选9 02 10 15 18 27 32 49 62 69"
-            }
-          ]
-        },
-        "10": {
-          "name": "选10",
-          "description": "每注10个号码，共5注",
-          "candidates": [
-            {
-              "numbers": [
-                2,
-                12,
-                15,
-                30,
-                33,
-                39,
-                42,
-                61,
-                69,
-                73
-              ],
-              "mix_label": "选10独立模型",
-              "source": "kl8_pick10",
-              "rank": 1,
-              "confidence": 77.0,
-              "copy_text": "福彩快乐8 选10 02 12 15 30 33 39 42 61 69 73"
-            },
-            {
-              "numbers": [
-                1,
-                12,
-                23,
-                27,
-                38,
-                42,
-                46,
-                49,
-                57,
-                69
-              ],
-              "mix_label": "选10独立模型",
-              "source": "kl8_pick10",
-              "rank": 2,
-              "confidence": 60.9,
-              "copy_text": "福彩快乐8 选10 01 12 23 27 38 42 46 49 57 69"
-            },
-            {
-              "numbers": [
-                1,
-                6,
-                12,
-                18,
-                33,
-                39,
-                57,
-                59,
-                66,
-                77
-              ],
-              "mix_label": "选10独立模型",
-              "source": "kl8_pick10",
-              "rank": 3,
-              "confidence": 54.4,
-              "copy_text": "福彩快乐8 选10 01 06 12 18 33 39 57 59 66 77"
-            },
-            {
-              "numbers": [
-                10,
-                11,
-                12,
-                18,
-                27,
-                45,
-                49,
-                55,
-                62,
-                77
-              ],
-              "mix_label": "选10独立模型",
-              "source": "kl8_pick10",
-              "rank": 4,
-              "confidence": 54.1,
-              "copy_text": "福彩快乐8 选10 10 11 12 18 27 45 49 55 62 77"
-            },
-            {
-              "numbers": [
-                1,
-                6,
-                10,
-                11,
-                23,
-                32,
-                59,
-                69,
-                73,
-                76
-              ],
-              "mix_label": "选10独立模型",
-              "source": "kl8_pick10",
-              "rank": 5,
-              "confidence": 52.0,
-              "copy_text": "福彩快乐8 选10 01 06 10 11 23 32 59 69 73 76"
-            }
-          ]
-        }
-      },
       "review": {
-        "title": "第2026192期结构复盘",
-        "summary": "本期开出20个号码，四区比为7 : 4 : 4 : 5，奇偶比8:12，与前一期重号6个。",
+        "title": "第2026191期结构复盘",
+        "summary": "本期开出20个号码，四区比为6 : 5 : 5 : 4，奇偶比13:7，与前一期重号7个。",
         "metrics": [
           {
             "label": "号码和值",
-            "value": "766"
+            "value": "733"
           },
           {
             "label": "四区比",
-            "value": "7 : 4 : 4 : 5"
+            "value": "6 : 5 : 5 : 4"
           },
           {
             "label": "奇偶比",
-            "value": "8:12"
+            "value": "13:7"
           },
           {
             "label": "与前期重号",
-            "value": "6"
+            "value": "7"
           }
         ]
       },
@@ -2545,11 +1862,11 @@
         "signals": [
           {
             "label": "相对活跃号码",
-            "value": "12 · 69 · 27 · 73 · 33 · 23 · 42 · 01 · 11 · 02"
+            "value": "12 · 33 · 23 · 42 · 69 · 01 · 11 · 02 · 30 · 77"
           },
           {
             "label": "较长遗漏",
-            "value": "47（14期）、50（12期）、64（11期）、52（10期）、63（10期）、68（9期）"
+            "value": "70（15期）、16（14期）、47（13期）、54（13期）、19（11期）、36（11期）"
           },
           {
             "label": "组合目标",
@@ -2564,20 +1881,20 @@
         ]
       },
       "model_review": {
-        "issue": "2026192",
-        "actual": "04 10 12 15 16 18 19 27 28 32 36 46 49 51 54 62 69 70 73 75",
+        "issue": "2026191",
+        "actual": "01 02 05 06 13 15 23 28 32 34 37 42 45 46 53 55 71 73 75 77",
         "previous_candidates": [
-          "12 33 39 42 61",
-          "02 12 57 59 69",
-          "06 27 33 62 69",
-          "11 23 30 69 76",
-          "02 27 38 73 77"
+          "11 12 33 42 69",
+          "12 27 33 38 77",
+          "02 12 23 73 77",
+          "02 30 33 39 61",
+          "01 12 27 30 59"
         ],
         "exact_hits": 0,
-        "best_number_hits": 3,
-        "summary": "Issue 2026192 actual result 04 10 12 15 16 18 19 27 28 32 36 46 49 51 54 62 69 70 73 75; the previous candidate pool reached 3 matching numbers at best.",
-        "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape.",
-        "union_number_hits": 5
+        "best_number_hits": 4,
+        "union_number_hits": 6,
+        "summary": "2026191 actual result was compared with the previous five-number pool; the best group reached 4 and the union reached 6 matches.",
+        "lesson": "Keep the pick-five model, rolling window, and overlap control; do not add weight from one draw."
       }
     }
   },
