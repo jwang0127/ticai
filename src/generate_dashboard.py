@@ -28,16 +28,53 @@ GLOBAL_UNIQUE_WEIGHT = 0.06
 # modestly improves per-position coverage without changing the core signals.
 GLOBAL_DIVERSITY_PENALTY = 1.6
 DLT_DIVERSITY_PENALTY = 0.06
+WINDOW_BLEND = ((30, 0.25), (60, 0.35), (100, 0.40))
 
 # 排列3/排列5共享位置模型；福彩3D使用独立参数。7星彩和双色球另有专用生成器。
 DIGIT_MODELS = {
-    "pl35": {"decay": 18, "frequency": 0.58, "omission": 0.075, "crowding": 0.22,
+    # Selected from rolling top-3 positional coverage on each game's own
+    # history. PL3 and FC3D are deliberately calibrated separately.
+    "pl35": {"decay": 13, "frequency": 0.58, "omission": 0.075, "crowding": 0.22,
              "sum": 0.012, "unique": 0.09, "global_omission": 0.06,
              "global_unique": 0.06, "diversity": 1.6},
-    "fc3d": {"decay": 13, "frequency": 0.66, "omission": 0.045, "crowding": 0.30,
+    "fc3d": {"decay": 18, "frequency": 0.66, "omission": 0.045, "crowding": 0.30,
              "sum": 0.008, "unique": 0.13, "global_omission": 0.035,
              "global_unique": 0.10, "diversity": 1.85},
 }
+
+BACKTEST_DECAYS = (8, 13, 18, 24, 30, 45, 60)
+
+
+def rolling_digit_backtest(rows: list[dict], digits: int, decay: int, folds: int = 60) -> dict:
+    """Evaluate positional top-three coverage without using the held-out draw."""
+    limit = min(folds, max(0, len(rows) - 1))
+    hits = 0
+    total = 0
+    for index in range(1, limit + 1):
+        train = rows[index : index + min(100, len(rows) - index)]
+        actual = rows[index - 1]["numbers"]
+        for position in range(digits):
+            counts: Counter[int] = Counter()
+            for age, row in enumerate(train):
+                counts[int(row["numbers"][position])] += math.exp(-age / decay)
+            hits += int(int(actual[position]) in {value for value, _ in counts.most_common(3)})
+            total += 1
+    return {"folds": limit, "positional_top3_hit_rate": round(hits / total, 4) if total else 0.0}
+
+
+def calibrate_digit_model(game: str, rows: list[dict], digits: int) -> dict:
+    """Return the isolated model plus rolling-backtest evidence for the game."""
+    base = dict(digit_model(game))
+    scores = {str(decay): rolling_digit_backtest(rows, digits, decay) for decay in BACKTEST_DECAYS}
+    chosen = max(
+        BACKTEST_DECAYS,
+        key=lambda decay: (
+            scores[str(decay)]["positional_top3_hit_rate"],
+            -abs(decay - base["decay"]),
+        ),
+    )
+    base["decay"] = chosen
+    return {"parameters": base, "backtest": scores, "selected_decay": chosen}
 
 
 def digit_model(game: str) -> dict:
@@ -60,6 +97,17 @@ def weighted_counts(rows: list[dict], position: int, decay: float = RECENCY_DECA
             continue
         counts[int(row["numbers"][position])] += math.exp(-index / decay)
     return counts
+
+
+def blended_position_counts(rows: list[dict], position: int, decay: float) -> Counter[int]:
+    """Blend short, medium, and full available windows within cached history."""
+    result: Counter[int] = Counter()
+    for size, share in WINDOW_BLEND:
+        counts = weighted_counts(rows[: min(size, len(rows))], position, decay)
+        total = sum(counts.values()) or 1.0
+        for digit in range(10):
+            result[digit] += share * counts[digit] / total
+    return result
 
 
 def relative_confidences(scores: list[float]) -> list[int]:
@@ -95,7 +143,7 @@ def position_omissions(rows: list[dict], position: int) -> dict[int, int]:
 def mixed_digit_components(rows: list[dict], digits: int, model: dict | None = None) -> tuple[list[Counter[int]], list[float], list[dict[int, int]], list[float], list[float]]:
     """Build hot/cold signals without treating either as predictive certainty."""
     model = model or DIGIT_MODELS["pl35"]
-    position_counts = [weighted_counts(rows, position, model["decay"]) for position in range(digits)]
+    position_counts = [blended_position_counts(rows, position, model["decay"]) for position in range(digits)]
     totals = [sum(counter.values()) for counter in position_counts]
     omissions = [position_omissions(rows, position) for position in range(digits)]
     means: list[float] = []
@@ -151,7 +199,7 @@ def global_candidate_score(values: list[int], components: tuple, model: dict | N
 
 def digit_confidences(rows: list[dict], digits: int, numbers: list[str], game: str = "pl3") -> list[float]:
     """Map every displayed digit candidate onto the same global percentile scale."""
-    components = mixed_digit_components(rows, digits)
+    components = mixed_digit_components(rows, digits, digit_model(game))
     population = sorted(
         digit_support_score([int(value) for value in f"{number:0{digits}d}"], components)
         for number in range(10 ** digits)
@@ -186,7 +234,7 @@ def diversified_rank(
 def generate_digit_profile(
     rows: list[dict], digits: int, profile: str, limit: int = 5, game: str = "pl3"
 ) -> list[tuple[str, float, float]]:
-    model = digit_model(game)
+    model = calibrate_digit_model(game, rows, digits)["parameters"]
     components = mixed_digit_components(rows, digits, model)
     scored = []
     for number in range(10 ** digits):
@@ -313,8 +361,8 @@ def weighted_number_counts(rows: list[dict], start: int, end: int, decay: float 
 
 def generate_dlt(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]:
     rng = stable_rng("dlt", issue)
-    front_counts = weighted_number_counts(rows, 0, 5)
-    back_counts = weighted_number_counts(rows, 5, 7)
+    front_counts = blended_number_counts(rows, 0, 5)
+    back_counts = blended_number_counts(rows, 5, 7)
     front_total, back_total = sum(front_counts.values()), sum(back_counts.values())
     pool: dict[tuple[tuple[int, ...], tuple[int, ...]], float] = {}
 
@@ -356,7 +404,7 @@ def generate_dlt(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
 def generate_qxc(rows: list[dict]) -> tuple[list[dict], list[float]]:
     """7星彩专用七位置束搜索，避免套用三位数枚举模型。"""
     decay = 27
-    counters = [weighted_counts(rows, pos, decay) for pos in range(7)]
+    counters = [blended_position_counts(rows, pos, decay) for pos in range(7)]
     totals = [sum(counter.values()) for counter in counters]
     omissions = [position_omissions(rows, pos) for pos in range(7)]
     beam: list[tuple[str, float]] = [("", 0.0)]
@@ -390,11 +438,21 @@ def weighted_pair_counts(rows: list[dict], end: int, decay: float) -> Counter[tu
     return counts
 
 
+def blended_number_counts(rows: list[dict], start: int, end: int, decay: float = 24) -> Counter[int]:
+    """Blend short, medium, and full cached windows for set-based games."""
+    result: Counter[int] = Counter()
+    for size, share in WINDOW_BLEND:
+        counts = weighted_number_counts(rows[: min(size, len(rows))], start, end, decay)
+        for number, value in counts.items():
+            result[number] += share * value
+    return result
+
+
 def generate_ssq(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]:
     """双色球专用红蓝分区模型，加入红球共现与三区覆盖。"""
     rng = stable_rng("ssq", issue)
-    red_counts = weighted_number_counts(rows, 0, 6)
-    blue_counts = weighted_number_counts(rows, 6, 7)
+    red_counts = blended_number_counts(rows, 0, 6)
+    blue_counts = blended_number_counts(rows, 6, 7)
     pair_counts = weighted_pair_counts(rows, 6, 30)
     red_total, blue_total = sum(red_counts.values()), sum(blue_counts.values())
     pool: dict[tuple[tuple[int, ...], int], float] = {}
@@ -418,7 +476,7 @@ def generate_ssq(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
 
 def generate_kl8(rows: list[dict], pick_count: int = 5) -> tuple[list[dict], list[float]]:
     """快乐8“选五”专用模型：单号强度、遗漏、共现和四区覆盖。"""
-    counts = weighted_number_counts(rows, 0, 20, 25)
+    counts = blended_number_counts(rows, 0, 20, 25)
     total = sum(counts.values())
     pair_counts = weighted_pair_counts(rows, 20, 32)
     missed = {number: len(rows) for number in range(1, 81)}
@@ -656,8 +714,8 @@ def omission(rows: list[dict], start: int, end: int, values: range) -> list[tupl
 def build_analysis(game: str, rows: list[dict]) -> dict:
     sample = min(100, len(rows))
     if game == "dlt":
-        front = weighted_number_counts(rows[:sample], 0, 5)
-        back = weighted_number_counts(rows[:sample], 5, 7)
+        front = blended_number_counts(rows[:sample], 0, 5)
+        back = blended_number_counts(rows[:sample], 5, 7)
         hot_front = [f"{n:02d}" for n, _ in front.most_common(5)]
         hot_back = [f"{n:02d}" for n, _ in back.most_common(3)]
         omitted = [f"{n:02d}（{miss}期）" for n, miss in omission(rows[:sample], 0, 5, range(1, 36))[:5]]
@@ -673,8 +731,8 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
         }
 
     if game == "ssq":
-        red = weighted_number_counts(rows[:sample], 0, 6)
-        blue = weighted_number_counts(rows[:sample], 6, 7)
+        red = blended_number_counts(rows[:sample], 0, 6)
+        blue = blended_number_counts(rows[:sample], 6, 7)
         hot_red = [f"{n:02d}" for n, _ in red.most_common(6)]
         hot_blue = [f"{n:02d}" for n, _ in blue.most_common(3)]
         return {
@@ -690,7 +748,7 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
         }
 
     if game == "kl8":
-        counts = weighted_number_counts(rows[:sample], 0, 20, 25)
+        counts = blended_number_counts(rows[:sample], 0, 20, 25)
         hot = [f"{number:02d}" for number, _ in counts.most_common(10)]
         omitted = [f"{number:02d}（{miss}期）" for number, miss in omission(rows[:sample], 0, 20, range(1, 81))[:6]]
         return {
@@ -711,7 +769,8 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
     position_hot = []
     position_analysis = []
     labels = {3: ["百位", "十位", "个位"], 5: ["万位", "千位", "百位", "十位", "个位"], 7: ["第一位", "第二位", "第三位", "第四位", "第五位", "第六位", "第七位"]}[len(rows[0]["numbers"])]
-    model = digit_model(game) if game in ("pl3", "pl5", "fc3d") else {"decay": 27}
+    calibration = calibrate_digit_model(game, rows, len(rows[0]["numbers"])) if game in ("pl3", "pl5", "fc3d") else None
+    model = calibration["parameters"] if calibration else {"decay": 27}
     for pos in range(len(rows[0]["numbers"])):
         counter = weighted_counts(rows[:sample], pos, model["decay"])
         ranked = [str(value) for value, _ in counter.most_common(3)]
@@ -735,6 +794,8 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
             {"label": "较长遗漏", "value": "、".join(omitted)},
         ],
         "position_analysis": position_analysis,
+        "backtest": calibration["backtest"] if calibration else None,
+        "selected_decay": calibration["selected_decay"] if calibration else None,
         "method": (["七位独立频率与遗漏", "逐位束搜索", "相邻重号与和值温和约束"] if game == "qxc" else ["逐位置频率与遗漏", f"{model['decay']}期衰减参数", "5至8注综合清单与候选分散"]),
     }
 
