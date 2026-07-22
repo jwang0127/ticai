@@ -201,8 +201,10 @@ class DetailPageTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         payload = json.loads((root / "docs/assets/data/dashboard.json").read_text(encoding="utf-8"))
         self.assertRegex(payload["daily_results_date"], r"^\d{4}-\d{2}-\d{2}$")
-        self.assertEqual(len(payload["daily_results"]), 21)
+        self.assertEqual(len(payload["daily_results"]), 7)
         for item in payload["daily_results"]:
+            self.assertEqual(len(item["results"]), 3)
+            self.assertEqual(item["result"], "；".join(scheme["result"] for scheme in item["results"]))
             self.assertEqual(item["copy_text"], f"{item['name']} {item['result']}")
         homepage_script = (root / "docs/assets/js/app.js").read_text(encoding="utf-8")
         self.assertIn('id="daily-results-list"', (root / "docs/index.html").read_text(encoding="utf-8"))

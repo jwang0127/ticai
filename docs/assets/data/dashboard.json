@@ -1,153 +1,146 @@
 {
-  "generated_at": "2026-07-22T18:23:10+08:00",
+  "generated_at": "2026-07-22T18:35:27+08:00",
   "daily_results_date": "2026-07-22",
   "daily_results": [
     {
       "game": "dlt",
       "name": "超级大乐透",
-      "result": "17 19 25 28 30 + 08 11",
-      "copy_text": "超级大乐透 17 19 25 28 30 + 08 11",
-      "scheme": "西方数秘"
-    },
-    {
-      "game": "dlt",
-      "name": "超级大乐透",
-      "result": "01 08 28 29 31 + 03 05",
-      "copy_text": "超级大乐透 01 08 28 29 31 + 03 05",
-      "scheme": "塔罗占星"
-    },
-    {
-      "game": "dlt",
-      "name": "超级大乐透",
-      "result": "05 06 09 20 22 + 03 11",
-      "copy_text": "超级大乐透 05 06 09 20 22 + 03 11",
-      "scheme": "六壬"
-    },
-    {
-      "game": "pl3",
-      "name": "排列3",
-      "result": "872",
-      "copy_text": "排列3 872",
-      "scheme": "西方数秘"
+      "result": "17 19 25 28 30 + 08 11；01 08 28 29 31 + 03 05；05 06 09 20 22 + 03 11",
+      "results": [
+        {
+          "result": "17 19 25 28 30 + 08 11",
+          "scheme": "西方数秘"
+        },
+        {
+          "result": "01 08 28 29 31 + 03 05",
+          "scheme": "塔罗占星"
+        },
+        {
+          "result": "05 06 09 20 22 + 03 11",
+          "scheme": "六壬"
+        }
+      ],
+      "copy_text": "超级大乐透 17 19 25 28 30 + 08 11；01 08 28 29 31 + 03 05；05 06 09 20 22 + 03 11"
     },
     {
       "game": "pl3",
       "name": "排列3",
-      "result": "397",
-      "copy_text": "排列3 397",
-      "scheme": "塔罗占星"
-    },
-    {
-      "game": "pl3",
-      "name": "排列3",
-      "result": "616",
-      "copy_text": "排列3 616",
-      "scheme": "六壬"
-    },
-    {
-      "game": "pl5",
-      "name": "排列5",
-      "result": "30840",
-      "copy_text": "排列5 30840",
-      "scheme": "西方数秘"
-    },
-    {
-      "game": "pl5",
-      "name": "排列5",
-      "result": "60648",
-      "copy_text": "排列5 60648",
-      "scheme": "塔罗占星"
+      "result": "872；397；616",
+      "results": [
+        {
+          "result": "872",
+          "scheme": "西方数秘"
+        },
+        {
+          "result": "397",
+          "scheme": "塔罗占星"
+        },
+        {
+          "result": "616",
+          "scheme": "六壬"
+        }
+      ],
+      "copy_text": "排列3 872；397；616"
     },
     {
       "game": "pl5",
       "name": "排列5",
-      "result": "07711",
-      "copy_text": "排列5 07711",
-      "scheme": "六壬"
+      "result": "30840；60648；07711",
+      "results": [
+        {
+          "result": "30840",
+          "scheme": "西方数秘"
+        },
+        {
+          "result": "60648",
+          "scheme": "塔罗占星"
+        },
+        {
+          "result": "07711",
+          "scheme": "六壬"
+        }
+      ],
+      "copy_text": "排列5 30840；60648；07711"
     },
     {
       "game": "fc3d",
       "name": "福彩3D",
-      "result": "408",
-      "copy_text": "福彩3D 408",
-      "scheme": "西方数秘"
-    },
-    {
-      "game": "fc3d",
-      "name": "福彩3D",
-      "result": "597",
-      "copy_text": "福彩3D 597",
-      "scheme": "塔罗占星"
-    },
-    {
-      "game": "fc3d",
-      "name": "福彩3D",
-      "result": "432",
-      "copy_text": "福彩3D 432",
-      "scheme": "六壬"
-    },
-    {
-      "game": "qxc",
-      "name": "体彩7星彩",
-      "result": "2374283",
-      "copy_text": "体彩7星彩 2374283",
-      "scheme": "西方数秘"
+      "result": "408；597；432",
+      "results": [
+        {
+          "result": "408",
+          "scheme": "西方数秘"
+        },
+        {
+          "result": "597",
+          "scheme": "塔罗占星"
+        },
+        {
+          "result": "432",
+          "scheme": "六壬"
+        }
+      ],
+      "copy_text": "福彩3D 408；597；432"
     },
     {
       "game": "qxc",
       "name": "体彩7星彩",
-      "result": "0640945",
-      "copy_text": "体彩7星彩 0640945",
-      "scheme": "塔罗占星"
-    },
-    {
-      "game": "qxc",
-      "name": "体彩7星彩",
-      "result": "2030198",
-      "copy_text": "体彩7星彩 2030198",
-      "scheme": "六壬"
-    },
-    {
-      "game": "ssq",
-      "name": "福彩双色球",
-      "result": "06 09 10 20 24 30 + 03",
-      "copy_text": "福彩双色球 06 09 10 20 24 30 + 03",
-      "scheme": "西方数秘"
-    },
-    {
-      "game": "ssq",
-      "name": "福彩双色球",
-      "result": "03 14 19 23 25 26 + 01",
-      "copy_text": "福彩双色球 03 14 19 23 25 26 + 01",
-      "scheme": "塔罗占星"
+      "result": "2374283；0640945；2030198",
+      "results": [
+        {
+          "result": "2374283",
+          "scheme": "西方数秘"
+        },
+        {
+          "result": "0640945",
+          "scheme": "塔罗占星"
+        },
+        {
+          "result": "2030198",
+          "scheme": "六壬"
+        }
+      ],
+      "copy_text": "体彩7星彩 2374283；0640945；2030198"
     },
     {
       "game": "ssq",
       "name": "福彩双色球",
-      "result": "16 20 26 31 32 33 + 16",
-      "copy_text": "福彩双色球 16 20 26 31 32 33 + 16",
-      "scheme": "六壬"
+      "result": "06 09 10 20 24 30 + 03；03 14 19 23 25 26 + 01；16 20 26 31 32 33 + 16",
+      "results": [
+        {
+          "result": "06 09 10 20 24 30 + 03",
+          "scheme": "西方数秘"
+        },
+        {
+          "result": "03 14 19 23 25 26 + 01",
+          "scheme": "塔罗占星"
+        },
+        {
+          "result": "16 20 26 31 32 33 + 16",
+          "scheme": "六壬"
+        }
+      ],
+      "copy_text": "福彩双色球 06 09 10 20 24 30 + 03；03 14 19 23 25 26 + 01；16 20 26 31 32 33 + 16"
     },
     {
       "game": "kl8",
       "name": "福彩快乐8",
-      "result": "07 14 31 34 48 52 70 72",
-      "copy_text": "福彩快乐8 07 14 31 34 48 52 70 72",
-      "scheme": "西方数秘"
-    },
-    {
-      "game": "kl8",
-      "name": "福彩快乐8",
-      "result": "04 12 28 53 59 61 65 79",
-      "copy_text": "福彩快乐8 04 12 28 53 59 61 65 79",
-      "scheme": "塔罗占星"
-    },
-    {
-      "game": "kl8",
-      "name": "福彩快乐8",
-      "result": "02 04 06 24 32 37 53 56",
-      "copy_text": "福彩快乐8 02 04 06 24 32 37 53 56",
-      "scheme": "六壬"
+      "result": "07 14 31 34 48 52 70 72；04 12 28 53 59 61 65 79；02 04 06 24 32 37 53 56",
+      "results": [
+        {
+          "result": "07 14 31 34 48 52 70 72",
+          "scheme": "西方数秘"
+        },
+        {
+          "result": "04 12 28 53 59 61 65 79",
+          "scheme": "塔罗占星"
+        },
+        {
+          "result": "02 04 06 24 32 37 53 56",
+          "scheme": "六壬"
+        }
+      ],
+      "copy_text": "福彩快乐8 07 14 31 34 48 52 70 72；04 12 28 53 59 61 65 79；02 04 06 24 32 37 53 56"
     }
   ],
   "source_status": "official_api",
@@ -155,7 +148,7 @@
   "games": {
     "dlt": {
       "name": "超级大乐透",
-      "generated_at": "2026-07-22T18:23:10+08:00",
+      "generated_at": "2026-07-22T18:35:27+08:00",
       "latest_issue": "26081",
       "latest_draw_date": "2026-07-20",
       "latest_numbers": [
@@ -398,7 +391,7 @@
     },
     "pl3": {
       "name": "排列3",
-      "generated_at": "2026-07-22T18:23:10+08:00",
+      "generated_at": "2026-07-22T18:35:27+08:00",
       "latest_issue": "26192",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -665,7 +658,7 @@
     },
     "pl5": {
       "name": "排列5",
-      "generated_at": "2026-07-22T18:23:10+08:00",
+      "generated_at": "2026-07-22T18:35:27+08:00",
       "latest_issue": "26192",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -936,7 +929,7 @@
     },
     "fc3d": {
       "name": "福彩3D",
-      "generated_at": "2026-07-22T18:23:10+08:00",
+      "generated_at": "2026-07-22T18:35:27+08:00",
       "latest_issue": "2026192",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -1203,7 +1196,7 @@
     },
     "qxc": {
       "name": "体彩7星彩",
-      "generated_at": "2026-07-22T18:23:10+08:00",
+      "generated_at": "2026-07-22T18:35:27+08:00",
       "latest_issue": "26083",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -1546,7 +1539,7 @@
     },
     "ssq": {
       "name": "福彩双色球",
-      "generated_at": "2026-07-22T18:23:10+08:00",
+      "generated_at": "2026-07-22T18:35:27+08:00",
       "latest_issue": "2026083",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -1810,7 +1803,7 @@
     },
     "kl8": {
       "name": "福彩快乐8",
-      "generated_at": "2026-07-22T18:23:10+08:00",
+      "generated_at": "2026-07-22T18:35:27+08:00",
       "latest_issue": "2026192",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [

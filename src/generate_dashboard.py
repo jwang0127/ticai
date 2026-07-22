@@ -511,6 +511,8 @@ def generate_daily_results(draw_date: str, config: dict) -> list[dict]:
     results = []
     methods = ("西方数秘", "塔罗占星", "六壬")
     for game, cfg in config["games"].items():
+        values = []
+        schemes = []
         for scheme, method in enumerate(methods, start=1):
             rng = _module_rng(draw_date, game, scheme)
             if game == "dlt":
@@ -526,13 +528,16 @@ def generate_daily_results(draw_date: str, config: dict) -> list[dict]:
             else:
                 digits = cfg["digits"]
                 value = "".join(str(rng.randrange(10)) for _ in range(digits))
-            results.append({
-                "game": game,
-                "name": cfg["name"],
-                "result": value,
-                "copy_text": f"{cfg['name']} {value}",
-                "scheme": method,
-            })
+            values.append(value)
+            schemes.append({"result": value, "scheme": method})
+        combined = "；".join(values)
+        results.append({
+            "game": game,
+            "name": cfg["name"],
+            "result": combined,
+            "results": schemes,
+            "copy_text": f"{cfg['name']} {combined}",
+        })
     return results
 
 
