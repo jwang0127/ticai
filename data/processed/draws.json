@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-22T22:36:27+08:00",
-  "source_status": "official_api",
+  "updated_at": "2026-07-24T00:01:46+08:00",
+  "source_status": "cached_verified_data",
   "draws": {
     "dlt": [
       {
@@ -188054,5 +188054,12 @@
       "role": "福彩快乐8官方开奖来源"
     }
   ],
-  "errors": {}
+  "errors": {
+    "fc3d": "中国福彩网福彩3D接口请求失败: HTTP Error 403: Forbidden",
+    "ssq": "中国福彩网福彩双色球接口请求失败: HTTP Error 403: Forbidden",
+    "kl8": "中国福彩网福彩快乐8接口请求失败: HTTP Error 403: Forbidden",
+    "pl5": "官方接口请求失败: HTTP Error 567: Unknown Status",
+    "qxc": "官方接口请求失败: HTTP Error 567: Unknown Status",
+    "pl3": "官方接口请求失败: HTTP Error 567: Unknown Status"
+  }
 }
