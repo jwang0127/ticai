@@ -90,6 +90,8 @@ h1 em { color: var(--blue); font-style: normal; }
 .draw-board-game strong { font-size: 16px; }
 .draw-board-index { color: var(--red); font: 500 10px/1 "DM Mono", monospace; letter-spacing: .1em; }
 .draw-board-table time { color: var(--blue); font-size: 14px; font-weight: 900; line-height: 1.5; }
+.draw-board-table .is-today-draw { background: rgba(26,95,255,.06); }
+.draw-today-badge { display: inline-block; margin: 0 8px 5px 0; padding: 4px 7px; border-radius: 999px; background: var(--red); color: #fff; font: 800 10px/1 "DM Mono", monospace; letter-spacing: .04em; vertical-align: middle; }
 .draw-board-issue { font: 700 13px/1.4 "DM Mono", monospace; }
 .draw-board-schedule { color: var(--muted); font-size: 11px; }
 .draw-board-refresh { margin: 10px 2px 0; color: var(--muted); font-size: 11px; }

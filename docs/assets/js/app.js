@@ -66,6 +66,25 @@ function escapeHtml(value) {
   return div.innerHTML;
 }
 
+function beijingDateTimeValue(value) {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Shanghai",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date(value));
+}
+
+function isTodayDraw(nextDrawAt) {
+  const today = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Shanghai",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
+  return beijingDateTimeValue(nextDrawAt) === today;
+}
+
 let toastTimer;
 function toast(message) {
   const node = $("#toast");
@@ -106,7 +125,7 @@ async function load() {
     </article>`).join("");
 
   $("#draw-board").innerHTML = entries.map(([key, game], index) => `
-    <tr>
+    <tr class="${isTodayDraw(game.next_draw_at) ? "is-today-draw" : ""}">
       <td data-label="玩法">
         <a class="draw-board-game" href="./${key}/">
           <span class="draw-board-index">DRAW / 0${index + 1}</span>
@@ -114,7 +133,10 @@ async function load() {
         </a>
       </td>
       <td data-label="目标期号"><span class="draw-board-issue">${escapeHtml(game.target_issue)}</span></td>
-      <td data-label="下一期开奖时间"><time datetime="${escapeHtml(game.next_draw_at)}">${escapeHtml(game.next_draw_display)}</time></td>
+      <td data-label="下一期开奖时间">
+        ${isTodayDraw(game.next_draw_at) ? '<span class="draw-today-badge">今日开奖</span>' : ""}
+        <time datetime="${escapeHtml(game.next_draw_at)}">${escapeHtml(game.next_draw_display)}</time>
+      </td>
       <td data-label="开奖安排"><span class="draw-board-schedule">${escapeHtml(game.schedule_note)}</span></td>
     </tr>`).join("");
 
