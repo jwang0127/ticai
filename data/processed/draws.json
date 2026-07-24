@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-22T22:36:27+08:00",
-  "source_status": "official_api",
+  "updated_at": "2026-07-24T10:08:13+08:00",
+  "source_status": "cached_verified_data",
   "draws": {
     "dlt": [
       {
@@ -26006,6 +26006,15 @@
     ],
     "pl3": [
       {
+        "issue": "26194",
+        "draw_date": "2026-07-23",
+        "numbers": [
+          "7",
+          "0",
+          "1"
+        ]
+      },
+      {
         "issue": "26193",
         "draw_date": "2026-07-22",
         "numbers": [
@@ -44007,6 +44016,17 @@
       }
     ],
     "pl5": [
+      {
+        "issue": "26194",
+        "draw_date": "2026-07-23",
+        "numbers": [
+          "7",
+          "0",
+          "1",
+          "0",
+          "6"
+        ]
+      },
       {
         "issue": "26193",
         "draw_date": "2026-07-22",
@@ -66010,6 +66030,15 @@
     ],
     "fc3d": [
       {
+        "issue": "2026194",
+        "draw_date": "2026-07-23",
+        "numbers": [
+          "2",
+          "8",
+          "3"
+        ]
+      },
+      {
         "issue": "2026193",
         "draw_date": "2026-07-22",
         "numbers": [
@@ -84011,6 +84040,19 @@
       }
     ],
     "ssq": [
+      {
+        "issue": "2026084",
+        "draw_date": "2026-07-23",
+        "numbers": [
+          "01",
+          "05",
+          "06",
+          "10",
+          "12",
+          "16",
+          "05"
+        ]
+      },
       {
         "issue": "2026083",
         "draw_date": "2026-07-21",
@@ -136015,6 +136057,32 @@
       }
     ],
     "kl8": [
+      {
+        "issue": "2026194",
+        "draw_date": "2026-07-23",
+        "numbers": [
+          "02",
+          "05",
+          "06",
+          "12",
+          "19",
+          "20",
+          "29",
+          "35",
+          "37",
+          "39",
+          "46",
+          "47",
+          "48",
+          "51",
+          "54",
+          "59",
+          "66",
+          "72",
+          "74",
+          "78"
+        ]
+      },
       {
         "issue": "2026193",
         "draw_date": "2026-07-22",
@@ -188054,5 +188122,13 @@
       "role": "福彩快乐8官方开奖来源"
     }
   ],
-  "errors": {}
+  "errors": {
+    "kl8": "中国福彩网福彩快乐8接口请求失败: HTTP Error 403: Forbidden",
+    "fc3d": "中国福彩网福彩3D接口请求失败: HTTP Error 403: Forbidden",
+    "qxc": "官方接口请求失败: HTTP Error 567: Unknown Status",
+    "pl3": "官方接口请求失败: HTTP Error 567: Unknown Status",
+    "pl5": "官方接口请求失败: <urlopen error _ssl.c:1064: The handshake operation timed out>",
+    "dlt": "官方接口请求失败: <urlopen error _ssl.c:1064: The handshake operation timed out>",
+    "ssq": "中国福彩网福彩双色球接口请求失败: <urlopen error _ssl.c:1064: The handshake operation timed out>"
+  }
 }

@@ -15,55 +15,78 @@
     "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape."
   },
   "pl3": {
-    "issue": "26193",
-    "actual": "180",
+    "issue": "26194",
+    "actual": "701",
     "previous_candidates": [
-      "155",
-      "382",
       "356",
-      "816",
-      "047",
-      "143",
-      "722",
-      "524"
+      "185",
+      "004",
+      "660",
+      "542",
+      "717",
+      "829",
+      "993"
     ],
     "exact_hits": 0,
     "best_number_hits": 2,
-    "summary": "Issue 26193 actual result 180; the previous candidate pool reached 2 matching numbers at best.",
+    "position_candidate_hits": [
+      1,
+      1,
+      0
+    ],
+    "position_pool_coverage": 2,
+    "position_count": 3,
+    "summary": "Issue 26194 actual result 701; the previous candidate pool reached 2 matching numbers at best.",
     "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape."
   },
   "pl5": {
-    "issue": "26193",
-    "actual": "18068",
+    "issue": "26194",
+    "actual": "70106",
     "previous_candidates": [
-      "15579",
-      "38270",
-      "35679",
-      "04772",
-      "81674",
-      "14346"
+      "35678",
+      "18569",
+      "00440",
+      "66004",
+      "54212",
+      "81785"
     ],
     "exact_hits": 0,
-    "best_number_hits": 3,
-    "summary": "Issue 26193 actual result 18068; the previous candidate pool reached 3 matching numbers at best.",
+    "best_number_hits": 2,
+    "position_candidate_hits": [
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    "position_pool_coverage": 2,
+    "position_count": 5,
+    "summary": "Issue 26194 actual result 70106; the previous candidate pool reached 2 matching numbers at best.",
     "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape."
   },
   "fc3d": {
-    "issue": "2026193",
-    "actual": "254",
+    "issue": "2026194",
+    "actual": "283",
     "previous_candidates": [
-      "926",
-      "028",
-      "065",
-      "608",
-      "892",
-      "690",
-      "433",
-      "837"
+      "925",
+      "006",
+      "668",
+      "492",
+      "253",
+      "537",
+      "849",
+      "310"
     ],
     "exact_hits": 0,
-    "best_number_hits": 1,
-    "summary": "Issue 2026193 actual result 254; the previous candidate pool reached 1 matching numbers at best.",
+    "best_number_hits": 2,
+    "position_candidate_hits": [
+      1,
+      0,
+      1
+    ],
+    "position_pool_coverage": 2,
+    "position_count": 3,
+    "summary": "Issue 2026194 actual result 283; the previous candidate pool reached 2 matching numbers at best.",
     "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape."
   },
   "qxc": {
@@ -85,33 +108,68 @@
     "lesson": "Keep the seven-position constraint search and avoid overfitting the latest pattern."
   },
   "ssq": {
-    "issue": "2026083",
-    "actual": "07 14 15 23 28 33 + 03",
+    "issue": "2026084",
+    "actual": "01 05 06 10 12 16 + 05",
     "previous_candidates": [
-      "08 14 16 24 27 32 + 04",
-      "07 14 21 24 28 32 + 01",
-      "01 03 08 21 24 30 + 01",
-      "01 11 22 24 25 29 + 04",
-      "03 16 24 27 29 32 + 04"
+      "03 08 14 16 24 28 + 04",
+      "07 09 14 24 25 28 + 04",
+      "04 07 11 14 24 29 + 04",
+      "01 14 18 24 28 32 + 01",
+      "03 05 07 14 28 32 + 04"
     ],
     "exact_hits": 0,
-    "best_number_hits": 3,
-    "summary": "2026083 actual result was 07 14 15 23 28 33 + 03; the previous pool reached 3 matching numbers at best.",
-    "lesson": "Keep the red-blue separated model and zone coverage; do not chase a single draw."
+    "best_number_hits": 1,
+    "position_candidate_hits": [
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "position_pool_coverage": 2,
+    "position_count": 7,
+    "summary": "Issue 2026084 actual result 01 05 06 10 12 16 + 05; the previous candidate pool reached 1 matching numbers at best.",
+    "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape."
   },
   "kl8": {
-    "issue": "2026193",
-    "actual": "03 07 15 22 29 30 37 40 42 48 51 52 61 62 64 66 71 74 75 78",
+    "issue": "2026194",
+    "actual": "02 05 06 12 19 20 29 35 37 39 46 47 48 51 54 59 66 72 74 78",
     "previous_candidates": [
-      "10 12 27 33 73",
+      "12 33 39 42 69",
       "01 11 12 42 69 73",
-      "01 12 42 59 62 69 73",
-      "12 27 33 38 42 49 69 73",
-      "01 11 12 30 33 42 69 73 77"
+      "11 12 15 27 42 62 69",
+      "02 12 15 27 49 62 69 73",
+      "02 12 27 30 33 57 62 69 73"
     ],
     "exact_hits": 0,
     "best_number_hits": 2,
-    "summary": "Issue 2026193 actual result 03 07 15 22 29 30 37 40 42 48 51 52 61 62 64 66 71 74 75 78; the previous candidate pool reached 2 matching numbers at best.",
+    "position_candidate_hits": [
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "position_pool_coverage": 1,
+    "position_count": 20,
+    "summary": "Issue 2026194 actual result 02 05 06 12 19 20 29 35 37 39 46 47 48 51 54 59 66 72 74 78; the previous candidate pool reached 2 matching numbers at best.",
     "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape.",
     "union_number_hits": 3
   }
