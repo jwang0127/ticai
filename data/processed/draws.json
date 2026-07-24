@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-24T11:34:58+08:00",
+  "updated_at": "2026-07-24T23:40:22+08:00",
   "source_status": "cached_verified_data",
   "draws": {
     "dlt": [
@@ -188123,6 +188123,11 @@
     }
   ],
   "errors": {
-    "dlt": "官方接口请求失败: <urlopen error _ssl.c:993: The handshake operation timed out>"
+    "kl8": "中国福彩网福彩快乐8接口请求失败: HTTP Error 403: Forbidden",
+    "ssq": "中国福彩网福彩双色球接口请求失败: HTTP Error 403: Forbidden",
+    "fc3d": "中国福彩网福彩3D接口请求失败: HTTP Error 403: Forbidden",
+    "qxc": "官方接口请求失败: HTTP Error 567: Unknown Status",
+    "pl5": "官方接口请求失败: HTTP Error 567: Unknown Status",
+    "pl3": "官方接口请求失败: HTTP Error 567: Unknown Status"
   }
 }

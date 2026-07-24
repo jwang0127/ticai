@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-24T11:34:58+08:00",
+  "generated_at": "2026-07-24T23:40:22+08:00",
   "daily_results_date": "2026-07-24",
   "daily_model_version": "v2.2-independent-date-game-schemes",
   "daily_results": [
@@ -479,7 +479,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2001,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-24T10:26:36+08:00",
+      "generated_at": "2026-07-24T23:40:22+08:00",
       "latest_issue": "26194",
       "latest_draw_date": "2026-07-23",
       "latest_numbers": [
@@ -488,8 +488,8 @@
         "1"
       ],
       "target_issue": "26195",
-      "next_draw_at": "2026-07-24T21:25+08:00",
-      "next_draw_display": "2026年07月24日 21:25（北京时间）",
+      "next_draw_at": "2026-07-25T21:25+08:00",
+      "next_draw_display": "2026年07月25日 21:25（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
@@ -900,7 +900,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2001,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-24T10:26:36+08:00",
+      "generated_at": "2026-07-24T23:40:22+08:00",
       "latest_issue": "26194",
       "latest_draw_date": "2026-07-23",
       "latest_numbers": [
@@ -911,8 +911,8 @@
         "6"
       ],
       "target_issue": "26195",
-      "next_draw_at": "2026-07-24T21:25+08:00",
-      "next_draw_display": "2026年07月24日 21:25（北京时间）",
+      "next_draw_at": "2026-07-25T21:25+08:00",
+      "next_draw_display": "2026年07月25日 21:25（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
@@ -1327,7 +1327,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2001,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-24T10:26:36+08:00",
+      "generated_at": "2026-07-24T23:40:22+08:00",
       "latest_issue": "2026194",
       "latest_draw_date": "2026-07-23",
       "latest_numbers": [
@@ -1336,8 +1336,8 @@
         "3"
       ],
       "target_issue": "2026195",
-      "next_draw_at": "2026-07-24T21:15+08:00",
-      "next_draw_display": "2026年07月24日 21:15（北京时间）",
+      "next_draw_at": "2026-07-25T21:15+08:00",
+      "next_draw_display": "2026年07月25日 21:15（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
@@ -1748,7 +1748,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-24T10:26:36+08:00",
+      "generated_at": "2026-07-24T23:40:22+08:00",
       "latest_issue": "26083",
       "latest_draw_date": "2026-07-21",
       "latest_numbers": [
@@ -1761,8 +1761,8 @@
         "2"
       ],
       "target_issue": "26084",
-      "next_draw_at": "2026-07-24T21:25+08:00",
-      "next_draw_display": "2026年07月24日 21:25（北京时间）",
+      "next_draw_at": "2026-07-26T21:25+08:00",
+      "next_draw_display": "2026年07月26日 21:25（北京时间）",
       "schedule_note": "每周二、五、日开奖",
       "candidates": [
         {
@@ -2118,7 +2118,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2001,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-24T10:26:36+08:00",
+      "generated_at": "2026-07-24T23:40:22+08:00",
       "latest_issue": "2026084",
       "latest_draw_date": "2026-07-23",
       "latest_numbers": [
@@ -2419,7 +2419,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2001,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-24T10:26:36+08:00",
+      "generated_at": "2026-07-24T23:40:22+08:00",
       "latest_issue": "2026194",
       "latest_draw_date": "2026-07-23",
       "latest_numbers": [
@@ -2445,8 +2445,8 @@
         "78"
       ],
       "target_issue": "2026195",
-      "next_draw_at": "2026-07-24T21:30+08:00",
-      "next_draw_display": "2026年07月24日 21:30（北京时间）",
+      "next_draw_at": "2026-07-25T21:30+08:00",
+      "next_draw_display": "2026年07月25日 21:30（北京时间）",
       "schedule_note": "每日21:30开奖（休市日除外）",
       "candidates": [
         {
