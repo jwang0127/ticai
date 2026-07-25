@@ -963,7 +963,21 @@ def build_model_review(
         review["next_day_advice"] = advice
         review["next_day_advice_text"] = "；".join(item["suggestion"] for item in advice) or "暂无可用候选"
     elif game == "kl8":
-        review["union_number_hits"] = len(set().union(*(set(item) for item in candidate_values)) & set(actual)) if candidate_values else 0
+        union = set().union(*(set(item) for item in candidate_values)) if candidate_values else set()
+        hit_numbers = sorted(union & set(actual))
+        missed_numbers = sorted(set(actual) - union)
+        review["union_number_hits"] = len(hit_numbers)
+        review["number_pool_coverage"] = f"{len(hit_numbers)} / {len(actual)}"
+        review["hit_numbers"] = [f"{value:02d}" for value in hit_numbers]
+        review["missed_numbers"] = [f"{value:02d}" for value in missed_numbers]
+        review["error_attribution"] = (
+            f"未覆盖的 {len(missed_numbers)} 个号码没有进入五组联合池，主要是单号强度、四区覆盖、共现分和组间重合惩罚共同筛选的结果；"
+            "不把一次遗漏直接解释成下期必补。"
+        )
+        review["model_adjustments"] = [
+            "快乐8继续单独使用选五模型，并以滚动联合池覆盖率选择历史窗口。",
+            "保持五组之间的重合约束，优先修正长期覆盖不足的区间，不追逐单期遗漏号码。",
+        ]
     else:
         review["position_candidate_hits"] = [
             sum(position < len(item) and item[position] == target for item in candidate_values)
@@ -1200,7 +1214,7 @@ def main() -> None:
             model_reviews[game] = build_model_review(game, latest, previous_game, {"top_candidates": enriched})
             output["games"][game]["model_review"] = model_reviews[game]
         elif (
-            game in ("pl3", "fc3d")
+            game in ("pl3", "fc3d", "kl8")
             and model_reviews.get(game, {}).get("issue") == latest["issue"]
             and not model_reviews[game].get("position_diagnostics")
         ):
@@ -1209,8 +1223,15 @@ def main() -> None:
             # small direct-digit snapshot so the detailed review can be added
             # without pretending the current pool predicted the past draw.
             saved_review = model_reviews[game]
+            if game == "kl8":
+                saved_candidates = [
+                    {"numbers": [int(value) for value in text.split()]}
+                    for text in saved_review.get("previous_candidates", [])
+                ]
+            else:
+                saved_candidates = [{"number": value} for value in saved_review.get("previous_candidates", [])]
             saved_prediction = {
-                "top_candidates": [{"number": value} for value in saved_review.get("previous_candidates", [])],
+                "top_candidates": saved_candidates,
                 "analysis": output["games"][game]["analysis"],
             }
             model_reviews[game] = build_model_review(game, latest, saved_prediction, {"top_candidates": enriched})

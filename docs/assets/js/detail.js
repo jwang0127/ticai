@@ -85,6 +85,7 @@ function modelReviewHtml(review) {
     </div>`).join("");
   const advice = (review.next_day_advice || []).map(item => `<span class="advice-chip">${escapeHtml(item.suggestion)}</span>`).join("");
   const adjustments = (review.model_adjustments || []).map(item => `<li>${escapeHtml(item)}</li>`).join("");
+  const attribution = review.error_attribution ? `<div class="review-attribution"><h3>错误归因</h3><p>${escapeHtml(review.error_attribution)}</p></div>` : "";
   return `<section class="section">
     <div class="section-head"><div><p class="section-label">MODEL REVIEW</p><h2>第${escapeHtml(review.issue)}期模型复盘</h2></div><p class="section-note">${escapeHtml(review.summary)}</p></div>
     <div class="metrics model-review-metrics">
@@ -92,6 +93,8 @@ function modelReviewHtml(review) {
       <div class="metric"><span>最佳组合命中</span><strong>${escapeHtml(review.best_number_hits)}</strong></div>
     </div>
     ${diagnostics ? `<div class="review-diagnostics">${diagnostics}</div>` : ""}
+    ${review.number_pool_coverage ? `<div class="review-attribution"><strong>快乐8联合池覆盖 ${escapeHtml(review.number_pool_coverage)}</strong></div>` : ""}
+    ${attribution}
     ${advice ? `<div class="next-day-advice"><h3>第二天购买建议（模型参考）</h3><div>${advice}</div></div>` : ""}
     ${adjustments ? `<div class="review-adjustments"><h3>模型调整</h3><ul>${adjustments}</ul></div>` : ""}
     <p class="review-lesson">${escapeHtml(review.lesson)}</p>

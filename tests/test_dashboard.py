@@ -131,6 +131,17 @@ class DetailPageTests(unittest.TestCase):
             self.assertTrue(review["next_day_advice_text"])
             self.assertEqual(len(payload["games"][game]["analysis"]["selected_position_parameters"]), 3)
 
+    def test_kl8_review_reports_union_pool_coverage_and_attribution(self):
+        root = Path(__file__).resolve().parents[1]
+        payload = json.loads((root / "docs/assets/data/dashboard.json").read_text(encoding="utf-8"))
+        review = payload["games"]["kl8"]["model_review"]
+        covered, total = review["number_pool_coverage"].split(" / ")
+        self.assertEqual(total, "20")
+        self.assertGreaterEqual(int(covered), 0)
+        self.assertTrue(review["missed_numbers"])
+        self.assertTrue(review["error_attribution"])
+        self.assertEqual(len(review["model_adjustments"]), 2)
+
     def test_hot_and_cold_profiles_are_separate(self):
         hot = generate_digit_profile(self.fc3d_rows, 3, "hot", 5, "fc3d")
         cold = generate_digit_profile(self.fc3d_rows, 3, "cold", 5, "fc3d")

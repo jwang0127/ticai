@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-25T11:28:48+08:00",
+  "generated_at": "2026-07-25T11:33:53+08:00",
   "daily_results_date": "2026-07-25",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -208,7 +208,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-07-25T11:28:48+08:00",
+      "generated_at": "2026-07-25T11:33:53+08:00",
       "latest_issue": "26082",
       "latest_draw_date": "2026-07-22",
       "latest_numbers": [
@@ -535,7 +535,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T11:28:48+08:00",
+      "generated_at": "2026-07-25T11:33:53+08:00",
       "latest_issue": "26195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -1442,7 +1442,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T11:28:48+08:00",
+      "generated_at": "2026-07-25T11:33:53+08:00",
       "latest_issue": "26195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -2607,7 +2607,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T11:28:48+08:00",
+      "generated_at": "2026-07-25T11:33:53+08:00",
       "latest_issue": "2026195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -3514,7 +3514,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T11:28:48+08:00",
+      "generated_at": "2026-07-25T11:33:53+08:00",
       "latest_issue": "26084",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -3849,7 +3849,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-25T11:28:48+08:00",
+      "generated_at": "2026-07-25T11:33:53+08:00",
       "latest_issue": "2026084",
       "latest_draw_date": "2026-07-23",
       "latest_numbers": [
@@ -4150,7 +4150,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-25T11:28:48+08:00",
+      "generated_at": "2026-07-25T11:33:53+08:00",
       "latest_issue": "2026195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -4445,33 +4445,39 @@
         ],
         "exact_hits": 0,
         "best_number_hits": 1,
-        "position_candidate_hits": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
+        "summary": "第2026195期按位复盘：候选池覆盖 0 / 20 个位置；不按单期结果追涨参数。",
+        "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
+        "union_number_hits": 3,
+        "number_pool_coverage": "3 / 20",
+        "hit_numbers": [
+          "18",
+          "27",
+          "30"
         ],
-        "position_pool_coverage": 0,
-        "position_count": 20,
-        "summary": "Issue 2026195 actual result 07 10 14 17 18 19 23 24 27 30 31 37 40 41 46 47 49 63 64 75; the previous candidate pool reached 1 matching numbers at best.",
-        "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape.",
-        "union_number_hits": 3
+        "missed_numbers": [
+          "07",
+          "10",
+          "14",
+          "17",
+          "19",
+          "23",
+          "24",
+          "31",
+          "37",
+          "40",
+          "41",
+          "46",
+          "47",
+          "49",
+          "63",
+          "64",
+          "75"
+        ],
+        "error_attribution": "未覆盖的 17 个号码没有进入五组联合池，主要是单号强度、四区覆盖、共现分和组间重合惩罚共同筛选的结果；不把一次遗漏直接解释成下期必补。",
+        "model_adjustments": [
+          "快乐8继续单独使用选五模型，并以滚动联合池覆盖率选择历史窗口。",
+          "保持五组之间的重合约束，优先修正长期覆盖不足的区间，不追逐单期遗漏号码。"
+        ]
       }
     }
   },

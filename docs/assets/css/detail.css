@@ -61,6 +61,9 @@ body[data-game="ssq"] .picks { grid-template-columns: repeat(2, minmax(0, 1fr));
 .next-day-advice h3, .review-adjustments h3 { margin: 0 0 10px; font-size: 15px; }
 .advice-chip { display: inline-block; margin: 0 8px 8px 0; padding: 8px 10px; border-radius: 8px; background: rgba(31, 122, 100, .12); color: var(--ink); }
 .review-adjustments ul { margin: 0; padding-left: 20px; line-height: 1.7; }
+.review-attribution { margin-top: 16px; padding: 12px 14px; border-radius: 10px; background: rgba(255,255,255,.45); color: var(--muted); line-height: 1.6; }
+.review-attribution h3 { margin: 0 0 6px; color: var(--ink); font-size: 15px; }
+.review-attribution p { margin: 0; }
 .zone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .zone-card { padding: 22px; border: 1px solid var(--line); border-radius: 16px; }
 .hot-zone { background: rgba(255, 245, 238, .55); }
