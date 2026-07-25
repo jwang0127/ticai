@@ -68,10 +68,34 @@ function modelReviewHtml(review) {
   </section>`;
 }
 
-function modelReviewHtml(review) {
+function legacyModelReviewHtml(review) {
   if (!review) return "";
   const positions = review.position_pool_coverage == null ? "" : `<div class="metric"><span>按位候选覆盖</span><strong>${review.position_pool_coverage} / ${review.position_count}</strong></div>`;
   return `<section class="section"><div class="section-head"><div><p class="section-label">MODEL REVIEW</p><h2>第${escapeHtml(review.issue)}期模型复盘</h2></div><p class="section-note">${escapeHtml(review.summary)}</p></div><div class="metrics model-review-metrics"><div class="metric"><span>直选完整命中</span><strong>${review.exact_hits} / ${review.previous_candidates.length}</strong></div>${positions}<div class="metric wide"><span>原候选</span><strong>${escapeHtml(review.previous_candidates.join(" 路 "))}</strong></div></div><p class="review-lesson">${escapeHtml(review.lesson)}</p></section>`;
+}
+
+
+function modelReviewHtml(review) {
+  if (!review) return "";
+  const diagnostics = (review.position_diagnostics || []).map(item => `
+    <div class="review-diagnostic">
+      <strong>${escapeHtml(item.position)} ${escapeHtml(item.actual_digit)}</strong>
+      <span>${item.pool_hit ? "命中" : "未命中"} · 候选位池 ${escapeHtml(item.candidate_digits.join("/"))}</span>
+      <p>${escapeHtml(item.reason)}</p>
+    </div>`).join("");
+  const advice = (review.next_day_advice || []).map(item => `<span class="advice-chip">${escapeHtml(item.suggestion)}</span>`).join("");
+  const adjustments = (review.model_adjustments || []).map(item => `<li>${escapeHtml(item)}</li>`).join("");
+  return `<section class="section">
+    <div class="section-head"><div><p class="section-label">MODEL REVIEW</p><h2>第${escapeHtml(review.issue)}期模型复盘</h2></div><p class="section-note">${escapeHtml(review.summary)}</p></div>
+    <div class="metrics model-review-metrics">
+      <div class="metric"><span>按位候选覆盖</span><strong>${review.position_pool_coverage == null ? "-" : `${review.position_pool_coverage} / ${review.position_count}`}</strong></div>
+      <div class="metric"><span>最佳组合命中</span><strong>${escapeHtml(review.best_number_hits)}</strong></div>
+    </div>
+    ${diagnostics ? `<div class="review-diagnostics">${diagnostics}</div>` : ""}
+    ${advice ? `<div class="next-day-advice"><h3>第二天购买建议（模型参考）</h3><div>${advice}</div></div>` : ""}
+    ${adjustments ? `<div class="review-adjustments"><h3>模型调整</h3><ul>${adjustments}</ul></div>` : ""}
+    <p class="review-lesson">${escapeHtml(review.lesson)}</p>
+  </section>`;
 }
 
 

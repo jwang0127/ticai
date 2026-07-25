@@ -29,15 +29,95 @@
     ],
     "exact_hits": 0,
     "best_number_hits": 1,
-    "position_candidate_hits": [
-      1,
-      1,
-      1
+    "summary": "第26195期按位复盘：候选池覆盖 3 / 3 个位置；不按单期结果追涨参数。",
+    "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
+    "position_diagnostics": [
+      {
+        "position": "百位",
+        "actual_digit": "5",
+        "candidate_digits": [
+          "0",
+          "1",
+          "3",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "candidate_hit_count": 1,
+        "pool_hit": true,
+        "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
+      },
+      {
+        "position": "十位",
+        "actual_digit": "9",
+        "candidate_digits": [
+          "0",
+          "1",
+          "2",
+          "4",
+          "5",
+          "6",
+          "8",
+          "9"
+        ],
+        "candidate_hit_count": 1,
+        "pool_hit": true,
+        "reason": "命中：该位不在位频前三，但多信号综合分仍把它纳入候选池。"
+      },
+      {
+        "position": "个位",
+        "actual_digit": "5",
+        "candidate_digits": [
+          "0",
+          "1",
+          "2",
+          "4",
+          "5",
+          "6",
+          "7",
+          "9"
+        ],
+        "candidate_hit_count": 1,
+        "pool_hit": true,
+        "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
+      }
+    ],
+    "model_adjustments": [
+      "排列3/福彩3D改为逐位选择衰减周期和历史窗口，避免三个位数共用一个最优参数。",
+      "保留位频、遗漏和组合分的约束；不因一期开出号码直接追热或追冷。"
     ],
     "position_pool_coverage": 3,
     "position_count": 3,
-    "summary": "Issue 26195 actual result 595; the previous candidate pool reached 1 matching numbers at best.",
-    "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape."
+    "next_day_advice": [
+      {
+        "number": "355",
+        "shape": "组选三",
+        "suggestion": "组选三 355（覆盖 355/535/553）"
+      },
+      {
+        "number": "584",
+        "shape": "组六形态，按直选参考",
+        "suggestion": "直选 584"
+      },
+      {
+        "number": "147",
+        "shape": "组六形态，按直选参考",
+        "suggestion": "直选 147"
+      },
+      {
+        "number": "016",
+        "shape": "组六形态，按直选参考",
+        "suggestion": "直选 016"
+      },
+      {
+        "number": "762",
+        "shape": "组六形态，按直选参考",
+        "suggestion": "直选 762"
+      }
+    ],
+    "next_day_advice_text": "组选三 355（覆盖 355/535/553）；直选 584；直选 147；直选 016；直选 762"
   },
   "pl5": {
     "issue": "26195",
@@ -79,15 +159,95 @@
     ],
     "exact_hits": 0,
     "best_number_hits": 2,
-    "position_candidate_hits": [
-      1,
-      0,
-      1
+    "summary": "第2026195期按位复盘：候选池覆盖 2 / 3 个位置；不按单期结果追涨参数。",
+    "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
+    "position_diagnostics": [
+      {
+        "position": "百位",
+        "actual_digit": "2",
+        "candidate_digits": [
+          "0",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "8",
+          "9"
+        ],
+        "candidate_hit_count": 1,
+        "pool_hit": true,
+        "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
+      },
+      {
+        "position": "十位",
+        "actual_digit": "7",
+        "candidate_digits": [
+          "0",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "8",
+          "9"
+        ],
+        "candidate_hit_count": 0,
+        "pool_hit": false,
+        "reason": "未命中：该位的频率、遗漏和组合分均未达到五组入选阈值。"
+      },
+      {
+        "position": "个位",
+        "actual_digit": "5",
+        "candidate_digits": [
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "candidate_hit_count": 1,
+        "pool_hit": true,
+        "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
+      }
+    ],
+    "model_adjustments": [
+      "排列3/福彩3D改为逐位选择衰减周期和历史窗口，避免三个位数共用一个最优参数。",
+      "保留位频、遗漏和组合分的约束；不因一期开出号码直接追热或追冷。"
     ],
     "position_pool_coverage": 2,
     "position_count": 3,
-    "summary": "Issue 2026195 actual result 275; the previous candidate pool reached 2 matching numbers at best.",
-    "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape."
+    "next_day_advice": [
+      {
+        "number": "225",
+        "shape": "组选三",
+        "suggestion": "组选三 225（覆盖 225/252/522）"
+      },
+      {
+        "number": "903",
+        "shape": "组六形态，按直选参考",
+        "suggestion": "直选 903"
+      },
+      {
+        "number": "066",
+        "shape": "组选三",
+        "suggestion": "组选三 066（覆盖 066/606/660）"
+      },
+      {
+        "number": "458",
+        "shape": "组六形态，按直选参考",
+        "suggestion": "直选 458"
+      },
+      {
+        "number": "572",
+        "shape": "组六形态，按直选参考",
+        "suggestion": "直选 572"
+      }
+    ],
+    "next_day_advice_text": "组选三 225（覆盖 225/252/522）；直选 903；组选三 066（覆盖 066/606/660）；直选 458；直选 572"
   },
   "qxc": {
     "issue": "26084",

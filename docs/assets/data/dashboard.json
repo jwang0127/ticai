@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-25T10:58:04+08:00",
+  "generated_at": "2026-07-25T11:28:48+08:00",
   "daily_results_date": "2026-07-25",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -208,7 +208,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-07-25T10:58:04+08:00",
+      "generated_at": "2026-07-25T11:28:48+08:00",
       "latest_issue": "26082",
       "latest_draw_date": "2026-07-22",
       "latest_numbers": [
@@ -535,7 +535,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T10:58:04+08:00",
+      "generated_at": "2026-07-25T11:28:48+08:00",
       "latest_issue": "26195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -549,86 +549,86 @@
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
-          "number": "305",
+          "number": "355",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "排列3 305"
+          "copy_text": "排列3 355"
         },
         {
-          "number": "556",
+          "number": "584",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 71.5,
-          "copy_text": "排列3 556"
+          "confidence": 67.1,
+          "copy_text": "排列3 584"
         },
         {
-          "number": "184",
+          "number": "147",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 3,
-          "confidence": 66.6,
-          "copy_text": "排列3 184"
+          "confidence": 61.2,
+          "copy_text": "排列3 147"
         },
         {
-          "number": "060",
+          "number": "016",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 4,
-          "confidence": 57.7,
-          "copy_text": "排列3 060"
+          "confidence": 58.1,
+          "copy_text": "排列3 016"
         },
         {
-          "number": "797",
+          "number": "762",
           "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列3 797"
+          "copy_text": "排列3 762"
         }
       ],
       "top_candidates": [
         {
-          "number": "305",
+          "number": "355",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "排列3 305"
+          "copy_text": "排列3 355"
         },
         {
-          "number": "556",
+          "number": "584",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 71.5,
-          "copy_text": "排列3 556"
+          "confidence": 67.1,
+          "copy_text": "排列3 584"
         },
         {
-          "number": "184",
+          "number": "147",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 3,
-          "confidence": 66.6,
-          "copy_text": "排列3 184"
+          "confidence": 61.2,
+          "copy_text": "排列3 147"
         },
         {
-          "number": "060",
+          "number": "016",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 4,
-          "confidence": 57.7,
-          "copy_text": "排列3 060"
+          "confidence": 58.1,
+          "copy_text": "排列3 016"
         },
         {
-          "number": "797",
+          "number": "762",
           "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列3 797"
+          "copy_text": "排列3 762"
         }
       ],
       "review": {
@@ -871,6 +871,460 @@
         },
         "selected_decay": 13,
         "selected_window": 300,
+        "selected_position_parameters": [
+          {
+            "position": 0,
+            "decay": 13,
+            "window_size": 300
+          },
+          {
+            "position": 1,
+            "decay": 60,
+            "window_size": 100
+          },
+          {
+            "position": 2,
+            "decay": 60,
+            "window_size": 300
+          }
+        ],
+        "position_backtest": [
+          {
+            "position": 0,
+            "scores": {
+              "8@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "8@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "8@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "8@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "8@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "13@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "13@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "13@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "13@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "13@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "18@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "18@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "18@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "18@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "18@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "24@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2583
+              },
+              "24@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "24@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "24@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "24@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "30@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "30@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "45@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2417
+              },
+              "45@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "45@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "45@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "45@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "60@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2167
+              },
+              "60@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.225
+              },
+              "60@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              },
+              "60@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              },
+              "60@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              }
+            }
+          },
+          {
+            "position": 1,
+            "scores": {
+              "8@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2417
+              },
+              "8@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2417
+              },
+              "8@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2417
+              },
+              "8@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2417
+              },
+              "8@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2417
+              },
+              "13@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "13@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "13@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "13@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "13@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "18@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              },
+              "18@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              },
+              "18@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              },
+              "18@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              },
+              "18@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              },
+              "24@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              },
+              "24@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.225
+              },
+              "24@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.225
+              },
+              "24@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.225
+              },
+              "24@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.225
+              },
+              "30@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "30@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "30@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "30@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "30@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "45@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "45@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "45@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2583
+              },
+              "45@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2583
+              },
+              "45@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2583
+              },
+              "60@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "60@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "60@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "60@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "60@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              }
+            }
+          },
+          {
+            "position": 2,
+            "scores": {
+              "8@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "8@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "8@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "8@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "8@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "13@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "13@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "13@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "13@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "13@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "18@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "18@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "18@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "18@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "18@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "24@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "24@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "24@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "24@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "24@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "30@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "45@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "45@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "45@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "45@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "45@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "60@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "60@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "60@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "60@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "60@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              }
+            }
+          }
+        ],
         "method": [
           "逐位置频率与遗漏",
           "13期衰减参数",
@@ -892,15 +1346,95 @@
         ],
         "exact_hits": 0,
         "best_number_hits": 1,
-        "position_candidate_hits": [
-          1,
-          1,
-          1
+        "summary": "第26195期按位复盘：候选池覆盖 3 / 3 个位置；不按单期结果追涨参数。",
+        "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
+        "position_diagnostics": [
+          {
+            "position": "百位",
+            "actual_digit": "5",
+            "candidate_digits": [
+              "0",
+              "1",
+              "3",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9"
+            ],
+            "candidate_hit_count": 1,
+            "pool_hit": true,
+            "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
+          },
+          {
+            "position": "十位",
+            "actual_digit": "9",
+            "candidate_digits": [
+              "0",
+              "1",
+              "2",
+              "4",
+              "5",
+              "6",
+              "8",
+              "9"
+            ],
+            "candidate_hit_count": 1,
+            "pool_hit": true,
+            "reason": "命中：该位不在位频前三，但多信号综合分仍把它纳入候选池。"
+          },
+          {
+            "position": "个位",
+            "actual_digit": "5",
+            "candidate_digits": [
+              "0",
+              "1",
+              "2",
+              "4",
+              "5",
+              "6",
+              "7",
+              "9"
+            ],
+            "candidate_hit_count": 1,
+            "pool_hit": true,
+            "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
+          }
+        ],
+        "model_adjustments": [
+          "排列3/福彩3D改为逐位选择衰减周期和历史窗口，避免三个位数共用一个最优参数。",
+          "保留位频、遗漏和组合分的约束；不因一期开出号码直接追热或追冷。"
         ],
         "position_pool_coverage": 3,
         "position_count": 3,
-        "summary": "Issue 26195 actual result 595; the previous candidate pool reached 1 matching numbers at best.",
-        "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape."
+        "next_day_advice": [
+          {
+            "number": "355",
+            "shape": "组选三",
+            "suggestion": "组选三 355（覆盖 355/535/553）"
+          },
+          {
+            "number": "584",
+            "shape": "组六形态，按直选参考",
+            "suggestion": "直选 584"
+          },
+          {
+            "number": "147",
+            "shape": "组六形态，按直选参考",
+            "suggestion": "直选 147"
+          },
+          {
+            "number": "016",
+            "shape": "组六形态，按直选参考",
+            "suggestion": "直选 016"
+          },
+          {
+            "number": "762",
+            "shape": "组六形态，按直选参考",
+            "suggestion": "直选 762"
+          }
+        ],
+        "next_day_advice_text": "组选三 355（覆盖 355/535/553）；直选 584；直选 147；直选 016；直选 762"
       }
     },
     "pl5": {
@@ -908,7 +1442,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T10:58:04+08:00",
+      "generated_at": "2026-07-25T11:28:48+08:00",
       "latest_issue": "26195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -924,86 +1458,86 @@
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
-          "number": "30576",
+          "number": "35570",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "排列5 30576"
+          "copy_text": "排列5 35570"
         },
         {
-          "number": "55668",
+          "number": "58463",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 68.3,
-          "copy_text": "排列5 55668"
+          "confidence": 63.8,
+          "copy_text": "排列5 58463"
         },
         {
-          "number": "18419",
+          "number": "14612",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 3,
-          "confidence": 63.9,
-          "copy_text": "排列5 18419"
+          "confidence": 57.8,
+          "copy_text": "排列5 14612"
         },
         {
-          "number": "06000",
+          "number": "01709",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 4,
-          "confidence": 58.4,
-          "copy_text": "排列5 06000"
+          "confidence": 55.2,
+          "copy_text": "排列5 01709"
         },
         {
-          "number": "79744",
+          "number": "76241",
           "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列5 79744"
+          "copy_text": "排列5 76241"
         }
       ],
       "top_candidates": [
         {
-          "number": "30576",
+          "number": "35570",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "排列5 30576"
+          "copy_text": "排列5 35570"
         },
         {
-          "number": "55668",
+          "number": "58463",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 68.3,
-          "copy_text": "排列5 55668"
+          "confidence": 63.8,
+          "copy_text": "排列5 58463"
         },
         {
-          "number": "18419",
+          "number": "14612",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 3,
-          "confidence": 63.9,
-          "copy_text": "排列5 18419"
+          "confidence": 57.8,
+          "copy_text": "排列5 14612"
         },
         {
-          "number": "06000",
+          "number": "01709",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 4,
-          "confidence": 58.4,
-          "copy_text": "排列5 06000"
+          "confidence": 55.2,
+          "copy_text": "排列5 01709"
         },
         {
-          "number": "79744",
+          "number": "76241",
           "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列5 79744"
+          "copy_text": "排列5 76241"
         }
       ],
       "review": {
@@ -1282,6 +1816,760 @@
         },
         "selected_decay": 13,
         "selected_window": 300,
+        "selected_position_parameters": [
+          {
+            "position": 0,
+            "decay": 13,
+            "window_size": 300
+          },
+          {
+            "position": 1,
+            "decay": 60,
+            "window_size": 100
+          },
+          {
+            "position": 2,
+            "decay": 60,
+            "window_size": 300
+          },
+          {
+            "position": 3,
+            "decay": 18,
+            "window_size": 300
+          },
+          {
+            "position": 4,
+            "decay": 45,
+            "window_size": 300
+          }
+        ],
+        "position_backtest": [
+          {
+            "position": 0,
+            "scores": {
+              "8@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "8@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "8@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "8@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "8@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "13@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "13@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "13@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "13@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "13@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "18@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "18@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "18@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "18@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "18@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "24@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2583
+              },
+              "24@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "24@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "24@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "24@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "30@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "30@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "45@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2417
+              },
+              "45@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "45@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "45@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "45@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "60@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2167
+              },
+              "60@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.225
+              },
+              "60@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              },
+              "60@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              },
+              "60@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              }
+            }
+          },
+          {
+            "position": 1,
+            "scores": {
+              "8@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2417
+              },
+              "8@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2417
+              },
+              "8@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2417
+              },
+              "8@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2417
+              },
+              "8@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2417
+              },
+              "13@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "13@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "13@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "13@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "13@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "18@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              },
+              "18@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              },
+              "18@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              },
+              "18@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              },
+              "18@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              },
+              "24@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2333
+              },
+              "24@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.225
+              },
+              "24@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.225
+              },
+              "24@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.225
+              },
+              "24@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.225
+              },
+              "30@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "30@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "30@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "30@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "30@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "45@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "45@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "45@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2583
+              },
+              "45@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2583
+              },
+              "45@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2583
+              },
+              "60@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "60@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "60@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "60@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "60@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              }
+            }
+          },
+          {
+            "position": 2,
+            "scores": {
+              "8@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "8@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "8@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "8@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "8@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "13@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "13@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "13@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "13@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "13@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "18@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "18@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "18@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "18@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "18@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "24@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "24@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "24@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "24@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "24@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "30@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "45@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "45@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "45@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "45@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "45@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "60@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "60@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "60@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "60@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "60@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              }
+            }
+          },
+          {
+            "position": 3,
+            "scores": {
+              "8@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "8@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "8@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "8@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "8@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "13@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "13@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "13@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "13@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "13@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "18@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.375
+              },
+              "18@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.375
+              },
+              "18@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.375
+              },
+              "18@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.375
+              },
+              "18@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.375
+              },
+              "24@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.375
+              },
+              "24@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.375
+              },
+              "24@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.375
+              },
+              "24@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.375
+              },
+              "24@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.375
+              },
+              "30@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3583
+              },
+              "30@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3583
+              },
+              "30@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3583
+              },
+              "30@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.3583
+              },
+              "30@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3583
+              },
+              "45@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "45@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "45@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "45@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "45@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "60@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "60@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "60@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "60@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "60@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              }
+            }
+          },
+          {
+            "position": 4,
+            "scores": {
+              "8@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "8@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "8@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "8@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "8@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "13@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "13@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "13@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "13@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "13@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "18@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "18@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "18@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "18@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "18@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "24@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "24@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "24@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "24@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "24@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "30@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "30@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "30@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "30@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "30@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "45@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "45@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "45@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "45@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "45@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "60@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "60@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "60@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "60@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "60@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              }
+            }
+          }
+        ],
         "method": [
           "逐位置频率与遗漏",
           "13期衰减参数",
@@ -1319,7 +2607,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T10:58:04+08:00",
+      "generated_at": "2026-07-25T11:28:48+08:00",
       "latest_issue": "2026195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -1345,32 +2633,32 @@
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 65.3,
+          "confidence": 62.8,
           "copy_text": "福彩3D 903"
         },
         {
-          "number": "068",
+          "number": "066",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 3,
-          "confidence": 59.0,
-          "copy_text": "福彩3D 068"
+          "confidence": 59.2,
+          "copy_text": "福彩3D 066"
         },
         {
-          "number": "496",
+          "number": "458",
           "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 4,
-          "confidence": 55.0,
-          "copy_text": "福彩3D 496"
+          "confidence": 55.3,
+          "copy_text": "福彩3D 458"
         },
         {
-          "number": "552",
+          "number": "572",
           "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩3D 552"
+          "copy_text": "福彩3D 572"
         }
       ],
       "top_candidates": [
@@ -1387,32 +2675,32 @@
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 65.3,
+          "confidence": 62.8,
           "copy_text": "福彩3D 903"
         },
         {
-          "number": "068",
+          "number": "066",
           "mix_label": "位置综合-偏热",
           "source": "position_ensemble",
           "rank": 3,
-          "confidence": 59.0,
-          "copy_text": "福彩3D 068"
+          "confidence": 59.2,
+          "copy_text": "福彩3D 066"
         },
         {
-          "number": "496",
+          "number": "458",
           "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 4,
-          "confidence": 55.0,
-          "copy_text": "福彩3D 496"
+          "confidence": 55.3,
+          "copy_text": "福彩3D 458"
         },
         {
-          "number": "552",
+          "number": "572",
           "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩3D 552"
+          "copy_text": "福彩3D 572"
         }
       ],
       "review": {
@@ -1655,6 +2943,460 @@
         },
         "selected_decay": 18,
         "selected_window": 100,
+        "selected_position_parameters": [
+          {
+            "position": 0,
+            "decay": 8,
+            "window_size": 300
+          },
+          {
+            "position": 1,
+            "decay": 13,
+            "window_size": 300
+          },
+          {
+            "position": 2,
+            "decay": 18,
+            "window_size": 300
+          }
+        ],
+        "position_backtest": [
+          {
+            "position": 0,
+            "scores": {
+              "8@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3417
+              },
+              "8@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3417
+              },
+              "8@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3417
+              },
+              "8@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.3417
+              },
+              "8@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3417
+              },
+              "13@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "13@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "13@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "13@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "13@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "18@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "18@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "18@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "18@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "18@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "24@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2583
+              },
+              "24@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2583
+              },
+              "24@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2583
+              },
+              "24@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2583
+              },
+              "24@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2583
+              },
+              "30@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "30@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2583
+              },
+              "30@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2583
+              },
+              "30@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2583
+              },
+              "30@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2583
+              },
+              "45@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.25
+              },
+              "45@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.225
+              },
+              "45@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.225
+              },
+              "45@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.225
+              },
+              "45@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.225
+              },
+              "60@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2417
+              },
+              "60@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2167
+              },
+              "60@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2167
+              },
+              "60@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2167
+              },
+              "60@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2167
+              }
+            }
+          },
+          {
+            "position": 1,
+            "scores": {
+              "8@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3167
+              },
+              "8@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3167
+              },
+              "8@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3167
+              },
+              "8@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.3167
+              },
+              "8@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3167
+              },
+              "13@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.35
+              },
+              "13@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.35
+              },
+              "13@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.35
+              },
+              "13@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.35
+              },
+              "13@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.35
+              },
+              "18@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3417
+              },
+              "18@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3417
+              },
+              "18@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3417
+              },
+              "18@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.3417
+              },
+              "18@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3417
+              },
+              "24@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.35
+              },
+              "24@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.35
+              },
+              "24@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.35
+              },
+              "24@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.35
+              },
+              "24@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.35
+              },
+              "30@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3417
+              },
+              "30@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3333
+              },
+              "30@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3333
+              },
+              "30@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.3333
+              },
+              "30@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3333
+              },
+              "45@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "45@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "45@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "45@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "45@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "60@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "60@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3083
+              },
+              "60@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "60@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              },
+              "60@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.325
+              }
+            }
+          },
+          {
+            "position": 2,
+            "scores": {
+              "8@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "8@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "8@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "8@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "8@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.275
+              },
+              "13@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "13@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "13@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "13@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "13@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "18@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.3167
+              },
+              "18@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3167
+              },
+              "18@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3167
+              },
+              "18@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.3167
+              },
+              "18@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3167
+              },
+              "24@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "24@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "24@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "24@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "24@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "30@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "30@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2667
+              },
+              "45@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "45@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "45@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "45@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "45@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.2833
+              },
+              "60@100": {
+                "folds": 120,
+                "top3_hit_rate": 0.2917
+              },
+              "60@300": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "60@500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "60@1000": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              },
+              "60@1500": {
+                "folds": 120,
+                "top3_hit_rate": 0.3
+              }
+            }
+          }
+        ],
         "method": [
           "逐位置频率与遗漏",
           "18期衰减参数",
@@ -1676,15 +3418,95 @@
         ],
         "exact_hits": 0,
         "best_number_hits": 2,
-        "position_candidate_hits": [
-          1,
-          0,
-          1
+        "summary": "第2026195期按位复盘：候选池覆盖 2 / 3 个位置；不按单期结果追涨参数。",
+        "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
+        "position_diagnostics": [
+          {
+            "position": "百位",
+            "actual_digit": "2",
+            "candidate_digits": [
+              "0",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "8",
+              "9"
+            ],
+            "candidate_hit_count": 1,
+            "pool_hit": true,
+            "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
+          },
+          {
+            "position": "十位",
+            "actual_digit": "7",
+            "candidate_digits": [
+              "0",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "8",
+              "9"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：该位的频率、遗漏和组合分均未达到五组入选阈值。"
+          },
+          {
+            "position": "个位",
+            "actual_digit": "5",
+            "candidate_digits": [
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9"
+            ],
+            "candidate_hit_count": 1,
+            "pool_hit": true,
+            "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
+          }
+        ],
+        "model_adjustments": [
+          "排列3/福彩3D改为逐位选择衰减周期和历史窗口，避免三个位数共用一个最优参数。",
+          "保留位频、遗漏和组合分的约束；不因一期开出号码直接追热或追冷。"
         ],
         "position_pool_coverage": 2,
         "position_count": 3,
-        "summary": "Issue 2026195 actual result 275; the previous candidate pool reached 2 matching numbers at best.",
-        "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape."
+        "next_day_advice": [
+          {
+            "number": "225",
+            "shape": "组选三",
+            "suggestion": "组选三 225（覆盖 225/252/522）"
+          },
+          {
+            "number": "903",
+            "shape": "组六形态，按直选参考",
+            "suggestion": "直选 903"
+          },
+          {
+            "number": "066",
+            "shape": "组选三",
+            "suggestion": "组选三 066（覆盖 066/606/660）"
+          },
+          {
+            "number": "458",
+            "shape": "组六形态，按直选参考",
+            "suggestion": "直选 458"
+          },
+          {
+            "number": "572",
+            "shape": "组六形态，按直选参考",
+            "suggestion": "直选 572"
+          }
+        ],
+        "next_day_advice_text": "组选三 225（覆盖 225/252/522）；直选 903；组选三 066（覆盖 066/606/660）；直选 458；直选 572"
       }
     },
     "qxc": {
@@ -1692,7 +3514,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T10:58:04+08:00",
+      "generated_at": "2026-07-25T11:28:48+08:00",
       "latest_issue": "26084",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -1984,6 +3806,8 @@
         },
         "selected_decay": null,
         "selected_window": 500,
+        "selected_position_parameters": [],
+        "position_backtest": [],
         "method": [
           "七位独立频率与遗漏",
           "逐位束搜索",
@@ -2025,7 +3849,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-25T10:58:04+08:00",
+      "generated_at": "2026-07-25T11:28:48+08:00",
       "latest_issue": "2026084",
       "latest_draw_date": "2026-07-23",
       "latest_numbers": [
@@ -2326,7 +4150,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-25T10:58:04+08:00",
+      "generated_at": "2026-07-25T11:28:48+08:00",
       "latest_issue": "2026195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [

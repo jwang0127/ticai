@@ -120,6 +120,17 @@ class DetailPageTests(unittest.TestCase):
         for suffix in ("3", "6"):
             self.assertNotIn("组选" + suffix, text)
 
+    def test_direct_digit_reviews_explain_positions_and_next_day_form(self):
+        root = Path(__file__).resolve().parents[1]
+        payload = json.loads((root / "docs/assets/data/dashboard.json").read_text(encoding="utf-8"))
+        for game in ("pl3", "fc3d"):
+            review = payload["games"][game]["model_review"]
+            self.assertEqual([item["position"] for item in review["position_diagnostics"]], ["百位", "十位", "个位"])
+            self.assertTrue(all(item["reason"] for item in review["position_diagnostics"]))
+            self.assertEqual(len(review["next_day_advice"]), 5)
+            self.assertTrue(review["next_day_advice_text"])
+            self.assertEqual(len(payload["games"][game]["analysis"]["selected_position_parameters"]), 3)
+
     def test_hot_and_cold_profiles_are_separate(self):
         hot = generate_digit_profile(self.fc3d_rows, 3, "hot", 5, "fc3d")
         cold = generate_digit_profile(self.fc3d_rows, 3, "cold", 5, "fc3d")

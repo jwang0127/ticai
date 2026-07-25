@@ -66,6 +66,25 @@ def rolling_digit_backtest(rows: list[dict], digits: int, decay: int, window_siz
     return {"folds": limit, "positional_top3_hit_rate": round(hits / total, 4) if total else 0.0}
 
 
+def rolling_digit_position_backtest(
+    rows: list[dict], position: int, decay: int, window_size: int, folds: int = 120
+) -> dict:
+    """Evaluate one digit position without using the held-out draw."""
+    limit = min(folds, max(0, len(rows) - window_size))
+    hits = 0
+    for index in range(1, limit + 1):
+        train = rows[index : index + window_size]
+        actual = int(rows[index - 1]["numbers"][position])
+        counts: Counter[int] = Counter()
+        for age, row in enumerate(train):
+            counts[int(row["numbers"][position])] += math.exp(-age / decay)
+        hits += int(actual in {value for value, _ in counts.most_common(3)})
+    return {
+        "folds": limit,
+        "top3_hit_rate": round(hits / limit, 4) if limit else 0.0,
+    }
+
+
 def calibrate_digit_model(game: str, rows: list[dict], digits: int) -> dict:
     """Return the isolated model plus rolling-backtest evidence for the game."""
     base = dict(digit_model(game))
@@ -83,9 +102,34 @@ def calibrate_digit_model(game: str, rows: list[dict], digits: int) -> dict:
             -abs(pair[0] - base["decay"]),
         ),
     )
+    position_parameters = []
+    position_backtest = []
+    for position in range(digits):
+        position_scores = {
+            f"{decay}@{window}": rolling_digit_position_backtest(rows, position, decay, window)
+            for decay in BACKTEST_DECAYS for window in windows
+        }
+        position_decay, position_window = max(
+            ((decay, window) for decay in BACKTEST_DECAYS for window in windows),
+            key=lambda pair: (
+                position_scores[f"{pair[0]}@{pair[1]}"]["top3_hit_rate"],
+                int(pair[1] >= 300),
+                -pair[1],
+                -abs(pair[0] - base["decay"]),
+            ),
+        )
+        position_parameters.append({"position": position, "decay": position_decay, "window_size": position_window})
+        position_backtest.append({"position": position, "scores": position_scores})
     base["decay"] = chosen_decay
     base["window_size"] = chosen_window
-    return {"parameters": base, "backtest": scores, "selected_decay": chosen_decay, "selected_window": chosen_window}
+    base["position_parameters"] = position_parameters
+    return {
+        "parameters": base,
+        "backtest": scores,
+        "position_backtest": position_backtest,
+        "selected_decay": chosen_decay,
+        "selected_window": chosen_window,
+    }
 
 
 def rolling_pool_backtest(game: str, rows: list[dict], window_size: int, folds: int = 120) -> dict:
@@ -200,7 +244,18 @@ def position_omissions(rows: list[dict], position: int) -> dict[int, int]:
 def mixed_digit_components(rows: list[dict], digits: int, model: dict | None = None) -> tuple[list[Counter[int]], list[float], list[dict[int, int]], list[float], list[float]]:
     """Build hot/cold signals without treating either as predictive certainty."""
     model = model or DIGIT_MODELS["pl3"]
-    position_counts = [blended_position_counts(rows, position, model["decay"], model.get("window_size")) for position in range(digits)]
+    position_parameters = model.get("position_parameters", [])
+    position_counts = [
+        blended_position_counts(
+            rows,
+            position,
+            position_parameters[position].get("decay", model["decay"])
+            if position < len(position_parameters) else model["decay"],
+            position_parameters[position].get("window_size", model.get("window_size"))
+            if position < len(position_parameters) else model.get("window_size"),
+        )
+        for position in range(digits)
+    ]
     totals = [sum(counter.values()) for counter in position_counts]
     omissions = [position_omissions(rows, position) for position in range(digits)]
     means: list[float] = []
@@ -810,6 +865,118 @@ def build_model_review(game: str, latest: dict, prediction: dict) -> dict:
     return review
 
 
+def build_model_review(
+    game: str,
+    latest: dict,
+    prediction: dict,
+    current_prediction: dict | None = None,
+) -> dict:
+    """Explain each positional hit/miss and produce the next-day play form."""
+    actual = [int(value) for value in latest["numbers"]]
+    candidates = prediction.get("top_candidates", prediction.get("candidates", []))
+
+    def values(candidate: dict) -> list[int]:
+        if game == "dlt":
+            return [int(value) for value in candidate["front"] + candidate["back"]]
+        if game == "ssq":
+            return [int(value) for value in candidate["red"] + candidate["blue"]]
+        if game == "kl8":
+            return [int(value) for value in candidate["numbers"]]
+        return [int(value) for value in candidate["number"]]
+
+    def display(candidate: dict) -> str:
+        return candidate_text(game, candidate)
+
+    candidate_values = [values(candidate) for candidate in candidates]
+    hit_counts = [len(set(item) & set(actual)) for item in candidate_values]
+    exact_hits = sum(item == actual for item in candidate_values)
+    review = {
+        "issue": latest["issue"],
+        "actual": display({
+            "front": actual[:5], "back": actual[5:],
+            "red": actual[:6], "blue": actual[6:],
+            "numbers": actual, "number": "".join(latest["numbers"]),
+        }) if game in ("dlt", "ssq", "kl8") else "".join(latest["numbers"]),
+        "previous_candidates": [display(candidate) for candidate in candidates],
+        "exact_hits": exact_hits,
+        "best_number_hits": max(hit_counts, default=0),
+        "summary": f"第{latest['issue']}期按位复盘：候选池覆盖 {sum(actual[position] in {item[position] for item in candidate_values if position < len(item)} for position in range(len(actual)))} / {len(actual)} 个位置；不按单期结果追涨参数。",
+        "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
+    }
+
+    if game in ("pl3", "fc3d"):
+        labels = ["百位", "十位", "个位"]
+        analysis_positions = prediction.get("analysis", {}).get("position_analysis", [])
+        diagnostics = []
+        for position, target in enumerate(actual):
+            pool = [item[position] for item in candidate_values if position < len(item)]
+            analysis_item = analysis_positions[position] if position < len(analysis_positions) else {}
+            hot_digits = [int(value) for value in analysis_item.get("hot_digits", [])]
+            omitted = {int(item["digit"]): int(item["miss"]) for item in analysis_item.get("omitted_digits", [])}
+            covered = target in set(pool)
+            if covered:
+                if target in hot_digits:
+                    reason = "命中：该位进入历史位频前三，综合候选池保留了它。"
+                else:
+                    reason = "命中：该位不在位频前三，但多信号综合分仍把它纳入候选池。"
+            elif target in hot_digits:
+                reason = "未命中：该位虽在位频前三，但五组组合时被其他位置组合分和去重约束舍弃。"
+            elif target in omitted and omitted[target] >= 8:
+                reason = f"未命中：该位遗漏 {omitted[target]} 期，当前模型对长期遗漏只做有限补偿，未强行追冷。"
+            else:
+                reason = "未命中：该位的频率、遗漏和组合分均未达到五组入选阈值。"
+            diagnostics.append({
+                "position": labels[position],
+                "actual_digit": str(target),
+                "candidate_digits": sorted({str(value) for value in pool}),
+                "candidate_hit_count": sum(value == target for value in pool),
+                "pool_hit": covered,
+                "reason": reason,
+            })
+        review["position_diagnostics"] = diagnostics
+        review["model_adjustments"] = [
+            "排列3/福彩3D改为逐位选择衰减周期和历史窗口，避免三个位数共用一个最优参数。",
+            "保留位频、遗漏和组合分的约束；不因一期开出号码直接追热或追冷。",
+        ]
+        review["position_pool_coverage"] = sum(item["pool_hit"] for item in diagnostics)
+        review["position_count"] = len(diagnostics)
+
+        next_candidates = (current_prediction or {}).get("top_candidates", [])
+        advice = []
+        for candidate in next_candidates[:5]:
+            number = candidate["number"]
+            digits = list(number)
+            unique = len(set(digits))
+            if unique == 2:
+                repeated = next(value for value in set(digits) if digits.count(value) == 2)
+                single = next(value for value in set(digits) if digits.count(value) == 1)
+                permutations = sorted({repeated + repeated + single, repeated + single + repeated, single + repeated + repeated})
+                suggestion = f"组选三 {number}（覆盖 {'/'.join(permutations)}）"
+                shape = "组选三"
+            elif unique == 3:
+                suggestion = f"直选 {number}"
+                shape = "组六形态，按直选参考"
+            else:
+                suggestion = f"直选 {number}"
+                shape = "豹子形态，按直选参考"
+            advice.append({"number": number, "shape": shape, "suggestion": suggestion})
+        review["next_day_advice"] = advice
+        review["next_day_advice_text"] = "；".join(item["suggestion"] for item in advice) or "暂无可用候选"
+    elif game == "kl8":
+        review["union_number_hits"] = len(set().union(*(set(item) for item in candidate_values)) & set(actual)) if candidate_values else 0
+    else:
+        review["position_candidate_hits"] = [
+            sum(position < len(item) and item[position] == target for item in candidate_values)
+            for position, target in enumerate(actual)
+        ]
+        review["position_pool_coverage"] = sum(
+            any(position < len(item) and item[position] == target for item in candidate_values)
+            for position, target in enumerate(actual)
+        )
+        review["position_count"] = len(actual)
+    return review
+
+
 def omission(rows: list[dict], start: int, end: int, values: range) -> list[tuple[int, int]]:
     result = []
     for target in values:
@@ -926,6 +1093,8 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
         "backtest": calibration["backtest"] if calibration else None,
         "selected_decay": calibration.get("selected_decay") if game in ("pl3", "pl5", "fc3d") else None,
         "selected_window": calibration.get("selected_window") if calibration else None,
+        "selected_position_parameters": calibration.get("parameters", {}).get("position_parameters", []) if game in ("pl3", "pl5", "fc3d") else [],
+        "position_backtest": calibration.get("position_backtest", []) if game in ("pl3", "pl5", "fc3d") else [],
         "method": (["七位独立频率与遗漏", "逐位束搜索", "相邻重号与和值温和约束"] if game == "qxc" else ["逐位置频率与遗漏", f"{model['decay']}期衰减参数", "5至8注综合清单与候选分散"]),
     }
 
@@ -1028,7 +1197,23 @@ def main() -> None:
         }
         previous_game = previous_games.get(game, {})
         if previous_game.get("target_issue") == latest["issue"]:
-            model_reviews[game] = build_model_review(game, latest, previous_game)
+            model_reviews[game] = build_model_review(game, latest, previous_game, {"top_candidates": enriched})
+            output["games"][game]["model_review"] = model_reviews[game]
+        elif (
+            game in ("pl3", "fc3d")
+            and model_reviews.get(game, {}).get("issue") == latest["issue"]
+            and not model_reviews[game].get("position_diagnostics")
+        ):
+            # Older generated dashboards kept the prior candidate text in the
+            # review file but not the full candidate objects. Rehydrate that
+            # small direct-digit snapshot so the detailed review can be added
+            # without pretending the current pool predicted the past draw.
+            saved_review = model_reviews[game]
+            saved_prediction = {
+                "top_candidates": [{"number": value} for value in saved_review.get("previous_candidates", [])],
+                "analysis": output["games"][game]["analysis"],
+            }
+            model_reviews[game] = build_model_review(game, latest, saved_prediction, {"top_candidates": enriched})
             output["games"][game]["model_review"] = model_reviews[game]
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
