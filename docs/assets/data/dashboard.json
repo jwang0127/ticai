@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-25T11:33:53+08:00",
+  "generated_at": "2026-07-25T11:41:45+08:00",
   "daily_results_date": "2026-07-25",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -208,7 +208,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-07-25T11:33:53+08:00",
+      "generated_at": "2026-07-25T11:41:45+08:00",
       "latest_issue": "26082",
       "latest_draw_date": "2026-07-22",
       "latest_numbers": [
@@ -535,7 +535,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T11:33:53+08:00",
+      "generated_at": "2026-07-25T11:41:45+08:00",
       "latest_issue": "26195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -554,7 +554,8 @@
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "排列3 355"
+          "copy_text": "排列3 355",
+          "purchase_suggestion": "组选三参考：355（355/535/553）"
         },
         {
           "number": "584",
@@ -562,7 +563,8 @@
           "source": "position_ensemble",
           "rank": 2,
           "confidence": 67.1,
-          "copy_text": "排列3 584"
+          "copy_text": "排列3 584",
+          "purchase_suggestion": "直选参考：584"
         },
         {
           "number": "147",
@@ -570,7 +572,8 @@
           "source": "position_ensemble",
           "rank": 3,
           "confidence": 61.2,
-          "copy_text": "排列3 147"
+          "copy_text": "排列3 147",
+          "purchase_suggestion": "直选参考：147"
         },
         {
           "number": "016",
@@ -578,7 +581,8 @@
           "source": "position_ensemble",
           "rank": 4,
           "confidence": 58.1,
-          "copy_text": "排列3 016"
+          "copy_text": "排列3 016",
+          "purchase_suggestion": "直选参考：016"
         },
         {
           "number": "762",
@@ -586,7 +590,8 @@
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列3 762"
+          "copy_text": "排列3 762",
+          "purchase_suggestion": "直选参考：762"
         }
       ],
       "top_candidates": [
@@ -596,7 +601,8 @@
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "排列3 355"
+          "copy_text": "排列3 355",
+          "purchase_suggestion": "组选三参考：355（355/535/553）"
         },
         {
           "number": "584",
@@ -604,7 +610,8 @@
           "source": "position_ensemble",
           "rank": 2,
           "confidence": 67.1,
-          "copy_text": "排列3 584"
+          "copy_text": "排列3 584",
+          "purchase_suggestion": "直选参考：584"
         },
         {
           "number": "147",
@@ -612,7 +619,8 @@
           "source": "position_ensemble",
           "rank": 3,
           "confidence": 61.2,
-          "copy_text": "排列3 147"
+          "copy_text": "排列3 147",
+          "purchase_suggestion": "直选参考：147"
         },
         {
           "number": "016",
@@ -620,7 +628,8 @@
           "source": "position_ensemble",
           "rank": 4,
           "confidence": 58.1,
-          "copy_text": "排列3 016"
+          "copy_text": "排列3 016",
+          "purchase_suggestion": "直选参考：016"
         },
         {
           "number": "762",
@@ -628,7 +637,8 @@
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列3 762"
+          "copy_text": "排列3 762",
+          "purchase_suggestion": "直选参考：762"
         }
       ],
       "review": {
@@ -1442,7 +1452,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T11:33:53+08:00",
+      "generated_at": "2026-07-25T11:41:45+08:00",
       "latest_issue": "26195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -2607,7 +2617,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T11:33:53+08:00",
+      "generated_at": "2026-07-25T11:41:45+08:00",
       "latest_issue": "2026195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -2626,7 +2636,8 @@
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩3D 225"
+          "copy_text": "福彩3D 225",
+          "purchase_suggestion": "组选三参考：225（225/252/522）"
         },
         {
           "number": "903",
@@ -2634,7 +2645,8 @@
           "source": "position_ensemble",
           "rank": 2,
           "confidence": 62.8,
-          "copy_text": "福彩3D 903"
+          "copy_text": "福彩3D 903",
+          "purchase_suggestion": "直选参考：903"
         },
         {
           "number": "066",
@@ -2642,7 +2654,8 @@
           "source": "position_ensemble",
           "rank": 3,
           "confidence": 59.2,
-          "copy_text": "福彩3D 066"
+          "copy_text": "福彩3D 066",
+          "purchase_suggestion": "组选三参考：066（066/606/660）"
         },
         {
           "number": "458",
@@ -2650,7 +2663,8 @@
           "source": "position_ensemble",
           "rank": 4,
           "confidence": 55.3,
-          "copy_text": "福彩3D 458"
+          "copy_text": "福彩3D 458",
+          "purchase_suggestion": "直选参考：458"
         },
         {
           "number": "572",
@@ -2658,7 +2672,8 @@
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩3D 572"
+          "copy_text": "福彩3D 572",
+          "purchase_suggestion": "直选参考：572"
         }
       ],
       "top_candidates": [
@@ -2668,7 +2683,8 @@
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩3D 225"
+          "copy_text": "福彩3D 225",
+          "purchase_suggestion": "组选三参考：225（225/252/522）"
         },
         {
           "number": "903",
@@ -2676,7 +2692,8 @@
           "source": "position_ensemble",
           "rank": 2,
           "confidence": 62.8,
-          "copy_text": "福彩3D 903"
+          "copy_text": "福彩3D 903",
+          "purchase_suggestion": "直选参考：903"
         },
         {
           "number": "066",
@@ -2684,7 +2701,8 @@
           "source": "position_ensemble",
           "rank": 3,
           "confidence": 59.2,
-          "copy_text": "福彩3D 066"
+          "copy_text": "福彩3D 066",
+          "purchase_suggestion": "组选三参考：066（066/606/660）"
         },
         {
           "number": "458",
@@ -2692,7 +2710,8 @@
           "source": "position_ensemble",
           "rank": 4,
           "confidence": 55.3,
-          "copy_text": "福彩3D 458"
+          "copy_text": "福彩3D 458",
+          "purchase_suggestion": "直选参考：458"
         },
         {
           "number": "572",
@@ -2700,7 +2719,8 @@
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩3D 572"
+          "copy_text": "福彩3D 572",
+          "purchase_suggestion": "直选参考：572"
         }
       ],
       "review": {
@@ -3514,7 +3534,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T11:33:53+08:00",
+      "generated_at": "2026-07-25T11:41:45+08:00",
       "latest_issue": "26084",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -3849,7 +3869,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-25T11:33:53+08:00",
+      "generated_at": "2026-07-25T11:41:45+08:00",
       "latest_issue": "2026084",
       "latest_draw_date": "2026-07-23",
       "latest_numbers": [
@@ -4150,7 +4170,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-25T11:33:53+08:00",
+      "generated_at": "2026-07-25T11:41:45+08:00",
       "latest_issue": "2026195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [

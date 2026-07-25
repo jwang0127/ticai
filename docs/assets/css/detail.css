@@ -36,6 +36,7 @@ body[data-game="ssq"] .picks { grid-template-columns: repeat(2, minmax(0, 1fr));
 .pick { position: relative; padding: 24px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
 .pick-rank { color: var(--muted); font: 11px/1 "DM Mono", monospace; }
 .pick-number { margin: 40px 0 16px; font: 500 clamp(19px, 2.4vw, 29px)/1.2 "DM Mono", monospace; white-space: nowrap; }
+.purchase-suggestion { margin: -8px 0 14px; color: var(--red); font-size: 13px; line-height: 1.5; }
 .score { color: var(--red); font: 500 12px/1 "DM Mono", monospace; }
 .mix-label { display: inline-block; margin: -5px 0 14px; padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 11px; }
 .copy { width: 100%; margin-top: 22px; padding: 10px 12px; color: white; background: var(--ink); border: 0; border-radius: 8px; cursor: pointer; font-weight: 700; }

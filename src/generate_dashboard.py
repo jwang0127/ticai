@@ -991,6 +991,26 @@ def build_model_review(
     return review
 
 
+def purchase_suggestion(game: str, candidate: dict) -> str | None:
+    """Return the play form beside a direct-digit composite recommendation."""
+    if game not in ("pl3", "fc3d"):
+        return None
+    number = candidate["number"]
+    digits = list(number)
+    if len(set(digits)) == 2:
+        repeated = next(value for value in set(digits) if digits.count(value) == 2)
+        single = next(value for value in set(digits) if digits.count(value) == 1)
+        permutations = sorted({
+            repeated + repeated + single,
+            repeated + single + repeated,
+            single + repeated + repeated,
+        })
+        return f"组选三参考：{number}（{'/'.join(permutations)}）"
+    if len(set(digits)) == 3:
+        return f"直选参考：{number}"
+    return f"直选参考：{number}（豹子形态）"
+
+
 def omission(rows: list[dict], start: int, end: int, values: range) -> list[tuple[int, int]]:
     result = []
     for target in values:
@@ -1183,7 +1203,14 @@ def main() -> None:
             text_value = candidate_text(game, candidate)
             play_prefix = f"{candidate['play_name']} " if game == "kl8" else ""
             copy_text = f"{cfg['name']} {play_prefix}{text_value}"
-            enriched.append({**candidate, "rank": rank, "confidence": confidence, "copy_text": copy_text})
+            suggestion = purchase_suggestion(game, candidate)
+            enriched.append({
+                **candidate,
+                "rank": rank,
+                "confidence": confidence,
+                "copy_text": copy_text,
+                **({"purchase_suggestion": suggestion} if suggestion else {}),
+            })
 
         output["games"][game] = {
             "name": cfg["name"],

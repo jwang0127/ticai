@@ -46,6 +46,7 @@ function picksHtml(candidates) {
     <article class="pick">
       <div class="pick-rank">TOP 0${item.rank}</div>
       <div class="pick-number">${escapeHtml(numberText(item))}</div>
+      ${item.purchase_suggestion ? `<div class="purchase-suggestion">${escapeHtml(item.purchase_suggestion)}</div>` : ""}
       ${item.mix_label ? `<div class="mix-label">${escapeHtml(item.mix_label)}</div>` : ""}
       <div class="score">模型相对评分 ${item.confidence}%</div>
     </article>`).join("")}</div>`;

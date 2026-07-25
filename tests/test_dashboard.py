@@ -130,6 +130,7 @@ class DetailPageTests(unittest.TestCase):
             self.assertEqual(len(review["next_day_advice"]), 5)
             self.assertTrue(review["next_day_advice_text"])
             self.assertEqual(len(payload["games"][game]["analysis"]["selected_position_parameters"]), 3)
+            self.assertTrue(payload["games"][game]["top_candidates"][0]["purchase_suggestion"])
 
     def test_kl8_review_reports_union_pool_coverage_and_attribution(self):
         root = Path(__file__).resolve().parents[1]
