@@ -131,6 +131,11 @@ class DetailPageTests(unittest.TestCase):
             self.assertTrue(review["next_day_advice_text"])
             self.assertEqual(len(payload["games"][game]["analysis"]["selected_position_parameters"]), 3)
             self.assertTrue(payload["games"][game]["top_candidates"][0]["purchase_suggestion"])
+            for position in range(3):
+                self.assertLessEqual(
+                    len({item["number"][position] for item in payload["games"][game]["top_candidates"]}),
+                    3,
+                )
 
     def test_kl8_review_reports_union_pool_coverage_and_attribution(self):
         root = Path(__file__).resolve().parents[1]
@@ -253,7 +258,7 @@ class DetailPageTests(unittest.TestCase):
         self.assertRegex(payload["daily_results_date"], r"^\d{4}-\d{2}-\d{2}$")
         self.assertEqual(len(payload["daily_results"]), 7)
         for item in payload["daily_results"]:
-            self.assertEqual(len(item["results"]), 5)
+            self.assertEqual(len(item["results"]), 3)
             self.assertEqual(item["result"], "；".join(scheme["result"] for scheme in item["results"]))
             self.assertEqual(item["copy_text"], f"{item['name']} {item['result']}")
             if item["game"] == "kl8":

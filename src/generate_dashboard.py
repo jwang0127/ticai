@@ -7,7 +7,7 @@ import json
 import math
 import random
 from collections import Counter
-from itertools import combinations
+from itertools import combinations, product
 from datetime import datetime, time, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
@@ -529,8 +529,27 @@ def generate_composite_recommendations(
 def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict], list[float]]:
     """Direct-digit output from one position-only ensemble, with neutral digits allowed."""
     digits = len(rows[0]["numbers"])
-    limit = 5
-    ranked = generate_digit_profile(rows, digits, "global", limit, game)
+    if game in ("pl3", "fc3d"):
+        model = calibrate_digit_model(game, rows, digits)["parameters"]
+        components = mixed_digit_components(rows, digits, model)
+        position_counts, totals, _, _, _ = components
+        # A useful pool should be selective: three independently backtested
+        # digits per position, then five combinations from their product.
+        pools = [
+            sorted(
+                range(10),
+                key=lambda value: score_digit(value, position_counts[position], totals[position]),
+                reverse=True,
+            )[:3]
+            for position in range(digits)
+        ]
+        scored = []
+        for values in product(*pools):
+            number = "".join(str(value) for value in values)
+            scored.append((number, global_candidate_score(list(values), components, model), 0.0))
+        ranked = diversified_rank(scored, 5, model["diversity"])
+    else:
+        ranked = generate_digit_profile(rows, digits, "global", 5, game)
     candidates = []
     for number, _, heat in ranked:
         label = "位置综合-中性" if -0.25 <= heat <= 0.25 else "位置综合-偏热" if heat > 0.25 else "位置综合-偏冷"
@@ -793,14 +812,14 @@ def generate_daily_results(draw_date: str, config: dict) -> list[dict]:
     claim or a replacement for the statistical candidates above.
     """
     results = []
-    # Keep the date-bound xuanxue module at five schemes per game, matching
-    # the dashboard's single five-pick contract.
+    # Keep the date-bound xuanxue module at three schemes per game.
     methods = ("date_hash", "position_map", "neutral_balance", "symmetry_map", "tail_balance")
     methods = ("日期哈希映射", "独立位置映射", "中性约束映射")
     methods = ("date_hash", "position_map", "neutral_balance", "symmetry_map", "tail_balance")
     for game, cfg in config["games"].items():
         values = []
         schemes = []
+        methods = ("date_hash", "position_map", "neutral_balance")
         for scheme, method in enumerate(methods, start=1):
             rng = _module_rng(draw_date, game, scheme)
             if game == "dlt":

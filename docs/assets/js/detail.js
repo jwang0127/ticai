@@ -81,7 +81,7 @@ function modelReviewHtml(review) {
   const diagnostics = (review.position_diagnostics || []).map(item => `
     <div class="review-diagnostic">
       <strong>${escapeHtml(item.position)} ${escapeHtml(item.actual_digit)}</strong>
-      <span>${item.pool_hit ? "命中" : "未命中"} · 候选位池 ${escapeHtml(item.candidate_digits.join("/"))}</span>
+      <span>${item.pool_hit ? "命中" : "未命中"} · 本位候选覆盖 ${escapeHtml(item.candidate_hit_count)} 组</span>
       <p>${escapeHtml(item.reason)}</p>
     </div>`).join("");
   const advice = (review.next_day_advice || []).map(item => `<span class="advice-chip">${escapeHtml(item.suggestion)}</span>`).join("");

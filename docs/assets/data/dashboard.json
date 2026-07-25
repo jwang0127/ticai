@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-07-25T12:19:25+08:00",
+  "generated_at": "2026-07-25T18:25:36+08:00",
   "daily_results_date": "2026-07-25",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
     {
       "game": "dlt",
       "name": "超级大乐透",
-      "result": "05 12 25 26 31 + 01 08；03 11 14 27 33 + 06 08；09 10 14 24 28 + 06 12；03 06 19 21 31 + 06 08；05 08 18 20 34 + 03 11",
+      "result": "05 12 25 26 31 + 01 08；03 11 14 27 33 + 06 08；09 10 14 24 28 + 06 12",
       "results": [
         {
           "result": "05 12 25 26 31 + 01 08",
@@ -19,22 +19,14 @@
         {
           "result": "09 10 14 24 28 + 06 12",
           "scheme": "neutral_balance"
-        },
-        {
-          "result": "03 06 19 21 31 + 06 08",
-          "scheme": "symmetry_map"
-        },
-        {
-          "result": "05 08 18 20 34 + 03 11",
-          "scheme": "tail_balance"
         }
       ],
-      "copy_text": "超级大乐透 05 12 25 26 31 + 01 08；03 11 14 27 33 + 06 08；09 10 14 24 28 + 06 12；03 06 19 21 31 + 06 08；05 08 18 20 34 + 03 11"
+      "copy_text": "超级大乐透 05 12 25 26 31 + 01 08；03 11 14 27 33 + 06 08；09 10 14 24 28 + 06 12"
     },
     {
       "game": "pl3",
       "name": "排列3",
-      "result": "307；532；727；114；229",
+      "result": "307；532；727",
       "results": [
         {
           "result": "307",
@@ -47,22 +39,14 @@
         {
           "result": "727",
           "scheme": "neutral_balance"
-        },
-        {
-          "result": "114",
-          "scheme": "symmetry_map"
-        },
-        {
-          "result": "229",
-          "scheme": "tail_balance"
         }
       ],
-      "copy_text": "排列3 307；532；727；114；229"
+      "copy_text": "排列3 307；532；727"
     },
     {
       "game": "pl5",
       "name": "排列5",
-      "result": "32914；42154；75425；00685；95075",
+      "result": "32914；42154；75425",
       "results": [
         {
           "result": "32914",
@@ -75,22 +59,14 @@
         {
           "result": "75425",
           "scheme": "neutral_balance"
-        },
-        {
-          "result": "00685",
-          "scheme": "symmetry_map"
-        },
-        {
-          "result": "95075",
-          "scheme": "tail_balance"
         }
       ],
-      "copy_text": "排列5 32914；42154；75425；00685；95075"
+      "copy_text": "排列5 32914；42154；75425"
     },
     {
       "game": "fc3d",
       "name": "福彩3D",
-      "result": "656；802；629；185；999",
+      "result": "656；802；629",
       "results": [
         {
           "result": "656",
@@ -103,22 +79,14 @@
         {
           "result": "629",
           "scheme": "neutral_balance"
-        },
-        {
-          "result": "185",
-          "scheme": "symmetry_map"
-        },
-        {
-          "result": "999",
-          "scheme": "tail_balance"
         }
       ],
-      "copy_text": "福彩3D 656；802；629；185；999"
+      "copy_text": "福彩3D 656；802；629"
     },
     {
       "game": "qxc",
       "name": "体彩7星彩",
-      "result": "4003164；0628012；3375843；0687096；2927701",
+      "result": "4003164；0628012；3375843",
       "results": [
         {
           "result": "4003164",
@@ -131,22 +99,14 @@
         {
           "result": "3375843",
           "scheme": "neutral_balance"
-        },
-        {
-          "result": "0687096",
-          "scheme": "symmetry_map"
-        },
-        {
-          "result": "2927701",
-          "scheme": "tail_balance"
         }
       ],
-      "copy_text": "体彩7星彩 4003164；0628012；3375843；0687096；2927701"
+      "copy_text": "体彩7星彩 4003164；0628012；3375843"
     },
     {
       "game": "ssq",
       "name": "福彩双色球",
-      "result": "02 10 16 22 27 31 + 14；01 05 06 15 30 33 + 03；08 12 14 20 27 32 + 03；05 16 21 24 30 32 + 13；06 14 17 24 26 31 + 06",
+      "result": "02 10 16 22 27 31 + 14；01 05 06 15 30 33 + 03；08 12 14 20 27 32 + 03",
       "results": [
         {
           "result": "02 10 16 22 27 31 + 14",
@@ -159,22 +119,14 @@
         {
           "result": "08 12 14 20 27 32 + 03",
           "scheme": "neutral_balance"
-        },
-        {
-          "result": "05 16 21 24 30 32 + 13",
-          "scheme": "symmetry_map"
-        },
-        {
-          "result": "06 14 17 24 26 31 + 06",
-          "scheme": "tail_balance"
         }
       ],
-      "copy_text": "福彩双色球 02 10 16 22 27 31 + 14；01 05 06 15 30 33 + 03；08 12 14 20 27 32 + 03；05 16 21 24 30 32 + 13；06 14 17 24 26 31 + 06"
+      "copy_text": "福彩双色球 02 10 16 22 27 31 + 14；01 05 06 15 30 33 + 03；08 12 14 20 27 32 + 03"
     },
     {
       "game": "kl8",
       "name": "福彩快乐8",
-      "result": "05 20 26 34 37 40 41 42 77 79；02 07 16 22 28 38 48 53 73 74；24 35 51 53 54 58 60 64 68 77；16 24 32 40 42 54 56 58 64 77；14 15 19 28 32 51 55 58 60 70",
+      "result": "05 20 26 34 37 40 41 42 77 79；02 07 16 22 28 38 48 53 73 74；24 35 51 53 54 58 60 64 68 77",
       "results": [
         {
           "result": "05 20 26 34 37 40 41 42 77 79",
@@ -187,17 +139,9 @@
         {
           "result": "24 35 51 53 54 58 60 64 68 77",
           "scheme": "neutral_balance"
-        },
-        {
-          "result": "16 24 32 40 42 54 56 58 64 77",
-          "scheme": "symmetry_map"
-        },
-        {
-          "result": "14 15 19 28 32 51 55 58 60 70",
-          "scheme": "tail_balance"
         }
       ],
-      "copy_text": "福彩快乐8 05 20 26 34 37 40 41 42 77 79；02 07 16 22 28 38 48 53 73 74；24 35 51 53 54 58 60 64 68 77；16 24 32 40 42 54 56 58 64 77；14 15 19 28 32 51 55 58 60 70"
+      "copy_text": "福彩快乐8 05 20 26 34 37 40 41 42 77 79；02 07 16 22 28 38 48 53 73 74；24 35 51 53 54 58 60 64 68 77"
     }
   ],
   "source_status": "official_api",
@@ -208,7 +152,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-07-25T12:19:25+08:00",
+      "generated_at": "2026-07-25T18:25:36+08:00",
       "latest_issue": "26082",
       "latest_draw_date": "2026-07-22",
       "latest_numbers": [
@@ -707,7 +651,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T12:19:25+08:00",
+      "generated_at": "2026-07-25T18:25:36+08:00",
       "latest_issue": "26195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -722,7 +666,7 @@
       "candidates": [
         {
           "number": "355",
-          "mix_label": "位置综合-偏热",
+          "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
@@ -730,46 +674,46 @@
           "purchase_suggestion": "组选三参考：355（355/535/553）"
         },
         {
-          "number": "584",
-          "mix_label": "位置综合-偏热",
+          "number": "154",
+          "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 67.1,
+          "confidence": 68.8,
+          "copy_text": "排列3 154",
+          "purchase_suggestion": "直选参考：154"
+        },
+        {
+          "number": "556",
+          "mix_label": "位置综合-中性",
+          "source": "position_ensemble",
+          "rank": 3,
+          "confidence": 67.0,
+          "copy_text": "排列3 556",
+          "purchase_suggestion": "组选三参考：556（556/565/655）"
+        },
+        {
+          "number": "584",
+          "mix_label": "位置综合-中性",
+          "source": "position_ensemble",
+          "rank": 4,
+          "confidence": 61.7,
           "copy_text": "排列3 584",
           "purchase_suggestion": "直选参考：584"
         },
         {
-          "number": "147",
-          "mix_label": "位置综合-偏热",
-          "source": "position_ensemble",
-          "rank": 3,
-          "confidence": 61.2,
-          "copy_text": "排列3 147",
-          "purchase_suggestion": "直选参考：147"
-        },
-        {
-          "number": "016",
-          "mix_label": "位置综合-偏热",
-          "source": "position_ensemble",
-          "rank": 4,
-          "confidence": 58.1,
-          "copy_text": "排列3 016",
-          "purchase_suggestion": "直选参考：016"
-        },
-        {
-          "number": "762",
+          "number": "146",
           "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列3 762",
-          "purchase_suggestion": "直选参考：762"
+          "copy_text": "排列3 146",
+          "purchase_suggestion": "直选参考：146"
         }
       ],
       "top_candidates": [
         {
           "number": "355",
-          "mix_label": "位置综合-偏热",
+          "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
@@ -777,40 +721,40 @@
           "purchase_suggestion": "组选三参考：355（355/535/553）"
         },
         {
-          "number": "584",
-          "mix_label": "位置综合-偏热",
+          "number": "154",
+          "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 67.1,
+          "confidence": 68.8,
+          "copy_text": "排列3 154",
+          "purchase_suggestion": "直选参考：154"
+        },
+        {
+          "number": "556",
+          "mix_label": "位置综合-中性",
+          "source": "position_ensemble",
+          "rank": 3,
+          "confidence": 67.0,
+          "copy_text": "排列3 556",
+          "purchase_suggestion": "组选三参考：556（556/565/655）"
+        },
+        {
+          "number": "584",
+          "mix_label": "位置综合-中性",
+          "source": "position_ensemble",
+          "rank": 4,
+          "confidence": 61.7,
           "copy_text": "排列3 584",
           "purchase_suggestion": "直选参考：584"
         },
         {
-          "number": "147",
-          "mix_label": "位置综合-偏热",
-          "source": "position_ensemble",
-          "rank": 3,
-          "confidence": 61.2,
-          "copy_text": "排列3 147",
-          "purchase_suggestion": "直选参考：147"
-        },
-        {
-          "number": "016",
-          "mix_label": "位置综合-偏热",
-          "source": "position_ensemble",
-          "rank": 4,
-          "confidence": 58.1,
-          "copy_text": "排列3 016",
-          "purchase_suggestion": "直选参考：016"
-        },
-        {
-          "number": "762",
+          "number": "146",
           "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列3 762",
-          "purchase_suggestion": "直选参考：762"
+          "copy_text": "排列3 146",
+          "purchase_suggestion": "直选参考：146"
         }
       ],
       "review": {
@@ -1625,7 +1569,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T12:19:25+08:00",
+      "generated_at": "2026-07-25T18:25:36+08:00",
       "latest_issue": "26195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -2791,7 +2735,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T12:19:25+08:00",
+      "generated_at": "2026-07-25T18:25:36+08:00",
       "latest_issue": "2026195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -2806,7 +2750,7 @@
       "candidates": [
         {
           "number": "225",
-          "mix_label": "位置综合-偏热",
+          "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
@@ -2814,46 +2758,46 @@
           "purchase_suggestion": "组选三参考：225（225/252/522）"
         },
         {
-          "number": "903",
-          "mix_label": "位置综合-偏热",
+          "number": "263",
+          "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 62.8,
+          "confidence": 65.2,
+          "copy_text": "福彩3D 263",
+          "purchase_suggestion": "直选参考：263"
+        },
+        {
+          "number": "206",
+          "mix_label": "位置综合-中性",
+          "source": "position_ensemble",
+          "rank": 3,
+          "confidence": 64.9,
+          "copy_text": "福彩3D 206",
+          "purchase_suggestion": "直选参考：206"
+        },
+        {
+          "number": "903",
+          "mix_label": "位置综合-中性",
+          "source": "position_ensemble",
+          "rank": 4,
+          "confidence": 57.0,
           "copy_text": "福彩3D 903",
           "purchase_suggestion": "直选参考：903"
         },
         {
           "number": "066",
-          "mix_label": "位置综合-偏热",
-          "source": "position_ensemble",
-          "rank": 3,
-          "confidence": 59.2,
-          "copy_text": "福彩3D 066",
-          "purchase_suggestion": "组选三参考：066（066/606/660）"
-        },
-        {
-          "number": "458",
-          "mix_label": "位置综合-中性",
-          "source": "position_ensemble",
-          "rank": 4,
-          "confidence": 55.3,
-          "copy_text": "福彩3D 458",
-          "purchase_suggestion": "直选参考：458"
-        },
-        {
-          "number": "572",
           "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩3D 572",
-          "purchase_suggestion": "直选参考：572"
+          "copy_text": "福彩3D 066",
+          "purchase_suggestion": "组选三参考：066（066/606/660）"
         }
       ],
       "top_candidates": [
         {
           "number": "225",
-          "mix_label": "位置综合-偏热",
+          "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
@@ -2861,40 +2805,40 @@
           "purchase_suggestion": "组选三参考：225（225/252/522）"
         },
         {
-          "number": "903",
-          "mix_label": "位置综合-偏热",
+          "number": "263",
+          "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 62.8,
+          "confidence": 65.2,
+          "copy_text": "福彩3D 263",
+          "purchase_suggestion": "直选参考：263"
+        },
+        {
+          "number": "206",
+          "mix_label": "位置综合-中性",
+          "source": "position_ensemble",
+          "rank": 3,
+          "confidence": 64.9,
+          "copy_text": "福彩3D 206",
+          "purchase_suggestion": "直选参考：206"
+        },
+        {
+          "number": "903",
+          "mix_label": "位置综合-中性",
+          "source": "position_ensemble",
+          "rank": 4,
+          "confidence": 57.0,
           "copy_text": "福彩3D 903",
           "purchase_suggestion": "直选参考：903"
         },
         {
           "number": "066",
-          "mix_label": "位置综合-偏热",
-          "source": "position_ensemble",
-          "rank": 3,
-          "confidence": 59.2,
-          "copy_text": "福彩3D 066",
-          "purchase_suggestion": "组选三参考：066（066/606/660）"
-        },
-        {
-          "number": "458",
-          "mix_label": "位置综合-中性",
-          "source": "position_ensemble",
-          "rank": 4,
-          "confidence": 55.3,
-          "copy_text": "福彩3D 458",
-          "purchase_suggestion": "直选参考：458"
-        },
-        {
-          "number": "572",
           "mix_label": "位置综合-中性",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩3D 572",
-          "purchase_suggestion": "直选参考：572"
+          "copy_text": "福彩3D 066",
+          "purchase_suggestion": "组选三参考：066（066/606/660）"
         }
       ],
       "review": {
@@ -3709,7 +3653,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T12:19:25+08:00",
+      "generated_at": "2026-07-25T18:25:36+08:00",
       "latest_issue": "26084",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -4302,7 +4246,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-25T12:19:25+08:00",
+      "generated_at": "2026-07-25T18:25:36+08:00",
       "latest_issue": "2026084",
       "latest_draw_date": "2026-07-23",
       "latest_numbers": [
@@ -4762,7 +4706,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-25T12:19:25+08:00",
+      "generated_at": "2026-07-25T18:25:36+08:00",
       "latest_issue": "2026195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
