@@ -409,7 +409,7 @@ def generate_composite_recommendations(
 def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict], list[float]]:
     """Direct-digit output from one position-only ensemble, with neutral digits allowed."""
     digits = len(rows[0]["numbers"])
-    limit = 6 if game == "pl5" else 8
+    limit = 5
     ranked = generate_digit_profile(rows, digits, "global", limit, game)
     candidates = []
     for number, _, heat in ranked:
@@ -469,7 +469,7 @@ def generate_dlt(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
             * max(
                 (
                     len(set(item[0][0]) & set(chosen[0][0]))
-                    + 0.8 * len(set(item[0][1]) & set(chosen[0][1]))
+                    + 2.0 * len(set(item[0][1]) & set(chosen[0][1]))
                     for chosen in selected
                 ),
                 default=0.0,
@@ -477,6 +477,17 @@ def generate_dlt(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
         )
         selected.append(best)
         remaining.remove(best)
+    # Guarantee useful back-area coverage after the score/diversity tradeoff.
+    back_union = set().union(*(set(key[1]) for key, _ in selected))
+    for candidate in remaining:
+        if len(back_union) >= 5:
+            break
+        candidate_key, _ = candidate
+        expanded = back_union | set(candidate_key[1])
+        if len(expanded) > len(back_union):
+            weakest = min(range(len(selected)), key=lambda index: selected[index][1])
+            selected[weakest] = candidate
+            back_union = set().union(*(set(key[1]) for key, _ in selected))
     selected.sort(key=lambda pair: pair[1], reverse=True)
     candidates = [{"front": list(key[0]), "back": list(key[1])} for key, _ in selected]
     return candidates, [score for _, score in selected]
@@ -502,7 +513,7 @@ def generate_qxc(rows: list[dict]) -> tuple[list[dict], list[float]]:
                 expanded.append((prefix + str(digit), score))
         beam = sorted(expanded, key=lambda item: item[1], reverse=True)[:350]
     scored = [(number, score - 0.006 * abs(sum(map(int, number)) - 31.5), 0.0) for number, score in beam]
-    ranked = diversified_rank(scored, 8, 1.15)
+    ranked = diversified_rank(scored, 5, 1.15)
     candidates = [
         {"number": number, "mix_label": "七位独立位置模型", "source": "qxc_position"}
         for number, _, _ in ranked
@@ -654,7 +665,11 @@ def generate_daily_results(draw_date: str, config: dict) -> list[dict]:
     claim or a replacement for the statistical candidates above.
     """
     results = []
+    # Keep the date-bound xuanxue module at five schemes per game, matching
+    # the dashboard's single five-pick contract.
+    methods = ("date_hash", "position_map", "neutral_balance", "symmetry_map", "tail_balance")
     methods = ("日期哈希映射", "独立位置映射", "中性约束映射")
+    methods = ("date_hash", "position_map", "neutral_balance", "symmetry_map", "tail_balance")
     for game, cfg in config["games"].items():
         values = []
         schemes = []
@@ -941,7 +956,7 @@ def main() -> None:
     output = {
         "generated_at": now.isoformat(timespec="seconds"),
         "daily_results_date": now.date().isoformat(),
-        "daily_model_version": "v2.2-independent-date-game-schemes",
+        "daily_model_version": "v2.3-xuanxue-date-game-schemes",
         "daily_results": generate_daily_results(now.date().isoformat(), config),
         "source_status": source_data.get("source_status", "unknown"),
         "disclaimer": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。模型相对评分仅表示本页综合候选之间的排序，不是真实中奖概率。",

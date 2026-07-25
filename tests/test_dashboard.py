@@ -55,7 +55,7 @@ class DetailPageTests(unittest.TestCase):
         self.assertNotEqual(DIGIT_MODELS["pl5"], DIGIT_MODELS["fc3d"])
         qxc, _ = generate_qxc(self.qxc_rows)
         ssq, _ = generate_ssq(self.ssq_rows, "2026083")
-        self.assertEqual(len(qxc), 8)
+        self.assertEqual(len(qxc), 5)
         self.assertTrue(all(len(item["number"]) == 7 for item in qxc))
         self.assertEqual(len(ssq), 5)
         for item in ssq:
@@ -147,9 +147,9 @@ class DetailPageTests(unittest.TestCase):
             (root / "docs/assets/data/dashboard.json").read_text(encoding="utf-8")
         )["games"]
         expected = {
-            "pl3": (8, {"position_ensemble": 8}),
-            "pl5": (6, {"position_ensemble": 6}),
-            "fc3d": (8, {"position_ensemble": 8}),
+            "pl3": (5, {"position_ensemble": 5}),
+            "pl5": (5, {"position_ensemble": 5}),
+            "fc3d": (5, {"position_ensemble": 5}),
         }
         for key, (count, source_counts) in expected.items():
             game = games[key]
@@ -165,9 +165,9 @@ class DetailPageTests(unittest.TestCase):
         pl3, _ = generate_positional_ensemble("pl3", self.rows)
         pl5, _ = generate_positional_ensemble("pl5", self.pl5_rows)
         fc3d, _ = generate_positional_ensemble("fc3d", self.fc3d_rows)
-        self.assertEqual(len(pl3), 8)
-        self.assertEqual(len(pl5), 6)
-        self.assertEqual(len(fc3d), 8)
+        self.assertEqual(len(pl3), 5)
+        self.assertEqual(len(pl5), 5)
+        self.assertEqual(len(fc3d), 5)
         for candidates in (pl3, pl5, fc3d):
             self.assertEqual(Counter(item["source"] for item in candidates), {"position_ensemble": len(candidates)})
 
@@ -209,7 +209,7 @@ class DetailPageTests(unittest.TestCase):
         self.assertRegex(payload["daily_results_date"], r"^\d{4}-\d{2}-\d{2}$")
         self.assertEqual(len(payload["daily_results"]), 7)
         for item in payload["daily_results"]:
-            self.assertEqual(len(item["results"]), 3)
+            self.assertEqual(len(item["results"]), 5)
             self.assertEqual(item["result"], "；".join(scheme["result"] for scheme in item["results"]))
             self.assertEqual(item["copy_text"], f"{item['name']} {item['result']}")
             if item["game"] == "kl8":
