@@ -143,6 +143,27 @@ class DetailPageTests(unittest.TestCase):
         self.assertTrue(review["error_attribution"])
         self.assertEqual(len(review["model_adjustments"]), 2)
 
+    def test_set_game_reviews_are_deep_and_region_calibrated(self):
+        root = Path(__file__).resolve().parents[1]
+        payload = json.loads((root / "docs/assets/data/dashboard.json").read_text(encoding="utf-8"))
+        for game, regions, positions in (("dlt", {"前区", "后区"}, 7), ("ssq", {"红球", "蓝球"}, 7), ("qxc", set(), 7)):
+            review = payload["games"][game]["model_review"]
+            self.assertEqual(len(review["position_diagnostics"]), positions)
+            self.assertTrue(review["error_attribution"])
+            self.assertEqual(len(review["model_adjustments"]), 2)
+            if regions:
+                self.assertEqual({item["region"] for item in review["region_diagnostics"]}, regions)
+        self.assertEqual(set(payload["games"]["dlt"]["analysis"]["selected_region_windows"]), {"front", "back"})
+        self.assertEqual(set(payload["games"]["ssq"]["analysis"]["selected_region_windows"]), {"red", "blue"})
+        self.assertEqual(len(payload["games"]["qxc"]["analysis"]["selected_position_windows"]), 7)
+
+    def test_kl8_cards_wrap_numbers_without_overflow(self):
+        root = Path(__file__).resolve().parents[1]
+        css = (root / "docs/assets/css/detail.css").read_text(encoding="utf-8")
+        self.assertIn('body[data-game="kl8"] .pick-number', css)
+        self.assertIn("white-space: normal", css)
+        self.assertIn("overflow: hidden", css)
+
     def test_hot_and_cold_profiles_are_separate(self):
         hot = generate_digit_profile(self.fc3d_rows, 3, "hot", 5, "fc3d")
         cold = generate_digit_profile(self.fc3d_rows, 3, "cold", 5, "fc3d")

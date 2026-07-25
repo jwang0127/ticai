@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-25T11:41:45+08:00",
+  "generated_at": "2026-07-25T12:19:25+08:00",
   "daily_results_date": "2026-07-25",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -208,7 +208,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-07-25T11:41:45+08:00",
+      "generated_at": "2026-07-25T12:19:25+08:00",
       "latest_issue": "26082",
       "latest_draw_date": "2026-07-22",
       "latest_numbers": [
@@ -254,7 +254,7 @@
             12
           ],
           "rank": 2,
-          "confidence": 74.0,
+          "confidence": 74.4,
           "copy_text": "超级大乐透 04 13 18 21 34 + 07 12"
         },
         {
@@ -270,7 +270,7 @@
             8
           ],
           "rank": 3,
-          "confidence": 69.8,
+          "confidence": 70.1,
           "copy_text": "超级大乐透 01 13 20 23 26 + 02 08"
         },
         {
@@ -286,7 +286,7 @@
             7
           ],
           "rank": 4,
-          "confidence": 63.6,
+          "confidence": 63.8,
           "copy_text": "超级大乐透 06 13 18 23 26 + 02 07"
         },
         {
@@ -336,7 +336,7 @@
             12
           ],
           "rank": 2,
-          "confidence": 74.0,
+          "confidence": 74.4,
           "copy_text": "超级大乐透 04 13 18 21 34 + 07 12"
         },
         {
@@ -352,7 +352,7 @@
             8
           ],
           "rank": 3,
-          "confidence": 69.8,
+          "confidence": 70.1,
           "copy_text": "超级大乐透 01 13 20 23 26 + 02 08"
         },
         {
@@ -368,7 +368,7 @@
             7
           ],
           "rank": 4,
-          "confidence": 63.6,
+          "confidence": 63.8,
           "copy_text": "超级大乐透 06 13 18 23 26 + 02 07"
         },
         {
@@ -472,6 +472,56 @@
           }
         ],
         "selected_window": 1500,
+        "selected_region_windows": {
+          "front": 500,
+          "back": 1500
+        },
+        "region_backtest": {
+          "front": {
+            "100": {
+              "folds": 120,
+              "pool_coverage": 0.5083
+            },
+            "300": {
+              "folds": 120,
+              "pool_coverage": 0.5167
+            },
+            "500": {
+              "folds": 120,
+              "pool_coverage": 0.5217
+            },
+            "1000": {
+              "folds": 120,
+              "pool_coverage": 0.4817
+            },
+            "1500": {
+              "folds": 120,
+              "pool_coverage": 0.5033
+            }
+          },
+          "back": {
+            "100": {
+              "folds": 120,
+              "pool_coverage": 0.5125
+            },
+            "300": {
+              "folds": 120,
+              "pool_coverage": 0.5208
+            },
+            "500": {
+              "folds": 120,
+              "pool_coverage": 0.5375
+            },
+            "1000": {
+              "folds": 120,
+              "pool_coverage": 0.4917
+            },
+            "1500": {
+              "folds": 120,
+              "pool_coverage": 0.5625
+            }
+          }
+        },
         "backtest": {
           "100": {
             "folds": 120,
@@ -526,8 +576,130 @@
         ],
         "exact_hits": 0,
         "best_number_hits": 3,
-        "summary": "Issue 26082 actual result 16 26 27 28 34 + 02 06; the previous candidate pool reached 3 matching numbers at best.",
-        "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape."
+        "summary": "第26082期按位复盘：候选池覆盖 1 / 7 个位置；不按单期结果追涨参数。",
+        "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
+        "position_diagnostics": [
+          {
+            "position": "前区第1位",
+            "actual_digit": "16",
+            "candidate_digits": [
+              "04",
+              "05",
+              "10",
+              "13"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：号码未进入前区联合池，区域频率、共现和结构分未达到五组阈值。"
+          },
+          {
+            "position": "前区第2位",
+            "actual_digit": "26",
+            "candidate_digits": [
+              "13",
+              "21"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中位置：号码进入前区联合池，但没有落在第2位的排序位置。"
+          },
+          {
+            "position": "前区第3位",
+            "actual_digit": "27",
+            "candidate_digits": [
+              "15",
+              "18",
+              "20",
+              "21",
+              "23"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中位置：号码进入前区联合池，但没有落在第3位的排序位置。"
+          },
+          {
+            "position": "前区第4位",
+            "actual_digit": "28",
+            "candidate_digits": [
+              "21",
+              "24",
+              "26"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中位置：号码进入前区联合池，但没有落在第4位的排序位置。"
+          },
+          {
+            "position": "前区第5位",
+            "actual_digit": "34",
+            "candidate_digits": [
+              "24",
+              "26",
+              "27",
+              "28"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：号码未进入前区联合池，区域频率、共现和结构分未达到五组阈值。"
+          },
+          {
+            "position": "后区第1位",
+            "actual_digit": "02",
+            "candidate_digits": [
+              "02",
+              "04",
+              "07",
+              "11"
+            ],
+            "candidate_hit_count": 2,
+            "pool_hit": true,
+            "reason": "命中：后区第1位的历史排序/分区候选池覆盖该号码。"
+          },
+          {
+            "position": "后区第2位",
+            "actual_digit": "06",
+            "candidate_digits": [
+              "04",
+              "11",
+              "12"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：号码未进入后区联合池，区域频率、共现和结构分未达到五组阈值。"
+          }
+        ],
+        "region_diagnostics": [
+          {
+            "region": "前区",
+            "coverage": "3 / 5",
+            "hit_numbers": [
+              "26",
+              "27",
+              "28"
+            ],
+            "missed_numbers": [
+              "16",
+              "34"
+            ]
+          },
+          {
+            "region": "后区",
+            "coverage": "1 / 2",
+            "hit_numbers": [
+              "02"
+            ],
+            "missed_numbers": [
+              "06"
+            ]
+          }
+        ],
+        "position_pool_coverage": 1,
+        "position_count": 7,
+        "error_attribution": "前区覆盖 3 / 5；后区覆盖 1 / 2。未命中项按区域频率、共现、分区/排序位置和五组多样性约束归因，不把单期结果直接变成追涨规则。",
+        "model_adjustments": [
+          "按区域滚动回测选择历史窗口：大乐透前区/后区、双色球红球/蓝球分开校准。",
+          "七星彩继续按七个位置建模，复盘同时区分号码命中与位置命中，避免把无序命中误判为有效预测。"
+        ]
       }
     },
     "pl3": {
@@ -535,7 +707,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T11:41:45+08:00",
+      "generated_at": "2026-07-25T12:19:25+08:00",
       "latest_issue": "26195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -898,6 +1070,7 @@
             "window_size": 300
           }
         ],
+        "selected_position_windows": {},
         "position_backtest": [
           {
             "position": 0,
@@ -1452,7 +1625,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T11:41:45+08:00",
+      "generated_at": "2026-07-25T12:19:25+08:00",
       "latest_issue": "26195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -1853,6 +2026,7 @@
             "window_size": 300
           }
         ],
+        "selected_position_windows": {},
         "position_backtest": [
           {
             "position": 0,
@@ -2599,6 +2773,8 @@
         ],
         "exact_hits": 0,
         "best_number_hits": 4,
+        "summary": "第26195期按位复盘：候选池覆盖 4 / 5 个位置；不按单期结果追涨参数。",
+        "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
         "position_candidate_hits": [
           1,
           0,
@@ -2607,9 +2783,7 @@
           1
         ],
         "position_pool_coverage": 4,
-        "position_count": 5,
-        "summary": "Issue 26195 actual result 59516; the previous candidate pool reached 4 matching numbers at best.",
-        "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape."
+        "position_count": 5
       }
     },
     "fc3d": {
@@ -2617,7 +2791,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T11:41:45+08:00",
+      "generated_at": "2026-07-25T12:19:25+08:00",
       "latest_issue": "2026195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -2980,6 +3154,7 @@
             "window_size": 300
           }
         ],
+        "selected_position_windows": {},
         "position_backtest": [
           {
             "position": 0,
@@ -3534,7 +3709,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-25T11:41:45+08:00",
+      "generated_at": "2026-07-25T12:19:25+08:00",
       "latest_issue": "26084",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -3552,86 +3727,86 @@
       "schedule_note": "每周二、五、日开奖",
       "candidates": [
         {
-          "number": "2592363",
+          "number": "7592361",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "体彩7星彩 2592363"
+          "copy_text": "体彩7星彩 7592361"
         },
         {
-          "number": "7892321",
+          "number": "2962363",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 2,
-          "confidence": 60.6,
-          "copy_text": "体彩7星彩 7892321"
-        },
-        {
-          "number": "7950361",
-          "mix_label": "七位独立位置模型",
-          "source": "qxc_position",
-          "rank": 3,
-          "confidence": 57.9,
-          "copy_text": "体彩7星彩 7950361"
+          "confidence": 61.9,
+          "copy_text": "体彩7星彩 2962363"
         },
         {
           "number": "0758363",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
-          "rank": 4,
-          "confidence": 54.6,
+          "rank": 3,
+          "confidence": 58.9,
           "copy_text": "体彩7星彩 0758363"
         },
         {
           "number": "7568323",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
+          "rank": 4,
+          "confidence": 55.9,
+          "copy_text": "体彩7星彩 7568323"
+        },
+        {
+          "number": "2890323",
+          "mix_label": "七位独立位置模型",
+          "source": "qxc_position",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "体彩7星彩 7568323"
+          "copy_text": "体彩7星彩 2890323"
         }
       ],
       "top_candidates": [
         {
-          "number": "2592363",
+          "number": "7592361",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "体彩7星彩 2592363"
+          "copy_text": "体彩7星彩 7592361"
         },
         {
-          "number": "7892321",
+          "number": "2962363",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 2,
-          "confidence": 60.6,
-          "copy_text": "体彩7星彩 7892321"
-        },
-        {
-          "number": "7950361",
-          "mix_label": "七位独立位置模型",
-          "source": "qxc_position",
-          "rank": 3,
-          "confidence": 57.9,
-          "copy_text": "体彩7星彩 7950361"
+          "confidence": 61.9,
+          "copy_text": "体彩7星彩 2962363"
         },
         {
           "number": "0758363",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
-          "rank": 4,
-          "confidence": 54.6,
+          "rank": 3,
+          "confidence": 58.9,
           "copy_text": "体彩7星彩 0758363"
         },
         {
           "number": "7568323",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
+          "rank": 4,
+          "confidence": 55.9,
+          "copy_text": "体彩7星彩 7568323"
+        },
+        {
+          "number": "2890323",
+          "mix_label": "七位独立位置模型",
+          "source": "qxc_position",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "体彩7星彩 7568323"
+          "copy_text": "体彩7星彩 2890323"
         }
       ],
       "review": {
@@ -3827,7 +4002,171 @@
         "selected_decay": null,
         "selected_window": 500,
         "selected_position_parameters": [],
-        "position_backtest": [],
+        "selected_position_windows": {
+          "0": 100,
+          "1": 300,
+          "2": 300,
+          "3": 300,
+          "4": 300,
+          "5": 300,
+          "6": 300
+        },
+        "position_backtest": {
+          "0": {
+            "100": {
+              "folds": 120,
+              "top3_hit_rate": 0.325
+            },
+            "300": {
+              "folds": 120,
+              "top3_hit_rate": 0.3167
+            },
+            "500": {
+              "folds": 120,
+              "top3_hit_rate": 0.3167
+            },
+            "1000": {
+              "folds": 120,
+              "top3_hit_rate": 0.3167
+            },
+            "1500": {
+              "folds": 120,
+              "top3_hit_rate": 0.3167
+            }
+          },
+          "1": {
+            "100": {
+              "folds": 120,
+              "top3_hit_rate": 0.3417
+            },
+            "300": {
+              "folds": 120,
+              "top3_hit_rate": 0.3417
+            },
+            "500": {
+              "folds": 120,
+              "top3_hit_rate": 0.3417
+            },
+            "1000": {
+              "folds": 120,
+              "top3_hit_rate": 0.3417
+            },
+            "1500": {
+              "folds": 120,
+              "top3_hit_rate": 0.3417
+            }
+          },
+          "2": {
+            "100": {
+              "folds": 120,
+              "top3_hit_rate": 0.2583
+            },
+            "300": {
+              "folds": 120,
+              "top3_hit_rate": 0.2667
+            },
+            "500": {
+              "folds": 120,
+              "top3_hit_rate": 0.2667
+            },
+            "1000": {
+              "folds": 120,
+              "top3_hit_rate": 0.2667
+            },
+            "1500": {
+              "folds": 120,
+              "top3_hit_rate": 0.2667
+            }
+          },
+          "3": {
+            "100": {
+              "folds": 120,
+              "top3_hit_rate": 0.3917
+            },
+            "300": {
+              "folds": 120,
+              "top3_hit_rate": 0.3917
+            },
+            "500": {
+              "folds": 120,
+              "top3_hit_rate": 0.3917
+            },
+            "1000": {
+              "folds": 120,
+              "top3_hit_rate": 0.3917
+            },
+            "1500": {
+              "folds": 120,
+              "top3_hit_rate": 0.3917
+            }
+          },
+          "4": {
+            "100": {
+              "folds": 120,
+              "top3_hit_rate": 0.3417
+            },
+            "300": {
+              "folds": 120,
+              "top3_hit_rate": 0.3583
+            },
+            "500": {
+              "folds": 120,
+              "top3_hit_rate": 0.3583
+            },
+            "1000": {
+              "folds": 120,
+              "top3_hit_rate": 0.3583
+            },
+            "1500": {
+              "folds": 120,
+              "top3_hit_rate": 0.3583
+            }
+          },
+          "5": {
+            "100": {
+              "folds": 120,
+              "top3_hit_rate": 0.2667
+            },
+            "300": {
+              "folds": 120,
+              "top3_hit_rate": 0.2667
+            },
+            "500": {
+              "folds": 120,
+              "top3_hit_rate": 0.2667
+            },
+            "1000": {
+              "folds": 120,
+              "top3_hit_rate": 0.2667
+            },
+            "1500": {
+              "folds": 120,
+              "top3_hit_rate": 0.2667
+            }
+          },
+          "6": {
+            "100": {
+              "folds": 120,
+              "top3_hit_rate": 0.3833
+            },
+            "300": {
+              "folds": 120,
+              "top3_hit_rate": 0.4
+            },
+            "500": {
+              "folds": 120,
+              "top3_hit_rate": 0.4
+            },
+            "1000": {
+              "folds": 120,
+              "top3_hit_rate": 0.4
+            },
+            "1500": {
+              "folds": 120,
+              "top3_hit_rate": 0.4
+            }
+          }
+        },
         "method": [
           "七位独立频率与遗漏",
           "逐位束搜索",
@@ -3849,19 +4188,113 @@
         ],
         "exact_hits": 0,
         "best_number_hits": 4,
-        "position_candidate_hits": [
-          2,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0
+        "summary": "第26084期按位复盘：候选池覆盖 2 / 7 个位置；不按单期结果追涨参数。",
+        "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
+        "position_diagnostics": [
+          {
+            "position": "七星彩位数第1位",
+            "actual_digit": "06",
+            "candidate_digits": [
+              "00",
+              "02",
+              "06",
+              "07"
+            ],
+            "candidate_hit_count": 2,
+            "pool_hit": true,
+            "reason": "命中：七星彩位数第1位的历史排序/分区候选池覆盖该号码。"
+          },
+          {
+            "position": "七星彩位数第2位",
+            "actual_digit": "03",
+            "candidate_digits": [
+              "03",
+              "05",
+              "08",
+              "09"
+            ],
+            "candidate_hit_count": 1,
+            "pool_hit": true,
+            "reason": "命中：七星彩位数第2位的历史排序/分区候选池覆盖该号码。"
+          },
+          {
+            "position": "七星彩位数第3位",
+            "actual_digit": "08",
+            "candidate_digits": [
+              "06",
+              "09"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：号码未进入七星彩位数联合池，区域频率、共现和结构分未达到五组阈值。"
+          },
+          {
+            "position": "七星彩位数第4位",
+            "actual_digit": "04",
+            "candidate_digits": [
+              "00",
+              "02",
+              "06"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：号码未进入七星彩位数联合池，区域频率、共现和结构分未达到五组阈值。"
+          },
+          {
+            "position": "七星彩位数第5位",
+            "actual_digit": "04",
+            "candidate_digits": [
+              "03"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：号码未进入七星彩位数联合池，区域频率、共现和结构分未达到五组阈值。"
+          },
+          {
+            "position": "七星彩位数第6位",
+            "actual_digit": "00",
+            "candidate_digits": [
+              "06"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：号码未进入七星彩位数联合池，区域频率、共现和结构分未达到五组阈值。"
+          },
+          {
+            "position": "七星彩位数第7位",
+            "actual_digit": "07",
+            "candidate_digits": [
+              "01",
+              "03",
+              "05"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：号码未进入七星彩位数联合池，区域频率、共现和结构分未达到五组阈值。"
+          }
+        ],
+        "region_diagnostics": [
+          {
+            "region": "七星彩位数",
+            "coverage": "0 / 7",
+            "hit_numbers": [],
+            "missed_numbers": [
+              "00",
+              "03",
+              "04",
+              "06",
+              "07",
+              "08"
+            ]
+          }
         ],
         "position_pool_coverage": 2,
         "position_count": 7,
-        "summary": "Issue 26084 actual result 6384407; the previous candidate pool reached 4 matching numbers at best.",
-        "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape."
+        "error_attribution": "七星彩位数覆盖 0 / 7。未命中项按区域频率、共现、分区/排序位置和五组多样性约束归因，不把单期结果直接变成追涨规则。",
+        "model_adjustments": [
+          "按区域滚动回测选择历史窗口：大乐透前区/后区、双色球红球/蓝球分开校准。",
+          "七星彩继续按七个位置建模，复盘同时区分号码命中与位置命中，避免把无序命中误判为有效预测。"
+        ]
       }
     },
     "ssq": {
@@ -3869,7 +4302,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-25T11:41:45+08:00",
+      "generated_at": "2026-07-25T12:19:25+08:00",
       "latest_issue": "2026084",
       "latest_draw_date": "2026-07-23",
       "latest_numbers": [
@@ -3955,7 +4388,7 @@
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
           "rank": 4,
-          "confidence": 60.9,
+          "confidence": 61.1,
           "copy_text": "福彩双色球 01 14 16 24 28 30 + 02"
         },
         {
@@ -4047,7 +4480,7 @@
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
           "rank": 4,
-          "confidence": 60.9,
+          "confidence": 61.1,
           "copy_text": "福彩双色球 01 14 16 24 28 30 + 02"
         },
         {
@@ -4095,6 +4528,56 @@
         "sample": 2000,
         "model_name": "双色球红蓝分区共现模型",
         "selected_window": 500,
+        "selected_region_windows": {
+          "red": 500,
+          "blue": 1500
+        },
+        "region_backtest": {
+          "red": {
+            "100": {
+              "folds": 120,
+              "pool_coverage": 0.5528
+            },
+            "300": {
+              "folds": 120,
+              "pool_coverage": 0.5736
+            },
+            "500": {
+              "folds": 120,
+              "pool_coverage": 0.575
+            },
+            "1000": {
+              "folds": 120,
+              "pool_coverage": 0.5639
+            },
+            "1500": {
+              "folds": 120,
+              "pool_coverage": 0.5389
+            }
+          },
+          "blue": {
+            "100": {
+              "folds": 120,
+              "pool_coverage": 0.3
+            },
+            "300": {
+              "folds": 120,
+              "pool_coverage": 0.275
+            },
+            "500": {
+              "folds": 120,
+              "pool_coverage": 0.2833
+            },
+            "1000": {
+              "folds": 120,
+              "pool_coverage": 0.3417
+            },
+            "1500": {
+              "folds": 120,
+              "pool_coverage": 0.35
+            }
+          }
+        },
         "backtest": {
           "100": {
             "folds": 120,
@@ -4150,19 +4633,128 @@
         ],
         "exact_hits": 0,
         "best_number_hits": 1,
-        "position_candidate_hits": [
-          1,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0
+        "summary": "第2026084期按位复盘：候选池覆盖 2 / 7 个位置；不按单期结果追涨参数。",
+        "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
+        "position_diagnostics": [
+          {
+            "position": "红球第1位",
+            "actual_digit": "01",
+            "candidate_digits": [
+              "01",
+              "03",
+              "04",
+              "07"
+            ],
+            "candidate_hit_count": 1,
+            "pool_hit": true,
+            "reason": "命中：红球第1位的历史排序/分区候选池覆盖该号码。"
+          },
+          {
+            "position": "红球第2位",
+            "actual_digit": "05",
+            "candidate_digits": [
+              "05",
+              "07",
+              "08",
+              "09",
+              "14"
+            ],
+            "candidate_hit_count": 1,
+            "pool_hit": true,
+            "reason": "命中：红球第2位的历史排序/分区候选池覆盖该号码。"
+          },
+          {
+            "position": "红球第3位",
+            "actual_digit": "06",
+            "candidate_digits": [
+              "07",
+              "11",
+              "14",
+              "18"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：号码未进入红球联合池，区域频率、共现和结构分未达到五组阈值。"
+          },
+          {
+            "position": "红球第4位",
+            "actual_digit": "10",
+            "candidate_digits": [
+              "14",
+              "16",
+              "24"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：号码未进入红球联合池，区域频率、共现和结构分未达到五组阈值。"
+          },
+          {
+            "position": "红球第5位",
+            "actual_digit": "12",
+            "candidate_digits": [
+              "24",
+              "25",
+              "28"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：号码未进入红球联合池，区域频率、共现和结构分未达到五组阈值。"
+          },
+          {
+            "position": "红球第6位",
+            "actual_digit": "16",
+            "candidate_digits": [
+              "28",
+              "29",
+              "32"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中位置：号码进入红球联合池，但没有落在第6位的排序位置。"
+          },
+          {
+            "position": "蓝球第1位",
+            "actual_digit": "05",
+            "candidate_digits": [
+              "01",
+              "04"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：号码未进入蓝球联合池，区域频率、共现和结构分未达到五组阈值。"
+          }
+        ],
+        "region_diagnostics": [
+          {
+            "region": "红球",
+            "coverage": "3 / 6",
+            "hit_numbers": [
+              "01",
+              "05",
+              "16"
+            ],
+            "missed_numbers": [
+              "06",
+              "10",
+              "12"
+            ]
+          },
+          {
+            "region": "蓝球",
+            "coverage": "0 / 1",
+            "hit_numbers": [],
+            "missed_numbers": [
+              "05"
+            ]
+          }
         ],
         "position_pool_coverage": 2,
         "position_count": 7,
-        "summary": "Issue 2026084 actual result 01 05 06 10 12 16 + 05; the previous candidate pool reached 1 matching numbers at best.",
-        "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape."
+        "error_attribution": "红球覆盖 3 / 6；蓝球覆盖 0 / 1。未命中项按区域频率、共现、分区/排序位置和五组多样性约束归因，不把单期结果直接变成追涨规则。",
+        "model_adjustments": [
+          "按区域滚动回测选择历史窗口：大乐透前区/后区、双色球红球/蓝球分开校准。",
+          "七星彩继续按七个位置建模，复盘同时区分号码命中与位置命中，避免把无序命中误判为有效预测。"
+        ]
       }
     },
     "kl8": {
@@ -4170,7 +4762,7 @@
       "model_version": "v3.0-positional-rolling-ensemble",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-25T11:41:45+08:00",
+      "generated_at": "2026-07-25T12:19:25+08:00",
       "latest_issue": "2026195",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [

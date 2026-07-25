@@ -33,6 +33,9 @@ h2 { margin: 10px 0 0; font-size: clamp(32px, 5vw, 54px); letter-spacing: -.055e
 .picks { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 12px; }
 body[data-game="dlt"] .picks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 body[data-game="ssq"] .picks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+body[data-game="kl8"] .picks { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+body[data-game="kl8"] .pick { min-width: 0; padding: 18px; overflow: hidden; }
+body[data-game="kl8"] .pick-number { margin: 28px 0 14px; white-space: normal; overflow-wrap: anywhere; font-size: clamp(16px, 1.65vw, 22px); line-height: 1.45; letter-spacing: -.04em; }
 .pick { position: relative; padding: 24px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
 .pick-rank { color: var(--muted); font: 11px/1 "DM Mono", monospace; }
 .pick-number { margin: 40px 0 16px; font: 500 clamp(19px, 2.4vw, 29px)/1.2 "DM Mono", monospace; white-space: nowrap; }

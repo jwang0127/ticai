@@ -165,6 +165,28 @@ def rolling_pool_backtest(game: str, rows: list[dict], window_size: int, folds: 
     return {"folds": limit, "pool_coverage": round(hits / total, 4) if total else 0.0}
 
 
+def rolling_region_backtest(game: str, rows: list[dict], window_size: int, region: str, folds: int = 120) -> dict:
+    """Backtest the independent regions used by DLT and SSQ generators."""
+    limit = min(folds, max(0, len(rows) - window_size))
+    if game == "dlt":
+        start, end, top_k = (0, 5, 18) if region == "front" else (5, 7, 6)
+    elif game == "ssq":
+        start, end, top_k = (0, 6, 18) if region == "red" else (6, 7, 5)
+    else:
+        raise ValueError(f"unsupported region calibration: {game}/{region}")
+    hits = total = 0
+    for index in range(1, limit + 1):
+        train = rows[index:index + window_size]
+        actual = {int(value) for value in rows[index - 1]["numbers"][start:end]}
+        counts: Counter[int] = Counter()
+        for row in train:
+            for value in row["numbers"][start:end]:
+                counts[int(value)] += 1
+        hits += len(actual & {value for value, _ in counts.most_common(top_k)})
+        total += len(actual)
+    return {"folds": limit, "pool_coverage": round(hits / total, 4) if total else 0.0}
+
+
 def calibrate_set_model(game: str, rows: list[dict]) -> dict:
     windows = [window for window in BACKTEST_WINDOWS if window < len(rows)] or [max(1, len(rows) - 1)]
     scores = {str(window): rolling_pool_backtest(game, rows, window) for window in windows}
@@ -172,7 +194,50 @@ def calibrate_set_model(game: str, rows: list[dict]) -> dict:
         windows,
         key=lambda window: (scores[str(window)]["pool_coverage"], int(window >= 300), -window),
     )
-    return {"selected_window": chosen, "backtest": scores}
+    regions = {"dlt": ("front", "back"), "ssq": ("red", "blue")}.get(game, ())
+    region_windows = {}
+    region_backtest = {}
+    for region in regions:
+        region_scores = {
+            str(window): rolling_region_backtest(game, rows, window, region)
+            for window in windows
+        }
+        region_choice = max(
+            windows,
+            key=lambda window: (
+                region_scores[str(window)]["pool_coverage"],
+                int(window >= 300),
+                -window,
+            ),
+        )
+        region_windows[region] = region_choice
+        region_backtest[region] = region_scores
+    position_windows = {}
+    position_backtest = {}
+    if game == "qxc":
+        for position in range(7):
+            position_scores = {
+                str(window): rolling_digit_position_backtest(rows, position, 27, window)
+                for window in windows
+            }
+            position_choice = max(
+                windows,
+                key=lambda window: (
+                    position_scores[str(window)]["top3_hit_rate"],
+                    int(window >= 300),
+                    -window,
+                ),
+            )
+            position_windows[str(position)] = position_choice
+            position_backtest[str(position)] = position_scores
+    return {
+        "selected_window": chosen,
+        "backtest": scores,
+        "region_windows": region_windows,
+        "region_backtest": region_backtest,
+        "position_windows": position_windows,
+        "position_backtest": position_backtest,
+    }
 
 
 def digit_model(game: str) -> dict:
@@ -492,11 +557,14 @@ def weighted_number_counts(rows: list[dict], start: int, end: int, decay: float 
 
 def generate_dlt(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]:
     rng = stable_rng("dlt", issue)
-    window = calibrate_set_model("dlt", rows)["selected_window"]
-    front_counts = blended_number_counts(rows, 0, 5, 24, window)
-    back_counts = blended_number_counts(rows, 5, 7, 24, window)
-    front_rank_counts = [blended_position_counts(rows, pos, 24, window, range(1, 36)) for pos in range(5)]
-    back_rank_counts = [blended_position_counts(rows, pos + 5, 24, window, range(1, 13)) for pos in range(2)]
+    calibration = calibrate_set_model("dlt", rows)
+    window = calibration["selected_window"]
+    front_window = calibration.get("region_windows", {}).get("front", window)
+    back_window = calibration.get("region_windows", {}).get("back", window)
+    front_counts = blended_number_counts(rows, 0, 5, 24, front_window)
+    back_counts = blended_number_counts(rows, 5, 7, 24, back_window)
+    front_rank_counts = [blended_position_counts(rows, pos, 24, front_window, range(1, 36)) for pos in range(5)]
+    back_rank_counts = [blended_position_counts(rows, pos + 5, 24, back_window, range(1, 13)) for pos in range(2)]
     front_total, back_total = sum(front_counts.values()), sum(back_counts.values())
     pool: dict[tuple[tuple[int, ...], tuple[int, ...]], float] = {}
 
@@ -551,8 +619,10 @@ def generate_dlt(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
 def generate_qxc(rows: list[dict]) -> tuple[list[dict], list[float]]:
     """7星彩专用七位置束搜索，避免套用三位数枚举模型。"""
     decay = 27
-    window = calibrate_set_model("qxc", rows)["selected_window"]
-    counters = [blended_position_counts(rows, pos, decay, window) for pos in range(7)]
+    calibration = calibrate_set_model("qxc", rows)
+    window = calibration["selected_window"]
+    position_windows = calibration.get("position_windows", {})
+    counters = [blended_position_counts(rows, pos, decay, position_windows.get(str(pos), window)) for pos in range(7)]
     totals = [sum(counter.values()) for counter in counters]
     omissions = [position_omissions(rows, pos) for pos in range(7)]
     beam: list[tuple[str, float]] = [("", 0.0)]
@@ -602,9 +672,12 @@ def blended_number_counts(rows: list[dict], start: int, end: int, decay: float =
 def generate_ssq(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]:
     """双色球专用红蓝分区模型，加入红球共现与三区覆盖。"""
     rng = stable_rng("ssq", issue)
-    window = calibrate_set_model("ssq", rows)["selected_window"]
-    red_counts = blended_number_counts(rows, 0, 6, 24, window)
-    blue_counts = blended_number_counts(rows, 6, 7, 24, window)
+    calibration = calibrate_set_model("ssq", rows)
+    window = calibration["selected_window"]
+    red_window = calibration.get("region_windows", {}).get("red", window)
+    blue_window = calibration.get("region_windows", {}).get("blue", window)
+    red_counts = blended_number_counts(rows, 0, 6, 24, red_window)
+    blue_counts = blended_number_counts(rows, 6, 7, 24, blue_window)
     pair_counts = weighted_pair_counts(rows, 6, 30)
     red_total, blue_total = sum(red_counts.values()), sum(blue_counts.values())
     pool: dict[tuple[tuple[int, ...], int], float] = {}
@@ -962,6 +1035,54 @@ def build_model_review(
             advice.append({"number": number, "shape": shape, "suggestion": suggestion})
         review["next_day_advice"] = advice
         review["next_day_advice_text"] = "；".join(item["suggestion"] for item in advice) or "暂无可用候选"
+    elif game in ("dlt", "qxc", "ssq"):
+        if game == "dlt":
+            regions = [("前区", actual[:5], [candidate["front"] for candidate in candidates]), ("后区", actual[5:], [candidate["back"] for candidate in candidates])]
+        elif game == "ssq":
+            regions = [("红球", actual[:6], [candidate["red"] for candidate in candidates]), ("蓝球", actual[6:], [candidate["blue"] for candidate in candidates])]
+        else:
+            regions = [("七星彩位数", actual, [candidate["number"] for candidate in candidates])]
+        diagnostics = []
+        region_diagnostics = []
+        for region_name, region_actual, region_candidates in regions:
+            region_union = set(value for group in region_candidates for value in group)
+            region_hits = sorted(set(region_actual) & region_union)
+            region_misses = sorted(set(region_actual) - region_union)
+            region_diagnostics.append({
+                "region": region_name,
+                "coverage": f"{len(region_hits)} / {len(region_actual)}",
+                "hit_numbers": [f"{value:02d}" for value in region_hits],
+                "missed_numbers": [f"{value:02d}" for value in region_misses],
+            })
+            for position, target in enumerate(region_actual):
+                pool = [int(group[position]) for group in region_candidates if position < len(group)]
+                covered = target in set(pool)
+                if covered:
+                    reason = f"命中：{region_name}第{position + 1}位的历史排序/分区候选池覆盖该号码。"
+                elif target in region_union:
+                    reason = f"未命中位置：号码进入{region_name}联合池，但没有落在第{position + 1}位的排序位置。"
+                else:
+                    reason = f"未命中：号码未进入{region_name}联合池，区域频率、共现和结构分未达到五组阈值。"
+                diagnostics.append({
+                    "position": f"{region_name}第{position + 1}位",
+                    "actual_digit": f"{target:02d}",
+                    "candidate_digits": sorted({f"{value:02d}" for value in pool}),
+                    "candidate_hit_count": sum(value == target for value in pool),
+                    "pool_hit": covered,
+                    "reason": reason,
+                })
+        review["position_diagnostics"] = diagnostics
+        review["region_diagnostics"] = region_diagnostics
+        review["position_pool_coverage"] = sum(item["pool_hit"] for item in diagnostics)
+        review["position_count"] = len(diagnostics)
+        review["error_attribution"] = "；".join(
+            f"{item['region']}覆盖 {item['coverage']}"
+            for item in region_diagnostics
+        ) + "。未命中项按区域频率、共现、分区/排序位置和五组多样性约束归因，不把单期结果直接变成追涨规则。"
+        review["model_adjustments"] = [
+            "按区域滚动回测选择历史窗口：大乐透前区/后区、双色球红球/蓝球分开校准。",
+            "七星彩继续按七个位置建模，复盘同时区分号码命中与位置命中，避免把无序命中误判为有效预测。",
+        ]
     elif game == "kl8":
         union = set().union(*(set(item) for item in candidate_values)) if candidate_values else set()
         hit_numbers = sorted(union & set(actual))
@@ -1045,6 +1166,8 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
             "summary": f"最近{sample}期采用指数衰减频率，前后区分别统计；当前前区相对活跃号为{'、'.join(hot_front)}，后区为{'、'.join(hot_back)}。",
             "position_analysis": rank_analysis,
             "selected_window": window,
+            "selected_region_windows": set_calibration.get("region_windows", {}),
+            "region_backtest": set_calibration.get("region_backtest", {}),
             "backtest": set_calibration["backtest"],
             "signals": [
                 {"label": "前区相对活跃", "value": " · ".join(hot_front)},
@@ -1064,6 +1187,8 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
             "sample": sample,
             "model_name": "双色球红蓝分区共现模型",
             "selected_window": window,
+            "selected_region_windows": set_calibration.get("region_windows", {}),
+            "region_backtest": set_calibration.get("region_backtest", {}),
             "backtest": set_calibration["backtest"],
             "summary": f"最近{sample}期将6个红球、1个蓝球完全分开建模；红球同时计算号码频率、两两共现和三区覆盖，蓝球只使用自己的1–16历史序列。",
             "signals": [
@@ -1128,7 +1253,8 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
         "selected_decay": calibration.get("selected_decay") if game in ("pl3", "pl5", "fc3d") else None,
         "selected_window": calibration.get("selected_window") if calibration else None,
         "selected_position_parameters": calibration.get("parameters", {}).get("position_parameters", []) if game in ("pl3", "pl5", "fc3d") else [],
-        "position_backtest": calibration.get("position_backtest", []) if game in ("pl3", "pl5", "fc3d") else [],
+        "selected_position_windows": calibration.get("position_windows", {}) if game == "qxc" else {},
+        "position_backtest": calibration.get("position_backtest", []) if game in ("pl3", "pl5", "fc3d", "qxc") else [],
         "method": (["七位独立频率与遗漏", "逐位束搜索", "相邻重号与和值温和约束"] if game == "qxc" else ["逐位置频率与遗漏", f"{model['decay']}期衰减参数", "5至8注综合清单与候选分散"]),
     }
 
@@ -1241,7 +1367,7 @@ def main() -> None:
             model_reviews[game] = build_model_review(game, latest, previous_game, {"top_candidates": enriched})
             output["games"][game]["model_review"] = model_reviews[game]
         elif (
-            game in ("pl3", "fc3d", "kl8")
+            game in ("dlt", "pl3", "pl5", "fc3d", "qxc", "ssq", "kl8")
             and model_reviews.get(game, {}).get("issue") == latest["issue"]
             and not model_reviews[game].get("position_diagnostics")
         ):
@@ -1255,6 +1381,22 @@ def main() -> None:
                     {"numbers": [int(value) for value in text.split()]}
                     for text in saved_review.get("previous_candidates", [])
                 ]
+            elif game == "dlt":
+                saved_candidates = []
+                for text in saved_review.get("previous_candidates", []):
+                    front_text, back_text = text.split(" + ")
+                    saved_candidates.append({
+                        "front": [int(value) for value in front_text.split()],
+                        "back": [int(value) for value in back_text.split()],
+                    })
+            elif game == "ssq":
+                saved_candidates = []
+                for text in saved_review.get("previous_candidates", []):
+                    red_text, blue_text = text.split(" + ")
+                    saved_candidates.append({
+                        "red": [int(value) for value in red_text.split()],
+                        "blue": [int(value) for value in blue_text.split()],
+                    })
             else:
                 saved_candidates = [{"number": value} for value in saved_review.get("previous_candidates", [])]
             saved_prediction = {
