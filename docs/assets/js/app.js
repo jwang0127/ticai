@@ -60,6 +60,10 @@ function formatCandidate(key, item) {
   return `${front} + ${back}`;
 }
 
+function sectorForGame(key) {
+  return ["fc3d", "ssq", "kl8"].includes(key) ? "fucai" : "ticai";
+}
+
 function escapeHtml(value) {
   const div = document.createElement("div");
   div.textContent = value;
@@ -125,7 +129,7 @@ async function load() {
     </article>`).join("");
 
   $("#draw-board").innerHTML = entries.map(([key, game], index) => `
-    <tr class="${isTodayDraw(game.next_draw_at) ? "is-today-draw" : ""}">
+    <tr class="${isTodayDraw(game.next_draw_at) ? "is-today-draw " : ""}sector-${sectorForGame(key)}">
       <td data-label="玩法">
         <a class="draw-board-game" href="./${key}/">
           <span class="draw-board-index">DRAW / 0${index + 1}</span>
@@ -146,7 +150,7 @@ async function load() {
       .map(item => `${game.name} ${formatCandidate(key, item)}`)
       .join("\n");
     return `
-      <article class="game-card">
+      <article class="game-card sector-${sectorForGame(key)}">
         <div class="game-head">
           <div class="game-index"><span>0${index + 1}</span><span>TARGET / ${escapeHtml(game.target_issue)}</span></div>
           <h2>${escapeHtml(game.name)}</h2>

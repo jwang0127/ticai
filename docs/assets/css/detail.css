@@ -6,9 +6,13 @@
   --red: #ed3f36;
   --blue: #225bd6;
   --card: rgba(255,255,255,.68);
+  --ticai-accent: #225bd6;
+  --fucai-accent: #d34b2f;
+  --sector-accent: var(--ticai-accent);
 }
 * { box-sizing: border-box; }
 body { margin: 0; color: var(--ink); background: var(--paper); font-family: "Noto Sans SC", system-ui, sans-serif; }
+body[data-game="fc3d"], body[data-game="ssq"], body[data-game="kl8"] { --sector-accent: var(--fucai-accent); }
 body::before { content: ""; position: fixed; z-index: -1; width: 520px; height: 520px; right: -180px; top: -220px; border-radius: 50%; background: rgba(34,91,214,.16); filter: blur(90px); }
 button, a { font: inherit; }
 .shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; padding: 28px 0 60px; }
@@ -16,15 +20,19 @@ button, a { font: inherit; }
 .back { color: var(--ink); text-decoration: none; font-size: 13px; font-weight: 700; }
 .game-nav { display: flex; flex-wrap: wrap; gap: 9px; }
 .game-nav a { padding: 11px 15px; color: var(--ink); background: rgba(255,255,255,.6); border: 1px solid var(--line); border-radius: 10px; text-decoration: none; font-size: 13px; font-weight: 800; }
+.game-nav a[href*="fc3d"], .game-nav a[href*="ssq"], .game-nav a[href*="kl8"] { border-color: rgba(211,75,47,.34); }
+.game-nav a[href*="dlt"], .game-nav a[href*="pl3"], .game-nav a[href*="pl5"], .game-nav a[href*="qxc"] { border-color: rgba(34,91,214,.32); }
+.game-nav a[href*="fc3d"]:hover, .game-nav a[href*="ssq"]:hover, .game-nav a[href*="kl8"]:hover { color: white; background: var(--fucai-accent); border-color: var(--fucai-accent); }
+.game-nav a[href*="dlt"]:hover, .game-nav a[href*="pl3"]:hover, .game-nav a[href*="pl5"]:hover, .game-nav a[href*="qxc"]:hover { color: white; background: var(--ticai-accent); border-color: var(--ticai-accent); }
 .game-nav a:hover { color: white; background: var(--blue); border-color: var(--blue); }
 .updated { color: var(--muted); font: 11px/1 "DM Mono", monospace; }
 .hero { display: grid; grid-template-columns: 1fr .7fr; gap: 70px; align-items: end; padding: 64px 0 52px; }
-.eyebrow, .section-label { color: var(--red); font: 500 11px/1.4 "DM Mono", monospace; letter-spacing: .13em; }
+.eyebrow, .section-label { color: var(--sector-accent); font: 500 11px/1.4 "DM Mono", monospace; letter-spacing: .13em; }
 h1 { margin: 13px 0 0; font-size: clamp(54px, 8vw, 96px); line-height: .95; letter-spacing: -.065em; }
 .hero-meta { color: var(--muted); line-height: 1.8; }
 .next-draw { display: grid; gap: 2px; margin: 8px 0; }
 .next-draw span { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .08em; }
-.next-draw time { color: var(--blue); font-size: 19px; font-weight: 900; }
+.next-draw time { color: var(--sector-accent); font-size: 19px; font-weight: 900; }
 .latest { margin-top: 18px; font: 500 16px/1.5 "DM Mono", monospace; color: var(--ink); }
 .section { padding: 50px 0; border-top: 1px solid var(--line); }
 .section-head { display: flex; justify-content: space-between; gap: 30px; align-items: end; margin-bottom: 24px; }
@@ -36,11 +44,11 @@ body[data-game="ssq"] .picks { grid-template-columns: repeat(2, minmax(0, 1fr));
 body[data-game="kl8"] .picks { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 body[data-game="kl8"] .pick { min-width: 0; padding: 18px; overflow: hidden; }
 body[data-game="kl8"] .pick-number { margin: 28px 0 14px; white-space: normal; overflow-wrap: anywhere; font-size: clamp(16px, 1.65vw, 22px); line-height: 1.45; letter-spacing: -.04em; }
-.pick { position: relative; padding: 24px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
+.pick { position: relative; padding: 24px; background: var(--card); border: 1px solid var(--line); border-top: 3px solid var(--sector-accent); border-radius: 16px; }
 .pick-rank { color: var(--muted); font: 11px/1 "DM Mono", monospace; }
 .pick-number { margin: 40px 0 16px; font: 500 clamp(19px, 2.4vw, 29px)/1.2 "DM Mono", monospace; white-space: nowrap; }
 .purchase-suggestion { margin: -8px 0 14px; color: var(--red); font-size: 13px; line-height: 1.5; }
-.score { color: var(--red); font: 500 12px/1 "DM Mono", monospace; }
+.score { color: var(--sector-accent); font: 500 12px/1 "DM Mono", monospace; }
 .mix-label { display: inline-block; margin: -5px 0 14px; padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 11px; }
 .copy { width: 100%; margin-top: 22px; padding: 10px 12px; color: white; background: var(--ink); border: 0; border-radius: 8px; cursor: pointer; font-weight: 700; }
 .copy:hover { background: var(--blue); }
@@ -77,7 +85,7 @@ body[data-game="kl8"] .pick-number { margin: 28px 0 14px; white-space: normal; o
 .zone-card .pick-number { margin: 22px 0 12px; }
 .analysis-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 50px; }
 .analysis-summary { font-size: 18px; line-height: 1.85; }
-.model-name { display: inline-block; margin: 18px 0 0; padding: 7px 10px; color: var(--blue); border: 1px solid rgba(34,91,214,.28); border-radius: 99px; font-size: 12px; font-weight: 800; }
+.model-name { display: inline-block; margin: 18px 0 0; padding: 7px 10px; color: var(--sector-accent); border: 1px solid var(--sector-accent); border-radius: 99px; font-size: 12px; font-weight: 800; }
 .position-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 10px; padding: 0 0 50px; }
 .position-card { padding: 18px; background: rgba(255,255,255,.55); border: 1px solid var(--line); border-radius: 13px; }
 .position-card span, .position-card small { display: block; color: var(--muted); font-size: 11px; }

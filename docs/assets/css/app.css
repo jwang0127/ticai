@@ -7,6 +7,10 @@
   --red: #ed3f36;
   --blue: #225bd6;
   --acid: #dfff54;
+  --ticai-accent: #225bd6;
+  --ticai-soft: rgba(34,91,214,.10);
+  --fucai-accent: #d34b2f;
+  --fucai-soft: rgba(211,75,47,.11);
 }
 
 * { box-sizing: border-box; }
@@ -33,6 +37,10 @@ button, a { font: inherit; }
 .brand-mark { display: grid; place-items: center; width: 31px; height: 31px; color: white; background: var(--ink); border-radius: 50%; font: 900 16px/1 "Noto Sans SC"; }
 .theme-nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 9px; }
 .theme-nav a { padding: 11px 15px; color: var(--ink); background: rgba(255,255,255,.62); border: 1px solid var(--line); border-radius: 10px; text-decoration: none; font-size: 13px; font-weight: 800; transition: color .18s, background .18s, border-color .18s, transform .18s; }
+.theme-nav a[href*="fc3d"], .theme-nav a[href*="ssq"], .theme-nav a[href*="kl8"] { border-color: rgba(211,75,47,.34); }
+.theme-nav a[href*="dlt"], .theme-nav a[href*="pl3"], .theme-nav a[href*="pl5"], .theme-nav a[href*="qxc"] { border-color: rgba(34,91,214,.32); }
+.theme-nav a[href*="fc3d"]:hover, .theme-nav a[href*="ssq"]:hover, .theme-nav a[href*="kl8"]:hover { color: white; background: var(--fucai-accent); border-color: var(--fucai-accent); transform: translateY(-2px); }
+.theme-nav a[href*="dlt"]:hover, .theme-nav a[href*="pl3"]:hover, .theme-nav a[href*="pl5"]:hover, .theme-nav a[href*="qxc"]:hover { color: white; background: var(--ticai-accent); border-color: var(--ticai-accent); transform: translateY(-2px); }
 .theme-nav a:hover { color: white; background: var(--blue); border-color: var(--blue); transform: translateY(-2px); }
 .theme-nav a:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
 .hero-grid { display: grid; grid-template-columns: 1.55fr .7fr; align-items: end; gap: 80px; margin-top: 54px; }
@@ -86,6 +94,7 @@ h1 em { color: var(--blue); font-style: normal; }
 .draw-board-table tbody tr:last-child td { border-bottom: 0; }
 .draw-board-table tbody tr { transition: background .18s; }
 .draw-board-table tbody tr:hover { background: rgba(26,95,255,.045); }
+.draw-board-table tbody tr.sector-fucai:hover { background: var(--fucai-soft); }
 .draw-board-game { display: grid; gap: 8px; color: inherit; text-decoration: none; }
 .draw-board-game strong { font-size: 16px; }
 .draw-board-index { color: var(--red); font: 500 10px/1 "DM Mono", monospace; letter-spacing: .1em; }
@@ -97,10 +106,18 @@ h1 em { color: var(--blue); font-style: normal; }
 .draw-board-refresh { margin: 10px 2px 0; color: var(--muted); font-size: 11px; }
 .games { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 14px; padding-bottom: 54px; }
 .game-card { display: flex; flex-direction: column; min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; backdrop-filter: blur(18px); box-shadow: 0 20px 60px rgba(40,38,30,.04); }
+.game-card { border-top: 4px solid var(--ticai-accent); }
+.game-card.sector-fucai { border-top-color: var(--fucai-accent); }
+.game-card.sector-ticai .game-head { background: linear-gradient(135deg, var(--ticai-soft), transparent 65%); }
+.game-card.sector-fucai .game-head { background: linear-gradient(135deg, var(--fucai-soft), transparent 65%); }
 .game-head { padding: 22px; border-bottom: 1px solid var(--line); }
 .game-index { display: flex; justify-content: space-between; color: var(--muted); font: 500 11px/1 "DM Mono", monospace; }
 .game-head h2 { margin: 28px 0 8px; font-size: 27px; letter-spacing: -.04em; }
 .draw-time { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 5px 10px; margin: 0; color: var(--blue); }
+.game-card.sector-ticai .draw-time, .game-card.sector-ticai .detail-link span { color: var(--ticai-accent); }
+.game-card.sector-fucai .draw-time, .game-card.sector-fucai .detail-link span { color: var(--fucai-accent); }
+.game-card.sector-ticai .draw-time::before { background: var(--ticai-accent); }
+.game-card.sector-fucai .draw-time::before { background: var(--fucai-accent); }
 .draw-time::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
 .draw-time span { grid-column: 2; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .08em; }
 .draw-time time { grid-column: 2; font-size: 14px; font-weight: 900; }
