@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T10:52:24+08:00",
+  "generated_at": "2026-07-26T11:18:21+08:00",
   "daily_results_date": "2026-07-26",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -149,10 +149,10 @@
   "games": {
     "dlt": {
       "name": "超级大乐透",
-      "model_version": "v3.0-positional-rolling-ensemble",
+      "model_version": "v3.1-rolling-ensemble-with-coverage",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-07-26T10:52:24+08:00",
+      "generated_at": "2026-07-26T11:18:21+08:00",
       "latest_issue": "26083",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -645,10 +645,10 @@
     },
     "pl3": {
       "name": "排列3",
-      "model_version": "v3.0-positional-rolling-ensemble",
+      "model_version": "v3.1-rolling-ensemble-with-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T10:52:24+08:00",
+      "generated_at": "2026-07-26T11:18:21+08:00",
       "latest_issue": "26196",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -1515,40 +1515,40 @@
         "position_count": 3,
         "next_day_advice": [
           {
-            "number": "706",
+            "number": "755",
+            "shape": "组选三",
+            "suggestion": "组选三参考：755（557/575/755）"
+          },
+          {
+            "number": "784",
             "shape": "组六形态，按直选参考",
-            "suggestion": "直选 706"
+            "suggestion": "直选参考：784"
+          },
+          {
+            "number": "354",
+            "shape": "组六形态，按直选参考",
+            "suggestion": "直选参考：354"
           },
           {
             "number": "386",
             "shape": "组六形态，按直选参考",
-            "suggestion": "直选 386"
+            "suggestion": "直选参考：386"
           },
           {
-            "number": "556",
-            "shape": "组选三",
-            "suggestion": "组选三 556（覆盖 556/565/655）"
-          },
-          {
-            "number": "355",
-            "shape": "组选三",
-            "suggestion": "组选三 355（覆盖 355/535/553）"
-          },
-          {
-            "number": "580",
+            "number": "594",
             "shape": "组六形态，按直选参考",
-            "suggestion": "直选 580"
+            "suggestion": "直选参考：594"
           }
         ],
-        "next_day_advice_text": "直选 706；直选 386；组选三 556（覆盖 556/565/655）；组选三 355（覆盖 355/535/553）；直选 580"
+        "next_day_advice_text": "组选三参考：755（557/575/755）；直选参考：784；直选参考：354；直选参考：386；直选参考：594"
       }
     },
     "pl5": {
       "name": "排列5",
-      "model_version": "v3.0-positional-rolling-ensemble",
+      "model_version": "v3.1-rolling-ensemble-with-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T10:52:24+08:00",
+      "generated_at": "2026-07-26T11:18:21+08:00",
       "latest_issue": "26196",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -2710,10 +2710,10 @@
     },
     "fc3d": {
       "name": "福彩3D",
-      "model_version": "v3.0-positional-rolling-ensemble",
+      "model_version": "v3.1-rolling-ensemble-with-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T10:52:24+08:00",
+      "generated_at": "2026-07-26T11:18:21+08:00",
       "latest_issue": "2026196",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -3580,40 +3580,40 @@
         "position_count": 3,
         "next_day_advice": [
           {
-            "number": "925",
-            "shape": "组六形态，按直选参考",
-            "suggestion": "直选 925"
-          },
-          {
-            "number": "229",
+            "number": "225",
             "shape": "组选三",
-            "suggestion": "组选三 229（覆盖 229/292/922）"
+            "suggestion": "组选三参考：225（225/252/522）"
           },
           {
-            "number": "423",
+            "number": "429",
             "shape": "组六形态，按直选参考",
-            "suggestion": "直选 423"
+            "suggestion": "直选参考：429"
           },
           {
-            "number": "203",
+            "number": "923",
             "shape": "组六形态，按直选参考",
-            "suggestion": "直选 203"
+            "suggestion": "直选参考：923"
           },
           {
-            "number": "469",
+            "number": "403",
             "shape": "组六形态，按直选参考",
-            "suggestion": "直选 469"
+            "suggestion": "直选参考：403"
+          },
+          {
+            "number": "919",
+            "shape": "组选三",
+            "suggestion": "组选三参考：919（199/919/991）"
           }
         ],
-        "next_day_advice_text": "直选 925；组选三 229（覆盖 229/292/922）；直选 423；直选 203；直选 469"
+        "next_day_advice_text": "组选三参考：225（225/252/522）；直选参考：429；直选参考：923；直选参考：403；组选三参考：919（199/919/991）"
       }
     },
     "qxc": {
       "name": "体彩7星彩",
-      "model_version": "v3.0-positional-rolling-ensemble",
+      "model_version": "v3.1-rolling-ensemble-with-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T10:52:24+08:00",
+      "generated_at": "2026-07-26T11:18:21+08:00",
       "latest_issue": "26084",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -4203,10 +4203,10 @@
     },
     "ssq": {
       "name": "福彩双色球",
-      "model_version": "v3.0-positional-rolling-ensemble",
+      "model_version": "v3.1-rolling-ensemble-with-coverage",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-26T10:52:24+08:00",
+      "generated_at": "2026-07-26T11:18:21+08:00",
       "latest_issue": "2026084",
       "latest_draw_date": "2026-07-23",
       "latest_numbers": [
@@ -4243,24 +4243,6 @@
         },
         {
           "red": [
-            7,
-            10,
-            16,
-            23,
-            24,
-            28
-          ],
-          "blue": [
-            4
-          ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
-          "rank": 2,
-          "confidence": 67.3,
-          "copy_text": "福彩双色球 07 10 16 23 24 28 + 04"
-        },
-        {
-          "red": [
             1,
             7,
             14,
@@ -4273,45 +4255,63 @@
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
-          "rank": 3,
-          "confidence": 65.3,
+          "rank": 2,
+          "confidence": 74.3,
           "copy_text": "福彩双色球 01 07 14 21 28 29 + 01"
         },
         {
           "red": [
             1,
+            10,
             14,
             16,
             24,
-            28,
-            30
+            27
           ],
           "blue": [
-            2
+            5
+          ],
+          "mix_label": "红蓝分区共现模型",
+          "source": "ssq_zone",
+          "rank": 3,
+          "confidence": 70.3,
+          "copy_text": "福彩双色球 01 10 14 16 24 27 + 05"
+        },
+        {
+          "red": [
+            2,
+            7,
+            14,
+            24,
+            27,
+            28
+          ],
+          "blue": [
+            13
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
           "rank": 4,
-          "confidence": 61.1,
-          "copy_text": "福彩双色球 01 14 16 24 28 30 + 02"
+          "confidence": 54.4,
+          "copy_text": "福彩双色球 02 07 14 24 27 28 + 13"
         },
         {
           "red": [
-            1,
+            7,
+            10,
+            12,
             14,
-            15,
             16,
-            24,
-            25
+            24
           ],
           "blue": [
-            4
+            10
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩双色球 01 14 15 16 24 25 + 04"
+          "copy_text": "福彩双色球 07 10 12 14 16 24 + 10"
         }
       ],
       "top_candidates": [
@@ -4335,24 +4335,6 @@
         },
         {
           "red": [
-            7,
-            10,
-            16,
-            23,
-            24,
-            28
-          ],
-          "blue": [
-            4
-          ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
-          "rank": 2,
-          "confidence": 67.3,
-          "copy_text": "福彩双色球 07 10 16 23 24 28 + 04"
-        },
-        {
-          "red": [
             1,
             7,
             14,
@@ -4365,45 +4347,63 @@
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
-          "rank": 3,
-          "confidence": 65.3,
+          "rank": 2,
+          "confidence": 74.3,
           "copy_text": "福彩双色球 01 07 14 21 28 29 + 01"
         },
         {
           "red": [
             1,
+            10,
             14,
             16,
             24,
-            28,
-            30
+            27
           ],
           "blue": [
-            2
+            5
+          ],
+          "mix_label": "红蓝分区共现模型",
+          "source": "ssq_zone",
+          "rank": 3,
+          "confidence": 70.3,
+          "copy_text": "福彩双色球 01 10 14 16 24 27 + 05"
+        },
+        {
+          "red": [
+            2,
+            7,
+            14,
+            24,
+            27,
+            28
+          ],
+          "blue": [
+            13
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
           "rank": 4,
-          "confidence": 61.1,
-          "copy_text": "福彩双色球 01 14 16 24 28 30 + 02"
+          "confidence": 54.4,
+          "copy_text": "福彩双色球 02 07 14 24 27 28 + 13"
         },
         {
           "red": [
-            1,
+            7,
+            10,
+            12,
             14,
-            15,
             16,
-            24,
-            25
+            24
           ],
           "blue": [
-            4
+            10
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩双色球 01 14 15 16 24 25 + 04"
+          "copy_text": "福彩双色球 07 10 12 14 16 24 + 10"
         }
       ],
       "review": {
@@ -4663,10 +4663,10 @@
     },
     "kl8": {
       "name": "福彩快乐8",
-      "model_version": "v3.0-positional-rolling-ensemble",
+      "model_version": "v3.1-rolling-ensemble-with-coverage",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-26T10:52:24+08:00",
+      "generated_at": "2026-07-26T11:18:21+08:00",
       "latest_issue": "2026196",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [

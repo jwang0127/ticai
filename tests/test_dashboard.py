@@ -62,7 +62,9 @@ class DetailPageTests(unittest.TestCase):
             self.assertEqual(len(item["red"]), 6)
             self.assertEqual(item["red"], sorted(set(item["red"])))
             self.assertEqual(len(item["blue"]), 1)
-        self.assertGreaterEqual(len({item["blue"][0] for item in ssq}), 2)
+        blue_values = {item["blue"][0] for item in ssq}
+        self.assertGreaterEqual(len(blue_values), 4)
+        self.assertGreaterEqual(len({(value - 1) // 4 for value in blue_values}), 4)
 
     def test_dlt_candidates_are_diversified(self):
         candidates, scores = generate_dlt(self.dlt_rows, "26082")
@@ -133,6 +135,10 @@ class DetailPageTests(unittest.TestCase):
             self.assertTrue(review["next_day_advice_text"])
             self.assertEqual(len(payload["games"][game]["analysis"]["selected_position_parameters"]), 3)
             self.assertTrue(payload["games"][game]["top_candidates"][0]["purchase_suggestion"])
+            self.assertEqual(
+                [(item["number"], item["suggestion"]) for item in review["next_day_advice"]],
+                [(item["number"], item["purchase_suggestion"]) for item in payload["games"][game]["top_candidates"]],
+            )
             for position in range(3):
                 self.assertLessEqual(
                     len({item["number"][position] for item in payload["games"][game]["top_candidates"]}),

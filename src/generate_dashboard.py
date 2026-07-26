@@ -715,7 +715,34 @@ def generate_ssq(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
         score += 0.10 if all(zone_counts) else -0.30
         score -= 0.0025 * abs(sum(red) - 102)
         pool[(tuple(red), blue)] = score
-    ranked = sorted(pool.items(), key=lambda item: item[1], reverse=True)[:5]
+    ranked_all = sorted(pool.items(), key=lambda item: item[1], reverse=True)
+
+    # A single score sort can make all five rows inherit the same hot blue
+    # ball. That is useful for ranking one line, but it is poor coverage for
+    # the five-line composite: one wrong hot-number assumption then invalidates
+    # every line. Select one strong line per blue-ball band first, then use the
+    # next-best unused blue for the fifth line. This keeps score order relevant
+    # while preventing the blue model from collapsing onto 01/04 (or any other
+    # pair of hot numbers).
+    blue_bands = ((1, 4), (5, 8), (9, 12), (13, 16))
+    selected = []
+    used_blues = set()
+    for low, high in blue_bands:
+        choice = next(
+            (item for item in ranked_all if low <= item[0][1] <= high and item[0][1] not in used_blues),
+            None,
+        )
+        if choice is not None:
+            selected.append(choice)
+            used_blues.add(choice[0][1])
+    for item in ranked_all:
+        blue = item[0][1]
+        if blue not in used_blues:
+            selected.append(item)
+            used_blues.add(blue)
+        if len(selected) == 5:
+            break
+    ranked = sorted(selected[:5], key=lambda item: item[1], reverse=True)
     candidates = [
         {"red": list(key[0]), "blue": [key[1]], "mix_label": "红蓝分区共现模型", "source": "ssq_zone"}
         for key, _ in ranked
@@ -1039,24 +1066,7 @@ def build_model_review(
         review["position_count"] = len(diagnostics)
 
         next_candidates = (current_prediction or {}).get("top_candidates", [])
-        advice = []
-        for candidate in next_candidates[:5]:
-            number = candidate["number"]
-            digits = list(number)
-            unique = len(set(digits))
-            if unique == 2:
-                repeated = next(value for value in set(digits) if digits.count(value) == 2)
-                single = next(value for value in set(digits) if digits.count(value) == 1)
-                permutations = sorted({repeated + repeated + single, repeated + single + repeated, single + repeated + repeated})
-                suggestion = f"组选三 {number}（覆盖 {'/'.join(permutations)}）"
-                shape = "组选三"
-            elif unique == 3:
-                suggestion = f"直选 {number}"
-                shape = "组六形态，按直选参考"
-            else:
-                suggestion = f"直选 {number}"
-                shape = "豹子形态，按直选参考"
-            advice.append({"number": number, "shape": shape, "suggestion": suggestion})
+        advice = build_next_day_advice(game, next_candidates)
         review["next_day_advice"] = advice
         review["next_day_advice_text"] = "；".join(item["suggestion"] for item in advice) or "暂无可用候选"
     elif game in ("dlt", "qxc", "ssq"):
@@ -1154,6 +1164,28 @@ def purchase_suggestion(game: str, candidate: dict) -> str | None:
     if len(set(digits)) == 3:
         return f"直选参考：{number}"
     return f"直选参考：{number}（豹子形态）"
+
+
+def build_next_day_advice(game: str, candidates: list[dict]) -> list[dict]:
+    """Build review advice from the exact candidates shown in the composite list."""
+    if game not in ("pl3", "fc3d"):
+        return []
+    advice = []
+    for candidate in candidates[:5]:
+        number = candidate["number"]
+        unique = len(set(number))
+        if unique == 2:
+            shape = "组选三"
+        elif unique == 3:
+            shape = "组六形态，按直选参考"
+        else:
+            shape = "豹子形态，按直选参考"
+        advice.append({
+            "number": number,
+            "shape": shape,
+            "suggestion": purchase_suggestion(game, candidate),
+        })
+    return advice
 
 
 def omission(rows: list[dict], start: int, end: int, values: range) -> list[tuple[int, int]]:
@@ -1364,7 +1396,7 @@ def main() -> None:
 
         output["games"][game] = {
             "name": cfg["name"],
-            "model_version": "v3.0-positional-rolling-ensemble",
+            "model_version": "v3.1-rolling-ensemble-with-coverage",
             "history_count": len(rows),
             "model_scope": "前区/后区排序位独立" if game == "dlt" else "每一位独立评分" if game in ("pl3", "pl5", "fc3d", "qxc") else "玩法专用结构模型",
             "generated_at": now.isoformat(timespec="seconds"),
@@ -1429,6 +1461,17 @@ def main() -> None:
             }
             model_reviews[game] = build_model_review(game, latest, saved_prediction, {"top_candidates": enriched})
             output["games"][game]["model_review"] = model_reviews[game]
+        # The historical review may already be complete while today's
+        # candidates are regenerated. Keep only the forward-looking advice in
+        # lockstep with the composite recommendation shown on this page.
+        if game in ("pl3", "fc3d") and output["games"][game].get("model_review"):
+            advice = build_next_day_advice(game, enriched)
+            output["games"][game]["model_review"]["next_day_advice"] = advice
+            output["games"][game]["model_review"]["next_day_advice_text"] = (
+                "；".join(item["suggestion"] for item in advice) or "暂无可用候选"
+            )
+            model_reviews[game]["next_day_advice"] = advice
+            model_reviews[game]["next_day_advice_text"] = output["games"][game]["model_review"]["next_day_advice_text"]
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     REVIEWS_PATH.write_text(json.dumps(model_reviews, ensure_ascii=False, indent=2), encoding="utf-8")
