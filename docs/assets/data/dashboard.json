@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T19:50:38+08:00",
+  "generated_at": "2026-07-26T23:15:47+08:00",
   "daily_results_date": "2026-07-26",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -144,7 +144,7 @@
       "copy_text": "福彩快乐8 20 31 42 47 55 59 68 71 72 75\n福彩快乐8 03 05 09 17 44 54 56 57 61 73\n福彩快乐8 08 13 19 21 23 32 38 42 48 57"
     }
   ],
-  "source_status": "official_api",
+  "source_status": "cached_verified_data",
   "disclaimer": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。模型相对评分仅表示本页综合候选之间的排序，不是真实中奖概率。",
   "games": {
     "dlt": {
@@ -678,7 +678,7 @@
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T19:50:38+08:00",
+      "generated_at": "2026-07-26T23:15:47+08:00",
       "latest_issue": "26196",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -687,8 +687,8 @@
         "6"
       ],
       "target_issue": "26197",
-      "next_draw_at": "2026-07-26T21:25+08:00",
-      "next_draw_display": "2026年07月26日 21:25（北京时间）",
+      "next_draw_at": "2026-07-27T21:25+08:00",
+      "next_draw_display": "2026年07月27日 21:25（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
@@ -1858,7 +1858,7 @@
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T19:50:38+08:00",
+      "generated_at": "2026-07-26T23:15:47+08:00",
       "latest_issue": "26196",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -1869,8 +1869,8 @@
         "2"
       ],
       "target_issue": "26197",
-      "next_draw_at": "2026-07-26T21:25+08:00",
-      "next_draw_display": "2026年07月26日 21:25（北京时间）",
+      "next_draw_at": "2026-07-27T21:25+08:00",
+      "next_draw_display": "2026年07月27日 21:25（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
@@ -3443,7 +3443,7 @@
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T19:50:38+08:00",
+      "generated_at": "2026-07-26T23:15:47+08:00",
       "latest_issue": "2026196",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -3452,8 +3452,8 @@
         "9"
       ],
       "target_issue": "2026197",
-      "next_draw_at": "2026-07-26T21:15+08:00",
-      "next_draw_display": "2026年07月26日 21:15（北京时间）",
+      "next_draw_at": "2026-07-27T21:15+08:00",
+      "next_draw_display": "2026年07月27日 21:15（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
@@ -4623,7 +4623,7 @@
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T19:50:38+08:00",
+      "generated_at": "2026-07-26T23:15:47+08:00",
       "latest_issue": "26084",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -4636,8 +4636,8 @@
         "7"
       ],
       "target_issue": "26085",
-      "next_draw_at": "2026-07-26T21:25+08:00",
-      "next_draw_display": "2026年07月26日 21:25（北京时间）",
+      "next_draw_at": "2026-07-28T21:25+08:00",
+      "next_draw_display": "2026年07月28日 21:25（北京时间）",
       "schedule_note": "每周二、五、日开奖",
       "candidates": [
         {
@@ -5296,7 +5296,7 @@
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-26T19:50:38+08:00",
+      "generated_at": "2026-07-26T23:15:47+08:00",
       "latest_issue": "2026084",
       "latest_draw_date": "2026-07-23",
       "latest_numbers": [
@@ -5309,8 +5309,8 @@
         "05"
       ],
       "target_issue": "2026085",
-      "next_draw_at": "2026-07-26T21:15+08:00",
-      "next_draw_display": "2026年07月26日 21:15（北京时间）",
+      "next_draw_at": "2026-07-28T21:15+08:00",
+      "next_draw_display": "2026年07月28日 21:15（北京时间）",
       "schedule_note": "每周二、四、日开奖",
       "candidates": [
         {
@@ -5786,7 +5786,7 @@
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-26T19:50:38+08:00",
+      "generated_at": "2026-07-26T23:15:47+08:00",
       "latest_issue": "2026196",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -5812,8 +5812,8 @@
         "79"
       ],
       "target_issue": "2026197",
-      "next_draw_at": "2026-07-26T21:30+08:00",
-      "next_draw_display": "2026年07月26日 21:30（北京时间）",
+      "next_draw_at": "2026-07-27T21:30+08:00",
+      "next_draw_display": "2026年07月27日 21:30（北京时间）",
       "schedule_note": "每日21:30开奖（休市日除外）",
       "candidates": [
         {
