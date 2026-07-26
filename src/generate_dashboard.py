@@ -612,6 +612,7 @@ def generate_dlt(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
                 (
                     len(set(item[0][0]) & set(chosen[0][0]))
                     + 2.0 * len(set(item[0][1]) & set(chosen[0][1]))
+                    + 6.0 * int(item[0][1] == chosen[0][1])
                     for chosen in selected
                 ),
                 default=0.0,
@@ -619,17 +620,21 @@ def generate_dlt(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
         )
         selected.append(best)
         remaining.remove(best)
-    # Guarantee useful back-area coverage after the score/diversity tradeoff.
+    # Guarantee useful back-area coverage and distinct back pairs after the
+    # score/diversity tradeoff; repeating one pair across the pool adds no
+    # practical tolerance.
     back_union = set().union(*(set(key[1]) for key, _ in selected))
+    back_pairs = {key[1] for key, _ in selected}
     for candidate in remaining:
-        if len(back_union) >= 5:
+        if len(back_union) >= 5 and len(back_pairs) >= 5:
             break
         candidate_key, _ = candidate
         expanded = back_union | set(candidate_key[1])
-        if len(expanded) > len(back_union):
+        if candidate_key[1] not in back_pairs and len(expanded) >= len(back_union):
             weakest = min(range(len(selected)), key=lambda index: selected[index][1])
             selected[weakest] = candidate
             back_union = set().union(*(set(key[1]) for key, _ in selected))
+            back_pairs = {key[1] for key, _ in selected}
     selected.sort(key=lambda pair: pair[1], reverse=True)
     candidates = [{"front": list(key[0]), "back": list(key[1])} for key, _ in selected]
     return candidates, [score for _, score in selected]

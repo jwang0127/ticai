@@ -231,6 +231,17 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def merge_history(previous_rows: list[dict[str, Any]], fetched_rows: list[dict[str, Any]], limit: int) -> list[dict[str, Any]]:
+    """Merge a fresh official page into the verified cache without shrinking history."""
+    merged = {str(row["issue"]): row for row in previous_rows if row.get("issue")}
+    merged.update({str(row["issue"]): row for row in fetched_rows if row.get("issue")})
+    return sorted(
+        merged.values(),
+        key=lambda row: int(str(row["issue"])) if str(row["issue"]).isdigit() else str(row["issue"]),
+        reverse=True,
+    )[:limit]
+
+
 def main() -> None:
     args = parse_args()
     if args.history_limit < 1:
@@ -265,7 +276,7 @@ def main() -> None:
         for future in as_completed(futures):
             game, cfg = futures[future]
             try:
-                draws[game] = future.result()
+                draws[game] = merge_history(draws.get(game, []), future.result(), args.history_limit)
                 print(f"[OK] {cfg['name']}: {draws[game][0]['issue']}")
             except Exception as exc:  # Preserve last verified data, never invent a result.
                 errors[game] = str(exc)

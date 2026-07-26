@@ -62,6 +62,7 @@ class DetailPageTests(unittest.TestCase):
             self.assertEqual(len(item["red"]), 6)
             self.assertEqual(item["red"], sorted(set(item["red"])))
             self.assertEqual(len(item["blue"]), 1)
+        self.assertGreaterEqual(len({item["blue"][0] for item in ssq}), 2)
 
     def test_dlt_candidates_are_diversified(self):
         candidates, scores = generate_dlt(self.dlt_rows, "26082")
@@ -71,6 +72,7 @@ class DetailPageTests(unittest.TestCase):
         back_union = set().union(*(set(item["back"]) for item in candidates))
         self.assertGreaterEqual(len(front_union), 10)
         self.assertGreaterEqual(len(back_union), 5)
+        self.assertGreaterEqual(len({tuple(item["back"]) for item in candidates}), 3)
 
     def test_position_analysis_is_explicit_for_direct_digit_games(self):
         expected = {
