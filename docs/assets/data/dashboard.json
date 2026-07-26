@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T11:18:21+08:00",
+  "generated_at": "2026-07-26T11:23:17+08:00",
   "daily_results_date": "2026-07-26",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -21,7 +21,7 @@
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "超级大乐透 16 17 22 23 26 + 04 08；06 09 12 34 35 + 04 08；07 13 14 16 20 + 07 12"
+      "copy_text": "超级大乐透 16 17 22 23 26 + 04 08\n超级大乐透 06 09 12 34 35 + 04 08\n超级大乐透 07 13 14 16 20 + 07 12"
     },
     {
       "game": "pl3",
@@ -41,7 +41,7 @@
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "排列3 004；989；455"
+      "copy_text": "排列3 004\n排列3 989\n排列3 455"
     },
     {
       "game": "pl5",
@@ -61,7 +61,7 @@
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "排列5 49019；37840；63844"
+      "copy_text": "排列5 49019\n排列5 37840\n排列5 63844"
     },
     {
       "game": "fc3d",
@@ -81,7 +81,7 @@
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "福彩3D 236；005；462"
+      "copy_text": "福彩3D 236\n福彩3D 005\n福彩3D 462"
     },
     {
       "game": "qxc",
@@ -101,7 +101,7 @@
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "体彩7星彩 8183861；8368709；2447471"
+      "copy_text": "体彩7星彩 8183861\n体彩7星彩 8368709\n体彩7星彩 2447471"
     },
     {
       "game": "ssq",
@@ -121,7 +121,7 @@
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "福彩双色球 05 06 19 26 27 28 + 10；01 05 08 12 29 31 + 05；01 07 13 14 24 28 + 02"
+      "copy_text": "福彩双色球 05 06 19 26 27 28 + 10\n福彩双色球 01 05 08 12 29 31 + 05\n福彩双色球 01 07 13 14 24 28 + 02"
     },
     {
       "game": "kl8",
@@ -141,7 +141,7 @@
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "福彩快乐8 20 31 42 47 55 59 68 71 72 75；03 05 09 17 44 54 56 57 61 73；08 13 19 21 23 32 38 42 48 57"
+      "copy_text": "福彩快乐8 20 31 42 47 55 59 68 71 72 75\n福彩快乐8 03 05 09 17 44 54 56 57 61 73\n福彩快乐8 08 13 19 21 23 32 38 42 48 57"
     }
   ],
   "source_status": "official_api",
@@ -152,7 +152,7 @@
       "model_version": "v3.1-rolling-ensemble-with-coverage",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-07-26T11:18:21+08:00",
+      "generated_at": "2026-07-26T11:23:17+08:00",
       "latest_issue": "26083",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -648,7 +648,7 @@
       "model_version": "v3.1-rolling-ensemble-with-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T11:18:21+08:00",
+      "generated_at": "2026-07-26T11:23:17+08:00",
       "latest_issue": "26196",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -1548,7 +1548,7 @@
       "model_version": "v3.1-rolling-ensemble-with-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T11:18:21+08:00",
+      "generated_at": "2026-07-26T11:23:17+08:00",
       "latest_issue": "26196",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -2713,7 +2713,7 @@
       "model_version": "v3.1-rolling-ensemble-with-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T11:18:21+08:00",
+      "generated_at": "2026-07-26T11:23:17+08:00",
       "latest_issue": "2026196",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -3613,7 +3613,7 @@
       "model_version": "v3.1-rolling-ensemble-with-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T11:18:21+08:00",
+      "generated_at": "2026-07-26T11:23:17+08:00",
       "latest_issue": "26084",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -4206,7 +4206,7 @@
       "model_version": "v3.1-rolling-ensemble-with-coverage",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-26T11:18:21+08:00",
+      "generated_at": "2026-07-26T11:23:17+08:00",
       "latest_issue": "2026084",
       "latest_draw_date": "2026-07-23",
       "latest_numbers": [
@@ -4666,7 +4666,7 @@
       "model_version": "v3.1-rolling-ensemble-with-coverage",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-26T11:18:21+08:00",
+      "generated_at": "2026-07-26T11:23:17+08:00",
       "latest_issue": "2026196",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [

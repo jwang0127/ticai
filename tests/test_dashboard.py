@@ -268,7 +268,10 @@ class DetailPageTests(unittest.TestCase):
         for item in payload["daily_results"]:
             self.assertEqual(len(item["results"]), 3)
             self.assertEqual(item["result"], "；".join(scheme["result"] for scheme in item["results"]))
-            self.assertEqual(item["copy_text"], f"{item['name']} {item['result']}")
+            self.assertEqual(
+                item["copy_text"],
+                "\n".join(f"{item['name']} {scheme['result']}" for scheme in item["results"]),
+            )
             if item["game"] == "kl8":
                 for scheme in item["results"]:
                     values = scheme["result"].split()

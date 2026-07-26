@@ -875,7 +875,9 @@ def generate_daily_results(draw_date: str, config: dict) -> list[dict]:
             "name": cfg["name"],
             "result": combined,
             "results": schemes,
-            "copy_text": f"{cfg['name']} {combined}",
+            # Keep each scheme on its own clipboard line so the xuanxue
+            # window remains readable when pasted into notes or chat.
+            "copy_text": "\n".join(f"{cfg['name']} {scheme['result']}" for scheme in schemes),
         })
     return results
 

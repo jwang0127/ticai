@@ -72,7 +72,7 @@ h1 em { color: var(--blue); font-style: normal; }
 .daily-results-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .daily-result { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; align-items: center; padding: 17px 18px; background: var(--card); border: 1px solid var(--line); border-radius: 13px; }
 .daily-result-name { font-size: 13px; font-weight: 900; }
-.daily-result-value { grid-column: 1 / 3; font: 500 17px/1.4 "DM Mono", monospace; letter-spacing: .04em; }
+.daily-result-value { grid-column: 1 / 3; min-width: 0; font: 500 17px/1.4 "DM Mono", monospace; letter-spacing: .04em; white-space: normal; overflow-wrap: anywhere; word-break: break-word; }
 .daily-result-copy { grid-column: 2; grid-row: 1; padding: 4px 0; color: var(--blue); background: none; border: 0; cursor: pointer; font-size: 12px; font-weight: 800; }
 .daily-result-copy:hover { color: var(--red); }
 .draw-board { padding: 42px 0; border-bottom: 1px solid var(--line); }
