@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T23:15:47+08:00",
+  "generated_at": "2026-07-26T23:37:58+08:00",
   "daily_results_date": "2026-07-26",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -144,7 +144,7 @@
       "copy_text": "福彩快乐8 20 31 42 47 55 59 68 71 72 75\n福彩快乐8 03 05 09 17 44 54 56 57 61 73\n福彩快乐8 08 13 19 21 23 32 38 42 48 57"
     }
   ],
-  "source_status": "cached_verified_data",
+  "source_status": "official_api",
   "disclaimer": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。模型相对评分仅表示本页综合候选之间的排序，不是真实中奖概率。",
   "games": {
     "dlt": {
@@ -152,7 +152,7 @@
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-07-26T19:50:38+08:00",
+      "generated_at": "2026-07-26T23:37:58+08:00",
       "latest_issue": "26083",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -678,15 +678,15 @@
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T23:15:47+08:00",
-      "latest_issue": "26196",
-      "latest_draw_date": "2026-07-25",
+      "generated_at": "2026-07-26T23:37:58+08:00",
+      "latest_issue": "26197",
+      "latest_draw_date": "2026-07-26",
       "latest_numbers": [
+        "4",
         "7",
-        "2",
-        "6"
+        "3"
       ],
-      "target_issue": "26197",
+      "target_issue": "26198",
       "next_draw_at": "2026-07-27T21:25+08:00",
       "next_draw_display": "2026年07月27日 21:25（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
@@ -705,7 +705,7 @@
           "mix_label": "位置池组合·2/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 69.0,
+          "confidence": 69.5,
           "copy_text": "排列3 756",
           "purchase_suggestion": "直选参考：756"
         },
@@ -714,7 +714,7 @@
           "mix_label": "位置池组合·1/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 3,
-          "confidence": 64.9,
+          "confidence": 66.2,
           "copy_text": "排列3 554",
           "purchase_suggestion": "组选三参考：554（455/545/554）"
         },
@@ -723,7 +723,7 @@
           "mix_label": "位置池组合·1/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 4,
-          "confidence": 62.2,
+          "confidence": 63.8,
           "copy_text": "排列3 784",
           "purchase_suggestion": "直选参考：784"
         },
@@ -752,7 +752,7 @@
           "mix_label": "位置池组合·2/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 69.0,
+          "confidence": 69.5,
           "copy_text": "排列3 756",
           "purchase_suggestion": "直选参考：756"
         },
@@ -761,7 +761,7 @@
           "mix_label": "位置池组合·1/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 3,
-          "confidence": 64.9,
+          "confidence": 66.2,
           "copy_text": "排列3 554",
           "purchase_suggestion": "组选三参考：554（455/545/554）"
         },
@@ -770,7 +770,7 @@
           "mix_label": "位置池组合·1/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 4,
-          "confidence": 62.2,
+          "confidence": 63.8,
           "copy_text": "排列3 784",
           "purchase_suggestion": "直选参考：784"
         },
@@ -785,20 +785,20 @@
         }
       ],
       "review": {
-        "title": "第26196期结构复盘",
-        "summary": "开奖号726，和值15、跨度5，奇偶比1:2。三位数形态为三位不同。",
+        "title": "第26197期结构复盘",
+        "summary": "开奖号473，和值14、跨度4，奇偶比2:1。三位数形态为三位不同。",
         "metrics": [
           {
             "label": "和值",
-            "value": "15"
+            "value": "14"
           },
           {
             "label": "跨度",
-            "value": "5"
+            "value": "4"
           },
           {
             "label": "奇偶",
-            "value": "1:2"
+            "value": "2:1"
           },
           {
             "label": "不同数字",
@@ -821,7 +821,7 @@
           },
           {
             "label": "较长遗漏",
-            "value": "4（6期）、3（4期）、8（3期）"
+            "value": "8（4期）、0（3期）、1（3期）"
           }
         ],
         "position_analysis": [
@@ -834,12 +834,12 @@
             ],
             "omitted_digits": [
               {
-                "digit": "4",
-                "miss": 26
+                "digit": "2",
+                "miss": 24
               },
               {
-                "digit": "2",
-                "miss": 23
+                "digit": "8",
+                "miss": 19
               }
             ]
           },
@@ -852,12 +852,12 @@
             ],
             "omitted_digits": [
               {
-                "digit": "7",
-                "miss": 24
+                "digit": "3",
+                "miss": 19
               },
               {
-                "digit": "3",
-                "miss": 18
+                "digit": "1",
+                "miss": 15
               }
             ]
           },
@@ -866,16 +866,16 @@
             "hot_digits": [
               "6",
               "5",
-              "0"
+              "3"
             ],
             "omitted_digits": [
               {
                 "digit": "8",
-                "miss": 21
+                "miss": 22
               },
               {
-                "digit": "3",
-                "miss": 14
+                "digit": "2",
+                "miss": 13
               }
             ]
           }
@@ -883,212 +883,212 @@
         "backtest": {
           "8@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2844,
+            "positional_top3_hit_rate": 0.2833,
             "se": 0.015,
             "baseline": 0.3
           },
           "8@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2844,
+            "positional_top3_hit_rate": 0.2833,
             "se": 0.015,
             "baseline": 0.3
           },
           "8@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2844,
+            "positional_top3_hit_rate": 0.2833,
             "se": 0.015,
             "baseline": 0.3
           },
           "8@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2844,
+            "positional_top3_hit_rate": 0.2833,
             "se": 0.015,
             "baseline": 0.3
           },
           "8@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2844,
+            "positional_top3_hit_rate": 0.2833,
             "se": 0.015,
             "baseline": 0.3
           },
           "13@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3011,
+            "positional_top3_hit_rate": 0.3,
             "se": 0.0153,
             "baseline": 0.3
           },
           "13@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3011,
+            "positional_top3_hit_rate": 0.3,
             "se": 0.0153,
             "baseline": 0.3
           },
           "13@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3011,
+            "positional_top3_hit_rate": 0.3,
             "se": 0.0153,
             "baseline": 0.3
           },
           "13@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3011,
+            "positional_top3_hit_rate": 0.3,
             "se": 0.0153,
             "baseline": 0.3
           },
           "13@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3011,
+            "positional_top3_hit_rate": 0.3,
             "se": 0.0153,
             "baseline": 0.3
           },
           "18@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2833,
+            "positional_top3_hit_rate": 0.2822,
             "se": 0.015,
             "baseline": 0.3
           },
           "18@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2833,
+            "positional_top3_hit_rate": 0.2822,
             "se": 0.015,
             "baseline": 0.3
           },
           "18@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2833,
+            "positional_top3_hit_rate": 0.2822,
             "se": 0.015,
             "baseline": 0.3
           },
           "18@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2833,
+            "positional_top3_hit_rate": 0.2822,
             "se": 0.015,
             "baseline": 0.3
           },
           "18@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2833,
+            "positional_top3_hit_rate": 0.2822,
             "se": 0.015,
             "baseline": 0.3
           },
           "24@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2744,
+            "positional_top3_hit_rate": 0.2733,
             "se": 0.0149,
             "baseline": 0.3
           },
           "24@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2744,
+            "positional_top3_hit_rate": 0.2733,
             "se": 0.0149,
             "baseline": 0.3
           },
           "24@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2744,
+            "positional_top3_hit_rate": 0.2733,
             "se": 0.0149,
             "baseline": 0.3
           },
           "24@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2744,
+            "positional_top3_hit_rate": 0.2733,
             "se": 0.0149,
             "baseline": 0.3
           },
           "24@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2744,
+            "positional_top3_hit_rate": 0.2733,
             "se": 0.0149,
             "baseline": 0.3
           },
           "30@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2711,
+            "positional_top3_hit_rate": 0.27,
             "se": 0.0148,
             "baseline": 0.3
           },
           "30@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2744,
+            "positional_top3_hit_rate": 0.2733,
             "se": 0.0149,
             "baseline": 0.3
           },
           "30@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2744,
+            "positional_top3_hit_rate": 0.2733,
             "se": 0.0149,
             "baseline": 0.3
           },
           "30@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2744,
+            "positional_top3_hit_rate": 0.2733,
             "se": 0.0149,
             "baseline": 0.3
           },
           "30@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2744,
+            "positional_top3_hit_rate": 0.2733,
             "se": 0.0149,
             "baseline": 0.3
           },
           "45@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2756,
+            "positional_top3_hit_rate": 0.2744,
             "se": 0.0149,
             "baseline": 0.3
           },
           "45@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.27,
+            "positional_top3_hit_rate": 0.2689,
             "se": 0.0148,
             "baseline": 0.3
           },
           "45@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2711,
+            "positional_top3_hit_rate": 0.27,
             "se": 0.0148,
             "baseline": 0.3
           },
           "45@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2711,
+            "positional_top3_hit_rate": 0.27,
             "se": 0.0148,
             "baseline": 0.3
           },
           "45@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2711,
+            "positional_top3_hit_rate": 0.27,
             "se": 0.0148,
             "baseline": 0.3
           },
           "60@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2756,
+            "positional_top3_hit_rate": 0.2744,
             "se": 0.0149,
             "baseline": 0.3
           },
           "60@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.28,
-            "se": 0.015,
+            "positional_top3_hit_rate": 0.2789,
+            "se": 0.0149,
             "baseline": 0.3
           },
           "60@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.28,
-            "se": 0.015,
+            "positional_top3_hit_rate": 0.2789,
+            "se": 0.0149,
             "baseline": 0.3
           },
           "60@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.28,
-            "se": 0.015,
+            "positional_top3_hit_rate": 0.2789,
+            "se": 0.0149,
             "baseline": 0.3
           },
           "60@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.28,
-            "se": 0.015,
+            "positional_top3_hit_rate": 0.2789,
+            "se": 0.0149,
             "baseline": 0.3
           }
         },
@@ -1548,212 +1548,212 @@
             "scores": {
               "8@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "8@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "8@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "8@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "8@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "13@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "13@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "13@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "13@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "13@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "18@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.2833,
-                "se": 0.026,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
                 "baseline": 0.3
               },
               "18@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.2833,
-                "se": 0.026,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
                 "baseline": 0.3
               },
               "18@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2833,
-                "se": 0.026,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
                 "baseline": 0.3
               },
               "18@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.2833,
-                "se": 0.026,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
                 "baseline": 0.3
               },
               "18@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2833,
-                "se": 0.026,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
                 "baseline": 0.3
               },
               "24@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.28,
-                "se": 0.0259,
+                "top3_hit_rate": 0.2767,
+                "se": 0.0258,
                 "baseline": 0.3
               },
               "24@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.2867,
-                "se": 0.0261,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
                 "baseline": 0.3
               },
               "24@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2867,
-                "se": 0.0261,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
                 "baseline": 0.3
               },
               "24@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.2867,
-                "se": 0.0261,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
                 "baseline": 0.3
               },
               "24@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2867,
-                "se": 0.0261,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
                 "baseline": 0.3
               },
               "30@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.28,
-                "se": 0.0259,
+                "top3_hit_rate": 0.2767,
+                "se": 0.0258,
                 "baseline": 0.3
               },
               "30@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.2733,
-                "se": 0.0257,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
                 "baseline": 0.3
               },
               "30@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2733,
-                "se": 0.0257,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
                 "baseline": 0.3
               },
               "30@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.2733,
-                "se": 0.0257,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
                 "baseline": 0.3
               },
               "30@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2733,
-                "se": 0.0257,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
                 "baseline": 0.3
               },
               "45@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.2833,
-                "se": 0.026,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
                 "baseline": 0.3
               },
               "45@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.27,
-                "se": 0.0256,
+                "top3_hit_rate": 0.2667,
+                "se": 0.0255,
                 "baseline": 0.3
               },
               "45@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2733,
-                "se": 0.0257,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
                 "baseline": 0.3
               },
               "45@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.27,
-                "se": 0.0256,
+                "top3_hit_rate": 0.2667,
+                "se": 0.0255,
                 "baseline": 0.3
               },
               "45@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.27,
-                "se": 0.0256,
+                "top3_hit_rate": 0.2667,
+                "se": 0.0255,
                 "baseline": 0.3
               },
               "60@100": {
-                "folds": 300,
-                "top3_hit_rate": 0.2867,
-                "se": 0.0261,
-                "baseline": 0.3
-              },
-              "60@300": {
                 "folds": 300,
                 "top3_hit_rate": 0.2833,
                 "se": 0.026,
                 "baseline": 0.3
               },
-              "60@500": {
+              "60@300": {
                 "folds": 300,
                 "top3_hit_rate": 0.28,
                 "se": 0.0259,
+                "baseline": 0.3
+              },
+              "60@500": {
+                "folds": 300,
+                "top3_hit_rate": 0.2767,
+                "se": 0.0258,
                 "baseline": 0.3
               },
               "60@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.28,
-                "se": 0.0259,
+                "top3_hit_rate": 0.2767,
+                "se": 0.0258,
                 "baseline": 0.3
               },
               "60@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.28,
-                "se": 0.0259,
+                "top3_hit_rate": 0.2767,
+                "se": 0.0258,
                 "baseline": 0.3
               }
             }
@@ -1766,35 +1766,35 @@
         ]
       },
       "model_review": {
-        "issue": "26196",
-        "actual": "726",
+        "issue": "26197",
+        "actual": "473",
         "previous_candidates": [
           "355",
-          "154",
-          "556",
-          "584",
-          "146"
+          "756",
+          "554",
+          "784",
+          "546"
         ],
         "exact_hits": 0,
-        "best_number_hits": 1,
-        "summary": "第26196期按位复盘：候选池覆盖 1 / 3 个位置；不按单期结果追涨参数。",
+        "best_number_hits": 2,
+        "summary": "第26197期按位复盘：候选池覆盖 0 / 3 个位置；不按单期结果追涨参数。",
         "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
         "position_diagnostics": [
           {
             "position": "百位",
-            "actual_digit": "7",
+            "actual_digit": "4",
             "candidate_digits": [
-              "1",
               "3",
-              "5"
+              "5",
+              "7"
             ],
             "candidate_hit_count": 0,
             "pool_hit": false,
-            "reason": "未命中：该位的频率、遗漏和组合分均未达到五组入选阈值。"
+            "reason": "未命中：该位遗漏 26 期，当前模型对长期遗漏只做有限补偿，未强行追冷。"
           },
           {
             "position": "十位",
-            "actual_digit": "2",
+            "actual_digit": "7",
             "candidate_digits": [
               "4",
               "5",
@@ -1802,26 +1802,26 @@
             ],
             "candidate_hit_count": 0,
             "pool_hit": false,
-            "reason": "未命中：该位的频率、遗漏和组合分均未达到五组入选阈值。"
+            "reason": "未命中：该位遗漏 24 期，当前模型对长期遗漏只做有限补偿，未强行追冷。"
           },
           {
             "position": "个位",
-            "actual_digit": "6",
+            "actual_digit": "3",
             "candidate_digits": [
               "4",
               "5",
               "6"
             ],
-            "candidate_hit_count": 2,
-            "pool_hit": true,
-            "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：该位遗漏 14 期，当前模型对长期遗漏只做有限补偿，未强行追冷。"
           }
         ],
         "model_adjustments": [
           "排列3/福彩3D改为逐位选择衰减周期和历史窗口，避免三个位数共用一个最优参数。",
           "保留位频、遗漏和组合分的约束；不因一期开出号码直接追热或追冷。"
         ],
-        "position_pool_coverage": 1,
+        "position_pool_coverage": 0,
         "position_count": 3,
         "next_day_advice": [
           {
@@ -1858,17 +1858,17 @@
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T23:15:47+08:00",
-      "latest_issue": "26196",
-      "latest_draw_date": "2026-07-25",
+      "generated_at": "2026-07-26T23:37:58+08:00",
+      "latest_issue": "26197",
+      "latest_draw_date": "2026-07-26",
       "latest_numbers": [
+        "4",
         "7",
-        "2",
-        "6",
         "3",
-        "2"
+        "4",
+        "1"
       ],
-      "target_issue": "26197",
+      "target_issue": "26198",
       "next_draw_at": "2026-07-27T21:25+08:00",
       "next_draw_display": "2026年07月27日 21:25（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
@@ -1886,7 +1886,7 @@
           "mix_label": "位置池组合·4/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 73.2,
+          "confidence": 71.7,
           "copy_text": "排列5 75673"
         },
         {
@@ -1894,7 +1894,7 @@
           "mix_label": "位置池组合·3/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 3,
-          "confidence": 70.6,
+          "confidence": 70.1,
           "copy_text": "排列5 78572"
         },
         {
@@ -1902,16 +1902,16 @@
           "mix_label": "位置池组合·2/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 4,
-          "confidence": 60.1,
+          "confidence": 58.4,
           "copy_text": "排列5 78463"
         },
         {
-          "number": "54612",
+          "number": "54642",
           "mix_label": "位置池组合·0/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列5 54612"
+          "copy_text": "排列5 54642"
         }
       ],
       "top_candidates": [
@@ -1928,7 +1928,7 @@
           "mix_label": "位置池组合·4/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 73.2,
+          "confidence": 71.7,
           "copy_text": "排列5 75673"
         },
         {
@@ -1936,7 +1936,7 @@
           "mix_label": "位置池组合·3/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 3,
-          "confidence": 70.6,
+          "confidence": 70.1,
           "copy_text": "排列5 78572"
         },
         {
@@ -1944,33 +1944,33 @@
           "mix_label": "位置池组合·2/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 4,
-          "confidence": 60.1,
+          "confidence": 58.4,
           "copy_text": "排列5 78463"
         },
         {
-          "number": "54612",
+          "number": "54642",
           "mix_label": "位置池组合·0/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列5 54612"
+          "copy_text": "排列5 54642"
         }
       ],
       "review": {
-        "title": "第26196期结构复盘",
-        "summary": "开奖号72632，和值20、跨度5，奇偶比2:3。包含4个不同数字。",
+        "title": "第26197期结构复盘",
+        "summary": "开奖号47341，和值19、跨度6，奇偶比3:2。包含4个不同数字。",
         "metrics": [
           {
             "label": "和值",
-            "value": "20"
+            "value": "19"
           },
           {
             "label": "跨度",
-            "value": "5"
+            "value": "6"
           },
           {
             "label": "奇偶",
-            "value": "2:3"
+            "value": "3:2"
           },
           {
             "label": "不同数字",
@@ -1993,7 +1993,7 @@
           },
           {
             "label": "较长遗漏",
-            "value": "4（4期）、8（3期）、0（2期）"
+            "value": "8（4期）、0（3期）、5（2期）"
           }
         ],
         "position_analysis": [
@@ -2006,12 +2006,12 @@
             ],
             "omitted_digits": [
               {
-                "digit": "4",
-                "miss": 26
+                "digit": "2",
+                "miss": 24
               },
               {
-                "digit": "2",
-                "miss": 23
+                "digit": "8",
+                "miss": 19
               }
             ]
           },
@@ -2024,12 +2024,12 @@
             ],
             "omitted_digits": [
               {
-                "digit": "7",
-                "miss": 24
+                "digit": "3",
+                "miss": 19
               },
               {
-                "digit": "3",
-                "miss": 18
+                "digit": "1",
+                "miss": 15
               }
             ]
           },
@@ -2038,16 +2038,16 @@
             "hot_digits": [
               "6",
               "5",
-              "0"
+              "3"
             ],
             "omitted_digits": [
               {
                 "digit": "8",
-                "miss": 21
+                "miss": 22
               },
               {
-                "digit": "3",
-                "miss": 14
+                "digit": "2",
+                "miss": 13
               }
             ]
           },
@@ -2055,17 +2055,17 @@
             "position": "十位",
             "hot_digits": [
               "7",
-              "1",
-              "6"
+              "4",
+              "1"
             ],
             "omitted_digits": [
               {
                 "digit": "5",
-                "miss": 30
+                "miss": 31
               },
               {
                 "digit": "9",
-                "miss": 18
+                "miss": 19
               }
             ]
           },
@@ -2079,11 +2079,11 @@
             "omitted_digits": [
               {
                 "digit": "7",
-                "miss": 25
+                "miss": 26
               },
               {
                 "digit": "3",
-                "miss": 17
+                "miss": 18
               }
             ]
           }
@@ -2091,212 +2091,212 @@
         "backtest": {
           "8@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2907,
+            "positional_top3_hit_rate": 0.29,
             "se": 0.0117,
             "baseline": 0.3
           },
           "8@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2907,
+            "positional_top3_hit_rate": 0.29,
             "se": 0.0117,
             "baseline": 0.3
           },
           "8@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2907,
+            "positional_top3_hit_rate": 0.29,
             "se": 0.0117,
             "baseline": 0.3
           },
           "8@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2907,
+            "positional_top3_hit_rate": 0.29,
             "se": 0.0117,
             "baseline": 0.3
           },
           "8@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2907,
+            "positional_top3_hit_rate": 0.29,
             "se": 0.0117,
             "baseline": 0.3
           },
           "13@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.306,
+            "positional_top3_hit_rate": 0.3053,
             "se": 0.0119,
             "baseline": 0.3
           },
           "13@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.306,
+            "positional_top3_hit_rate": 0.3053,
             "se": 0.0119,
             "baseline": 0.3
           },
           "13@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.306,
+            "positional_top3_hit_rate": 0.3053,
             "se": 0.0119,
             "baseline": 0.3
           },
           "13@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.306,
+            "positional_top3_hit_rate": 0.3053,
             "se": 0.0119,
             "baseline": 0.3
           },
           "13@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.306,
+            "positional_top3_hit_rate": 0.3053,
             "se": 0.0119,
             "baseline": 0.3
           },
           "18@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.292,
+            "positional_top3_hit_rate": 0.2913,
             "se": 0.0117,
             "baseline": 0.3
           },
           "18@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.292,
+            "positional_top3_hit_rate": 0.2913,
             "se": 0.0117,
             "baseline": 0.3
           },
           "18@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.292,
+            "positional_top3_hit_rate": 0.2913,
             "se": 0.0117,
             "baseline": 0.3
           },
           "18@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.292,
+            "positional_top3_hit_rate": 0.2913,
             "se": 0.0117,
             "baseline": 0.3
           },
           "18@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.292,
+            "positional_top3_hit_rate": 0.2913,
             "se": 0.0117,
             "baseline": 0.3
           },
           "24@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2887,
+            "positional_top3_hit_rate": 0.288,
             "se": 0.0117,
             "baseline": 0.3
           },
           "24@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2893,
+            "positional_top3_hit_rate": 0.2887,
             "se": 0.0117,
             "baseline": 0.3
           },
           "24@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2893,
+            "positional_top3_hit_rate": 0.2887,
             "se": 0.0117,
             "baseline": 0.3
           },
           "24@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2893,
+            "positional_top3_hit_rate": 0.2887,
             "se": 0.0117,
             "baseline": 0.3
           },
           "24@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2893,
+            "positional_top3_hit_rate": 0.2887,
             "se": 0.0117,
             "baseline": 0.3
           },
           "30@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.288,
+            "positional_top3_hit_rate": 0.2873,
             "se": 0.0117,
             "baseline": 0.3
           },
           "30@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2913,
+            "positional_top3_hit_rate": 0.2907,
             "se": 0.0117,
             "baseline": 0.3
           },
           "30@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2913,
+            "positional_top3_hit_rate": 0.2907,
             "se": 0.0117,
             "baseline": 0.3
           },
           "30@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2913,
+            "positional_top3_hit_rate": 0.2907,
             "se": 0.0117,
             "baseline": 0.3
           },
           "30@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2913,
+            "positional_top3_hit_rate": 0.2907,
             "se": 0.0117,
             "baseline": 0.3
           },
           "45@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2873,
+            "positional_top3_hit_rate": 0.2867,
             "se": 0.0117,
             "baseline": 0.3
           },
           "45@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2867,
+            "positional_top3_hit_rate": 0.286,
             "se": 0.0117,
             "baseline": 0.3
           },
           "45@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2873,
+            "positional_top3_hit_rate": 0.2867,
             "se": 0.0117,
             "baseline": 0.3
           },
           "45@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2873,
+            "positional_top3_hit_rate": 0.2867,
             "se": 0.0117,
             "baseline": 0.3
           },
           "45@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2873,
+            "positional_top3_hit_rate": 0.2867,
             "se": 0.0117,
             "baseline": 0.3
           },
           "60@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2813,
+            "positional_top3_hit_rate": 0.2807,
             "se": 0.0116,
             "baseline": 0.3
           },
           "60@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2847,
-            "se": 0.0117,
+            "positional_top3_hit_rate": 0.284,
+            "se": 0.0116,
             "baseline": 0.3
           },
           "60@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2847,
-            "se": 0.0117,
+            "positional_top3_hit_rate": 0.284,
+            "se": 0.0116,
             "baseline": 0.3
           },
           "60@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2847,
-            "se": 0.0117,
+            "positional_top3_hit_rate": 0.284,
+            "se": 0.0116,
             "baseline": 0.3
           },
           "60@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2847,
-            "se": 0.0117,
+            "positional_top3_hit_rate": 0.284,
+            "se": 0.0116,
             "baseline": 0.3
           }
         },
@@ -2766,212 +2766,212 @@
             "scores": {
               "8@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "8@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "8@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "8@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "8@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "13@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "13@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "13@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "13@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "13@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
+                "top3_hit_rate": 0.3,
                 "se": 0.0265,
                 "baseline": 0.3
               },
               "18@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.2833,
-                "se": 0.026,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
                 "baseline": 0.3
               },
               "18@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.2833,
-                "se": 0.026,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
                 "baseline": 0.3
               },
               "18@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2833,
-                "se": 0.026,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
                 "baseline": 0.3
               },
               "18@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.2833,
-                "se": 0.026,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
                 "baseline": 0.3
               },
               "18@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2833,
-                "se": 0.026,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
                 "baseline": 0.3
               },
               "24@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.28,
-                "se": 0.0259,
+                "top3_hit_rate": 0.2767,
+                "se": 0.0258,
                 "baseline": 0.3
               },
               "24@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.2867,
-                "se": 0.0261,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
                 "baseline": 0.3
               },
               "24@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2867,
-                "se": 0.0261,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
                 "baseline": 0.3
               },
               "24@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.2867,
-                "se": 0.0261,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
                 "baseline": 0.3
               },
               "24@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2867,
-                "se": 0.0261,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
                 "baseline": 0.3
               },
               "30@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.28,
-                "se": 0.0259,
+                "top3_hit_rate": 0.2767,
+                "se": 0.0258,
                 "baseline": 0.3
               },
               "30@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.2733,
-                "se": 0.0257,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
                 "baseline": 0.3
               },
               "30@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2733,
-                "se": 0.0257,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
                 "baseline": 0.3
               },
               "30@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.2733,
-                "se": 0.0257,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
                 "baseline": 0.3
               },
               "30@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2733,
-                "se": 0.0257,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
                 "baseline": 0.3
               },
               "45@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.2833,
-                "se": 0.026,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
                 "baseline": 0.3
               },
               "45@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.27,
-                "se": 0.0256,
+                "top3_hit_rate": 0.2667,
+                "se": 0.0255,
                 "baseline": 0.3
               },
               "45@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2733,
-                "se": 0.0257,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
                 "baseline": 0.3
               },
               "45@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.27,
-                "se": 0.0256,
+                "top3_hit_rate": 0.2667,
+                "se": 0.0255,
                 "baseline": 0.3
               },
               "45@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.27,
-                "se": 0.0256,
+                "top3_hit_rate": 0.2667,
+                "se": 0.0255,
                 "baseline": 0.3
               },
               "60@100": {
-                "folds": 300,
-                "top3_hit_rate": 0.2867,
-                "se": 0.0261,
-                "baseline": 0.3
-              },
-              "60@300": {
                 "folds": 300,
                 "top3_hit_rate": 0.2833,
                 "se": 0.026,
                 "baseline": 0.3
               },
-              "60@500": {
+              "60@300": {
                 "folds": 300,
                 "top3_hit_rate": 0.28,
                 "se": 0.0259,
+                "baseline": 0.3
+              },
+              "60@500": {
+                "folds": 300,
+                "top3_hit_rate": 0.2767,
+                "se": 0.0258,
                 "baseline": 0.3
               },
               "60@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.28,
-                "se": 0.0259,
+                "top3_hit_rate": 0.2767,
+                "se": 0.0258,
                 "baseline": 0.3
               },
               "60@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.28,
-                "se": 0.0259,
+                "top3_hit_rate": 0.2767,
+                "se": 0.0258,
                 "baseline": 0.3
               }
             }
@@ -3414,27 +3414,27 @@
         ]
       },
       "model_review": {
-        "issue": "26196",
-        "actual": "72632",
+        "issue": "26197",
+        "actual": "47341",
         "previous_candidates": [
           "35570",
-          "58463",
-          "14612",
-          "01709",
-          "76241"
+          "75673",
+          "78572",
+          "78463",
+          "54612"
         ],
         "exact_hits": 0,
         "best_number_hits": 3,
-        "summary": "第26196期按位复盘：候选池覆盖 3 / 5 个位置；不按单期结果追涨参数。",
+        "summary": "第26197期按位复盘：候选池覆盖 0 / 5 个位置；不按单期结果追涨参数。",
         "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
         "position_candidate_hits": [
-          1,
           0,
-          1,
           0,
-          1
+          0,
+          0,
+          0
         ],
-        "position_pool_coverage": 3,
+        "position_pool_coverage": 0,
         "position_count": 5
       }
     },
@@ -3443,15 +3443,15 @@
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T23:15:47+08:00",
-      "latest_issue": "2026196",
-      "latest_draw_date": "2026-07-25",
+      "generated_at": "2026-07-26T23:37:58+08:00",
+      "latest_issue": "2026197",
+      "latest_draw_date": "2026-07-26",
       "latest_numbers": [
-        "4",
-        "1",
-        "9"
+        "2",
+        "3",
+        "2"
       ],
-      "target_issue": "2026197",
+      "target_issue": "2026198",
       "next_draw_at": "2026-07-27T21:15+08:00",
       "next_draw_display": "2026年07月27日 21:15（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
@@ -3470,36 +3470,36 @@
           "mix_label": "位置池组合·1/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 72.4,
+          "confidence": 69.2,
           "copy_text": "福彩3D 920",
           "purchase_suggestion": "直选参考：920"
         },
         {
-          "number": "426",
+          "number": "422",
           "mix_label": "位置池组合·1/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 3,
-          "confidence": 70.6,
-          "copy_text": "福彩3D 426",
-          "purchase_suggestion": "直选参考：426"
+          "confidence": 68.0,
+          "copy_text": "福彩3D 422",
+          "purchase_suggestion": "组选三参考：422（224/242/422）"
         },
         {
-          "number": "966",
+          "number": "902",
           "mix_label": "位置池组合·0/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 4,
-          "confidence": 57.1,
-          "copy_text": "福彩3D 966",
-          "purchase_suggestion": "组选三参考：966（669/696/966）"
+          "confidence": 57.4,
+          "copy_text": "福彩3D 902",
+          "purchase_suggestion": "直选参考：902"
         },
         {
-          "number": "400",
+          "number": "430",
           "mix_label": "位置池组合·0/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩3D 400",
-          "purchase_suggestion": "组选三参考：400（004/040/400）"
+          "copy_text": "福彩3D 430",
+          "purchase_suggestion": "直选参考：430"
         }
       ],
       "top_candidates": [
@@ -3517,57 +3517,57 @@
           "mix_label": "位置池组合·1/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 72.4,
+          "confidence": 69.2,
           "copy_text": "福彩3D 920",
           "purchase_suggestion": "直选参考：920"
         },
         {
-          "number": "426",
+          "number": "422",
           "mix_label": "位置池组合·1/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 3,
-          "confidence": 70.6,
-          "copy_text": "福彩3D 426",
-          "purchase_suggestion": "直选参考：426"
+          "confidence": 68.0,
+          "copy_text": "福彩3D 422",
+          "purchase_suggestion": "组选三参考：422（224/242/422）"
         },
         {
-          "number": "966",
+          "number": "902",
           "mix_label": "位置池组合·0/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 4,
-          "confidence": 57.1,
-          "copy_text": "福彩3D 966",
-          "purchase_suggestion": "组选三参考：966（669/696/966）"
+          "confidence": 57.4,
+          "copy_text": "福彩3D 902",
+          "purchase_suggestion": "直选参考：902"
         },
         {
-          "number": "400",
+          "number": "430",
           "mix_label": "位置池组合·0/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩3D 400",
-          "purchase_suggestion": "组选三参考：400（004/040/400）"
+          "copy_text": "福彩3D 430",
+          "purchase_suggestion": "直选参考：430"
         }
       ],
       "review": {
-        "title": "第2026196期结构复盘",
-        "summary": "开奖号419，和值14、跨度8，奇偶比2:1。三位数形态为三位不同。",
+        "title": "第2026197期结构复盘",
+        "summary": "开奖号232，和值7、跨度1，奇偶比1:2。三位数形态为两位相同。",
         "metrics": [
           {
             "label": "和值",
-            "value": "14"
+            "value": "7"
           },
           {
             "label": "跨度",
-            "value": "8"
+            "value": "1"
           },
           {
             "label": "奇偶",
-            "value": "2:1"
+            "value": "1:2"
           },
           {
             "label": "不同数字",
-            "value": "3"
+            "value": "2"
           }
         ]
       },
@@ -3586,7 +3586,7 @@
           },
           {
             "label": "较长遗漏",
-            "value": "0（5期）、6（5期）、3（2期）"
+            "value": "0（6期）、6（6期）、8（3期）"
           }
         ],
         "position_analysis": [
@@ -3600,11 +3600,11 @@
             "omitted_digits": [
               {
                 "digit": "7",
-                "miss": 46
+                "miss": 47
               },
               {
                 "digit": "1",
-                "miss": 25
+                "miss": 26
               }
             ]
           },
@@ -3612,16 +3612,16 @@
             "position": "十位",
             "hot_digits": [
               "2",
-              "0",
-              "6"
+              "3",
+              "0"
             ],
             "omitted_digits": [
               {
-                "digit": "3",
-                "miss": 25
+                "digit": "9",
+                "miss": 12
               },
               {
-                "digit": "9",
+                "digit": "4",
                 "miss": 11
               }
             ]
@@ -3630,17 +3630,17 @@
             "position": "个位",
             "hot_digits": [
               "5",
-              "6",
-              "0"
+              "2",
+              "6"
             ],
             "omitted_digits": [
               {
                 "digit": "1",
-                "miss": 21
+                "miss": 22
               },
               {
                 "digit": "0",
-                "miss": 16
+                "miss": 17
               }
             ]
           }
@@ -3648,31 +3648,31 @@
         "backtest": {
           "8@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2956,
+            "positional_top3_hit_rate": 0.2967,
             "se": 0.0152,
             "baseline": 0.3
           },
           "8@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2956,
+            "positional_top3_hit_rate": 0.2967,
             "se": 0.0152,
             "baseline": 0.3
           },
           "8@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2956,
+            "positional_top3_hit_rate": 0.2967,
             "se": 0.0152,
             "baseline": 0.3
           },
           "8@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2956,
+            "positional_top3_hit_rate": 0.2967,
             "se": 0.0152,
             "baseline": 0.3
           },
           "8@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2956,
+            "positional_top3_hit_rate": 0.2967,
             "se": 0.0152,
             "baseline": 0.3
           },
@@ -3708,151 +3708,151 @@
           },
           "18@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3078,
+            "positional_top3_hit_rate": 0.3067,
             "se": 0.0154,
             "baseline": 0.3
           },
           "18@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3078,
+            "positional_top3_hit_rate": 0.3067,
             "se": 0.0154,
             "baseline": 0.3
           },
           "18@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3078,
+            "positional_top3_hit_rate": 0.3067,
             "se": 0.0154,
             "baseline": 0.3
           },
           "18@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3078,
+            "positional_top3_hit_rate": 0.3067,
             "se": 0.0154,
             "baseline": 0.3
           },
           "18@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3078,
+            "positional_top3_hit_rate": 0.3067,
             "se": 0.0154,
             "baseline": 0.3
           },
           "24@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3033,
+            "positional_top3_hit_rate": 0.3022,
             "se": 0.0153,
             "baseline": 0.3
           },
           "24@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3022,
+            "positional_top3_hit_rate": 0.3011,
             "se": 0.0153,
             "baseline": 0.3
           },
           "24@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3022,
+            "positional_top3_hit_rate": 0.3011,
             "se": 0.0153,
             "baseline": 0.3
           },
           "24@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3022,
+            "positional_top3_hit_rate": 0.3011,
             "se": 0.0153,
             "baseline": 0.3
           },
           "24@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3022,
+            "positional_top3_hit_rate": 0.3011,
             "se": 0.0153,
             "baseline": 0.3
           },
           "30@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3022,
+            "positional_top3_hit_rate": 0.3011,
             "se": 0.0153,
             "baseline": 0.3
           },
           "30@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3011,
+            "positional_top3_hit_rate": 0.3,
             "se": 0.0153,
             "baseline": 0.3
           },
           "30@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3011,
+            "positional_top3_hit_rate": 0.3,
             "se": 0.0153,
             "baseline": 0.3
           },
           "30@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3011,
+            "positional_top3_hit_rate": 0.3,
             "se": 0.0153,
             "baseline": 0.3
           },
           "30@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.3011,
+            "positional_top3_hit_rate": 0.3,
             "se": 0.0153,
             "baseline": 0.3
           },
           "45@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2989,
-            "se": 0.0153,
+            "positional_top3_hit_rate": 0.2978,
+            "se": 0.0152,
             "baseline": 0.3
           },
           "45@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2956,
+            "positional_top3_hit_rate": 0.2944,
             "se": 0.0152,
             "baseline": 0.3
           },
           "45@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2956,
+            "positional_top3_hit_rate": 0.2944,
             "se": 0.0152,
             "baseline": 0.3
           },
           "45@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2956,
+            "positional_top3_hit_rate": 0.2944,
             "se": 0.0152,
             "baseline": 0.3
           },
           "45@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2956,
+            "positional_top3_hit_rate": 0.2944,
             "se": 0.0152,
             "baseline": 0.3
           },
           "60@100": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.29,
+            "positional_top3_hit_rate": 0.2889,
             "se": 0.0151,
             "baseline": 0.3
           },
           "60@300": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2878,
+            "positional_top3_hit_rate": 0.2867,
             "se": 0.0151,
             "baseline": 0.3
           },
           "60@500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2878,
+            "positional_top3_hit_rate": 0.2867,
             "se": 0.0151,
             "baseline": 0.3
           },
           "60@1000": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2878,
+            "positional_top3_hit_rate": 0.2867,
             "se": 0.0151,
             "baseline": 0.3
           },
           "60@1500": {
             "folds": 300,
-            "positional_top3_hit_rate": 0.2878,
+            "positional_top3_hit_rate": 0.2867,
             "se": 0.0151,
             "baseline": 0.3
           }
@@ -3883,212 +3883,212 @@
             "scores": {
               "8@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.3267,
+                "top3_hit_rate": 0.33,
                 "se": 0.0271,
                 "baseline": 0.3
               },
               "8@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.3267,
+                "top3_hit_rate": 0.33,
                 "se": 0.0271,
                 "baseline": 0.3
               },
               "8@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3267,
+                "top3_hit_rate": 0.33,
                 "se": 0.0271,
                 "baseline": 0.3
               },
               "8@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.3267,
+                "top3_hit_rate": 0.33,
                 "se": 0.0271,
                 "baseline": 0.3
               },
               "8@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3267,
+                "top3_hit_rate": 0.33,
                 "se": 0.0271,
                 "baseline": 0.3
               },
               "13@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.31,
-                "se": 0.0267,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
                 "baseline": 0.3
               },
               "13@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.31,
-                "se": 0.0267,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
                 "baseline": 0.3
               },
               "13@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.31,
-                "se": 0.0267,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
                 "baseline": 0.3
               },
               "13@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.31,
-                "se": 0.0267,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
                 "baseline": 0.3
               },
               "13@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.31,
-                "se": 0.0267,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
                 "baseline": 0.3
               },
               "18@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.3267,
+                "top3_hit_rate": 0.33,
                 "se": 0.0271,
                 "baseline": 0.3
               },
               "18@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.3233,
-                "se": 0.027,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
                 "baseline": 0.3
               },
               "18@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3233,
-                "se": 0.027,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
                 "baseline": 0.3
               },
               "18@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.3233,
-                "se": 0.027,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
                 "baseline": 0.3
               },
               "18@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3233,
-                "se": 0.027,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
                 "baseline": 0.3
               },
               "24@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.3133,
-                "se": 0.0268,
+                "top3_hit_rate": 0.3167,
+                "se": 0.0269,
                 "baseline": 0.3
               },
               "24@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.3133,
-                "se": 0.0268,
+                "top3_hit_rate": 0.3167,
+                "se": 0.0269,
                 "baseline": 0.3
               },
               "24@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3133,
-                "se": 0.0268,
+                "top3_hit_rate": 0.3167,
+                "se": 0.0269,
                 "baseline": 0.3
               },
               "24@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.3133,
-                "se": 0.0268,
+                "top3_hit_rate": 0.3167,
+                "se": 0.0269,
                 "baseline": 0.3
               },
               "24@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3133,
-                "se": 0.0268,
+                "top3_hit_rate": 0.3167,
+                "se": 0.0269,
                 "baseline": 0.3
               },
               "30@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.3133,
-                "se": 0.0268,
+                "top3_hit_rate": 0.3167,
+                "se": 0.0269,
                 "baseline": 0.3
               },
               "30@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.3133,
-                "se": 0.0268,
+                "top3_hit_rate": 0.3167,
+                "se": 0.0269,
                 "baseline": 0.3
               },
               "30@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3133,
-                "se": 0.0268,
+                "top3_hit_rate": 0.3167,
+                "se": 0.0269,
                 "baseline": 0.3
               },
               "30@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.3133,
-                "se": 0.0268,
+                "top3_hit_rate": 0.3167,
+                "se": 0.0269,
                 "baseline": 0.3
               },
               "30@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3133,
-                "se": 0.0268,
+                "top3_hit_rate": 0.3167,
+                "se": 0.0269,
                 "baseline": 0.3
               },
               "45@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.3133,
-                "se": 0.0268,
+                "top3_hit_rate": 0.3167,
+                "se": 0.0269,
                 "baseline": 0.3
               },
               "45@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
-                "se": 0.0265,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
                 "baseline": 0.3
               },
               "45@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
-                "se": 0.0265,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
                 "baseline": 0.3
               },
               "45@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
-                "se": 0.0265,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
                 "baseline": 0.3
               },
               "45@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
-                "se": 0.0265,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
                 "baseline": 0.3
               },
               "60@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.3033,
-                "se": 0.0265,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
                 "baseline": 0.3
               },
               "60@300": {
+                "folds": 300,
+                "top3_hit_rate": 0.2967,
+                "se": 0.0264,
+                "baseline": 0.3
+              },
+              "60@500": {
                 "folds": 300,
                 "top3_hit_rate": 0.2933,
                 "se": 0.0263,
                 "baseline": 0.3
               },
-              "60@500": {
-                "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
-                "baseline": 0.3
-              },
               "60@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
                 "baseline": 0.3
               },
               "60@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
                 "baseline": 0.3
               }
             }
@@ -4158,152 +4158,152 @@
               },
               "18@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
                 "baseline": 0.3
               },
               "18@300": {
-                "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
-                "baseline": 0.3
-              },
-              "18@500": {
-                "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
-                "baseline": 0.3
-              },
-              "18@1000": {
-                "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
-                "baseline": 0.3
-              },
-              "18@1500": {
-                "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
-                "baseline": 0.3
-              },
-              "24@100": {
-                "folds": 300,
-                "top3_hit_rate": 0.3067,
-                "se": 0.0266,
-                "baseline": 0.3
-              },
-              "24@300": {
-                "folds": 300,
-                "top3_hit_rate": 0.3033,
-                "se": 0.0265,
-                "baseline": 0.3
-              },
-              "24@500": {
-                "folds": 300,
-                "top3_hit_rate": 0.3033,
-                "se": 0.0265,
-                "baseline": 0.3
-              },
-              "24@1000": {
-                "folds": 300,
-                "top3_hit_rate": 0.3033,
-                "se": 0.0265,
-                "baseline": 0.3
-              },
-              "24@1500": {
-                "folds": 300,
-                "top3_hit_rate": 0.3033,
-                "se": 0.0265,
-                "baseline": 0.3
-              },
-              "30@100": {
-                "folds": 300,
-                "top3_hit_rate": 0.3033,
-                "se": 0.0265,
-                "baseline": 0.3
-              },
-              "30@300": {
-                "folds": 300,
-                "top3_hit_rate": 0.3,
-                "se": 0.0265,
-                "baseline": 0.3
-              },
-              "30@500": {
-                "folds": 300,
-                "top3_hit_rate": 0.3,
-                "se": 0.0265,
-                "baseline": 0.3
-              },
-              "30@1000": {
-                "folds": 300,
-                "top3_hit_rate": 0.3,
-                "se": 0.0265,
-                "baseline": 0.3
-              },
-              "30@1500": {
-                "folds": 300,
-                "top3_hit_rate": 0.3,
-                "se": 0.0265,
-                "baseline": 0.3
-              },
-              "45@100": {
                 "folds": 300,
                 "top3_hit_rate": 0.2867,
                 "se": 0.0261,
                 "baseline": 0.3
               },
+              "18@500": {
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
+              },
+              "18@1000": {
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
+              },
+              "18@1500": {
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
+              },
+              "24@100": {
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
+              },
+              "24@300": {
+                "folds": 300,
+                "top3_hit_rate": 0.3,
+                "se": 0.0265,
+                "baseline": 0.3
+              },
+              "24@500": {
+                "folds": 300,
+                "top3_hit_rate": 0.3,
+                "se": 0.0265,
+                "baseline": 0.3
+              },
+              "24@1000": {
+                "folds": 300,
+                "top3_hit_rate": 0.3,
+                "se": 0.0265,
+                "baseline": 0.3
+              },
+              "24@1500": {
+                "folds": 300,
+                "top3_hit_rate": 0.3,
+                "se": 0.0265,
+                "baseline": 0.3
+              },
+              "30@100": {
+                "folds": 300,
+                "top3_hit_rate": 0.3,
+                "se": 0.0265,
+                "baseline": 0.3
+              },
+              "30@300": {
+                "folds": 300,
+                "top3_hit_rate": 0.2967,
+                "se": 0.0264,
+                "baseline": 0.3
+              },
+              "30@500": {
+                "folds": 300,
+                "top3_hit_rate": 0.2967,
+                "se": 0.0264,
+                "baseline": 0.3
+              },
+              "30@1000": {
+                "folds": 300,
+                "top3_hit_rate": 0.2967,
+                "se": 0.0264,
+                "baseline": 0.3
+              },
+              "30@1500": {
+                "folds": 300,
+                "top3_hit_rate": 0.2967,
+                "se": 0.0264,
+                "baseline": 0.3
+              },
+              "45@100": {
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
+              },
               "45@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
                 "baseline": 0.3
               },
               "45@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
                 "baseline": 0.3
               },
               "45@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
                 "baseline": 0.3
               },
               "45@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
                 "baseline": 0.3
               },
               "60@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.2767,
-                "se": 0.0258,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
                 "baseline": 0.3
               },
               "60@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.2767,
-                "se": 0.0258,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
                 "baseline": 0.3
               },
               "60@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.28,
-                "se": 0.0259,
+                "top3_hit_rate": 0.2767,
+                "se": 0.0258,
                 "baseline": 0.3
               },
               "60@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.28,
-                "se": 0.0259,
+                "top3_hit_rate": 0.2767,
+                "se": 0.0258,
                 "baseline": 0.3
               },
               "60@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.28,
-                "se": 0.0259,
+                "top3_hit_rate": 0.2767,
+                "se": 0.0258,
                 "baseline": 0.3
               }
             }
@@ -4343,182 +4343,182 @@
               },
               "13@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.2867,
-                "se": 0.0261,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
                 "baseline": 0.3
               },
               "13@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.2867,
-                "se": 0.0261,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
                 "baseline": 0.3
               },
               "13@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2867,
-                "se": 0.0261,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
                 "baseline": 0.3
               },
               "13@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.2867,
-                "se": 0.0261,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
                 "baseline": 0.3
               },
               "13@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2867,
-                "se": 0.0261,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
                 "baseline": 0.3
               },
               "18@100": {
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
+              },
+              "18@300": {
                 "folds": 300,
                 "top3_hit_rate": 0.3067,
                 "se": 0.0266,
                 "baseline": 0.3
               },
-              "18@300": {
-                "folds": 300,
-                "top3_hit_rate": 0.31,
-                "se": 0.0267,
-                "baseline": 0.3
-              },
               "18@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.31,
-                "se": 0.0267,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
                 "baseline": 0.3
               },
               "18@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.31,
-                "se": 0.0267,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
                 "baseline": 0.3
               },
               "18@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.31,
-                "se": 0.0267,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
                 "baseline": 0.3
               },
               "24@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
                 "baseline": 0.3
               },
               "24@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
                 "baseline": 0.3
               },
               "24@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
                 "baseline": 0.3
               },
               "24@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
                 "baseline": 0.3
               },
               "24@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
                 "baseline": 0.3
               },
               "30@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
                 "baseline": 0.3
               },
               "30@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
                 "baseline": 0.3
               },
               "30@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
                 "baseline": 0.3
               },
               "30@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
                 "baseline": 0.3
               },
               "30@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.29,
-                "se": 0.0262,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
                 "baseline": 0.3
               },
               "45@100": {
                 "folds": 300,
-                "top3_hit_rate": 0.2967,
-                "se": 0.0264,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
                 "baseline": 0.3
               },
               "45@300": {
-                "folds": 300,
-                "top3_hit_rate": 0.2933,
-                "se": 0.0263,
-                "baseline": 0.3
-              },
-              "45@500": {
-                "folds": 300,
-                "top3_hit_rate": 0.2933,
-                "se": 0.0263,
-                "baseline": 0.3
-              },
-              "45@1000": {
-                "folds": 300,
-                "top3_hit_rate": 0.2933,
-                "se": 0.0263,
-                "baseline": 0.3
-              },
-              "45@1500": {
-                "folds": 300,
-                "top3_hit_rate": 0.2933,
-                "se": 0.0263,
-                "baseline": 0.3
-              },
-              "60@100": {
                 "folds": 300,
                 "top3_hit_rate": 0.29,
                 "se": 0.0262,
                 "baseline": 0.3
               },
+              "45@500": {
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
+              },
+              "45@1000": {
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
+              },
+              "45@1500": {
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
+              },
+              "60@100": {
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
+              },
               "60@300": {
                 "folds": 300,
-                "top3_hit_rate": 0.2933,
-                "se": 0.0263,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
                 "baseline": 0.3
               },
               "60@500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2933,
-                "se": 0.0263,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
                 "baseline": 0.3
               },
               "60@1000": {
                 "folds": 300,
-                "top3_hit_rate": 0.2933,
-                "se": 0.0263,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
                 "baseline": 0.3
               },
               "60@1500": {
                 "folds": 300,
-                "top3_hit_rate": 0.2933,
-                "se": 0.0263,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
                 "baseline": 0.3
               }
             }
@@ -4531,35 +4531,35 @@
         ]
       },
       "model_review": {
-        "issue": "2026196",
-        "actual": "419",
+        "issue": "2026197",
+        "actual": "232",
         "previous_candidates": [
           "225",
-          "263",
-          "206",
-          "903",
-          "066"
+          "920",
+          "426",
+          "966",
+          "400"
         ],
         "exact_hits": 0,
         "best_number_hits": 1,
-        "summary": "第2026196期按位复盘：候选池覆盖 0 / 3 个位置；不按单期结果追涨参数。",
+        "summary": "第2026197期按位复盘：候选池覆盖 1 / 3 个位置；不按单期结果追涨参数。",
         "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
         "position_diagnostics": [
           {
             "position": "百位",
-            "actual_digit": "4",
+            "actual_digit": "2",
             "candidate_digits": [
-              "0",
               "2",
+              "4",
               "9"
             ],
-            "candidate_hit_count": 0,
-            "pool_hit": false,
-            "reason": "未命中：该位的频率、遗漏和组合分均未达到五组入选阈值。"
+            "candidate_hit_count": 1,
+            "pool_hit": true,
+            "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
           },
           {
             "position": "十位",
-            "actual_digit": "1",
+            "actual_digit": "3",
             "candidate_digits": [
               "0",
               "2",
@@ -4567,13 +4567,13 @@
             ],
             "candidate_hit_count": 0,
             "pool_hit": false,
-            "reason": "未命中：该位遗漏 14 期，当前模型对长期遗漏只做有限补偿，未强行追冷。"
+            "reason": "未命中：该位遗漏 25 期，当前模型对长期遗漏只做有限补偿，未强行追冷。"
           },
           {
             "position": "个位",
-            "actual_digit": "9",
+            "actual_digit": "2",
             "candidate_digits": [
-              "3",
+              "0",
               "5",
               "6"
             ],
@@ -4586,7 +4586,7 @@
           "排列3/福彩3D改为逐位选择衰减周期和历史窗口，避免三个位数共用一个最优参数。",
           "保留位频、遗漏和组合分的约束；不因一期开出号码直接追热或追冷。"
         ],
-        "position_pool_coverage": 0,
+        "position_pool_coverage": 1,
         "position_count": 3,
         "next_day_advice": [
           {
@@ -4600,22 +4600,22 @@
             "suggestion": "直选参考：920"
           },
           {
-            "number": "426",
+            "number": "422",
+            "shape": "组选三",
+            "suggestion": "组选三参考：422（224/242/422）"
+          },
+          {
+            "number": "902",
             "shape": "组六形态，按直选参考",
-            "suggestion": "直选参考：426"
+            "suggestion": "直选参考：902"
           },
           {
-            "number": "966",
-            "shape": "组选三",
-            "suggestion": "组选三参考：966（669/696/966）"
-          },
-          {
-            "number": "400",
-            "shape": "组选三",
-            "suggestion": "组选三参考：400（004/040/400）"
+            "number": "430",
+            "shape": "组六形态，按直选参考",
+            "suggestion": "直选参考：430"
           }
         ],
-        "next_day_advice_text": "组选三参考：225（225/252/522）；直选参考：920；直选参考：426；组选三参考：966（669/696/966）；组选三参考：400（004/040/400）"
+        "next_day_advice_text": "组选三参考：225（225/252/522）；直选参考：920；组选三参考：422（224/242/422）；直选参考：902；直选参考：430"
       }
     },
     "qxc": {
@@ -4623,19 +4623,19 @@
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T23:15:47+08:00",
-      "latest_issue": "26084",
-      "latest_draw_date": "2026-07-24",
+      "generated_at": "2026-07-26T23:37:58+08:00",
+      "latest_issue": "26085",
+      "latest_draw_date": "2026-07-26",
       "latest_numbers": [
-        "6",
-        "3",
         "8",
-        "4",
-        "4",
+        "3",
+        "7",
         "0",
-        "7"
+        "5",
+        "1",
+        "4"
       ],
-      "target_issue": "26085",
+      "target_issue": "26086",
       "next_draw_at": "2026-07-28T21:25+08:00",
       "next_draw_display": "2026年07月28日 21:25（北京时间）",
       "schedule_note": "每周二、五、日开奖",
@@ -4649,36 +4649,36 @@
           "copy_text": "体彩7星彩 3484562"
         },
         {
-          "number": "4681532",
+          "number": "5681524",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 2,
           "confidence": 74.7,
-          "copy_text": "体彩7星彩 4681532"
+          "copy_text": "体彩7星彩 5681524"
         },
         {
-          "number": "6481526",
+          "number": "4384526",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 3,
-          "confidence": 74.1,
-          "copy_text": "体彩7星彩 6481526"
+          "confidence": 72.7,
+          "copy_text": "体彩7星彩 4384526"
         },
         {
-          "number": "5651823",
+          "number": "3471837",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 4,
-          "confidence": 67.2,
-          "copy_text": "体彩7星彩 5651823"
+          "confidence": 57.5,
+          "copy_text": "体彩7星彩 3471837"
         },
         {
-          "number": "3339307",
+          "number": "5450303",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "体彩7星彩 3339307"
+          "copy_text": "体彩7星彩 5450303"
         }
       ],
       "top_candidates": [
@@ -4691,45 +4691,45 @@
           "copy_text": "体彩7星彩 3484562"
         },
         {
-          "number": "4681532",
+          "number": "5681524",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 2,
           "confidence": 74.7,
-          "copy_text": "体彩7星彩 4681532"
+          "copy_text": "体彩7星彩 5681524"
         },
         {
-          "number": "6481526",
+          "number": "4384526",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 3,
-          "confidence": 74.1,
-          "copy_text": "体彩7星彩 6481526"
+          "confidence": 72.7,
+          "copy_text": "体彩7星彩 4384526"
         },
         {
-          "number": "5651823",
+          "number": "3471837",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 4,
-          "confidence": 67.2,
-          "copy_text": "体彩7星彩 5651823"
+          "confidence": 57.5,
+          "copy_text": "体彩7星彩 3471837"
         },
         {
-          "number": "3339307",
+          "number": "5450303",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "体彩7星彩 3339307"
+          "copy_text": "体彩7星彩 5450303"
         }
       ],
       "review": {
-        "title": "第26084期结构复盘",
-        "summary": "开奖号6384407，和值32、跨度8，奇偶比2:5。包含6个不同数字。",
+        "title": "第26085期结构复盘",
+        "summary": "开奖号8370514，和值28、跨度8，奇偶比4:3。包含7个不同数字。",
         "metrics": [
           {
             "label": "和值",
-            "value": "32"
+            "value": "28"
           },
           {
             "label": "跨度",
@@ -4737,11 +4737,11 @@
           },
           {
             "label": "奇偶",
-            "value": "2:5"
+            "value": "4:3"
           },
           {
             "label": "不同数字",
-            "value": "6"
+            "value": "7"
           }
         ]
       },
@@ -4760,7 +4760,7 @@
           },
           {
             "label": "较长遗漏",
-            "value": "1（1期）、2（1期）、5（1期）"
+            "value": "2（2期）、9（2期）、6（1期）"
           }
         ],
         "position_analysis": [
@@ -4774,11 +4774,11 @@
             "omitted_digits": [
               {
                 "digit": "1",
-                "miss": 39
+                "miss": 40
               },
               {
                 "digit": "2",
-                "miss": 20
+                "miss": 21
               }
             ]
           },
@@ -4786,17 +4786,17 @@
             "position": "第二位",
             "hot_digits": [
               "4",
-              "6",
-              "3"
+              "3",
+              "6"
             ],
             "omitted_digits": [
               {
                 "digit": "5",
-                "miss": 16
+                "miss": 17
               },
               {
                 "digit": "9",
-                "miss": 15
+                "miss": 16
               }
             ]
           },
@@ -4804,17 +4804,17 @@
             "position": "第三位",
             "hot_digits": [
               "8",
-              "5",
-              "3"
+              "7",
+              "5"
             ],
             "omitted_digits": [
               {
                 "digit": "6",
-                "miss": 18
+                "miss": 19
               },
               {
                 "digit": "9",
-                "miss": 13
+                "miss": 14
               }
             ]
           },
@@ -4823,16 +4823,16 @@
             "hot_digits": [
               "1",
               "4",
-              "9"
+              "0"
             ],
             "omitted_digits": [
               {
                 "digit": "2",
-                "miss": 25
+                "miss": 26
               },
               {
-                "digit": "0",
-                "miss": 19
+                "digit": "6",
+                "miss": 14
               }
             ]
           },
@@ -4846,11 +4846,11 @@
             "omitted_digits": [
               {
                 "digit": "2",
-                "miss": 20
+                "miss": 21
               },
               {
                 "digit": "7",
-                "miss": 18
+                "miss": 19
               }
             ]
           },
@@ -4864,11 +4864,11 @@
             "omitted_digits": [
               {
                 "digit": "8",
-                "miss": 23
+                "miss": 24
               },
               {
                 "digit": "6",
-                "miss": 12
+                "miss": 13
               }
             ]
           },
@@ -4876,17 +4876,17 @@
             "position": "第七位",
             "hot_digits": [
               "2",
-              "3",
-              "7"
+              "4",
+              "3"
             ],
             "omitted_digits": [
               {
                 "digit": "1",
-                "miss": 19
+                "miss": 20
               },
               {
                 "digit": "5",
-                "miss": 16
+                "miss": 17
               }
             ]
           }
@@ -4894,31 +4894,31 @@
         "backtest": {
           "100": {
             "folds": 240,
-            "pool_coverage": 0.3107,
+            "pool_coverage": 0.3119,
             "se": 0.0113,
             "baseline": 0.3
           },
           "300": {
             "folds": 240,
-            "pool_coverage": 0.303,
+            "pool_coverage": 0.3042,
             "se": 0.0112,
             "baseline": 0.3
           },
           "500": {
             "folds": 240,
-            "pool_coverage": 0.2905,
+            "pool_coverage": 0.2899,
             "se": 0.0111,
             "baseline": 0.3
           },
           "1000": {
             "folds": 240,
-            "pool_coverage": 0.2911,
+            "pool_coverage": 0.2923,
             "se": 0.0111,
             "baseline": 0.3
           },
           "1500": {
             "folds": 240,
-            "pool_coverage": 0.294,
+            "pool_coverage": 0.2946,
             "se": 0.0111,
             "baseline": 0.3
           }
@@ -4971,31 +4971,31 @@
           "1": {
             "100": {
               "folds": 300,
-              "top3_hit_rate": 0.34,
-              "se": 0.0273,
+              "top3_hit_rate": 0.3433,
+              "se": 0.0274,
               "baseline": 0.3
             },
             "300": {
               "folds": 300,
-              "top3_hit_rate": 0.3367,
+              "top3_hit_rate": 0.34,
               "se": 0.0273,
               "baseline": 0.3
             },
             "500": {
               "folds": 300,
-              "top3_hit_rate": 0.3367,
+              "top3_hit_rate": 0.34,
               "se": 0.0273,
               "baseline": 0.3
             },
             "1000": {
               "folds": 300,
-              "top3_hit_rate": 0.3367,
+              "top3_hit_rate": 0.34,
               "se": 0.0273,
               "baseline": 0.3
             },
             "1500": {
               "folds": 300,
-              "top3_hit_rate": 0.3367,
+              "top3_hit_rate": 0.34,
               "se": 0.0273,
               "baseline": 0.3
             }
@@ -5067,32 +5067,32 @@
           "4": {
             "100": {
               "folds": 300,
-              "top3_hit_rate": 0.32,
-              "se": 0.0269,
+              "top3_hit_rate": 0.3233,
+              "se": 0.027,
               "baseline": 0.3
             },
             "300": {
               "folds": 300,
-              "top3_hit_rate": 0.3233,
-              "se": 0.027,
+              "top3_hit_rate": 0.3267,
+              "se": 0.0271,
               "baseline": 0.3
             },
             "500": {
               "folds": 300,
-              "top3_hit_rate": 0.3233,
-              "se": 0.027,
+              "top3_hit_rate": 0.3267,
+              "se": 0.0271,
               "baseline": 0.3
             },
             "1000": {
               "folds": 300,
-              "top3_hit_rate": 0.3233,
-              "se": 0.027,
+              "top3_hit_rate": 0.3267,
+              "se": 0.0271,
               "baseline": 0.3
             },
             "1500": {
               "folds": 300,
-              "top3_hit_rate": 0.3233,
-              "se": 0.027,
+              "top3_hit_rate": 0.3267,
+              "se": 0.0271,
               "baseline": 0.3
             }
           },
@@ -5131,32 +5131,32 @@
           "6": {
             "100": {
               "folds": 300,
-              "top3_hit_rate": 0.3833,
-              "se": 0.0281,
+              "top3_hit_rate": 0.38,
+              "se": 0.028,
               "baseline": 0.3
             },
             "300": {
               "folds": 300,
-              "top3_hit_rate": 0.39,
-              "se": 0.0282,
+              "top3_hit_rate": 0.3867,
+              "se": 0.0281,
               "baseline": 0.3
             },
             "500": {
               "folds": 300,
-              "top3_hit_rate": 0.39,
-              "se": 0.0282,
+              "top3_hit_rate": 0.3867,
+              "se": 0.0281,
               "baseline": 0.3
             },
             "1000": {
               "folds": 300,
-              "top3_hit_rate": 0.39,
-              "se": 0.0282,
+              "top3_hit_rate": 0.3867,
+              "se": 0.0281,
               "baseline": 0.3
             },
             "1500": {
               "folds": 300,
-              "top3_hit_rate": 0.39,
-              "se": 0.0282,
+              "top3_hit_rate": 0.3867,
+              "se": 0.0281,
               "baseline": 0.3
             }
           }
@@ -5168,66 +5168,27 @@
         ]
       },
       "model_review": {
-        "issue": "26084",
-        "actual": "6384407",
+        "issue": "26085",
+        "actual": "8370514",
         "previous_candidates": [
-          "7592361",
-          "0892363",
-          "7960361",
-          "6562363",
-          "2596363",
-          "6390365",
-          "0962365",
-          "2860363"
+          "3484562",
+          "4681532",
+          "6481526",
+          "5651823",
+          "3339307"
         ],
         "exact_hits": 0,
-        "best_number_hits": 4,
-        "summary": "第26084期按位复盘：候选池覆盖 2 / 7 个位置；不按单期结果追涨参数。",
+        "best_number_hits": 5,
+        "summary": "第26085期按位复盘：候选池覆盖 2 / 7 个位置；不按单期结果追涨参数。",
         "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
         "position_diagnostics": [
           {
             "position": "七星彩位数第1位",
-            "actual_digit": "06",
-            "candidate_digits": [
-              "00",
-              "02",
-              "06",
-              "07"
-            ],
-            "candidate_hit_count": 2,
-            "pool_hit": true,
-            "reason": "命中：七星彩位数第1位的历史排序/分区候选池覆盖该号码。"
-          },
-          {
-            "position": "七星彩位数第2位",
-            "actual_digit": "03",
-            "candidate_digits": [
-              "03",
-              "05",
-              "08",
-              "09"
-            ],
-            "candidate_hit_count": 1,
-            "pool_hit": true,
-            "reason": "命中：七星彩位数第2位的历史排序/分区候选池覆盖该号码。"
-          },
-          {
-            "position": "七星彩位数第3位",
             "actual_digit": "08",
             "candidate_digits": [
-              "06",
-              "09"
-            ],
-            "candidate_hit_count": 0,
-            "pool_hit": false,
-            "reason": "未命中：号码未进入七星彩位数联合池，区域频率、共现和结构分未达到五组阈值。"
-          },
-          {
-            "position": "七星彩位数第4位",
-            "actual_digit": "04",
-            "candidate_digits": [
-              "00",
-              "02",
+              "03",
+              "04",
+              "05",
               "06"
             ],
             "candidate_hit_count": 0,
@@ -5235,19 +5196,60 @@
             "reason": "未命中：号码未进入七星彩位数联合池，区域频率、共现和结构分未达到五组阈值。"
           },
           {
-            "position": "七星彩位数第5位",
-            "actual_digit": "04",
+            "position": "七星彩位数第2位",
+            "actual_digit": "03",
             "candidate_digits": [
-              "03"
+              "03",
+              "04",
+              "06"
+            ],
+            "candidate_hit_count": 1,
+            "pool_hit": true,
+            "reason": "命中：七星彩位数第2位的历史排序/分区候选池覆盖该号码。"
+          },
+          {
+            "position": "七星彩位数第3位",
+            "actual_digit": "07",
+            "candidate_digits": [
+              "03",
+              "05",
+              "08"
             ],
             "candidate_hit_count": 0,
             "pool_hit": false,
             "reason": "未命中：号码未进入七星彩位数联合池，区域频率、共现和结构分未达到五组阈值。"
           },
           {
-            "position": "七星彩位数第6位",
+            "position": "七星彩位数第4位",
             "actual_digit": "00",
             "candidate_digits": [
+              "01",
+              "04",
+              "09"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：号码未进入七星彩位数联合池，区域频率、共现和结构分未达到五组阈值。"
+          },
+          {
+            "position": "七星彩位数第5位",
+            "actual_digit": "05",
+            "candidate_digits": [
+              "03",
+              "05",
+              "08"
+            ],
+            "candidate_hit_count": 3,
+            "pool_hit": true,
+            "reason": "命中：七星彩位数第5位的历史排序/分区候选池覆盖该号码。"
+          },
+          {
+            "position": "七星彩位数第6位",
+            "actual_digit": "01",
+            "candidate_digits": [
+              "00",
+              "02",
+              "03",
               "06"
             ],
             "candidate_hit_count": 0,
@@ -5256,11 +5258,12 @@
           },
           {
             "position": "七星彩位数第7位",
-            "actual_digit": "07",
+            "actual_digit": "04",
             "candidate_digits": [
-              "01",
+              "02",
               "03",
-              "05"
+              "06",
+              "07"
             ],
             "candidate_hit_count": 0,
             "pool_hit": false,
@@ -5274,9 +5277,10 @@
             "hit_numbers": [],
             "missed_numbers": [
               "00",
+              "01",
               "03",
               "04",
-              "06",
+              "05",
               "07",
               "08"
             ]
@@ -5296,66 +5300,84 @@
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-26T23:15:47+08:00",
-      "latest_issue": "2026084",
-      "latest_draw_date": "2026-07-23",
+      "generated_at": "2026-07-26T23:37:58+08:00",
+      "latest_issue": "2026085",
+      "latest_draw_date": "2026-07-26",
       "latest_numbers": [
-        "01",
-        "05",
         "06",
-        "10",
-        "12",
-        "16",
-        "05"
+        "09",
+        "13",
+        "17",
+        "24",
+        "28",
+        "15"
       ],
-      "target_issue": "2026085",
+      "target_issue": "2026086",
       "next_draw_at": "2026-07-28T21:15+08:00",
       "next_draw_display": "2026年07月28日 21:15（北京时间）",
       "schedule_note": "每周二、四、日开奖",
       "candidates": [
         {
           "red": [
-            1,
-            7,
+            6,
+            9,
             14,
             15,
-            28,
-            33
+            24,
+            28
+          ],
+          "blue": [
+            1
+          ],
+          "mix_label": "红蓝分区共现模型",
+          "source": "ssq_zone",
+          "rank": 1,
+          "confidence": 77.0,
+          "copy_text": "福彩双色球 06 09 14 15 24 28 + 01"
+        },
+        {
+          "red": [
+            1,
+            4,
+            7,
+            10,
+            14,
+            28
+          ],
+          "blue": [
+            7
+          ],
+          "mix_label": "红蓝分区共现模型",
+          "source": "ssq_zone",
+          "rank": 2,
+          "confidence": 67.7,
+          "copy_text": "福彩双色球 01 04 07 10 14 28 + 07"
+        },
+        {
+          "red": [
+            3,
+            8,
+            17,
+            24,
+            25,
+            28
           ],
           "blue": [
             4
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
-          "rank": 1,
-          "confidence": 77.0,
-          "copy_text": "福彩双色球 01 07 14 15 28 33 + 04"
+          "rank": 3,
+          "confidence": 66.2,
+          "copy_text": "福彩双色球 03 08 17 24 25 28 + 04"
         },
         {
           "red": [
-            1,
-            10,
-            14,
-            16,
-            24,
-            27
-          ],
-          "blue": [
-            5
-          ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
-          "rank": 2,
-          "confidence": 73.2,
-          "copy_text": "福彩双色球 01 10 14 16 24 27 + 05"
-        },
-        {
-          "red": [
-            5,
             7,
+            11,
             16,
-            21,
-            29,
+            27,
+            28,
             30
           ],
           "blue": [
@@ -5363,91 +5385,91 @@
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
-          "rank": 3,
-          "confidence": 58.1,
-          "copy_text": "福彩双色球 05 07 16 21 29 30 + 12"
+          "rank": 4,
+          "confidence": 52.6,
+          "copy_text": "福彩双色球 07 11 16 27 28 30 + 12"
         },
         {
           "red": [
             5,
-            11,
-            12,
             18,
-            29,
-            32
-          ],
-          "blue": [
-            1
-          ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
-          "rank": 4,
-          "confidence": 54.9,
-          "copy_text": "福彩双色球 05 11 12 18 29 32 + 01"
-        },
-        {
-          "red": [
-            1,
-            3,
-            4,
-            14,
             19,
-            25
+            23,
+            24,
+            28
           ],
           "blue": [
-            13
+            15
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩双色球 01 03 04 14 19 25 + 13"
+          "copy_text": "福彩双色球 05 18 19 23 24 28 + 15"
         }
       ],
       "top_candidates": [
         {
           "red": [
-            1,
-            7,
+            6,
+            9,
             14,
             15,
-            28,
-            33
+            24,
+            28
+          ],
+          "blue": [
+            1
+          ],
+          "mix_label": "红蓝分区共现模型",
+          "source": "ssq_zone",
+          "rank": 1,
+          "confidence": 77.0,
+          "copy_text": "福彩双色球 06 09 14 15 24 28 + 01"
+        },
+        {
+          "red": [
+            1,
+            4,
+            7,
+            10,
+            14,
+            28
+          ],
+          "blue": [
+            7
+          ],
+          "mix_label": "红蓝分区共现模型",
+          "source": "ssq_zone",
+          "rank": 2,
+          "confidence": 67.7,
+          "copy_text": "福彩双色球 01 04 07 10 14 28 + 07"
+        },
+        {
+          "red": [
+            3,
+            8,
+            17,
+            24,
+            25,
+            28
           ],
           "blue": [
             4
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
-          "rank": 1,
-          "confidence": 77.0,
-          "copy_text": "福彩双色球 01 07 14 15 28 33 + 04"
+          "rank": 3,
+          "confidence": 66.2,
+          "copy_text": "福彩双色球 03 08 17 24 25 28 + 04"
         },
         {
           "red": [
-            1,
-            10,
-            14,
-            16,
-            24,
-            27
-          ],
-          "blue": [
-            5
-          ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
-          "rank": 2,
-          "confidence": 73.2,
-          "copy_text": "福彩双色球 01 10 14 16 24 27 + 05"
-        },
-        {
-          "red": [
-            5,
             7,
+            11,
             16,
-            21,
-            29,
+            27,
+            28,
             30
           ],
           "blue": [
@@ -5455,66 +5477,48 @@
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
-          "rank": 3,
-          "confidence": 58.1,
-          "copy_text": "福彩双色球 05 07 16 21 29 30 + 12"
+          "rank": 4,
+          "confidence": 52.6,
+          "copy_text": "福彩双色球 07 11 16 27 28 30 + 12"
         },
         {
           "red": [
             5,
-            11,
-            12,
             18,
-            29,
-            32
-          ],
-          "blue": [
-            1
-          ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
-          "rank": 4,
-          "confidence": 54.9,
-          "copy_text": "福彩双色球 05 11 12 18 29 32 + 01"
-        },
-        {
-          "red": [
-            1,
-            3,
-            4,
-            14,
             19,
-            25
+            23,
+            24,
+            28
           ],
           "blue": [
-            13
+            15
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩双色球 01 03 04 14 19 25 + 13"
+          "copy_text": "福彩双色球 05 18 19 23 24 28 + 15"
         }
       ],
       "review": {
-        "title": "第2026084期结构复盘",
-        "summary": "红球和值50、跨度15，奇偶比2:4；蓝球号码5。与前一期红球重号0个。",
+        "title": "第2026085期结构复盘",
+        "summary": "红球和值97、跨度22，奇偶比3:3；蓝球号码15。与前一期红球重号1个。",
         "metrics": [
           {
             "label": "红球和值",
-            "value": "50"
+            "value": "97"
           },
           {
             "label": "红球跨度",
-            "value": "15"
+            "value": "22"
           },
           {
             "label": "红球奇偶",
-            "value": "2:4"
+            "value": "3:3"
           },
           {
             "label": "蓝球",
-            "value": "5"
+            "value": "15"
           }
         ]
       },
@@ -5530,32 +5534,32 @@
           "red": {
             "100": {
               "folds": 240,
-              "pool_coverage": 0.5472,
+              "pool_coverage": 0.5479,
               "se": 0.012,
               "baseline": 0.5455
             },
             "300": {
               "folds": 240,
-              "pool_coverage": 0.5556,
+              "pool_coverage": 0.5583,
               "se": 0.012,
               "baseline": 0.5455
             },
             "500": {
               "folds": 240,
-              "pool_coverage": 0.5604,
+              "pool_coverage": 0.5639,
               "se": 0.012,
               "baseline": 0.5455
             },
             "1000": {
               "folds": 240,
-              "pool_coverage": 0.5521,
+              "pool_coverage": 0.5549,
               "se": 0.012,
               "baseline": 0.5455
             },
             "1500": {
               "folds": 240,
-              "pool_coverage": 0.5458,
-              "se": 0.0121,
+              "pool_coverage": 0.5486,
+              "se": 0.012,
               "baseline": 0.5455
             }
           },
@@ -5574,20 +5578,20 @@
             },
             "500": {
               "folds": 240,
-              "pool_coverage": 0.2708,
-              "se": 0.0287,
+              "pool_coverage": 0.275,
+              "se": 0.0288,
               "baseline": 0.3125
             },
             "1000": {
               "folds": 240,
-              "pool_coverage": 0.3167,
-              "se": 0.03,
+              "pool_coverage": 0.3208,
+              "se": 0.0301,
               "baseline": 0.3125
             },
             "1500": {
               "folds": 240,
-              "pool_coverage": 0.3458,
-              "se": 0.0307,
+              "pool_coverage": 0.35,
+              "se": 0.0308,
               "baseline": 0.3125
             }
           }
@@ -5595,31 +5599,31 @@
         "backtest": {
           "100": {
             "folds": 240,
-            "pool_coverage": 0.5107,
+            "pool_coverage": 0.5113,
             "se": 0.0113,
             "baseline": 0.5122
           },
           "300": {
             "folds": 240,
-            "pool_coverage": 0.5196,
+            "pool_coverage": 0.522,
             "se": 0.0113,
             "baseline": 0.5122
           },
           "500": {
             "folds": 240,
-            "pool_coverage": 0.519,
+            "pool_coverage": 0.5226,
             "se": 0.0113,
             "baseline": 0.5122
           },
           "1000": {
             "folds": 240,
-            "pool_coverage": 0.5185,
+            "pool_coverage": 0.5214,
             "se": 0.0113,
             "baseline": 0.5122
           },
           "1500": {
             "folds": 240,
-            "pool_coverage": 0.5173,
+            "pool_coverage": 0.5202,
             "se": 0.0113,
             "baseline": 0.5122
           }
@@ -5628,7 +5632,7 @@
         "signals": [
           {
             "label": "红球相对活跃",
-            "value": "24 · 14 · 28 · 01 · 07 · 16"
+            "value": "24 · 28 · 14 · 01 · 07 · 16"
           },
           {
             "label": "蓝球相对活跃",
@@ -5646,55 +5650,52 @@
         ]
       },
       "model_review": {
-        "issue": "2026084",
-        "actual": "01 05 06 10 12 16 + 05",
+        "issue": "2026085",
+        "actual": "06 09 13 17 24 28 + 15",
         "previous_candidates": [
-          "03 08 14 16 24 28 + 04",
-          "07 09 14 24 25 28 + 04",
-          "04 07 11 14 24 29 + 04",
-          "01 14 18 24 28 32 + 01",
-          "03 05 07 14 28 32 + 04"
+          "01 07 14 15 28 33 + 04",
+          "01 10 14 16 24 27 + 05",
+          "05 07 16 21 29 30 + 12",
+          "05 11 12 18 29 32 + 01",
+          "01 03 04 14 19 25 + 13"
         ],
         "exact_hits": 0,
-        "best_number_hits": 1,
-        "summary": "第2026084期按位复盘：候选池覆盖 2 / 7 个位置；不按单期结果追涨参数。",
+        "best_number_hits": 2,
+        "summary": "第2026085期按位复盘：候选池覆盖 1 / 7 个位置；不按单期结果追涨参数。",
         "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
         "position_diagnostics": [
           {
             "position": "红球第1位",
-            "actual_digit": "01",
+            "actual_digit": "06",
             "candidate_digits": [
               "01",
-              "03",
-              "04",
-              "07"
+              "05"
             ],
-            "candidate_hit_count": 1,
-            "pool_hit": true,
-            "reason": "命中：红球第1位的历史排序/分区候选池覆盖该号码。"
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：号码未进入红球联合池，区域频率、共现和结构分未达到五组阈值。"
           },
           {
             "position": "红球第2位",
-            "actual_digit": "05",
+            "actual_digit": "09",
             "candidate_digits": [
-              "05",
+              "03",
               "07",
-              "08",
-              "09",
-              "14"
+              "10",
+              "11"
             ],
-            "candidate_hit_count": 1,
-            "pool_hit": true,
-            "reason": "命中：红球第2位的历史排序/分区候选池覆盖该号码。"
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：号码未进入红球联合池，区域频率、共现和结构分未达到五组阈值。"
           },
           {
             "position": "红球第3位",
-            "actual_digit": "06",
+            "actual_digit": "13",
             "candidate_digits": [
-              "07",
-              "11",
+              "04",
+              "12",
               "14",
-              "18"
+              "16"
             ],
             "candidate_hit_count": 0,
             "pool_hit": false,
@@ -5702,11 +5703,13 @@
           },
           {
             "position": "红球第4位",
-            "actual_digit": "10",
+            "actual_digit": "17",
             "candidate_digits": [
               "14",
+              "15",
               "16",
-              "24"
+              "18",
+              "21"
             ],
             "candidate_hit_count": 0,
             "pool_hit": false,
@@ -5714,23 +5717,26 @@
           },
           {
             "position": "红球第5位",
-            "actual_digit": "12",
+            "actual_digit": "24",
             "candidate_digits": [
+              "19",
               "24",
-              "25",
-              "28"
+              "28",
+              "29"
             ],
-            "candidate_hit_count": 0,
-            "pool_hit": false,
-            "reason": "未命中：号码未进入红球联合池，区域频率、共现和结构分未达到五组阈值。"
+            "candidate_hit_count": 1,
+            "pool_hit": true,
+            "reason": "命中：红球第5位的历史排序/分区候选池覆盖该号码。"
           },
           {
             "position": "红球第6位",
-            "actual_digit": "16",
+            "actual_digit": "28",
             "candidate_digits": [
-              "28",
-              "29",
-              "32"
+              "25",
+              "27",
+              "30",
+              "32",
+              "33"
             ],
             "candidate_hit_count": 0,
             "pool_hit": false,
@@ -5738,10 +5744,13 @@
           },
           {
             "position": "蓝球第1位",
-            "actual_digit": "05",
+            "actual_digit": "15",
             "candidate_digits": [
               "01",
-              "04"
+              "04",
+              "05",
+              "12",
+              "13"
             ],
             "candidate_hit_count": 0,
             "pool_hit": false,
@@ -5751,16 +5760,16 @@
         "region_diagnostics": [
           {
             "region": "红球",
-            "coverage": "3 / 6",
+            "coverage": "2 / 6",
             "hit_numbers": [
-              "01",
-              "05",
-              "16"
+              "24",
+              "28"
             ],
             "missed_numbers": [
               "06",
-              "10",
-              "12"
+              "09",
+              "13",
+              "17"
             ]
           },
           {
@@ -5768,13 +5777,13 @@
             "coverage": "0 / 1",
             "hit_numbers": [],
             "missed_numbers": [
-              "05"
+              "15"
             ]
           }
         ],
-        "position_pool_coverage": 2,
+        "position_pool_coverage": 1,
         "position_count": 7,
-        "error_attribution": "红球覆盖 3 / 6；蓝球覆盖 0 / 1。未命中项按区域频率、共现、分区/排序位置和五组多样性约束归因，不把单期结果直接变成追涨规则。",
+        "error_attribution": "红球覆盖 2 / 6；蓝球覆盖 0 / 1。未命中项按区域频率、共现、分区/排序位置和五组多样性约束归因，不把单期结果直接变成追涨规则。",
         "model_adjustments": [
           "按区域滚动回测选择历史窗口：大乐透前区/后区、双色球红球/蓝球分开校准。",
           "七星彩继续按七个位置建模，复盘同时区分号码命中与位置命中，避免把无序命中误判为有效预测。"
@@ -5786,48 +5795,48 @@
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-26T23:15:47+08:00",
-      "latest_issue": "2026196",
-      "latest_draw_date": "2026-07-25",
+      "generated_at": "2026-07-26T23:37:58+08:00",
+      "latest_issue": "2026197",
+      "latest_draw_date": "2026-07-26",
       "latest_numbers": [
-        "04",
+        "02",
         "06",
-        "14",
-        "29",
-        "32",
-        "36",
+        "11",
+        "12",
+        "13",
+        "17",
+        "19",
+        "27",
+        "35",
         "39",
-        "40",
         "42",
-        "43",
         "44",
+        "45",
         "53",
-        "56",
-        "61",
-        "67",
-        "68",
-        "69",
-        "70",
-        "73",
-        "79"
+        "58",
+        "64",
+        "71",
+        "72",
+        "74",
+        "75"
       ],
-      "target_issue": "2026197",
+      "target_issue": "2026198",
       "next_draw_at": "2026-07-27T21:30+08:00",
       "next_draw_display": "2026年07月27日 21:30（北京时间）",
       "schedule_note": "每日21:30开奖（休市日除外）",
       "candidates": [
         {
           "numbers": [
-            2,
-            4,
             6,
             12,
-            23,
-            33,
+            27,
+            35,
             39,
-            44,
-            61,
-            73
+            42,
+            48,
+            64,
+            72,
+            75
           ],
           "mix_label": "选10独立模型",
           "source": "kl8_pick10",
@@ -5835,35 +5844,54 @@
           "play_name": "选10",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩快乐8 选10 02 04 06 12 23 33 39 44 61 73"
+          "copy_text": "福彩快乐8 选10 06 12 27 35 39 42 48 64 72 75"
         },
         {
           "numbers": [
+            6,
             12,
-            30,
-            33,
+            14,
+            19,
+            27,
             39,
-            40,
             42,
-            54,
             69,
-            73
+            71
           ],
           "mix_label": "选9独立模型",
           "source": "kl8_pick9",
           "pick_count": 9,
           "play_name": "选9",
           "rank": 2,
-          "confidence": 73.9,
-          "copy_text": "福彩快乐8 选9 12 30 33 39 40 42 54 69 73"
+          "confidence": 74.1,
+          "copy_text": "福彩快乐8 选9 06 12 14 19 27 39 42 69 71"
         },
         {
           "numbers": [
             6,
-            30,
-            32,
+            12,
+            19,
+            27,
+            39,
+            46,
+            49,
+            73
+          ],
+          "mix_label": "选8独立模型",
+          "source": "kl8_pick8",
+          "pick_count": 8,
+          "play_name": "选8",
+          "rank": 3,
+          "confidence": 64.1,
+          "copy_text": "福彩快乐8 选8 06 12 19 27 39 46 49 73"
+        },
+        {
+          "numbers": [
+            10,
+            12,
+            39,
             42,
-            61,
+            62,
             69,
             73
           ],
@@ -5871,28 +5899,9 @@
           "source": "kl8_pick7",
           "pick_count": 7,
           "play_name": "选7",
-          "rank": 3,
-          "confidence": 65.4,
-          "copy_text": "福彩快乐8 选7 06 30 32 42 61 69 73"
-        },
-        {
-          "numbers": [
-            4,
-            12,
-            32,
-            42,
-            46,
-            49,
-            69,
-            73
-          ],
-          "mix_label": "选8独立模型",
-          "source": "kl8_pick8",
-          "pick_count": 8,
-          "play_name": "选8",
           "rank": 4,
-          "confidence": 63.2,
-          "copy_text": "福彩快乐8 选8 04 12 32 42 46 49 69 73"
+          "confidence": 58.6,
+          "copy_text": "福彩快乐8 选7 10 12 39 42 62 69 73"
         },
         {
           "numbers": [
@@ -5900,7 +5909,7 @@
             12,
             39,
             42,
-            73
+            75
           ],
           "mix_label": "选5独立模型",
           "source": "kl8_pick5",
@@ -5908,22 +5917,22 @@
           "play_name": "选5",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩快乐8 选5 06 12 39 42 73"
+          "copy_text": "福彩快乐8 选5 06 12 39 42 75"
         }
       ],
       "top_candidates": [
         {
           "numbers": [
-            2,
-            4,
             6,
             12,
-            23,
-            33,
+            27,
+            35,
             39,
-            44,
-            61,
-            73
+            42,
+            48,
+            64,
+            72,
+            75
           ],
           "mix_label": "选10独立模型",
           "source": "kl8_pick10",
@@ -5931,35 +5940,54 @@
           "play_name": "选10",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩快乐8 选10 02 04 06 12 23 33 39 44 61 73"
+          "copy_text": "福彩快乐8 选10 06 12 27 35 39 42 48 64 72 75"
         },
         {
           "numbers": [
+            6,
             12,
-            30,
-            33,
+            14,
+            19,
+            27,
             39,
-            40,
             42,
-            54,
             69,
-            73
+            71
           ],
           "mix_label": "选9独立模型",
           "source": "kl8_pick9",
           "pick_count": 9,
           "play_name": "选9",
           "rank": 2,
-          "confidence": 73.9,
-          "copy_text": "福彩快乐8 选9 12 30 33 39 40 42 54 69 73"
+          "confidence": 74.1,
+          "copy_text": "福彩快乐8 选9 06 12 14 19 27 39 42 69 71"
         },
         {
           "numbers": [
             6,
-            30,
-            32,
+            12,
+            19,
+            27,
+            39,
+            46,
+            49,
+            73
+          ],
+          "mix_label": "选8独立模型",
+          "source": "kl8_pick8",
+          "pick_count": 8,
+          "play_name": "选8",
+          "rank": 3,
+          "confidence": 64.1,
+          "copy_text": "福彩快乐8 选8 06 12 19 27 39 46 49 73"
+        },
+        {
+          "numbers": [
+            10,
+            12,
+            39,
             42,
-            61,
+            62,
             69,
             73
           ],
@@ -5967,28 +5995,9 @@
           "source": "kl8_pick7",
           "pick_count": 7,
           "play_name": "选7",
-          "rank": 3,
-          "confidence": 65.4,
-          "copy_text": "福彩快乐8 选7 06 30 32 42 61 69 73"
-        },
-        {
-          "numbers": [
-            4,
-            12,
-            32,
-            42,
-            46,
-            49,
-            69,
-            73
-          ],
-          "mix_label": "选8独立模型",
-          "source": "kl8_pick8",
-          "pick_count": 8,
-          "play_name": "选8",
           "rank": 4,
-          "confidence": 63.2,
-          "copy_text": "福彩快乐8 选8 04 12 32 42 46 49 69 73"
+          "confidence": 58.6,
+          "copy_text": "福彩快乐8 选7 10 12 39 42 62 69 73"
         },
         {
           "numbers": [
@@ -5996,7 +6005,7 @@
             12,
             39,
             42,
-            73
+            75
           ],
           "mix_label": "选5独立模型",
           "source": "kl8_pick5",
@@ -6004,28 +6013,28 @@
           "play_name": "选5",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩快乐8 选5 06 12 39 42 73"
+          "copy_text": "福彩快乐8 选5 06 12 39 42 75"
         }
       ],
       "review": {
-        "title": "第2026196期结构复盘",
-        "summary": "本期开出20个号码，四区比为3 : 5 : 5 : 7，奇偶比9:11，与前一期重号2个。",
+        "title": "第2026197期结构复盘",
+        "summary": "本期开出20个号码，四区比为7 : 3 : 5 : 5，奇偶比11:9，与前一期重号5个。",
         "metrics": [
           {
             "label": "号码和值",
-            "value": "925"
+            "value": "779"
           },
           {
             "label": "四区比",
-            "value": "3 : 5 : 5 : 7"
+            "value": "7 : 3 : 5 : 5"
           },
           {
             "label": "奇偶比",
-            "value": "9:11"
+            "value": "11:9"
           },
           {
             "label": "与前期重号",
-            "value": "2"
+            "value": "5"
           }
         ]
       },
@@ -6036,31 +6045,31 @@
         "backtest": {
           "100": {
             "folds": 240,
-            "pool_coverage": 0.4985,
+            "pool_coverage": 0.5,
             "se": 0.0063,
             "baseline": 0.5
           },
           "300": {
             "folds": 240,
-            "pool_coverage": 0.4908,
+            "pool_coverage": 0.4915,
             "se": 0.0063,
             "baseline": 0.5
           },
           "500": {
             "folds": 240,
-            "pool_coverage": 0.4885,
+            "pool_coverage": 0.4888,
             "se": 0.0063,
             "baseline": 0.5
           },
           "1000": {
             "folds": 240,
-            "pool_coverage": 0.496,
+            "pool_coverage": 0.4967,
             "se": 0.0063,
             "baseline": 0.5
           },
           "1500": {
             "folds": 240,
-            "pool_coverage": 0.4973,
+            "pool_coverage": 0.4977,
             "se": 0.0063,
             "baseline": 0.5
           }
@@ -6069,11 +6078,11 @@
         "signals": [
           {
             "label": "相对活跃号码",
-            "value": "12 · 42 · 69 · 30 · 73 · 39 · 27 · 06 · 61 · 23"
+            "value": "12 · 42 · 39 · 27 · 06 · 69 · 02 · 30 · 73 · 75"
           },
           {
             "label": "较长遗漏",
-            "value": "50（16期）、76（13期）、60（11期）、26（10期）、58（10期）、08（9期）"
+            "value": "50（17期）、76（14期）、60（12期）、26（11期）、08（10期）、09（10期）"
           },
           {
             "label": "组合目标",
@@ -6088,46 +6097,46 @@
         ]
       },
       "model_review": {
-        "issue": "2026196",
-        "actual": "04 06 14 29 32 36 39 40 42 43 44 53 56 61 67 68 69 70 73 79",
+        "issue": "2026197",
+        "actual": "02 06 11 12 13 17 19 27 35 39 42 44 45 53 58 64 71 72 74 75",
         "previous_candidates": [
-          "12 27 33 42 73",
-          "01 12 33 42 69 77",
-          "11 12 18 27 42 62 69",
-          "02 12 23 30 33 39 69 73",
-          "02 06 12 15 33 42 46 69 73"
+          "02 04 06 12 23 33 39 44 61 73",
+          "12 30 33 39 40 42 54 69 73",
+          "06 30 32 42 61 69 73",
+          "04 12 32 42 46 49 69 73",
+          "06 12 39 42 73"
         ],
         "exact_hits": 0,
-        "best_number_hits": 4,
-        "summary": "第2026196期按位复盘：候选池覆盖 1 / 20 个位置；不按单期结果追涨参数。",
+        "best_number_hits": 5,
+        "summary": "第2026197期按位复盘：候选池覆盖 2 / 20 个位置；不按单期结果追涨参数。",
         "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
-        "union_number_hits": 5,
-        "number_pool_coverage": "5 / 20",
+        "union_number_hits": 6,
+        "number_pool_coverage": "6 / 20",
         "hit_numbers": [
+          "02",
           "06",
+          "12",
           "39",
           "42",
-          "69",
-          "73"
+          "44"
         ],
         "missed_numbers": [
-          "04",
-          "14",
-          "29",
-          "32",
-          "36",
-          "40",
-          "43",
-          "44",
+          "11",
+          "13",
+          "17",
+          "19",
+          "27",
+          "35",
+          "45",
           "53",
-          "56",
-          "61",
-          "67",
-          "68",
-          "70",
-          "79"
+          "58",
+          "64",
+          "71",
+          "72",
+          "74",
+          "75"
         ],
-        "error_attribution": "未覆盖的 15 个号码没有进入五组联合池，主要是单号强度、四区覆盖、共现分和组间重合惩罚共同筛选的结果；不把一次遗漏直接解释成下期必补。",
+        "error_attribution": "未覆盖的 14 个号码没有进入五组联合池，主要是单号强度、四区覆盖、共现分和组间重合惩罚共同筛选的结果；不把一次遗漏直接解释成下期必补。",
         "model_adjustments": [
           "快乐8继续单独使用选五模型，并以滚动联合池覆盖率选择历史窗口。",
           "保持五组之间的重合约束，优先修正长期覆盖不足的区间，不追逐单期遗漏号码。"
