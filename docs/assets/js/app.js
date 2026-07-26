@@ -60,8 +60,12 @@ function formatCandidate(key, item) {
   return `${front} + ${back}`;
 }
 
-function sectorForGame(key) {
-  return ["fc3d", "ssq", "kl8"].includes(key) ? "fucai" : "ticai";
+function sectorForGame(key, game) {
+  return game?.sector || (["fc3d", "ssq", "kl8"].includes(key) ? "fucai" : "ticai");
+}
+
+function sectorName(key, game) {
+  return game?.sector_name || (sectorForGame(key, game) === "fucai" ? "福彩" : "体彩");
 }
 
 function escapeHtml(value) {
@@ -129,7 +133,7 @@ async function load() {
     </article>`).join("");
 
   $("#draw-board").innerHTML = entries.map(([key, game], index) => `
-    <tr class="${isTodayDraw(game.next_draw_at) ? "is-today-draw " : ""}sector-${sectorForGame(key)}">
+    <tr class="${isTodayDraw(game.next_draw_at) ? "is-today-draw " : ""}sector-${sectorForGame(key, game)}">
       <td data-label="玩法">
         <a class="draw-board-game" href="./${key}/">
           <span class="draw-board-index">DRAW / 0${index + 1}</span>
@@ -138,7 +142,10 @@ async function load() {
       </td>
       <td data-label="目标期号"><span class="draw-board-issue">${escapeHtml(game.target_issue)}</span></td>
       <td data-label="下一期开奖时间">
-        ${isTodayDraw(game.next_draw_at) ? '<span class="draw-today-badge">今日开奖</span>' : ""}
+        <div class="draw-time-tags">
+          <span class="draw-sector-badge">${sectorName(key, game)}</span>
+          ${isTodayDraw(game.next_draw_at) ? '<span class="draw-today-badge">今日开奖</span>' : ""}
+        </div>
         <time datetime="${escapeHtml(game.next_draw_at)}">${escapeHtml(game.next_draw_display)}</time>
       </td>
       <td data-label="开奖安排"><span class="draw-board-schedule">${escapeHtml(game.schedule_note)}</span></td>
@@ -150,12 +157,14 @@ async function load() {
       .map(item => `${game.name} ${formatCandidate(key, item)}`)
       .join("\n");
     return `
-      <article class="game-card sector-${sectorForGame(key)}">
+      <article class="game-card sector-${sectorForGame(key, game)}">
         <div class="game-head">
           <div class="game-index"><span>0${index + 1}</span><span>TARGET / ${escapeHtml(game.target_issue)}</span></div>
           <h2>${escapeHtml(game.name)}</h2>
           <div class="draw-time">
             <span>下一期开奖时间</span>
+            <span class="draw-sector-badge">${sectorName(key, game)}</span>
+            ${isTodayDraw(game.next_draw_at) ? '<span class="draw-today-badge">今日开奖</span>' : ""}
             <time datetime="${escapeHtml(game.next_draw_at)}">${escapeHtml(game.next_draw_display)}</time>
           </div>
           <p class="schedule">${escapeHtml(game.schedule_note)}</p>

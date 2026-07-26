@@ -391,6 +391,12 @@ class DetailPageTests(unittest.TestCase):
         self.assertIn("isTodayDraw(game.next_draw_at)", homepage_script)
         self.assertIn("今日开奖", homepage_script)
         self.assertIn("draw-today-badge", homepage_script)
+        self.assertIn("draw-sector-badge", homepage_script)
+        self.assertIn("sectorName(key, game)", homepage_script)
+        dashboard = json.loads((root / "docs/assets/data/dashboard.json").read_text(encoding="utf-8"))
+        for game in dashboard["games"].values():
+            self.assertIn(game["sector"], ("fucai", "ticai"))
+            self.assertIn(game["sector_name"], ("福彩", "体彩"))
         self.assertIn('cache: "no-store"', homepage_script)
         self.assertIn("game.target_issue", homepage_script)
         self.assertIn("const candidates = game.top_candidates || game.candidates;", homepage_script)

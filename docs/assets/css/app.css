@@ -99,8 +99,14 @@ h1 em { color: var(--blue); font-style: normal; }
 .draw-board-game strong { font-size: 16px; }
 .draw-board-index { color: var(--red); font: 500 10px/1 "DM Mono", monospace; letter-spacing: .1em; }
 .draw-board-table time { color: var(--blue); font-size: 14px; font-weight: 900; line-height: 1.5; }
+.draw-board-table tr.sector-fucai time { color: var(--fucai-accent); }
+.draw-board-table tr.sector-ticai time { color: var(--ticai-accent); }
 .draw-board-table .is-today-draw { background: rgba(26,95,255,.06); }
-.draw-today-badge { display: inline-block; margin: 0 8px 5px 0; padding: 4px 7px; border-radius: 999px; background: var(--red); color: #fff; font: 800 10px/1 "DM Mono", monospace; letter-spacing: .04em; vertical-align: middle; }
+.draw-time-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 7px; }
+.draw-sector-badge, .draw-today-badge { display: inline-block; padding: 4px 7px; border-radius: 999px; color: #fff; font: 800 10px/1 "DM Mono", monospace; letter-spacing: .04em; vertical-align: middle; }
+.draw-sector-badge { background: var(--ticai-accent); }
+.sector-fucai .draw-sector-badge { background: var(--fucai-accent); }
+.draw-today-badge { background: var(--red); }
 .draw-board-issue { font: 700 13px/1.4 "DM Mono", monospace; }
 .draw-board-schedule { color: var(--muted); font-size: 11px; }
 .draw-board-refresh { margin: 10px 2px 0; color: var(--muted); font-size: 11px; }
@@ -119,7 +125,8 @@ h1 em { color: var(--blue); font-style: normal; }
 .game-card.sector-ticai .draw-time::before { background: var(--ticai-accent); }
 .game-card.sector-fucai .draw-time::before { background: var(--fucai-accent); }
 .draw-time::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
-.draw-time span { grid-column: 2; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .08em; }
+.draw-time > .draw-sector-badge, .draw-time > .draw-today-badge { grid-column: 2; justify-self: start; }
+.draw-time span:first-child { grid-column: 2; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .08em; }
 .draw-time time { grid-column: 2; font-size: 14px; font-weight: 900; }
 .schedule { margin: 7px 0 0 14px; color: var(--muted); font-size: 11px; }
 .detail-link { display: inline-flex; align-items: center; gap: 6px; margin: 14px 0 0 14px; color: var(--ink); font-size: 12px; font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--ink); }

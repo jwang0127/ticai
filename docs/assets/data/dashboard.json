@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T23:37:58+08:00",
+  "generated_at": "2026-07-26T23:57:52+08:00",
   "daily_results_date": "2026-07-26",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -149,10 +149,12 @@
   "games": {
     "dlt": {
       "name": "超级大乐透",
+      "sector": "ticai",
+      "sector_name": "体彩",
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-07-26T23:37:58+08:00",
+      "generated_at": "2026-07-26T23:57:52+08:00",
       "latest_issue": "26083",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -675,10 +677,12 @@
     },
     "pl3": {
       "name": "排列3",
+      "sector": "ticai",
+      "sector_name": "体彩",
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T23:37:58+08:00",
+      "generated_at": "2026-07-26T23:57:52+08:00",
       "latest_issue": "26197",
       "latest_draw_date": "2026-07-26",
       "latest_numbers": [
@@ -1855,10 +1859,12 @@
     },
     "pl5": {
       "name": "排列5",
+      "sector": "ticai",
+      "sector_name": "体彩",
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T23:37:58+08:00",
+      "generated_at": "2026-07-26T23:57:52+08:00",
       "latest_issue": "26197",
       "latest_draw_date": "2026-07-26",
       "latest_numbers": [
@@ -3440,10 +3446,12 @@
     },
     "fc3d": {
       "name": "福彩3D",
+      "sector": "fucai",
+      "sector_name": "福彩",
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T23:37:58+08:00",
+      "generated_at": "2026-07-26T23:57:52+08:00",
       "latest_issue": "2026197",
       "latest_draw_date": "2026-07-26",
       "latest_numbers": [
@@ -4620,10 +4628,12 @@
     },
     "qxc": {
       "name": "体彩7星彩",
+      "sector": "ticai",
+      "sector_name": "体彩",
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T23:37:58+08:00",
+      "generated_at": "2026-07-26T23:57:52+08:00",
       "latest_issue": "26085",
       "latest_draw_date": "2026-07-26",
       "latest_numbers": [
@@ -5297,10 +5307,12 @@
     },
     "ssq": {
       "name": "福彩双色球",
+      "sector": "fucai",
+      "sector_name": "福彩",
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-26T23:37:58+08:00",
+      "generated_at": "2026-07-26T23:57:52+08:00",
       "latest_issue": "2026085",
       "latest_draw_date": "2026-07-26",
       "latest_numbers": [
@@ -5792,10 +5804,12 @@
     },
     "kl8": {
       "name": "福彩快乐8",
+      "sector": "fucai",
+      "sector_name": "福彩",
       "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-26T23:37:58+08:00",
+      "generated_at": "2026-07-26T23:57:52+08:00",
       "latest_issue": "2026197",
       "latest_draw_date": "2026-07-26",
       "latest_numbers": [

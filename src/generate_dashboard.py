@@ -17,6 +17,15 @@ CONFIG_PATH = ROOT / "config" / "games.json"
 DATA_PATH = ROOT / "data" / "processed" / "draws.json"
 OUTPUT_PATH = ROOT / "docs" / "assets" / "data" / "dashboard.json"
 REVIEWS_PATH = ROOT / "data" / "processed" / "model_reviews.json"
+GAME_SECTORS = {
+    "fc3d": ("fucai", "福彩"),
+    "ssq": ("fucai", "福彩"),
+    "kl8": ("fucai", "福彩"),
+    "dlt": ("ticai", "体彩"),
+    "pl3": ("ticai", "体彩"),
+    "pl5": ("ticai", "体彩"),
+    "qxc": ("ticai", "体彩"),
+}
 try:
     TZ = ZoneInfo("Asia/Shanghai")
 except ZoneInfoNotFoundError:
@@ -1679,6 +1688,8 @@ def main() -> None:
 
         output["games"][game] = {
             "name": cfg["name"],
+            "sector": GAME_SECTORS.get(game, ("ticai", "体彩"))[0],
+            "sector_name": GAME_SECTORS.get(game, ("ticai", "体彩"))[1],
             "model_version": "v3.2-one-se-calibration-union-coverage",
             "history_count": len(rows),
             "model_scope": "前区/后区排序位独立" if game == "dlt" else "每一位独立评分" if game in ("pl3", "pl5", "fc3d", "qxc") else "玩法专用结构模型",
