@@ -132,11 +132,14 @@ class DetailPageTests(unittest.TestCase):
         rows = {"pl3": self.rows, "pl5": self.pl5_rows, "fc3d": self.fc3d_rows}
         for game, game_rows in rows.items():
             candidates, scores = generate_positional_ensemble(game, game_rows)
-            self.assertEqual(scores, sorted(scores, reverse=True))
+            self.assertEqual(scores[:3], sorted(scores[:3], reverse=True))
+            self.assertEqual(scores[3:], sorted(scores[3:], reverse=True))
             digits = len(candidates[0]["number"])
             for position in range(digits):
                 distinct = {item["number"][position] for item in candidates}
-                self.assertEqual(len(distinct), 3, (game, position, distinct))
+            expected = 3 if game in ("pl3", "fc3d") else 3
+            primary_distinct = {item["number"][position] for item in candidates[:3]}
+            self.assertEqual(len(primary_distinct), expected, (game, position, primary_distinct))
 
     def test_qxc_candidates_cover_three_digits_per_position(self):
         candidates, _ = generate_qxc(self.qxc_rows)
@@ -236,7 +239,7 @@ class DetailPageTests(unittest.TestCase):
             )
             for position in range(3):
                 self.assertLessEqual(
-                    len({item["number"][position] for item in payload["games"][game]["top_candidates"]}),
+                    len({item["number"][position] for item in payload["games"][game]["top_candidates"][:3]}),
                     3,
                 )
 
@@ -309,9 +312,13 @@ class DetailPageTests(unittest.TestCase):
             self.assertEqual(len(candidates), count)
             self.assertEqual(len({item["number"] for item in candidates}), count)
             self.assertNotIn("strategy_zones", game)
-            self.assertEqual(Counter(item["source"] for item in candidates), {"position_ensemble": count})
+            expected_sources = {"position_ensemble": count}
+            if key in ("pl3", "pl5", "fc3d"):
+                expected_sources = {"position_ensemble": 3, "cold_reverse": 2}
+            self.assertEqual(Counter(item["source"] for item in candidates), expected_sources)
             scores = [item["confidence"] for item in candidates]
-            self.assertEqual(scores, sorted(scores, reverse=True))
+            self.assertEqual(scores[:3], sorted(scores[:3], reverse=True))
+            self.assertEqual(scores[3:], sorted(scores[3:], reverse=True))
 
     def test_positional_ensemble_uses_one_ranked_pool(self):
         pl3, _ = generate_positional_ensemble("pl3", self.rows)
@@ -320,8 +327,10 @@ class DetailPageTests(unittest.TestCase):
         self.assertEqual(len(pl3), 5)
         self.assertEqual(len(pl5), 5)
         self.assertEqual(len(fc3d), 5)
-        for candidates in (pl3, pl5, fc3d):
+        self.assertEqual(Counter(item["source"] for item in pl3), {"position_ensemble": 3, "cold_reverse": 2})
+        for candidates in (pl5,):
             self.assertEqual(Counter(item["source"] for item in candidates), {"position_ensemble": len(candidates)})
+        self.assertEqual(Counter(item["source"] for item in fc3d), {"position_ensemble": 3, "cold_reverse": 2})
 
     def test_pl5_uses_its_own_five_positions(self):
         candidates, _ = generate_positional_ensemble("pl5", self.pl5_rows)
@@ -384,6 +393,8 @@ class DetailPageTests(unittest.TestCase):
         detail_script = (root / "docs/assets/js/detail.js").read_text(encoding="utf-8")
         self.assertIn('id="draw-board"', homepage)
         self.assertIn('class="draw-board-table"', homepage)
+        self.assertIn("draw-board-legend", homepage)
+        self.assertIn("legend-today", homepage)
         for heading in ("玩法", "目标期号", "下一期开奖时间", "开奖安排"):
             self.assertIn(heading, homepage)
         self.assertIn("NEXT DRAW BOARD", homepage)

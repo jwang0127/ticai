@@ -697,7 +697,7 @@ def generate_pl5_from_pl3(
 
 
 def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict], list[float]]:
-    """Direct-digit output from one position-only ensemble, with neutral digits allowed."""
+    """Direct-digit output with a three-digit main-pool/cold-reverse split."""
     digits = len(rows[0]["numbers"])
     if game in ("pl3", "pl5", "fc3d"):
         model = calibrate_digit_model(game, rows, digits)["parameters"]
@@ -723,6 +723,21 @@ def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict
             pools,
             lambda text: global_candidate_score([int(value) for value in text], components, model),
         )
+        if game in ("pl3", "fc3d"):
+            main_ranked = ranked[:3]
+            used = {item[0] for item in main_ranked}
+            cold_ranked = generate_digit_profile(rows, digits, "cold", 10, game)
+            reverse_ranked = []
+            for number, score, heat in cold_ranked:
+                if number in used:
+                    continue
+                reverse_ranked.append((number, score, heat))
+                used.add(number)
+                if len(reverse_ranked) == 2:
+                    break
+            if len(reverse_ranked) < 2:
+                raise RuntimeError(f"{game}冷门反选池不足两注")
+            ranked = main_ranked + reverse_ranked
     else:
         ranked = generate_digit_profile(rows, digits, "global", 5, game)
     # The hot/neutral/cold label is meaningless for this generator: every
@@ -732,13 +747,16 @@ def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict
     # the construction instead - how many positions took their strongest pool
     # digit rather than a coverage-spreading alternative.
     candidates = []
-    for number, _, _ in ranked:
+    for index, (number, _, _) in enumerate(ranked):
         if game in ("pl3", "pl5", "fc3d"):
             leading = sum(int(number[position]) == pools[position][0] for position in range(digits))
             label = f"位置池组合·{leading}/{digits}位取最高权重数字"
         else:
             label = "位置综合"
-        candidates.append({"number": number, "mix_label": label, "source": "position_ensemble"})
+        source = "cold_reverse" if game in ("pl3", "fc3d") and index >= 3 else "position_ensemble"
+        if game in ("pl3", "fc3d") and index >= 3:
+            label = "鍐烽棬鍙嶉€?"
+        candidates.append({"number": number, "mix_label": label, "source": source})
     return candidates, [score for _, score, _ in ranked]
 
 
@@ -1669,6 +1687,18 @@ def main() -> None:
         else:
             candidates, scores = generate_positional_ensemble(game, rows)
 
+        # Every model exposes the same five-line contract: three primary model
+        # lines plus two complementary reverse-selection lines. Direct-digit
+        # games build the latter from their cold profile; set-based games use
+        # the two lowest-ranked diversified lines already produced by their
+        # own model, so no cross-game scoring is mixed.
+        for index, candidate in enumerate(candidates):
+            if index >= 3:
+                candidate["source"] = "cold_reverse"
+                candidate["mix_label"] = "冷门反选"
+            elif "source" not in candidate:
+                candidate["source"] = "model_primary"
+
         # Main-list scores are relative to the backtested ranking model. Strategy
         # zones below keep their separate common hot/cold support scale.
         confidences = relative_confidences(scores)
@@ -1690,7 +1720,7 @@ def main() -> None:
             "name": cfg["name"],
             "sector": GAME_SECTORS.get(game, ("ticai", "体彩"))[0],
             "sector_name": GAME_SECTORS.get(game, ("ticai", "体彩"))[1],
-            "model_version": "v3.2-one-se-calibration-union-coverage",
+            "model_version": "v3.3-main3-cold2-all-games",
             "history_count": len(rows),
             "model_scope": "前区/后区排序位独立" if game == "dlt" else "每一位独立评分" if game in ("pl3", "pl5", "fc3d", "qxc") else "玩法专用结构模型",
             "generated_at": now.isoformat(timespec="seconds"),
