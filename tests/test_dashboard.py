@@ -1,13 +1,20 @@
+import math
 import unittest
 import json
 from collections import Counter
+from itertools import combinations
 from datetime import datetime, time
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from src.generate_dashboard import (
     DIGIT_MODELS,
+    _digit_sequence,
+    _sliding_top3_hits,
+    ensure_position_pool_coverage,
     build_analysis,
+    calibrate_digit_model,
+    calibrate_set_model,
     digit_confidences,
     generate_composite_recommendations,
     generate_positional_ensemble,
@@ -18,6 +25,9 @@ from src.generate_dashboard import (
     generate_qxc,
     generate_ssq,
     next_draw,
+    order_statistic_top_mass,
+    rolling_pool_backtest,
+    rolling_region_backtest,
 )
 
 TZ = ZoneInfo("Asia/Shanghai")
@@ -72,9 +82,94 @@ class DetailPageTests(unittest.TestCase):
         self.assertEqual(scores, sorted(scores, reverse=True))
         front_union = set().union(*(set(item["front"]) for item in candidates))
         back_union = set().union(*(set(item["back"]) for item in candidates))
-        self.assertGreaterEqual(len(front_union), 10)
-        self.assertGreaterEqual(len(back_union), 5)
-        self.assertGreaterEqual(len({tuple(item["back"]) for item in candidates}), 3)
+        self.assertGreaterEqual(len(front_union), 15)
+        self.assertGreaterEqual(len(back_union), 6)
+        self.assertEqual(len({tuple(item["back"]) for item in candidates}), 5)
+
+    def test_incremental_backtest_matches_naive_reference(self):
+        rows = self.rows[:400]
+        for decay in (8, 18, 45):
+            for window in (100, 300):
+                for position in range(3):
+                    sequence = _digit_sequence(rows, position)
+                    fast = _sliding_top3_hits(sequence, decay, window, 60)
+                    limit = min(60, max(0, len(rows) - window))
+                    hits = 0
+                    for index in range(1, limit + 1):
+                        counts = Counter()
+                        for age, row in enumerate(rows[index:index + window]):
+                            counts[int(row["numbers"][position])] += math.exp(-age / decay)
+                        top3 = sorted(range(10), key=lambda digit: (-counts[digit], digit))[:3]
+                        hits += int(int(rows[index - 1]["numbers"][position]) in top3)
+                    self.assertEqual(fast, (hits, limit), (decay, window, position))
+
+    def test_backtests_report_uncertainty_and_fair_baseline(self):
+        digit_calibration = calibrate_digit_model("pl3", self.rows, 3)
+        for cell in digit_calibration["backtest"].values():
+            self.assertIn("se", cell)
+            self.assertEqual(cell["baseline"], 0.3)
+        set_calibration = calibrate_set_model("dlt", self.dlt_rows)
+        for cell in set_calibration["backtest"].values():
+            self.assertIn("se", cell)
+            self.assertGreater(cell["baseline"], 0.3)
+        # Sorted positions of a fair draw concentrate, so the honest baseline
+        # for "first of five sorted numbers from 1-35 in a top-10 pool" is far
+        # above the naive 10/35.
+        self.assertGreater(order_statistic_top_mass(35, 5, 0, 10), 0.8)
+        # Exhaustive check against the definition on a small board: the mass
+        # of the 3 most likely values for the middle of three draws from 1-8.
+        exact = Counter()
+        for combo in combinations(range(1, 9), 3):
+            exact[sorted(combo)[1]] += 1
+        expected = sum(sorted(exact.values(), reverse=True)[:3]) / math.comb(8, 3)
+        self.assertAlmostEqual(order_statistic_top_mass(8, 3, 1, 3), expected, places=12)
+        region = rolling_region_backtest("ssq", self.ssq_rows, 300, "red")
+        self.assertAlmostEqual(region["baseline"], round(18 / 33, 4))
+        pool = rolling_pool_backtest("kl8", self.kl8_rows, 300)
+        self.assertAlmostEqual(pool["baseline"], 0.5)
+
+    def test_positional_ensemble_covers_full_backtested_pools(self):
+        rows = {"pl3": self.rows, "pl5": self.pl5_rows, "fc3d": self.fc3d_rows}
+        for game, game_rows in rows.items():
+            candidates, scores = generate_positional_ensemble(game, game_rows)
+            self.assertEqual(scores, sorted(scores, reverse=True))
+            digits = len(candidates[0]["number"])
+            for position in range(digits):
+                distinct = {item["number"][position] for item in candidates}
+                self.assertEqual(len(distinct), 3, (game, position, distinct))
+
+    def test_qxc_candidates_cover_three_digits_per_position(self):
+        candidates, _ = generate_qxc(self.qxc_rows)
+        for position in range(7):
+            distinct = {item["number"][position] for item in candidates}
+            self.assertGreaterEqual(len(distinct), 3, (position, distinct))
+
+    def test_ssq_red_union_spans_the_board(self):
+        candidates, _ = generate_ssq(self.ssq_rows, "2026083")
+        red_union = set().union(*(set(item["red"]) for item in candidates))
+        self.assertGreaterEqual(len(red_union), 22)
+
+    def test_coverage_repair_spreads_pool_digits_directly(self):
+        # The end-to-end assertions above pass even without the repair,
+        # because diversified_rank usually spreads the pools on its own.
+        # Exercise the repair itself on a list that has collapsed.
+        collapsed = [(f"11{index}", -float(index), 0.0) for index in range(5)]
+        repaired = ensure_position_pool_coverage(
+            [item for item in collapsed],
+            [[1, 2, 3], [1, 4, 5], [0, 1, 2]],
+            lambda text: -sum(int(value) for value in text),
+        )
+        self.assertEqual(len(repaired), 5)
+        self.assertEqual(len({item[0] for item in repaired}), 5)
+        for position, pool in enumerate([[1, 2, 3], [1, 4, 5], [0, 1, 2]]):
+            present = {int(item[0][position]) for item in repaired}
+            self.assertTrue(set(pool) <= present, (position, pool, present))
+
+    def test_kl8_groups_are_pairwise_disjoint(self):
+        for pick_count in range(5, 11):
+            candidates, _ = generate_kl8(self.kl8_rows, pick_count)
+            union = set().union(*(set(item["numbers"]) for item in candidates))
+            self.assertEqual(len(union), 5 * pick_count, pick_count)
 
     def test_position_analysis_is_explicit_for_direct_digit_games(self):
         expected = {

@@ -22,11 +22,6 @@ try:
 except ZoneInfoNotFoundError:
     TZ = timezone(timedelta(hours=8))
 RECENCY_DECAY = 18
-GLOBAL_OMISSION_WEIGHT = 0.06
-GLOBAL_UNIQUE_WEIGHT = 0.06
-# A 60-draw rolling comparison across PL3, PL5, and FC3D showed that 1.6
-# modestly improves per-position coverage without changing the core signals.
-GLOBAL_DIVERSITY_PENALTY = 1.6
 DLT_DIVERSITY_PENALTY = 0.06
 WINDOW_BLEND = ((50, 0.15), (100, 0.20), (300, 0.20), (500, 0.20), (1000, 0.15), (1500, 0.10))
 
@@ -47,153 +42,349 @@ DIGIT_MODELS = {
 
 BACKTEST_DECAYS = (8, 13, 18, 24, 30, 45, 60)
 BACKTEST_WINDOWS = (100, 300, 500, 1000, 1500)
+DIGIT_BACKTEST_FOLDS = 300
+POOL_BACKTEST_FOLDS = 240
+UNIFORM_TOP3_BASELINE = 0.3
+
+# Calibration reruns the same rolling grid for one immutable history snapshot
+# from several call sites (generation, analysis, confidence scaling); memoize
+# on the snapshot identity so each grid is evaluated once per process.
+_CALIBRATION_CACHE: dict[tuple, dict] = {}
 
 
-def rolling_digit_backtest(rows: list[dict], digits: int, decay: int, window_size: int, folds: int = 120) -> dict:
-    """Evaluate positional top-three coverage without using the held-out draw."""
-    limit = min(folds, max(0, len(rows) - window_size))
+def _history_key(game: str, rows: list[dict]) -> tuple:
+    if not rows:
+        return (game, 0, "", "")
+    return (game, len(rows), str(rows[0]["issue"]), str(rows[-1]["issue"]))
+
+
+def binomial_se(rate: float, observations: int) -> float:
+    if observations <= 0:
+        return 0.0
+    return math.sqrt(max(rate * (1.0 - rate), 0.0) / observations)
+
+
+def _digit_sequence(rows: list[dict], position: int) -> list[int]:
+    return [int(row["numbers"][position]) for row in rows]
+
+
+def _sliding_top3_hits(sequence: list[int], decay: int, window_size: int, folds: int) -> tuple[int, int]:
+    """Count held-out top-3 hits with an O(1)-per-fold sliding decayed window.
+
+    Fold at index i trains on sequence[i:i+window] (age 0 = newest) and tests
+    sequence[i-1]. Sliding the window one draw forward rescales every weight
+    by exp(-1/decay), drops the stale tail row, and admits the new head row at
+    weight 1. This matches rebuilding the decayed Counter per fold up to two
+    Two details keep this an exact match for the rebuild rather than an
+    approximation of it. Membership is decided by an exact integer occupancy
+    count, not by the decayed weight: repeated rescaling leaves floating-point
+    residue on a digit that has fully left the window, and that residue would
+    otherwise rank it above a digit the window never contained (which a freshly
+    built counter holds no key for at all). Ties among equal weights resolve by
+    digit value, so each fold is a pure function of its own training window
+    rather than of how many folds preceded it.
+    """
+    limit = min(folds, max(0, len(sequence) - window_size))
+    if limit <= 0:
+        return 0, 0
+    fade = math.exp(-1.0 / decay)
+    tail_weight = math.exp(-window_size / decay)
+    counts = [0.0] * 10
+    occupancy = [0] * 10
+    for age in range(window_size):
+        counts[sequence[limit + age]] += math.exp(-age / decay)
+        occupancy[sequence[limit + age]] += 1
     hits = 0
-    total = 0
-    for index in range(1, limit + 1):
-        train = rows[index : index + window_size]
-        actual = rows[index - 1]["numbers"]
-        for position in range(digits):
-            counts: Counter[int] = Counter()
-            for age, row in enumerate(train):
-                counts[int(row["numbers"][position])] += math.exp(-age / decay)
-            hits += int(int(actual[position]) in {value for value, _ in counts.most_common(3)})
-            total += 1
-    return {"folds": limit, "positional_top3_hit_rate": round(hits / total, 4) if total else 0.0}
+    index = limit
+    while True:
+        top3 = sorted(
+            (digit for digit in range(10) if occupancy[digit]),
+            key=lambda digit: (-counts[digit], digit),
+        )[:3]
+        hits += int(sequence[index - 1] in top3)
+        index -= 1
+        if index < 1:
+            break
+        for digit in range(10):
+            counts[digit] *= fade
+        departing = sequence[index + window_size]
+        counts[departing] -= tail_weight
+        occupancy[departing] -= 1
+        counts[sequence[index]] += 1.0
+        occupancy[sequence[index]] += 1
+    return hits, limit
+
+
+def rolling_digit_backtest(rows: list[dict], digits: int, decay: int, window_size: int, folds: int = DIGIT_BACKTEST_FOLDS) -> dict:
+    """Evaluate positional top-three coverage without using the held-out draw."""
+    hits = total = 0
+    limit = 0
+    for position in range(digits):
+        position_hits, limit = _sliding_top3_hits(_digit_sequence(rows, position), decay, window_size, folds)
+        hits += position_hits
+        total += limit
+    rate = hits / total if total else 0.0
+    return {
+        "folds": limit,
+        "positional_top3_hit_rate": round(rate, 4),
+        "se": round(binomial_se(rate, total), 4),
+        "baseline": UNIFORM_TOP3_BASELINE,
+    }
 
 
 def rolling_digit_position_backtest(
-    rows: list[dict], position: int, decay: int, window_size: int, folds: int = 120
+    rows: list[dict], position: int, decay: int, window_size: int, folds: int = DIGIT_BACKTEST_FOLDS
 ) -> dict:
     """Evaluate one digit position without using the held-out draw."""
-    limit = min(folds, max(0, len(rows) - window_size))
-    hits = 0
-    for index in range(1, limit + 1):
-        train = rows[index : index + window_size]
-        actual = int(rows[index - 1]["numbers"][position])
-        counts: Counter[int] = Counter()
-        for age, row in enumerate(train):
-            counts[int(row["numbers"][position])] += math.exp(-age / decay)
-        hits += int(actual in {value for value, _ in counts.most_common(3)})
+    hits, limit = _sliding_top3_hits(_digit_sequence(rows, position), decay, window_size, folds)
+    rate = hits / limit if limit else 0.0
     return {
         "folds": limit,
-        "top3_hit_rate": round(hits / limit, 4) if limit else 0.0,
+        "top3_hit_rate": round(rate, 4),
+        "se": round(binomial_se(rate, limit), 4),
+        "baseline": UNIFORM_TOP3_BASELINE,
     }
+
+
+def _one_se_choice(cells: list[tuple[int, int]], scores: dict[str, dict], rate_key: str, observations_per_fold: int = 1) -> tuple[int, int]:
+    """Pick parameters with a one-standard-error rule instead of the raw max.
+
+    For fair draws every cell shares the same true hit rate, so the observed
+    grid maximum is mostly selection noise. Among cells statistically tied with
+    the best (within one binomial SE), prefer the largest window and the
+    slowest decay: the most stable, least noise-chasing estimator.
+    """
+    def rate(cell: tuple[int, int]) -> float:
+        return scores[f"{cell[0]}@{cell[1]}"][rate_key]
+
+    def observations(cell: tuple[int, int]) -> int:
+        return scores[f"{cell[0]}@{cell[1]}"]["folds"] * observations_per_fold
+
+    best = max(cells, key=rate)
+    threshold = rate(best) - binomial_se(rate(best), observations(best))
+    eligible = [cell for cell in cells if rate(cell) >= threshold]
+    return max(eligible, key=lambda cell: (cell[1], cell[0], rate(cell)))
 
 
 def calibrate_digit_model(game: str, rows: list[dict], digits: int) -> dict:
     """Return the isolated model plus rolling-backtest evidence for the game."""
+    cache_key = ("digit", _history_key(game, rows), digits)
+    cached = _CALIBRATION_CACHE.get(cache_key)
+    if cached is not None:
+        return cached
     base = dict(digit_model(game))
     windows = [window for window in BACKTEST_WINDOWS if window < len(rows)] or [max(1, len(rows) - 1)]
+    cells = [(decay, window) for decay in BACKTEST_DECAYS for window in windows]
     scores = {
         f"{decay}@{window}": rolling_digit_backtest(rows, digits, decay, window)
-        for decay in BACKTEST_DECAYS for window in windows
+        for decay, window in cells
     }
-    chosen_decay, chosen_window = max(
-        ((decay, window) for decay in BACKTEST_DECAYS for window in windows),
-        key=lambda pair: (
-            scores[f"{pair[0]}@{pair[1]}"]["positional_top3_hit_rate"],
-            int(pair[1] >= 300),
-            -pair[1],
-            -abs(pair[0] - base["decay"]),
-        ),
-    )
+    chosen_decay, chosen_window = _one_se_choice(cells, scores, "positional_top3_hit_rate", digits)
     position_parameters = []
     position_backtest = []
     for position in range(digits):
         position_scores = {
             f"{decay}@{window}": rolling_digit_position_backtest(rows, position, decay, window)
-            for decay in BACKTEST_DECAYS for window in windows
+            for decay, window in cells
         }
-        position_decay, position_window = max(
-            ((decay, window) for decay in BACKTEST_DECAYS for window in windows),
-            key=lambda pair: (
-                position_scores[f"{pair[0]}@{pair[1]}"]["top3_hit_rate"],
-                int(pair[1] >= 300),
-                -pair[1],
-                -abs(pair[0] - base["decay"]),
-            ),
-        )
+        position_decay, position_window = _one_se_choice(cells, position_scores, "top3_hit_rate")
         position_parameters.append({"position": position, "decay": position_decay, "window_size": position_window})
         position_backtest.append({"position": position, "scores": position_scores})
     base["decay"] = chosen_decay
     base["window_size"] = chosen_window
     base["position_parameters"] = position_parameters
-    return {
+    result = {
         "parameters": base,
         "backtest": scores,
         "position_backtest": position_backtest,
         "selected_decay": chosen_decay,
         "selected_window": chosen_window,
     }
+    _CALIBRATION_CACHE[cache_key] = result
+    return result
 
 
-def rolling_pool_backtest(game: str, rows: list[dict], window_size: int, folds: int = 120) -> dict:
-    """Evaluate position/set coverage against a simple frequency baseline."""
-    limit = min(folds, max(0, len(rows) - window_size))
-    hits = total = 0
-    for index in range(1, limit + 1):
-        train = rows[index:index + window_size]
-        actual = rows[index - 1]["numbers"]
-        if game == "dlt":
-            specs = [(pos, 10) for pos in range(5)] + [(pos, 4) for pos in range(5, 7)]
-        elif game == "ssq":
-            specs = [(0, 18), (6, 5)]
-        elif game == "kl8":
-            specs = [(0, 40)]
-        else:
-            specs = [(pos, 3) for pos in range(len(actual))]
-        for pos, top_k in specs:
-            counts = Counter()
-            if game in ("ssq", "kl8") and pos in (0, 6):
-                for row in train:
-                    values = row["numbers"][:6] if game == "ssq" and pos == 0 else row["numbers"][-1:] if game == "ssq" else row["numbers"]
-                    for value in values:
-                        counts[int(value)] += 1
-                target_values = [int(value) for value in (actual[:6] if game == "ssq" and pos == 0 else actual[-1:] if game == "ssq" else actual)]
-                hits += len(set(target_values) & {n for n, _ in counts.most_common(top_k)})
-                total += len(target_values)
-            else:
-                for row in train:
-                    counts[int(row["numbers"][pos])] += 1
-                hits += int(int(actual[pos]) in {n for n, _ in counts.most_common(top_k)})
-                total += 1
-    return {"folds": limit, "pool_coverage": round(hits / total, 4) if total else 0.0}
+def order_statistic_top_mass(total: int, drawn: int, position: int, top_k: int) -> float:
+    """Best possible top-k hit rate for one sorted position of a fair draw.
+
+    Sorted positions concentrate (the first of five numbers from 1-35 is small
+    far more often than not), so a fair-lottery oracle already scores well on
+    them. Reporting this exact mass as the baseline keeps positional coverage
+    numbers honest instead of implying the frequency model found a signal.
+    """
+    denominator = math.comb(total, drawn)
+    probabilities = [
+        math.comb(value - 1, position) * math.comb(total - value, drawn - 1 - position) / denominator
+        for value in range(1, total + 1)
+    ]
+    return sum(sorted(probabilities, reverse=True)[:top_k])
 
 
-def rolling_region_backtest(game: str, rows: list[dict], window_size: int, region: str, folds: int = 120) -> dict:
-    """Backtest the independent regions used by DLT and SSQ generators."""
-    limit = min(folds, max(0, len(rows) - window_size))
+def _pool_backtest_baseline(game: str, digit_count: int) -> float:
     if game == "dlt":
-        start, end, top_k = (0, 5, 18) if region == "front" else (5, 7, 6)
+        front = [order_statistic_top_mass(35, 5, position, 10) for position in range(5)]
+        back = [order_statistic_top_mass(12, 2, position, 4) for position in range(2)]
+        return sum(front + back) / 7
+    if game == "ssq":
+        return (6 * (18 / 33) + (5 / 16)) / 7
+    if game == "kl8":
+        return 40 / 80
+    return UNIFORM_TOP3_BASELINE
+
+
+def _positive_top_values(counter: Counter[int], top_k: int) -> set[int]:
+    """Deterministic top-k pool: count descending, then value ascending.
+
+    Integer count ties at the k-th slot are pervasive in unweighted windows,
+    and Counter.most_common breaks them by insertion order - which for a
+    long-lived sliding counter is an artifact of the traversal path (it even
+    depends on how many folds ran before this one). Ordering ties by value
+    makes every fold's pool a pure function of its own training window.
+    Zero-count keys left behind by sliding removal are excluded, matching a
+    freshly built counter."""
+    ranked = sorted(
+        ((value, count) for value, count in counter.items() if count > 0),
+        key=lambda item: (-item[1], item[0]),
+    )
+    return {value for value, _ in ranked[:top_k]}
+
+
+def rolling_pool_backtest(game: str, rows: list[dict], window_size: int, folds: int = POOL_BACKTEST_FOLDS) -> dict:
+    """Evaluate position/set coverage with an O(1)-per-fold sliding window."""
+    limit = min(folds, max(0, len(rows) - window_size))
+    digit_count = len(rows[0]["numbers"]) if rows else 0
+    baseline = _pool_backtest_baseline(game, digit_count)
+    if limit <= 0:
+        return {"folds": 0, "pool_coverage": 0.0, "se": 0.0, "baseline": round(baseline, 4)}
+    values = [[int(value) for value in row["numbers"]] for row in rows]
+    if game == "dlt":
+        specs = [("pos", pos, 10, None) for pos in range(5)] + [("pos", pos, 4, None) for pos in (5, 6)]
     elif game == "ssq":
-        start, end, top_k = (0, 6, 18) if region == "red" else (6, 7, 5)
+        specs = [("set", (0, 6), 18, 33), ("set", (6, 7), 5, 16)]
+    elif game == "kl8":
+        specs = [("set", (0, 20), 40, 80)]
     else:
-        raise ValueError(f"unsupported region calibration: {game}/{region}")
+        specs = [("pos", pos, 3, None) for pos in range(digit_count)]
+    counters: list[Counter[int]] = [Counter() for _ in specs]
+
+    def apply(row_values: list[int], sign: int) -> None:
+        for counter, (kind, argument, _, _) in zip(counters, specs):
+            if kind == "pos":
+                counter[row_values[argument]] += sign
+            else:
+                for value in row_values[argument[0]:argument[1]]:
+                    counter[value] += sign
+
+    for offset in range(window_size):
+        apply(values[limit + offset], 1)
     hits = total = 0
-    for index in range(1, limit + 1):
-        train = rows[index:index + window_size]
-        actual = {int(value) for value in rows[index - 1]["numbers"][start:end]}
-        counts: Counter[int] = Counter()
-        for row in train:
-            for value in row["numbers"][start:end]:
-                counts[int(value)] += 1
-        hits += len(actual & {value for value, _ in counts.most_common(top_k)})
+    index = limit
+    while True:
+        actual = values[index - 1]
+        for counter, (kind, argument, top_k, _) in zip(counters, specs):
+            ranked = _positive_top_values(counter, top_k)
+            if kind == "pos":
+                hits += int(actual[argument] in ranked)
+                total += 1
+            else:
+                targets = actual[argument[0]:argument[1]]
+                hits += len(set(targets) & ranked)
+                total += len(targets)
+        index -= 1
+        if index < 1:
+            break
+        apply(values[index], 1)
+        apply(values[index + window_size], -1)
+    rate = hits / total if total else 0.0
+    # Within one fold a set spec's n covered numbers are drawn without
+    # replacement, so per-fold hit variance is hypergeometric: (N-n)/(N-1)
+    # times binomial. Positional specs are single draws (factor 1); the
+    # cross-position correlation of DLT's sorted positions is second-order
+    # and left uncorrected.
+    weight_total = variance_weight = 0.0
+    for kind, argument, _, population in specs:
+        drawn = (argument[1] - argument[0]) if kind == "set" else 1
+        factor = (population - drawn) / (population - 1) if kind == "set" else 1.0
+        variance_weight += drawn * factor
+        weight_total += drawn
+    se = binomial_se(rate, total) * math.sqrt(variance_weight / weight_total) if total else 0.0
+    return {
+        "folds": limit,
+        "pool_coverage": round(rate, 4),
+        "se": round(se, 4),
+        "baseline": round(baseline, 4),
+    }
+
+
+REGION_SPECS = {
+    ("dlt", "front"): (0, 5, 18, 35),
+    ("dlt", "back"): (5, 7, 6, 12),
+    ("ssq", "red"): (0, 6, 18, 33),
+    ("ssq", "blue"): (6, 7, 5, 16),
+}
+
+
+def rolling_region_backtest(game: str, rows: list[dict], window_size: int, region: str, folds: int = POOL_BACKTEST_FOLDS) -> dict:
+    """Backtest the independent regions used by DLT and SSQ generators."""
+    if (game, region) not in REGION_SPECS:
+        raise ValueError(f"unsupported region calibration: {game}/{region}")
+    start, end, top_k, pool_size = REGION_SPECS[(game, region)]
+    baseline = top_k / pool_size
+    limit = min(folds, max(0, len(rows) - window_size))
+    if limit <= 0:
+        return {"folds": 0, "pool_coverage": 0.0, "se": 0.0, "baseline": round(baseline, 4)}
+    values = [[int(value) for value in row["numbers"][start:end]] for row in rows]
+    counts: Counter[int] = Counter()
+    for offset in range(window_size):
+        counts.update(values[limit + offset])
+    hits = total = 0
+    index = limit
+    while True:
+        actual = set(values[index - 1])
+        hits += len(actual & _positive_top_values(counts, top_k))
         total += len(actual)
-    return {"folds": limit, "pool_coverage": round(hits / total, 4) if total else 0.0}
+        index -= 1
+        if index < 1:
+            break
+        counts.update(values[index])
+        counts.subtract(values[index + window_size])
+    rate = hits / total if total else 0.0
+    # Hypergeometric correction: the region's numbers are drawn without
+    # replacement against a fixed top-k pool, so binomial SE overstates the
+    # spread and would loosen the one-SE eligibility threshold.
+    drawn = end - start
+    se = binomial_se(rate, total) * math.sqrt((pool_size - drawn) / (pool_size - 1)) if total else 0.0
+    return {
+        "folds": limit,
+        "pool_coverage": round(rate, 4),
+        "se": round(se, 4),
+        "baseline": round(baseline, 4),
+    }
+
+
+def _one_se_window(windows: list[int], scores: dict[str, dict], rate_key: str, observations_per_fold: int = 1) -> int:
+    """Window analogue of the one-standard-error rule: statistically tied
+    windows resolve to the largest, most stable one."""
+    def rate(window: int) -> float:
+        return scores[str(window)][rate_key]
+
+    def observations(window: int) -> int:
+        return scores[str(window)]["folds"] * observations_per_fold
+
+    best = max(windows, key=rate)
+    threshold = rate(best) - binomial_se(rate(best), observations(best))
+    return max(window for window in windows if rate(window) >= threshold)
 
 
 def calibrate_set_model(game: str, rows: list[dict]) -> dict:
+    cache_key = ("set", _history_key(game, rows))
+    cached = _CALIBRATION_CACHE.get(cache_key)
+    if cached is not None:
+        return cached
     windows = [window for window in BACKTEST_WINDOWS if window < len(rows)] or [max(1, len(rows) - 1)]
+    pool_observations = {"dlt": 7, "ssq": 7, "kl8": 20}.get(game, len(rows[0]["numbers"]) if rows else 1)
     scores = {str(window): rolling_pool_backtest(game, rows, window) for window in windows}
-    chosen = max(
-        windows,
-        key=lambda window: (scores[str(window)]["pool_coverage"], int(window >= 300), -window),
-    )
+    chosen = _one_se_window(windows, scores, "pool_coverage", pool_observations)
     regions = {"dlt": ("front", "back"), "ssq": ("red", "blue")}.get(game, ())
     region_windows = {}
     region_backtest = {}
@@ -202,15 +393,8 @@ def calibrate_set_model(game: str, rows: list[dict]) -> dict:
             str(window): rolling_region_backtest(game, rows, window, region)
             for window in windows
         }
-        region_choice = max(
-            windows,
-            key=lambda window: (
-                region_scores[str(window)]["pool_coverage"],
-                int(window >= 300),
-                -window,
-            ),
-        )
-        region_windows[region] = region_choice
+        region_observations = REGION_SPECS[(game, region)][1] - REGION_SPECS[(game, region)][0]
+        region_windows[region] = _one_se_window(windows, region_scores, "pool_coverage", region_observations)
         region_backtest[region] = region_scores
     position_windows = {}
     position_backtest = {}
@@ -220,17 +404,9 @@ def calibrate_set_model(game: str, rows: list[dict]) -> dict:
                 str(window): rolling_digit_position_backtest(rows, position, 27, window)
                 for window in windows
             }
-            position_choice = max(
-                windows,
-                key=lambda window: (
-                    position_scores[str(window)]["top3_hit_rate"],
-                    int(window >= 300),
-                    -window,
-                ),
-            )
-            position_windows[str(position)] = position_choice
+            position_windows[str(position)] = _one_se_window(windows, position_scores, "top3_hit_rate")
             position_backtest[str(position)] = position_scores
-    return {
+    result = {
         "selected_window": chosen,
         "backtest": scores,
         "region_windows": region_windows,
@@ -238,6 +414,8 @@ def calibrate_set_model(game: str, rows: list[dict]) -> dict:
         "position_windows": position_windows,
         "position_backtest": position_backtest,
     }
+    _CALIBRATION_CACHE[cache_key] = result
+    return result
 
 
 def digit_model(game: str) -> dict:
@@ -407,6 +585,45 @@ def diversified_rank(
     return sorted(selected, key=lambda item: item[1], reverse=True)
 
 
+def ensure_position_pool_coverage(
+    selected: list[tuple[str, float, float]],
+    pools: list[list[int]],
+    rescore,
+) -> list[tuple[str, float, float]]:
+    """Spread every backtested pool digit across the candidate list.
+
+    On a fair draw each ticket's exact-hit chance does not depend on which pool
+    digit it uses, but the pool-coverage chance of the five-ticket list does:
+    a position collapsed onto one digit covers 1/10 of draws while a position
+    using all three pool digits covers 3/10. Mutating redundant digits on the
+    weakest tickets is therefore a free expected-coverage gain.
+    """
+    for position, pool in enumerate(pools):
+        for _ in range(6):
+            present = {item[0][position] for item in selected}
+            missing = [str(digit) for digit in pool if str(digit) not in present]
+            if not missing:
+                break
+            counts = Counter(item[0][position] for item in selected)
+            victims = sorted(
+                (index for index, item in enumerate(selected) if counts[item[0][position]] > 1),
+                key=lambda index: selected[index][1],
+            )
+            existing = {item[0] for item in selected}
+            mutation = None
+            for victim in victims:
+                text = selected[victim][0]
+                candidate = text[:position] + missing[0] + text[position + 1:]
+                if candidate not in existing:
+                    mutation = (victim, candidate)
+                    break
+            if mutation is None:
+                break
+            victim, candidate = mutation
+            selected[victim] = (candidate, rescore(candidate), 0.0)
+    return sorted(selected, key=lambda item: item[1], reverse=True)
+
+
 def generate_digit_profile(
     rows: list[dict], digits: int, profile: str, limit: int = 5, game: str = "pl3"
 ) -> list[tuple[str, float, float]]:
@@ -433,16 +650,6 @@ def generate_digit_profile(
         scored.append((text, profile_score, heat))
     diversity_penalty = model["diversity"] if profile == "global" else 0.34
     return diversified_rank(scored, limit, diversity_penalty)
-
-
-def generate_digits(game: str, rows: list[dict], digits: int, issue: str) -> tuple[list[dict], list[float]]:
-    del game, issue  # deterministic from the verified history snapshot
-    ranked = generate_digit_profile(rows, digits, "global", 5, game)
-    candidates = []
-    for number, _, heat in ranked:
-        band = "热门支撑" if heat > 0.25 else "冷门保护" if heat < -0.25 else "冷热均衡"
-        candidates.append({"number": number, "mix_label": band})
-    return candidates, [score for _, score, _ in ranked]
 
 
 def generate_pl5_from_pl3(
@@ -480,56 +687,10 @@ def generate_pl5_from_pl3(
     return selected
 
 
-def generate_composite_recommendations(
-    game: str, rows: list[dict], pl3_rows: list[dict]
-) -> tuple[list[dict], list[float]]:
-    """Merge the main, cold-protection, and hot-observation pools into one list."""
-    digits = len(rows[0]["numbers"])
-    quotas = (
-        ("global", 4 if game == "pl5" else 5),
-        ("cold", 1 if game == "pl5" else 2),
-        ("hot", 1),
-    )
-    labels = {
-        "global": "综合主榜",
-        "cold": "冷门保护",
-        "hot": "热门观察",
-    }
-    selected: list[dict] = []
-    used: set[str] = set()
-    for profile, quota in quotas:
-        ranked = (
-            generate_pl5_from_pl3(pl3_rows, rows, profile, 5)
-            if game == "pl5"
-            else generate_digit_profile(rows, digits, profile, 5, game)
-        )
-        added = 0
-        for number, _, _ in ranked:
-            if number in used:
-                continue
-            selected.append({"number": number, "mix_label": labels[profile], "source": profile})
-            used.add(number)
-            added += 1
-            if added == quota:
-                break
-        if added != quota:
-            raise RuntimeError(f"{game} 无法生成足够的 {labels[profile]} 候选")
-
-    # Re-rank the merged list on one common score; source labels describe why a
-    # hedge entered the list, not a separate probability claim.
-    components = mixed_digit_components(rows, digits, digit_model(game))
-    scored = [
-        (candidate, global_candidate_score([int(value) for value in candidate["number"]], components, digit_model(game)))
-        for candidate in selected
-    ]
-    scored.sort(key=lambda item: item[1], reverse=True)
-    return [candidate for candidate, _ in scored], [score for _, score in scored]
-
-
 def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict], list[float]]:
     """Direct-digit output from one position-only ensemble, with neutral digits allowed."""
     digits = len(rows[0]["numbers"])
-    if game in ("pl3", "fc3d"):
+    if game in ("pl3", "pl5", "fc3d"):
         model = calibrate_digit_model(game, rows, digits)["parameters"]
         components = mixed_digit_components(rows, digits, model)
         position_counts, totals, _, _, _ = components
@@ -548,11 +709,26 @@ def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict
             number = "".join(str(value) for value in values)
             scored.append((number, global_candidate_score(list(values), components, model), 0.0))
         ranked = diversified_rank(scored, 5, model["diversity"])
+        ranked = ensure_position_pool_coverage(
+            ranked,
+            pools,
+            lambda text: global_candidate_score([int(value) for value in text], components, model),
+        )
     else:
         ranked = generate_digit_profile(rows, digits, "global", 5, game)
+    # The hot/neutral/cold label is meaningless for this generator: every
+    # candidate is built from each position's top-3 pool, so all five are hot
+    # by construction (the old code passed a 0.0 heat placeholder through the
+    # repair and labelled them all "neutral", which was simply wrong). Report
+    # the construction instead - how many positions took their strongest pool
+    # digit rather than a coverage-spreading alternative.
     candidates = []
-    for number, _, heat in ranked:
-        label = "位置综合-中性" if -0.25 <= heat <= 0.25 else "位置综合-偏热" if heat > 0.25 else "位置综合-偏冷"
+    for number, _, _ in ranked:
+        if game in ("pl3", "pl5", "fc3d"):
+            leading = sum(int(number[position]) == pools[position][0] for position in range(digits))
+            label = f"位置池组合·{leading}/{digits}位取最高权重数字"
+        else:
+            label = "位置综合"
         candidates.append({"number": number, "mix_label": label, "source": "position_ensemble"})
     return candidates, [score for _, score, _ in ranked]
 
@@ -620,24 +796,116 @@ def generate_dlt(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
         )
         selected.append(best)
         remaining.remove(best)
-    # Guarantee useful back-area coverage and distinct back pairs after the
-    # score/diversity tradeoff; repeating one pair across the pool adds no
-    # practical tolerance.
-    back_union = set().union(*(set(key[1]) for key, _ in selected))
-    back_pairs = {key[1] for key, _ in selected}
-    for candidate in remaining:
-        if len(back_union) >= 5 and len(back_pairs) >= 5:
-            break
-        candidate_key, _ = candidate
-        expanded = back_union | set(candidate_key[1])
-        if candidate_key[1] not in back_pairs and len(expanded) >= len(back_union):
-            weakest = min(range(len(selected)), key=lambda index: selected[index][1])
-            selected[weakest] = candidate
-            back_union = set().union(*(set(key[1]) for key, _ in selected))
-            back_pairs = {key[1] for key, _ in selected}
+
+    # Coverage repair with lexicographic floors: five distinct back pairs, a
+    # back union of six numbers, then a front union of fifteen. On a fair draw
+    # every line keeps the same per-line expectation whichever numbers it uses,
+    # so widening the union raises the five-line coverage chance for free. A
+    # swap must improve the first unmet floor without regressing a met one.
+    def line_metrics(picks: list) -> tuple[int, int, int]:
+        front_union = set().union(*(set(key[0]) for key, _ in picks))
+        back_union = set().union(*(set(key[1]) for key, _ in picks))
+        return len(front_union), len(back_union), len({key[1] for key, _ in picks})
+
+    coverage_floors = (
+        (lambda front, back, pairs: pairs, 5),
+        (lambda front, back, pairs: back, 6),
+        (lambda front, back, pairs: front, 15),
+    )
+    for metric, floor in coverage_floors:
+        for _ in range(10):
+            current = line_metrics(selected)
+            if metric(*current) >= floor:
+                break
+            swap = None
+            for victim_index in sorted(range(len(selected)), key=lambda index: selected[index][1]):
+                others = selected[:victim_index] + selected[victim_index + 1:]
+                for item in remaining:
+                    trial = line_metrics(others + [item])
+                    if metric(*trial) <= metric(*current):
+                        continue
+                    if any(
+                        other_metric(*trial) < min(other_metric(*current), other_floor)
+                        for other_metric, other_floor in coverage_floors
+                        if (other_metric, other_floor) != (metric, floor)
+                    ):
+                        continue
+                    swap = (victim_index, item)
+                    break
+                if swap:
+                    break
+            if swap is None:
+                break
+            victim_index, item = swap
+            remaining.remove(item)
+            remaining.append(selected[victim_index])
+            selected[victim_index] = item
+
+    # The greedy swap only searches the sampled pool, so it is best-effort.
+    # Constructing a replacement line from the strongest numbers the other four
+    # lines do not use closes the remaining shortfall - the same fallback SSQ
+    # and KL8 already rely on. A replacement is accepted only when it strictly
+    # improves the unmet floor and regresses no floor already met.
+    def strongest_unused(counts: Counter[int], value_range: range, used: set[int], needed: int) -> list[int]:
+        ranked = sorted(value_range, key=lambda value: (counts[value], -value), reverse=True)
+        chosen = [value for value in ranked if value not in used][:needed]
+        if len(chosen) < needed:
+            chosen += [value for value in ranked if value not in chosen][: needed - len(chosen)]
+        return chosen
+
+    def constructed_replacement(others: list) -> tuple[tuple[tuple[int, ...], tuple[int, ...]], float]:
+        used_front = set().union(*(set(key[0]) for key, _ in others))
+        used_back = set().union(*(set(key[1]) for key, _ in others))
+        used_pairs = {key[1] for key, _ in others}
+        front = tuple(sorted(strongest_unused(front_counts, range(1, 36), used_front, 5)))
+        back = tuple(sorted(strongest_unused(back_counts, range(1, 13), used_back, 2)))
+        if back in used_pairs:
+            ranked_back = sorted(range(1, 13), key=lambda value: back_counts[value], reverse=True)
+            back = next(
+                (pair for pair in combinations(ranked_back, 2) if tuple(sorted(pair)) not in used_pairs),
+                back,
+            )
+            back = tuple(sorted(back))
+        score = sum(math.log((front_counts[n] + 0.8) / (front_total + 28)) for n in front)
+        score += sum(math.log((back_counts[n] + 0.8) / (back_total + 9.6)) for n in back)
+        return (front, back), score
+
+    for metric, floor in coverage_floors:
+        for _ in range(len(selected)):
+            current = line_metrics(selected)
+            if metric(*current) >= floor:
+                break
+            improved = False
+            for victim in sorted(range(len(selected)), key=lambda index: selected[index][1]):
+                others = selected[:victim] + selected[victim + 1:]
+                replacement = constructed_replacement(others)
+                trial = line_metrics(others + [replacement])
+                if metric(*trial) <= metric(*current):
+                    continue
+                if any(
+                    other_metric(*trial) < min(other_metric(*current), other_floor)
+                    for other_metric, other_floor in coverage_floors
+                    if (other_metric, other_floor) != (metric, floor)
+                ):
+                    continue
+                selected[victim] = replacement
+                improved = True
+                break
+            if not improved:
+                break
     selected.sort(key=lambda pair: pair[1], reverse=True)
     candidates = [{"front": list(key[0]), "back": list(key[1])} for key, _ in selected]
     return candidates, [score for _, score in selected]
+
+
+QXC_FREQUENCY_WEIGHT = 0.78
+# An overdue digit is no more likely on a fair wheel, so omission may only
+# break near-ties in frequency. The full bonus spans 10 draws, so it can
+# reorder two digits whose frequencies differ by less than
+# exp(10 * weight / QXC_FREQUENCY_WEIGHT); at this weight that is under 2%.
+QXC_OMISSION_WEIGHT = 0.0015
+QXC_REPEAT_PENALTY = 0.08
+QXC_SUM_WEIGHT = 0.006
 
 
 def generate_qxc(rows: list[dict]) -> tuple[list[dict], list[float]]:
@@ -649,20 +917,36 @@ def generate_qxc(rows: list[dict]) -> tuple[list[dict], list[float]]:
     counters = [blended_position_counts(rows, pos, decay, position_windows.get(str(pos), window)) for pos in range(7)]
     totals = [sum(counter.values()) for counter in counters]
     omissions = [position_omissions(rows, pos) for pos in range(7)]
+
+    def digit_position_score(pos: int, digit: int, previous_digit: int | None) -> float:
+        score = QXC_FREQUENCY_WEIGHT * math.log(score_digit(digit, counters[pos], totals[pos]))
+        score += QXC_OMISSION_WEIGHT * min(omissions[pos][digit], 10)
+        if previous_digit == digit:
+            score -= QXC_REPEAT_PENALTY
+        return score
+
+    def rescore(number: str) -> float:
+        score = sum(
+            digit_position_score(pos, int(ch), int(number[pos - 1]) if pos else None)
+            for pos, ch in enumerate(number)
+        )
+        return score - QXC_SUM_WEIGHT * abs(sum(map(int, number)) - 31.5)
+
     beam: list[tuple[str, float]] = [("", 0.0)]
     for pos in range(7):
         expanded = []
         for prefix, prefix_score in beam:
+            previous_digit = int(prefix[-1]) if prefix else None
             for digit in range(10):
-                probability = score_digit(digit, counters[pos], totals[pos])
-                score = prefix_score + 0.78 * math.log(probability)
-                score += 0.032 * min(omissions[pos][digit], 10)
-                if prefix and int(prefix[-1]) == digit:
-                    score -= 0.08
-                expanded.append((prefix + str(digit), score))
+                expanded.append((prefix + str(digit), prefix_score + digit_position_score(pos, digit, previous_digit)))
         beam = sorted(expanded, key=lambda item: item[1], reverse=True)[:350]
-    scored = [(number, score - 0.006 * abs(sum(map(int, number)) - 31.5), 0.0) for number, score in beam]
+    scored = [(number, score - QXC_SUM_WEIGHT * abs(sum(map(int, number)) - 31.5), 0.0) for number, score in beam]
     ranked = diversified_rank(scored, 5, 1.15)
+    pools = [
+        sorted(range(10), key=lambda digit: score_digit(digit, counters[pos], totals[pos]), reverse=True)[:3]
+        for pos in range(7)
+    ]
+    ranked = ensure_position_pool_coverage(ranked, pools, rescore)
     candidates = [
         {"number": number, "mix_label": "七位独立位置模型", "source": "qxc_position"}
         for number, _, _ in ranked
@@ -704,45 +988,67 @@ def generate_ssq(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
     blue_counts = blended_number_counts(rows, 6, 7, 24, blue_window)
     pair_counts = weighted_pair_counts(rows, 6, 30)
     red_total, blue_total = sum(red_counts.values()), sum(blue_counts.values())
-    pool: dict[tuple[tuple[int, ...], int], float] = {}
-    for _ in range(16000):
-        red = sorted(rng.sample(range(1, 34), 6))
-        blue = rng.randint(1, 16)
+
+    def line_score(red: tuple[int, ...], blue: int) -> float:
         score = sum(math.log((red_counts[n] + 0.72) / (red_total + 23.76)) for n in red)
         score += 0.055 * sum(pair_counts[pair] for pair in combinations(red, 2))
         score += math.log((blue_counts[blue] + 0.70) / (blue_total + 11.2))
         zone_counts = [sum(1 for n in red if low <= n <= high) for low, high in ((1, 11), (12, 22), (23, 33))]
         score += 0.10 if all(zone_counts) else -0.30
         score -= 0.0025 * abs(sum(red) - 102)
-        pool[(tuple(red), blue)] = score
+        return score
+
+    pool: dict[tuple[tuple[int, ...], int], float] = {}
+    for _ in range(16000):
+        red = tuple(sorted(rng.sample(range(1, 34), 6)))
+        blue = rng.randint(1, 16)
+        pool[(red, blue)] = line_score(red, blue)
     ranked_all = sorted(pool.items(), key=lambda item: item[1], reverse=True)
 
     # A single score sort can make all five rows inherit the same hot blue
-    # ball. That is useful for ranking one line, but it is poor coverage for
-    # the five-line composite: one wrong hot-number assumption then invalidates
-    # every line. Select one strong line per blue-ball band first, then use the
-    # next-best unused blue for the fifth line. This keeps score order relevant
-    # while preventing the blue model from collapsing onto 01/04 (or any other
-    # pair of hot numbers).
+    # ball and the same hot red cluster. Both failure modes invalidate every
+    # line at once, so the composite hedges twice: one strong line per blue
+    # band (fifth line = next-best unused blue), and each new line may overlap
+    # the growing red union by at most two numbers, which guarantees the five
+    # lines span at least 22 of the 33 red balls. When the sampled pool has no
+    # such line, one is constructed from the strongest unused reds.
+    def red_union_of(picks: list) -> set[int]:
+        return set().union(*(set(key[0]) for key, _ in picks)) if picks else set()
+
+    def constructed_line(band_low: int, band_high: int, union: set[int]) -> tuple[tuple[tuple[int, ...], int], float]:
+        unused = [n for n in sorted(range(1, 34), key=lambda n: red_counts[n], reverse=True) if n not in union]
+        red = tuple(sorted(unused[:6]))
+        band_blues = [b for b in range(band_low, band_high + 1) if b not in used_blues]
+        blues = band_blues or [b for b in range(1, 17) if b not in used_blues]
+        blue = max(blues, key=lambda b: blue_counts[b])
+        return ((red, blue), line_score(red, blue))
+
     blue_bands = ((1, 4), (5, 8), (9, 12), (13, 16))
     selected = []
-    used_blues = set()
+    used_blues: set[int] = set()
     for low, high in blue_bands:
+        union = red_union_of(selected)
         choice = next(
-            (item for item in ranked_all if low <= item[0][1] <= high and item[0][1] not in used_blues),
+            (
+                item for item in ranked_all
+                if low <= item[0][1] <= high
+                and item[0][1] not in used_blues
+                and len(set(item[0][0]) & union) <= 2
+            ),
             None,
-        )
-        if choice is not None:
-            selected.append(choice)
-            used_blues.add(choice[0][1])
-    for item in ranked_all:
-        blue = item[0][1]
-        if blue not in used_blues:
-            selected.append(item)
-            used_blues.add(blue)
-        if len(selected) == 5:
-            break
-    ranked = sorted(selected[:5], key=lambda item: item[1], reverse=True)
+        ) or constructed_line(low, high, union)
+        selected.append(choice)
+        used_blues.add(choice[0][1])
+    union = red_union_of(selected)
+    fifth = next(
+        (
+            item for item in ranked_all
+            if item[0][1] not in used_blues and len(set(item[0][0]) & union) <= 2
+        ),
+        None,
+    ) or constructed_line(1, 16, union)
+    selected.append(fifth)
+    ranked = sorted(selected, key=lambda item: item[1], reverse=True)
     candidates = [
         {"red": list(key[0]), "blue": [key[1]], "mix_label": "红蓝分区共现模型", "source": "ssq_zone"}
         for key, _ in ranked
@@ -764,20 +1070,26 @@ def generate_kl8(rows: list[dict], pick_count: int = 5) -> tuple[list[dict], lis
                 break
 
     individual = {
+        # Omission is a display signal, not a predictor: on a fair draw an
+        # overdue number is no more likely. The bonus spans 12 draws against
+        # an unweighted log-frequency term, so at this weight it can only
+        # reorder numbers whose frequencies differ by under 2%.
         number: math.log((counts[number] + 0.75) / (total + 60))
-        + 0.024 * min(missed[number], 12)
+        + 0.0016 * min(missed[number], 12)
         for number in range(1, 81)
     }
-    # 先保留单号支持度最高的28个号码，再完整枚举其中的五数组合。
     if not 5 <= pick_count <= 10:
         raise ValueError(f"快乐8选N仅支持5至10，收到: {pick_count}")
-    pool = sorted(individual, key=individual.get, reverse=True)[:32]
+    # Pool sized so five pairwise-disjoint groups always fit (5 × pick_count
+    # plus slack): 20 of 80 numbers hit each draw, so the union coverage of the
+    # five-group list scales with how many distinct numbers the groups span,
+    # while each group's own expected hits are blind to which pool numbers it
+    # uses. Disjoint groups are therefore a free coverage gain.
+    pool_size = min(60, max(32, 5 * pick_count + 7))
+    pool = sorted(individual, key=individual.get, reverse=True)[:pool_size]
     rng = stable_rng(f"kl8-pick{pick_count}", str(len(rows)))
-    scored: list[tuple[tuple[int, ...], float]] = []
-    sample_count = 9000 if pick_count >= 8 else 6000
-    for _ in range(sample_count):
-        values = rng.sample(pool, pick_count)
-        ordered = tuple(sorted(values))
+
+    def group_score(ordered: tuple[int, ...]) -> float:
         zones = {min((number - 1) // 20, 3) for number in ordered}
         odd_count = sum(number % 2 for number in ordered)
         score = sum(individual[number] for number in ordered)
@@ -785,18 +1097,33 @@ def generate_kl8(rows: list[dict], pick_count: int = 5) -> tuple[list[dict], lis
         score += 0.16 if len(zones) >= min(4, max(3, pick_count // 3)) else -0.20
         score += 0.08 if abs(odd_count - pick_count / 2) <= 1 else -0.08
         score -= 0.0018 * abs(sum(ordered) - pick_count * 40.5)
-        scored.append((ordered, score))
+        return score
 
-    remaining = sorted(scored, key=lambda item: item[1], reverse=True)[:2500]
-    selected: list[tuple[tuple[int, ...], float]] = []
-    while remaining and len(selected) < 5:
-        best = max(
-            remaining,
-            key=lambda item: item[1]
-            - 0.52 * max((len(set(item[0]) & set(chosen[0])) for chosen in selected), default=0),
-        )
+    sample_count = 9000 if pick_count >= 8 else 6000
+    sampled: dict[tuple[int, ...], float] = {}
+    for _ in range(sample_count):
+        ordered = tuple(sorted(rng.sample(pool, pick_count)))
+        if ordered not in sampled:
+            sampled[ordered] = group_score(ordered)
+
+    remaining = sorted(sampled.items(), key=lambda item: item[1], reverse=True)[:2500]
+    selected: list[tuple[tuple[int, ...], float]] = [remaining.pop(0)]
+    used = set(selected[0][0])
+    while len(selected) < 5:
+        # Lexicographic choice: least overlap with the numbers already used,
+        # then score. The sampled pool rarely holds a zero-overlap group for
+        # the later picks, so one is constructed from the strongest unused
+        # numbers instead - the pool sizing guarantees enough remain.
+        best = min(remaining, key=lambda item: (len(set(item[0]) & used), -item[1])) if remaining else None
+        if best is None or set(best[0]) & used:
+            unused = [number for number in pool if number not in used]
+            if len(unused) >= pick_count:
+                ordered = tuple(sorted(unused[:pick_count]))
+                best = (ordered, group_score(ordered))
+        if best in remaining:
+            remaining.remove(best)
         selected.append(best)
-        remaining.remove(best)
+        used |= set(best[0])
     selected.sort(key=lambda item: item[1], reverse=True)
     candidates = [
         {"numbers": list(values), "mix_label": f"选{pick_count}独立模型", "source": f"kl8_pick{pick_count}"}
@@ -845,13 +1172,10 @@ def generate_daily_results(draw_date: str, config: dict) -> list[dict]:
     """
     results = []
     # Keep the date-bound xuanxue module at three schemes per game.
-    methods = ("date_hash", "position_map", "neutral_balance", "symmetry_map", "tail_balance")
-    methods = ("日期哈希映射", "独立位置映射", "中性约束映射")
-    methods = ("date_hash", "position_map", "neutral_balance", "symmetry_map", "tail_balance")
+    methods = ("date_hash", "position_map", "neutral_balance")
     for game, cfg in config["games"].items():
         values = []
         schemes = []
-        methods = ("date_hash", "position_map", "neutral_balance")
         for scheme, method in enumerate(methods, start=1):
             rng = _module_rng(draw_date, game, scheme)
             if game == "dlt":
@@ -940,55 +1264,6 @@ def build_review(game: str, rows: list[dict]) -> dict:
             {"label": "不同数字", "value": str(len(set(latest)))},
         ],
     }
-
-
-def build_model_review(game: str, latest: dict, prediction: dict) -> dict:
-    """Compare the predictions saved before the latest draw with its result."""
-    actual = [int(value) for value in latest["numbers"]]
-    candidates = prediction.get("top_candidates", prediction.get("candidates", []))
-
-    def values(candidate: dict) -> list[int]:
-        if game == "dlt":
-            return [int(value) for value in candidate["front"] + candidate["back"]]
-        if game == "ssq":
-            return [int(value) for value in candidate["red"] + candidate["blue"]]
-        if game == "kl8":
-            return [int(value) for value in candidate["numbers"]]
-        return [int(value) for value in candidate["number"]]
-
-    def display(candidate: dict) -> str:
-        return candidate_text(game, candidate)
-
-    hit_counts = [len(set(values(candidate)) & set(actual)) for candidate in candidates]
-    exact_hits = sum(values(candidate) == actual for candidate in candidates)
-    position_hits = []
-    position_pool_hits = []
-    for position, target in enumerate(actual):
-        candidate_values = [values(candidate)[position] for candidate in candidates if position < len(values(candidate))]
-        position_hits.append(sum(value == target for value in candidate_values))
-        position_pool_hits.append(int(target in set(candidate_values)))
-    review = {
-        "issue": latest["issue"],
-        "actual": display({
-            "front": actual[:5], "back": actual[5:],
-            "red": actual[:6], "blue": actual[6:],
-            "numbers": actual, "number": "".join(latest["numbers"]),
-        }) if game in ("dlt", "ssq", "kl8") else "".join(latest["numbers"]),
-        "previous_candidates": [display(candidate) for candidate in candidates],
-        "exact_hits": exact_hits,
-        "best_number_hits": max(hit_counts, default=0),
-        "position_candidate_hits": position_hits,
-        "position_pool_coverage": sum(position_pool_hits),
-        "position_count": len(actual),
-        "summary": (
-            f"Issue {latest['issue']} actual result {display({'front': actual[:5], 'back': actual[5:], 'red': actual[:6], 'blue': actual[6:], 'numbers': actual, 'number': ''.join(latest['numbers'])}) if game in ('dlt', 'ssq', 'kl8') else ''.join(latest['numbers'])}; "
-            f"the previous candidate pool reached {max(hit_counts, default=0)} matching numbers at best."
-        ),
-        "lesson": "The result is now included in the rolling window; keep the current model parameters and candidate diversification, without chasing a single draw shape.",
-    }
-    if game == "kl8":
-        review["union_number_hits"] = len(set().union(*(set(values(candidate)) for candidate in candidates)) & set(actual))
-    return review
 
 
 def build_model_review(
@@ -1267,7 +1542,7 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
             "model_name": "快乐8选五独立模型",
             "selected_window": window,
             "backtest": set_calibration["backtest"],
-            "summary": f"最近{sample}期以1–80单号衰减频率、遗漏封顶和两两共现为主，并约束每组5个号码覆盖至少三个区间。五组之间主动降低重合，扩大号码覆盖。",
+            "summary": f"最近{sample}期以1–80单号衰减频率、遗漏封顶和两两共现为主，并约束每组号码覆盖至少三个区间。每个选N玩法各自生成5组互不重叠的号码（联合覆盖=5×N个）；顶部清单只展示各玩法得分最高的一组，跨玩法的组之间可能重叠。",
             "signals": [
                 {"label": "相对活跃号码", "value": " · ".join(hot)},
                 {"label": "较长遗漏", "value": "、".join(omitted)},
@@ -1295,7 +1570,7 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
             "hot_digits": ranked,
             "omitted_digits": [{"digit": str(value), "miss": miss} for value, miss in longest],
         })
-    structure_note = "排列5先继承同一期排列3前三位候选，再独立计算00–99后两位；" if game == "pl5" else ""
+    structure_note = "排列5使用自身五个位置的独立校准与三数字候选池；" if game == "pl5" else ""
     model_name = {"pl3": "排列3独立三位置模型", "pl5": "排列5独立五位置模型", "fc3d": "福彩3D独立三位置模型", "qxc": "7星彩七位置束搜索模型"}[game]
     return {
         "sample": sample,
@@ -1369,13 +1644,19 @@ def main() -> None:
             candidates, scores = generate_ssq(rows, target_issue)
         elif game == "kl8":
             play_types = generate_kl8_play_types(rows, cfg.get("pick_counts", [5, 6, 7, 8, 9, 10]))
+            # Raw scores are not comparable across pick counts (more numbers,
+            # more log terms), and rescaling each play's own list always hands
+            # its top group the same ceiling - that ranking was decided by
+            # dict order and silently never showed 选10. Rank plays by how far
+            # the top group stands above its own play's five-group mean.
             ranked_plays = []
             for key, play in play_types.items():
                 play_candidates, play_scores = play["candidates"]
-                ranked_plays.append((play_candidates[0] | {"pick_count": int(key), "play_name": play["name"]}, relative_confidences(play_scores)[0]))
-            ranked_plays.sort(key=lambda item: item[1], reverse=True)
+                margin = play_scores[0] - sum(play_scores) / len(play_scores)
+                ranked_plays.append((play_candidates[0] | {"pick_count": int(key), "play_name": play["name"]}, margin))
+            ranked_plays.sort(key=lambda item: (item[1], -item[0]["pick_count"]), reverse=True)
             candidates = [candidate for candidate, _ in ranked_plays[:5]]
-            scores = [score for _, score in ranked_plays[:5]]
+            scores = [margin for _, margin in ranked_plays[:5]]
         else:
             candidates, scores = generate_positional_ensemble(game, rows)
 
@@ -1398,7 +1679,7 @@ def main() -> None:
 
         output["games"][game] = {
             "name": cfg["name"],
-            "model_version": "v3.1-rolling-ensemble-with-coverage",
+            "model_version": "v3.2-one-se-calibration-union-coverage",
             "history_count": len(rows),
             "model_scope": "前区/后区排序位独立" if game == "dlt" else "每一位独立评分" if game in ("pl3", "pl5", "fc3d", "qxc") else "玩法专用结构模型",
             "generated_at": now.isoformat(timespec="seconds"),

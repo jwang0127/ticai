@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-26T11:48:02+08:00",
-  "source_status": "cached_verified_data",
+  "updated_at": "2026-07-26T19:50:38+08:00",
+  "source_status": "official_api",
   "draws": {
     "dlt": [
       {
@@ -188054,7 +188054,5 @@
       "role": "福彩快乐8官方开奖来源"
     }
   ],
-  "errors": {
-    "dlt": "官方接口请求失败: HTTP Error 567: Unknown Status"
-  }
+  "errors": {}
 }

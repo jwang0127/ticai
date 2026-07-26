@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T11:48:02+08:00",
+  "generated_at": "2026-07-26T19:50:38+08:00",
   "daily_results_date": "2026-07-26",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -144,15 +144,15 @@
       "copy_text": "福彩快乐8 20 31 42 47 55 59 68 71 72 75\n福彩快乐8 03 05 09 17 44 54 56 57 61 73\n福彩快乐8 08 13 19 21 23 32 38 42 48 57"
     }
   ],
-  "source_status": "cached_verified_data",
+  "source_status": "official_api",
   "disclaimer": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。模型相对评分仅表示本页综合候选之间的排序，不是真实中奖概率。",
   "games": {
     "dlt": {
       "name": "超级大乐透",
-      "model_version": "v3.1-rolling-ensemble-with-coverage",
+      "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-07-26T11:48:02+08:00",
+      "generated_at": "2026-07-26T19:50:38+08:00",
       "latest_issue": "26083",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -187,38 +187,6 @@
         },
         {
           "front": [
-            3,
-            13,
-            15,
-            24,
-            34
-          ],
-          "back": [
-            2,
-            11
-          ],
-          "rank": 2,
-          "confidence": 75.8,
-          "copy_text": "超级大乐透 03 13 15 24 34 + 02 11"
-        },
-        {
-          "front": [
-            10,
-            13,
-            20,
-            21,
-            23
-          ],
-          "back": [
-            2,
-            11
-          ],
-          "rank": 3,
-          "confidence": 75.5,
-          "copy_text": "超级大乐透 10 13 20 21 23 + 02 11"
-        },
-        {
-          "front": [
             4,
             10,
             20,
@@ -229,25 +197,57 @@
             2,
             10
           ],
-          "rank": 4,
-          "confidence": 74.8,
+          "rank": 2,
+          "confidence": 69.9,
           "copy_text": "超级大乐透 04 10 20 26 34 + 02 10"
         },
         {
           "front": [
-            4,
-            20,
-            21,
-            27,
-            28
+            5,
+            13,
+            15,
+            23,
+            34
           ],
           "back": [
-            7,
-            10
+            4,
+            11
+          ],
+          "rank": 3,
+          "confidence": 63.1,
+          "copy_text": "超级大乐透 05 13 15 23 34 + 04 11"
+        },
+        {
+          "front": [
+            2,
+            13,
+            23,
+            26,
+            34
+          ],
+          "back": [
+            6,
+            12
+          ],
+          "rank": 4,
+          "confidence": 53.1,
+          "copy_text": "超级大乐透 02 13 23 26 34 + 06 12"
+        },
+        {
+          "front": [
+            9,
+            13,
+            16,
+            26,
+            34
+          ],
+          "back": [
+            2,
+            7
           ],
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "超级大乐透 04 20 21 27 28 + 07 10"
+          "copy_text": "超级大乐透 09 13 16 26 34 + 02 07"
         }
       ],
       "top_candidates": [
@@ -269,38 +269,6 @@
         },
         {
           "front": [
-            3,
-            13,
-            15,
-            24,
-            34
-          ],
-          "back": [
-            2,
-            11
-          ],
-          "rank": 2,
-          "confidence": 75.8,
-          "copy_text": "超级大乐透 03 13 15 24 34 + 02 11"
-        },
-        {
-          "front": [
-            10,
-            13,
-            20,
-            21,
-            23
-          ],
-          "back": [
-            2,
-            11
-          ],
-          "rank": 3,
-          "confidence": 75.5,
-          "copy_text": "超级大乐透 10 13 20 21 23 + 02 11"
-        },
-        {
-          "front": [
             4,
             10,
             20,
@@ -311,25 +279,57 @@
             2,
             10
           ],
-          "rank": 4,
-          "confidence": 74.8,
+          "rank": 2,
+          "confidence": 69.9,
           "copy_text": "超级大乐透 04 10 20 26 34 + 02 10"
         },
         {
           "front": [
-            4,
-            20,
-            21,
-            27,
-            28
+            5,
+            13,
+            15,
+            23,
+            34
           ],
           "back": [
-            7,
-            10
+            4,
+            11
+          ],
+          "rank": 3,
+          "confidence": 63.1,
+          "copy_text": "超级大乐透 05 13 15 23 34 + 04 11"
+        },
+        {
+          "front": [
+            2,
+            13,
+            23,
+            26,
+            34
+          ],
+          "back": [
+            6,
+            12
+          ],
+          "rank": 4,
+          "confidence": 53.1,
+          "copy_text": "超级大乐透 02 13 23 26 34 + 06 12"
+        },
+        {
+          "front": [
+            9,
+            13,
+            16,
+            26,
+            34
+          ],
+          "back": [
+            2,
+            7
           ],
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "超级大乐透 04 20 21 27 28 + 07 10"
+          "copy_text": "超级大乐透 09 13 16 26 34 + 02 07"
         }
       ],
       "review": {
@@ -417,75 +417,105 @@
         ],
         "selected_window": 1500,
         "selected_region_windows": {
-          "front": 500,
+          "front": 1500,
           "back": 1500
         },
         "region_backtest": {
           "front": {
             "100": {
-              "folds": 120,
-              "pool_coverage": 0.5117
+              "folds": 240,
+              "pool_coverage": 0.5267,
+              "se": 0.0135,
+              "baseline": 0.5143
             },
             "300": {
-              "folds": 120,
-              "pool_coverage": 0.5183
+              "folds": 240,
+              "pool_coverage": 0.515,
+              "se": 0.0136,
+              "baseline": 0.5143
             },
             "500": {
-              "folds": 120,
-              "pool_coverage": 0.5233
+              "folds": 240,
+              "pool_coverage": 0.5183,
+              "se": 0.0135,
+              "baseline": 0.5143
             },
             "1000": {
-              "folds": 120,
-              "pool_coverage": 0.48
+              "folds": 240,
+              "pool_coverage": 0.5092,
+              "se": 0.0136,
+              "baseline": 0.5143
             },
             "1500": {
-              "folds": 120,
-              "pool_coverage": 0.5017
+              "folds": 240,
+              "pool_coverage": 0.5125,
+              "se": 0.0136,
+              "baseline": 0.5143
             }
           },
           "back": {
             "100": {
-              "folds": 120,
-              "pool_coverage": 0.5125
+              "folds": 240,
+              "pool_coverage": 0.5083,
+              "se": 0.0218,
+              "baseline": 0.5
             },
             "300": {
-              "folds": 120,
-              "pool_coverage": 0.5208
+              "folds": 240,
+              "pool_coverage": 0.5229,
+              "se": 0.0217,
+              "baseline": 0.5
             },
             "500": {
-              "folds": 120,
-              "pool_coverage": 0.5375
+              "folds": 240,
+              "pool_coverage": 0.5146,
+              "se": 0.0218,
+              "baseline": 0.5
             },
             "1000": {
-              "folds": 120,
-              "pool_coverage": 0.4958
+              "folds": 240,
+              "pool_coverage": 0.4771,
+              "se": 0.0217,
+              "baseline": 0.5
             },
             "1500": {
-              "folds": 120,
-              "pool_coverage": 0.5625
+              "folds": 240,
+              "pool_coverage": 0.5083,
+              "se": 0.0218,
+              "baseline": 0.5
             }
           }
         },
         "backtest": {
           "100": {
-            "folds": 120,
-            "pool_coverage": 0.6274
+            "folds": 240,
+            "pool_coverage": 0.6089,
+            "se": 0.0119,
+            "baseline": 0.6486
           },
           "300": {
-            "folds": 120,
-            "pool_coverage": 0.6381
+            "folds": 240,
+            "pool_coverage": 0.6375,
+            "se": 0.0117,
+            "baseline": 0.6486
           },
           "500": {
-            "folds": 120,
-            "pool_coverage": 0.6298
+            "folds": 240,
+            "pool_coverage": 0.6351,
+            "se": 0.0117,
+            "baseline": 0.6486
           },
           "1000": {
-            "folds": 120,
-            "pool_coverage": 0.65
+            "folds": 240,
+            "pool_coverage": 0.6476,
+            "se": 0.0117,
+            "baseline": 0.6486
           },
           "1500": {
-            "folds": 120,
-            "pool_coverage": 0.656
+            "folds": 240,
+            "pool_coverage": 0.6536,
+            "se": 0.0116,
+            "baseline": 0.6486
           }
         },
         "signals": [
@@ -645,10 +675,10 @@
     },
     "pl3": {
       "name": "排列3",
-      "model_version": "v3.1-rolling-ensemble-with-coverage",
+      "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T11:23:17+08:00",
+      "generated_at": "2026-07-26T19:50:38+08:00",
       "latest_issue": "26196",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -662,96 +692,96 @@
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
-          "number": "755",
-          "mix_label": "位置综合-中性",
+          "number": "355",
+          "mix_label": "位置池组合·2/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "排列3 755",
-          "purchase_suggestion": "组选三参考：755（557/575/755）"
+          "copy_text": "排列3 355",
+          "purchase_suggestion": "组选三参考：355（355/535/553）"
+        },
+        {
+          "number": "756",
+          "mix_label": "位置池组合·2/3位取最高权重数字",
+          "source": "position_ensemble",
+          "rank": 2,
+          "confidence": 69.0,
+          "copy_text": "排列3 756",
+          "purchase_suggestion": "直选参考：756"
+        },
+        {
+          "number": "554",
+          "mix_label": "位置池组合·1/3位取最高权重数字",
+          "source": "position_ensemble",
+          "rank": 3,
+          "confidence": 64.9,
+          "copy_text": "排列3 554",
+          "purchase_suggestion": "组选三参考：554（455/545/554）"
         },
         {
           "number": "784",
-          "mix_label": "位置综合-中性",
+          "mix_label": "位置池组合·1/3位取最高权重数字",
           "source": "position_ensemble",
-          "rank": 2,
-          "confidence": 68.9,
+          "rank": 4,
+          "confidence": 62.2,
           "copy_text": "排列3 784",
           "purchase_suggestion": "直选参考：784"
         },
         {
-          "number": "354",
-          "mix_label": "位置综合-中性",
-          "source": "position_ensemble",
-          "rank": 3,
-          "confidence": 67.9,
-          "copy_text": "排列3 354",
-          "purchase_suggestion": "直选参考：354"
-        },
-        {
-          "number": "386",
-          "mix_label": "位置综合-中性",
-          "source": "position_ensemble",
-          "rank": 4,
-          "confidence": 64.0,
-          "copy_text": "排列3 386",
-          "purchase_suggestion": "直选参考：386"
-        },
-        {
-          "number": "594",
-          "mix_label": "位置综合-中性",
+          "number": "546",
+          "mix_label": "位置池组合·0/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列3 594",
-          "purchase_suggestion": "直选参考：594"
+          "copy_text": "排列3 546",
+          "purchase_suggestion": "直选参考：546"
         }
       ],
       "top_candidates": [
         {
-          "number": "755",
-          "mix_label": "位置综合-中性",
+          "number": "355",
+          "mix_label": "位置池组合·2/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "排列3 755",
-          "purchase_suggestion": "组选三参考：755（557/575/755）"
+          "copy_text": "排列3 355",
+          "purchase_suggestion": "组选三参考：355（355/535/553）"
+        },
+        {
+          "number": "756",
+          "mix_label": "位置池组合·2/3位取最高权重数字",
+          "source": "position_ensemble",
+          "rank": 2,
+          "confidence": 69.0,
+          "copy_text": "排列3 756",
+          "purchase_suggestion": "直选参考：756"
+        },
+        {
+          "number": "554",
+          "mix_label": "位置池组合·1/3位取最高权重数字",
+          "source": "position_ensemble",
+          "rank": 3,
+          "confidence": 64.9,
+          "copy_text": "排列3 554",
+          "purchase_suggestion": "组选三参考：554（455/545/554）"
         },
         {
           "number": "784",
-          "mix_label": "位置综合-中性",
+          "mix_label": "位置池组合·1/3位取最高权重数字",
           "source": "position_ensemble",
-          "rank": 2,
-          "confidence": 68.9,
+          "rank": 4,
+          "confidence": 62.2,
           "copy_text": "排列3 784",
           "purchase_suggestion": "直选参考：784"
         },
         {
-          "number": "354",
-          "mix_label": "位置综合-中性",
-          "source": "position_ensemble",
-          "rank": 3,
-          "confidence": 67.9,
-          "copy_text": "排列3 354",
-          "purchase_suggestion": "直选参考：354"
-        },
-        {
-          "number": "386",
-          "mix_label": "位置综合-中性",
-          "source": "position_ensemble",
-          "rank": 4,
-          "confidence": 64.0,
-          "copy_text": "排列3 386",
-          "purchase_suggestion": "直选参考：386"
-        },
-        {
-          "number": "594",
-          "mix_label": "位置综合-中性",
+          "number": "546",
+          "mix_label": "位置池组合·0/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列3 594",
-          "purchase_suggestion": "直选参考：594"
+          "copy_text": "排列3 546",
+          "purchase_suggestion": "直选参考：546"
         }
       ],
       "review": {
@@ -852,163 +882,233 @@
         ],
         "backtest": {
           "8@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2583
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2844,
+            "se": 0.015,
+            "baseline": 0.3
           },
           "8@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2583
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2844,
+            "se": 0.015,
+            "baseline": 0.3
           },
           "8@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2583
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2844,
+            "se": 0.015,
+            "baseline": 0.3
           },
           "8@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2583
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2844,
+            "se": 0.015,
+            "baseline": 0.3
           },
           "8@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2583
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2844,
+            "se": 0.015,
+            "baseline": 0.3
           },
           "13@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2833
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3011,
+            "se": 0.0153,
+            "baseline": 0.3
           },
           "13@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2833
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3011,
+            "se": 0.0153,
+            "baseline": 0.3
           },
           "13@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2833
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3011,
+            "se": 0.0153,
+            "baseline": 0.3
           },
           "13@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2833
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3011,
+            "se": 0.0153,
+            "baseline": 0.3
           },
           "13@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2833
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3011,
+            "se": 0.0153,
+            "baseline": 0.3
           },
           "18@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2639
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2833,
+            "se": 0.015,
+            "baseline": 0.3
           },
           "18@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2639
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2833,
+            "se": 0.015,
+            "baseline": 0.3
           },
           "18@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2639
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2833,
+            "se": 0.015,
+            "baseline": 0.3
           },
           "18@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2639
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2833,
+            "se": 0.015,
+            "baseline": 0.3
           },
           "18@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2639
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2833,
+            "se": 0.015,
+            "baseline": 0.3
           },
           "24@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.25
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2744,
+            "se": 0.0149,
+            "baseline": 0.3
           },
           "24@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2444
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2744,
+            "se": 0.0149,
+            "baseline": 0.3
           },
           "24@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2444
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2744,
+            "se": 0.0149,
+            "baseline": 0.3
           },
           "24@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2444
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2744,
+            "se": 0.0149,
+            "baseline": 0.3
           },
           "24@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2444
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2744,
+            "se": 0.0149,
+            "baseline": 0.3
           },
           "30@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2611
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2711,
+            "se": 0.0148,
+            "baseline": 0.3
           },
           "30@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2639
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2744,
+            "se": 0.0149,
+            "baseline": 0.3
           },
           "30@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2639
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2744,
+            "se": 0.0149,
+            "baseline": 0.3
           },
           "30@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2639
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2744,
+            "se": 0.0149,
+            "baseline": 0.3
           },
           "30@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2639
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2744,
+            "se": 0.0149,
+            "baseline": 0.3
           },
           "45@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2611
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2756,
+            "se": 0.0149,
+            "baseline": 0.3
           },
           "45@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2528
+            "folds": 300,
+            "positional_top3_hit_rate": 0.27,
+            "se": 0.0148,
+            "baseline": 0.3
           },
           "45@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2583
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2711,
+            "se": 0.0148,
+            "baseline": 0.3
           },
           "45@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2556
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2711,
+            "se": 0.0148,
+            "baseline": 0.3
           },
           "45@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2556
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2711,
+            "se": 0.0148,
+            "baseline": 0.3
           },
           "60@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2556
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2756,
+            "se": 0.0149,
+            "baseline": 0.3
           },
           "60@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2722
+            "folds": 300,
+            "positional_top3_hit_rate": 0.28,
+            "se": 0.015,
+            "baseline": 0.3
           },
           "60@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.275
+            "folds": 300,
+            "positional_top3_hit_rate": 0.28,
+            "se": 0.015,
+            "baseline": 0.3
           },
           "60@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.275
+            "folds": 300,
+            "positional_top3_hit_rate": 0.28,
+            "se": 0.015,
+            "baseline": 0.3
           },
           "60@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.275
+            "folds": 300,
+            "positional_top3_hit_rate": 0.28,
+            "se": 0.015,
+            "baseline": 0.3
           }
         },
         "selected_decay": 13,
-        "selected_window": 300,
+        "selected_window": 1500,
         "selected_position_parameters": [
           {
             "position": 0,
-            "decay": 13,
-            "window_size": 300
+            "decay": 18,
+            "window_size": 1500
           },
           {
             "position": 1,
             "decay": 60,
-            "window_size": 100
+            "window_size": 1500
           },
           {
             "position": 2,
             "decay": 60,
-            "window_size": 300
+            "window_size": 1500
           }
         ],
         "selected_position_windows": {},
@@ -1017,144 +1117,214 @@
             "position": 0,
             "scores": {
               "8@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
+                "baseline": 0.3
               },
               "8@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
+                "baseline": 0.3
               },
               "8@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
+                "baseline": 0.3
               },
               "8@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
+                "baseline": 0.3
               },
               "8@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
+                "baseline": 0.3
               },
               "13@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "13@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "13@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "13@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "13@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "18@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "18@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "18@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "18@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "18@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "24@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.25
+                "folds": 300,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
+                "baseline": 0.3
               },
               "24@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "24@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "24@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "24@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "30@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "30@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2583
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "30@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2583
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "30@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2583
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "30@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2583
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "45@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "45@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "45@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "45@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "45@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "60@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2083
+                "folds": 300,
+                "top3_hit_rate": 0.2533,
+                "se": 0.0251,
+                "baseline": 0.3
               },
               "60@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "60@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "60@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "60@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               }
             }
           },
@@ -1162,144 +1332,214 @@
             "position": 1,
             "scores": {
               "8@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.2433,
+                "se": 0.0248,
+                "baseline": 0.3
               },
               "8@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.2433,
+                "se": 0.0248,
+                "baseline": 0.3
               },
               "8@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.2433,
+                "se": 0.0248,
+                "baseline": 0.3
               },
               "8@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.2433,
+                "se": 0.0248,
+                "baseline": 0.3
               },
               "8@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.2433,
+                "se": 0.0248,
+                "baseline": 0.3
               },
               "13@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "13@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "13@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "13@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "13@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "18@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "18@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "18@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "18@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "18@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "24@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.25,
+                "se": 0.025,
+                "baseline": 0.3
               },
               "24@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2167
+                "folds": 300,
+                "top3_hit_rate": 0.2467,
+                "se": 0.0249,
+                "baseline": 0.3
               },
               "24@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2167
+                "folds": 300,
+                "top3_hit_rate": 0.2467,
+                "se": 0.0249,
+                "baseline": 0.3
               },
               "24@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2167
+                "folds": 300,
+                "top3_hit_rate": 0.2467,
+                "se": 0.0249,
+                "baseline": 0.3
               },
               "24@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2167
+                "folds": 300,
+                "top3_hit_rate": 0.2467,
+                "se": 0.0249,
+                "baseline": 0.3
               },
               "30@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.26,
+                "se": 0.0253,
+                "baseline": 0.3
               },
               "30@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "30@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "30@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "30@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "45@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "45@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.2667,
+                "se": 0.0255,
+                "baseline": 0.3
               },
               "45@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.25
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "45@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.25
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "45@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.25
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "60@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "60@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "60@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "60@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "60@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               }
             }
           },
@@ -1307,144 +1547,214 @@
             "position": 2,
             "scores": {
               "8@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "8@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "8@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "8@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "8@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "13@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "13@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "13@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "13@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "13@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "18@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "18@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "18@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "18@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "18@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "24@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
+                "baseline": 0.3
               },
               "24@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "24@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "24@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "24@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "30@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
+                "baseline": 0.3
               },
               "30@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "30@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "30@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "30@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "45@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "45@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "45@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "45@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "45@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "60@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "60@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.3083
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "60@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3083
+                "folds": 300,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
+                "baseline": 0.3
               },
               "60@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.3083
+                "folds": 300,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
+                "baseline": 0.3
               },
               "60@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3083
+                "folds": 300,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
+                "baseline": 0.3
               }
             }
           }
@@ -1515,9 +1825,19 @@
         "position_count": 3,
         "next_day_advice": [
           {
-            "number": "755",
+            "number": "355",
             "shape": "组选三",
-            "suggestion": "组选三参考：755（557/575/755）"
+            "suggestion": "组选三参考：355（355/535/553）"
+          },
+          {
+            "number": "756",
+            "shape": "组六形态，按直选参考",
+            "suggestion": "直选参考：756"
+          },
+          {
+            "number": "554",
+            "shape": "组选三",
+            "suggestion": "组选三参考：554（455/545/554）"
           },
           {
             "number": "784",
@@ -1525,30 +1845,20 @@
             "suggestion": "直选参考：784"
           },
           {
-            "number": "354",
+            "number": "546",
             "shape": "组六形态，按直选参考",
-            "suggestion": "直选参考：354"
-          },
-          {
-            "number": "386",
-            "shape": "组六形态，按直选参考",
-            "suggestion": "直选参考：386"
-          },
-          {
-            "number": "594",
-            "shape": "组六形态，按直选参考",
-            "suggestion": "直选参考：594"
+            "suggestion": "直选参考：546"
           }
         ],
-        "next_day_advice_text": "组选三参考：755（557/575/755）；直选参考：784；直选参考：354；直选参考：386；直选参考：594"
+        "next_day_advice_text": "组选三参考：355（355/535/553）；直选参考：756；组选三参考：554（455/545/554）；直选参考：784；直选参考：546"
       }
     },
     "pl5": {
       "name": "排列5",
-      "model_version": "v3.1-rolling-ensemble-with-coverage",
+      "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T11:23:17+08:00",
+      "generated_at": "2026-07-26T19:50:38+08:00",
       "latest_issue": "26196",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -1564,86 +1874,86 @@
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
-          "number": "75570",
-          "mix_label": "位置综合-偏热",
+          "number": "35570",
+          "mix_label": "位置池组合·3/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "排列5 75570"
+          "copy_text": "排列5 35570"
         },
         {
-          "number": "38663",
-          "mix_label": "位置综合-偏热",
+          "number": "75673",
+          "mix_label": "位置池组合·4/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 62.6,
-          "copy_text": "排列5 38663"
+          "confidence": 73.2,
+          "copy_text": "排列5 75673"
         },
         {
-          "number": "54412",
-          "mix_label": "位置综合-偏热",
+          "number": "78572",
+          "mix_label": "位置池组合·3/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 3,
-          "confidence": 56.8,
-          "copy_text": "排列5 54412"
+          "confidence": 70.6,
+          "copy_text": "排列5 78572"
         },
         {
-          "number": "16709",
-          "mix_label": "位置综合-偏热",
+          "number": "78463",
+          "mix_label": "位置池组合·2/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 4,
-          "confidence": 54.6,
-          "copy_text": "排列5 16709"
+          "confidence": 60.1,
+          "copy_text": "排列5 78463"
         },
         {
-          "number": "01246",
-          "mix_label": "位置综合-偏热",
+          "number": "54612",
+          "mix_label": "位置池组合·0/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列5 01246"
+          "copy_text": "排列5 54612"
         }
       ],
       "top_candidates": [
         {
-          "number": "75570",
-          "mix_label": "位置综合-偏热",
+          "number": "35570",
+          "mix_label": "位置池组合·3/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "排列5 75570"
+          "copy_text": "排列5 35570"
         },
         {
-          "number": "38663",
-          "mix_label": "位置综合-偏热",
+          "number": "75673",
+          "mix_label": "位置池组合·4/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 62.6,
-          "copy_text": "排列5 38663"
+          "confidence": 73.2,
+          "copy_text": "排列5 75673"
         },
         {
-          "number": "54412",
-          "mix_label": "位置综合-偏热",
+          "number": "78572",
+          "mix_label": "位置池组合·3/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 3,
-          "confidence": 56.8,
-          "copy_text": "排列5 54412"
+          "confidence": 70.6,
+          "copy_text": "排列5 78572"
         },
         {
-          "number": "16709",
-          "mix_label": "位置综合-偏热",
+          "number": "78463",
+          "mix_label": "位置池组合·2/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 4,
-          "confidence": 54.6,
-          "copy_text": "排列5 16709"
+          "confidence": 60.1,
+          "copy_text": "排列5 78463"
         },
         {
-          "number": "01246",
-          "mix_label": "位置综合-偏热",
+          "number": "54612",
+          "mix_label": "位置池组合·0/5位取最高权重数字",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列5 01246"
+          "copy_text": "排列5 54612"
         }
       ],
       "review": {
@@ -1671,7 +1981,7 @@
       "analysis": {
         "sample": 2000,
         "model_name": "排列5独立五位置模型",
-        "summary": "排列5先继承同一期排列3前三位候选，再独立计算00–99后两位；最近2000期按每一个位置分别统计，绝不把号码只当作无序集合。各位置当前热门参考为7 · 0 · 6 · 7 · 6。",
+        "summary": "排列5使用自身五个位置的独立校准与三数字候选池；最近2000期按每一个位置分别统计，绝不把号码只当作无序集合。各位置当前热门参考为7 · 0 · 6 · 7 · 6。",
         "signals": [
           {
             "label": "综合活跃数字",
@@ -1780,173 +2090,243 @@
         ],
         "backtest": {
           "8@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2717
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2907,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "8@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2717
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2907,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "8@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2717
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2907,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "8@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2717
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2907,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "8@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2717
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2907,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "13@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.295
+            "folds": 300,
+            "positional_top3_hit_rate": 0.306,
+            "se": 0.0119,
+            "baseline": 0.3
           },
           "13@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.295
+            "folds": 300,
+            "positional_top3_hit_rate": 0.306,
+            "se": 0.0119,
+            "baseline": 0.3
           },
           "13@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.295
+            "folds": 300,
+            "positional_top3_hit_rate": 0.306,
+            "se": 0.0119,
+            "baseline": 0.3
           },
           "13@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.295
+            "folds": 300,
+            "positional_top3_hit_rate": 0.306,
+            "se": 0.0119,
+            "baseline": 0.3
           },
           "13@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.295
+            "folds": 300,
+            "positional_top3_hit_rate": 0.306,
+            "se": 0.0119,
+            "baseline": 0.3
           },
           "18@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.285
+            "folds": 300,
+            "positional_top3_hit_rate": 0.292,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "18@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.285
+            "folds": 300,
+            "positional_top3_hit_rate": 0.292,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "18@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.285
+            "folds": 300,
+            "positional_top3_hit_rate": 0.292,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "18@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.285
+            "folds": 300,
+            "positional_top3_hit_rate": 0.292,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "18@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.285
+            "folds": 300,
+            "positional_top3_hit_rate": 0.292,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "24@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2767
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2887,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "24@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2733
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2893,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "24@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2733
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2893,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "24@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2733
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2893,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "24@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2733
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2893,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "30@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2817
+            "folds": 300,
+            "positional_top3_hit_rate": 0.288,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "30@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2833
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2913,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "30@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2833
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2913,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "30@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2833
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2913,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "30@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2833
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2913,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "45@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2783
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2873,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "45@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2783
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2867,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "45@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2817
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2873,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "45@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.28
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2873,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "45@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.28
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2873,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "60@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.265
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2813,
+            "se": 0.0116,
+            "baseline": 0.3
           },
           "60@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2817
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2847,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "60@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2833
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2847,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "60@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2833
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2847,
+            "se": 0.0117,
+            "baseline": 0.3
           },
           "60@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2833
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2847,
+            "se": 0.0117,
+            "baseline": 0.3
           }
         },
         "selected_decay": 13,
-        "selected_window": 300,
+        "selected_window": 1500,
         "selected_position_parameters": [
           {
             "position": 0,
-            "decay": 13,
-            "window_size": 300
+            "decay": 18,
+            "window_size": 1500
           },
           {
             "position": 1,
             "decay": 60,
-            "window_size": 100
+            "window_size": 1500
           },
           {
             "position": 2,
             "decay": 60,
-            "window_size": 300
+            "window_size": 1500
           },
           {
             "position": 3,
-            "decay": 18,
-            "window_size": 300
+            "decay": 45,
+            "window_size": 1500
           },
           {
             "position": 4,
-            "decay": 45,
-            "window_size": 300
+            "decay": 60,
+            "window_size": 1500
           }
         ],
         "selected_position_windows": {},
@@ -1955,144 +2335,214 @@
             "position": 0,
             "scores": {
               "8@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
+                "baseline": 0.3
               },
               "8@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
+                "baseline": 0.3
               },
               "8@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
+                "baseline": 0.3
               },
               "8@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
+                "baseline": 0.3
               },
               "8@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
+                "baseline": 0.3
               },
               "13@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "13@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "13@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "13@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "13@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "18@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "18@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "18@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "18@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "18@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "24@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.25
+                "folds": 300,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
+                "baseline": 0.3
               },
               "24@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "24@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "24@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "24@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "30@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "30@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2583
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "30@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2583
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "30@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2583
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "30@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2583
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "45@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "45@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "45@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "45@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "45@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "60@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2083
+                "folds": 300,
+                "top3_hit_rate": 0.2533,
+                "se": 0.0251,
+                "baseline": 0.3
               },
               "60@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "60@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "60@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "60@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               }
             }
           },
@@ -2100,144 +2550,214 @@
             "position": 1,
             "scores": {
               "8@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.2433,
+                "se": 0.0248,
+                "baseline": 0.3
               },
               "8@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.2433,
+                "se": 0.0248,
+                "baseline": 0.3
               },
               "8@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.2433,
+                "se": 0.0248,
+                "baseline": 0.3
               },
               "8@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.2433,
+                "se": 0.0248,
+                "baseline": 0.3
               },
               "8@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.2433,
+                "se": 0.0248,
+                "baseline": 0.3
               },
               "13@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "13@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "13@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "13@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "13@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "18@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "18@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "18@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "18@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "18@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "24@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.25,
+                "se": 0.025,
+                "baseline": 0.3
               },
               "24@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2167
+                "folds": 300,
+                "top3_hit_rate": 0.2467,
+                "se": 0.0249,
+                "baseline": 0.3
               },
               "24@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2167
+                "folds": 300,
+                "top3_hit_rate": 0.2467,
+                "se": 0.0249,
+                "baseline": 0.3
               },
               "24@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2167
+                "folds": 300,
+                "top3_hit_rate": 0.2467,
+                "se": 0.0249,
+                "baseline": 0.3
               },
               "24@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2167
+                "folds": 300,
+                "top3_hit_rate": 0.2467,
+                "se": 0.0249,
+                "baseline": 0.3
               },
               "30@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.26,
+                "se": 0.0253,
+                "baseline": 0.3
               },
               "30@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "30@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "30@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "30@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2633,
+                "se": 0.0254,
+                "baseline": 0.3
               },
               "45@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "45@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2417
+                "folds": 300,
+                "top3_hit_rate": 0.2667,
+                "se": 0.0255,
+                "baseline": 0.3
               },
               "45@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.25
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "45@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.25
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "45@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.25
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "60@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "60@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "60@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "60@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "60@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               }
             }
           },
@@ -2245,144 +2765,214 @@
             "position": 2,
             "scores": {
               "8@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "8@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "8@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "8@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "8@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "13@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "13@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "13@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "13@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "13@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "18@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "18@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "18@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "18@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "18@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "24@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
+                "baseline": 0.3
               },
               "24@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "24@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "24@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "24@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "30@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
+                "baseline": 0.3
               },
               "30@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "30@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "30@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "30@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "45@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "45@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "45@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2733,
+                "se": 0.0257,
+                "baseline": 0.3
               },
               "45@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "45@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "60@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "60@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.3083
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "60@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3083
+                "folds": 300,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
+                "baseline": 0.3
               },
               "60@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.3083
+                "folds": 300,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
+                "baseline": 0.3
               },
               "60@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3083
+                "folds": 300,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
+                "baseline": 0.3
               }
             }
           },
@@ -2390,144 +2980,214 @@
             "position": 3,
             "scores": {
               "8@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
+                "baseline": 0.3
               },
               "8@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
+                "baseline": 0.3
               },
               "8@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
+                "baseline": 0.3
               },
               "8@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
+                "baseline": 0.3
               },
               "8@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
+                "baseline": 0.3
               },
               "13@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.325
+                "folds": 300,
+                "top3_hit_rate": 0.3333,
+                "se": 0.0272,
+                "baseline": 0.3
               },
               "13@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.325
+                "folds": 300,
+                "top3_hit_rate": 0.3333,
+                "se": 0.0272,
+                "baseline": 0.3
               },
               "13@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.325
+                "folds": 300,
+                "top3_hit_rate": 0.3333,
+                "se": 0.0272,
+                "baseline": 0.3
               },
               "13@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.325
+                "folds": 300,
+                "top3_hit_rate": 0.3333,
+                "se": 0.0272,
+                "baseline": 0.3
               },
               "13@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.325
+                "folds": 300,
+                "top3_hit_rate": 0.3333,
+                "se": 0.0272,
+                "baseline": 0.3
               },
               "18@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.375
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "18@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.375
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "18@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.375
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "18@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.375
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "18@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.375
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "24@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.3667
+                "folds": 300,
+                "top3_hit_rate": 0.3233,
+                "se": 0.027,
+                "baseline": 0.3
               },
               "24@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.3667
+                "folds": 300,
+                "top3_hit_rate": 0.3233,
+                "se": 0.027,
+                "baseline": 0.3
               },
               "24@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3667
+                "folds": 300,
+                "top3_hit_rate": 0.3233,
+                "se": 0.027,
+                "baseline": 0.3
               },
               "24@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.3667
+                "folds": 300,
+                "top3_hit_rate": 0.3233,
+                "se": 0.027,
+                "baseline": 0.3
               },
               "24@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3667
+                "folds": 300,
+                "top3_hit_rate": 0.3233,
+                "se": 0.027,
+                "baseline": 0.3
               },
               "30@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.35
+                "folds": 300,
+                "top3_hit_rate": 0.3167,
+                "se": 0.0269,
+                "baseline": 0.3
               },
               "30@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.35
+                "folds": 300,
+                "top3_hit_rate": 0.3233,
+                "se": 0.027,
+                "baseline": 0.3
               },
               "30@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.35
+                "folds": 300,
+                "top3_hit_rate": 0.3233,
+                "se": 0.027,
+                "baseline": 0.3
               },
               "30@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.35
+                "folds": 300,
+                "top3_hit_rate": 0.3233,
+                "se": 0.027,
+                "baseline": 0.3
               },
               "30@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.35
+                "folds": 300,
+                "top3_hit_rate": 0.3233,
+                "se": 0.027,
+                "baseline": 0.3
               },
               "45@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
+                "baseline": 0.3
               },
               "45@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
+                "baseline": 0.3
               },
               "45@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
+                "baseline": 0.3
               },
               "45@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
+                "baseline": 0.3
               },
               "45@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
+                "baseline": 0.3
               },
               "60@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "60@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "60@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "60@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "60@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               }
             }
           },
@@ -2535,144 +3195,214 @@
             "position": 4,
             "scores": {
               "8@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "8@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "8@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "8@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "8@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "13@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
+                "baseline": 0.3
               },
               "13@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
+                "baseline": 0.3
               },
               "13@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
+                "baseline": 0.3
               },
               "13@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
+                "baseline": 0.3
               },
               "13@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
+                "baseline": 0.3
               },
               "18@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2583
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "18@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2583
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "18@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2583
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "18@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2583
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "18@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2583
+                "folds": 300,
+                "top3_hit_rate": 0.2833,
+                "se": 0.026,
+                "baseline": 0.3
               },
               "24@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2967,
+                "se": 0.0264,
+                "baseline": 0.3
               },
               "24@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "24@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "24@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "24@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "30@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.31,
+                "se": 0.0267,
+                "baseline": 0.3
               },
               "30@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.31,
+                "se": 0.0267,
+                "baseline": 0.3
               },
               "30@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.31,
+                "se": 0.0267,
+                "baseline": 0.3
               },
               "30@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.31,
+                "se": 0.0267,
+                "baseline": 0.3
               },
               "30@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.31,
+                "se": 0.0267,
+                "baseline": 0.3
               },
               "45@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "45@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.3167,
+                "se": 0.0269,
+                "baseline": 0.3
               },
               "45@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.3167,
+                "se": 0.0269,
+                "baseline": 0.3
               },
               "45@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.3167,
+                "se": 0.0269,
+                "baseline": 0.3
               },
               "45@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.3167,
+                "se": 0.0269,
+                "baseline": 0.3
               },
               "60@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
+                "baseline": 0.3
               },
               "60@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.3,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "60@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.3,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "60@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.3,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "60@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.3,
+                "se": 0.0265,
+                "baseline": 0.3
               }
             }
           }
@@ -2710,10 +3440,10 @@
     },
     "fc3d": {
       "name": "福彩3D",
-      "model_version": "v3.1-rolling-ensemble-with-coverage",
+      "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T11:23:17+08:00",
+      "generated_at": "2026-07-26T19:50:38+08:00",
       "latest_issue": "2026196",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -2728,7 +3458,7 @@
       "candidates": [
         {
           "number": "225",
-          "mix_label": "位置综合-中性",
+          "mix_label": "位置池组合·3/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
@@ -2736,46 +3466,46 @@
           "purchase_suggestion": "组选三参考：225（225/252/522）"
         },
         {
-          "number": "429",
-          "mix_label": "位置综合-中性",
+          "number": "920",
+          "mix_label": "位置池组合·1/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 64.5,
-          "copy_text": "福彩3D 429",
-          "purchase_suggestion": "直选参考：429"
+          "confidence": 72.4,
+          "copy_text": "福彩3D 920",
+          "purchase_suggestion": "直选参考：920"
         },
         {
-          "number": "923",
-          "mix_label": "位置综合-中性",
+          "number": "426",
+          "mix_label": "位置池组合·1/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 3,
-          "confidence": 64.3,
-          "copy_text": "福彩3D 923",
-          "purchase_suggestion": "直选参考：923"
+          "confidence": 70.6,
+          "copy_text": "福彩3D 426",
+          "purchase_suggestion": "直选参考：426"
         },
         {
-          "number": "403",
-          "mix_label": "位置综合-中性",
+          "number": "966",
+          "mix_label": "位置池组合·0/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 4,
-          "confidence": 56.8,
-          "copy_text": "福彩3D 403",
-          "purchase_suggestion": "直选参考：403"
+          "confidence": 57.1,
+          "copy_text": "福彩3D 966",
+          "purchase_suggestion": "组选三参考：966（669/696/966）"
         },
         {
-          "number": "919",
-          "mix_label": "位置综合-中性",
+          "number": "400",
+          "mix_label": "位置池组合·0/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩3D 919",
-          "purchase_suggestion": "组选三参考：919（199/919/991）"
+          "copy_text": "福彩3D 400",
+          "purchase_suggestion": "组选三参考：400（004/040/400）"
         }
       ],
       "top_candidates": [
         {
           "number": "225",
-          "mix_label": "位置综合-中性",
+          "mix_label": "位置池组合·3/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 1,
           "confidence": 77.0,
@@ -2783,40 +3513,40 @@
           "purchase_suggestion": "组选三参考：225（225/252/522）"
         },
         {
-          "number": "429",
-          "mix_label": "位置综合-中性",
+          "number": "920",
+          "mix_label": "位置池组合·1/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 2,
-          "confidence": 64.5,
-          "copy_text": "福彩3D 429",
-          "purchase_suggestion": "直选参考：429"
+          "confidence": 72.4,
+          "copy_text": "福彩3D 920",
+          "purchase_suggestion": "直选参考：920"
         },
         {
-          "number": "923",
-          "mix_label": "位置综合-中性",
+          "number": "426",
+          "mix_label": "位置池组合·1/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 3,
-          "confidence": 64.3,
-          "copy_text": "福彩3D 923",
-          "purchase_suggestion": "直选参考：923"
+          "confidence": 70.6,
+          "copy_text": "福彩3D 426",
+          "purchase_suggestion": "直选参考：426"
         },
         {
-          "number": "403",
-          "mix_label": "位置综合-中性",
+          "number": "966",
+          "mix_label": "位置池组合·0/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 4,
-          "confidence": 56.8,
-          "copy_text": "福彩3D 403",
-          "purchase_suggestion": "直选参考：403"
+          "confidence": 57.1,
+          "copy_text": "福彩3D 966",
+          "purchase_suggestion": "组选三参考：966（669/696/966）"
         },
         {
-          "number": "919",
-          "mix_label": "位置综合-中性",
+          "number": "400",
+          "mix_label": "位置池组合·0/3位取最高权重数字",
           "source": "position_ensemble",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩3D 919",
-          "purchase_suggestion": "组选三参考：919（199/919/991）"
+          "copy_text": "福彩3D 400",
+          "purchase_suggestion": "组选三参考：400（004/040/400）"
         }
       ],
       "review": {
@@ -2864,8 +3594,8 @@
             "position": "百位",
             "hot_digits": [
               "2",
-              "9",
-              "4"
+              "4",
+              "9"
             ],
             "omitted_digits": [
               {
@@ -2900,8 +3630,8 @@
             "position": "个位",
             "hot_digits": [
               "5",
-              "3",
-              "9"
+              "6",
+              "0"
             ],
             "omitted_digits": [
               {
@@ -2917,163 +3647,233 @@
         ],
         "backtest": {
           "8@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3111
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2956,
+            "se": 0.0152,
+            "baseline": 0.3
           },
           "8@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3111
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2956,
+            "se": 0.0152,
+            "baseline": 0.3
           },
           "8@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3111
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2956,
+            "se": 0.0152,
+            "baseline": 0.3
           },
           "8@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3111
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2956,
+            "se": 0.0152,
+            "baseline": 0.3
           },
           "8@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3111
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2956,
+            "se": 0.0152,
+            "baseline": 0.3
           },
           "13@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3167
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2978,
+            "se": 0.0152,
+            "baseline": 0.3
           },
           "13@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3167
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2978,
+            "se": 0.0152,
+            "baseline": 0.3
           },
           "13@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3167
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2978,
+            "se": 0.0152,
+            "baseline": 0.3
           },
           "13@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3167
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2978,
+            "se": 0.0152,
+            "baseline": 0.3
           },
           "13@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3167
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2978,
+            "se": 0.0152,
+            "baseline": 0.3
           },
           "18@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3222
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3078,
+            "se": 0.0154,
+            "baseline": 0.3
           },
           "18@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3194
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3078,
+            "se": 0.0154,
+            "baseline": 0.3
           },
           "18@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3194
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3078,
+            "se": 0.0154,
+            "baseline": 0.3
           },
           "18@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3194
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3078,
+            "se": 0.0154,
+            "baseline": 0.3
           },
           "18@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3194
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3078,
+            "se": 0.0154,
+            "baseline": 0.3
           },
           "24@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3033,
+            "se": 0.0153,
+            "baseline": 0.3
           },
           "24@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3022,
+            "se": 0.0153,
+            "baseline": 0.3
           },
           "24@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3022,
+            "se": 0.0153,
+            "baseline": 0.3
           },
           "24@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3022,
+            "se": 0.0153,
+            "baseline": 0.3
           },
           "24@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.3
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3022,
+            "se": 0.0153,
+            "baseline": 0.3
           },
           "30@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2889
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3022,
+            "se": 0.0153,
+            "baseline": 0.3
           },
           "30@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2889
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3011,
+            "se": 0.0153,
+            "baseline": 0.3
           },
           "30@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2889
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3011,
+            "se": 0.0153,
+            "baseline": 0.3
           },
           "30@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2889
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3011,
+            "se": 0.0153,
+            "baseline": 0.3
           },
           "30@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2889
+            "folds": 300,
+            "positional_top3_hit_rate": 0.3011,
+            "se": 0.0153,
+            "baseline": 0.3
           },
           "45@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2833
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2989,
+            "se": 0.0153,
+            "baseline": 0.3
           },
           "45@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2806
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2956,
+            "se": 0.0152,
+            "baseline": 0.3
           },
           "45@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2806
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2956,
+            "se": 0.0152,
+            "baseline": 0.3
           },
           "45@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2806
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2956,
+            "se": 0.0152,
+            "baseline": 0.3
           },
           "45@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2806
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2956,
+            "se": 0.0152,
+            "baseline": 0.3
           },
           "60@100": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2806
+            "folds": 300,
+            "positional_top3_hit_rate": 0.29,
+            "se": 0.0151,
+            "baseline": 0.3
           },
           "60@300": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2778
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2878,
+            "se": 0.0151,
+            "baseline": 0.3
           },
           "60@500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2833
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2878,
+            "se": 0.0151,
+            "baseline": 0.3
           },
           "60@1000": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2833
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2878,
+            "se": 0.0151,
+            "baseline": 0.3
           },
           "60@1500": {
-            "folds": 120,
-            "positional_top3_hit_rate": 0.2833
+            "folds": 300,
+            "positional_top3_hit_rate": 0.2878,
+            "se": 0.0151,
+            "baseline": 0.3
           }
         },
-        "selected_decay": 18,
-        "selected_window": 100,
+        "selected_decay": 45,
+        "selected_window": 1500,
         "selected_position_parameters": [
           {
             "position": 0,
-            "decay": 8,
-            "window_size": 300
+            "decay": 45,
+            "window_size": 1500
           },
           {
             "position": 1,
-            "decay": 13,
-            "window_size": 300
+            "decay": 45,
+            "window_size": 1500
           },
           {
             "position": 2,
-            "decay": 18,
-            "window_size": 300
+            "decay": 60,
+            "window_size": 1500
           }
         ],
         "selected_position_windows": {},
@@ -3082,144 +3882,214 @@
             "position": 0,
             "scores": {
               "8@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.3417
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "8@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.3417
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "8@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3417
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "8@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.3417
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "8@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3417
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "13@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.3083
+                "folds": 300,
+                "top3_hit_rate": 0.31,
+                "se": 0.0267,
+                "baseline": 0.3
               },
               "13@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.3083
+                "folds": 300,
+                "top3_hit_rate": 0.31,
+                "se": 0.0267,
+                "baseline": 0.3
               },
               "13@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3083
+                "folds": 300,
+                "top3_hit_rate": 0.31,
+                "se": 0.0267,
+                "baseline": 0.3
               },
               "13@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.3083
+                "folds": 300,
+                "top3_hit_rate": 0.31,
+                "se": 0.0267,
+                "baseline": 0.3
               },
               "13@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3083
+                "folds": 300,
+                "top3_hit_rate": 0.31,
+                "se": 0.0267,
+                "baseline": 0.3
               },
               "18@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.3083
+                "folds": 300,
+                "top3_hit_rate": 0.3267,
+                "se": 0.0271,
+                "baseline": 0.3
               },
               "18@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.3233,
+                "se": 0.027,
+                "baseline": 0.3
               },
               "18@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.3233,
+                "se": 0.027,
+                "baseline": 0.3
               },
               "18@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.3233,
+                "se": 0.027,
+                "baseline": 0.3
               },
               "18@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.3233,
+                "se": 0.027,
+                "baseline": 0.3
               },
               "24@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
+                "baseline": 0.3
               },
               "24@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
+                "baseline": 0.3
               },
               "24@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
+                "baseline": 0.3
               },
               "24@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
+                "baseline": 0.3
               },
               "24@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
+                "baseline": 0.3
               },
               "30@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2583
+                "folds": 300,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
+                "baseline": 0.3
               },
               "30@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
+                "baseline": 0.3
               },
               "30@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
+                "baseline": 0.3
               },
               "30@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
+                "baseline": 0.3
               },
               "30@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
+                "baseline": 0.3
               },
               "45@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2583
+                "folds": 300,
+                "top3_hit_rate": 0.3133,
+                "se": 0.0268,
+                "baseline": 0.3
               },
               "45@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "45@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "45@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "45@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2333
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "60@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.25
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "60@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
+                "baseline": 0.3
               },
               "60@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "60@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "60@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.225
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               }
             }
           },
@@ -3227,144 +4097,214 @@
             "position": 1,
             "scores": {
               "8@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "8@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "8@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "8@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "8@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.27,
+                "se": 0.0256,
+                "baseline": 0.3
               },
               "13@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.35
+                "folds": 300,
+                "top3_hit_rate": 0.2967,
+                "se": 0.0264,
+                "baseline": 0.3
               },
               "13@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.35
+                "folds": 300,
+                "top3_hit_rate": 0.2967,
+                "se": 0.0264,
+                "baseline": 0.3
               },
               "13@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.35
+                "folds": 300,
+                "top3_hit_rate": 0.2967,
+                "se": 0.0264,
+                "baseline": 0.3
               },
               "13@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.35
+                "folds": 300,
+                "top3_hit_rate": 0.2967,
+                "se": 0.0264,
+                "baseline": 0.3
               },
               "13@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.35
+                "folds": 300,
+                "top3_hit_rate": 0.2967,
+                "se": 0.0264,
+                "baseline": 0.3
               },
               "18@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.3417
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "18@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.3417
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "18@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3417
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "18@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.3417
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "18@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3417
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "24@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.35
+                "folds": 300,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
+                "baseline": 0.3
               },
               "24@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.35
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "24@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.35
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "24@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.35
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "24@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.35
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "30@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.3417
+                "folds": 300,
+                "top3_hit_rate": 0.3033,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "30@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.3333
+                "folds": 300,
+                "top3_hit_rate": 0.3,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "30@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3333
+                "folds": 300,
+                "top3_hit_rate": 0.3,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "30@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.3333
+                "folds": 300,
+                "top3_hit_rate": 0.3,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "30@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3333
+                "folds": 300,
+                "top3_hit_rate": 0.3,
+                "se": 0.0265,
+                "baseline": 0.3
               },
               "45@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.3083
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "45@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.325
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "45@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.325
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "45@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.325
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "45@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.325
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "60@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.2767,
+                "se": 0.0258,
+                "baseline": 0.3
               },
               "60@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.3083
+                "folds": 300,
+                "top3_hit_rate": 0.2767,
+                "se": 0.0258,
+                "baseline": 0.3
               },
               "60@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.325
+                "folds": 300,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
+                "baseline": 0.3
               },
               "60@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.325
+                "folds": 300,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
+                "baseline": 0.3
               },
               "60@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.325
+                "folds": 300,
+                "top3_hit_rate": 0.28,
+                "se": 0.0259,
+                "baseline": 0.3
               }
             }
           },
@@ -3372,151 +4312,221 @@
             "position": 2,
             "scores": {
               "8@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "8@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "8@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "8@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "8@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.275
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "13@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "13@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "13@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "13@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "13@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.2867,
+                "se": 0.0261,
+                "baseline": 0.3
               },
               "18@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.3067,
+                "se": 0.0266,
+                "baseline": 0.3
               },
               "18@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.31,
+                "se": 0.0267,
+                "baseline": 0.3
               },
               "18@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.31,
+                "se": 0.0267,
+                "baseline": 0.3
               },
               "18@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.31,
+                "se": 0.0267,
+                "baseline": 0.3
               },
               "18@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3167
+                "folds": 300,
+                "top3_hit_rate": 0.31,
+                "se": 0.0267,
+                "baseline": 0.3
               },
               "24@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "24@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "24@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "24@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "24@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "30@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "30@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "30@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "30@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "30@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2667
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "45@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2967,
+                "se": 0.0264,
+                "baseline": 0.3
               },
               "45@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
+                "baseline": 0.3
               },
               "45@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
+                "baseline": 0.3
               },
               "45@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
+                "baseline": 0.3
               },
               "45@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.2833
+                "folds": 300,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
+                "baseline": 0.3
               },
               "60@100": {
-                "folds": 120,
-                "top3_hit_rate": 0.2917
+                "folds": 300,
+                "top3_hit_rate": 0.29,
+                "se": 0.0262,
+                "baseline": 0.3
               },
               "60@300": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
+                "baseline": 0.3
               },
               "60@500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
+                "baseline": 0.3
               },
               "60@1000": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
+                "baseline": 0.3
               },
               "60@1500": {
-                "folds": 120,
-                "top3_hit_rate": 0.3
+                "folds": 300,
+                "top3_hit_rate": 0.2933,
+                "se": 0.0263,
+                "baseline": 0.3
               }
             }
           }
         ],
         "method": [
           "逐位置频率与遗漏",
-          "18期衰减参数",
+          "45期衰减参数",
           "5至8注综合清单与候选分散"
         ]
       },
@@ -3585,35 +4595,35 @@
             "suggestion": "组选三参考：225（225/252/522）"
           },
           {
-            "number": "429",
+            "number": "920",
             "shape": "组六形态，按直选参考",
-            "suggestion": "直选参考：429"
+            "suggestion": "直选参考：920"
           },
           {
-            "number": "923",
+            "number": "426",
             "shape": "组六形态，按直选参考",
-            "suggestion": "直选参考：923"
+            "suggestion": "直选参考：426"
           },
           {
-            "number": "403",
-            "shape": "组六形态，按直选参考",
-            "suggestion": "直选参考：403"
-          },
-          {
-            "number": "919",
+            "number": "966",
             "shape": "组选三",
-            "suggestion": "组选三参考：919（199/919/991）"
+            "suggestion": "组选三参考：966（669/696/966）"
+          },
+          {
+            "number": "400",
+            "shape": "组选三",
+            "suggestion": "组选三参考：400（004/040/400）"
           }
         ],
-        "next_day_advice_text": "组选三参考：225（225/252/522）；直选参考：429；直选参考：923；直选参考：403；组选三参考：919（199/919/991）"
+        "next_day_advice_text": "组选三参考：225（225/252/522）；直选参考：920；直选参考：426；组选三参考：966（669/696/966）；组选三参考：400（004/040/400）"
       }
     },
     "qxc": {
       "name": "体彩7星彩",
-      "model_version": "v3.1-rolling-ensemble-with-coverage",
+      "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-26T11:23:17+08:00",
+      "generated_at": "2026-07-26T19:50:38+08:00",
       "latest_issue": "26084",
       "latest_draw_date": "2026-07-24",
       "latest_numbers": [
@@ -3631,86 +4641,86 @@
       "schedule_note": "每周二、五、日开奖",
       "candidates": [
         {
-          "number": "7592361",
+          "number": "3484562",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "体彩7星彩 7592361"
+          "copy_text": "体彩7星彩 3484562"
         },
         {
-          "number": "2962363",
+          "number": "4681532",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 2,
-          "confidence": 61.9,
-          "copy_text": "体彩7星彩 2962363"
+          "confidence": 74.7,
+          "copy_text": "体彩7星彩 4681532"
         },
         {
-          "number": "0758363",
+          "number": "6481526",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 3,
-          "confidence": 58.9,
-          "copy_text": "体彩7星彩 0758363"
+          "confidence": 74.1,
+          "copy_text": "体彩7星彩 6481526"
         },
         {
-          "number": "7568323",
+          "number": "5651823",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 4,
-          "confidence": 55.9,
-          "copy_text": "体彩7星彩 7568323"
+          "confidence": 67.2,
+          "copy_text": "体彩7星彩 5651823"
         },
         {
-          "number": "2890323",
+          "number": "3339307",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "体彩7星彩 2890323"
+          "copy_text": "体彩7星彩 3339307"
         }
       ],
       "top_candidates": [
         {
-          "number": "7592361",
+          "number": "3484562",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "体彩7星彩 7592361"
+          "copy_text": "体彩7星彩 3484562"
         },
         {
-          "number": "2962363",
+          "number": "4681532",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 2,
-          "confidence": 61.9,
-          "copy_text": "体彩7星彩 2962363"
+          "confidence": 74.7,
+          "copy_text": "体彩7星彩 4681532"
         },
         {
-          "number": "0758363",
+          "number": "6481526",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 3,
-          "confidence": 58.9,
-          "copy_text": "体彩7星彩 0758363"
+          "confidence": 74.1,
+          "copy_text": "体彩7星彩 6481526"
         },
         {
-          "number": "7568323",
+          "number": "5651823",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 4,
-          "confidence": 55.9,
-          "copy_text": "体彩7星彩 7568323"
+          "confidence": 67.2,
+          "copy_text": "体彩7星彩 5651823"
         },
         {
-          "number": "2890323",
+          "number": "3339307",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "体彩7星彩 2890323"
+          "copy_text": "体彩7星彩 3339307"
         }
       ],
       "review": {
@@ -3883,191 +4893,271 @@
         ],
         "backtest": {
           "100": {
-            "folds": 120,
-            "pool_coverage": 0.2881
+            "folds": 240,
+            "pool_coverage": 0.3107,
+            "se": 0.0113,
+            "baseline": 0.3
           },
           "300": {
-            "folds": 120,
-            "pool_coverage": 0.2952
+            "folds": 240,
+            "pool_coverage": 0.303,
+            "se": 0.0112,
+            "baseline": 0.3
           },
           "500": {
-            "folds": 120,
-            "pool_coverage": 0.2964
+            "folds": 240,
+            "pool_coverage": 0.2905,
+            "se": 0.0111,
+            "baseline": 0.3
           },
           "1000": {
-            "folds": 120,
-            "pool_coverage": 0.2821
+            "folds": 240,
+            "pool_coverage": 0.2911,
+            "se": 0.0111,
+            "baseline": 0.3
           },
           "1500": {
-            "folds": 120,
-            "pool_coverage": 0.2881
+            "folds": 240,
+            "pool_coverage": 0.294,
+            "se": 0.0111,
+            "baseline": 0.3
           }
         },
         "selected_decay": null,
-        "selected_window": 500,
+        "selected_window": 300,
         "selected_position_parameters": [],
         "selected_position_windows": {
-          "0": 100,
-          "1": 300,
-          "2": 300,
-          "3": 300,
-          "4": 300,
-          "5": 300,
-          "6": 300
+          "0": 1500,
+          "1": 1500,
+          "2": 1500,
+          "3": 1500,
+          "4": 1500,
+          "5": 1500,
+          "6": 1500
         },
         "position_backtest": {
           "0": {
             "100": {
-              "folds": 120,
-              "top3_hit_rate": 0.325
+              "folds": 300,
+              "top3_hit_rate": 0.27,
+              "se": 0.0256,
+              "baseline": 0.3
             },
             "300": {
-              "folds": 120,
-              "top3_hit_rate": 0.3167
+              "folds": 300,
+              "top3_hit_rate": 0.2833,
+              "se": 0.026,
+              "baseline": 0.3
             },
             "500": {
-              "folds": 120,
-              "top3_hit_rate": 0.3167
+              "folds": 300,
+              "top3_hit_rate": 0.2833,
+              "se": 0.026,
+              "baseline": 0.3
             },
             "1000": {
-              "folds": 120,
-              "top3_hit_rate": 0.3167
+              "folds": 300,
+              "top3_hit_rate": 0.2833,
+              "se": 0.026,
+              "baseline": 0.3
             },
             "1500": {
-              "folds": 120,
-              "top3_hit_rate": 0.3167
+              "folds": 300,
+              "top3_hit_rate": 0.2833,
+              "se": 0.026,
+              "baseline": 0.3
             }
           },
           "1": {
             "100": {
-              "folds": 120,
-              "top3_hit_rate": 0.3417
+              "folds": 300,
+              "top3_hit_rate": 0.34,
+              "se": 0.0273,
+              "baseline": 0.3
             },
             "300": {
-              "folds": 120,
-              "top3_hit_rate": 0.3417
+              "folds": 300,
+              "top3_hit_rate": 0.3367,
+              "se": 0.0273,
+              "baseline": 0.3
             },
             "500": {
-              "folds": 120,
-              "top3_hit_rate": 0.3417
+              "folds": 300,
+              "top3_hit_rate": 0.3367,
+              "se": 0.0273,
+              "baseline": 0.3
             },
             "1000": {
-              "folds": 120,
-              "top3_hit_rate": 0.3417
+              "folds": 300,
+              "top3_hit_rate": 0.3367,
+              "se": 0.0273,
+              "baseline": 0.3
             },
             "1500": {
-              "folds": 120,
-              "top3_hit_rate": 0.3417
+              "folds": 300,
+              "top3_hit_rate": 0.3367,
+              "se": 0.0273,
+              "baseline": 0.3
             }
           },
           "2": {
             "100": {
-              "folds": 120,
-              "top3_hit_rate": 0.2583
+              "folds": 300,
+              "top3_hit_rate": 0.28,
+              "se": 0.0259,
+              "baseline": 0.3
             },
             "300": {
-              "folds": 120,
-              "top3_hit_rate": 0.2667
+              "folds": 300,
+              "top3_hit_rate": 0.2833,
+              "se": 0.026,
+              "baseline": 0.3
             },
             "500": {
-              "folds": 120,
-              "top3_hit_rate": 0.2667
+              "folds": 300,
+              "top3_hit_rate": 0.2833,
+              "se": 0.026,
+              "baseline": 0.3
             },
             "1000": {
-              "folds": 120,
-              "top3_hit_rate": 0.2667
+              "folds": 300,
+              "top3_hit_rate": 0.2833,
+              "se": 0.026,
+              "baseline": 0.3
             },
             "1500": {
-              "folds": 120,
-              "top3_hit_rate": 0.2667
+              "folds": 300,
+              "top3_hit_rate": 0.2833,
+              "se": 0.026,
+              "baseline": 0.3
             }
           },
           "3": {
             "100": {
-              "folds": 120,
-              "top3_hit_rate": 0.3917
+              "folds": 300,
+              "top3_hit_rate": 0.34,
+              "se": 0.0273,
+              "baseline": 0.3
             },
             "300": {
-              "folds": 120,
-              "top3_hit_rate": 0.3917
+              "folds": 300,
+              "top3_hit_rate": 0.3433,
+              "se": 0.0274,
+              "baseline": 0.3
             },
             "500": {
-              "folds": 120,
-              "top3_hit_rate": 0.3917
+              "folds": 300,
+              "top3_hit_rate": 0.3433,
+              "se": 0.0274,
+              "baseline": 0.3
             },
             "1000": {
-              "folds": 120,
-              "top3_hit_rate": 0.3917
+              "folds": 300,
+              "top3_hit_rate": 0.3433,
+              "se": 0.0274,
+              "baseline": 0.3
             },
             "1500": {
-              "folds": 120,
-              "top3_hit_rate": 0.3917
+              "folds": 300,
+              "top3_hit_rate": 0.3433,
+              "se": 0.0274,
+              "baseline": 0.3
             }
           },
           "4": {
             "100": {
-              "folds": 120,
-              "top3_hit_rate": 0.3417
+              "folds": 300,
+              "top3_hit_rate": 0.32,
+              "se": 0.0269,
+              "baseline": 0.3
             },
             "300": {
-              "folds": 120,
-              "top3_hit_rate": 0.3583
+              "folds": 300,
+              "top3_hit_rate": 0.3233,
+              "se": 0.027,
+              "baseline": 0.3
             },
             "500": {
-              "folds": 120,
-              "top3_hit_rate": 0.3583
+              "folds": 300,
+              "top3_hit_rate": 0.3233,
+              "se": 0.027,
+              "baseline": 0.3
             },
             "1000": {
-              "folds": 120,
-              "top3_hit_rate": 0.3583
+              "folds": 300,
+              "top3_hit_rate": 0.3233,
+              "se": 0.027,
+              "baseline": 0.3
             },
             "1500": {
-              "folds": 120,
-              "top3_hit_rate": 0.3583
+              "folds": 300,
+              "top3_hit_rate": 0.3233,
+              "se": 0.027,
+              "baseline": 0.3
             }
           },
           "5": {
             "100": {
-              "folds": 120,
-              "top3_hit_rate": 0.2667
+              "folds": 300,
+              "top3_hit_rate": 0.3,
+              "se": 0.0265,
+              "baseline": 0.3
             },
             "300": {
-              "folds": 120,
-              "top3_hit_rate": 0.2667
+              "folds": 300,
+              "top3_hit_rate": 0.2967,
+              "se": 0.0264,
+              "baseline": 0.3
             },
             "500": {
-              "folds": 120,
-              "top3_hit_rate": 0.2667
+              "folds": 300,
+              "top3_hit_rate": 0.2967,
+              "se": 0.0264,
+              "baseline": 0.3
             },
             "1000": {
-              "folds": 120,
-              "top3_hit_rate": 0.2667
+              "folds": 300,
+              "top3_hit_rate": 0.2967,
+              "se": 0.0264,
+              "baseline": 0.3
             },
             "1500": {
-              "folds": 120,
-              "top3_hit_rate": 0.2667
+              "folds": 300,
+              "top3_hit_rate": 0.2967,
+              "se": 0.0264,
+              "baseline": 0.3
             }
           },
           "6": {
             "100": {
-              "folds": 120,
-              "top3_hit_rate": 0.3833
+              "folds": 300,
+              "top3_hit_rate": 0.3833,
+              "se": 0.0281,
+              "baseline": 0.3
             },
             "300": {
-              "folds": 120,
-              "top3_hit_rate": 0.4
+              "folds": 300,
+              "top3_hit_rate": 0.39,
+              "se": 0.0282,
+              "baseline": 0.3
             },
             "500": {
-              "folds": 120,
-              "top3_hit_rate": 0.4
+              "folds": 300,
+              "top3_hit_rate": 0.39,
+              "se": 0.0282,
+              "baseline": 0.3
             },
             "1000": {
-              "folds": 120,
-              "top3_hit_rate": 0.4
+              "folds": 300,
+              "top3_hit_rate": 0.39,
+              "se": 0.0282,
+              "baseline": 0.3
             },
             "1500": {
-              "folds": 120,
-              "top3_hit_rate": 0.4
+              "folds": 300,
+              "top3_hit_rate": 0.39,
+              "se": 0.0282,
+              "baseline": 0.3
             }
           }
         },
@@ -4203,10 +5293,10 @@
     },
     "ssq": {
       "name": "福彩双色球",
-      "model_version": "v3.1-rolling-ensemble-with-coverage",
+      "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-26T11:23:17+08:00",
+      "generated_at": "2026-07-26T19:50:38+08:00",
       "latest_issue": "2026084",
       "latest_draw_date": "2026-07-23",
       "latest_numbers": [
@@ -4244,24 +5334,6 @@
         {
           "red": [
             1,
-            7,
-            14,
-            21,
-            28,
-            29
-          ],
-          "blue": [
-            1
-          ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
-          "rank": 2,
-          "confidence": 74.3,
-          "copy_text": "福彩双色球 01 07 14 21 28 29 + 01"
-        },
-        {
-          "red": [
-            1,
             10,
             14,
             16,
@@ -4273,45 +5345,63 @@
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
-          "rank": 3,
-          "confidence": 70.3,
+          "rank": 2,
+          "confidence": 73.2,
           "copy_text": "福彩双色球 01 10 14 16 24 27 + 05"
         },
         {
           "red": [
-            2,
+            5,
             7,
+            16,
+            21,
+            29,
+            30
+          ],
+          "blue": [
+            12
+          ],
+          "mix_label": "红蓝分区共现模型",
+          "source": "ssq_zone",
+          "rank": 3,
+          "confidence": 58.1,
+          "copy_text": "福彩双色球 05 07 16 21 29 30 + 12"
+        },
+        {
+          "red": [
+            5,
+            11,
+            12,
+            18,
+            29,
+            32
+          ],
+          "blue": [
+            1
+          ],
+          "mix_label": "红蓝分区共现模型",
+          "source": "ssq_zone",
+          "rank": 4,
+          "confidence": 54.9,
+          "copy_text": "福彩双色球 05 11 12 18 29 32 + 01"
+        },
+        {
+          "red": [
+            1,
+            3,
+            4,
             14,
-            24,
-            27,
-            28
+            19,
+            25
           ],
           "blue": [
             13
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
-          "rank": 4,
-          "confidence": 54.4,
-          "copy_text": "福彩双色球 02 07 14 24 27 28 + 13"
-        },
-        {
-          "red": [
-            7,
-            10,
-            12,
-            14,
-            16,
-            24
-          ],
-          "blue": [
-            10
-          ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩双色球 07 10 12 14 16 24 + 10"
+          "copy_text": "福彩双色球 01 03 04 14 19 25 + 13"
         }
       ],
       "top_candidates": [
@@ -4336,24 +5426,6 @@
         {
           "red": [
             1,
-            7,
-            14,
-            21,
-            28,
-            29
-          ],
-          "blue": [
-            1
-          ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
-          "rank": 2,
-          "confidence": 74.3,
-          "copy_text": "福彩双色球 01 07 14 21 28 29 + 01"
-        },
-        {
-          "red": [
-            1,
             10,
             14,
             16,
@@ -4365,45 +5437,63 @@
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
-          "rank": 3,
-          "confidence": 70.3,
+          "rank": 2,
+          "confidence": 73.2,
           "copy_text": "福彩双色球 01 10 14 16 24 27 + 05"
         },
         {
           "red": [
-            2,
+            5,
             7,
+            16,
+            21,
+            29,
+            30
+          ],
+          "blue": [
+            12
+          ],
+          "mix_label": "红蓝分区共现模型",
+          "source": "ssq_zone",
+          "rank": 3,
+          "confidence": 58.1,
+          "copy_text": "福彩双色球 05 07 16 21 29 30 + 12"
+        },
+        {
+          "red": [
+            5,
+            11,
+            12,
+            18,
+            29,
+            32
+          ],
+          "blue": [
+            1
+          ],
+          "mix_label": "红蓝分区共现模型",
+          "source": "ssq_zone",
+          "rank": 4,
+          "confidence": 54.9,
+          "copy_text": "福彩双色球 05 11 12 18 29 32 + 01"
+        },
+        {
+          "red": [
+            1,
+            3,
+            4,
             14,
-            24,
-            27,
-            28
+            19,
+            25
           ],
           "blue": [
             13
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
-          "rank": 4,
-          "confidence": 54.4,
-          "copy_text": "福彩双色球 02 07 14 24 27 28 + 13"
-        },
-        {
-          "red": [
-            7,
-            10,
-            12,
-            14,
-            16,
-            24
-          ],
-          "blue": [
-            10
-          ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩双色球 07 10 12 14 16 24 + 10"
+          "copy_text": "福彩双色球 01 03 04 14 19 25 + 13"
         }
       ],
       "review": {
@@ -4431,77 +5521,107 @@
       "analysis": {
         "sample": 2000,
         "model_name": "双色球红蓝分区共现模型",
-        "selected_window": 500,
+        "selected_window": 1500,
         "selected_region_windows": {
-          "red": 500,
+          "red": 1000,
           "blue": 1500
         },
         "region_backtest": {
           "red": {
             "100": {
-              "folds": 120,
-              "pool_coverage": 0.5528
+              "folds": 240,
+              "pool_coverage": 0.5472,
+              "se": 0.012,
+              "baseline": 0.5455
             },
             "300": {
-              "folds": 120,
-              "pool_coverage": 0.5736
+              "folds": 240,
+              "pool_coverage": 0.5556,
+              "se": 0.012,
+              "baseline": 0.5455
             },
             "500": {
-              "folds": 120,
-              "pool_coverage": 0.575
+              "folds": 240,
+              "pool_coverage": 0.5604,
+              "se": 0.012,
+              "baseline": 0.5455
             },
             "1000": {
-              "folds": 120,
-              "pool_coverage": 0.5639
+              "folds": 240,
+              "pool_coverage": 0.5521,
+              "se": 0.012,
+              "baseline": 0.5455
             },
             "1500": {
-              "folds": 120,
-              "pool_coverage": 0.5389
+              "folds": 240,
+              "pool_coverage": 0.5458,
+              "se": 0.0121,
+              "baseline": 0.5455
             }
           },
           "blue": {
             "100": {
-              "folds": 120,
-              "pool_coverage": 0.3
+              "folds": 240,
+              "pool_coverage": 0.2917,
+              "se": 0.0293,
+              "baseline": 0.3125
             },
             "300": {
-              "folds": 120,
-              "pool_coverage": 0.275
+              "folds": 240,
+              "pool_coverage": 0.3042,
+              "se": 0.0297,
+              "baseline": 0.3125
             },
             "500": {
-              "folds": 120,
-              "pool_coverage": 0.2833
+              "folds": 240,
+              "pool_coverage": 0.2708,
+              "se": 0.0287,
+              "baseline": 0.3125
             },
             "1000": {
-              "folds": 120,
-              "pool_coverage": 0.3417
+              "folds": 240,
+              "pool_coverage": 0.3167,
+              "se": 0.03,
+              "baseline": 0.3125
             },
             "1500": {
-              "folds": 120,
-              "pool_coverage": 0.35
+              "folds": 240,
+              "pool_coverage": 0.3458,
+              "se": 0.0307,
+              "baseline": 0.3125
             }
           }
         },
         "backtest": {
           "100": {
-            "folds": 120,
-            "pool_coverage": 0.5167
+            "folds": 240,
+            "pool_coverage": 0.5107,
+            "se": 0.0113,
+            "baseline": 0.5122
           },
           "300": {
-            "folds": 120,
-            "pool_coverage": 0.531
+            "folds": 240,
+            "pool_coverage": 0.5196,
+            "se": 0.0113,
+            "baseline": 0.5122
           },
           "500": {
-            "folds": 120,
-            "pool_coverage": 0.5333
+            "folds": 240,
+            "pool_coverage": 0.519,
+            "se": 0.0113,
+            "baseline": 0.5122
           },
           "1000": {
-            "folds": 120,
-            "pool_coverage": 0.5321
+            "folds": 240,
+            "pool_coverage": 0.5185,
+            "se": 0.0113,
+            "baseline": 0.5122
           },
           "1500": {
-            "folds": 120,
-            "pool_coverage": 0.5119
+            "folds": 240,
+            "pool_coverage": 0.5173,
+            "se": 0.0113,
+            "baseline": 0.5122
           }
         },
         "summary": "最近2000期将6个红球、1个蓝球完全分开建模；红球同时计算号码频率、两两共现和三区覆盖，蓝球只使用自己的1–16历史序列。",
@@ -4663,10 +5783,10 @@
     },
     "kl8": {
       "name": "福彩快乐8",
-      "model_version": "v3.1-rolling-ensemble-with-coverage",
+      "model_version": "v3.2-one-se-calibration-union-coverage",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-26T11:23:17+08:00",
+      "generated_at": "2026-07-26T19:50:38+08:00",
       "latest_issue": "2026196",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -4698,44 +5818,52 @@
       "candidates": [
         {
           "numbers": [
+            2,
+            4,
+            6,
             12,
-            15,
+            23,
+            33,
+            39,
+            44,
+            61,
+            73
+          ],
+          "mix_label": "选10独立模型",
+          "source": "kl8_pick10",
+          "pick_count": 10,
+          "play_name": "选10",
+          "rank": 1,
+          "confidence": 77.0,
+          "copy_text": "福彩快乐8 选10 02 04 06 12 23 33 39 44 61 73"
+        },
+        {
+          "numbers": [
+            12,
+            30,
+            33,
+            39,
+            40,
             42,
+            54,
             69,
             73
           ],
-          "mix_label": "选5独立模型",
-          "source": "kl8_pick5",
-          "pick_count": 5,
-          "play_name": "选5",
-          "rank": 1,
-          "confidence": 64,
-          "copy_text": "福彩快乐8 选5 12 15 42 69 73"
-        },
-        {
-          "numbers": [
-            11,
-            12,
-            27,
-            42,
-            62,
-            69
-          ],
-          "mix_label": "选6独立模型",
-          "source": "kl8_pick6",
-          "pick_count": 6,
-          "play_name": "选6",
+          "mix_label": "选9独立模型",
+          "source": "kl8_pick9",
+          "pick_count": 9,
+          "play_name": "选9",
           "rank": 2,
-          "confidence": 64,
-          "copy_text": "福彩快乐8 选6 11 12 27 42 62 69"
+          "confidence": 73.9,
+          "copy_text": "福彩快乐8 选9 12 30 33 39 40 42 54 69 73"
         },
         {
           "numbers": [
-            11,
-            12,
-            23,
+            6,
+            30,
+            32,
             42,
-            62,
+            61,
             69,
             73
           ],
@@ -4744,17 +5872,17 @@
           "pick_count": 7,
           "play_name": "选7",
           "rank": 3,
-          "confidence": 64,
-          "copy_text": "福彩快乐8 选7 11 12 23 42 62 69 73"
+          "confidence": 65.4,
+          "copy_text": "福彩快乐8 选7 06 30 32 42 61 69 73"
         },
         {
           "numbers": [
-            2,
+            4,
             12,
-            30,
-            33,
-            39,
+            32,
             42,
+            46,
+            49,
             69,
             73
           ],
@@ -4763,71 +5891,75 @@
           "pick_count": 8,
           "play_name": "选8",
           "rank": 4,
-          "confidence": 64,
-          "copy_text": "福彩快乐8 选8 02 12 30 33 39 42 69 73"
+          "confidence": 63.2,
+          "copy_text": "福彩快乐8 选8 04 12 32 42 46 49 69 73"
         },
         {
           "numbers": [
             6,
             12,
-            18,
-            27,
-            32,
-            61,
-            62,
-            69,
+            39,
+            42,
             73
           ],
-          "mix_label": "选9独立模型",
-          "source": "kl8_pick9",
-          "pick_count": 9,
-          "play_name": "选9",
+          "mix_label": "选5独立模型",
+          "source": "kl8_pick5",
+          "pick_count": 5,
+          "play_name": "选5",
           "rank": 5,
-          "confidence": 64,
-          "copy_text": "福彩快乐8 选9 06 12 18 27 32 61 62 69 73"
+          "confidence": 52.0,
+          "copy_text": "福彩快乐8 选5 06 12 39 42 73"
         }
       ],
       "top_candidates": [
         {
           "numbers": [
+            2,
+            4,
+            6,
             12,
-            15,
+            23,
+            33,
+            39,
+            44,
+            61,
+            73
+          ],
+          "mix_label": "选10独立模型",
+          "source": "kl8_pick10",
+          "pick_count": 10,
+          "play_name": "选10",
+          "rank": 1,
+          "confidence": 77.0,
+          "copy_text": "福彩快乐8 选10 02 04 06 12 23 33 39 44 61 73"
+        },
+        {
+          "numbers": [
+            12,
+            30,
+            33,
+            39,
+            40,
             42,
+            54,
             69,
             73
           ],
-          "mix_label": "选5独立模型",
-          "source": "kl8_pick5",
-          "pick_count": 5,
-          "play_name": "选5",
-          "rank": 1,
-          "confidence": 64,
-          "copy_text": "福彩快乐8 选5 12 15 42 69 73"
-        },
-        {
-          "numbers": [
-            11,
-            12,
-            27,
-            42,
-            62,
-            69
-          ],
-          "mix_label": "选6独立模型",
-          "source": "kl8_pick6",
-          "pick_count": 6,
-          "play_name": "选6",
+          "mix_label": "选9独立模型",
+          "source": "kl8_pick9",
+          "pick_count": 9,
+          "play_name": "选9",
           "rank": 2,
-          "confidence": 64,
-          "copy_text": "福彩快乐8 选6 11 12 27 42 62 69"
+          "confidence": 73.9,
+          "copy_text": "福彩快乐8 选9 12 30 33 39 40 42 54 69 73"
         },
         {
           "numbers": [
-            11,
-            12,
-            23,
+            6,
+            30,
+            32,
             42,
-            62,
+            61,
             69,
             73
           ],
@@ -4836,17 +5968,17 @@
           "pick_count": 7,
           "play_name": "选7",
           "rank": 3,
-          "confidence": 64,
-          "copy_text": "福彩快乐8 选7 11 12 23 42 62 69 73"
+          "confidence": 65.4,
+          "copy_text": "福彩快乐8 选7 06 30 32 42 61 69 73"
         },
         {
           "numbers": [
-            2,
+            4,
             12,
-            30,
-            33,
-            39,
+            32,
             42,
+            46,
+            49,
             69,
             73
           ],
@@ -4855,28 +5987,24 @@
           "pick_count": 8,
           "play_name": "选8",
           "rank": 4,
-          "confidence": 64,
-          "copy_text": "福彩快乐8 选8 02 12 30 33 39 42 69 73"
+          "confidence": 63.2,
+          "copy_text": "福彩快乐8 选8 04 12 32 42 46 49 69 73"
         },
         {
           "numbers": [
             6,
             12,
-            18,
-            27,
-            32,
-            61,
-            62,
-            69,
+            39,
+            42,
             73
           ],
-          "mix_label": "选9独立模型",
-          "source": "kl8_pick9",
-          "pick_count": 9,
-          "play_name": "选9",
+          "mix_label": "选5独立模型",
+          "source": "kl8_pick5",
+          "pick_count": 5,
+          "play_name": "选5",
           "rank": 5,
-          "confidence": 64,
-          "copy_text": "福彩快乐8 选9 06 12 18 27 32 61 62 69 73"
+          "confidence": 52.0,
+          "copy_text": "福彩快乐8 选5 06 12 39 42 73"
         }
       ],
       "review": {
@@ -4904,34 +6032,44 @@
       "analysis": {
         "sample": 2000,
         "model_name": "快乐8选五独立模型",
-        "selected_window": 1000,
+        "selected_window": 1500,
         "backtest": {
           "100": {
-            "folds": 120,
-            "pool_coverage": 0.4925
+            "folds": 240,
+            "pool_coverage": 0.4985,
+            "se": 0.0063,
+            "baseline": 0.5
           },
           "300": {
-            "folds": 120,
-            "pool_coverage": 0.4838
+            "folds": 240,
+            "pool_coverage": 0.4908,
+            "se": 0.0063,
+            "baseline": 0.5
           },
           "500": {
-            "folds": 120,
-            "pool_coverage": 0.4808
+            "folds": 240,
+            "pool_coverage": 0.4885,
+            "se": 0.0063,
+            "baseline": 0.5
           },
           "1000": {
-            "folds": 120,
-            "pool_coverage": 0.5042
+            "folds": 240,
+            "pool_coverage": 0.496,
+            "se": 0.0063,
+            "baseline": 0.5
           },
           "1500": {
-            "folds": 120,
-            "pool_coverage": 0.4996
+            "folds": 240,
+            "pool_coverage": 0.4973,
+            "se": 0.0063,
+            "baseline": 0.5
           }
         },
-        "summary": "最近2000期以1–80单号衰减频率、遗漏封顶和两两共现为主，并约束每组5个号码覆盖至少三个区间。五组之间主动降低重合，扩大号码覆盖。",
+        "summary": "最近2000期以1–80单号衰减频率、遗漏封顶和两两共现为主，并约束每组号码覆盖至少三个区间。每个选N玩法各自生成5组互不重叠的号码（联合覆盖=5×N个）；顶部清单只展示各玩法得分最高的一组，跨玩法的组之间可能重叠。",
         "signals": [
           {
             "label": "相对活跃号码",
-            "value": "12 · 42 · 69 · 73 · 30 · 39 · 27 · 06 · 61 · 23"
+            "value": "12 · 42 · 69 · 30 · 73 · 39 · 27 · 06 · 61 · 23"
           },
           {
             "label": "较长遗漏",
