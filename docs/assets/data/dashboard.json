@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T11:23:17+08:00",
+  "generated_at": "2026-07-26T11:48:02+08:00",
   "daily_results_date": "2026-07-26",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -144,7 +144,7 @@
       "copy_text": "福彩快乐8 20 31 42 47 55 59 68 71 72 75\n福彩快乐8 03 05 09 17 44 54 56 57 61 73\n福彩快乐8 08 13 19 21 23 32 38 42 48 57"
     }
   ],
-  "source_status": "official_api",
+  "source_status": "cached_verified_data",
   "disclaimer": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。模型相对评分仅表示本页综合候选之间的排序，不是真实中奖概率。",
   "games": {
     "dlt": {
@@ -152,7 +152,7 @@
       "model_version": "v3.1-rolling-ensemble-with-coverage",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-07-26T11:23:17+08:00",
+      "generated_at": "2026-07-26T11:48:02+08:00",
       "latest_issue": "26083",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
