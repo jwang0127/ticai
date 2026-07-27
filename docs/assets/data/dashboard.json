@@ -1,150 +1,150 @@
 {
-  "generated_at": "2026-07-27T00:12:25+08:00",
-  "daily_results_date": "2026-07-27",
+  "generated_at": "2026-07-28T00:31:16+08:00",
+  "daily_results_date": "2026-07-28",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
     {
       "game": "dlt",
       "name": "超级大乐透",
-      "result": "03 04 17 21 34 + 11 12；13 17 20 21 27 + 04 05；06 12 27 33 34 + 05 07",
+      "result": "04 18 23 24 25 + 02 03；01 06 09 12 23 + 02 07；02 03 10 19 27 + 02 12",
       "results": [
         {
-          "result": "03 04 17 21 34 + 11 12",
+          "result": "04 18 23 24 25 + 02 03",
           "scheme": "date_hash"
         },
         {
-          "result": "13 17 20 21 27 + 04 05",
+          "result": "01 06 09 12 23 + 02 07",
           "scheme": "position_map"
         },
         {
-          "result": "06 12 27 33 34 + 05 07",
+          "result": "02 03 10 19 27 + 02 12",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "超级大乐透 03 04 17 21 34 + 11 12\n超级大乐透 13 17 20 21 27 + 04 05\n超级大乐透 06 12 27 33 34 + 05 07"
+      "copy_text": "超级大乐透 04 18 23 24 25 + 02 03\n超级大乐透 01 06 09 12 23 + 02 07\n超级大乐透 02 03 10 19 27 + 02 12"
     },
     {
       "game": "pl3",
       "name": "排列3",
-      "result": "120；705；644",
+      "result": "894；824；324",
       "results": [
         {
-          "result": "120",
+          "result": "894",
           "scheme": "date_hash"
         },
         {
-          "result": "705",
+          "result": "824",
           "scheme": "position_map"
         },
         {
-          "result": "644",
+          "result": "324",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "排列3 120\n排列3 705\n排列3 644"
+      "copy_text": "排列3 894\n排列3 824\n排列3 324"
     },
     {
       "game": "pl5",
       "name": "排列5",
-      "result": "44802；40942；24053",
+      "result": "62667；29454；89789",
       "results": [
         {
-          "result": "44802",
+          "result": "62667",
           "scheme": "date_hash"
         },
         {
-          "result": "40942",
+          "result": "29454",
           "scheme": "position_map"
         },
         {
-          "result": "24053",
+          "result": "89789",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "排列5 44802\n排列5 40942\n排列5 24053"
+      "copy_text": "排列5 62667\n排列5 29454\n排列5 89789"
     },
     {
       "game": "fc3d",
       "name": "福彩3D",
-      "result": "640；125；505",
+      "result": "004；019；103",
       "results": [
         {
-          "result": "640",
+          "result": "004",
           "scheme": "date_hash"
         },
         {
-          "result": "125",
+          "result": "019",
           "scheme": "position_map"
         },
         {
-          "result": "505",
+          "result": "103",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "福彩3D 640\n福彩3D 125\n福彩3D 505"
+      "copy_text": "福彩3D 004\n福彩3D 019\n福彩3D 103"
     },
     {
       "game": "qxc",
       "name": "体彩7星彩",
-      "result": "3382652；1795229；4053725",
+      "result": "2906577；8077987；8439077",
       "results": [
         {
-          "result": "3382652",
+          "result": "2906577",
           "scheme": "date_hash"
         },
         {
-          "result": "1795229",
+          "result": "8077987",
           "scheme": "position_map"
         },
         {
-          "result": "4053725",
+          "result": "8439077",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "体彩7星彩 3382652\n体彩7星彩 1795229\n体彩7星彩 4053725"
+      "copy_text": "体彩7星彩 2906577\n体彩7星彩 8077987\n体彩7星彩 8439077"
     },
     {
       "game": "ssq",
       "name": "福彩双色球",
-      "result": "03 11 13 22 28 32 + 02；12 14 18 21 28 31 + 07；02 05 15 18 21 25 + 04",
+      "result": "04 05 07 13 20 24 + 04；01 02 07 11 16 22 + 11；08 21 30 31 32 33 + 07",
       "results": [
         {
-          "result": "03 11 13 22 28 32 + 02",
+          "result": "04 05 07 13 20 24 + 04",
           "scheme": "date_hash"
         },
         {
-          "result": "12 14 18 21 28 31 + 07",
+          "result": "01 02 07 11 16 22 + 11",
           "scheme": "position_map"
         },
         {
-          "result": "02 05 15 18 21 25 + 04",
+          "result": "08 21 30 31 32 33 + 07",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "福彩双色球 03 11 13 22 28 32 + 02\n福彩双色球 12 14 18 21 28 31 + 07\n福彩双色球 02 05 15 18 21 25 + 04"
+      "copy_text": "福彩双色球 04 05 07 13 20 24 + 04\n福彩双色球 01 02 07 11 16 22 + 11\n福彩双色球 08 21 30 31 32 33 + 07"
     },
     {
       "game": "kl8",
       "name": "福彩快乐8",
-      "result": "08 35 39 41 46 47 55 56 64 79；04 06 07 18 29 30 41 74 76 77；06 30 32 41 42 49 53 54 65 77",
+      "result": "02 28 29 35 38 59 65 66 76 78；03 05 18 21 24 37 49 58 66 75；09 13 17 19 20 35 68 73 74 78",
       "results": [
         {
-          "result": "08 35 39 41 46 47 55 56 64 79",
+          "result": "02 28 29 35 38 59 65 66 76 78",
           "scheme": "date_hash"
         },
         {
-          "result": "04 06 07 18 29 30 41 74 76 77",
+          "result": "03 05 18 21 24 37 49 58 66 75",
           "scheme": "position_map"
         },
         {
-          "result": "06 30 32 41 42 49 53 54 65 77",
+          "result": "09 13 17 19 20 35 68 73 74 78",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "福彩快乐8 08 35 39 41 46 47 55 56 64 79\n福彩快乐8 04 06 07 18 29 30 41 74 76 77\n福彩快乐8 06 30 32 41 42 49 53 54 65 77"
+      "copy_text": "福彩快乐8 02 28 29 35 38 59 65 66 76 78\n福彩快乐8 03 05 18 21 24 37 49 58 66 75\n福彩快乐8 09 13 17 19 20 35 68 73 74 78"
     }
   ],
-  "source_status": "official_api",
+  "source_status": "cached_verified_data",
   "disclaimer": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。模型相对评分仅表示本页综合候选之间的排序，不是真实中奖概率。",
   "games": {
     "dlt": {
@@ -696,7 +696,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-27T00:12:25+08:00",
+      "generated_at": "2026-07-28T00:31:16+08:00",
       "latest_issue": "26197",
       "latest_draw_date": "2026-07-26",
       "latest_numbers": [
@@ -705,8 +705,8 @@
         "3"
       ],
       "target_issue": "26198",
-      "next_draw_at": "2026-07-27T21:25+08:00",
-      "next_draw_display": "2026年07月27日 21:25（北京时间）",
+      "next_draw_at": "2026-07-28T21:25+08:00",
+      "next_draw_display": "2026年07月28日 21:25（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
@@ -1878,7 +1878,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-27T00:12:25+08:00",
+      "generated_at": "2026-07-28T00:31:16+08:00",
       "latest_issue": "26197",
       "latest_draw_date": "2026-07-26",
       "latest_numbers": [
@@ -1889,8 +1889,8 @@
         "1"
       ],
       "target_issue": "26198",
-      "next_draw_at": "2026-07-27T21:25+08:00",
-      "next_draw_display": "2026年07月27日 21:25（北京时间）",
+      "next_draw_at": "2026-07-28T21:25+08:00",
+      "next_draw_display": "2026年07月28日 21:25（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
@@ -3465,7 +3465,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-27T00:12:25+08:00",
+      "generated_at": "2026-07-28T00:31:16+08:00",
       "latest_issue": "2026197",
       "latest_draw_date": "2026-07-26",
       "latest_numbers": [
@@ -3474,8 +3474,8 @@
         "2"
       ],
       "target_issue": "2026198",
-      "next_draw_at": "2026-07-27T21:15+08:00",
-      "next_draw_display": "2026年07月27日 21:15（北京时间）",
+      "next_draw_at": "2026-07-28T21:15+08:00",
+      "next_draw_display": "2026年07月28日 21:15（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
@@ -4647,7 +4647,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-27T00:12:25+08:00",
+      "generated_at": "2026-07-28T00:31:16+08:00",
       "latest_issue": "26085",
       "latest_draw_date": "2026-07-26",
       "latest_numbers": [
@@ -5326,7 +5326,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-27T00:12:25+08:00",
+      "generated_at": "2026-07-28T00:31:16+08:00",
       "latest_issue": "2026085",
       "latest_draw_date": "2026-07-26",
       "latest_numbers": [
@@ -5823,7 +5823,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-27T00:12:25+08:00",
+      "generated_at": "2026-07-28T00:31:16+08:00",
       "latest_issue": "2026197",
       "latest_draw_date": "2026-07-26",
       "latest_numbers": [
@@ -5849,8 +5849,8 @@
         "75"
       ],
       "target_issue": "2026198",
-      "next_draw_at": "2026-07-27T21:30+08:00",
-      "next_draw_display": "2026年07月27日 21:30（北京时间）",
+      "next_draw_at": "2026-07-28T21:30+08:00",
+      "next_draw_display": "2026年07月28日 21:30（北京时间）",
       "schedule_note": "每日21:30开奖（休市日除外）",
       "candidates": [
         {
