@@ -1,8 +1,21 @@
 {
-  "updated_at": "2026-07-28T11:25:20+08:00",
+  "updated_at": "2026-07-28T11:32:12+08:00",
   "source_status": "pending_cross_check",
   "draws": {
     "dlt": [
+      {
+        "issue": "26084",
+        "draw_date": "2026-07-27",
+        "numbers": [
+          "13",
+          "25",
+          "30",
+          "32",
+          "33",
+          "04",
+          "05"
+        ]
+      },
       {
         "issue": "26083",
         "draw_date": "2026-07-25",
@@ -25988,19 +26001,6 @@
           "33",
           "01",
           "06"
-        ]
-      },
-      {
-        "issue": "13041",
-        "draw_date": "2013-04-13",
-        "numbers": [
-          "03",
-          "13",
-          "14",
-          "15",
-          "34",
-          "05",
-          "08"
         ]
       }
     ],
@@ -188085,6 +188085,11 @@
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/kl8/",
       "issue": "2026198"
+    },
+    "dlt": {
+      "status": "pending",
+      "url": "https://m.lottery.gov.cn/mkjdlt/",
+      "issue": "26084"
     }
   }
 }

@@ -1,51 +1,53 @@
 {
   "dlt": {
-    "issue": "26083",
-    "actual": "14 15 16 23 26 + 07 09",
+    "issue": "26084",
+    "actual": "13 25 30 32 33 + 04 05",
     "previous_candidates": [
-      "01 10 13 26 27 + 02 12",
-      "04 13 18 21 34 + 07 12",
-      "01 13 20 23 26 + 02 08",
-      "06 13 18 23 26 + 02 07",
-      "01 15 21 23 34 + 02 11"
+      "06 15 20 21 27 + 02 11",
+      "04 10 20 26 34 + 02 10",
+      "05 13 15 23 34 + 04 11",
+      "02 13 23 26 34 + 06 12",
+      "09 13 16 26 34 + 02 07"
     ],
     "exact_hits": 0,
     "best_number_hits": 3,
-    "summary": "第26083期按位复盘：候选池覆盖 4 / 7 个位置；不按单期结果追涨参数。",
+    "summary": "第26084期按位复盘：候选池覆盖 1 / 7 个位置；不按单期结果追涨参数。",
     "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
     "position_diagnostics": [
       {
         "position": "前区第1位",
-        "actual_digit": "14",
+        "actual_digit": "13",
         "candidate_digits": [
-          "01",
+          "02",
           "04",
-          "06"
+          "05",
+          "06",
+          "09"
+        ],
+        "candidate_hit_count": 0,
+        "pool_hit": false,
+        "reason": "未命中位置：号码进入前区联合池，但没有落在第1位的排序位置。"
+      },
+      {
+        "position": "前区第2位",
+        "actual_digit": "25",
+        "candidate_digits": [
+          "10",
+          "13",
+          "15"
         ],
         "candidate_hit_count": 0,
         "pool_hit": false,
         "reason": "未命中：号码未进入前区联合池，区域频率、共现和结构分未达到五组阈值。"
       },
       {
-        "position": "前区第2位",
-        "actual_digit": "15",
-        "candidate_digits": [
-          "10",
-          "13",
-          "15"
-        ],
-        "candidate_hit_count": 1,
-        "pool_hit": true,
-        "reason": "命中：前区第2位的历史排序/分区候选池覆盖该号码。"
-      },
-      {
         "position": "前区第3位",
-        "actual_digit": "16",
+        "actual_digit": "30",
         "candidate_digits": [
-          "13",
-          "18",
+          "15",
+          "16",
           "20",
-          "21"
+          "23"
         ],
         "candidate_hit_count": 0,
         "pool_hit": false,
@@ -53,34 +55,34 @@
       },
       {
         "position": "前区第4位",
-        "actual_digit": "23",
+        "actual_digit": "32",
         "candidate_digits": [
           "21",
           "23",
           "26"
         ],
-        "candidate_hit_count": 3,
-        "pool_hit": true,
-        "reason": "命中：前区第4位的历史排序/分区候选池覆盖该号码。"
+        "candidate_hit_count": 0,
+        "pool_hit": false,
+        "reason": "未命中：号码未进入前区联合池，区域频率、共现和结构分未达到五组阈值。"
       },
       {
         "position": "前区第5位",
-        "actual_digit": "26",
+        "actual_digit": "33",
         "candidate_digits": [
-          "26",
           "27",
           "34"
         ],
-        "candidate_hit_count": 2,
-        "pool_hit": true,
-        "reason": "命中：前区第5位的历史排序/分区候选池覆盖该号码。"
+        "candidate_hit_count": 0,
+        "pool_hit": false,
+        "reason": "未命中：号码未进入前区联合池，区域频率、共现和结构分未达到五组阈值。"
       },
       {
         "position": "后区第1位",
-        "actual_digit": "07",
+        "actual_digit": "04",
         "candidate_digits": [
           "02",
-          "07"
+          "04",
+          "06"
         ],
         "candidate_hit_count": 1,
         "pool_hit": true,
@@ -88,10 +90,10 @@
       },
       {
         "position": "后区第2位",
-        "actual_digit": "09",
+        "actual_digit": "05",
         "candidate_digits": [
           "07",
-          "08",
+          "10",
           "11",
           "12"
         ],
@@ -103,31 +105,31 @@
     "region_diagnostics": [
       {
         "region": "前区",
-        "coverage": "3 / 5",
+        "coverage": "1 / 5",
         "hit_numbers": [
-          "15",
-          "23",
-          "26"
+          "13"
         ],
         "missed_numbers": [
-          "14",
-          "16"
+          "25",
+          "30",
+          "32",
+          "33"
         ]
       },
       {
         "region": "后区",
         "coverage": "1 / 2",
         "hit_numbers": [
-          "07"
+          "04"
         ],
         "missed_numbers": [
-          "09"
+          "05"
         ]
       }
     ],
-    "position_pool_coverage": 4,
+    "position_pool_coverage": 1,
     "position_count": 7,
-    "error_attribution": "前区覆盖 3 / 5；后区覆盖 1 / 2。未命中项按区域频率、共现、分区/排序位置和五组多样性约束归因，不把单期结果直接变成追涨规则。",
+    "error_attribution": "前区覆盖 1 / 5；后区覆盖 1 / 2。未命中项按区域频率、共现、分区/排序位置和五组多样性约束归因，不把单期结果直接变成追涨规则。",
     "model_adjustments": [
       "按区域滚动回测选择历史窗口：大乐透前区/后区、双色球红球/蓝球分开校准。",
       "七星彩继续按七个位置建模，复盘同时区分号码命中与位置命中，避免把无序命中误判为有效预测。"

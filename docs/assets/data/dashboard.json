@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:25:21+08:00",
+  "generated_at": "2026-07-28T11:34:26+08:00",
   "daily_results_date": "2026-07-28",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -175,10 +175,28 @@
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/kl8/",
       "issue": "2026198"
+    },
+    "dlt": {
+      "status": "pending",
+      "url": "https://m.lottery.gov.cn/mkjdlt/",
+      "issue": "26084"
     }
   },
   "draw_history": {
     "dlt": [
+      {
+        "issue": "26084",
+        "draw_date": "2026-07-27",
+        "numbers": [
+          "13",
+          "25",
+          "30",
+          "32",
+          "33",
+          "04",
+          "05"
+        ]
+      },
       {
         "issue": "26083",
         "draw_date": "2026-07-25",
@@ -5364,19 +5382,6 @@
           "31",
           "06",
           "12"
-        ]
-      },
-      {
-        "issue": "23136",
-        "draw_date": "2023-11-27",
-        "numbers": [
-          "13",
-          "23",
-          "27",
-          "30",
-          "34",
-          "06",
-          "09"
         ]
       }
     ],
@@ -37802,219 +37807,219 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-07-27T00:12:25+08:00",
-      "latest_issue": "26083",
-      "latest_draw_date": "2026-07-25",
+      "generated_at": "2026-07-28T11:34:26+08:00",
+      "latest_issue": "26084",
+      "latest_draw_date": "2026-07-27",
       "latest_numbers": [
-        "14",
-        "15",
-        "16",
-        "23",
-        "26",
-        "07",
-        "09"
+        "13",
+        "25",
+        "30",
+        "32",
+        "33",
+        "04",
+        "05"
       ],
-      "target_issue": "26084",
-      "next_draw_at": "2026-07-27T21:25+08:00",
-      "next_draw_display": "2026年07月27日 21:25（北京时间）",
+      "target_issue": "26085",
+      "next_draw_at": "2026-07-29T21:25+08:00",
+      "next_draw_display": "2026年07月29日 21:25（北京时间）",
       "schedule_note": "每周一、三、六开奖",
       "candidates": [
         {
           "front": [
-            6,
+            12,
+            13,
             15,
-            20,
             21,
-            27
+            26
           ],
           "back": [
             2,
-            11
+            12
           ],
           "source": "model_primary",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "超级大乐透 06 15 20 21 27 + 02 11"
+          "copy_text": "超级大乐透 12 13 15 21 26 + 02 12"
         },
         {
           "front": [
             4,
-            10,
-            20,
-            26,
-            34
-          ],
-          "back": [
-            2,
-            10
-          ],
-          "source": "model_primary",
-          "rank": 2,
-          "confidence": 69.9,
-          "copy_text": "超级大乐透 04 10 20 26 34 + 02 10"
-        },
-        {
-          "front": [
-            5,
             13,
-            15,
+            21,
             23,
             34
           ],
           "back": [
-            4,
+            7,
+            12
+          ],
+          "source": "model_primary",
+          "rank": 2,
+          "confidence": 75.4,
+          "copy_text": "超级大乐透 04 13 21 23 34 + 07 12"
+        },
+        {
+          "front": [
+            1,
+            10,
+            22,
+            24,
+            34
+          ],
+          "back": [
+            2,
             11
           ],
           "source": "model_primary",
           "rank": 3,
-          "confidence": 63.1,
-          "copy_text": "超级大乐透 05 13 15 23 34 + 04 11"
+          "confidence": 64.7,
+          "copy_text": "超级大乐透 01 10 22 24 34 + 02 11"
         },
         {
           "front": [
-            2,
+            3,
             13,
-            23,
-            26,
-            34
+            16,
+            27,
+            33
           ],
           "back": [
-            6,
-            12
+            1,
+            5
           ],
           "source": "cold_reverse",
           "mix_label": "冷门反选",
           "rank": 4,
-          "confidence": 53.1,
-          "copy_text": "超级大乐透 02 13 23 26 34 + 06 12"
+          "confidence": 53.6,
+          "copy_text": "超级大乐透 03 13 16 27 33 + 01 05"
         },
         {
           "front": [
-            9,
+            8,
             13,
-            16,
-            26,
-            34
+            20,
+            28,
+            32
           ],
           "back": [
-            2,
-            7
+            9,
+            10
           ],
           "source": "cold_reverse",
           "mix_label": "冷门反选",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "超级大乐透 09 13 16 26 34 + 02 07"
+          "copy_text": "超级大乐透 08 13 20 28 32 + 09 10"
         }
       ],
       "top_candidates": [
         {
           "front": [
-            6,
+            12,
+            13,
             15,
-            20,
             21,
-            27
+            26
           ],
           "back": [
             2,
-            11
+            12
           ],
           "source": "model_primary",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "超级大乐透 06 15 20 21 27 + 02 11"
+          "copy_text": "超级大乐透 12 13 15 21 26 + 02 12"
         },
         {
           "front": [
             4,
-            10,
-            20,
-            26,
-            34
-          ],
-          "back": [
-            2,
-            10
-          ],
-          "source": "model_primary",
-          "rank": 2,
-          "confidence": 69.9,
-          "copy_text": "超级大乐透 04 10 20 26 34 + 02 10"
-        },
-        {
-          "front": [
-            5,
             13,
-            15,
+            21,
             23,
             34
           ],
           "back": [
-            4,
+            7,
+            12
+          ],
+          "source": "model_primary",
+          "rank": 2,
+          "confidence": 75.4,
+          "copy_text": "超级大乐透 04 13 21 23 34 + 07 12"
+        },
+        {
+          "front": [
+            1,
+            10,
+            22,
+            24,
+            34
+          ],
+          "back": [
+            2,
             11
           ],
           "source": "model_primary",
           "rank": 3,
-          "confidence": 63.1,
-          "copy_text": "超级大乐透 05 13 15 23 34 + 04 11"
+          "confidence": 64.7,
+          "copy_text": "超级大乐透 01 10 22 24 34 + 02 11"
         },
         {
           "front": [
-            2,
+            3,
             13,
-            23,
-            26,
-            34
+            16,
+            27,
+            33
           ],
           "back": [
-            6,
-            12
+            1,
+            5
           ],
           "source": "cold_reverse",
           "mix_label": "冷门反选",
           "rank": 4,
-          "confidence": 53.1,
-          "copy_text": "超级大乐透 02 13 23 26 34 + 06 12"
+          "confidence": 53.6,
+          "copy_text": "超级大乐透 03 13 16 27 33 + 01 05"
         },
         {
           "front": [
-            9,
+            8,
             13,
-            16,
-            26,
-            34
+            20,
+            28,
+            32
           ],
           "back": [
-            2,
-            7
+            9,
+            10
           ],
           "source": "cold_reverse",
           "mix_label": "冷门反选",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "超级大乐透 09 13 16 26 34 + 02 07"
+          "copy_text": "超级大乐透 08 13 20 28 32 + 09 10"
         }
       ],
       "review": {
-        "title": "第26083期结构复盘",
-        "summary": "前区和值94、跨度12，奇偶比2:3；后区号码7、9。与前一期前区重号2个。",
+        "title": "第26084期结构复盘",
+        "summary": "前区和值133、跨度20，奇偶比3:2；后区号码4、5。与前一期前区重号0个。",
         "metrics": [
           {
             "label": "前区和值",
-            "value": "94"
+            "value": "133"
           },
           {
             "label": "前区跨度",
-            "value": "12"
+            "value": "20"
           },
           {
             "label": "前区奇偶",
-            "value": "2:3"
+            "value": "3:2"
           },
           {
             "label": "后区和值",
-            "value": "16"
+            "value": "9"
           }
         ]
       },
@@ -38058,8 +38063,8 @@
             "position": "前区第5位",
             "hot_numbers": [
               "34",
-              "32",
-              "26"
+              "33",
+              "32"
             ]
           },
           {
@@ -38081,20 +38086,20 @@
         ],
         "selected_window": 1500,
         "selected_region_windows": {
-          "front": 1500,
+          "front": 500,
           "back": 1500
         },
         "region_backtest": {
           "front": {
             "100": {
               "folds": 240,
-              "pool_coverage": 0.5267,
+              "pool_coverage": 0.525,
               "se": 0.0135,
               "baseline": 0.5143
             },
             "300": {
               "folds": 240,
-              "pool_coverage": 0.515,
+              "pool_coverage": 0.5142,
               "se": 0.0136,
               "baseline": 0.5143
             },
@@ -38106,13 +38111,13 @@
             },
             "1000": {
               "folds": 240,
-              "pool_coverage": 0.5092,
+              "pool_coverage": 0.5083,
               "se": 0.0136,
               "baseline": 0.5143
             },
             "1500": {
               "folds": 240,
-              "pool_coverage": 0.5125,
+              "pool_coverage": 0.51,
               "se": 0.0136,
               "baseline": 0.5143
             }
@@ -38126,25 +38131,25 @@
             },
             "300": {
               "folds": 240,
-              "pool_coverage": 0.5229,
+              "pool_coverage": 0.525,
               "se": 0.0217,
               "baseline": 0.5
             },
             "500": {
               "folds": 240,
-              "pool_coverage": 0.5146,
-              "se": 0.0218,
+              "pool_coverage": 0.5167,
+              "se": 0.0217,
               "baseline": 0.5
             },
             "1000": {
               "folds": 240,
-              "pool_coverage": 0.4771,
+              "pool_coverage": 0.4792,
               "se": 0.0217,
               "baseline": 0.5
             },
             "1500": {
               "folds": 240,
-              "pool_coverage": 0.5083,
+              "pool_coverage": 0.5104,
               "se": 0.0218,
               "baseline": 0.5
             }
@@ -38153,31 +38158,31 @@
         "backtest": {
           "100": {
             "folds": 240,
-            "pool_coverage": 0.6089,
+            "pool_coverage": 0.6071,
             "se": 0.0119,
             "baseline": 0.6486
           },
           "300": {
             "folds": 240,
-            "pool_coverage": 0.6375,
+            "pool_coverage": 0.6357,
             "se": 0.0117,
             "baseline": 0.6486
           },
           "500": {
             "folds": 240,
-            "pool_coverage": 0.6351,
-            "se": 0.0117,
+            "pool_coverage": 0.6327,
+            "se": 0.0118,
             "baseline": 0.6486
           },
           "1000": {
             "folds": 240,
-            "pool_coverage": 0.6476,
+            "pool_coverage": 0.6458,
             "se": 0.0117,
             "baseline": 0.6486
           },
           "1500": {
             "folds": 240,
-            "pool_coverage": 0.6536,
+            "pool_coverage": 0.6518,
             "se": 0.0116,
             "baseline": 0.6486
           }
@@ -38193,7 +38198,7 @@
           },
           {
             "label": "前区较长遗漏",
-            "value": "09（28期）、07（21期）、31（20期）、17（19期）、03（15期）"
+            "value": "09（29期）、07（22期）、31（21期）、17（20期）、03（16期）"
           }
         ],
         "method": [
@@ -38203,52 +38208,54 @@
         ]
       },
       "model_review": {
-        "issue": "26083",
-        "actual": "14 15 16 23 26 + 07 09",
+        "issue": "26084",
+        "actual": "13 25 30 32 33 + 04 05",
         "previous_candidates": [
-          "01 10 13 26 27 + 02 12",
-          "04 13 18 21 34 + 07 12",
-          "01 13 20 23 26 + 02 08",
-          "06 13 18 23 26 + 02 07",
-          "01 15 21 23 34 + 02 11"
+          "06 15 20 21 27 + 02 11",
+          "04 10 20 26 34 + 02 10",
+          "05 13 15 23 34 + 04 11",
+          "02 13 23 26 34 + 06 12",
+          "09 13 16 26 34 + 02 07"
         ],
         "exact_hits": 0,
         "best_number_hits": 3,
-        "summary": "第26083期按位复盘：候选池覆盖 4 / 7 个位置；不按单期结果追涨参数。",
+        "summary": "第26084期按位复盘：候选池覆盖 1 / 7 个位置；不按单期结果追涨参数。",
         "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
         "position_diagnostics": [
           {
             "position": "前区第1位",
-            "actual_digit": "14",
+            "actual_digit": "13",
             "candidate_digits": [
-              "01",
+              "02",
               "04",
-              "06"
+              "05",
+              "06",
+              "09"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中位置：号码进入前区联合池，但没有落在第1位的排序位置。"
+          },
+          {
+            "position": "前区第2位",
+            "actual_digit": "25",
+            "candidate_digits": [
+              "10",
+              "13",
+              "15"
             ],
             "candidate_hit_count": 0,
             "pool_hit": false,
             "reason": "未命中：号码未进入前区联合池，区域频率、共现和结构分未达到五组阈值。"
           },
           {
-            "position": "前区第2位",
-            "actual_digit": "15",
-            "candidate_digits": [
-              "10",
-              "13",
-              "15"
-            ],
-            "candidate_hit_count": 1,
-            "pool_hit": true,
-            "reason": "命中：前区第2位的历史排序/分区候选池覆盖该号码。"
-          },
-          {
             "position": "前区第3位",
-            "actual_digit": "16",
+            "actual_digit": "30",
             "candidate_digits": [
-              "13",
-              "18",
+              "15",
+              "16",
               "20",
-              "21"
+              "23"
             ],
             "candidate_hit_count": 0,
             "pool_hit": false,
@@ -38256,34 +38263,34 @@
           },
           {
             "position": "前区第4位",
-            "actual_digit": "23",
+            "actual_digit": "32",
             "candidate_digits": [
               "21",
               "23",
               "26"
             ],
-            "candidate_hit_count": 3,
-            "pool_hit": true,
-            "reason": "命中：前区第4位的历史排序/分区候选池覆盖该号码。"
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：号码未进入前区联合池，区域频率、共现和结构分未达到五组阈值。"
           },
           {
             "position": "前区第5位",
-            "actual_digit": "26",
+            "actual_digit": "33",
             "candidate_digits": [
-              "26",
               "27",
               "34"
             ],
-            "candidate_hit_count": 2,
-            "pool_hit": true,
-            "reason": "命中：前区第5位的历史排序/分区候选池覆盖该号码。"
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：号码未进入前区联合池，区域频率、共现和结构分未达到五组阈值。"
           },
           {
             "position": "后区第1位",
-            "actual_digit": "07",
+            "actual_digit": "04",
             "candidate_digits": [
               "02",
-              "07"
+              "04",
+              "06"
             ],
             "candidate_hit_count": 1,
             "pool_hit": true,
@@ -38291,10 +38298,10 @@
           },
           {
             "position": "后区第2位",
-            "actual_digit": "09",
+            "actual_digit": "05",
             "candidate_digits": [
               "07",
-              "08",
+              "10",
               "11",
               "12"
             ],
@@ -38306,31 +38313,31 @@
         "region_diagnostics": [
           {
             "region": "前区",
-            "coverage": "3 / 5",
+            "coverage": "1 / 5",
             "hit_numbers": [
-              "15",
-              "23",
-              "26"
+              "13"
             ],
             "missed_numbers": [
-              "14",
-              "16"
+              "25",
+              "30",
+              "32",
+              "33"
             ]
           },
           {
             "region": "后区",
             "coverage": "1 / 2",
             "hit_numbers": [
-              "07"
+              "04"
             ],
             "missed_numbers": [
-              "09"
+              "05"
             ]
           }
         ],
-        "position_pool_coverage": 4,
+        "position_pool_coverage": 1,
         "position_count": 7,
-        "error_attribution": "前区覆盖 3 / 5；后区覆盖 1 / 2。未命中项按区域频率、共现、分区/排序位置和五组多样性约束归因，不把单期结果直接变成追涨规则。",
+        "error_attribution": "前区覆盖 1 / 5；后区覆盖 1 / 2。未命中项按区域频率、共现、分区/排序位置和五组多样性约束归因，不把单期结果直接变成追涨规则。",
         "model_adjustments": [
           "按区域滚动回测选择历史窗口：大乐透前区/后区、双色球红球/蓝球分开校准。",
           "七星彩继续按七个位置建模，复盘同时区分号码命中与位置命中，避免把无序命中误判为有效预测。"
@@ -38344,7 +38351,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-28T11:25:21+08:00",
+      "generated_at": "2026-07-28T11:34:26+08:00",
       "latest_issue": "26198",
       "latest_draw_date": "2026-07-27",
       "latest_numbers": [
@@ -39528,7 +39535,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-28T11:25:21+08:00",
+      "generated_at": "2026-07-28T11:34:26+08:00",
       "latest_issue": "26198",
       "latest_draw_date": "2026-07-27",
       "latest_numbers": [
@@ -41115,7 +41122,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-28T11:25:21+08:00",
+      "generated_at": "2026-07-28T11:34:26+08:00",
       "latest_issue": "2026198",
       "latest_draw_date": "2026-07-27",
       "latest_numbers": [
@@ -42301,7 +42308,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-28T11:25:21+08:00",
+      "generated_at": "2026-07-28T11:34:26+08:00",
       "latest_issue": "26085",
       "latest_draw_date": "2026-07-26",
       "latest_numbers": [
@@ -42980,7 +42987,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-28T11:25:21+08:00",
+      "generated_at": "2026-07-28T11:34:26+08:00",
       "latest_issue": "2026085",
       "latest_draw_date": "2026-07-26",
       "latest_numbers": [
@@ -43019,37 +43026,19 @@
           "red": [
             1,
             4,
-            7,
+            5,
             10,
-            14,
-            28
+            18,
+            24
           ],
           "blue": [
-            7
+            5
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
           "rank": 2,
-          "confidence": 67.7,
-          "copy_text": "福彩双色球 01 04 07 10 14 28 + 07"
-        },
-        {
-          "red": [
-            3,
-            8,
-            17,
-            24,
-            25,
-            28
-          ],
-          "blue": [
-            4
-          ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
-          "rank": 3,
-          "confidence": 66.2,
-          "copy_text": "福彩双色球 03 08 17 24 25 28 + 04"
+          "confidence": 68.5,
+          "copy_text": "福彩双色球 01 04 05 10 18 24 + 05"
         },
         {
           "red": [
@@ -43063,20 +43052,38 @@
           "blue": [
             12
           ],
-          "mix_label": "冷门反选",
-          "source": "cold_reverse",
-          "rank": 4,
-          "confidence": 52.6,
+          "mix_label": "红蓝分区共现模型",
+          "source": "ssq_zone",
+          "rank": 3,
+          "confidence": 62.8,
           "copy_text": "福彩双色球 07 11 16 27 28 30 + 12"
         },
         {
           "red": [
+            2,
             5,
-            18,
+            8,
             19,
-            23,
-            24,
-            28
+            21,
+            23
+          ],
+          "blue": [
+            4
+          ],
+          "mix_label": "冷门反选",
+          "source": "cold_reverse",
+          "rank": 4,
+          "confidence": 52.6,
+          "copy_text": "福彩双色球 02 05 08 19 21 23 + 04"
+        },
+        {
+          "red": [
+            3,
+            18,
+            25,
+            29,
+            32,
+            33
           ],
           "blue": [
             15
@@ -43085,7 +43092,7 @@
           "source": "cold_reverse",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩双色球 05 18 19 23 24 28 + 15"
+          "copy_text": "福彩双色球 03 18 25 29 32 33 + 15"
         }
       ],
       "top_candidates": [
@@ -43111,37 +43118,19 @@
           "red": [
             1,
             4,
-            7,
+            5,
             10,
-            14,
-            28
+            18,
+            24
           ],
           "blue": [
-            7
+            5
           ],
           "mix_label": "红蓝分区共现模型",
           "source": "ssq_zone",
           "rank": 2,
-          "confidence": 67.7,
-          "copy_text": "福彩双色球 01 04 07 10 14 28 + 07"
-        },
-        {
-          "red": [
-            3,
-            8,
-            17,
-            24,
-            25,
-            28
-          ],
-          "blue": [
-            4
-          ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
-          "rank": 3,
-          "confidence": 66.2,
-          "copy_text": "福彩双色球 03 08 17 24 25 28 + 04"
+          "confidence": 68.5,
+          "copy_text": "福彩双色球 01 04 05 10 18 24 + 05"
         },
         {
           "red": [
@@ -43155,20 +43144,38 @@
           "blue": [
             12
           ],
-          "mix_label": "冷门反选",
-          "source": "cold_reverse",
-          "rank": 4,
-          "confidence": 52.6,
+          "mix_label": "红蓝分区共现模型",
+          "source": "ssq_zone",
+          "rank": 3,
+          "confidence": 62.8,
           "copy_text": "福彩双色球 07 11 16 27 28 30 + 12"
         },
         {
           "red": [
+            2,
             5,
-            18,
+            8,
             19,
-            23,
-            24,
-            28
+            21,
+            23
+          ],
+          "blue": [
+            4
+          ],
+          "mix_label": "冷门反选",
+          "source": "cold_reverse",
+          "rank": 4,
+          "confidence": 52.6,
+          "copy_text": "福彩双色球 02 05 08 19 21 23 + 04"
+        },
+        {
+          "red": [
+            3,
+            18,
+            25,
+            29,
+            32,
+            33
           ],
           "blue": [
             15
@@ -43177,7 +43184,7 @@
           "source": "cold_reverse",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩双色球 05 18 19 23 24 28 + 15"
+          "copy_text": "福彩双色球 03 18 25 29 32 33 + 15"
         }
       ],
       "review": {
@@ -43477,7 +43484,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-28T11:25:21+08:00",
+      "generated_at": "2026-07-28T11:34:26+08:00",
       "latest_issue": "2026198",
       "latest_draw_date": "2026-07-27",
       "latest_numbers": [

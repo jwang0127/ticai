@@ -95,6 +95,8 @@ class DetailPageTests(unittest.TestCase):
         self.assertGreaterEqual(len(front_union), 15)
         self.assertGreaterEqual(len(back_union), 6)
         self.assertEqual(len({tuple(item["back"]) for item in candidates}), 5)
+        self.assertGreaterEqual(len(front_union), 20)
+        self.assertGreaterEqual(len(back_union), 8)
 
     def test_incremental_backtest_matches_naive_reference(self):
         rows = self.rows[:400]
@@ -160,7 +162,10 @@ class DetailPageTests(unittest.TestCase):
     def test_ssq_red_union_spans_the_board(self):
         candidates, _ = generate_ssq(self.ssq_rows, "2026083")
         red_union = set().union(*(set(item["red"]) for item in candidates))
-        self.assertGreaterEqual(len(red_union), 22)
+        self.assertGreaterEqual(len(red_union), 26)
+        for index, left in enumerate(candidates):
+            for right in candidates[index + 1:]:
+                self.assertLessEqual(len(set(left["red"]) & set(right["red"])), 1)
 
     def test_coverage_repair_spreads_pool_digits_directly(self):
         # The end-to-end assertions above pass even without the repair,

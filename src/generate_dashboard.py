@@ -31,7 +31,14 @@ try:
 except ZoneInfoNotFoundError:
     TZ = timezone(timedelta(hours=8))
 RECENCY_DECAY = 18
-DLT_DIVERSITY_PENALTY = 0.06
+# Stronger line-level dispersion keeps five tickets from inheriting the same
+# sorted front positions. This only changes the portfolio mix, not per-number
+# probabilities; the backtest compares the wider union against the old floor.
+DLT_DIVERSITY_PENALTY = 0.12
+DLT_FRONT_UNION_FLOOR = 20
+DLT_BACK_UNION_FLOOR = 8
+SSQ_RED_OVERLAP_LIMIT = 1
+SSQ_RED_UNION_FLOOR = 26
 WINDOW_BLEND = ((50, 0.15), (100, 0.20), (300, 0.20), (500, 0.20), (1000, 0.15), (1500, 0.10))
 
 # 排列3/排列5共享位置模型；福彩3D使用独立参数。7星彩和双色球另有专用生成器。
@@ -836,8 +843,8 @@ def generate_dlt(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
 
     coverage_floors = (
         (lambda front, back, pairs: pairs, 5),
-        (lambda front, back, pairs: back, 6),
-        (lambda front, back, pairs: front, 15),
+        (lambda front, back, pairs: back, DLT_BACK_UNION_FLOOR),
+        (lambda front, back, pairs: front, DLT_FRONT_UNION_FLOOR),
     )
     for metric, floor in coverage_floors:
         for _ in range(10):
@@ -1036,8 +1043,8 @@ def generate_ssq(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
     # ball and the same hot red cluster. Both failure modes invalidate every
     # line at once, so the composite hedges twice: one strong line per blue
     # band (fifth line = next-best unused blue), and each new line may overlap
-    # the growing red union by at most two numbers, which guarantees the five
-    # lines span at least 22 of the 33 red balls. When the sampled pool has no
+    # the growing red union by at most one number, which targets a wider
+    # 26-number red union across the five lines. When the sampled pool has no
     # such line, one is constructed from the strongest unused reds.
     def red_union_of(picks: list) -> set[int]:
         return set().union(*(set(key[0]) for key, _ in picks)) if picks else set()
@@ -1060,7 +1067,7 @@ def generate_ssq(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
                 item for item in ranked_all
                 if low <= item[0][1] <= high
                 and item[0][1] not in used_blues
-                and len(set(item[0][0]) & union) <= 2
+                and len(set(item[0][0]) & union) <= SSQ_RED_OVERLAP_LIMIT
             ),
             None,
         ) or constructed_line(low, high, union)
@@ -1070,7 +1077,7 @@ def generate_ssq(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
     fifth = next(
         (
             item for item in ranked_all
-            if item[0][1] not in used_blues and len(set(item[0][0]) & union) <= 2
+            if item[0][1] not in used_blues and len(set(item[0][0]) & union) <= SSQ_RED_OVERLAP_LIMIT
         ),
         None,
     ) or constructed_line(1, 16, union)
