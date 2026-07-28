@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-28T11:32:12+08:00",
-  "source_status": "pending_cross_check",
+  "updated_at": "2026-07-28T13:04:34+08:00",
+  "source_status": "cached_verified_data",
   "draws": {
     "dlt": [
       {
@@ -188054,42 +188054,57 @@
       "role": "福彩快乐8官方开奖来源"
     }
   ],
-  "errors": {},
+  "errors": {
+    "ssq": "中国福彩网福彩双色球接口请求失败: HTTP Error 403: Forbidden",
+    "fc3d": "中国福彩网福彩3D接口请求失败: HTTP Error 403: Forbidden",
+    "kl8": "中国福彩网福彩快乐8接口请求失败: HTTP Error 403: Forbidden",
+    "qxc": "官方接口请求失败: HTTP Error 567: Unknown Status",
+    "dlt": "官方接口请求失败: HTTP Error 567: Unknown Status",
+    "pl5": "官方接口请求失败: HTTP Error 567: Unknown Status",
+    "pl3": "官方接口请求失败: HTTP Error 567: Unknown Status"
+  },
   "verification": {
     "pl3": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26198"
+      "issue": "26198",
+      "error": "HTTP Error 567: Unknown Status"
     },
     "pl5": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26198"
+      "issue": "26198",
+      "error": "<urlopen error _ssl.c:993: The handshake operation timed out>"
     },
     "fc3d": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/mkjqxc/?SHA=false",
-      "issue": "2026198"
+      "issue": "2026198",
+      "error": "HTTP Error 567: Unknown Status"
     },
     "qxc": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/tcwm/qxc/",
-      "issue": "26085"
+      "issue": "26085",
+      "error": "HTTP Error 567: Unknown Status"
     },
     "ssq": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/ssq/",
-      "issue": "2026085"
+      "issue": "2026085",
+      "error": "HTTP Error 403: Forbidden"
     },
     "kl8": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/kl8/",
-      "issue": "2026198"
+      "issue": "2026198",
+      "error": "HTTP Error 403: Forbidden"
     },
     "dlt": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/mkjdlt/",
-      "issue": "26084"
+      "issue": "26084",
+      "error": "HTTP Error 567: Unknown Status"
     }
   }
 }

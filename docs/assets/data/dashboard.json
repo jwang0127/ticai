@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:34:26+08:00",
+  "generated_at": "2026-07-28T13:04:34+08:00",
   "daily_results_date": "2026-07-28",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -144,42 +144,49 @@
       "copy_text": "福彩快乐8 02 28 29 35 38 59 65 66 76 78\n福彩快乐8 03 05 18 21 24 37 49 58 66 75\n福彩快乐8 09 13 17 19 20 35 68 73 74 78"
     }
   ],
-  "source_status": "pending_cross_check",
+  "source_status": "cached_verified_data",
   "verification": {
     "pl3": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26198"
+      "issue": "26198",
+      "error": "HTTP Error 567: Unknown Status"
     },
     "pl5": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26198"
+      "issue": "26198",
+      "error": "<urlopen error _ssl.c:993: The handshake operation timed out>"
     },
     "fc3d": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/mkjqxc/?SHA=false",
-      "issue": "2026198"
+      "issue": "2026198",
+      "error": "HTTP Error 567: Unknown Status"
     },
     "qxc": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/tcwm/qxc/",
-      "issue": "26085"
+      "issue": "26085",
+      "error": "HTTP Error 567: Unknown Status"
     },
     "ssq": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/ssq/",
-      "issue": "2026085"
+      "issue": "2026085",
+      "error": "HTTP Error 403: Forbidden"
     },
     "kl8": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/kl8/",
-      "issue": "2026198"
+      "issue": "2026198",
+      "error": "HTTP Error 403: Forbidden"
     },
     "dlt": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/mkjdlt/",
-      "issue": "26084"
+      "issue": "26084",
+      "error": "HTTP Error 567: Unknown Status"
     }
   },
   "draw_history": {
@@ -37807,7 +37814,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-07-28T11:34:26+08:00",
+      "generated_at": "2026-07-28T13:04:34+08:00",
       "latest_issue": "26084",
       "latest_draw_date": "2026-07-27",
       "latest_numbers": [
@@ -38351,7 +38358,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-28T11:34:26+08:00",
+      "generated_at": "2026-07-28T13:04:34+08:00",
       "latest_issue": "26198",
       "latest_draw_date": "2026-07-27",
       "latest_numbers": [
@@ -39535,7 +39542,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-28T11:34:26+08:00",
+      "generated_at": "2026-07-28T13:04:34+08:00",
       "latest_issue": "26198",
       "latest_draw_date": "2026-07-27",
       "latest_numbers": [
@@ -41122,7 +41129,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-28T11:34:26+08:00",
+      "generated_at": "2026-07-28T13:04:34+08:00",
       "latest_issue": "2026198",
       "latest_draw_date": "2026-07-27",
       "latest_numbers": [
@@ -42308,7 +42315,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-28T11:34:26+08:00",
+      "generated_at": "2026-07-28T13:04:34+08:00",
       "latest_issue": "26085",
       "latest_draw_date": "2026-07-26",
       "latest_numbers": [
@@ -42987,7 +42994,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-28T11:34:26+08:00",
+      "generated_at": "2026-07-28T13:04:34+08:00",
       "latest_issue": "2026085",
       "latest_draw_date": "2026-07-26",
       "latest_numbers": [
@@ -43484,7 +43491,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-28T11:34:26+08:00",
+      "generated_at": "2026-07-28T13:04:34+08:00",
       "latest_issue": "2026198",
       "latest_draw_date": "2026-07-27",
       "latest_numbers": [
