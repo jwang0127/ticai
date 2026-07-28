@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T00:31:16+08:00",
+  "generated_at": "2026-07-28T11:27:45+08:00",
   "daily_results_date": "2026-07-28",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -154,7 +154,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-07-27T00:12:25+08:00",
+      "generated_at": "2026-07-28T11:27:45+08:00",
       "latest_issue": "26083",
       "latest_draw_date": "2026-07-25",
       "latest_numbers": [
@@ -167,8 +167,8 @@
         "09"
       ],
       "target_issue": "26084",
-      "next_draw_at": "2026-07-27T21:25+08:00",
-      "next_draw_display": "2026年07月27日 21:25（北京时间）",
+      "next_draw_at": "2026-07-29T21:25+08:00",
+      "next_draw_display": "2026年07月29日 21:25（北京时间）",
       "schedule_note": "每周一、三、六开奖",
       "candidates": [
         {
