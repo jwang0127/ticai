@@ -1622,6 +1622,7 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="生成体彩数据看板")
     parser.add_argument("--games", default="dlt,pl3,pl5,fc3d,qxc,ssq,kl8", help="只刷新指定玩法，逗号分隔")
+    parser.add_argument("--today", action="store_true", help="只刷新北京时间今天安排开奖的彩种")
     return parser.parse_args()
 
 
@@ -1630,7 +1631,10 @@ def main() -> None:
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     source_data = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     model_reviews = json.loads(REVIEWS_PATH.read_text(encoding="utf-8")) if REVIEWS_PATH.exists() else {}
-    selected = [game.strip() for game in args.games.split(",") if game.strip()]
+    selected = [
+        game for game, cfg in config["games"].items()
+        if datetime.now(TZ).weekday() in cfg.get("draw_weekdays", list(range(7)))
+    ] if args.today else [game.strip() for game in args.games.split(",") if game.strip()]
     invalid = [game for game in selected if game not in config["games"]]
     if invalid:
         raise SystemExit(f"未知玩法: {', '.join(invalid)}")
@@ -1648,6 +1652,8 @@ def main() -> None:
         "daily_model_version": "v2.3-xuanxue-date-game-schemes",
         "daily_results": generate_daily_results(now.date().isoformat(), config),
         "source_status": source_data.get("source_status", "unknown"),
+        "verification": source_data.get("verification", {}),
+        "draw_history": {game: source_data.get("draws", {}).get(game, [])[:400] for game in config["games"]},
         "disclaimer": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。模型相对评分仅表示本页综合候选之间的排序，不是真实中奖概率。",
         "games": dict(previous_output.get("games", {})),
         "sources": source_data.get("sources", []),

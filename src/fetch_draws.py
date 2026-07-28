@@ -121,6 +121,26 @@ def request_payload(url: str, params: dict[str, str]) -> dict[str, Any]:
     raise RuntimeError(f"官方接口请求失败: {error}")
 
 
+def verify_with_official_page(game: str, row: dict[str, Any], cfg: dict[str, Any], config: dict[str, Any]) -> dict[str, Any]:
+    """Best-effort second official-source check for the newest draw.
+
+    A page outage never replaces cached data and never turns a result into a
+    confirmed prize decision. The page must contain the issue and every drawn
+    number before the row is marked cross-verified.
+    """
+    url = cfg.get("results_page") or config.get("official_results_page")
+    try:
+        request = Request(url, headers={"User-Agent": "Mozilla/5.0", "Referer": url})
+        with urlopen(request, timeout=15) as response:
+            body = response.read().decode("utf-8", errors="ignore")
+        compact = re.sub(r"\s+", "", body)
+        issue_ok = str(row["issue"]) in compact
+        number_ok = all(str(int(number)) in compact for number in row["numbers"])
+        return {"status": "verified" if issue_ok and number_ok else "pending", "url": url, "issue": row["issue"]}
+    except Exception as exc:
+        return {"status": "pending", "url": url, "issue": row["issue"], "error": str(exc)}
+
+
 def fetch_game(game: str, cfg: dict[str, Any], api: str) -> list[dict[str, Any]]:
     payload = request_payload(
         api,
@@ -228,7 +248,18 @@ def parse_args() -> argparse.Namespace:
         help="逗号分隔的玩法代码，例如 pl3,pl5",
     )
     parser.add_argument("--history-limit", type=int, default=100, help="每个玩法抓取的历史期数")
+    parser.add_argument("--today", action="store_true", help="只抓取北京时间今天安排开奖的彩种")
     return parser.parse_args()
+
+
+def today_games(config: dict[str, Any], now: datetime | None = None) -> list[str]:
+    """Return games scheduled for today's Beijing weekday."""
+    current = now or datetime.now(TZ)
+    weekday = current.weekday()
+    return [
+        game for game, cfg in config["games"].items()
+        if weekday in cfg.get("draw_weekdays", list(range(7)))
+    ]
 
 
 def merge_history(previous_rows: list[dict[str, Any]], fetched_rows: list[dict[str, Any]], limit: int) -> list[dict[str, Any]]:
@@ -247,7 +278,7 @@ def main() -> None:
     if args.history_limit < 1:
         raise SystemExit("--history-limit must be positive")
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
-    selected = [game.strip() for game in args.games.split(",") if game.strip()]
+    selected = today_games(config) if args.today else [game.strip() for game in args.games.split(",") if game.strip()]
     invalid = [game for game in selected if game not in config["games"]]
     if invalid:
         raise SystemExit(f"未知玩法: {', '.join(invalid)}")
@@ -276,7 +307,8 @@ def main() -> None:
         for future in as_completed(futures):
             game, cfg = futures[future]
             try:
-                draws[game] = merge_history(draws.get(game, []), future.result(), args.history_limit)
+                fresh_rows = future.result()
+                draws[game] = merge_history(draws.get(game, []), fresh_rows, args.history_limit)
                 print(f"[OK] {cfg['name']}: {draws[game][0]['issue']}")
             except Exception as exc:  # Preserve last verified data, never invent a result.
                 errors[game] = str(exc)
@@ -294,11 +326,20 @@ def main() -> None:
         results_page = cfg.get("results_page", config["welfare_results_page"])
         if not any(source.get("url") == results_page for source in sources):
             sources.append({"name": f"中国福利彩票{cfg['name'].removeprefix('福彩')}开奖信息", "url": results_page, "role": f"{cfg['name']}官方开奖来源"})
+    verification = dict(previous.get("verification", {}))
+    for game in selected:
+        if draws.get(game):
+            verification[game] = verify_with_official_page(game, draws[game][0], config["games"][game], config)
+    statuses = [verification.get(game, {}).get("status") for game in selected]
+    source_status = "official_cross_verified" if all(
+        verification.get(game, {}).get("status") == "verified" for game in selected
+    ) else "pending_cross_check"
     output = {
         **previous,
         "updated_at": datetime.now(TZ).isoformat(timespec="seconds"),
-        "source_status": "official_api" if not errors else "cached_verified_data",
+        "source_status": source_status if not errors else "cached_verified_data",
         "errors": errors,
+        "verification": verification,
         "draws": draws,
         "sources": sources,
     }

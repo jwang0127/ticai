@@ -29,11 +29,21 @@ from src.generate_dashboard import (
     rolling_pool_backtest,
     rolling_region_backtest,
 )
+from src.fetch_draws import today_games
 
 TZ = ZoneInfo("Asia/Shanghai")
 
 
 class NextDrawTests(unittest.TestCase):
+    def test_today_games_uses_beijing_weekday_schedule(self):
+        config = {"games": {
+            "daily": {"draw_weekdays": list(range(7))},
+            "tuesday": {"draw_weekdays": [1]},
+            "monday": {"draw_weekdays": [0]},
+        }}
+        now = datetime(2026, 7, 28, 22, 0, tzinfo=TZ)  # Tuesday
+        self.assertEqual(today_games(config, now), ["daily", "tuesday"])
+
     def test_dlt_same_day_before_draw(self):
         now = datetime(2026, 7, 15, 11, 0, tzinfo=TZ)  # Wednesday
         self.assertEqual(next_draw(now, [0, 2, 5], time(21, 25)).isoformat(), "2026-07-15T21:25:00+08:00")

@@ -13,10 +13,11 @@ on:
           - "dlt"
           - "pl3,pl5,fc3d,qxc,ssq,kl8"
   schedule:
-    # PL3/PL5: daily at 22:10 Beijing, after the 21:25 draw.
-    - cron: "10 14 * * *"
-    # DLT: 08:10 Beijing on Sun/Tue/Fri, one day before Mon/Wed/Sat draws.
-    - cron: "10 0 * * 0,2,5"
+    # GitHub cron is UTC. Retry after the latest daily draw.
+    - cron: "45 13 * * *"
+    - cron: "0 14 * * *"
+    - cron: "15 14 * * *"
+    - cron: "30 14 * * *"
   push:
     branches: [main]
 
@@ -46,19 +47,27 @@ jobs:
         run: |
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             echo "games=${{ inputs.games }}" >> "$GITHUB_OUTPUT"
-          elif [[ "${{ github.event.schedule }}" == "10 0 * * 0,2,5" ]]; then
-            echo "games=dlt" >> "$GITHUB_OUTPUT"
           elif [[ "${{ github.event_name }}" == "schedule" ]]; then
-            echo "games=pl3,pl5,fc3d,qxc,ssq,kl8" >> "$GITHUB_OUTPUT"
+            echo "games=today" >> "$GITHUB_OUTPUT"
           else
             echo "games=dlt,pl3,pl5,fc3d,qxc,ssq,kl8" >> "$GITHUB_OUTPUT"
           fi
       - name: Fetch official draw history (preserve verified cache on failure)
         if: github.event_name != 'push'
-        run: python src/fetch_draws.py --games "${{ steps.scope.outputs.games }}" --history-limit 2000
+        run: |
+          if [[ "${{ steps.scope.outputs.games }}" == "today" ]]; then
+            python src/fetch_draws.py --today --history-limit 2000
+          else
+            python src/fetch_draws.py --games "${{ steps.scope.outputs.games }}" --history-limit 2000
+          fi
       - name: Generate dashboard and copy-ready results
         if: github.event_name != 'push'
-        run: python src/generate_dashboard.py --games "${{ steps.scope.outputs.games }}"
+        run: |
+          if [[ "${{ steps.scope.outputs.games }}" == "today" ]]; then
+            python src/generate_dashboard.py --today
+          else
+            python src/generate_dashboard.py --games "${{ steps.scope.outputs.games }}"
+          fi
       - name: Save refreshed data
         if: github.event_name != 'push'
         run: |
@@ -67,6 +76,11 @@ jobs:
           git add data/processed/draws.json docs/assets/data/dashboard.json data/processed/model_reviews.json
           git diff --cached --quiet || git commit -m "chore(data): refresh lottery dashboard"
           git push
+      - name: Optional personal WeChat notification via PushPlus
+        if: github.event_name == 'schedule' && secrets.PUSHPLUS_TOKEN != ''
+        env:
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+        run: python src/notify_pushplus.py --token "$PUSHPLUS_TOKEN"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

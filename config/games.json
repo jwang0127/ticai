@@ -1,6 +1,6 @@
 {
   "official_api": "https://webapi.sporttery.cn/gateway/lottery/getHistoryPageListV1.qry",
-  "official_results_page": "https://www.lottery.gov.cn/kjxx/",
+  "official_results_page": "https://m.lottery.gov.cn/mkjqxc/?SHA=false",
   "welfare_api": "https://www.cwl.gov.cn/cwl_admin/front/cwlkj/search/kjxx/findDrawNotice",
   "welfare_results_page": "https://www.cwl.gov.cn/ygkj/wqkjgg/3d/",
   "timezone": "Asia/Shanghai",
@@ -9,6 +9,7 @@
     "dlt": {
       "name": "超级大乐透",
       "game_no": "85",
+      "results_page": "https://m.lottery.gov.cn/mkjdlt/",
       "draw_weekdays": [0, 2, 5],
       "front_count": 5,
       "back_count": 2,
@@ -18,12 +19,14 @@
     "pl3": {
       "name": "排列3",
       "game_no": "35",
+      "results_page": "https://m.lottery.gov.cn/zst/pls/",
       "draw_weekdays": [0, 1, 2, 3, 4, 5, 6],
       "digits": 3
     },
     "pl5": {
       "name": "排列5",
       "game_no": "350133",
+      "results_page": "https://m.lottery.gov.cn/zst/pls/",
       "draw_weekdays": [0, 1, 2, 3, 4, 5, 6],
       "digits": 5
     },
@@ -37,6 +40,7 @@
     "qxc": {
       "name": "体彩7星彩",
       "game_no": "04",
+      "results_page": "https://m.lottery.gov.cn/tcwm/qxc/",
       "draw_weekdays": [1, 4, 6],
       "digits": 7
     },
