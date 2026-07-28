@@ -6,6 +6,14 @@ const money = value => `¥${Number(value).toLocaleString("zh-CN")}`;
 const nums = text => (text.match(/\d+/g) || []).map(Number);
 const clean = values => values.map(n => String(n).padStart(2, "0"));
 const sameSet = (a, b) => a.slice().sort().join(",") === b.slice().sort().join(",");
+const beijingDate = offset => { const date = new Date(Date.now() + offset * 86400000); return new Intl.DateTimeFormat("en-CA", {timeZone:"Asia/Shanghai", year:"numeric", month:"2-digit", day:"2-digit"}).format(date); };
+
+function selectedDrawDate(game, mode) {
+  if (mode === "today") return beijingDate(0);
+  if (mode === "tomorrow") return beijingDate(1);
+  if (mode === "custom") return $("#custom-draw-date").value || beijingDate(0);
+  return dashboard.games[game]?.next_draw_at?.slice(0, 10) || beijingDate(0);
+}
 
 function gameFromLine(line) {
   const normalized = line.trim().replace(/＋/g, "+");
@@ -48,9 +56,10 @@ function latestFor(ticket) {
   const game = dashboard.games[ticket.game];
   const history = dashboard.draw_history?.[ticket.game] || [];
   const intendedIssue = ticket.targetIssue || game?.target_issue;
-  const row = history.find(item => intendedIssue && String(item.issue) === String(intendedIssue))
+  const row = history.find(item => ticket.drawDate && item.draw_date === ticket.drawDate)
+    || history.find(item => intendedIssue && String(item.issue) === String(intendedIssue))
     || history.find(item => item.draw_date === ticket.date);
-  return game ? { game, row, issue: row?.issue || intendedIssue } : null;
+  return game ? { game, row, issue: row?.issue || intendedIssue, drawDate: row?.draw_date || ticket.drawDate || game.next_draw_at?.slice(0, 10) } : null;
 }
 
 function settle(ticket) {
@@ -81,15 +90,45 @@ function settle(ticket) {
   return {status:"pending",message:"请补充玩法类型"};
 }
 
+const GAME_NAMES = {dlt:"超级大乐透", pl3:"排列3", pl5:"排列5", fc3d:"福彩3D", qxc:"体彩7星彩", ssq:"福彩双色球", kl8:"福彩快乐8"};
+
+function parseForGame(game, line) {
+  const text = line.trim();
+  if (!text) return null;
+  const prefix = GAME_NAMES[game];
+  return gameFromLine(text.startsWith(prefix) ? text : `${prefix} ${text}`);
+}
+
+function outcomeText(ticket) {
+  const result = settle(ticket);
+  if (result.status === "win") return `<strong>${result.level}</strong> · ${result.amount ? money(result.amount) : "浮动奖待公告"}<br><small>${result.message}</small>`;
+  return `<strong>${result.status === "pending" ? "待确认" : "未中奖"}</strong><br><small>${result.message}</small>`;
+}
+
 function render() {
   const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+  const games = Object.entries(dashboard.games || {});
+  $("#game-checkers").innerHTML = games.map(([key, game]) => {
+    const row = (dashboard.draw_history?.[key] || [])[0];
+    const latestTicket = [...saved].reverse().find(ticket => ticket.game === key);
+    const planned = latestTicket ? latestFor(latestTicket) : {issue: game.target_issue, drawDate: game.next_draw_at?.slice(0, 10)};
+    return `<article class="game-checker" data-game="${key}"><div class="game-checker-head"><div><p class="section-label">${key.toUpperCase()}</p><h2>${game.name}</h2><div class="game-checker-meta">第${planned.issue || row?.issue || game.latest_issue}期 · 开奖日 ${planned.drawDate || row?.draw_date || game.latest_draw_date}</div></div><span class="draw-sector-badge">最近结果</span></div><div class="game-checker-number">${formatDraw(key, row?.numbers || game.latest_numbers)}</div><textarea data-ticket-input placeholder="在这里输入${game.name}号码"></textarea><button type="button" data-check-game="${key}">输入并核对${game.name}</button>${latestTicket ? `<div class="game-checker-result ${settle(latestTicket).status}" data-game-result>${outcomeText(latestTicket)}</div>` : ""}</article>`;
+  }).join("");
   if (!saved.length) { $("#results").innerHTML = '<p class="empty">还没有保存购票记录。</p>'; return; }
-  $("#results").innerHTML = saved.map((ticket, index) => { const result = settle(ticket); const cls = result.status === "win" ? "win" : result.status === "pending" ? "pending" : ""; const planned = latestFor(ticket); return `<article class="ticket-card ${cls}"><div class="ticket-head"><span class="ticket-name">${ticket.name} ${ticket.mode === "direct" ? "直选" : ticket.mode}</span><span class="ticket-status">${result.status === "win" ? "中奖" : result.status === "pending" ? "待确认" : "未中奖"}</span></div><div class="ticket-meta">${ticket.text} · 购买 ${ticket.date || "旧记录"} · 第${planned?.issue || "待定"}期</div><div class="ticket-money">${result.status === "win" ? (result.amount ? money(result.amount) : "浮动奖待公告") : result.message}</div><div class="ticket-detail">${result.level || ""} ${result.message || ""}<button class="ghost remove-ticket" data-index="${index}">删除</button></div></article>`; }).join("");
+  $("#results").innerHTML = saved.map((ticket, index) => { const result = settle(ticket); const cls = result.status === "win" ? "win" : result.status === "pending" ? "pending" : ""; const planned = latestFor(ticket); return `<article class="ticket-card ${cls}"><div class="ticket-head"><span class="ticket-name">${ticket.name} ${ticket.mode === "direct" ? "直选" : ticket.mode}</span><span class="ticket-status">${result.status === "win" ? "中奖" : result.status === "pending" ? "待确认" : "未中奖"}</span></div><div class="ticket-meta">${ticket.text} · 开奖日 ${planned?.drawDate || "待定"} · 第${planned?.issue || "待定"}期</div><div class="ticket-money">${result.status === "win" ? (result.amount ? money(result.amount) : "浮动奖待公告") : result.message}</div><div class="ticket-detail">${result.level || ""} ${result.message || ""}<button class="ghost remove-ticket" data-index="${index}">删除</button></div></article>`; }).join("");
+}
+
+function formatDraw(key, numbers) {
+  if (!numbers) return "暂无";
+  if (key === "dlt") return `${clean(numbers.slice(0, 5)).join(" ")} + ${clean(numbers.slice(5)).join(" ")}`;
+  if (key === "ssq") return `${clean(numbers.slice(0, 6)).join(" ")} + ${clean(numbers.slice(6)).join(" ")}`;
+  if (key === "kl8") return clean(numbers).join(" ");
+  return numbers.join("");
 }
 
 async function init() { const response = await fetch("../assets/data/dashboard.json", {cache:"no-store"}); dashboard = await response.json(); render(); }
-$("#ticket-form").addEventListener("submit", event => { event.preventDefault(); try { const tickets = $("#ticket-input").value.split(/\r?\n/).filter(Boolean).map(gameFromLine); const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); const date = new Intl.DateTimeFormat("en-CA", {timeZone:"Asia/Shanghai", year:"numeric", month:"2-digit", day:"2-digit"}).format(new Date()); tickets.forEach(ticket => { ticket.date = date; ticket.targetIssue = dashboard.games[ticket.game]?.target_issue || ""; ticket.expectedDrawDate = dashboard.games[ticket.game]?.next_draw_at?.slice(0, 10) || date; }); localStorage.setItem(STORAGE_KEY, JSON.stringify(saved.concat(tickets))); $("#ticket-input").value = ""; render(); } catch (error) { alert(error.message); } });
-$("#clear-input").addEventListener("click", () => { $("#ticket-input").value = ""; });
+$("#draw-date-mode").addEventListener("change", event => { $("#custom-draw-date").hidden = event.target.value !== "custom"; });
+$("#game-checkers").addEventListener("click", event => { const button = event.target.closest("[data-check-game]"); if (!button) return; const game = button.dataset.checkGame; const card = button.closest("[data-game]"); const text = card.querySelector("[data-ticket-input]").value; try { const tickets = text.split(/\r?\n/).filter(Boolean).map(line => parseForGame(game, line)); const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); const purchaseDate = beijingDate(0); const mode = $("#draw-date-mode").value; tickets.forEach(ticket => { ticket.date = purchaseDate; ticket.drawDate = selectedDrawDate(ticket.game, mode); const matching = (dashboard.draw_history?.[ticket.game] || []).find(item => item.draw_date === ticket.drawDate); ticket.targetIssue = matching?.issue || (ticket.drawDate === dashboard.games[ticket.game]?.next_draw_at?.slice(0, 10) ? dashboard.games[ticket.game]?.target_issue : ""); }); localStorage.setItem(STORAGE_KEY, JSON.stringify(saved.concat(tickets))); render(); } catch (error) { alert(error.message); } });
 $("#clear-history").addEventListener("click", () => { localStorage.removeItem(STORAGE_KEY); render(); });
 $("#results").addEventListener("click", event => { const button = event.target.closest(".remove-ticket"); if (!button) return; const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); saved.splice(Number(button.dataset.index), 1); localStorage.setItem(STORAGE_KEY, JSON.stringify(saved)); render(); });
 init().catch(error => { $("#results").innerHTML = `<p class="empty">开奖数据加载失败：${error.message}</p>`; });

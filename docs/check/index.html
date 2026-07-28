@@ -15,15 +15,9 @@
       <h1>粘贴票面号码，<em>自动核对兑奖</em></h1>
       <p>默认按单倍、基础投注、无追加估算。记录只保存在当前浏览器，不会上传到 GitHub。</p>
     </header>
-    <section class="checker-grid">
-      <form id="ticket-form" class="panel">
-        <label for="ticket-input">购票文本</label>
-        <textarea id="ticket-input" rows="14" placeholder="超级大乐透 03 04 17 21 34 + 11 12&#10;排列3 120&#10;福彩3D 组选6 123&#10;福彩快乐8 选五 08 17 29 47 68"></textarea>
-        <div class="form-actions"><button type="submit">保存并核对</button><button id="clear-input" type="button" class="ghost">清空输入</button></div>
-        <p class="hint">每行一注；排列3和福彩3D可写“直选”“组选3”“组选6”。期号按当天最新已核验开奖自动推断。</p>
-      </form>
-      <section class="panel rules"><h2>当前支持</h2><ul><li>大乐透、排列5、7星彩、双色球基础单式</li><li>排列3、福彩3D：直选、组选3、组选6</li><li>快乐8：选N基础单式</li><li>来源冲突或未确认时，只显示待确认，不给兑奖结论</li></ul></section>
-    </section>
+    <section class="panel date-panel"><label for="draw-date-mode">统一开奖日期</label><select id="draw-date-mode"><option value="auto">自动匹配各彩种下一期开奖</option><option value="today">今天</option><option value="tomorrow">明天</option><option value="custom">自定义日期</option></select><input id="custom-draw-date" type="date" hidden><p class="hint">默认模式会自动处理“今天购买、明天开奖”的大乐透等情况。</p></section>
+    <section id="game-checkers" class="game-checkers"></section>
+    <section class="panel rules"><h2>使用说明</h2><ul><li>每个彩种单独输入，不同彩种不会混在一起。</li><li>排列3和福彩3D可写“直选”“组选3”“组选6”；快乐8请写“选五”“选六”或“选十”。</li><li>开奖来源待确认时，只显示待确认，不给出兑奖结论。</li></ul></section>
     <section class="panel"><div class="section-head"><div><p class="section-label">SAVED TICKETS</p><h2>历史记录</h2></div><button id="clear-history" class="ghost" type="button">清空记录</button></div><div id="results" class="results"></div></section>
   </main>
   <script src="./check.js"></script>
