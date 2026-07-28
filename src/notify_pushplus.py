@@ -13,6 +13,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="通过 PushPlus 给个人微信发送更新摘要")
     parser.add_argument("--token", required=True)
     args = parser.parse_args()
+    if not args.token.strip():
+        print("[SKIP] PUSHPLUS_TOKEN is not configured")
+        return
     payload = json.loads((ROOT / "docs/assets/data/dashboard.json").read_text(encoding="utf-8"))
     pending = payload.get("source_status") not in {"official_api", "official_cross_verified"}
     title = "体彩开奖看板已更新" if not pending else "体彩开奖数据待确认"
