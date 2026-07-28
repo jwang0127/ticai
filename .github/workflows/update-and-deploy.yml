@@ -76,11 +76,6 @@ jobs:
           git add data/processed/draws.json docs/assets/data/dashboard.json data/processed/model_reviews.json
           git diff --cached --quiet || git commit -m "chore(data): refresh lottery dashboard"
           git push
-      - name: Optional personal WeChat notification via PushPlus
-        if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && github.event.schedule == '30 14 * * *')
-        env:
-          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
-        run: python src/notify_pushplus.py --token "$PUSHPLUS_TOKEN"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

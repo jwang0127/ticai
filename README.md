@@ -43,7 +43,6 @@ python -m http.server 8000 -d docs
 
 首页新增“兑奖核对”页面：可逐行粘贴基础单式票面文本，排列3和福彩3D支持直选、组选3、组选6，快乐8支持选N。记录仅保存到浏览器 `localStorage`，默认按单倍、基础投注、无追加估算奖金。
 
-如需个人微信通知，可在仓库 Secrets 增加 `PUSHPLUS_TOKEN`。Actions会调用 PushPlus 发送更新摘要；Token只存在GitHub Secrets，不写入网页或仓库。
 
 GitHub Actions 在每天北京时间22:10更新排列3、排列5和福彩3D；在每周日、周二、周五08:10更新大乐透，即在开奖前一天生成。亦可手动选择全部玩法、仅大乐透或每日数字玩法。仓库 Settings → Pages 的 Source 需选择 **GitHub Actions**。
 
