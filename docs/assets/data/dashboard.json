@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T18:22:26+08:00",
+  "generated_at": "2026-07-29T23:34:55+08:00",
   "daily_results_date": "2026-07-29",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -144,22 +144,25 @@
       "copy_text": "福彩快乐8 01 14 31 34 47 48 51 52 61 69\n福彩快乐8 01 04 16 21 35 39 60 67 68 75\n福彩快乐8 12 19 36 39 42 51 59 66 69 77"
     }
   ],
-  "source_status": "pending_cross_check",
+  "source_status": "cached_verified_data",
   "verification": {
     "pl3": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26199"
+      "issue": "26199",
+      "error": "HTTP Error 567: Unknown Status"
     },
     "pl5": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26199"
+      "issue": "26199",
+      "error": "HTTP Error 567: Unknown Status"
     },
     "fc3d": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/mkjqxc/?SHA=false",
-      "issue": "2026199"
+      "issue": "2026199",
+      "error": "HTTP Error 567: Unknown Status"
     },
     "qxc": {
       "status": "pending",
@@ -174,12 +177,14 @@
     "kl8": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/kl8/",
-      "issue": "2026199"
+      "issue": "2026199",
+      "error": "HTTP Error 403: Forbidden"
     },
     "dlt": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/mkjdlt/",
-      "issue": "26084"
+      "issue": "26084",
+      "error": "HTTP Error 567: Unknown Status"
     }
   },
   "draw_history": {
@@ -37807,7 +37812,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-07-29T18:22:26+08:00",
+      "generated_at": "2026-07-29T23:34:55+08:00",
       "latest_issue": "26084",
       "latest_draw_date": "2026-07-27",
       "latest_numbers": [
@@ -37820,8 +37825,8 @@
         "05"
       ],
       "target_issue": "26085",
-      "next_draw_at": "2026-07-29T21:25+08:00",
-      "next_draw_display": "2026年07月29日 21:25（北京时间）",
+      "next_draw_at": "2026-08-01T21:25+08:00",
+      "next_draw_display": "2026年08月01日 21:25（北京时间）",
       "schedule_note": "每周一、三、六开奖",
       "candidates": [
         {
@@ -38351,7 +38356,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-29T18:22:26+08:00",
+      "generated_at": "2026-07-29T23:34:55+08:00",
       "latest_issue": "26199",
       "latest_draw_date": "2026-07-28",
       "latest_numbers": [
@@ -38360,8 +38365,8 @@
         "5"
       ],
       "target_issue": "26200",
-      "next_draw_at": "2026-07-29T21:25+08:00",
-      "next_draw_display": "2026年07月29日 21:25（北京时间）",
+      "next_draw_at": "2026-07-30T21:25+08:00",
+      "next_draw_display": "2026年07月30日 21:25（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
@@ -39535,7 +39540,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-29T18:22:26+08:00",
+      "generated_at": "2026-07-29T23:34:55+08:00",
       "latest_issue": "26199",
       "latest_draw_date": "2026-07-28",
       "latest_numbers": [
@@ -39546,8 +39551,8 @@
         "7"
       ],
       "target_issue": "26200",
-      "next_draw_at": "2026-07-29T21:25+08:00",
-      "next_draw_display": "2026年07月29日 21:25（北京时间）",
+      "next_draw_at": "2026-07-30T21:25+08:00",
+      "next_draw_display": "2026年07月30日 21:25（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
@@ -41122,7 +41127,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-29T18:22:26+08:00",
+      "generated_at": "2026-07-29T23:34:55+08:00",
       "latest_issue": "2026199",
       "latest_draw_date": "2026-07-28",
       "latest_numbers": [
@@ -41131,8 +41136,8 @@
         "1"
       ],
       "target_issue": "2026200",
-      "next_draw_at": "2026-07-29T21:15+08:00",
-      "next_draw_display": "2026年07月29日 21:15（北京时间）",
+      "next_draw_at": "2026-07-30T21:15+08:00",
+      "next_draw_display": "2026年07月30日 21:15（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
@@ -43488,7 +43493,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-29T18:22:26+08:00",
+      "generated_at": "2026-07-29T23:34:55+08:00",
       "latest_issue": "2026199",
       "latest_draw_date": "2026-07-28",
       "latest_numbers": [
@@ -43514,8 +43519,8 @@
         "79"
       ],
       "target_issue": "2026200",
-      "next_draw_at": "2026-07-29T21:30+08:00",
-      "next_draw_display": "2026年07月29日 21:30（北京时间）",
+      "next_draw_at": "2026-07-30T21:30+08:00",
+      "next_draw_display": "2026年07月30日 21:30（北京时间）",
       "schedule_note": "每日21:30开奖（休市日除外）",
       "candidates": [
         {
