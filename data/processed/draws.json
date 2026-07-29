@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-29T00:20:06+08:00",
-  "source_status": "cached_verified_data",
+  "updated_at": "2026-07-29T18:22:16+08:00",
+  "source_status": "pending_cross_check",
   "draws": {
     "dlt": [
       {
@@ -26006,6 +26006,15 @@
     ],
     "pl3": [
       {
+        "issue": "26199",
+        "draw_date": "2026-07-28",
+        "numbers": [
+          "3",
+          "0",
+          "5"
+        ]
+      },
+      {
         "issue": "26198",
         "draw_date": "2026-07-27",
         "numbers": [
@@ -43993,21 +44002,23 @@
         "numbers": [
           "6",
           "3",
-          "5"
-        ]
-      },
-      {
-        "issue": "20267",
-        "draw_date": "2020-11-16",
-        "numbers": [
-          "6",
-          "2",
           "5"
         ]
       }
     ],
     "pl5": [
       {
+        "issue": "26199",
+        "draw_date": "2026-07-28",
+        "numbers": [
+          "3",
+          "0",
+          "5",
+          "0",
+          "7"
+        ]
+      },
+      {
         "issue": "26198",
         "draw_date": "2026-07-27",
         "numbers": [
@@ -65995,20 +66006,18 @@
           "8",
           "0"
         ]
-      },
-      {
-        "issue": "20267",
-        "draw_date": "2020-11-16",
-        "numbers": [
-          "6",
-          "2",
-          "5",
-          "8",
-          "1"
-        ]
       }
     ],
     "fc3d": [
+      {
+        "issue": "2026199",
+        "draw_date": "2026-07-28",
+        "numbers": [
+          "5",
+          "9",
+          "1"
+        ]
+      },
       {
         "issue": "2026198",
         "draw_date": "2026-07-27",
@@ -83999,18 +84008,22 @@
           "9",
           "1"
         ]
-      },
-      {
-        "issue": "2020268",
-        "draw_date": "2020-11-16",
-        "numbers": [
-          "0",
-          "8",
-          "7"
-        ]
       }
     ],
     "ssq": [
+      {
+        "issue": "2026086",
+        "draw_date": "2026-07-28",
+        "numbers": [
+          "02",
+          "05",
+          "14",
+          "25",
+          "30",
+          "32",
+          "05"
+        ]
+      },
       {
         "issue": "2026085",
         "draw_date": "2026-07-26",
@@ -109997,22 +110010,22 @@
           "31",
           "12"
         ]
-      },
-      {
-        "issue": "2013044",
-        "draw_date": "2013-04-18",
-        "numbers": [
-          "03",
-          "05",
-          "11",
-          "18",
-          "26",
-          "28",
-          "06"
-        ]
       }
     ],
     "qxc": [
+      {
+        "issue": "26086",
+        "draw_date": "2026-07-28",
+        "numbers": [
+          "9",
+          "7",
+          "1",
+          "0",
+          "3",
+          "4",
+          "0"
+        ]
+      },
       {
         "issue": "26085",
         "draw_date": "2026-07-26",
@@ -135999,22 +136012,35 @@
           "9",
           "6"
         ]
-      },
-      {
-        "issue": "13045",
-        "draw_date": "2013-04-21",
-        "numbers": [
-          "8",
-          "7",
-          "0",
-          "0",
-          "3",
-          "9",
-          "3"
-        ]
       }
     ],
     "kl8": [
+      {
+        "issue": "2026199",
+        "draw_date": "2026-07-28",
+        "numbers": [
+          "04",
+          "14",
+          "17",
+          "18",
+          "20",
+          "21",
+          "26",
+          "27",
+          "29",
+          "34",
+          "44",
+          "48",
+          "50",
+          "53",
+          "55",
+          "59",
+          "62",
+          "67",
+          "76",
+          "79"
+        ]
+      },
       {
         "issue": "2026198",
         "draw_date": "2026-07-27",
@@ -187988,32 +188014,6 @@
           "74",
           "75"
         ]
-      },
-      {
-        "issue": "2020020",
-        "draw_date": "2020-11-16",
-        "numbers": [
-          "03",
-          "06",
-          "09",
-          "11",
-          "16",
-          "37",
-          "39",
-          "40",
-          "41",
-          "48",
-          "49",
-          "51",
-          "52",
-          "55",
-          "56",
-          "57",
-          "58",
-          "61",
-          "70",
-          "78"
-        ]
       }
     ]
   },
@@ -188054,55 +188054,42 @@
       "role": "福彩快乐8官方开奖来源"
     }
   ],
-  "errors": {
-    "fc3d": "中国福彩网福彩3D接口请求失败: HTTP Error 403: Forbidden",
-    "kl8": "中国福彩网福彩快乐8接口请求失败: HTTP Error 403: Forbidden",
-    "pl3": "官方接口请求失败: HTTP Error 567: Unknown Status",
-    "dlt": "官方接口请求失败: <urlopen error _ssl.c:993: The handshake operation timed out>",
-    "pl5": "官方接口请求失败: HTTP Error 567: Unknown Status"
-  },
+  "errors": {},
   "verification": {
     "pl3": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26198",
-      "error": "HTTP Error 567: Unknown Status"
+      "issue": "26199"
     },
     "pl5": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26198",
-      "error": "HTTP Error 567: Unknown Status"
+      "issue": "26199"
     },
     "fc3d": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/mkjqxc/?SHA=false",
-      "issue": "2026198",
-      "error": "HTTP Error 567: Unknown Status"
+      "issue": "2026199"
     },
     "qxc": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/tcwm/qxc/",
-      "issue": "26085",
-      "error": "HTTP Error 567: Unknown Status"
+      "issue": "26086"
     },
     "ssq": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/ssq/",
-      "issue": "2026085",
-      "error": "HTTP Error 403: Forbidden"
+      "issue": "2026086"
     },
     "kl8": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/kl8/",
-      "issue": "2026198",
-      "error": "HTTP Error 403: Forbidden"
+      "issue": "2026199"
     },
     "dlt": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/mkjdlt/",
-      "issue": "26084",
-      "error": "HTTP Error 567: Unknown Status"
+      "issue": "26084"
     }
   }
 }
