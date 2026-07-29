@@ -3,9 +3,9 @@ import unittest
 import json
 from collections import Counter
 from itertools import combinations
-from datetime import datetime, time
+from datetime import datetime, time, timedelta, timezone
 from pathlib import Path
-from zoneinfo import ZoneInfo
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from src.generate_dashboard import (
     DIGIT_MODELS,
@@ -16,6 +16,7 @@ from src.generate_dashboard import (
     calibrate_digit_model,
     calibrate_set_model,
     digit_confidences,
+    direct_structure_score,
     generate_composite_recommendations,
     generate_positional_ensemble,
     generate_dlt,
@@ -31,7 +32,10 @@ from src.generate_dashboard import (
 )
 from src.fetch_draws import today_games
 
-TZ = ZoneInfo("Asia/Shanghai")
+try:
+    TZ = ZoneInfo("Asia/Shanghai")
+except ZoneInfoNotFoundError:
+    TZ = timezone(timedelta(hours=8))
 
 
 class NextDrawTests(unittest.TestCase):
@@ -82,6 +86,8 @@ class DetailPageTests(unittest.TestCase):
             self.assertEqual(len(item["red"]), 6)
             self.assertEqual(item["red"], sorted(set(item["red"])))
             self.assertEqual(len(item["blue"]), 1)
+        self.assertGreater(direct_structure_score([4, 7, 3]), direct_structure_score([4, 4, 4]))
+        self.assertGreater(direct_structure_score([4, 7, 3]), direct_structure_score([0, 0, 0]))
         blue_values = {item["blue"][0] for item in ssq}
         self.assertGreaterEqual(len(blue_values), 4)
         self.assertGreaterEqual(len({(value - 1) // 4 for value in blue_values}), 4)

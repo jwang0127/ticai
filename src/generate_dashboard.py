@@ -47,7 +47,7 @@ DIGIT_MODELS = {
     # history. PL3 and FC3D are deliberately calibrated separately.
     "pl3": {"decay": 13, "frequency": 0.58, "omission": 0.050, "crowding": 0.18,
             "sum": 0.0, "unique": 0.0, "global_omission": 0.045,
-            "global_unique": 0.0, "diversity": 1.6},
+            "global_unique": 0.0, "diversity": 1.6, "structure_weight": 0.06},
     "pl5": {"decay": 18, "frequency": 0.55, "omission": 0.045, "crowding": 0.16,
             "sum": 0.0, "unique": 0.0, "global_omission": 0.040,
             "global_unique": 0.0, "diversity": 1.45},
@@ -555,6 +555,26 @@ def digit_support_score(values: list[int], components: tuple) -> float:
     ) / len(values)
 
 
+def direct_structure_score(values: list[int]) -> float:
+    """Score the small, non-positional structure seen in the 473 review.
+
+    This is deliberately a weak tie-breaker, not a 473 literal or a claim that
+    sums and spans predict a fair draw.  It rewards a three-different-digit
+    shape, a middle sum, a moderate span, and a 2:1 odd/even split.
+    """
+    if len(values) != 3:
+        return 0.0
+    total = sum(values)
+    span = max(values) - min(values)
+    odd_count = sum(value % 2 for value in values)
+    unique = len(set(values))
+    sum_fit = max(0.0, 1.0 - abs(total - 14) / 14)
+    span_fit = max(0.0, 1.0 - abs(span - 4) / 9)
+    parity_fit = 1.0 if odd_count == 2 else 0.5 if odd_count in (1, 3) else 0.0
+    unique_fit = 1.0 if unique == 3 else 0.0
+    return 0.35 * unique_fit + 0.25 * sum_fit + 0.20 * span_fit + 0.20 * parity_fit
+
+
 def global_candidate_score(values: list[int], components: tuple, model: dict | None = None) -> float:
     """Score direct numbers by position; no unordered-set or total-sum terms."""
     model = model or DIGIT_MODELS["pl3"]
@@ -564,6 +584,8 @@ def global_candidate_score(values: list[int], components: tuple, model: dict | N
             - model["global_omission"] * abs(min(omissions[pos][value], 20) - 9.0) / 9.0
         for pos, value in enumerate(values)
     )
+    if len(values) == 3:
+        score += model.get("structure_weight", 0.0) * (direct_structure_score(values) - 0.5)
     return score
 
 

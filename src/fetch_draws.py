@@ -11,12 +11,18 @@ from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
-from zoneinfo import ZoneInfo
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+from datetime import timedelta, timezone
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / "config" / "games.json"
 OUTPUT_PATH = ROOT / "data" / "processed" / "draws.json"
-TZ = ZoneInfo("Asia/Shanghai")
+try:
+    TZ = ZoneInfo("Asia/Shanghai")
+except ZoneInfoNotFoundError:
+    # Windows runners without the optional tzdata package still need a stable
+    # Beijing-time schedule for tests and manual refreshes.
+    TZ = timezone(timedelta(hours=8))
 
 
 def find_rows(value: Any) -> list[dict[str, Any]]:
