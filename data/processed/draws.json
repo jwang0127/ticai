@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-29T23:52:04+08:00",
+  "updated_at": "2026-07-29T23:59:18+08:00",
   "source_status": "cached_verified_data",
   "draws": {
     "dlt": [
@@ -188055,11 +188055,11 @@
     }
   ],
   "errors": {
-    "fc3d": "中国福彩网福彩3D接口请求失败: HTTP Error 403: Forbidden",
     "kl8": "中国福彩网福彩快乐8接口请求失败: HTTP Error 403: Forbidden",
+    "fc3d": "中国福彩网福彩3D接口请求失败: HTTP Error 403: Forbidden",
+    "pl3": "官方接口请求失败: HTTP Error 567: Unknown Status",
     "pl5": "官方接口请求失败: HTTP Error 567: Unknown Status",
-    "dlt": "官方接口请求失败: HTTP Error 567: Unknown Status",
-    "pl3": "官方接口请求失败: HTTP Error 567: Unknown Status"
+    "dlt": "官方接口请求失败: HTTP Error 567: Unknown Status"
   },
   "verification": {
     "pl3": {
