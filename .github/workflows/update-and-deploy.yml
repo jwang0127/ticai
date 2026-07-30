@@ -18,6 +18,8 @@ on:
     - cron: "0 14 * * *"
     - cron: "15 14 * * *"
     - cron: "30 14 * * *"
+  push:
+    branches: [main]
 permissions:
   contents: write
   pages: write
@@ -45,6 +47,8 @@ jobs:
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             echo "games=${{ inputs.games }}" >> "$GITHUB_OUTPUT"
           elif [[ "${{ github.event_name }}" == "schedule" ]]; then
+            echo "games=today" >> "$GITHUB_OUTPUT"
+          else
             echo "games=today" >> "$GITHUB_OUTPUT"
           fi
       - name: Fetch official draw history (preserve verified cache on failure)
