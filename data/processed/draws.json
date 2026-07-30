@@ -188054,7 +188054,13 @@
       "role": "福彩快乐8官方开奖来源"
     }
   ],
-  "errors": {},
+  "errors": {
+    "kl8": "中国福彩网福彩快乐8接口请求失败: HTTP Error 403: Forbidden",
+    "ssq": "中国福彩网福彩双色球接口请求失败: HTTP Error 403: Forbidden",
+    "fc3d": "中国福彩网福彩3D接口请求失败: HTTP Error 403: Forbidden",
+    "pl3": "官方接口请求失败: HTTP Error 567: Unknown Status",
+    "pl5": "官方接口请求失败: HTTP Error 567: Unknown Status"
+  },
   "verification": {
     "pl3": {
       "status": "pending",
@@ -188079,7 +188085,8 @@
     "ssq": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/ssq/",
-      "issue": "2026086"
+      "issue": "2026086",
+      "error": "HTTP Error 403: Forbidden"
     },
     "kl8": {
       "status": "pending",
@@ -188089,7 +188096,8 @@
     "dlt": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/mkjdlt/",
-      "issue": "26084"
+      "issue": "26084",
+      "error": "HTTP Error 567: Unknown Status"
     }
   }
 }

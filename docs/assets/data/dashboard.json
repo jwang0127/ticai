@@ -144,7 +144,7 @@
       "copy_text": "福彩快乐8 04 08 10 17 25 32 35 48 71 76\n福彩快乐8 02 14 23 35 52 53 57 59 69 71\n福彩快乐8 07 18 23 29 32 35 36 41 46 58"
     }
   ],
-  "source_status": "pending_cross_check",
+  "source_status": "cached_verified_data",
   "verification": {
     "pl3": {
       "status": "pending",
@@ -169,7 +169,8 @@
     "ssq": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/ssq/",
-      "issue": "2026086"
+      "issue": "2026086",
+      "error": "HTTP Error 403: Forbidden"
     },
     "kl8": {
       "status": "pending",
@@ -179,7 +180,8 @@
     "dlt": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/mkjdlt/",
-      "issue": "26084"
+      "issue": "26084",
+      "error": "HTTP Error 567: Unknown Status"
     }
   },
   "draw_history": {
@@ -37807,7 +37809,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-07-29T18:22:26+08:00",
+      "generated_at": "2026-07-29T23:59:20+08:00",
       "latest_issue": "26084",
       "latest_draw_date": "2026-07-27",
       "latest_numbers": [
@@ -37820,8 +37822,8 @@
         "05"
       ],
       "target_issue": "26085",
-      "next_draw_at": "2026-07-29T21:25+08:00",
-      "next_draw_display": "2026年07月29日 21:25（北京时间）",
+      "next_draw_at": "2026-08-01T21:25+08:00",
+      "next_draw_display": "2026年08月01日 21:25（北京时间）",
       "schedule_note": "每周一、三、六开奖",
       "candidates": [
         {
