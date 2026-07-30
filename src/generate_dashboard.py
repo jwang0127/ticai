@@ -726,7 +726,7 @@ def generate_pl5_from_pl3(
 
 
 def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict], list[float]]:
-    """Direct-digit output with a three-digit main-pool/cold-reverse split."""
+    """Direct-digit output from one hot positional pool."""
     digits = len(rows[0]["numbers"])
     if game in ("pl3", "pl5", "fc3d"):
         model = calibrate_digit_model(game, rows, digits)["parameters"]
@@ -752,39 +752,20 @@ def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict
             pools,
             lambda text: global_candidate_score([int(value) for value in text], components, model),
         )
-        if game in ("pl3", "fc3d"):
-            main_ranked = ranked[:3]
-            used = {item[0] for item in main_ranked}
-            cold_ranked = generate_digit_profile(rows, digits, "cold", 10, game)
-            reverse_ranked = []
-            for number, score, heat in cold_ranked:
-                if number in used:
-                    continue
-                reverse_ranked.append((number, score, heat))
-                used.add(number)
-                if len(reverse_ranked) == 2:
-                    break
-            if len(reverse_ranked) < 2:
-                raise RuntimeError(f"{game}冷门反选池不足两注")
-            ranked = main_ranked + reverse_ranked
+        if len({number for number, _, _ in ranked}) != 5:
+            raise RuntimeError(f"{game} hot pool did not generate five distinct direct picks")
     else:
         ranked = generate_digit_profile(rows, digits, "global", 5, game)
-    # The hot/neutral/cold label is meaningless for this generator: every
-    # candidate is built from each position's top-3 pool, so all five are hot
-    # by construction (the old code passed a 0.0 heat placeholder through the
-    # repair and labelled them all "neutral", which was simply wrong). Report
-    # the construction instead - how many positions took their strongest pool
-    # digit rather than a coverage-spreading alternative.
+    # Every displayed line is selected from the same hottest three-digit pool
+    # at each position. Report how many positions use the strongest pool digit.
     candidates = []
     for index, (number, _, _) in enumerate(ranked):
         if game in ("pl3", "pl5", "fc3d"):
             leading = sum(int(number[position]) == pools[position][0] for position in range(digits))
-            label = f"位置池组合·{leading}/{digits}位取最高权重数字"
+            label = f"热门池组合 · {leading}/{digits} 位取最高权重数字"
         else:
             label = "位置综合"
-        source = "cold_reverse" if game in ("pl3", "fc3d") and index >= 3 else "position_ensemble"
-        if game in ("pl3", "fc3d") and index >= 3:
-            label = "鍐烽棬鍙嶉€?"
+        source = "hot_position_pool" if game in ("pl3", "pl5", "fc3d") else "position_ensemble"
         candidates.append({"number": number, "mix_label": label, "source": source})
     return candidates, [score for _, score, _ in ranked]
 
@@ -1722,16 +1703,10 @@ def main() -> None:
         else:
             candidates, scores = generate_positional_ensemble(game, rows)
 
-        # Every model exposes the same five-line contract: three primary model
-        # lines plus two complementary reverse-selection lines. Direct-digit
-        # games build the latter from their cold profile; set-based games use
-        # the two lowest-ranked diversified lines already produced by their
-        # own model, so no cross-game scoring is mixed.
-        for index, candidate in enumerate(candidates):
-            if index >= 3:
-                candidate["source"] = "cold_reverse"
-                candidate["mix_label"] = "冷门反选"
-            elif "source" not in candidate:
+        # Every model exposes the same five-line contract. Direct-digit lines
+        # already carry their hot positional-pool source from the generator.
+        for candidate in candidates:
+            if "source" not in candidate:
                 candidate["source"] = "model_primary"
 
         # Main-list scores are relative to the backtested ranking model. Strategy

@@ -155,9 +155,7 @@ class DetailPageTests(unittest.TestCase):
             digits = len(candidates[0]["number"])
             for position in range(digits):
                 distinct = {item["number"][position] for item in candidates}
-            expected = 3 if game in ("pl3", "fc3d") else 3
-            primary_distinct = {item["number"][position] for item in candidates[:3]}
-            self.assertEqual(len(primary_distinct), expected, (game, position, primary_distinct))
+                self.assertEqual(len(distinct), 3, (game, position, distinct))
 
     def test_qxc_candidates_cover_three_digits_per_position(self):
         candidates, _ = generate_qxc(self.qxc_rows)
@@ -323,20 +321,16 @@ class DetailPageTests(unittest.TestCase):
             (root / "docs/assets/data/dashboard.json").read_text(encoding="utf-8")
         )["games"]
         expected = {
-            "pl3": (5, {"position_ensemble": 5}),
-            "pl5": (5, {"position_ensemble": 5}),
-            "fc3d": (5, {"position_ensemble": 5}),
+            "pl3": 5,
+            "pl5": 5,
+            "fc3d": 5,
         }
-        for key, (count, source_counts) in expected.items():
+        for key, count in expected.items():
             game = games[key]
             candidates = game["top_candidates"]
             self.assertEqual(len(candidates), count)
             self.assertEqual(len({item["number"] for item in candidates}), count)
             self.assertNotIn("strategy_zones", game)
-            expected_sources = {"position_ensemble": count}
-            if key in ("pl3", "pl5", "fc3d"):
-                expected_sources = {"position_ensemble": 3, "cold_reverse": 2}
-            self.assertEqual(Counter(item["source"] for item in candidates), expected_sources)
             scores = [item["confidence"] for item in candidates]
             self.assertEqual(scores[:3], sorted(scores[:3], reverse=True))
             self.assertEqual(scores[3:], sorted(scores[3:], reverse=True))
@@ -348,10 +342,10 @@ class DetailPageTests(unittest.TestCase):
         self.assertEqual(len(pl3), 5)
         self.assertEqual(len(pl5), 5)
         self.assertEqual(len(fc3d), 5)
-        self.assertEqual(Counter(item["source"] for item in pl3), {"position_ensemble": 3, "cold_reverse": 2})
+        self.assertEqual(Counter(item["source"] for item in pl3), {"hot_position_pool": 5})
         for candidates in (pl5,):
-            self.assertEqual(Counter(item["source"] for item in candidates), {"position_ensemble": len(candidates)})
-        self.assertEqual(Counter(item["source"] for item in fc3d), {"position_ensemble": 3, "cold_reverse": 2})
+            self.assertEqual(Counter(item["source"] for item in candidates), {"hot_position_pool": len(candidates)})
+        self.assertEqual(Counter(item["source"] for item in fc3d), {"hot_position_pool": 5})
 
     def test_pl5_uses_its_own_five_positions(self):
         candidates, _ = generate_positional_ensemble("pl5", self.pl5_rows)

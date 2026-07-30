@@ -5,7 +5,7 @@ import json
 import re
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime
+from datetime import datetime, time as clock_time
 from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError, URLError
@@ -255,6 +255,11 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--history-limit", type=int, default=100, help="每个玩法抓取的历史期数")
     parser.add_argument("--today", action="store_true", help="只抓取北京时间今天安排开奖的彩种")
+    parser.add_argument(
+        "--require-fresh-results",
+        action="store_true",
+        help="要求每个选中彩种已达到当前应有的最新开奖日期，否则停止后续流程",
+    )
     return parser.parse_args()
 
 
@@ -266,6 +271,42 @@ def today_games(config: dict[str, Any], now: datetime | None = None) -> list[str
         game for game, cfg in config["games"].items()
         if weekday in cfg.get("draw_weekdays", list(range(7)))
     ]
+
+
+def expected_latest_draw_date(
+    game: str, cfg: dict[str, Any], default_draw_time: str, now: datetime | None = None
+) -> str:
+    """Return the most recent scheduled draw date that should already exist."""
+    current = now or datetime.now(TZ)
+    hour, minute = map(int, cfg.get("draw_time", default_draw_time).split(":"))
+    for days_ago in range(15):
+        candidate_date = current.date() - timedelta(days=days_ago)
+        candidate_at = datetime.combine(candidate_date, clock_time(hour, minute), tzinfo=TZ)
+        if candidate_date.weekday() in cfg.get("draw_weekdays", list(range(7))) and candidate_at <= current:
+            return candidate_date.isoformat()
+    raise RuntimeError(f"{game} cannot calculate expected latest draw date")
+
+
+def require_fresh_results(
+    selected: list[str],
+    draws: dict[str, list[dict[str, Any]]],
+    config: dict[str, Any],
+    now: datetime | None = None,
+) -> None:
+    """Stop the pipeline when the verified cache is behind the expected draw date."""
+    current = now or datetime.now(TZ)
+    stale: list[str] = []
+    for game in selected:
+        rows = draws.get(game) or []
+        expected = expected_latest_draw_date(game, config["games"][game], config["draw_time"], current)
+        actual = str(rows[0].get("draw_date", ""))[:10] if rows else ""
+        if actual != expected:
+            stale.append(f"{game}: expected {expected}, got {actual or 'missing'}")
+    if stale:
+        raise SystemExit(
+            "Fresh result gate blocked the pipeline; no model or prediction was generated: "
+            + "; ".join(stale)
+        )
 
 
 def merge_history(previous_rows: list[dict[str, Any]], fetched_rows: list[dict[str, Any]], limit: int) -> list[dict[str, Any]]:
@@ -323,6 +364,9 @@ def main() -> None:
     missing = [game for game in selected if not draws.get(game)]
     if missing:
         raise SystemExit(f"没有可保留的数据: {', '.join(missing)}")
+
+    if args.require_fresh_results:
+        require_fresh_results(selected, draws, config)
 
     sources = list(previous.get("sources", []))
     for game in selected:
