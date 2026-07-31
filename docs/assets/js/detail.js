@@ -35,9 +35,18 @@ function positionAnalysisHtml(analysis) {
   if (!analysis.position_analysis) return "";
   return `<div class="position-grid">${analysis.position_analysis.map(item => {
     const hot = item.hot_digits || item.hot_numbers || [];
+    const cold = item.cold_digits || [];
     const omitted = item.omitted_digits || [];
-    return `<article class="position-card"><span>${escapeHtml(item.position)}</span><strong>${escapeHtml(hot.join(" 路 "))}</strong><small>${omitted.map(value => `${escapeHtml(value.digit)}（${value.miss}期）`).join("、")}</small></article>`;
+    return `<article class="position-card"><span>${escapeHtml(item.position)}</span><strong class="position-hot">${escapeHtml(hot.join(" · "))}</strong><small class="position-cold">冷 ${escapeHtml(cold.join(" · "))}</small><small>较长遗漏 ${omitted.map(value => `${escapeHtml(value.digit)}（${value.miss}期）`).join("、")}</small></article>`;
   }).join("")}</div>`;
+}
+
+function predictionStructureHtml(game) {
+  if (!['pl3', 'fc3d'].includes(gameKey)) return "";
+  return `<section class="section prediction-structure"><div class="section-head"><div><p class="section-label">PREDICTION STRUCTURE</p><h2>和值 · 跨度 · 形态</h2></div><p class="section-note">每注预测同时展示和值、跨度、奇偶比和不同数字数；这些是历史排序参考，不代表真实中奖概率。</p></div><div class="structure-grid">${game.top_candidates.map(item => {
+    const metrics = item.prediction_metrics || {};
+    return `<article class="structure-card"><strong>${escapeHtml(item.number)}</strong><span>和值 ${escapeHtml(metrics.sum)} · 跨度 ${escapeHtml(metrics.span)}</span><small>奇偶 ${escapeHtml(metrics.odd_even)} · 不同 ${escapeHtml(metrics.distinct)} · ${escapeHtml(metrics.shape)}</small></article>`;
+  }).join("")}</div></section>`;
 }
 
 
@@ -154,6 +163,7 @@ async function load() {
       <div class="section-head"><div><p class="section-label">COMPOSITE PICKS</p><h2>唯一综合推荐</h2></div><p class="section-note">综合主榜为核心，加入少量冷门保护与热门观察；不再分开展示热门、冷门专区。评分仅用于本页候选内部排序。</p></div>
       ${playTypesHtml(game)}
     </section>
+    ${predictionStructureHtml(game)}
     <section class="section">
       <div class="section-head"><div><p class="section-label">LAST DRAW REVIEW</p><h2>${escapeHtml(game.review.title)}</h2></div><p class="section-note">${escapeHtml(game.review.summary)}</p></div>
       <div class="metrics">${game.review.metrics.map(item => `<div class="metric"><span>${escapeHtml(item.label)}</span><strong>${escapeHtml(item.value)}</strong></div>`).join("")}</div>
@@ -163,7 +173,7 @@ async function load() {
       <div><p class="section-label">MODEL ANALYSIS / ${game.analysis.sample} DRAWS</p><h2>本期分析</h2><p class="model-name">${escapeHtml(game.analysis.model_name || "独立统计模型")}</p><p class="analysis-summary">${escapeHtml(game.analysis.summary)}</p></div>
       <div><div class="signals">${game.analysis.signals.map(item => `<div class="signal"><span>${escapeHtml(item.label)}</span><strong>${escapeHtml(item.value)}</strong></div>`).join("")}</div><div class="methods">${game.analysis.method.map(item => `<span>${escapeHtml(item)}</span>`).join("")}</div></div>
     </section>
-    ${positionAnalysisHtml(game.analysis)}
+    <section class="section"><div class="section-head"><div><p class="section-label">POSITIONAL SIGNALS</p><h2>每个位置热冷门</h2></div><p class="section-note">热门按指数衰减频率排序，冷门为当前样本中相对低频数字；百位、十位、个位独立统计。</p></div>${positionAnalysisHtml(game.analysis)}</section>
     <div class="disclaimer">${escapeHtml(payload.disclaimer)}</div>
   </div>`;
   document.addEventListener("click", event => {

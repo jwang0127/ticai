@@ -90,6 +90,12 @@ body[data-game="kl8"] .pick-number { margin: 28px 0 14px; white-space: normal; o
 .position-card { padding: 18px; background: rgba(255,255,255,.55); border: 1px solid var(--line); border-radius: 13px; }
 .position-card span, .position-card small { display: block; color: var(--muted); font-size: 11px; }
 .position-card strong { display: block; margin: 13px 0; font: 500 23px/1 "DM Mono", monospace; }
+.position-card .position-hot { color: var(--red); }
+.position-card .position-cold { color: var(--blue); }
+.structure-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.structure-card { padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.55); }
+.structure-card strong { display: block; color: var(--sector-accent); font: 700 23px/1.2 "DM Mono", monospace; }
+.structure-card span, .structure-card small { display: block; margin-top: 9px; color: var(--muted); font-size: 11px; line-height: 1.5; }
 .signals { display: grid; gap: 10px; }
 .signal { display: grid; grid-template-columns: 130px 1fr; gap: 18px; padding: 15px 0; border-bottom: 1px solid var(--line); }
 .signal span { color: var(--muted); font-size: 12px; }
@@ -103,7 +109,7 @@ body[data-game="kl8"] .pick-number { margin: 28px 0 14px; white-space: normal; o
 @media (max-width: 760px) {
   .shell { width: calc(100% - 24px); }
   .hero, .analysis-grid { grid-template-columns: 1fr; gap: 28px; }
-  .picks, .metrics, .model-review-metrics, .zone-grid { grid-template-columns: 1fr; }
+  .picks, .metrics, .model-review-metrics, .zone-grid, .structure-grid { grid-template-columns: 1fr; }
   .section-head { display: block; }
   .topbar { align-items: flex-start; flex-direction: column; }
   .game-nav { width: 100%; display: grid; grid-template-columns: repeat(2, 1fr); }

@@ -575,6 +575,20 @@ def direct_structure_score(values: list[int]) -> float:
     return 0.35 * unique_fit + 0.25 * sum_fit + 0.20 * span_fit + 0.20 * parity_fit
 
 
+def direct_number_metrics(values: list[int]) -> dict[str, str | int]:
+    """Return the readable structure fields shown beside direct picks."""
+    total = sum(values)
+    span = max(values) - min(values)
+    odd = sum(value % 2 for value in values)
+    return {
+        "sum": total,
+        "span": span,
+        "odd_even": f"{odd}:{len(values) - odd}",
+        "distinct": len(set(values)),
+        "shape": digit_shape(values),
+    }
+
+
 def global_candidate_score(values: list[int], components: tuple, model: dict | None = None) -> float:
     """Score direct numbers by position; no unordered-set or total-sum terms."""
     model = model or DIGIT_MODELS["pl3"]
@@ -1605,6 +1619,7 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
         position_analysis.append({
             "position": labels[pos],
             "hot_digits": ranked,
+            "cold_digits": [str(value) for value, _ in sorted(counter.items(), key=lambda item: (item[1], item[0]))[:3]],
             "omitted_digits": [{"digit": str(value), "miss": miss} for value, miss in longest],
         })
     structure_note = "排列5使用自身五个位置的独立校准与三数字候选池；" if game == "pl5" else ""
@@ -1723,6 +1738,8 @@ def main() -> None:
                 "rank": rank,
                 "confidence": confidence,
                 "copy_text": copy_text,
+                **({"prediction_metrics": direct_number_metrics([int(value) for value in candidate["number"]])}
+                   if game in ("pl3", "fc3d") else {}),
                 **({"purchase_suggestion": suggestion} if suggestion else {}),
             })
 

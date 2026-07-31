@@ -17,6 +17,7 @@ from src.generate_dashboard import (
     calibrate_set_model,
     digit_confidences,
     direct_structure_score,
+    direct_number_metrics,
     generate_composite_recommendations,
     generate_positional_ensemble,
     generate_dlt,
@@ -204,6 +205,15 @@ class DetailPageTests(unittest.TestCase):
             analysis = build_analysis(game, rows[game])
             self.assertEqual([item["position"] for item in analysis["position_analysis"]], labels)
             self.assertTrue(all(len(item["hot_digits"]) == 3 for item in analysis["position_analysis"]))
+            self.assertTrue(all(len(item["cold_digits"]) == 3 for item in analysis["position_analysis"]))
+
+    def test_direct_predictions_expose_structure_metrics(self):
+        metrics = direct_number_metrics([4, 7, 3])
+        self.assertEqual(metrics, {"sum": 14, "span": 4, "odd_even": "2:1", "distinct": 3, "shape": "三位不同"})
+        payload = json.loads((Path(__file__).resolve().parents[1] / "docs/assets/data/dashboard.json").read_text(encoding="utf-8"))
+        for game in ("pl3", "fc3d"):
+            for item in payload["games"][game]["top_candidates"]:
+                self.assertEqual(set(item["prediction_metrics"]), {"sum", "span", "odd_even", "distinct", "shape"})
 
     def test_kl8_pick_five_model_outputs_five_valid_groups(self):
         candidates, scores = generate_kl8(self.kl8_rows)
