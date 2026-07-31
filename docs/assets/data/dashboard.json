@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T22:51:43+08:00",
+  "generated_at": "2026-07-31T22:55:30+08:00",
   "daily_results_date": "2026-07-31",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -144,27 +144,31 @@
       "copy_text": "福彩快乐8 11 15 23 26 28 43 61 64 71 76\n福彩快乐8 05 08 17 21 24 27 34 51 56 77\n福彩快乐8 05 08 14 19 30 38 44 62 63 78"
     }
   ],
-  "source_status": "pending_cross_check",
+  "source_status": "cached_verified_data",
   "verification": {
     "pl3": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26202"
+      "issue": "26202",
+      "error": "HTTP Error 567: Unknown Status"
     },
     "pl5": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26202"
+      "issue": "26202",
+      "error": "HTTP Error 567: Unknown Status"
     },
     "fc3d": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/mkjqxc/?SHA=false",
-      "issue": "2026202"
+      "issue": "2026202",
+      "error": "HTTP Error 567: Unknown Status"
     },
     "qxc": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/tcwm/qxc/",
-      "issue": "26087"
+      "issue": "26087",
+      "error": "HTTP Error 567: Unknown Status"
     },
     "ssq": {
       "status": "pending",
@@ -174,7 +178,8 @@
     "kl8": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/kl8/",
-      "issue": "2026202"
+      "issue": "2026202",
+      "error": "HTTP Error 403: Forbidden"
     },
     "dlt": {
       "status": "pending",
@@ -38351,7 +38356,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-31T22:51:43+08:00",
+      "generated_at": "2026-07-31T22:55:30+08:00",
       "latest_issue": "26202",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [
@@ -39618,7 +39623,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-31T22:51:43+08:00",
+      "generated_at": "2026-07-31T22:55:30+08:00",
       "latest_issue": "26202",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [
@@ -41230,7 +41235,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-31T22:51:43+08:00",
+      "generated_at": "2026-07-31T22:55:30+08:00",
       "latest_issue": "2026202",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [
@@ -42497,7 +42502,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-07-31T22:51:43+08:00",
+      "generated_at": "2026-07-31T22:55:30+08:00",
       "latest_issue": "26087",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [
@@ -43709,7 +43714,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-07-31T22:51:43+08:00",
+      "generated_at": "2026-07-31T22:55:30+08:00",
       "latest_issue": "2026202",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [
