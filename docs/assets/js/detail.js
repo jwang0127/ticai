@@ -43,7 +43,12 @@ function positionAnalysisHtml(analysis) {
 
 function predictionStructureHtml(game) {
   if (!['pl3', 'fc3d'].includes(gameKey)) return "";
-  return `<section class="section prediction-structure"><div class="section-head"><div><p class="section-label">PREDICTION STRUCTURE</p><h2>和值 · 跨度 · 形态</h2></div><p class="section-note">每注预测同时展示和值、跨度、奇偶比和不同数字数；这些是历史排序参考，不代表真实中奖概率。</p></div><div class="structure-grid">${game.top_candidates.map(item => {
+  const summary = game.prediction_summary || {};
+  const summaryCard = (key, label) => {
+    const item = summary[key] || {};
+    return `<article class="forecast-card"><span>${label}预测</span><strong>${escapeHtml((item.candidate_values || item.values || []).join(" · "))}</strong><small>近100期参考区间 ${escapeHtml((item.range || []).join(" – "))}</small></article>`;
+  };
+  return `<section class="section prediction-structure"><div class="section-head"><div><p class="section-label">PREDICTION STRUCTURE</p><h2>和值 · 跨度 · 奇偶比</h2></div><p class="section-note">这是预测结构本身：和值、跨度和奇偶比先于具体号码展示；每注明细另列形态。所有内容均为历史统计排序参考。</p></div><div class="forecast-grid">${summaryCard("sum", "和值")}${summaryCard("span", "跨度")}${summaryCard("odd_even", "奇偶比")}</div><div class="structure-grid">${game.top_candidates.map(item => {
     const metrics = item.prediction_metrics || {};
     return `<article class="structure-card"><strong>${escapeHtml(item.number)}</strong><span>和值 ${escapeHtml(metrics.sum)} · 跨度 ${escapeHtml(metrics.span)}</span><small>奇偶 ${escapeHtml(metrics.odd_even)} · 不同 ${escapeHtml(metrics.distinct)} · ${escapeHtml(metrics.shape)}</small></article>`;
   }).join("")}</div></section>`;

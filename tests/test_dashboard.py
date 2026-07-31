@@ -212,6 +212,8 @@ class DetailPageTests(unittest.TestCase):
         self.assertEqual(metrics, {"sum": 14, "span": 4, "odd_even": "2:1", "distinct": 3, "shape": "三位不同"})
         payload = json.loads((Path(__file__).resolve().parents[1] / "docs/assets/data/dashboard.json").read_text(encoding="utf-8"))
         for game in ("pl3", "fc3d"):
+            self.assertEqual(set(payload["games"][game]["prediction_summary"]), {"sum", "span", "odd_even"})
+            self.assertTrue(payload["games"][game]["prediction_summary"]["sum"]["candidate_values"])
             for item in payload["games"][game]["top_candidates"]:
                 self.assertEqual(set(item["prediction_metrics"]), {"sum", "span", "odd_even", "distinct", "shape"})
 

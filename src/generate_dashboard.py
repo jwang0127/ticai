@@ -589,6 +589,31 @@ def direct_number_metrics(values: list[int]) -> dict[str, str | int]:
     }
 
 
+def direct_prediction_summary(rows: list[dict], candidates: list[dict]) -> dict[str, object]:
+    """Summarize the structure forecast shown above the direct picks."""
+    recent = rows[:100]
+    historical = {
+        "sum": Counter(sum(int(value) for value in row["numbers"]) for row in recent),
+        "span": Counter(max(map(int, row["numbers"])) - min(map(int, row["numbers"])) for row in recent),
+        "odd_even": Counter(
+            f"{sum(int(value) % 2 for value in row['numbers'])}:{len(row['numbers']) - sum(int(value) % 2 for value in row['numbers'])}"
+            for row in recent
+        ),
+    }
+    candidate_metrics = [item["prediction_metrics"] for item in candidates]
+    result = {}
+    for key in ("sum", "span", "odd_even"):
+        candidate_values = [item[key] for item in candidate_metrics]
+        historical_top = [value for value, _ in historical[key].most_common(3)]
+        combined = list(dict.fromkeys(candidate_values + historical_top))
+        result[key] = {
+            "values": combined[:5],
+            "candidate_values": list(dict.fromkeys(candidate_values)),
+            "range": [min(historical[key]), max(historical[key])],
+        }
+    return result
+
+
 def global_candidate_score(values: list[int], components: tuple, model: dict | None = None) -> float:
     """Score direct numbers by position; no unordered-set or total-sum terms."""
     model = model or DIGIT_MODELS["pl3"]
@@ -1765,6 +1790,7 @@ def main() -> None:
             }.get(game, "每日开奖（休市日除外）"),
             "candidates": enriched,
             "top_candidates": enriched,
+            **({"prediction_summary": direct_prediction_summary(rows, enriched)} if game in ("pl3", "fc3d") else {}),
             "review": build_review(game, rows),
             "analysis": build_analysis(game, rows),
             "model_review": model_reviews.get(game),
