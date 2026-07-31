@@ -1,6 +1,42 @@
 {
-  "generated_at": "2026-07-31T15:48:10+00:00",
+  "generated_at": "2026-07-31T16:02:44+00:00",
   "games": {
+    "dlt": {
+      "kind": "set_model",
+      "selected_window": 1500,
+      "backtest": {
+        "100": {
+          "folds": 240,
+          "pool_coverage": 0.6077,
+          "se": 0.0119,
+          "baseline": 0.6486
+        },
+        "300": {
+          "folds": 240,
+          "pool_coverage": 0.6369,
+          "se": 0.0117,
+          "baseline": 0.6486
+        },
+        "500": {
+          "folds": 240,
+          "pool_coverage": 0.6339,
+          "se": 0.0118,
+          "baseline": 0.6486
+        },
+        "1000": {
+          "folds": 240,
+          "pool_coverage": 0.6464,
+          "se": 0.0117,
+          "baseline": 0.6486
+        },
+        "1500": {
+          "folds": 240,
+          "pool_coverage": 0.6524,
+          "se": 0.0116,
+          "baseline": 0.6486
+        }
+      }
+    },
     "pl3": {
       "kind": "positional_digit",
       "selected_decay": 13,
@@ -712,9 +748,6 @@
           "baseline": 0.3
         }
       }
-    },
-    "qxc": {
-      "kind": "generator_internal_calibration"
     },
     "kl8": {
       "kind": "set_model",

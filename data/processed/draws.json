@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-31T23:48:10+08:00",
+  "updated_at": "2026-08-01T00:02:44+08:00",
   "source_status": "cached_verified_data",
   "draws": {
     "dlt": [
@@ -188055,11 +188055,11 @@
     }
   ],
   "errors": {
-    "fc3d": "中国福彩网福彩3D接口请求失败: HTTP Error 403: Forbidden",
     "kl8": "中国福彩网福彩快乐8接口请求失败: HTTP Error 403: Forbidden",
-    "pl5": "官方接口请求失败: HTTP Error 567: Unknown Status",
+    "fc3d": "中国福彩网福彩3D接口请求失败: HTTP Error 403: Forbidden",
     "pl3": "官方接口请求失败: HTTP Error 567: Unknown Status",
-    "qxc": "官方接口请求失败: HTTP Error 567: Unknown Status"
+    "dlt": "官方接口请求失败: HTTP Error 567: Unknown Status",
+    "pl5": "官方接口请求失败: HTTP Error 567: Unknown Status"
   },
   "verification": {
     "pl3": {
@@ -188100,7 +188100,8 @@
     "dlt": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/mkjdlt/",
-      "issue": "26085"
+      "issue": "26085",
+      "error": "HTTP Error 567: Unknown Status"
     }
   }
 }
