@@ -52,6 +52,11 @@ jobs:
             echo "games=today" >> "$GITHUB_OUTPUT"
           fi
       - name: Fetch official draw history (preserve verified cache on failure)
+        # A push already contains the locally verified data committed with the
+        # change. Keep the strict official freshness gate for scheduled/manual
+        # refreshes, but do not let a transient upstream outage block Pages
+        # deployment of an already verified commit.
+        if: github.event_name != 'push'
         run: |
           if [[ "${{ steps.scope.outputs.games }}" == "today" ]]; then
             python src/fetch_draws.py --today --history-limit 2000 --require-fresh-results
