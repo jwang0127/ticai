@@ -92,6 +92,18 @@ body[data-game="kl8"] .pick-number { margin: 28px 0 14px; white-space: normal; o
 .position-card strong { display: block; margin: 13px 0; font: 500 23px/1 "DM Mono", monospace; }
 .position-card .position-hot { color: var(--red); }
 .position-card .position-cold { color: var(--blue); }
+.position-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.position-row > small { width: 34px; }
+.position-digit { display: inline-flex; align-items: baseline; gap: 2px; padding: 5px 7px; border-radius: 7px; font: 600 18px/1 "DM Mono", monospace; }
+.position-digit small { display: inline; font: 10px/1 "Microsoft YaHei", sans-serif; }
+.position-digit.hot { color: var(--red); background: rgba(196, 73, 73, .08); }
+.position-digit.cold { color: var(--blue); background: rgba(54, 105, 176, .08); }
+.position-digit.focus { outline: 2px solid currentColor; box-shadow: 0 0 0 3px rgba(255,255,255,.8); }
+.direct-candidate-group { margin: 0 0 26px; }
+.group-title { display: flex; align-items: baseline; justify-content: space-between; margin: 8px 0 12px; }
+.group-title h3 { margin: 0; }
+.group-title span { color: var(--muted); font-size: 12px; }
+.cold-group .pick { border-top-color: var(--blue); }
 .structure-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
 .forecast-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
 .forecast-card { padding: 18px; border: 1px solid var(--sector-accent); border-radius: 13px; background: rgba(255,255,255,.62); }

@@ -222,6 +222,18 @@ class DetailPageTests(unittest.TestCase):
                 self.assertIn(item["prediction_metrics"]["span"], summary["span"]["values"])
                 self.assertIn(item["prediction_metrics"]["odd_even"], summary["odd_even"]["values"])
 
+    def test_direct_hot_cold_template_exposes_focus_and_five_lists(self):
+        payload = json.loads((Path(__file__).resolve().parents[1] / "docs/assets/data/dashboard.json").read_text(encoding="utf-8"))
+        for game in ("pl3", "fc3d"):
+            item = payload["games"][game]
+            self.assertEqual(len(item["hot_candidates"]), 5)
+            self.assertEqual(len(item["cold_candidates"]), 5)
+            for position in item["analysis"]["position_analysis"]:
+                self.assertEqual(len(position["hot_focus_digits"]), 2)
+                self.assertEqual(len(position["cold_focus_digits"]), 2)
+                self.assertEqual(len(position["hot_occurrences"]), 3)
+                self.assertEqual(len(position["cold_occurrences"]), 3)
+
     def test_structure_forecast_excludes_latest_settled_draw(self):
         rows = [{"numbers": ["9", "6", "1"]}] + [{"numbers": ["0", "0", "0"]} for _ in range(5)]
         summary = direct_prediction_summary(rows)

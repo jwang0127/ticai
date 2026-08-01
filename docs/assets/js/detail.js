@@ -117,6 +117,31 @@ function modelReviewHtml(review) {
 }
 
 
+function positionAnalysisHtml(analysis) {
+  if (!analysis.position_analysis) return "";
+  const renderDigits = (items, focus, className) => (items || []).map(item => {
+    const digit = item.digit ?? item;
+    const count = item.count == null ? "" : `<small>${escapeHtml(item.count)}次</small>`;
+    const focused = (focus || []).map(String).includes(String(digit)) ? " focus" : "";
+    return `<span class="position-digit ${className}${focused}">${escapeHtml(digit)}${count}</span>`;
+  }).join("");
+  return `<div class="position-grid">${analysis.position_analysis.map(item => `
+    <article class="position-card">
+      <span>${escapeHtml(item.position)}</span>
+      <div class="position-row"><small>热门</small>${renderDigits(item.hot_occurrences || item.hot_digits, item.hot_focus_digits, "hot")}</div>
+      <div class="position-row"><small>冷门</small>${renderDigits(item.cold_occurrences || item.cold_digits, item.cold_focus_digits, "cold")}</div>
+    </article>`).join("")}</div>`;
+}
+
+function directCandidatesHtml(game) {
+  if (!game.hot_candidates || !game.cold_candidates) return "";
+  const group = (title, items, className) => `<div class="direct-candidate-group ${className}">
+    <div class="group-title"><h3>${title}</h3><span>5个直选参考</span></div>${picksHtml(items)}
+    <button class="copy-bundle" data-copy="${encodeURIComponent(bundleText(game, title, items))}">复制${title}号码</button>
+  </div>`;
+  return `<section class="section direct-candidates"><div class="section-head"><div><p class="section-label">FINAL DIRECT PICKS</p><h2>热门与冷门直选</h2></div><p class="section-note">热门、冷门均按百位/十位/个位顺序生成；最推荐的两个位置数字已重点标注。分数是历史排序参考。</p></div>${group("热门号码", game.hot_candidates, "hot-group")}${group("冷门号码", game.cold_candidates, "cold-group")}</section>`;
+}
+
 function bundleText(game, label, candidates) {
   const name = `${game.name}${label ? ` ${label}` : ""}`;
   return candidates
@@ -169,6 +194,7 @@ async function load() {
       ${playTypesHtml(game)}
     </section>
     ${predictionStructureHtml(game)}
+    ${directCandidatesHtml(game)}
     <section class="section">
       <div class="section-head"><div><p class="section-label">LAST DRAW REVIEW</p><h2>${escapeHtml(game.review.title)}</h2></div><p class="section-note">${escapeHtml(game.review.summary)}</p></div>
       <div class="metrics">${game.review.metrics.map(item => `<div class="metric"><span>${escapeHtml(item.label)}</span><strong>${escapeHtml(item.value)}</strong></div>`).join("")}</div>

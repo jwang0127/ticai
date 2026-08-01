@@ -1664,19 +1664,26 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
     omitted = [f"{n}（{miss}期）" for n, miss in omission(rows[:sample], 0, len(rows[0]["numbers"]), range(10))[:3]]
     position_hot = []
     position_analysis = []
+    occurrence_window = min(100, sample)
     labels = {3: ["百位", "十位", "个位"], 5: ["万位", "千位", "百位", "十位", "个位"], 7: ["第一位", "第二位", "第三位", "第四位", "第五位", "第六位", "第七位"]}[len(rows[0]["numbers"])]
     calibration = calibrate_digit_model(game, rows, len(rows[0]["numbers"])) if game in ("pl3", "pl5", "fc3d") else set_calibration
     model = calibration["parameters"] if game in ("pl3", "pl5", "fc3d") else {"decay": 27}
     for pos in range(len(rows[0]["numbers"])):
         counter = weighted_counts(rows[:sample], pos, model["decay"])
         ranked = [str(value) for value, _ in counter.most_common(3)]
+        occurrence_counts = Counter(int(row["numbers"][pos]) for row in rows[:occurrence_window])
+        cold_ranked = [str(value) for value, _ in sorted(counter.items(), key=lambda item: (item[1], item[0]))[:3]]
         missed = position_omissions(rows[:sample], pos)
         longest = sorted(missed.items(), key=lambda item: item[1], reverse=True)[:2]
         position_hot.append(ranked[0])
         position_analysis.append({
             "position": labels[pos],
             "hot_digits": ranked,
-            "cold_digits": [str(value) for value, _ in sorted(counter.items(), key=lambda item: (item[1], item[0]))[:3]],
+            "cold_digits": cold_ranked,
+            "hot_focus_digits": ranked[:2],
+            "cold_focus_digits": cold_ranked[:2],
+            "hot_occurrences": [{"digit": value, "count": occurrence_counts[int(value)]} for value in ranked],
+            "cold_occurrences": [{"digit": value, "count": occurrence_counts[int(value)]} for value in cold_ranked],
             "omitted_digits": [{"digit": str(value), "miss": miss} for value, miss in longest],
         })
     structure_note = "排列5使用自身五个位置的独立校准与三数字候选池；" if game == "pl5" else ""
@@ -1775,36 +1782,57 @@ def main() -> None:
         else:
             candidates, scores = generate_positional_ensemble(game, rows)
 
+        hot_candidates, hot_scores = candidates, scores
+        cold_candidates, cold_scores = [], []
+        if game in ("pl3", "fc3d"):
+            forecast_rows = rows[1:] if len(rows) > 1 else rows
+            cold_ranked = generate_digit_profile(forecast_rows, 3, "cold", 5, game)
+            cold_candidates = [
+                {
+                    "number": number,
+                    "mix_label": "冷门位置池",
+                    "source": "cold_position_pool",
+                }
+                for number, _, _ in cold_ranked
+            ]
+            cold_scores = [score for _, score, _ in cold_ranked]
+
         # Every model exposes the same five-line contract. Direct-digit lines
         # already carry their hot positional-pool source from the generator.
-        for candidate in candidates:
+        for candidate in hot_candidates + cold_candidates:
             if "source" not in candidate:
                 candidate["source"] = "model_primary"
 
         # Main-list scores are relative to the backtested ranking model. Strategy
         # zones below keep their separate common hot/cold support scale.
-        confidences = relative_confidences(scores)
-        enriched = []
-        for rank, (candidate, confidence) in enumerate(zip(candidates, confidences), start=1):
-            text_value = candidate_text(game, candidate)
-            play_prefix = f"{candidate['play_name']} " if game == "kl8" else ""
-            copy_text = f"{cfg['name']} {play_prefix}{text_value}"
-            suggestion = purchase_suggestion(game, candidate)
-            enriched.append({
-                **candidate,
-                "rank": rank,
-                "confidence": confidence,
-                "copy_text": copy_text,
-                **({"prediction_metrics": direct_number_metrics([int(value) for value in candidate["number"]])}
-                   if game in ("pl3", "fc3d") else {}),
-                **({"purchase_suggestion": suggestion} if suggestion else {}),
-            })
+        def enrich_group(raw_candidates: list[dict], raw_scores: list[float], group: str) -> list[dict]:
+            confidences = relative_confidences(raw_scores)
+            enriched_group = []
+            for rank, (candidate, confidence) in enumerate(zip(raw_candidates, confidences), start=1):
+                text_value = candidate_text(game, candidate)
+                play_prefix = f"{candidate['play_name']} " if game == "kl8" else ""
+                copy_text = f"{cfg['name']} {play_prefix}{text_value}"
+                suggestion = purchase_suggestion(game, candidate)
+                enriched_group.append({
+                    **candidate,
+                    "group": group,
+                    "rank": rank,
+                    "confidence": confidence,
+                    "copy_text": copy_text,
+                    **({"prediction_metrics": direct_number_metrics([int(value) for value in candidate["number"]])}
+                       if game in ("pl3", "fc3d") else {}),
+                    **({"purchase_suggestion": suggestion} if suggestion else {}),
+                })
+            return enriched_group
+
+        enriched = enrich_group(hot_candidates, hot_scores, "hot")
+        enriched_cold = enrich_group(cold_candidates, cold_scores, "cold")
 
         output["games"][game] = {
             "name": cfg["name"],
             "sector": GAME_SECTORS.get(game, ("ticai", "体彩"))[0],
             "sector_name": GAME_SECTORS.get(game, ("ticai", "体彩"))[1],
-            "model_version": "v3.3-main3-cold2-all-games",
+            "model_version": "v3.4-sum-span-parity-position-hot-cold",
             "history_count": len(rows),
             "model_scope": "前区/后区排序位独立" if game == "dlt" else "每一位独立评分" if game in ("pl3", "pl5", "fc3d", "qxc") else "玩法专用结构模型",
             "generated_at": now.isoformat(timespec="seconds"),
@@ -1822,6 +1850,7 @@ def main() -> None:
             }.get(game, "每日开奖（休市日除外）"),
             "candidates": enriched,
             "top_candidates": enriched,
+            **({"hot_candidates": enriched, "cold_candidates": enriched_cold} if game in ("pl3", "fc3d") else {}),
             **({"prediction_summary": direct_prediction_summary(rows)} if game in ("pl3", "fc3d") else {}),
             "review": build_review(game, rows),
             "analysis": build_analysis(game, rows),
