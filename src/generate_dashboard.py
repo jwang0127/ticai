@@ -589,9 +589,9 @@ def direct_number_metrics(values: list[int]) -> dict[str, str | int]:
     }
 
 
-def direct_prediction_summary(rows: list[dict], candidates: list[dict]) -> dict[str, object]:
-    """Summarize the structure forecast shown above the direct picks."""
-    recent = rows[:100]
+def direct_prediction_summary(rows: list[dict]) -> dict[str, object]:
+    """Forecast structure first, directly from a rolling historical window."""
+    recent = rows[:300]
     historical = {
         "sum": Counter(sum(int(value) for value in row["numbers"]) for row in recent),
         "span": Counter(max(map(int, row["numbers"])) - min(map(int, row["numbers"])) for row in recent),
@@ -600,18 +600,30 @@ def direct_prediction_summary(rows: list[dict], candidates: list[dict]) -> dict[
             for row in recent
         ),
     }
-    candidate_metrics = [item["prediction_metrics"] for item in candidates]
     result = {}
     for key in ("sum", "span", "odd_even"):
-        candidate_values = [item[key] for item in candidate_metrics]
         historical_top = [value for value, _ in historical[key].most_common(3)]
-        combined = list(dict.fromkeys(candidate_values + historical_top))
         result[key] = {
-            "values": combined[:5],
-            "candidate_values": list(dict.fromkeys(candidate_values)),
+            "values": historical_top,
             "range": [min(historical[key]), max(historical[key])],
         }
     return result
+
+
+def direct_structure_filter(rows: list[dict]) -> dict[str, set[int | str]]:
+    """Return the first-stage structure pools used before positional ranking."""
+    summary = direct_prediction_summary(rows)
+    return {key: set(item["values"]) for key, item in summary.items()}
+
+
+def direct_structure_match(values: list[int], pools: dict[str, set[int | str]]) -> tuple[bool, int]:
+    metrics = direct_number_metrics(values)
+    matches = sum([
+        metrics["sum"] in pools["sum"],
+        metrics["span"] in pools["span"],
+        metrics["odd_even"] in pools["odd_even"],
+    ])
+    return matches == 3, matches
 
 
 def global_candidate_score(values: list[int], components: tuple, model: dict | None = None) -> float:
@@ -781,16 +793,32 @@ def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict
             )[:3]
             for position in range(digits)
         ]
+        structure_pools = direct_structure_filter(rows) if game in ("pl3", "fc3d") else None
+        value_space = product(range(10), repeat=digits) if structure_pools else product(*pools)
+        all_values = list(value_space)
         scored = []
-        for values in product(*pools):
-            number = "".join(str(value) for value in values)
-            scored.append((number, global_candidate_score(list(values), components, model), 0.0))
+        minimum_matches = 3 if structure_pools else 0
+        while len(scored) < 5 and minimum_matches >= 0:
+            for values in all_values:
+                number = "".join(str(value) for value in values)
+                matches = 0
+                if structure_pools:
+                    _, matches = direct_structure_match(list(values), structure_pools)
+                    if matches < minimum_matches:
+                        continue
+                score = global_candidate_score(list(values), components, model)
+                score += 0.35 * matches
+                scored.append((number, score, 0.0))
+            if len(scored) < 5:
+                scored = []
+                minimum_matches -= 1
         ranked = diversified_rank(scored, 5, model["diversity"])
-        ranked = ensure_position_pool_coverage(
-            ranked,
-            pools,
-            lambda text: global_candidate_score([int(value) for value in text], components, model),
-        )
+        if not structure_pools:
+            ranked = ensure_position_pool_coverage(
+                ranked,
+                pools,
+                lambda text: global_candidate_score([int(value) for value in text], components, model),
+            )
         if len({number for number, _, _ in ranked}) != 5:
             raise RuntimeError(f"{game} hot pool did not generate five distinct direct picks")
     else:
@@ -1790,7 +1818,7 @@ def main() -> None:
             }.get(game, "每日开奖（休市日除外）"),
             "candidates": enriched,
             "top_candidates": enriched,
-            **({"prediction_summary": direct_prediction_summary(rows, enriched)} if game in ("pl3", "fc3d") else {}),
+            **({"prediction_summary": direct_prediction_summary(rows)} if game in ("pl3", "fc3d") else {}),
             "review": build_review(game, rows),
             "analysis": build_analysis(game, rows),
             "model_review": model_reviews.get(game),

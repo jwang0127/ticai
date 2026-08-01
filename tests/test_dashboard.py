@@ -156,7 +156,7 @@ class DetailPageTests(unittest.TestCase):
             digits = len(candidates[0]["number"])
             for position in range(digits):
                 distinct = {item["number"][position] for item in candidates}
-                self.assertEqual(len(distinct), 3, (game, position, distinct))
+                self.assertGreaterEqual(len(distinct), 3, (game, position, distinct))
 
     def test_qxc_candidates_cover_three_digits_per_position(self):
         candidates, _ = generate_qxc(self.qxc_rows)
@@ -213,9 +213,13 @@ class DetailPageTests(unittest.TestCase):
         payload = json.loads((Path(__file__).resolve().parents[1] / "docs/assets/data/dashboard.json").read_text(encoding="utf-8"))
         for game in ("pl3", "fc3d"):
             self.assertEqual(set(payload["games"][game]["prediction_summary"]), {"sum", "span", "odd_even"})
-            self.assertTrue(payload["games"][game]["prediction_summary"]["sum"]["candidate_values"])
+            self.assertEqual(len(payload["games"][game]["prediction_summary"]["sum"]["values"]), 3)
+            summary = payload["games"][game]["prediction_summary"]
             for item in payload["games"][game]["top_candidates"]:
                 self.assertEqual(set(item["prediction_metrics"]), {"sum", "span", "odd_even", "distinct", "shape"})
+                self.assertIn(item["prediction_metrics"]["sum"], summary["sum"]["values"])
+                self.assertIn(item["prediction_metrics"]["span"], summary["span"]["values"])
+                self.assertIn(item["prediction_metrics"]["odd_even"], summary["odd_even"]["values"])
 
     def test_kl8_pick_five_model_outputs_five_valid_groups(self):
         candidates, scores = generate_kl8(self.kl8_rows)
