@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T18:09:33+08:00",
+  "generated_at": "2026-08-01T18:10:25+08:00",
   "daily_results_date": "2026-08-01",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -37813,7 +37813,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-08-01T18:09:33+08:00",
+      "generated_at": "2026-08-01T18:10:25+08:00",
       "latest_issue": "26085",
       "latest_draw_date": "2026-07-29",
       "latest_numbers": [
@@ -38357,7 +38357,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-01T18:09:33+08:00",
+      "generated_at": "2026-08-01T18:10:25+08:00",
       "latest_issue": "26202",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [
@@ -39659,7 +39659,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-01T18:09:33+08:00",
+      "generated_at": "2026-08-01T18:10:25+08:00",
       "latest_issue": "26202",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [
@@ -41271,7 +41271,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-01T18:09:33+08:00",
+      "generated_at": "2026-08-01T18:10:25+08:00",
       "latest_issue": "2026202",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [
@@ -43785,7 +43785,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-01T18:09:33+08:00",
+      "generated_at": "2026-08-01T18:10:25+08:00",
       "latest_issue": "2026202",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [
