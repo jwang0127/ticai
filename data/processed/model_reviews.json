@@ -204,27 +204,27 @@
         "suggestion": "直选参考：385"
       },
       {
-        "number": "754",
+        "number": "716",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：754"
+        "suggestion": "直选参考：716"
       },
       {
-        "number": "563",
+        "number": "853",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：563"
+        "suggestion": "直选参考：853"
       },
       {
-        "number": "627",
+        "number": "167",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：627"
+        "suggestion": "直选参考：167"
       },
       {
-        "number": "276",
+        "number": "572",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：276"
+        "suggestion": "直选参考：572"
       }
     ],
-    "next_day_advice_text": "直选参考：385；直选参考：754；直选参考：563；直选参考：627；直选参考：276"
+    "next_day_advice_text": "直选参考：385；直选参考：716；直选参考：853；直选参考：167；直选参考：572"
   },
   "pl5": {
     "issue": "26202",

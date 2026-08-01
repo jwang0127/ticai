@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T18:10:25+08:00",
+  "generated_at": "2026-08-01T18:13:49+08:00",
   "daily_results_date": "2026-08-01",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -37813,7 +37813,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-08-01T18:10:25+08:00",
+      "generated_at": "2026-08-01T18:13:49+08:00",
       "latest_issue": "26085",
       "latest_draw_date": "2026-07-29",
       "latest_numbers": [
@@ -38357,7 +38357,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-01T18:10:25+08:00",
+      "generated_at": "2026-08-01T18:13:49+08:00",
       "latest_issue": "26202",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [
@@ -38387,68 +38387,68 @@
           "purchase_suggestion": "直选参考：385"
         },
         {
-          "number": "754",
-          "mix_label": "热门池组合 · 2/3 位取最高权重数字",
+          "number": "716",
+          "mix_label": "热门池组合 · 1/3 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 2,
-          "confidence": 74.3,
-          "copy_text": "排列3 754",
-          "prediction_metrics": {
-            "sum": 16,
-            "span": 3,
-            "odd_even": "2:1",
-            "distinct": 3,
-            "shape": "三位不同"
-          },
-          "purchase_suggestion": "直选参考：754"
-        },
-        {
-          "number": "563",
-          "mix_label": "热门池组合 · 0/3 位取最高权重数字",
-          "source": "hot_position_pool",
-          "rank": 3,
-          "confidence": 65.2,
-          "copy_text": "排列3 563",
+          "confidence": 72.8,
+          "copy_text": "排列3 716",
           "prediction_metrics": {
             "sum": 14,
-            "span": 3,
+            "span": 6,
             "odd_even": "2:1",
             "distinct": 3,
             "shape": "三位不同"
           },
-          "purchase_suggestion": "直选参考：563"
+          "purchase_suggestion": "直选参考：716"
         },
         {
-          "number": "627",
+          "number": "853",
+          "mix_label": "热门池组合 · 1/3 位取最高权重数字",
+          "source": "hot_position_pool",
+          "rank": 3,
+          "confidence": 61.0,
+          "copy_text": "排列3 853",
+          "prediction_metrics": {
+            "sum": 16,
+            "span": 5,
+            "odd_even": "2:1",
+            "distinct": 3,
+            "shape": "三位不同"
+          },
+          "purchase_suggestion": "直选参考：853"
+        },
+        {
+          "number": "167",
           "mix_label": "热门池组合 · 0/3 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 4,
-          "confidence": 57.0,
-          "copy_text": "排列3 627",
+          "confidence": 57.5,
+          "copy_text": "排列3 167",
           "prediction_metrics": {
-            "sum": 15,
-            "span": 5,
-            "odd_even": "1:2",
+            "sum": 14,
+            "span": 6,
+            "odd_even": "2:1",
             "distinct": 3,
             "shape": "三位不同"
           },
-          "purchase_suggestion": "直选参考：627"
+          "purchase_suggestion": "直选参考：167"
         },
         {
-          "number": "276",
+          "number": "572",
           "mix_label": "热门池组合 · 0/3 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列3 276",
+          "copy_text": "排列3 572",
           "prediction_metrics": {
-            "sum": 15,
+            "sum": 14,
             "span": 5,
-            "odd_even": "1:2",
+            "odd_even": "2:1",
             "distinct": 3,
             "shape": "三位不同"
           },
-          "purchase_suggestion": "直选参考：276"
+          "purchase_suggestion": "直选参考：572"
         }
       ],
       "top_candidates": [
@@ -38469,75 +38469,75 @@
           "purchase_suggestion": "直选参考：385"
         },
         {
-          "number": "754",
-          "mix_label": "热门池组合 · 2/3 位取最高权重数字",
+          "number": "716",
+          "mix_label": "热门池组合 · 1/3 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 2,
-          "confidence": 74.3,
-          "copy_text": "排列3 754",
-          "prediction_metrics": {
-            "sum": 16,
-            "span": 3,
-            "odd_even": "2:1",
-            "distinct": 3,
-            "shape": "三位不同"
-          },
-          "purchase_suggestion": "直选参考：754"
-        },
-        {
-          "number": "563",
-          "mix_label": "热门池组合 · 0/3 位取最高权重数字",
-          "source": "hot_position_pool",
-          "rank": 3,
-          "confidence": 65.2,
-          "copy_text": "排列3 563",
+          "confidence": 72.8,
+          "copy_text": "排列3 716",
           "prediction_metrics": {
             "sum": 14,
-            "span": 3,
+            "span": 6,
             "odd_even": "2:1",
             "distinct": 3,
             "shape": "三位不同"
           },
-          "purchase_suggestion": "直选参考：563"
+          "purchase_suggestion": "直选参考：716"
         },
         {
-          "number": "627",
+          "number": "853",
+          "mix_label": "热门池组合 · 1/3 位取最高权重数字",
+          "source": "hot_position_pool",
+          "rank": 3,
+          "confidence": 61.0,
+          "copy_text": "排列3 853",
+          "prediction_metrics": {
+            "sum": 16,
+            "span": 5,
+            "odd_even": "2:1",
+            "distinct": 3,
+            "shape": "三位不同"
+          },
+          "purchase_suggestion": "直选参考：853"
+        },
+        {
+          "number": "167",
           "mix_label": "热门池组合 · 0/3 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 4,
-          "confidence": 57.0,
-          "copy_text": "排列3 627",
+          "confidence": 57.5,
+          "copy_text": "排列3 167",
           "prediction_metrics": {
-            "sum": 15,
-            "span": 5,
-            "odd_even": "1:2",
+            "sum": 14,
+            "span": 6,
+            "odd_even": "2:1",
             "distinct": 3,
             "shape": "三位不同"
           },
-          "purchase_suggestion": "直选参考：627"
+          "purchase_suggestion": "直选参考：167"
         },
         {
-          "number": "276",
+          "number": "572",
           "mix_label": "热门池组合 · 0/3 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列3 276",
+          "copy_text": "排列3 572",
           "prediction_metrics": {
-            "sum": 15,
+            "sum": 14,
             "span": 5,
-            "odd_even": "1:2",
+            "odd_even": "2:1",
             "distinct": 3,
             "shape": "三位不同"
           },
-          "purchase_suggestion": "直选参考：276"
+          "purchase_suggestion": "直选参考：572"
         }
       ],
       "prediction_summary": {
         "sum": {
           "values": [
-            16,
             14,
+            16,
             15
           ],
           "range": [
@@ -38549,7 +38549,7 @@
           "values": [
             5,
             4,
-            3
+            6
           ],
           "range": [
             0,
@@ -39629,27 +39629,27 @@
             "suggestion": "直选参考：385"
           },
           {
-            "number": "754",
+            "number": "716",
             "shape": "组六形态，按直选参考",
-            "suggestion": "直选参考：754"
+            "suggestion": "直选参考：716"
           },
           {
-            "number": "563",
+            "number": "853",
             "shape": "组六形态，按直选参考",
-            "suggestion": "直选参考：563"
+            "suggestion": "直选参考：853"
           },
           {
-            "number": "627",
+            "number": "167",
             "shape": "组六形态，按直选参考",
-            "suggestion": "直选参考：627"
+            "suggestion": "直选参考：167"
           },
           {
-            "number": "276",
+            "number": "572",
             "shape": "组六形态，按直选参考",
-            "suggestion": "直选参考：276"
+            "suggestion": "直选参考：572"
           }
         ],
-        "next_day_advice_text": "直选参考：385；直选参考：754；直选参考：563；直选参考：627；直选参考：276"
+        "next_day_advice_text": "直选参考：385；直选参考：716；直选参考：853；直选参考：167；直选参考：572"
       }
     },
     "pl5": {
@@ -39659,7 +39659,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-01T18:10:25+08:00",
+      "generated_at": "2026-08-01T18:13:49+08:00",
       "latest_issue": "26202",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [
@@ -39683,36 +39683,36 @@
           "copy_text": "排列5 75570"
         },
         {
-          "number": "36670",
+          "number": "38573",
           "mix_label": "热门池组合 · 2/5 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 2,
-          "confidence": 70.3,
-          "copy_text": "排列5 36670"
+          "confidence": 71.1,
+          "copy_text": "排列5 38573"
         },
         {
-          "number": "31573",
+          "number": "08670",
           "mix_label": "热门池组合 · 2/5 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 3,
-          "confidence": 68.9,
-          "copy_text": "排列5 31573"
+          "confidence": 68.8,
+          "copy_text": "排列5 08670"
         },
         {
-          "number": "31641",
+          "number": "38641",
           "mix_label": "热门池组合 · 0/5 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 4,
-          "confidence": 58.9,
-          "copy_text": "排列5 31641"
+          "confidence": 61.8,
+          "copy_text": "排列5 38641"
         },
         {
-          "number": "06703",
+          "number": "01703",
           "mix_label": "热门池组合 · 0/5 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列5 06703"
+          "copy_text": "排列5 01703"
         }
       ],
       "top_candidates": [
@@ -39725,36 +39725,36 @@
           "copy_text": "排列5 75570"
         },
         {
-          "number": "36670",
+          "number": "38573",
           "mix_label": "热门池组合 · 2/5 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 2,
-          "confidence": 70.3,
-          "copy_text": "排列5 36670"
+          "confidence": 71.1,
+          "copy_text": "排列5 38573"
         },
         {
-          "number": "31573",
+          "number": "08670",
           "mix_label": "热门池组合 · 2/5 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 3,
-          "confidence": 68.9,
-          "copy_text": "排列5 31573"
+          "confidence": 68.8,
+          "copy_text": "排列5 08670"
         },
         {
-          "number": "31641",
+          "number": "38641",
           "mix_label": "热门池组合 · 0/5 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 4,
-          "confidence": 58.9,
-          "copy_text": "排列5 31641"
+          "confidence": 61.8,
+          "copy_text": "排列5 38641"
         },
         {
-          "number": "06703",
+          "number": "01703",
           "mix_label": "热门池组合 · 0/5 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列5 06703"
+          "copy_text": "排列5 01703"
         }
       ],
       "review": {
@@ -41271,7 +41271,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-01T18:10:25+08:00",
+      "generated_at": "2026-08-01T18:13:49+08:00",
       "latest_issue": "2026202",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [
@@ -41286,7 +41286,7 @@
       "candidates": [
         {
           "number": "226",
-          "mix_label": "热门池组合 · 1/3 位取最高权重数字",
+          "mix_label": "热门池组合 · 2/3 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 1,
           "confidence": 77.0,
@@ -41305,7 +41305,7 @@
           "mix_label": "热门池组合 · 1/3 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 2,
-          "confidence": 63.6,
+          "confidence": 63.3,
           "copy_text": "福彩3D 415",
           "prediction_metrics": {
             "sum": 10,
@@ -41321,7 +41321,7 @@
           "mix_label": "热门池组合 · 0/3 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 3,
-          "confidence": 60.0,
+          "confidence": 60.3,
           "copy_text": "福彩3D 532",
           "prediction_metrics": {
             "sum": 10,
@@ -41337,7 +41337,7 @@
           "mix_label": "热门池组合 · 0/3 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 4,
-          "confidence": 56.2,
+          "confidence": 57.5,
           "copy_text": "福彩3D 663",
           "prediction_metrics": {
             "sum": 15,
@@ -41368,7 +41368,7 @@
       "top_candidates": [
         {
           "number": "226",
-          "mix_label": "热门池组合 · 1/3 位取最高权重数字",
+          "mix_label": "热门池组合 · 2/3 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 1,
           "confidence": 77.0,
@@ -41387,7 +41387,7 @@
           "mix_label": "热门池组合 · 1/3 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 2,
-          "confidence": 63.6,
+          "confidence": 63.3,
           "copy_text": "福彩3D 415",
           "prediction_metrics": {
             "sum": 10,
@@ -41403,7 +41403,7 @@
           "mix_label": "热门池组合 · 0/3 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 3,
-          "confidence": 60.0,
+          "confidence": 60.3,
           "copy_text": "福彩3D 532",
           "prediction_metrics": {
             "sum": 10,
@@ -41419,7 +41419,7 @@
           "mix_label": "热门池组合 · 0/3 位取最高权重数字",
           "source": "hot_position_pool",
           "rank": 4,
-          "confidence": 56.2,
+          "confidence": 57.5,
           "copy_text": "福彩3D 663",
           "prediction_metrics": {
             "sum": 15,
@@ -41462,8 +41462,8 @@
         "span": {
           "values": [
             5,
-            4,
-            3
+            3,
+            4
           ],
           "range": [
             1,
@@ -42573,7 +42573,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-01T18:09:33+08:00",
+      "generated_at": "2026-08-01T18:13:49+08:00",
       "latest_issue": "26087",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [
@@ -43285,7 +43285,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-01T18:09:33+08:00",
+      "generated_at": "2026-08-01T18:13:49+08:00",
       "latest_issue": "2026087",
       "latest_draw_date": "2026-07-30",
       "latest_numbers": [
@@ -43785,7 +43785,7 @@
       "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-01T18:10:25+08:00",
+      "generated_at": "2026-08-01T18:13:49+08:00",
       "latest_issue": "2026202",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [

@@ -591,7 +591,10 @@ def direct_number_metrics(values: list[int]) -> dict[str, str | int]:
 
 def direct_prediction_summary(rows: list[dict]) -> dict[str, object]:
     """Forecast structure first, directly from a rolling historical window."""
-    recent = rows[:300]
+    # rows[0] is the just-settled draw. It belongs in review, never in the
+    # feature window for the next draw, otherwise the forecast leaks today's
+    # answer into tomorrow's structure prior.
+    recent = rows[1:301] if len(rows) > 1 else rows
     historical = {
         "sum": Counter(sum(int(value) for value in row["numbers"]) for row in recent),
         "span": Counter(max(map(int, row["numbers"])) - min(map(int, row["numbers"])) for row in recent),
@@ -778,10 +781,11 @@ def generate_pl5_from_pl3(
 
 def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict], list[float]]:
     """Direct-digit output from one hot positional pool."""
-    digits = len(rows[0]["numbers"])
+    forecast_rows = rows[1:]
+    digits = len(forecast_rows[0]["numbers"] if forecast_rows else rows[0]["numbers"])
     if game in ("pl3", "pl5", "fc3d"):
-        model = calibrate_digit_model(game, rows, digits)["parameters"]
-        components = mixed_digit_components(rows, digits, model)
+        model = calibrate_digit_model(game, forecast_rows, digits)["parameters"]
+        components = mixed_digit_components(forecast_rows, digits, model)
         position_counts, totals, _, _, _ = components
         # A useful pool should be selective: three independently backtested
         # digits per position, then five combinations from their product.

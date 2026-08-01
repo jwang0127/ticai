@@ -18,6 +18,7 @@ from src.generate_dashboard import (
     digit_confidences,
     direct_structure_score,
     direct_number_metrics,
+    direct_prediction_summary,
     generate_composite_recommendations,
     generate_positional_ensemble,
     generate_dlt,
@@ -220,6 +221,12 @@ class DetailPageTests(unittest.TestCase):
                 self.assertIn(item["prediction_metrics"]["sum"], summary["sum"]["values"])
                 self.assertIn(item["prediction_metrics"]["span"], summary["span"]["values"])
                 self.assertIn(item["prediction_metrics"]["odd_even"], summary["odd_even"]["values"])
+
+    def test_structure_forecast_excludes_latest_settled_draw(self):
+        rows = [{"numbers": ["9", "6", "1"]}] + [{"numbers": ["0", "0", "0"]} for _ in range(5)]
+        summary = direct_prediction_summary(rows)
+        self.assertNotIn(16, summary["sum"]["values"])
+        self.assertEqual(summary["sum"]["values"][0], 0)
 
     def test_kl8_pick_five_model_outputs_five_valid_groups(self):
         candidates, scores = generate_kl8(self.kl8_rows)
