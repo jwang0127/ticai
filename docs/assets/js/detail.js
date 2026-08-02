@@ -125,15 +125,16 @@ function positionAnalysisHtml(analysis) {
     const focused = (focus || []).map(String).includes(String(digit)) ? " focus" : "";
     return `<span class="position-digit ${className}${focused}">${escapeHtml(digit)}${count}</span>`;
   }).join("");
-  const twoDigit = analysis.position_two_digit_predictions || [];
+  const directPositionGame = ["pl3", "fc3d"].includes(gameKey);
+  const twoDigit = directPositionGame ? (analysis.position_two_digit_predictions || []) : [];
   const twoDigitText = twoDigit.map(item => `${item.position}：${item.digits.join("、")}`).join("\n");
   const twoDigitHtml = twoDigit.length ? `<div class="two-digit-predictions"><h3>每位两码预测</h3><div class="two-digit-grid">${twoDigit.map(item => `<article><span>${escapeHtml(item.position)}</span><strong>${escapeHtml(item.digits.join(" · "))}</strong></article>`).join("")}</div><button class="copy-bundle" data-copy="${encodeURIComponent(twoDigitText)}">复制两码纯文本</button><small>三个位置独立排序；473 结构仅作轻量平分参考，分数不是中奖概率。</small></div>` : "";
-  return `${twoDigitHtml}<div class="position-grid">${analysis.position_analysis.map(item => `
+  const rows = analysis.position_analysis.map(item => `
     <article class="position-card">
       <span>${escapeHtml(item.position)}</span>
-      <div class="position-row"><small>冷门</small>${renderDigits(item.cold_occurrences || item.cold_digits, item.cold_focus_digits, "cold")}</div>
-      <div class="position-row"><small>热门</small>${renderDigits(item.hot_occurrences || item.hot_digits, item.hot_focus_digits, "hot")}</div>
-    </article>`).join("")}</div>`;
+      ${directPositionGame ? `<div class="position-row"><small>冷门</small>${renderDigits(item.cold_occurrences || item.cold_digits, item.cold_focus_digits, "cold")}</div><div class="position-row"><small>热门</small>${renderDigits(item.hot_occurrences || item.hot_digits, item.hot_focus_digits, "hot")}</div>` : `<div class="position-row"><small>热门</small>${renderDigits(item.hot_occurrences || item.hot_digits, item.hot_focus_digits, "hot")}</div><div class="position-row"><small>冷门</small>${renderDigits(item.cold_occurrences || item.cold_digits, item.cold_focus_digits, "cold")}</div>`}
+    </article>`).join("");
+  return `${twoDigitHtml}<div class="position-grid">${rows}</div>`;
 }
 
 function directCandidatesHtml(game) {
@@ -210,11 +211,12 @@ async function load() {
     <section class="section"><div class="section-head"><div><p class="section-label">POSITIONAL SIGNALS</p><h2>每个位置热冷门</h2></div><p class="section-note">热门按指数衰减频率排序，冷门为当前样本中相对低频数字；百位、十位、个位独立统计。</p></div>${positionAnalysisHtml(game.analysis)}</section>
     <div class="disclaimer">${escapeHtml(payload.disclaimer)}</div>
   </div>`;
-  // Keep the positional block at the top and remove the redundant composite block.
-  const sections = $("#app").querySelectorAll(".section");
-  const compositeSection = sections[0];
-  const positionalSection = sections[sections.length - 1];
-  if (compositeSection && positionalSection && compositeSection !== positionalSection) {
+  // Only direct-digit pages replace the composite block with positional picks.
+  if (["pl3", "fc3d"].includes(gameKey)) {
+    const sections = $("#app").querySelectorAll(".section");
+    const compositeSection = sections[0];
+    const positionalSection = sections[sections.length - 1];
+    if (compositeSection && positionalSection && compositeSection !== positionalSection) {
     compositeSection.remove();
     const head = positionalSection.querySelector(".section-head");
     if (head) {
@@ -226,6 +228,7 @@ async function load() {
       if (note) note.textContent = "先看百位、十位、个位的两码预测，再参考各位置冷门与热门分布。";
     }
     document.querySelector(".hero").after(positionalSection);
+    }
   }
   document.addEventListener("click", event => {
     const button = event.target.closest("[data-copy]");
