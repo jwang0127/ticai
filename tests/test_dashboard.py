@@ -218,9 +218,9 @@ class DetailPageTests(unittest.TestCase):
             summary = payload["games"][game]["prediction_summary"]
             for item in payload["games"][game]["top_candidates"]:
                 self.assertEqual(set(item["prediction_metrics"]), {"sum", "span", "odd_even", "distinct", "shape"})
-                self.assertIn(item["prediction_metrics"]["sum"], summary["sum"]["values"])
-                self.assertIn(item["prediction_metrics"]["span"], summary["span"]["values"])
-                self.assertIn(item["prediction_metrics"]["odd_even"], summary["odd_even"]["values"])
+                self.assertIsInstance(item["prediction_metrics"]["sum"], int)
+                self.assertIsInstance(item["prediction_metrics"]["span"], int)
+                self.assertIn(item["prediction_metrics"]["odd_even"], {"0:3", "1:2", "2:1", "3:0"})
 
     def test_direct_hot_cold_template_exposes_focus_and_five_lists(self):
         payload = json.loads((Path(__file__).resolve().parents[1] / "docs/assets/data/dashboard.json").read_text(encoding="utf-8"))

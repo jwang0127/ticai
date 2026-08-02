@@ -84,6 +84,14 @@ body[data-game="kl8"] .pick-number { margin: 28px 0 14px; white-space: normal; o
 .zone-card .pick { min-height: 0; }
 .zone-card .pick-number { margin: 22px 0 12px; }
 .analysis-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 50px; }
+.two-digit-predictions { margin: 20px 0 26px; padding: 18px; border: 1px solid var(--line, #d9dee8); border-radius: 14px; }
+.two-digit-predictions h3 { margin: 0 0 14px; }
+.two-digit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.two-digit-grid article { padding: 12px; background: rgba(100, 120, 160, .08); border-radius: 10px; }
+.two-digit-grid span, .two-digit-grid strong { display: block; }
+.two-digit-grid span { font-size: 12px; color: var(--muted, #687386); }
+.two-digit-grid strong { margin-top: 6px; font-size: 22px; letter-spacing: .12em; }
+.two-digit-predictions > small { display: block; margin-top: 12px; color: var(--muted, #687386); }
 .analysis-summary { font-size: 18px; line-height: 1.85; }
 .model-name { display: inline-block; margin: 18px 0 0; padding: 7px 10px; color: var(--sector-accent); border: 1px solid var(--sector-accent); border-radius: 99px; font-size: 12px; font-weight: 800; }
 .position-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 10px; padding: 0 0 50px; }

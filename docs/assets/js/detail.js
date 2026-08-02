@@ -125,7 +125,9 @@ function positionAnalysisHtml(analysis) {
     const focused = (focus || []).map(String).includes(String(digit)) ? " focus" : "";
     return `<span class="position-digit ${className}${focused}">${escapeHtml(digit)}${count}</span>`;
   }).join("");
-  return `<div class="position-grid">${analysis.position_analysis.map(item => `
+  const twoDigit = analysis.position_two_digit_predictions || [];
+  const twoDigitHtml = twoDigit.length ? `<div class="two-digit-predictions"><h3>每位两码预测</h3><div class="two-digit-grid">${twoDigit.map(item => `<article><span>${escapeHtml(item.position)}</span><strong>${escapeHtml(item.digits.join(" · "))}</strong></article>`).join("")}</div><small>三个位置独立排序；473 结构仅作轻量平分参考，分数不是中奖概率。</small></div>` : "";
+  return `${twoDigitHtml}<div class="position-grid">${analysis.position_analysis.map(item => `
     <article class="position-card">
       <span>${escapeHtml(item.position)}</span>
       <div class="position-row"><small>热门</small>${renderDigits(item.hot_occurrences || item.hot_digits, item.hot_focus_digits, "hot")}</div>

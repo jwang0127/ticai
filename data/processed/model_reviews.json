@@ -205,32 +205,32 @@
     "position_count": 3,
     "next_day_advice": [
       {
-        "number": "385",
+        "number": "356",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：385"
+        "suggestion": "直选参考：356"
       },
       {
-        "number": "754",
+        "number": "365",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：754"
+        "suggestion": "直选参考：365"
       },
       {
-        "number": "563",
-        "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：563"
+        "number": "055",
+        "shape": "组选三",
+        "suggestion": "组选三参考：055（055/505/550）"
       },
       {
-        "number": "627",
+        "number": "715",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：627"
+        "suggestion": "直选参考：715"
       },
       {
-        "number": "276",
+        "number": "067",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：276"
+        "suggestion": "直选参考：067"
       }
     ],
-    "next_day_advice_text": "直选参考：385；直选参考：754；直选参考：563；直选参考：627；直选参考：276"
+    "next_day_advice_text": "直选参考：356；直选参考：365；组选三参考：055（055/505/550）；直选参考：715；直选参考：067"
   },
   "pl5": {
     "issue": "26202",
@@ -322,32 +322,32 @@
     "position_count": 3,
     "next_day_advice": [
       {
-        "number": "226",
+        "number": "225",
         "shape": "组选三",
-        "suggestion": "组选三参考：226（226/262/622）"
+        "suggestion": "组选三参考：225（225/252/522）"
       },
       {
-        "number": "415",
+        "number": "928",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：415"
+        "suggestion": "直选参考：928"
       },
       {
-        "number": "532",
-        "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：532"
-      },
-      {
-        "number": "663",
+        "number": "422",
         "shape": "组选三",
-        "suggestion": "组选三参考：663（366/636/663）"
+        "suggestion": "组选三参考：422（224/242/422）"
       },
       {
-        "number": "384",
+        "number": "982",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：384"
+        "suggestion": "直选参考：982"
+      },
+      {
+        "number": "498",
+        "shape": "组六形态，按直选参考",
+        "suggestion": "直选参考：498"
       }
     ],
-    "next_day_advice_text": "组选三参考：226（226/262/622）；直选参考：415；直选参考：532；组选三参考：663（366/636/663）；直选参考：384"
+    "next_day_advice_text": "组选三参考：225（225/252/522）；直选参考：928；组选三参考：422（224/242/422）；直选参考：982；直选参考：498"
   },
   "qxc": {
     "issue": "26087",

@@ -579,6 +579,51 @@ def direct_structure_score(values: list[int]) -> float:
     return 0.35 * unique_fit + 0.25 * sum_fit + 0.20 * span_fit + 0.20 * parity_fit
 
 
+def hybrid_structure_profile(rows: list[dict], window: int = 300) -> dict[str, Counter]:
+    """Build the ZIP model's structural signals without hard filters."""
+    recent = rows[:window] if rows else rows
+    profile = {
+        "sum": Counter(),
+        "span": Counter(),
+        "odd_even": Counter(),
+        "pair_sum": Counter(),
+        "pair_diff": Counter(),
+    }
+    for row in recent:
+        values = [int(value) for value in row["numbers"]]
+        profile["sum"][sum(values)] += 1
+        profile["span"][max(values) - min(values)] += 1
+        odd = sum(value % 2 for value in values)
+        profile["odd_even"][f"{odd}:{len(values) - odd}"] += 1
+        if len(values) == 3:
+            a, b, c = values
+            for value in ((a + b) % 10, (a + c) % 10, (b + c) % 10):
+                profile["pair_sum"][value] += 1
+            for value in (abs(a - b), abs(a - c), abs(b - c)):
+                profile["pair_diff"][value] += 1
+    return profile
+
+
+def hybrid_structure_score(values: list[int], profile: dict[str, Counter]) -> float:
+    """ZIP-inspired soft structure score; current positional score stays primary."""
+    def log_probability(counter: Counter, value: int, cardinality: int) -> float:
+        total = sum(counter.values())
+        return math.log((counter[value] + 1.0) / (total + cardinality))
+
+    odd = sum(value % 2 for value in values)
+    parity = f"{odd}:{len(values) - odd}"
+    score = 0.35 * log_probability(profile["sum"], sum(values), 28)
+    score += 0.25 * log_probability(profile["span"], max(values) - min(values), 10)
+    score += 0.15 * log_probability(profile["odd_even"], parity, 4)
+    if len(values) == 3:
+        a, b, c = values
+        pair_sums = ((a + b) % 10, (a + c) % 10, (b + c) % 10)
+        pair_diffs = (abs(a - b), abs(a - c), abs(b - c))
+        score += 0.15 * sum(log_probability(profile["pair_sum"], value, 10) for value in pair_sums) / 3
+        score += 0.10 * sum(log_probability(profile["pair_diff"], value, 10) for value in pair_diffs) / 3
+    return score
+
+
 def direct_number_metrics(values: list[int]) -> dict[str, str | int]:
     """Return the readable structure fields shown beside direct picks."""
     total = sum(values)
@@ -748,6 +793,48 @@ def generate_digit_profile(
     return diversified_rank(scored, limit, diversity_penalty)
 
 
+def generate_position_two_digit_predictions(rows: list[dict], game: str) -> list[dict]:
+    """Generate two digits independently for each direct position.
+
+    The 473 review is only a capped tie-breaker over independent positional
+    pools; it is never treated as a fixed three-digit pick.
+    """
+    digits = len(rows[0]["numbers"])
+    calibration = calibrate_digit_model(game, rows, digits)
+    model = calibration["parameters"]
+    components = mixed_digit_components(rows, digits, model)
+    structure_profile = hybrid_structure_profile(rows) if digits == 3 else None
+    pools = []
+    for position in range(digits):
+        counter = components[0][position]
+        total = components[1][position]
+        ranked = sorted(range(10), key=lambda value: score_digit(value, counter, total), reverse=True)
+        pools.append(ranked[:4])
+
+    scored_numbers = []
+    for values in product(*pools):
+        score = global_candidate_score(list(values), components, model)
+        if structure_profile is not None:
+            score += 0.08 * hybrid_structure_score(list(values), structure_profile)
+        scored_numbers.append((values, score))
+
+    labels = ["百位", "十位", "个位"] if digits == 3 else [f"第{i + 1}位" for i in range(digits)]
+    predictions = []
+    for position, label in enumerate(labels):
+        position_scores: dict[int, float] = {}
+        for values, score in scored_numbers:
+            value = values[position]
+            position_scores[value] = max(position_scores.get(value, float("-inf")), score)
+        ranked = sorted(position_scores, key=position_scores.get, reverse=True)[:2]
+        predictions.append({
+            "position": label,
+            "digits": [str(value) for value in ranked],
+            "scores": [round(position_scores[value], 4) for value in ranked],
+            "source": "position_ensemble_473_tiebreak",
+        })
+    return predictions
+
+
 def generate_pl5_from_pl3(
     pl3_rows: list[dict], pl5_rows: list[dict], profile: str, limit: int = 5
 ) -> list[tuple[str, float, float]]:
@@ -801,32 +888,24 @@ def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict
             )[:3]
             for position in range(digits)
         ]
-        structure_pools = direct_structure_filter(rows) if game in ("pl3", "fc3d") else None
-        value_space = product(range(10), repeat=digits) if structure_pools else product(*pools)
-        all_values = list(value_space)
+        all_values = list(product(*pools))
         scored = []
-        minimum_matches = 3 if structure_pools else 0
-        while len(scored) < 5 and minimum_matches >= 0:
-            for values in all_values:
-                number = "".join(str(value) for value in values)
-                matches = 0
-                if structure_pools:
-                    _, matches = direct_structure_match(list(values), structure_pools)
-                    if matches < minimum_matches:
-                        continue
-                score = global_candidate_score(list(values), components, model)
-                score += 0.35 * matches
-                scored.append((number, score, 0.0))
-            if len(scored) < 5:
-                scored = []
-                minimum_matches -= 1
+        structure_profile = hybrid_structure_profile(forecast_rows) if game in ("pl3", "fc3d") else None
+        for values in all_values:
+            number = "".join(str(value) for value in values)
+            score = global_candidate_score(list(values), components, model)
+            if structure_profile is not None:
+                # ZIP signals are deliberately capped as a tie-breaker.
+                score += 0.08 * hybrid_structure_score(list(values), structure_profile)
+            scored.append((number, score, 0.0))
         ranked = diversified_rank(scored, 5, model["diversity"])
-        if not structure_pools:
-            ranked = ensure_position_pool_coverage(
-                ranked,
-                pools,
-                lambda text: global_candidate_score([int(value) for value in text], components, model),
-            )
+        ranked = ensure_position_pool_coverage(
+            ranked,
+            pools,
+            lambda text: global_candidate_score([int(value) for value in text], components, model)
+            + (0.08 * hybrid_structure_score([int(value) for value in text], structure_profile)
+               if structure_profile is not None else 0.0),
+        )
         if len({number for number, _, _ in ranked}) != 5:
             raise RuntimeError(f"{game} hot pool did not generate five distinct direct picks")
     else:
@@ -842,6 +921,31 @@ def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict
             label = "位置综合"
         source = "hot_position_pool" if game in ("pl3", "pl5", "fc3d") else "position_ensemble"
         candidates.append({"number": number, "mix_label": label, "source": source})
+    return candidates, [score for _, score, _ in ranked]
+
+
+def generate_hybrid_cold_profile(game: str, rows: list[dict], limit: int = 5) -> tuple[list[dict], list[float]]:
+    """Generate cold direct picks with ZIP structure as a capped tie-breaker."""
+    forecast_rows = rows[1:] if len(rows) > 1 else rows
+    digits = len(forecast_rows[0]["numbers"] if forecast_rows else rows[0]["numbers"])
+    model = calibrate_digit_model(game, forecast_rows, digits)["parameters"]
+    components = mixed_digit_components(forecast_rows, digits, model)
+    structure_profile = hybrid_structure_profile(forecast_rows)
+    scored = []
+    for number in range(10 ** digits):
+        text = f"{number:0{digits}d}"
+        values = [int(value) for value in text]
+        _, heat = mixed_number_score(values, components, model)
+        if heat >= -0.25:
+            continue
+        score, _ = mixed_number_score(values, components, model)
+        score += 0.08 * hybrid_structure_score(values, structure_profile)
+        scored.append((text, score, heat))
+    ranked = diversified_rank(scored, limit, model["diversity"])
+    candidates = [
+        {"number": number, "mix_label": "ZIP结构辅助冷门池", "source": "cold_hybrid_pool"}
+        for number, _, _ in ranked
+    ]
     return candidates, [score for _, score, _ in ranked]
 
 
@@ -1708,13 +1812,17 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
             {"label": "较长遗漏", "value": "、".join(omitted)},
         ],
         "position_analysis": position_analysis,
+        "position_two_digit_predictions": (
+            generate_position_two_digit_predictions(rows, game)
+            if game in ("pl3", "fc3d") else []
+        ),
         "backtest": calibration["backtest"] if calibration else None,
         "selected_decay": calibration.get("selected_decay") if game in ("pl3", "pl5", "fc3d") else None,
         "selected_window": calibration.get("selected_window") if calibration else None,
         "selected_position_parameters": calibration.get("parameters", {}).get("position_parameters", []) if game in ("pl3", "pl5", "fc3d") else [],
         "selected_position_windows": calibration.get("position_windows", {}) if game == "qxc" else {},
         "position_backtest": calibration.get("position_backtest", []) if game in ("pl3", "pl5", "fc3d", "qxc") else [],
-        "method": (["七位独立频率与遗漏", "逐位束搜索", "相邻重号与和值温和约束"] if game == "qxc" else ["逐位置频率与遗漏", f"{model['decay']}期衰减参数", "5至8注综合清单与候选分散"]),
+        "method": (["七位独立频率与遗漏", "逐位束搜索", "相邻重号与和值温和约束"] if game == "qxc" else ["逐位置频率与遗漏", f"{model['decay']}期衰减参数", "ZIP和值跨度奇偶与两码和差低权重辅助", "5至8注综合清单与候选分散"]),
     }
 
 
@@ -1796,16 +1904,7 @@ def main() -> None:
         cold_candidates, cold_scores = [], []
         if game in ("pl3", "fc3d"):
             forecast_rows = rows[1:] if len(rows) > 1 else rows
-            cold_ranked = generate_digit_profile(forecast_rows, 3, "cold", 5, game)
-            cold_candidates = [
-                {
-                    "number": number,
-                    "mix_label": "冷门位置池",
-                    "source": "cold_position_pool",
-                }
-                for number, _, _ in cold_ranked
-            ]
-            cold_scores = [score for _, score, _ in cold_ranked]
+            cold_candidates, cold_scores = generate_hybrid_cold_profile(game, rows, 5)
 
         # Every model exposes the same five-line contract. Direct-digit lines
         # already carry their hot positional-pool source from the generator.
@@ -1845,7 +1944,7 @@ def main() -> None:
             "model_version": (
                 "v3.4-v3-ensemble-coverage-validated"
                 if game in ("dlt", "ssq", "kl8")
-                else "v3.4-sum-span-parity-position-hot-cold"
+                else "v4.0-hybrid-positional-zip-structure"
             ),
             "model_reference": (
                 f"src/vendor_models_v3/{game}_model_v3.py"
