@@ -871,9 +871,17 @@ def generate_pl5_from_pl3(
 
 
 def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict], list[float]]:
-    """Direct-digit output from one hot positional pool."""
-    forecast_rows = rows[1:]
-    digits = len(forecast_rows[0]["numbers"] if forecast_rows else rows[0]["numbers"])
+    """Direct-digit output from one hot positional pool.
+
+    ``rows`` is ordered newest-first.  The latest row is already an official
+    result when this function is called for the next draw, so it belongs in
+    the training sample.  The previous implementation dropped ``rows[0]``;
+    that made every refreshed forecast lag one draw behind the verified data.
+    Calibration still uses rolling held-out folds, so including the latest
+    row here does not leak the future target draw.
+    """
+    forecast_rows = rows
+    digits = len(forecast_rows[0]["numbers"])
     if game in ("pl3", "pl5", "fc3d"):
         model = calibrate_digit_model(game, forecast_rows, digits)["parameters"]
         components = mixed_digit_components(forecast_rows, digits, model)
@@ -926,8 +934,10 @@ def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict
 
 def generate_hybrid_cold_profile(game: str, rows: list[dict], limit: int = 5) -> tuple[list[dict], list[float]]:
     """Generate cold direct picks with ZIP structure as a capped tie-breaker."""
-    forecast_rows = rows[1:] if len(rows) > 1 else rows
-    digits = len(forecast_rows[0]["numbers"] if forecast_rows else rows[0]["numbers"])
+    # The latest verified result is valid training data for the next draw.
+    # Keep the same sample boundary as the primary positional model.
+    forecast_rows = rows
+    digits = len(forecast_rows[0]["numbers"])
     model = calibrate_digit_model(game, forecast_rows, digits)["parameters"]
     components = mixed_digit_components(forecast_rows, digits, model)
     structure_profile = hybrid_structure_profile(forecast_rows)
@@ -1944,7 +1954,7 @@ def main() -> None:
             "model_version": (
                 "v3.4-v3-ensemble-coverage-validated"
                 if game in ("dlt", "ssq", "kl8")
-                else "v4.0-hybrid-positional-zip-structure"
+                else "v4.1-latest-inclusive-hybrid-positional"
             ),
             "model_reference": (
                 f"src/vendor_models_v3/{game}_model_v3.py"
@@ -2015,6 +2025,34 @@ def main() -> None:
                 "analysis": output["games"][game]["analysis"],
             }
             model_reviews[game] = build_model_review(game, latest, saved_prediction, {"top_candidates": enriched})
+            output["games"][game]["model_review"] = model_reviews[game]
+        if model_reviews.get(game, {}).get("issue") != latest["issue"]:
+            # Never present an older review as if it explained today's draw.
+            # A missing snapshot is a data-pipeline issue, not a model hit or
+            # miss, and must remain explicit for the next audit.
+            actual_text = " ".join(latest["numbers"])
+            if game in ("pl3", "pl5", "fc3d", "qxc"):
+                actual_text = "".join(latest["numbers"])
+            elif game in ("dlt", "ssq"):
+                split_at = 5 if game == "dlt" else 6
+                actual_text = (
+                    " ".join(latest["numbers"][:split_at])
+                    + " + "
+                    + " ".join(latest["numbers"][split_at:])
+                )
+            model_reviews[game] = {
+                "issue": latest["issue"],
+                "actual": actual_text,
+                "previous_candidates": [],
+                "exact_hits": None,
+                "best_number_hits": None,
+                "summary": f"第{latest['issue']}期没有可核对的上一版预测快照，未将旧期结果冒充本期复盘。",
+                "lesson": "先修复预测快照与结果期号的同步，再把命中/未命中用于模型反思；没有快照时不做伪复盘。",
+                "model_adjustments": [
+                    "生成器必须在结果期号与上一版 target_issue 对齐时才计算命中率。",
+                    "下一期模型使用全部已核实历史，参数仍由滚动留出回测选择。",
+                ],
+            }
             output["games"][game]["model_review"] = model_reviews[game]
         # The historical review may already be complete while today's
         # candidates are regenerated. Keep only the forward-looking advice in
