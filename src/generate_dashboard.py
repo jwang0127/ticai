@@ -1832,7 +1832,15 @@ def main() -> None:
             "name": cfg["name"],
             "sector": GAME_SECTORS.get(game, ("ticai", "体彩"))[0],
             "sector_name": GAME_SECTORS.get(game, ("ticai", "体彩"))[1],
-            "model_version": "v3.4-sum-span-parity-position-hot-cold",
+            "model_version": (
+                "v3.4-v3-ensemble-coverage-validated"
+                if game in ("dlt", "ssq", "kl8")
+                else "v3.4-sum-span-parity-position-hot-cold"
+            ),
+            "model_reference": (
+                f"src/vendor_models_v3/{game}_model_v3.py"
+                if game in ("dlt", "ssq", "kl8") else None
+            ),
             "history_count": len(rows),
             "model_scope": "前区/后区排序位独立" if game == "dlt" else "每一位独立评分" if game in ("pl3", "pl5", "fc3d", "qxc") else "玩法专用结构模型",
             "generated_at": now.isoformat(timespec="seconds"),

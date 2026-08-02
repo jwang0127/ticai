@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T15:54:42+00:00",
+  "generated_at": "2026-08-02T10:06:41+00:00",
   "games": {
     "dlt": {
       "kind": "set_model",
@@ -13,14 +13,14 @@
         },
         "300": {
           "folds": 240,
-          "pool_coverage": 0.6369,
+          "pool_coverage": 0.6375,
           "se": 0.0117,
           "baseline": 0.6486
         },
         "500": {
           "folds": 240,
-          "pool_coverage": 0.6339,
-          "se": 0.0118,
+          "pool_coverage": 0.6351,
+          "se": 0.0117,
           "baseline": 0.6486
         },
         "1000": {
@@ -31,7 +31,7 @@
         },
         "1500": {
           "folds": 240,
-          "pool_coverage": 0.6524,
+          "pool_coverage": 0.653,
           "se": 0.0116,
           "baseline": 0.6486
         }
@@ -749,37 +749,76 @@
         }
       }
     },
+    "qxc": {
+      "kind": "generator_internal_calibration"
+    },
+    "ssq": {
+      "kind": "set_model",
+      "selected_window": 1500,
+      "backtest": {
+        "100": {
+          "folds": 240,
+          "pool_coverage": 0.5125,
+          "se": 0.0113,
+          "baseline": 0.5122
+        },
+        "300": {
+          "folds": 240,
+          "pool_coverage": 0.522,
+          "se": 0.0113,
+          "baseline": 0.5122
+        },
+        "500": {
+          "folds": 240,
+          "pool_coverage": 0.5232,
+          "se": 0.0113,
+          "baseline": 0.5122
+        },
+        "1000": {
+          "folds": 240,
+          "pool_coverage": 0.5202,
+          "se": 0.0113,
+          "baseline": 0.5122
+        },
+        "1500": {
+          "folds": 240,
+          "pool_coverage": 0.519,
+          "se": 0.0113,
+          "baseline": 0.5122
+        }
+      }
+    },
     "kl8": {
       "kind": "set_model",
       "selected_window": 1500,
       "backtest": {
         "100": {
           "folds": 240,
-          "pool_coverage": 0.5002,
+          "pool_coverage": 0.4996,
           "se": 0.0063,
           "baseline": 0.5
         },
         "300": {
           "folds": 240,
-          "pool_coverage": 0.4913,
+          "pool_coverage": 0.4908,
           "se": 0.0063,
           "baseline": 0.5
         },
         "500": {
           "folds": 240,
-          "pool_coverage": 0.4894,
+          "pool_coverage": 0.4888,
           "se": 0.0063,
           "baseline": 0.5
         },
         "1000": {
           "folds": 240,
-          "pool_coverage": 0.4975,
+          "pool_coverage": 0.4971,
           "se": 0.0063,
           "baseline": 0.5
         },
         "1500": {
           "folds": 240,
-          "pool_coverage": 0.4985,
+          "pool_coverage": 0.4975,
           "se": 0.0063,
           "baseline": 0.5
         }
