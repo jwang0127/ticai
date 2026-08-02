@@ -210,6 +210,23 @@ async function load() {
     <section class="section"><div class="section-head"><div><p class="section-label">POSITIONAL SIGNALS</p><h2>每个位置热冷门</h2></div><p class="section-note">热门按指数衰减频率排序，冷门为当前样本中相对低频数字；百位、十位、个位独立统计。</p></div>${positionAnalysisHtml(game.analysis)}</section>
     <div class="disclaimer">${escapeHtml(payload.disclaimer)}</div>
   </div>`;
+  // Keep the positional block at the top and remove the redundant composite block.
+  const sections = $("#app").querySelectorAll(".section");
+  const compositeSection = sections[0];
+  const positionalSection = sections[sections.length - 1];
+  if (compositeSection && positionalSection && compositeSection !== positionalSection) {
+    compositeSection.remove();
+    const head = positionalSection.querySelector(".section-head");
+    if (head) {
+      const label = head.querySelector(".section-label");
+      const title = head.querySelector("h2");
+      const note = head.querySelector(".section-note");
+      if (label) label.textContent = "POSITIONAL PREDICTIONS";
+      if (title) title.textContent = "每个位置预测";
+      if (note) note.textContent = "先看百位、十位、个位的两码预测，再参考各位置冷门与热门分布。";
+    }
+    document.querySelector(".hero").after(positionalSection);
+  }
   document.addEventListener("click", event => {
     const button = event.target.closest("[data-copy]");
     if (button) copyText(decodeURIComponent(button.dataset.copy));
