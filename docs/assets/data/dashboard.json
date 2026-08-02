@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T18:21:35+08:00",
+  "generated_at": "2026-08-02T18:24:24+08:00",
   "daily_results_date": "2026-08-02",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -38362,9 +38362,10 @@
       "sector": "ticai",
       "sector_name": "体彩",
       "model_version": "v3.4-sum-span-parity-position-hot-cold",
+      "model_reference": null,
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-01T23:45:01+08:00",
+      "generated_at": "2026-08-02T18:24:24+08:00",
       "latest_issue": "26203",
       "latest_draw_date": "2026-08-01",
       "latest_numbers": [
@@ -39961,10 +39962,11 @@
       "name": "排列5",
       "sector": "ticai",
       "sector_name": "体彩",
-      "model_version": "v3.3-main3-cold2-all-games",
+      "model_version": "v3.4-sum-span-parity-position-hot-cold",
+      "model_reference": null,
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-01T18:13:49+08:00",
+      "generated_at": "2026-08-02T18:24:24+08:00",
       "latest_issue": "26202",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [
@@ -39975,14 +39977,15 @@
         "0"
       ],
       "target_issue": "26203",
-      "next_draw_at": "2026-08-01T21:25+08:00",
-      "next_draw_display": "2026年08月01日 21:25（北京时间）",
+      "next_draw_at": "2026-08-02T21:25+08:00",
+      "next_draw_display": "2026年08月02日 21:25（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
           "number": "75570",
           "mix_label": "热门池组合 · 5/5 位取最高权重数字",
           "source": "hot_position_pool",
+          "group": "hot",
           "rank": 1,
           "confidence": 77.0,
           "copy_text": "排列5 75570"
@@ -39991,6 +39994,7 @@
           "number": "38573",
           "mix_label": "热门池组合 · 2/5 位取最高权重数字",
           "source": "hot_position_pool",
+          "group": "hot",
           "rank": 2,
           "confidence": 71.1,
           "copy_text": "排列5 38573"
@@ -39999,6 +40003,7 @@
           "number": "08670",
           "mix_label": "热门池组合 · 2/5 位取最高权重数字",
           "source": "hot_position_pool",
+          "group": "hot",
           "rank": 3,
           "confidence": 68.8,
           "copy_text": "排列5 08670"
@@ -40007,6 +40012,7 @@
           "number": "38641",
           "mix_label": "热门池组合 · 0/5 位取最高权重数字",
           "source": "hot_position_pool",
+          "group": "hot",
           "rank": 4,
           "confidence": 61.8,
           "copy_text": "排列5 38641"
@@ -40015,6 +40021,7 @@
           "number": "01703",
           "mix_label": "热门池组合 · 0/5 位取最高权重数字",
           "source": "hot_position_pool",
+          "group": "hot",
           "rank": 5,
           "confidence": 52.0,
           "copy_text": "排列5 01703"
@@ -40025,6 +40032,7 @@
           "number": "75570",
           "mix_label": "热门池组合 · 5/5 位取最高权重数字",
           "source": "hot_position_pool",
+          "group": "hot",
           "rank": 1,
           "confidence": 77.0,
           "copy_text": "排列5 75570"
@@ -40033,6 +40041,7 @@
           "number": "38573",
           "mix_label": "热门池组合 · 2/5 位取最高权重数字",
           "source": "hot_position_pool",
+          "group": "hot",
           "rank": 2,
           "confidence": 71.1,
           "copy_text": "排列5 38573"
@@ -40041,6 +40050,7 @@
           "number": "08670",
           "mix_label": "热门池组合 · 2/5 位取最高权重数字",
           "source": "hot_position_pool",
+          "group": "hot",
           "rank": 3,
           "confidence": 68.8,
           "copy_text": "排列5 08670"
@@ -40049,6 +40059,7 @@
           "number": "38641",
           "mix_label": "热门池组合 · 0/5 位取最高权重数字",
           "source": "hot_position_pool",
+          "group": "hot",
           "rank": 4,
           "confidence": 61.8,
           "copy_text": "排列5 38641"
@@ -40057,6 +40068,7 @@
           "number": "01703",
           "mix_label": "热门池组合 · 0/5 位取最高权重数字",
           "source": "hot_position_pool",
+          "group": "hot",
           "rank": 5,
           "confidence": 52.0,
           "copy_text": "排列5 01703"
@@ -40115,6 +40127,42 @@
               "6",
               "4"
             ],
+            "hot_focus_digits": [
+              "7",
+              "3"
+            ],
+            "cold_focus_digits": [
+              "2",
+              "6"
+            ],
+            "hot_occurrences": [
+              {
+                "digit": "7",
+                "count": 10
+              },
+              {
+                "digit": "3",
+                "count": 13
+              },
+              {
+                "digit": "0",
+                "count": 12
+              }
+            ],
+            "cold_occurrences": [
+              {
+                "digit": "2",
+                "count": 9
+              },
+              {
+                "digit": "6",
+                "count": 6
+              },
+              {
+                "digit": "4",
+                "count": 8
+              }
+            ],
             "omitted_digits": [
               {
                 "digit": "2",
@@ -40137,6 +40185,42 @@
               "3",
               "4",
               "9"
+            ],
+            "hot_focus_digits": [
+              "6",
+              "0"
+            ],
+            "cold_focus_digits": [
+              "3",
+              "4"
+            ],
+            "hot_occurrences": [
+              {
+                "digit": "6",
+                "count": 12
+              },
+              {
+                "digit": "0",
+                "count": 6
+              },
+              {
+                "digit": "7",
+                "count": 7
+              }
+            ],
+            "cold_occurrences": [
+              {
+                "digit": "3",
+                "count": 7
+              },
+              {
+                "digit": "4",
+                "count": 13
+              },
+              {
+                "digit": "9",
+                "count": 9
+              }
             ],
             "omitted_digits": [
               {
@@ -40161,6 +40245,42 @@
               "4",
               "0"
             ],
+            "hot_focus_digits": [
+              "5",
+              "6"
+            ],
+            "cold_focus_digits": [
+              "8",
+              "4"
+            ],
+            "hot_occurrences": [
+              {
+                "digit": "5",
+                "count": 15
+              },
+              {
+                "digit": "6",
+                "count": 12
+              },
+              {
+                "digit": "1",
+                "count": 11
+              }
+            ],
+            "cold_occurrences": [
+              {
+                "digit": "8",
+                "count": 5
+              },
+              {
+                "digit": "4",
+                "count": 9
+              },
+              {
+                "digit": "0",
+                "count": 7
+              }
+            ],
             "omitted_digits": [
               {
                 "digit": "8",
@@ -40184,6 +40304,42 @@
               "9",
               "8"
             ],
+            "hot_focus_digits": [
+              "7",
+              "0"
+            ],
+            "cold_focus_digits": [
+              "5",
+              "9"
+            ],
+            "hot_occurrences": [
+              {
+                "digit": "7",
+                "count": 18
+              },
+              {
+                "digit": "0",
+                "count": 11
+              },
+              {
+                "digit": "4",
+                "count": 12
+              }
+            ],
+            "cold_occurrences": [
+              {
+                "digit": "5",
+                "count": 4
+              },
+              {
+                "digit": "9",
+                "count": 6
+              },
+              {
+                "digit": "8",
+                "count": 5
+              }
+            ],
             "omitted_digits": [
               {
                 "digit": "5",
@@ -40206,6 +40362,42 @@
               "3",
               "5",
               "4"
+            ],
+            "hot_focus_digits": [
+              "0",
+              "1"
+            ],
+            "cold_focus_digits": [
+              "3",
+              "5"
+            ],
+            "hot_occurrences": [
+              {
+                "digit": "0",
+                "count": 15
+              },
+              {
+                "digit": "1",
+                "count": 13
+              },
+              {
+                "digit": "7",
+                "count": 5
+              }
+            ],
+            "cold_occurrences": [
+              {
+                "digit": "3",
+                "count": 17
+              },
+              {
+                "digit": "5",
+                "count": 7
+              },
+              {
+                "digit": "4",
+                "count": 7
+              }
             ],
             "omitted_digits": [
               {
@@ -41574,9 +41766,10 @@
       "sector": "fucai",
       "sector_name": "福彩",
       "model_version": "v3.4-sum-span-parity-position-hot-cold",
+      "model_reference": null,
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-01T23:45:01+08:00",
+      "generated_at": "2026-08-02T18:24:24+08:00",
       "latest_issue": "2026203",
       "latest_draw_date": "2026-08-01",
       "latest_numbers": [
@@ -43173,10 +43366,11 @@
       "name": "体彩7星彩",
       "sector": "ticai",
       "sector_name": "体彩",
-      "model_version": "v3.3-main3-cold2-all-games",
+      "model_version": "v3.4-sum-span-parity-position-hot-cold",
+      "model_reference": null,
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-01T18:13:49+08:00",
+      "generated_at": "2026-08-02T18:24:24+08:00",
       "latest_issue": "26087",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [
@@ -43197,6 +43391,7 @@
           "number": "3484562",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
+          "group": "hot",
           "rank": 1,
           "confidence": 77.0,
           "copy_text": "体彩7星彩 3484562"
@@ -43205,6 +43400,7 @@
           "number": "3780527",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
+          "group": "hot",
           "rank": 2,
           "confidence": 71.9,
           "copy_text": "体彩7星彩 3780527"
@@ -43213,6 +43409,7 @@
           "number": "4680542",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
+          "group": "hot",
           "rank": 3,
           "confidence": 70.9,
           "copy_text": "体彩7星彩 4680542"
@@ -43221,6 +43418,7 @@
           "number": "5691824",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
+          "group": "hot",
           "rank": 4,
           "confidence": 55.6,
           "copy_text": "体彩7星彩 5691824"
@@ -43229,6 +43427,7 @@
           "number": "3371326",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
+          "group": "hot",
           "rank": 5,
           "confidence": 52.0,
           "copy_text": "体彩7星彩 3371326"
@@ -43239,6 +43438,7 @@
           "number": "3484562",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
+          "group": "hot",
           "rank": 1,
           "confidence": 77.0,
           "copy_text": "体彩7星彩 3484562"
@@ -43247,6 +43447,7 @@
           "number": "3780527",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
+          "group": "hot",
           "rank": 2,
           "confidence": 71.9,
           "copy_text": "体彩7星彩 3780527"
@@ -43255,6 +43456,7 @@
           "number": "4680542",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
+          "group": "hot",
           "rank": 3,
           "confidence": 70.9,
           "copy_text": "体彩7星彩 4680542"
@@ -43263,6 +43465,7 @@
           "number": "5691824",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
+          "group": "hot",
           "rank": 4,
           "confidence": 55.6,
           "copy_text": "体彩7星彩 5691824"
@@ -43271,6 +43474,7 @@
           "number": "3371326",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
+          "group": "hot",
           "rank": 5,
           "confidence": 52.0,
           "copy_text": "体彩7星彩 3371326"
@@ -43329,6 +43533,42 @@
               "0",
               "2"
             ],
+            "hot_focus_digits": [
+              "3",
+              "5"
+            ],
+            "cold_focus_digits": [
+              "1",
+              "0"
+            ],
+            "hot_occurrences": [
+              {
+                "digit": "3",
+                "count": 13
+              },
+              {
+                "digit": "5",
+                "count": 10
+              },
+              {
+                "digit": "4",
+                "count": 11
+              }
+            ],
+            "cold_occurrences": [
+              {
+                "digit": "1",
+                "count": 6
+              },
+              {
+                "digit": "0",
+                "count": 9
+              },
+              {
+                "digit": "2",
+                "count": 11
+              }
+            ],
             "omitted_digits": [
               {
                 "digit": "1",
@@ -43351,6 +43591,42 @@
               "8",
               "0",
               "1"
+            ],
+            "hot_focus_digits": [
+              "4",
+              "3"
+            ],
+            "cold_focus_digits": [
+              "8",
+              "0"
+            ],
+            "hot_occurrences": [
+              {
+                "digit": "4",
+                "count": 16
+              },
+              {
+                "digit": "3",
+                "count": 9
+              },
+              {
+                "digit": "6",
+                "count": 9
+              }
+            ],
+            "cold_occurrences": [
+              {
+                "digit": "8",
+                "count": 11
+              },
+              {
+                "digit": "0",
+                "count": 8
+              },
+              {
+                "digit": "1",
+                "count": 9
+              }
             ],
             "omitted_digits": [
               {
@@ -43375,6 +43651,42 @@
               "0",
               "6"
             ],
+            "hot_focus_digits": [
+              "8",
+              "7"
+            ],
+            "cold_focus_digits": [
+              "4",
+              "0"
+            ],
+            "hot_occurrences": [
+              {
+                "digit": "8",
+                "count": 15
+              },
+              {
+                "digit": "7",
+                "count": 9
+              },
+              {
+                "digit": "9",
+                "count": 13
+              }
+            ],
+            "cold_occurrences": [
+              {
+                "digit": "4",
+                "count": 6
+              },
+              {
+                "digit": "0",
+                "count": 9
+              },
+              {
+                "digit": "6",
+                "count": 9
+              }
+            ],
             "omitted_digits": [
               {
                 "digit": "6",
@@ -43397,6 +43709,42 @@
               "6",
               "8",
               "7"
+            ],
+            "hot_focus_digits": [
+              "1",
+              "0"
+            ],
+            "cold_focus_digits": [
+              "6",
+              "8"
+            ],
+            "hot_occurrences": [
+              {
+                "digit": "1",
+                "count": 13
+              },
+              {
+                "digit": "0",
+                "count": 9
+              },
+              {
+                "digit": "4",
+                "count": 8
+              }
+            ],
+            "cold_occurrences": [
+              {
+                "digit": "6",
+                "count": 8
+              },
+              {
+                "digit": "8",
+                "count": 8
+              },
+              {
+                "digit": "7",
+                "count": 5
+              }
             ],
             "omitted_digits": [
               {
@@ -43421,6 +43769,42 @@
               "7",
               "2"
             ],
+            "hot_focus_digits": [
+              "5",
+              "3"
+            ],
+            "cold_focus_digits": [
+              "0",
+              "7"
+            ],
+            "hot_occurrences": [
+              {
+                "digit": "5",
+                "count": 23
+              },
+              {
+                "digit": "3",
+                "count": 15
+              },
+              {
+                "digit": "8",
+                "count": 9
+              }
+            ],
+            "cold_occurrences": [
+              {
+                "digit": "0",
+                "count": 5
+              },
+              {
+                "digit": "7",
+                "count": 6
+              },
+              {
+                "digit": "2",
+                "count": 7
+              }
+            ],
             "omitted_digits": [
               {
                 "digit": "2",
@@ -43444,6 +43828,42 @@
               "8",
               "9"
             ],
+            "hot_focus_digits": [
+              "2",
+              "6"
+            ],
+            "cold_focus_digits": [
+              "7",
+              "8"
+            ],
+            "hot_occurrences": [
+              {
+                "digit": "2",
+                "count": 13
+              },
+              {
+                "digit": "6",
+                "count": 14
+              },
+              {
+                "digit": "4",
+                "count": 9
+              }
+            ],
+            "cold_occurrences": [
+              {
+                "digit": "7",
+                "count": 7
+              },
+              {
+                "digit": "8",
+                "count": 10
+              },
+              {
+                "digit": "9",
+                "count": 7
+              }
+            ],
             "omitted_digits": [
               {
                 "digit": "8",
@@ -43466,6 +43886,42 @@
               "9",
               "5",
               "8"
+            ],
+            "hot_focus_digits": [
+              "2",
+              "4"
+            ],
+            "cold_focus_digits": [
+              "9",
+              "5"
+            ],
+            "hot_occurrences": [
+              {
+                "digit": "2",
+                "count": 16
+              },
+              {
+                "digit": "4",
+                "count": 13
+              },
+              {
+                "digit": "3",
+                "count": 16
+              }
+            ],
+            "cold_occurrences": [
+              {
+                "digit": "9",
+                "count": 5
+              },
+              {
+                "digit": "5",
+                "count": 6
+              },
+              {
+                "digit": "8",
+                "count": 4
+              }
             ],
             "omitted_digits": [
               {
@@ -43889,7 +44345,7 @@
       "model_reference": "src/vendor_models_v3/ssq_model_v3.py",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-02T18:21:35+08:00",
+      "generated_at": "2026-08-02T18:24:24+08:00",
       "latest_issue": "2026087",
       "latest_draw_date": "2026-07-30",
       "latest_numbers": [
@@ -44390,7 +44846,7 @@
       "model_reference": "src/vendor_models_v3/kl8_model_v3.py",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-02T18:21:35+08:00",
+      "generated_at": "2026-08-02T18:24:24+08:00",
       "latest_issue": "2026203",
       "latest_draw_date": "2026-08-01",
       "latest_numbers": [
