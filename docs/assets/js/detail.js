@@ -126,12 +126,13 @@ function positionAnalysisHtml(analysis) {
     return `<span class="position-digit ${className}${focused}">${escapeHtml(digit)}${count}</span>`;
   }).join("");
   const twoDigit = analysis.position_two_digit_predictions || [];
-  const twoDigitHtml = twoDigit.length ? `<div class="two-digit-predictions"><h3>每位两码预测</h3><div class="two-digit-grid">${twoDigit.map(item => `<article><span>${escapeHtml(item.position)}</span><strong>${escapeHtml(item.digits.join(" · "))}</strong></article>`).join("")}</div><small>三个位置独立排序；473 结构仅作轻量平分参考，分数不是中奖概率。</small></div>` : "";
+  const twoDigitText = twoDigit.map(item => `${item.position}：${item.digits.join("、")}`).join("\n");
+  const twoDigitHtml = twoDigit.length ? `<div class="two-digit-predictions"><h3>每位两码预测</h3><div class="two-digit-grid">${twoDigit.map(item => `<article><span>${escapeHtml(item.position)}</span><strong>${escapeHtml(item.digits.join(" · "))}</strong></article>`).join("")}</div><button class="copy-bundle" data-copy="${encodeURIComponent(twoDigitText)}">复制两码纯文本</button><small>三个位置独立排序；473 结构仅作轻量平分参考，分数不是中奖概率。</small></div>` : "";
   return `${twoDigitHtml}<div class="position-grid">${analysis.position_analysis.map(item => `
     <article class="position-card">
       <span>${escapeHtml(item.position)}</span>
-      <div class="position-row"><small>热门</small>${renderDigits(item.hot_occurrences || item.hot_digits, item.hot_focus_digits, "hot")}</div>
       <div class="position-row"><small>冷门</small>${renderDigits(item.cold_occurrences || item.cold_digits, item.cold_focus_digits, "cold")}</div>
+      <div class="position-row"><small>热门</small>${renderDigits(item.hot_occurrences || item.hot_digits, item.hot_focus_digits, "hot")}</div>
     </article>`).join("")}</div>`;
 }
 
@@ -173,7 +174,7 @@ async function copyText(text) {
     document.body.append(area); area.select(); document.execCommand("copy"); area.remove();
   }
   const toast = $("#toast");
-  toast.textContent = "综合推荐已复制"; toast.classList.add("show");
+  toast.textContent = "纯文本已复制"; toast.classList.add("show");
   clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove("show"), 1600);
 }
 
