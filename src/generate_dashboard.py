@@ -11,6 +11,10 @@ from itertools import combinations, product
 from datetime import datetime, time, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+try:
+    from v3_production import generate_dlt_v3, generate_kl8_v3, generate_ssq_v3
+except ModuleNotFoundError:
+    from src.v3_production import generate_dlt_v3, generate_kl8_v3, generate_ssq_v3
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / "config" / "games.json"
@@ -859,6 +863,8 @@ def weighted_number_counts(rows: list[dict], start: int, end: int, decay: float 
 
 
 def generate_dlt(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]:
+    return generate_dlt_v3(rows, issue)
+    # Legacy generator retained below for comparison and emergency rollback.
     rng = stable_rng("dlt", issue)
     calibration = calibrate_set_model("dlt", rows)
     window = calibration["selected_window"]
@@ -1086,6 +1092,8 @@ def blended_number_counts(rows: list[dict], start: int, end: int, decay: float =
 
 
 def generate_ssq(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]:
+    return generate_ssq_v3(rows, issue)
+    # Legacy generator retained below for comparison and emergency rollback.
     """双色球专用红蓝分区模型，加入红球共现与三区覆盖。"""
     rng = stable_rng("ssq", issue)
     calibration = calibrate_set_model("ssq", rows)
@@ -1165,6 +1173,8 @@ def generate_ssq(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
 
 
 def generate_kl8(rows: list[dict], pick_count: int = 5) -> tuple[list[dict], list[float]]:
+    return generate_kl8_v3(rows, pick_count)
+    # Legacy generator retained below for comparison and emergency rollback.
     """快乐8“选五”专用模型：单号强度、遗漏、共现和四区覆盖。"""
     window = calibrate_set_model("kl8", rows)["selected_window"]
     counts = blended_number_counts(rows, 0, 20, 25, window)

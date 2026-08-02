@@ -926,8 +926,12 @@ def generate_dlt_v3(records, next_period="2026001"):
     back_info = back_zone_model(records, last["back"])
     
     # === 区间分析 ===
-    zones_7 = [(1,5),(6,10),(11,15),(16,20),(21,25),(26,30),(31,35)]
-    zone_info = zone_analysis(records, zones=zones_7)
+    # Five front numbers cannot occupy all seven narrow zones.  The original
+    # v3 handoff therefore rejected every real-data combination.  Use five
+    # balanced zones for a five-number front area; the rest of the v3 scoring
+    # and ensemble logic is unchanged.
+    zones_5 = [(1,7),(8,14),(15,21),(22,28),(29,35)]
+    zone_info = zone_analysis(records, zones=zones_5)
     
     # === 构建候选池 ===
     # 排除确认杀号
@@ -965,7 +969,7 @@ def generate_dlt_v3(records, next_period="2026001"):
     
     combos = generate_combinations(
         pool, target_sum_range, target_span_range,
-        zone_config=zones_7, parity_pref=(1, 4), max_combos=10000
+        zone_config=zones_5, parity_pref=(1, 4), max_combos=10000
     )
     
     # 如果约束太严导致无组合，放宽区间
@@ -974,7 +978,7 @@ def generate_dlt_v3(records, next_period="2026001"):
             pool, 
             (target_sum_range[0]-15, target_sum_range[1]+15),
             (max(10, target_span_range[0]-5), min(34, target_span_range[1]+5)),
-            zone_config=zones_7, parity_pref=None, max_combos=10000
+            zone_config=zones_5, parity_pref=None, max_combos=10000
         )
     
     # 打分排序

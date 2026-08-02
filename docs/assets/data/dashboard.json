@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T18:09:06+08:00",
+  "generated_at": "2026-08-02T18:21:35+08:00",
   "daily_results_date": "2026-08-02",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -37810,7 +37810,7 @@
       "model_reference": "src/vendor_models_v3/dlt_model_v3.py",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-08-02T18:06:48+08:00",
+      "generated_at": "2026-08-02T18:21:35+08:00",
       "latest_issue": "26086",
       "latest_draw_date": "2026-08-01",
       "latest_numbers": [
@@ -37829,185 +37829,185 @@
       "candidates": [
         {
           "front": [
-            1,
+            12,
             13,
             15,
-            26,
-            34
+            23,
+            26
           ],
           "back": [
             7,
             12
           ],
-          "source": "model_primary",
+          "source": "v3_ensemble",
           "group": "hot",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "超级大乐透 01 13 15 26 34 + 07 12"
+          "copy_text": "超级大乐透 12 13 15 23 26 + 07 12"
         },
         {
           "front": [
-            6,
-            16,
-            26,
-            28,
-            34
+            19,
+            20,
+            21,
+            27,
+            29
           ],
           "back": [
             2,
-            12
+            5
           ],
-          "source": "model_primary",
+          "source": "v3_ensemble",
           "group": "hot",
           "rank": 2,
-          "confidence": 72.3,
-          "copy_text": "超级大乐透 06 16 26 28 34 + 02 12"
+          "confidence": 70.9,
+          "copy_text": "超级大乐透 19 20 21 27 29 + 02 05"
         },
         {
           "front": [
-            6,
-            10,
+            16,
             18,
-            24,
-            35
+            22,
+            25,
+            28
           ],
           "back": [
-            7,
+            4,
             11
           ],
-          "source": "model_primary",
+          "source": "v3_ensemble",
           "group": "hot",
           "rank": 3,
-          "confidence": 63.1,
-          "copy_text": "超级大乐透 06 10 18 24 35 + 07 11"
+          "confidence": 63.2,
+          "copy_text": "超级大乐透 16 18 22 25 28 + 04 11"
+        },
+        {
+          "front": [
+            1,
+            4,
+            6,
+            9,
+            10
+          ],
+          "back": [
+            8,
+            10
+          ],
+          "source": "v3_ensemble",
+          "group": "hot",
+          "rank": 4,
+          "confidence": 56.1,
+          "copy_text": "超级大乐透 01 04 06 09 10 + 08 10"
         },
         {
           "front": [
             3,
-            13,
-            22,
-            23,
-            32
-          ],
-          "back": [
-            4,
-            9
-          ],
-          "source": "model_primary",
-          "group": "hot",
-          "rank": 4,
-          "confidence": 59.2,
-          "copy_text": "超级大乐透 03 13 22 23 32 + 04 09"
-        },
-        {
-          "front": [
-            4,
-            11,
-            20,
-            23,
-            25
-          ],
-          "back": [
             5,
-            10
+            14,
+            32,
+            34
           ],
-          "source": "model_primary",
+          "back": [
+            1,
+            6
+          ],
+          "source": "v3_ensemble",
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "超级大乐透 04 11 20 23 25 + 05 10"
+          "copy_text": "超级大乐透 03 05 14 32 34 + 01 06"
         }
       ],
       "top_candidates": [
         {
           "front": [
-            1,
+            12,
             13,
             15,
-            26,
-            34
+            23,
+            26
           ],
           "back": [
             7,
             12
           ],
-          "source": "model_primary",
+          "source": "v3_ensemble",
           "group": "hot",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "超级大乐透 01 13 15 26 34 + 07 12"
+          "copy_text": "超级大乐透 12 13 15 23 26 + 07 12"
         },
         {
           "front": [
-            6,
-            16,
-            26,
-            28,
-            34
+            19,
+            20,
+            21,
+            27,
+            29
           ],
           "back": [
             2,
-            12
+            5
           ],
-          "source": "model_primary",
+          "source": "v3_ensemble",
           "group": "hot",
           "rank": 2,
-          "confidence": 72.3,
-          "copy_text": "超级大乐透 06 16 26 28 34 + 02 12"
+          "confidence": 70.9,
+          "copy_text": "超级大乐透 19 20 21 27 29 + 02 05"
         },
         {
           "front": [
-            6,
-            10,
+            16,
             18,
-            24,
-            35
+            22,
+            25,
+            28
           ],
           "back": [
-            7,
+            4,
             11
           ],
-          "source": "model_primary",
+          "source": "v3_ensemble",
           "group": "hot",
           "rank": 3,
-          "confidence": 63.1,
-          "copy_text": "超级大乐透 06 10 18 24 35 + 07 11"
+          "confidence": 63.2,
+          "copy_text": "超级大乐透 16 18 22 25 28 + 04 11"
+        },
+        {
+          "front": [
+            1,
+            4,
+            6,
+            9,
+            10
+          ],
+          "back": [
+            8,
+            10
+          ],
+          "source": "v3_ensemble",
+          "group": "hot",
+          "rank": 4,
+          "confidence": 56.1,
+          "copy_text": "超级大乐透 01 04 06 09 10 + 08 10"
         },
         {
           "front": [
             3,
-            13,
-            22,
-            23,
-            32
-          ],
-          "back": [
-            4,
-            9
-          ],
-          "source": "model_primary",
-          "group": "hot",
-          "rank": 4,
-          "confidence": 59.2,
-          "copy_text": "超级大乐透 03 13 22 23 32 + 04 09"
-        },
-        {
-          "front": [
-            4,
-            11,
-            20,
-            23,
-            25
-          ],
-          "back": [
             5,
-            10
+            14,
+            32,
+            34
           ],
-          "source": "model_primary",
+          "back": [
+            1,
+            6
+          ],
+          "source": "v3_ensemble",
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "超级大乐透 04 11 20 23 25 + 05 10"
+          "copy_text": "超级大乐透 03 05 14 32 34 + 01 06"
         }
       ],
       "review": {
@@ -38362,10 +38362,9 @@
       "sector": "ticai",
       "sector_name": "体彩",
       "model_version": "v3.4-sum-span-parity-position-hot-cold",
-      "model_reference": null,
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-02T18:09:06+08:00",
+      "generated_at": "2026-08-01T23:45:01+08:00",
       "latest_issue": "26203",
       "latest_draw_date": "2026-08-01",
       "latest_numbers": [
@@ -39962,11 +39961,10 @@
       "name": "排列5",
       "sector": "ticai",
       "sector_name": "体彩",
-      "model_version": "v3.4-sum-span-parity-position-hot-cold",
-      "model_reference": null,
+      "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-02T18:09:06+08:00",
+      "generated_at": "2026-08-01T18:13:49+08:00",
       "latest_issue": "26202",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [
@@ -39977,15 +39975,14 @@
         "0"
       ],
       "target_issue": "26203",
-      "next_draw_at": "2026-08-02T21:25+08:00",
-      "next_draw_display": "2026年08月02日 21:25（北京时间）",
+      "next_draw_at": "2026-08-01T21:25+08:00",
+      "next_draw_display": "2026年08月01日 21:25（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
           "number": "75570",
           "mix_label": "热门池组合 · 5/5 位取最高权重数字",
           "source": "hot_position_pool",
-          "group": "hot",
           "rank": 1,
           "confidence": 77.0,
           "copy_text": "排列5 75570"
@@ -39994,7 +39991,6 @@
           "number": "38573",
           "mix_label": "热门池组合 · 2/5 位取最高权重数字",
           "source": "hot_position_pool",
-          "group": "hot",
           "rank": 2,
           "confidence": 71.1,
           "copy_text": "排列5 38573"
@@ -40003,7 +39999,6 @@
           "number": "08670",
           "mix_label": "热门池组合 · 2/5 位取最高权重数字",
           "source": "hot_position_pool",
-          "group": "hot",
           "rank": 3,
           "confidence": 68.8,
           "copy_text": "排列5 08670"
@@ -40012,7 +40007,6 @@
           "number": "38641",
           "mix_label": "热门池组合 · 0/5 位取最高权重数字",
           "source": "hot_position_pool",
-          "group": "hot",
           "rank": 4,
           "confidence": 61.8,
           "copy_text": "排列5 38641"
@@ -40021,7 +40015,6 @@
           "number": "01703",
           "mix_label": "热门池组合 · 0/5 位取最高权重数字",
           "source": "hot_position_pool",
-          "group": "hot",
           "rank": 5,
           "confidence": 52.0,
           "copy_text": "排列5 01703"
@@ -40032,7 +40025,6 @@
           "number": "75570",
           "mix_label": "热门池组合 · 5/5 位取最高权重数字",
           "source": "hot_position_pool",
-          "group": "hot",
           "rank": 1,
           "confidence": 77.0,
           "copy_text": "排列5 75570"
@@ -40041,7 +40033,6 @@
           "number": "38573",
           "mix_label": "热门池组合 · 2/5 位取最高权重数字",
           "source": "hot_position_pool",
-          "group": "hot",
           "rank": 2,
           "confidence": 71.1,
           "copy_text": "排列5 38573"
@@ -40050,7 +40041,6 @@
           "number": "08670",
           "mix_label": "热门池组合 · 2/5 位取最高权重数字",
           "source": "hot_position_pool",
-          "group": "hot",
           "rank": 3,
           "confidence": 68.8,
           "copy_text": "排列5 08670"
@@ -40059,7 +40049,6 @@
           "number": "38641",
           "mix_label": "热门池组合 · 0/5 位取最高权重数字",
           "source": "hot_position_pool",
-          "group": "hot",
           "rank": 4,
           "confidence": 61.8,
           "copy_text": "排列5 38641"
@@ -40068,7 +40057,6 @@
           "number": "01703",
           "mix_label": "热门池组合 · 0/5 位取最高权重数字",
           "source": "hot_position_pool",
-          "group": "hot",
           "rank": 5,
           "confidence": 52.0,
           "copy_text": "排列5 01703"
@@ -40127,42 +40115,6 @@
               "6",
               "4"
             ],
-            "hot_focus_digits": [
-              "7",
-              "3"
-            ],
-            "cold_focus_digits": [
-              "2",
-              "6"
-            ],
-            "hot_occurrences": [
-              {
-                "digit": "7",
-                "count": 10
-              },
-              {
-                "digit": "3",
-                "count": 13
-              },
-              {
-                "digit": "0",
-                "count": 12
-              }
-            ],
-            "cold_occurrences": [
-              {
-                "digit": "2",
-                "count": 9
-              },
-              {
-                "digit": "6",
-                "count": 6
-              },
-              {
-                "digit": "4",
-                "count": 8
-              }
-            ],
             "omitted_digits": [
               {
                 "digit": "2",
@@ -40185,42 +40137,6 @@
               "3",
               "4",
               "9"
-            ],
-            "hot_focus_digits": [
-              "6",
-              "0"
-            ],
-            "cold_focus_digits": [
-              "3",
-              "4"
-            ],
-            "hot_occurrences": [
-              {
-                "digit": "6",
-                "count": 12
-              },
-              {
-                "digit": "0",
-                "count": 6
-              },
-              {
-                "digit": "7",
-                "count": 7
-              }
-            ],
-            "cold_occurrences": [
-              {
-                "digit": "3",
-                "count": 7
-              },
-              {
-                "digit": "4",
-                "count": 13
-              },
-              {
-                "digit": "9",
-                "count": 9
-              }
             ],
             "omitted_digits": [
               {
@@ -40245,42 +40161,6 @@
               "4",
               "0"
             ],
-            "hot_focus_digits": [
-              "5",
-              "6"
-            ],
-            "cold_focus_digits": [
-              "8",
-              "4"
-            ],
-            "hot_occurrences": [
-              {
-                "digit": "5",
-                "count": 15
-              },
-              {
-                "digit": "6",
-                "count": 12
-              },
-              {
-                "digit": "1",
-                "count": 11
-              }
-            ],
-            "cold_occurrences": [
-              {
-                "digit": "8",
-                "count": 5
-              },
-              {
-                "digit": "4",
-                "count": 9
-              },
-              {
-                "digit": "0",
-                "count": 7
-              }
-            ],
             "omitted_digits": [
               {
                 "digit": "8",
@@ -40304,42 +40184,6 @@
               "9",
               "8"
             ],
-            "hot_focus_digits": [
-              "7",
-              "0"
-            ],
-            "cold_focus_digits": [
-              "5",
-              "9"
-            ],
-            "hot_occurrences": [
-              {
-                "digit": "7",
-                "count": 18
-              },
-              {
-                "digit": "0",
-                "count": 11
-              },
-              {
-                "digit": "4",
-                "count": 12
-              }
-            ],
-            "cold_occurrences": [
-              {
-                "digit": "5",
-                "count": 4
-              },
-              {
-                "digit": "9",
-                "count": 6
-              },
-              {
-                "digit": "8",
-                "count": 5
-              }
-            ],
             "omitted_digits": [
               {
                 "digit": "5",
@@ -40362,42 +40206,6 @@
               "3",
               "5",
               "4"
-            ],
-            "hot_focus_digits": [
-              "0",
-              "1"
-            ],
-            "cold_focus_digits": [
-              "3",
-              "5"
-            ],
-            "hot_occurrences": [
-              {
-                "digit": "0",
-                "count": 15
-              },
-              {
-                "digit": "1",
-                "count": 13
-              },
-              {
-                "digit": "7",
-                "count": 5
-              }
-            ],
-            "cold_occurrences": [
-              {
-                "digit": "3",
-                "count": 17
-              },
-              {
-                "digit": "5",
-                "count": 7
-              },
-              {
-                "digit": "4",
-                "count": 7
-              }
             ],
             "omitted_digits": [
               {
@@ -41766,10 +41574,9 @@
       "sector": "fucai",
       "sector_name": "福彩",
       "model_version": "v3.4-sum-span-parity-position-hot-cold",
-      "model_reference": null,
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-02T18:09:06+08:00",
+      "generated_at": "2026-08-01T23:45:01+08:00",
       "latest_issue": "2026203",
       "latest_draw_date": "2026-08-01",
       "latest_numbers": [
@@ -43366,11 +43173,10 @@
       "name": "体彩7星彩",
       "sector": "ticai",
       "sector_name": "体彩",
-      "model_version": "v3.4-sum-span-parity-position-hot-cold",
-      "model_reference": null,
+      "model_version": "v3.3-main3-cold2-all-games",
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-02T18:09:06+08:00",
+      "generated_at": "2026-08-01T18:13:49+08:00",
       "latest_issue": "26087",
       "latest_draw_date": "2026-07-31",
       "latest_numbers": [
@@ -43391,7 +43197,6 @@
           "number": "3484562",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
-          "group": "hot",
           "rank": 1,
           "confidence": 77.0,
           "copy_text": "体彩7星彩 3484562"
@@ -43400,7 +43205,6 @@
           "number": "3780527",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
-          "group": "hot",
           "rank": 2,
           "confidence": 71.9,
           "copy_text": "体彩7星彩 3780527"
@@ -43409,7 +43213,6 @@
           "number": "4680542",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
-          "group": "hot",
           "rank": 3,
           "confidence": 70.9,
           "copy_text": "体彩7星彩 4680542"
@@ -43418,7 +43221,6 @@
           "number": "5691824",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
-          "group": "hot",
           "rank": 4,
           "confidence": 55.6,
           "copy_text": "体彩7星彩 5691824"
@@ -43427,7 +43229,6 @@
           "number": "3371326",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
-          "group": "hot",
           "rank": 5,
           "confidence": 52.0,
           "copy_text": "体彩7星彩 3371326"
@@ -43438,7 +43239,6 @@
           "number": "3484562",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
-          "group": "hot",
           "rank": 1,
           "confidence": 77.0,
           "copy_text": "体彩7星彩 3484562"
@@ -43447,7 +43247,6 @@
           "number": "3780527",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
-          "group": "hot",
           "rank": 2,
           "confidence": 71.9,
           "copy_text": "体彩7星彩 3780527"
@@ -43456,7 +43255,6 @@
           "number": "4680542",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
-          "group": "hot",
           "rank": 3,
           "confidence": 70.9,
           "copy_text": "体彩7星彩 4680542"
@@ -43465,7 +43263,6 @@
           "number": "5691824",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
-          "group": "hot",
           "rank": 4,
           "confidence": 55.6,
           "copy_text": "体彩7星彩 5691824"
@@ -43474,7 +43271,6 @@
           "number": "3371326",
           "mix_label": "七位独立位置模型",
           "source": "qxc_position",
-          "group": "hot",
           "rank": 5,
           "confidence": 52.0,
           "copy_text": "体彩7星彩 3371326"
@@ -43533,42 +43329,6 @@
               "0",
               "2"
             ],
-            "hot_focus_digits": [
-              "3",
-              "5"
-            ],
-            "cold_focus_digits": [
-              "1",
-              "0"
-            ],
-            "hot_occurrences": [
-              {
-                "digit": "3",
-                "count": 13
-              },
-              {
-                "digit": "5",
-                "count": 10
-              },
-              {
-                "digit": "4",
-                "count": 11
-              }
-            ],
-            "cold_occurrences": [
-              {
-                "digit": "1",
-                "count": 6
-              },
-              {
-                "digit": "0",
-                "count": 9
-              },
-              {
-                "digit": "2",
-                "count": 11
-              }
-            ],
             "omitted_digits": [
               {
                 "digit": "1",
@@ -43591,42 +43351,6 @@
               "8",
               "0",
               "1"
-            ],
-            "hot_focus_digits": [
-              "4",
-              "3"
-            ],
-            "cold_focus_digits": [
-              "8",
-              "0"
-            ],
-            "hot_occurrences": [
-              {
-                "digit": "4",
-                "count": 16
-              },
-              {
-                "digit": "3",
-                "count": 9
-              },
-              {
-                "digit": "6",
-                "count": 9
-              }
-            ],
-            "cold_occurrences": [
-              {
-                "digit": "8",
-                "count": 11
-              },
-              {
-                "digit": "0",
-                "count": 8
-              },
-              {
-                "digit": "1",
-                "count": 9
-              }
             ],
             "omitted_digits": [
               {
@@ -43651,42 +43375,6 @@
               "0",
               "6"
             ],
-            "hot_focus_digits": [
-              "8",
-              "7"
-            ],
-            "cold_focus_digits": [
-              "4",
-              "0"
-            ],
-            "hot_occurrences": [
-              {
-                "digit": "8",
-                "count": 15
-              },
-              {
-                "digit": "7",
-                "count": 9
-              },
-              {
-                "digit": "9",
-                "count": 13
-              }
-            ],
-            "cold_occurrences": [
-              {
-                "digit": "4",
-                "count": 6
-              },
-              {
-                "digit": "0",
-                "count": 9
-              },
-              {
-                "digit": "6",
-                "count": 9
-              }
-            ],
             "omitted_digits": [
               {
                 "digit": "6",
@@ -43709,42 +43397,6 @@
               "6",
               "8",
               "7"
-            ],
-            "hot_focus_digits": [
-              "1",
-              "0"
-            ],
-            "cold_focus_digits": [
-              "6",
-              "8"
-            ],
-            "hot_occurrences": [
-              {
-                "digit": "1",
-                "count": 13
-              },
-              {
-                "digit": "0",
-                "count": 9
-              },
-              {
-                "digit": "4",
-                "count": 8
-              }
-            ],
-            "cold_occurrences": [
-              {
-                "digit": "6",
-                "count": 8
-              },
-              {
-                "digit": "8",
-                "count": 8
-              },
-              {
-                "digit": "7",
-                "count": 5
-              }
             ],
             "omitted_digits": [
               {
@@ -43769,42 +43421,6 @@
               "7",
               "2"
             ],
-            "hot_focus_digits": [
-              "5",
-              "3"
-            ],
-            "cold_focus_digits": [
-              "0",
-              "7"
-            ],
-            "hot_occurrences": [
-              {
-                "digit": "5",
-                "count": 23
-              },
-              {
-                "digit": "3",
-                "count": 15
-              },
-              {
-                "digit": "8",
-                "count": 9
-              }
-            ],
-            "cold_occurrences": [
-              {
-                "digit": "0",
-                "count": 5
-              },
-              {
-                "digit": "7",
-                "count": 6
-              },
-              {
-                "digit": "2",
-                "count": 7
-              }
-            ],
             "omitted_digits": [
               {
                 "digit": "2",
@@ -43828,42 +43444,6 @@
               "8",
               "9"
             ],
-            "hot_focus_digits": [
-              "2",
-              "6"
-            ],
-            "cold_focus_digits": [
-              "7",
-              "8"
-            ],
-            "hot_occurrences": [
-              {
-                "digit": "2",
-                "count": 13
-              },
-              {
-                "digit": "6",
-                "count": 14
-              },
-              {
-                "digit": "4",
-                "count": 9
-              }
-            ],
-            "cold_occurrences": [
-              {
-                "digit": "7",
-                "count": 7
-              },
-              {
-                "digit": "8",
-                "count": 10
-              },
-              {
-                "digit": "9",
-                "count": 7
-              }
-            ],
             "omitted_digits": [
               {
                 "digit": "8",
@@ -43886,42 +43466,6 @@
               "9",
               "5",
               "8"
-            ],
-            "hot_focus_digits": [
-              "2",
-              "4"
-            ],
-            "cold_focus_digits": [
-              "9",
-              "5"
-            ],
-            "hot_occurrences": [
-              {
-                "digit": "2",
-                "count": 16
-              },
-              {
-                "digit": "4",
-                "count": 13
-              },
-              {
-                "digit": "3",
-                "count": 16
-              }
-            ],
-            "cold_occurrences": [
-              {
-                "digit": "9",
-                "count": 5
-              },
-              {
-                "digit": "5",
-                "count": 6
-              },
-              {
-                "digit": "8",
-                "count": 4
-              }
             ],
             "omitted_digits": [
               {
@@ -44345,7 +43889,7 @@
       "model_reference": "src/vendor_models_v3/ssq_model_v3.py",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-02T18:09:06+08:00",
+      "generated_at": "2026-08-02T18:21:35+08:00",
       "latest_issue": "2026087",
       "latest_draw_date": "2026-07-30",
       "latest_numbers": [
@@ -44364,195 +43908,185 @@
       "candidates": [
         {
           "red": [
-            5,
-            7,
+            1,
+            2,
             14,
+            22,
             24,
-            27,
-            28
+            30
           ],
           "blue": [
-            1
+            4
           ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
+          "source": "v3_ensemble",
           "group": "hot",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩双色球 05 07 14 24 27 28 + 01"
+          "copy_text": "福彩双色球 01 02 14 22 24 30 + 04"
+        },
+        {
+          "red": [
+            3,
+            8,
+            9,
+            27,
+            28,
+            29
+          ],
+          "blue": [
+            6
+          ],
+          "source": "v3_ensemble",
+          "group": "hot",
+          "rank": 2,
+          "confidence": 67.8,
+          "copy_text": "福彩双色球 03 08 09 27 28 29 + 06"
+        },
+        {
+          "red": [
+            6,
+            7,
+            10,
+            18,
+            19,
+            25
+          ],
+          "blue": [
+            12
+          ],
+          "source": "v3_ensemble",
+          "group": "hot",
+          "rank": 3,
+          "confidence": 63.3,
+          "copy_text": "福彩双色球 06 07 10 18 19 25 + 12"
         },
         {
           "red": [
             1,
             3,
-            10,
-            18,
-            24,
-            30
-          ],
-          "blue": [
-            5
-          ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
-          "group": "hot",
-          "rank": 2,
-          "confidence": 69.6,
-          "copy_text": "福彩双色球 01 03 10 18 24 30 + 05"
-        },
-        {
-          "red": [
-            6,
             19,
-            23,
-            24,
-            25,
-            32
-          ],
-          "blue": [
-            11
-          ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
-          "group": "hot",
-          "rank": 3,
-          "confidence": 59.0,
-          "copy_text": "福彩双色球 06 19 23 24 25 32 + 11"
-        },
-        {
-          "red": [
-            2,
-            14,
-            16,
-            17,
-            22,
+            21,
+            32,
             33
           ],
           "blue": [
-            4
+            2
           ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
+          "source": "v3_ensemble",
           "group": "hot",
           "rank": 4,
-          "confidence": 54.2,
-          "copy_text": "福彩双色球 02 14 16 17 22 33 + 04"
+          "confidence": 57.4,
+          "copy_text": "福彩双色球 01 03 19 21 32 33 + 02"
         },
         {
           "red": [
-            4,
-            8,
-            13,
-            14,
-            21,
-            29
+            5,
+            11,
+            12,
+            15,
+            16,
+            32
           ],
           "blue": [
-            15
+            13
           ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
+          "source": "v3_ensemble",
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩双色球 04 08 13 14 21 29 + 15"
+          "copy_text": "福彩双色球 05 11 12 15 16 32 + 13"
         }
       ],
       "top_candidates": [
         {
           "red": [
-            5,
-            7,
+            1,
+            2,
             14,
+            22,
             24,
-            27,
-            28
+            30
           ],
           "blue": [
-            1
+            4
           ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
+          "source": "v3_ensemble",
           "group": "hot",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩双色球 05 07 14 24 27 28 + 01"
+          "copy_text": "福彩双色球 01 02 14 22 24 30 + 04"
+        },
+        {
+          "red": [
+            3,
+            8,
+            9,
+            27,
+            28,
+            29
+          ],
+          "blue": [
+            6
+          ],
+          "source": "v3_ensemble",
+          "group": "hot",
+          "rank": 2,
+          "confidence": 67.8,
+          "copy_text": "福彩双色球 03 08 09 27 28 29 + 06"
+        },
+        {
+          "red": [
+            6,
+            7,
+            10,
+            18,
+            19,
+            25
+          ],
+          "blue": [
+            12
+          ],
+          "source": "v3_ensemble",
+          "group": "hot",
+          "rank": 3,
+          "confidence": 63.3,
+          "copy_text": "福彩双色球 06 07 10 18 19 25 + 12"
         },
         {
           "red": [
             1,
             3,
-            10,
-            18,
-            24,
-            30
-          ],
-          "blue": [
-            5
-          ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
-          "group": "hot",
-          "rank": 2,
-          "confidence": 69.6,
-          "copy_text": "福彩双色球 01 03 10 18 24 30 + 05"
-        },
-        {
-          "red": [
-            6,
             19,
-            23,
-            24,
-            25,
-            32
-          ],
-          "blue": [
-            11
-          ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
-          "group": "hot",
-          "rank": 3,
-          "confidence": 59.0,
-          "copy_text": "福彩双色球 06 19 23 24 25 32 + 11"
-        },
-        {
-          "red": [
-            2,
-            14,
-            16,
-            17,
-            22,
+            21,
+            32,
             33
           ],
           "blue": [
-            4
+            2
           ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
+          "source": "v3_ensemble",
           "group": "hot",
           "rank": 4,
-          "confidence": 54.2,
-          "copy_text": "福彩双色球 02 14 16 17 22 33 + 04"
+          "confidence": 57.4,
+          "copy_text": "福彩双色球 01 03 19 21 32 33 + 02"
         },
         {
           "red": [
-            4,
-            8,
-            13,
-            14,
-            21,
-            29
+            5,
+            11,
+            12,
+            15,
+            16,
+            32
           ],
           "blue": [
-            15
+            13
           ],
-          "mix_label": "红蓝分区共现模型",
-          "source": "ssq_zone",
+          "source": "v3_ensemble",
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩双色球 04 08 13 14 21 29 + 15"
+          "copy_text": "福彩双色球 05 11 12 15 16 32 + 13"
         }
       ],
       "review": {
@@ -44856,7 +44390,7 @@
       "model_reference": "src/vendor_models_v3/kl8_model_v3.py",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-02T18:09:06+08:00",
+      "generated_at": "2026-08-02T18:21:35+08:00",
       "latest_issue": "2026203",
       "latest_draw_date": "2026-08-01",
       "latest_numbers": [
@@ -44888,203 +44422,205 @@
       "candidates": [
         {
           "numbers": [
-            1,
             2,
+            11,
             12,
-            40,
-            42,
-            44,
-            45,
-            73,
-            74,
-            75
+            18,
+            27,
+            30,
+            33,
+            39,
+            62,
+            69
           ],
-          "mix_label": "选10独立模型",
-          "source": "kl8_pick10",
+          "mix_label": "v3选10",
+          "source": "v3_ensemble",
           "pick_count": 10,
           "play_name": "选10",
           "group": "hot",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩快乐8 选10 01 02 12 40 42 44 45 73 74 75"
+          "copy_text": "福彩快乐8 选10 02 11 12 18 27 30 33 39 62 69"
         },
         {
           "numbers": [
             2,
+            11,
             12,
+            18,
             27,
-            32,
-            42,
-            44,
-            45,
-            49,
-            66
+            30,
+            33,
+            39,
+            69
           ],
-          "mix_label": "选9独立模型",
-          "source": "kl8_pick9",
+          "mix_label": "v3选9",
+          "source": "v3_ensemble",
           "pick_count": 9,
           "play_name": "选9",
           "group": "hot",
           "rank": 2,
-          "confidence": 73.1,
-          "copy_text": "福彩快乐8 选9 02 12 27 32 42 44 45 49 66"
+          "confidence": 70.3,
+          "copy_text": "福彩快乐8 选9 02 11 12 18 27 30 33 39 69"
         },
         {
           "numbers": [
+            2,
             12,
-            17,
+            18,
             27,
-            32,
-            40,
-            42,
-            75,
-            77
+            30,
+            33,
+            39,
+            69
           ],
-          "mix_label": "选8独立模型",
-          "source": "kl8_pick8",
+          "mix_label": "v3选8",
+          "source": "v3_ensemble",
           "pick_count": 8,
           "play_name": "选8",
           "group": "hot",
           "rank": 3,
-          "confidence": 62.9,
-          "copy_text": "福彩快乐8 选8 12 17 27 32 40 42 75 77"
+          "confidence": 64.1,
+          "copy_text": "福彩快乐8 选8 02 12 18 27 30 33 39 69"
         },
         {
           "numbers": [
             2,
+            12,
+            18,
             27,
-            32,
-            42,
-            53,
-            69,
-            73
+            30,
+            39,
+            69
           ],
-          "mix_label": "选7独立模型",
-          "source": "kl8_pick7",
+          "mix_label": "v3选7",
+          "source": "v3_ensemble",
           "pick_count": 7,
           "play_name": "选7",
           "group": "hot",
           "rank": 4,
-          "confidence": 57.7,
-          "copy_text": "福彩快乐8 选7 02 27 32 42 53 69 73"
+          "confidence": 57.6,
+          "copy_text": "福彩快乐8 选7 02 12 18 27 30 39 69"
         },
         {
           "numbers": [
             2,
             12,
             27,
-            42,
-            73
+            30,
+            39,
+            69
           ],
-          "mix_label": "选5独立模型",
-          "source": "kl8_pick5",
-          "pick_count": 5,
-          "play_name": "选5",
+          "mix_label": "v3选6",
+          "source": "v3_ensemble",
+          "pick_count": 6,
+          "play_name": "选6",
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩快乐8 选5 02 12 27 42 73"
+          "copy_text": "福彩快乐8 选6 02 12 27 30 39 69"
         }
       ],
       "top_candidates": [
         {
           "numbers": [
-            1,
             2,
+            11,
             12,
-            40,
-            42,
-            44,
-            45,
-            73,
-            74,
-            75
+            18,
+            27,
+            30,
+            33,
+            39,
+            62,
+            69
           ],
-          "mix_label": "选10独立模型",
-          "source": "kl8_pick10",
+          "mix_label": "v3选10",
+          "source": "v3_ensemble",
           "pick_count": 10,
           "play_name": "选10",
           "group": "hot",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩快乐8 选10 01 02 12 40 42 44 45 73 74 75"
+          "copy_text": "福彩快乐8 选10 02 11 12 18 27 30 33 39 62 69"
         },
         {
           "numbers": [
             2,
+            11,
             12,
+            18,
             27,
-            32,
-            42,
-            44,
-            45,
-            49,
-            66
+            30,
+            33,
+            39,
+            69
           ],
-          "mix_label": "选9独立模型",
-          "source": "kl8_pick9",
+          "mix_label": "v3选9",
+          "source": "v3_ensemble",
           "pick_count": 9,
           "play_name": "选9",
           "group": "hot",
           "rank": 2,
-          "confidence": 73.1,
-          "copy_text": "福彩快乐8 选9 02 12 27 32 42 44 45 49 66"
+          "confidence": 70.3,
+          "copy_text": "福彩快乐8 选9 02 11 12 18 27 30 33 39 69"
         },
         {
           "numbers": [
+            2,
             12,
-            17,
+            18,
             27,
-            32,
-            40,
-            42,
-            75,
-            77
+            30,
+            33,
+            39,
+            69
           ],
-          "mix_label": "选8独立模型",
-          "source": "kl8_pick8",
+          "mix_label": "v3选8",
+          "source": "v3_ensemble",
           "pick_count": 8,
           "play_name": "选8",
           "group": "hot",
           "rank": 3,
-          "confidence": 62.9,
-          "copy_text": "福彩快乐8 选8 12 17 27 32 40 42 75 77"
+          "confidence": 64.1,
+          "copy_text": "福彩快乐8 选8 02 12 18 27 30 33 39 69"
         },
         {
           "numbers": [
             2,
+            12,
+            18,
             27,
-            32,
-            42,
-            53,
-            69,
-            73
+            30,
+            39,
+            69
           ],
-          "mix_label": "选7独立模型",
-          "source": "kl8_pick7",
+          "mix_label": "v3选7",
+          "source": "v3_ensemble",
           "pick_count": 7,
           "play_name": "选7",
           "group": "hot",
           "rank": 4,
-          "confidence": 57.7,
-          "copy_text": "福彩快乐8 选7 02 27 32 42 53 69 73"
+          "confidence": 57.6,
+          "copy_text": "福彩快乐8 选7 02 12 18 27 30 39 69"
         },
         {
           "numbers": [
             2,
             12,
             27,
-            42,
-            73
+            30,
+            39,
+            69
           ],
-          "mix_label": "选5独立模型",
-          "source": "kl8_pick5",
-          "pick_count": 5,
-          "play_name": "选5",
+          "mix_label": "v3选6",
+          "source": "v3_ensemble",
+          "pick_count": 6,
+          "play_name": "选6",
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩快乐8 选5 02 12 27 42 73"
+          "copy_text": "福彩快乐8 选6 02 12 27 30 39 69"
         }
       ],
       "review": {
