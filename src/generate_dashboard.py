@@ -1373,6 +1373,42 @@ def generate_kl8_play_types(rows: list[dict], pick_counts: list[int]) -> dict[st
             "description": f"每注{pick_count}个号码，共5注",
             "candidates": (candidates, scores),
         }
+
+    # The per-play generator intentionally ranks each play in isolation.  If
+    # we simply expose rank 1 for every play, however, the same high-scoring
+    # numbers are repeated as nested sets (pick-10 contains pick-9, etc.).
+    # Select the lead line as a portfolio: keep as much of each play's own
+    # score as possible while penalising overlap with already selected plays.
+    # This changes presentation/coverage only; it does not claim that any
+    # number has a higher true draw probability.
+    selected: list[set[int]] = []
+    ordered_keys = sorted(result, key=lambda key: int(key), reverse=True)
+    for key in ordered_keys:
+        candidates, scores = result[key]["candidates"]
+        if not candidates:
+            continue
+        score_min = min(scores)
+        score_span = max(scores) - score_min
+        scored_choices = []
+        for index, (candidate, raw_score) in enumerate(zip(candidates, scores)):
+            relative_score = (raw_score - score_min) / score_span if score_span else 1.0
+            numbers = set(candidate["numbers"])
+            max_overlap = 0
+            mean_overlap = 0.0
+            if selected:
+                overlaps = [len(numbers & previous) for previous in selected]
+                max_overlap = max(overlaps)
+                mean_overlap = sum(overlaps) / len(overlaps)
+            # Coverage is the first objective.  Only when two choices have a
+            # comparable overlap do we use the play's own model score.  This
+            # avoids the old failure mode where a tiny score advantage kept
+            # selecting nested copies of the same line.
+            scored_choices.append((max_overlap, mean_overlap, -relative_score, index))
+        choice = min(scored_choices)[-1]
+        if choice:
+            candidates[0], candidates[choice] = candidates[choice], candidates[0]
+            scores[0], scores[choice] = scores[choice], scores[0]
+        selected.append(set(candidates[0]["numbers"]))
     return result
 
 
@@ -1952,7 +1988,7 @@ def main() -> None:
             "sector": GAME_SECTORS.get(game, ("ticai", "体彩"))[0],
             "sector_name": GAME_SECTORS.get(game, ("ticai", "体彩"))[1],
             "model_version": (
-                "v3.4-v3-ensemble-coverage-validated"
+                "v3.5-v3-ensemble-cross-play-diversified"
                 if game in ("dlt", "ssq", "kl8")
                 else "v4.1-latest-inclusive-hybrid-positional"
             ),

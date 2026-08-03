@@ -24,6 +24,7 @@ from src.generate_dashboard import (
     generate_dlt,
     generate_digit_profile,
     generate_kl8,
+    generate_kl8_play_types,
     generate_pl5_from_pl3,
     generate_qxc,
     generate_ssq,
@@ -257,6 +258,17 @@ class DetailPageTests(unittest.TestCase):
             self.assertEqual(len(candidates), 5)
             self.assertTrue(all(len(item["numbers"]) == pick_count for item in candidates))
             self.assertTrue(all(item["numbers"] == sorted(set(item["numbers"])) for item in candidates))
+
+    def test_kl8_play_types_diversify_lead_lines_across_pick_counts(self):
+        play_types = generate_kl8_play_types(self.kl8_rows, [5, 6, 7, 8, 9, 10])
+        lead_groups = [set(play["candidates"][0][0]["numbers"]) for play in play_types.values()]
+        pairwise_overlaps = [
+            len(left & right)
+            for index, left in enumerate(lead_groups)
+            for right in lead_groups[index + 1:]
+        ]
+        self.assertLessEqual(max(pairwise_overlaps), 4)
+        self.assertGreaterEqual(len(set().union(*lead_groups)), 25)
 
     def test_fc3d_official_history(self):
         self.assertGreaterEqual(len(self.fc3d_rows), 100)

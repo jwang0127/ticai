@@ -1,186 +1,180 @@
 {
-  "generated_at": "2026-08-02T23:40:10+08:00",
-  "daily_results_date": "2026-08-02",
+  "generated_at": "2026-08-03T17:40:34+08:00",
+  "daily_results_date": "2026-08-03",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
     {
       "game": "dlt",
       "name": "超级大乐透",
-      "result": "05 11 16 30 35 + 01 08；02 15 19 21 31 + 03 07；10 22 26 30 34 + 07 09",
+      "result": "08 28 29 32 35 + 08 11；01 02 08 09 11 + 04 07；04 05 08 14 25 + 06 11",
       "results": [
         {
-          "result": "05 11 16 30 35 + 01 08",
+          "result": "08 28 29 32 35 + 08 11",
           "scheme": "date_hash"
         },
         {
-          "result": "02 15 19 21 31 + 03 07",
+          "result": "01 02 08 09 11 + 04 07",
           "scheme": "position_map"
         },
         {
-          "result": "10 22 26 30 34 + 07 09",
+          "result": "04 05 08 14 25 + 06 11",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "超级大乐透 05 11 16 30 35 + 01 08\n超级大乐透 02 15 19 21 31 + 03 07\n超级大乐透 10 22 26 30 34 + 07 09"
+      "copy_text": "超级大乐透 08 28 29 32 35 + 08 11\n超级大乐透 01 02 08 09 11 + 04 07\n超级大乐透 04 05 08 14 25 + 06 11"
     },
     {
       "game": "pl3",
       "name": "排列3",
-      "result": "305；148；665",
+      "result": "489；790；875",
       "results": [
         {
-          "result": "305",
+          "result": "489",
           "scheme": "date_hash"
         },
         {
-          "result": "148",
+          "result": "790",
           "scheme": "position_map"
         },
         {
-          "result": "665",
+          "result": "875",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "排列3 305\n排列3 148\n排列3 665"
+      "copy_text": "排列3 489\n排列3 790\n排列3 875"
     },
     {
       "game": "pl5",
       "name": "排列5",
-      "result": "82439；18151；58808",
+      "result": "04314；75536；37573",
       "results": [
         {
-          "result": "82439",
+          "result": "04314",
           "scheme": "date_hash"
         },
         {
-          "result": "18151",
+          "result": "75536",
           "scheme": "position_map"
         },
         {
-          "result": "58808",
+          "result": "37573",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "排列5 82439\n排列5 18151\n排列5 58808"
+      "copy_text": "排列5 04314\n排列5 75536\n排列5 37573"
     },
     {
       "game": "fc3d",
       "name": "福彩3D",
-      "result": "607；393；112",
+      "result": "881；627；258",
       "results": [
         {
-          "result": "607",
+          "result": "881",
           "scheme": "date_hash"
         },
         {
-          "result": "393",
+          "result": "627",
           "scheme": "position_map"
         },
         {
-          "result": "112",
+          "result": "258",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "福彩3D 607\n福彩3D 393\n福彩3D 112"
+      "copy_text": "福彩3D 881\n福彩3D 627\n福彩3D 258"
     },
     {
       "game": "qxc",
       "name": "体彩7星彩",
-      "result": "6714104；6069377；5923940",
+      "result": "2369410；8921557；1915090",
       "results": [
         {
-          "result": "6714104",
+          "result": "2369410",
           "scheme": "date_hash"
         },
         {
-          "result": "6069377",
+          "result": "8921557",
           "scheme": "position_map"
         },
         {
-          "result": "5923940",
+          "result": "1915090",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "体彩7星彩 6714104\n体彩7星彩 6069377\n体彩7星彩 5923940"
+      "copy_text": "体彩7星彩 2369410\n体彩7星彩 8921557\n体彩7星彩 1915090"
     },
     {
       "game": "ssq",
       "name": "福彩双色球",
-      "result": "01 03 07 21 24 28 + 16；02 03 24 25 26 32 + 12；01 07 08 10 23 25 + 13",
+      "result": "02 05 09 14 16 26 + 06；03 06 10 15 18 19 + 13；14 15 18 24 26 30 + 09",
       "results": [
         {
-          "result": "01 03 07 21 24 28 + 16",
+          "result": "02 05 09 14 16 26 + 06",
           "scheme": "date_hash"
         },
         {
-          "result": "02 03 24 25 26 32 + 12",
+          "result": "03 06 10 15 18 19 + 13",
           "scheme": "position_map"
         },
         {
-          "result": "01 07 08 10 23 25 + 13",
+          "result": "14 15 18 24 26 30 + 09",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "福彩双色球 01 03 07 21 24 28 + 16\n福彩双色球 02 03 24 25 26 32 + 12\n福彩双色球 01 07 08 10 23 25 + 13"
+      "copy_text": "福彩双色球 02 05 09 14 16 26 + 06\n福彩双色球 03 06 10 15 18 19 + 13\n福彩双色球 14 15 18 24 26 30 + 09"
     },
     {
       "game": "kl8",
       "name": "福彩快乐8",
-      "result": "04 14 21 25 29 39 42 44 58 69；11 17 27 33 45 50 54 55 65 80；01 17 18 32 36 41 45 62 63 69",
+      "result": "01 11 12 19 29 36 45 65 69 79；02 06 27 39 47 54 56 75 76 77；05 09 12 24 34 40 46 52 67 74",
       "results": [
         {
-          "result": "04 14 21 25 29 39 42 44 58 69",
+          "result": "01 11 12 19 29 36 45 65 69 79",
           "scheme": "date_hash"
         },
         {
-          "result": "11 17 27 33 45 50 54 55 65 80",
+          "result": "02 06 27 39 47 54 56 75 76 77",
           "scheme": "position_map"
         },
         {
-          "result": "01 17 18 32 36 41 45 62 63 69",
+          "result": "05 09 12 24 34 40 46 52 67 74",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "福彩快乐8 04 14 21 25 29 39 42 44 58 69\n福彩快乐8 11 17 27 33 45 50 54 55 65 80\n福彩快乐8 01 17 18 32 36 41 45 62 63 69"
+      "copy_text": "福彩快乐8 01 11 12 19 29 36 45 65 69 79\n福彩快乐8 02 06 27 39 47 54 56 75 76 77\n福彩快乐8 05 09 12 24 34 40 46 52 67 74"
     }
   ],
-  "source_status": "cached_verified_data",
+  "source_status": "pending_cross_check",
   "verification": {
     "pl3": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26204",
-      "error": "HTTP Error 567: Unknown Status"
+      "issue": "26204"
     },
     "pl5": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26204",
-      "error": "HTTP Error 567: Unknown Status"
+      "issue": "26204"
     },
     "fc3d": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/mkjqxc/?SHA=false",
-      "issue": "2026204",
-      "error": "HTTP Error 567: Unknown Status"
+      "issue": "2026204"
     },
     "qxc": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/tcwm/qxc/",
-      "issue": "26088",
-      "error": "HTTP Error 567: Unknown Status"
+      "issue": "26088"
     },
     "ssq": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/ssq/",
-      "issue": "2026088",
-      "error": "HTTP Error 403: Forbidden"
+      "issue": "2026088"
     },
     "kl8": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/kl8/",
-      "issue": "2026204",
-      "error": "HTTP Error 403: Forbidden"
+      "issue": "2026204"
     },
     "dlt": {
       "status": "pending",
@@ -9612,9 +9606,9 @@
       "sector_name": "体彩",
       "model_version": "v3.4-v3-ensemble-coverage-validated",
       "model_reference": "src/vendor_models_v3/dlt_model_v3.py",
-      "history_count": 2000,
+      "history_count": 100,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-08-02T18:21:35+08:00",
+      "generated_at": "2026-08-02T23:01:47+08:00",
       "latest_issue": "26086",
       "latest_draw_date": "2026-08-01",
       "latest_numbers": [
@@ -9635,7 +9629,7 @@
           "front": [
             12,
             13,
-            15,
+            21,
             23,
             26
           ],
@@ -9647,14 +9641,14 @@
           "group": "hot",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "超级大乐透 12 13 15 23 26 + 07 12"
+          "copy_text": "超级大乐透 12 13 21 23 26 + 07 12"
         },
         {
           "front": [
-            19,
-            20,
-            21,
-            27,
+            4,
+            6,
+            15,
+            18,
             29
           ],
           "back": [
@@ -9664,16 +9658,16 @@
           "source": "v3_ensemble",
           "group": "hot",
           "rank": 2,
-          "confidence": 70.9,
-          "copy_text": "超级大乐透 19 20 21 27 29 + 02 05"
+          "confidence": 69.4,
+          "copy_text": "超级大乐透 04 06 15 18 29 + 02 05"
         },
         {
           "front": [
+            10,
             16,
-            18,
-            22,
-            25,
-            28
+            20,
+            28,
+            34
           ],
           "back": [
             4,
@@ -9682,16 +9676,16 @@
           "source": "v3_ensemble",
           "group": "hot",
           "rank": 3,
-          "confidence": 63.2,
-          "copy_text": "超级大乐透 16 18 22 25 28 + 04 11"
+          "confidence": 62.4,
+          "copy_text": "超级大乐透 10 16 20 28 34 + 04 11"
         },
         {
           "front": [
-            1,
-            4,
-            6,
+            5,
             9,
-            10
+            19,
+            22,
+            27
           ],
           "back": [
             8,
@@ -9700,16 +9694,16 @@
           "source": "v3_ensemble",
           "group": "hot",
           "rank": 4,
-          "confidence": 56.1,
-          "copy_text": "超级大乐透 01 04 06 09 10 + 08 10"
+          "confidence": 55.7,
+          "copy_text": "超级大乐透 05 09 19 22 27 + 08 10"
         },
         {
           "front": [
+            1,
             3,
-            5,
             14,
-            32,
-            34
+            24,
+            32
           ],
           "back": [
             1,
@@ -9719,7 +9713,7 @@
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "超级大乐透 03 05 14 32 34 + 01 06"
+          "copy_text": "超级大乐透 01 03 14 24 32 + 01 06"
         }
       ],
       "top_candidates": [
@@ -9727,7 +9721,7 @@
           "front": [
             12,
             13,
-            15,
+            21,
             23,
             26
           ],
@@ -9739,14 +9733,14 @@
           "group": "hot",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "超级大乐透 12 13 15 23 26 + 07 12"
+          "copy_text": "超级大乐透 12 13 21 23 26 + 07 12"
         },
         {
           "front": [
-            19,
-            20,
-            21,
-            27,
+            4,
+            6,
+            15,
+            18,
             29
           ],
           "back": [
@@ -9756,16 +9750,16 @@
           "source": "v3_ensemble",
           "group": "hot",
           "rank": 2,
-          "confidence": 70.9,
-          "copy_text": "超级大乐透 19 20 21 27 29 + 02 05"
+          "confidence": 69.4,
+          "copy_text": "超级大乐透 04 06 15 18 29 + 02 05"
         },
         {
           "front": [
+            10,
             16,
-            18,
-            22,
-            25,
-            28
+            20,
+            28,
+            34
           ],
           "back": [
             4,
@@ -9774,16 +9768,16 @@
           "source": "v3_ensemble",
           "group": "hot",
           "rank": 3,
-          "confidence": 63.2,
-          "copy_text": "超级大乐透 16 18 22 25 28 + 04 11"
+          "confidence": 62.4,
+          "copy_text": "超级大乐透 10 16 20 28 34 + 04 11"
         },
         {
           "front": [
-            1,
-            4,
-            6,
+            5,
             9,
-            10
+            19,
+            22,
+            27
           ],
           "back": [
             8,
@@ -9792,16 +9786,16 @@
           "source": "v3_ensemble",
           "group": "hot",
           "rank": 4,
-          "confidence": 56.1,
-          "copy_text": "超级大乐透 01 04 06 09 10 + 08 10"
+          "confidence": 55.7,
+          "copy_text": "超级大乐透 05 09 19 22 27 + 08 10"
         },
         {
           "front": [
+            1,
             3,
-            5,
             14,
-            32,
-            34
+            24,
+            32
           ],
           "back": [
             1,
@@ -9811,7 +9805,7 @@
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "超级大乐透 03 05 14 32 34 + 01 06"
+          "copy_text": "超级大乐透 01 03 14 24 32 + 01 06"
         }
       ],
       "review": {
@@ -9837,8 +9831,8 @@
         ]
       },
       "analysis": {
-        "sample": 2000,
-        "summary": "最近2000期采用指数衰减频率，前后区分别统计；当前前区相对活跃号为26、13、23、10、15，后区为07、12、02。",
+        "sample": 100,
+        "summary": "最近100期采用指数衰减频率，前后区分别统计；当前前区相对活跃号为26、13、23、15、10，后区为07、12、02。",
         "position_analysis": [
           {
             "position": "前区第1位",
@@ -9897,113 +9891,41 @@
             ]
           }
         ],
-        "selected_window": 1500,
+        "selected_window": 99,
         "selected_region_windows": {
-          "front": 1500,
-          "back": 1500
+          "front": 99,
+          "back": 99
         },
         "region_backtest": {
           "front": {
-            "100": {
-              "folds": 240,
-              "pool_coverage": 0.525,
-              "se": 0.0135,
-              "baseline": 0.5143
-            },
-            "300": {
-              "folds": 240,
-              "pool_coverage": 0.5158,
-              "se": 0.0136,
-              "baseline": 0.5143
-            },
-            "500": {
-              "folds": 240,
-              "pool_coverage": 0.5192,
-              "se": 0.0135,
-              "baseline": 0.5143
-            },
-            "1000": {
-              "folds": 240,
-              "pool_coverage": 0.5092,
-              "se": 0.0136,
-              "baseline": 0.5143
-            },
-            "1500": {
-              "folds": 240,
-              "pool_coverage": 0.5117,
-              "se": 0.0136,
+            "99": {
+              "folds": 1,
+              "pool_coverage": 0.6,
+              "se": 0.2058,
               "baseline": 0.5143
             }
           },
           "back": {
-            "100": {
-              "folds": 240,
-              "pool_coverage": 0.5083,
-              "se": 0.0218,
-              "baseline": 0.5
-            },
-            "300": {
-              "folds": 240,
-              "pool_coverage": 0.525,
-              "se": 0.0217,
-              "baseline": 0.5
-            },
-            "500": {
-              "folds": 240,
-              "pool_coverage": 0.5167,
-              "se": 0.0217,
-              "baseline": 0.5
-            },
-            "1000": {
-              "folds": 240,
-              "pool_coverage": 0.4833,
-              "se": 0.0217,
-              "baseline": 0.5
-            },
-            "1500": {
-              "folds": 240,
-              "pool_coverage": 0.5125,
-              "se": 0.0218,
+            "99": {
+              "folds": 1,
+              "pool_coverage": 0.5,
+              "se": 0.3371,
               "baseline": 0.5
             }
           }
         },
         "backtest": {
-          "100": {
-            "folds": 240,
-            "pool_coverage": 0.6077,
-            "se": 0.0119,
-            "baseline": 0.6486
-          },
-          "300": {
-            "folds": 240,
-            "pool_coverage": 0.6375,
-            "se": 0.0117,
-            "baseline": 0.6486
-          },
-          "500": {
-            "folds": 240,
-            "pool_coverage": 0.6351,
-            "se": 0.0117,
-            "baseline": 0.6486
-          },
-          "1000": {
-            "folds": 240,
-            "pool_coverage": 0.6464,
-            "se": 0.0117,
-            "baseline": 0.6486
-          },
-          "1500": {
-            "folds": 240,
-            "pool_coverage": 0.653,
-            "se": 0.0116,
+          "99": {
+            "folds": 1,
+            "pool_coverage": 0.7143,
+            "se": 0.1707,
             "baseline": 0.6486
           }
         },
         "signals": [
           {
             "label": "前区相对活跃",
-            "value": "26 · 13 · 23 · 10 · 15"
+            "value": "26 · 13 · 23 · 15 · 10"
           },
           {
             "label": "后区相对活跃",
@@ -10169,7 +10091,7 @@
       "model_reference": null,
       "history_count": 100,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-02T23:40:10+08:00",
+      "generated_at": "2026-08-02T23:01:47+08:00",
       "latest_issue": "26204",
       "latest_draw_date": "2026-08-02",
       "latest_numbers": [
@@ -11131,7 +11053,7 @@
       "model_reference": null,
       "history_count": 100,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-02T23:40:10+08:00",
+      "generated_at": "2026-08-02T23:01:47+08:00",
       "latest_issue": "26204",
       "latest_draw_date": "2026-08-02",
       "latest_numbers": [
@@ -11922,7 +11844,7 @@
       "model_reference": null,
       "history_count": 100,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-02T23:40:10+08:00",
+      "generated_at": "2026-08-02T23:01:47+08:00",
       "latest_issue": "2026204",
       "latest_draw_date": "2026-08-02",
       "latest_numbers": [
@@ -12884,7 +12806,7 @@
       "model_reference": null,
       "history_count": 100,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-02T23:40:10+08:00",
+      "generated_at": "2026-08-02T23:01:47+08:00",
       "latest_issue": "26088",
       "latest_draw_date": "2026-08-02",
       "latest_numbers": [
@@ -13666,7 +13588,7 @@
       "model_reference": "src/vendor_models_v3/ssq_model_v3.py",
       "history_count": 100,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-02T23:40:10+08:00",
+      "generated_at": "2026-08-02T23:01:47+08:00",
       "latest_issue": "2026088",
       "latest_draw_date": "2026-08-02",
       "latest_numbers": [
@@ -14092,11 +14014,11 @@
       "name": "福彩快乐8",
       "sector": "fucai",
       "sector_name": "福彩",
-      "model_version": "v3.4-v3-ensemble-coverage-validated",
+      "model_version": "v3.5-v3-ensemble-cross-play-diversified",
       "model_reference": "src/vendor_models_v3/kl8_model_v3.py",
       "history_count": 100,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-02T23:40:10+08:00",
+      "generated_at": "2026-08-03T17:40:34+08:00",
       "latest_issue": "2026204",
       "latest_draw_date": "2026-08-02",
       "latest_numbers": [
@@ -14150,81 +14072,78 @@
         },
         {
           "numbers": [
-            2,
-            12,
-            18,
-            27,
-            30,
-            33,
-            39,
+            11,
             42,
+            61,
+            62,
+            69,
+            75,
             77
-          ],
-          "mix_label": "v3选9",
-          "source": "v3_ensemble",
-          "pick_count": 9,
-          "play_name": "选9",
-          "group": "hot",
-          "rank": 2,
-          "confidence": 71.0,
-          "copy_text": "福彩快乐8 选9 02 12 18 27 30 33 39 42 77"
-        },
-        {
-          "numbers": [
-            2,
-            12,
-            18,
-            27,
-            30,
-            33,
-            39,
-            42
-          ],
-          "mix_label": "v3选8",
-          "source": "v3_ensemble",
-          "pick_count": 8,
-          "play_name": "选8",
-          "group": "hot",
-          "rank": 3,
-          "confidence": 64.8,
-          "copy_text": "福彩快乐8 选8 02 12 18 27 30 33 39 42"
-        },
-        {
-          "numbers": [
-            2,
-            12,
-            18,
-            27,
-            30,
-            33,
-            39
           ],
           "mix_label": "v3选7",
           "source": "v3_ensemble",
           "pick_count": 7,
           "play_name": "选7",
           "group": "hot",
-          "rank": 4,
-          "confidence": 58.4,
-          "copy_text": "福彩快乐8 选7 02 12 18 27 30 33 39"
+          "rank": 2,
+          "confidence": 57.4,
+          "copy_text": "福彩快乐8 选7 11 42 61 62 69 75 77"
         },
         {
           "numbers": [
-            2,
-            12,
-            27,
-            30,
-            33,
-            39
+            6,
+            17,
+            32,
+            38,
+            44,
+            45,
+            49,
+            53,
+            57
+          ],
+          "mix_label": "v3选9",
+          "source": "v3_ensemble",
+          "pick_count": 9,
+          "play_name": "选9",
+          "group": "hot",
+          "rank": 3,
+          "confidence": 54.1,
+          "copy_text": "福彩快乐8 选9 06 17 32 38 44 45 49 53 57"
+        },
+        {
+          "numbers": [
+            10,
+            11,
+            19,
+            23,
+            62,
+            66
           ],
           "mix_label": "v3选6",
           "source": "v3_ensemble",
           "pick_count": 6,
           "play_name": "选6",
           "group": "hot",
+          "rank": 4,
+          "confidence": 53.5,
+          "copy_text": "福彩快乐8 选6 10 11 19 23 62 66"
+        },
+        {
+          "numbers": [
+            10,
+            23,
+            38,
+            44,
+            66
+          ],
+          "mix_label": "v3选5",
+          "source": "v3_ensemble",
+          "pick_count": 5,
+          "play_name": "选5",
+          "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩快乐8 选6 02 12 27 30 33 39"
+          "copy_text": "福彩快乐8 选5 10 23 38 44 66"
         }
       ],
       "top_candidates": [
@@ -14252,81 +14171,78 @@
         },
         {
           "numbers": [
-            2,
-            12,
-            18,
-            27,
-            30,
-            33,
-            39,
+            11,
             42,
+            61,
+            62,
+            69,
+            75,
             77
-          ],
-          "mix_label": "v3选9",
-          "source": "v3_ensemble",
-          "pick_count": 9,
-          "play_name": "选9",
-          "group": "hot",
-          "rank": 2,
-          "confidence": 71.0,
-          "copy_text": "福彩快乐8 选9 02 12 18 27 30 33 39 42 77"
-        },
-        {
-          "numbers": [
-            2,
-            12,
-            18,
-            27,
-            30,
-            33,
-            39,
-            42
-          ],
-          "mix_label": "v3选8",
-          "source": "v3_ensemble",
-          "pick_count": 8,
-          "play_name": "选8",
-          "group": "hot",
-          "rank": 3,
-          "confidence": 64.8,
-          "copy_text": "福彩快乐8 选8 02 12 18 27 30 33 39 42"
-        },
-        {
-          "numbers": [
-            2,
-            12,
-            18,
-            27,
-            30,
-            33,
-            39
           ],
           "mix_label": "v3选7",
           "source": "v3_ensemble",
           "pick_count": 7,
           "play_name": "选7",
           "group": "hot",
-          "rank": 4,
-          "confidence": 58.4,
-          "copy_text": "福彩快乐8 选7 02 12 18 27 30 33 39"
+          "rank": 2,
+          "confidence": 57.4,
+          "copy_text": "福彩快乐8 选7 11 42 61 62 69 75 77"
         },
         {
           "numbers": [
-            2,
-            12,
-            27,
-            30,
-            33,
-            39
+            6,
+            17,
+            32,
+            38,
+            44,
+            45,
+            49,
+            53,
+            57
+          ],
+          "mix_label": "v3选9",
+          "source": "v3_ensemble",
+          "pick_count": 9,
+          "play_name": "选9",
+          "group": "hot",
+          "rank": 3,
+          "confidence": 54.1,
+          "copy_text": "福彩快乐8 选9 06 17 32 38 44 45 49 53 57"
+        },
+        {
+          "numbers": [
+            10,
+            11,
+            19,
+            23,
+            62,
+            66
           ],
           "mix_label": "v3选6",
           "source": "v3_ensemble",
           "pick_count": 6,
           "play_name": "选6",
           "group": "hot",
+          "rank": 4,
+          "confidence": 53.5,
+          "copy_text": "福彩快乐8 选6 10 11 19 23 62 66"
+        },
+        {
+          "numbers": [
+            10,
+            23,
+            38,
+            44,
+            66
+          ],
+          "mix_label": "v3选5",
+          "source": "v3_ensemble",
+          "pick_count": 5,
+          "play_name": "选5",
+          "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩快乐8 选6 02 12 27 30 33 39"
+          "copy_text": "福彩快乐8 选5 10 23 38 44 66"
         }
       ],
       "review": {
