@@ -1,42 +1,6 @@
 {
-  "generated_at": "2026-08-03T14:13:53+00:00",
+  "generated_at": "2026-08-03T16:07:37+00:00",
   "games": {
-    "dlt": {
-      "kind": "set_model",
-      "selected_window": 1500,
-      "backtest": {
-        "100": {
-          "folds": 240,
-          "pool_coverage": 0.6089,
-          "se": 0.0119,
-          "baseline": 0.6486
-        },
-        "300": {
-          "folds": 240,
-          "pool_coverage": 0.6393,
-          "se": 0.0117,
-          "baseline": 0.6486
-        },
-        "500": {
-          "folds": 240,
-          "pool_coverage": 0.6357,
-          "se": 0.0117,
-          "baseline": 0.6486
-        },
-        "1000": {
-          "folds": 240,
-          "pool_coverage": 0.6476,
-          "se": 0.0117,
-          "baseline": 0.6486
-        },
-        "1500": {
-          "folds": 240,
-          "pool_coverage": 0.6542,
-          "se": 0.0116,
-          "baseline": 0.6486
-        }
-      }
-    },
     "pl3": {
       "kind": "positional_digit",
       "selected_decay": 13,
@@ -746,6 +710,45 @@
           "positional_top3_hit_rate": 0.2878,
           "se": 0.0151,
           "baseline": 0.3
+        }
+      }
+    },
+    "qxc": {
+      "kind": "generator_internal_calibration"
+    },
+    "ssq": {
+      "kind": "set_model",
+      "selected_window": 1500,
+      "backtest": {
+        "100": {
+          "folds": 240,
+          "pool_coverage": 0.5137,
+          "se": 0.0113,
+          "baseline": 0.5122
+        },
+        "300": {
+          "folds": 240,
+          "pool_coverage": 0.522,
+          "se": 0.0113,
+          "baseline": 0.5122
+        },
+        "500": {
+          "folds": 240,
+          "pool_coverage": 0.5232,
+          "se": 0.0113,
+          "baseline": 0.5122
+        },
+        "1000": {
+          "folds": 240,
+          "pool_coverage": 0.5202,
+          "se": 0.0113,
+          "baseline": 0.5122
+        },
+        "1500": {
+          "folds": 240,
+          "pool_coverage": 0.519,
+          "se": 0.0113,
+          "baseline": 0.5122
         }
       }
     },
