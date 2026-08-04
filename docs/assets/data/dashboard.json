@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T00:57:05+08:00",
+  "generated_at": "2026-08-04T11:37:46+08:00",
   "daily_results_date": "2026-08-04",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -144,43 +144,37 @@
       "copy_text": "福彩快乐8 21 34 37 41 44 50 54 59 66 69\n福彩快乐8 01 09 12 15 19 24 37 46 64 71\n福彩快乐8 12 19 26 30 48 49 56 63 75 80"
     }
   ],
-  "source_status": "cached_verified_data",
+  "source_status": "pending_cross_check",
   "verification": {
     "pl3": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26205",
-      "error": "HTTP Error 567: Unknown Status"
+      "issue": "26205"
     },
     "pl5": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26205",
-      "error": "HTTP Error 567: Unknown Status"
+      "issue": "26205"
     },
     "fc3d": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/mkjqxc/?SHA=false",
-      "issue": "2026205",
-      "error": "HTTP Error 567: Unknown Status"
+      "issue": "2026205"
     },
     "qxc": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/tcwm/qxc/",
-      "issue": "26088",
-      "error": "HTTP Error 567: Unknown Status"
+      "issue": "26088"
     },
     "ssq": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/ssq/",
-      "issue": "2026088",
-      "error": "HTTP Error 403: Forbidden"
+      "issue": "2026088"
     },
     "kl8": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/kl8/",
-      "issue": "2026205",
-      "error": "HTTP Error 403: Forbidden"
+      "issue": "2026205"
     },
     "dlt": {
       "status": "pending",
@@ -37814,7 +37808,7 @@
       "model_reference": "src/vendor_models_v3/dlt_model_v3.py",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-08-03T22:13:55+08:00",
+      "generated_at": "2026-08-04T11:37:46+08:00",
       "latest_issue": "26087",
       "latest_draw_date": "2026-08-03",
       "latest_numbers": [
@@ -38374,7 +38368,7 @@
       "model_reference": null,
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-04T00:57:05+08:00",
+      "generated_at": "2026-08-04T11:37:46+08:00",
       "latest_issue": "26205",
       "latest_draw_date": "2026-08-03",
       "latest_numbers": [
@@ -38395,6 +38389,8 @@
           "rank": 1,
           "confidence": 77.0,
           "copy_text": "排列3 765",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中1/3项（和值18、跨度2、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 1,
           "prediction_metrics": {
             "sum": 18,
             "span": 2,
@@ -38412,6 +38408,8 @@
           "rank": 2,
           "confidence": 71.2,
           "copy_text": "排列3 754",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中3/3项（和值16、跨度3、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 3,
           "prediction_metrics": {
             "sum": 16,
             "span": 3,
@@ -38429,6 +38427,8 @@
           "rank": 3,
           "confidence": 71.0,
           "copy_text": "排列3 855",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值18、跨度3、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 18,
             "span": 3,
@@ -38446,6 +38446,8 @@
           "rank": 4,
           "confidence": 67.3,
           "copy_text": "排列3 156",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值12、跨度5、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 12,
             "span": 5,
@@ -38463,6 +38465,8 @@
           "rank": 5,
           "confidence": 52.0,
           "copy_text": "排列3 804",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中0/3项（和值12、跨度8、奇偶0:3）；结构只作低权重排序参考。",
+          "structure_match": 0,
           "prediction_metrics": {
             "sum": 12,
             "span": 8,
@@ -38482,6 +38486,8 @@
           "rank": 1,
           "confidence": 77.0,
           "copy_text": "排列3 765",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中1/3项（和值18、跨度2、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 1,
           "prediction_metrics": {
             "sum": 18,
             "span": 2,
@@ -38499,6 +38505,8 @@
           "rank": 2,
           "confidence": 71.2,
           "copy_text": "排列3 754",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中3/3项（和值16、跨度3、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 3,
           "prediction_metrics": {
             "sum": 16,
             "span": 3,
@@ -38516,6 +38524,8 @@
           "rank": 3,
           "confidence": 71.0,
           "copy_text": "排列3 855",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值18、跨度3、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 18,
             "span": 3,
@@ -38533,6 +38543,8 @@
           "rank": 4,
           "confidence": 67.3,
           "copy_text": "排列3 156",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值12、跨度5、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 12,
             "span": 5,
@@ -38550,6 +38562,8 @@
           "rank": 5,
           "confidence": 52.0,
           "copy_text": "排列3 804",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中0/3项（和值12、跨度8、奇偶0:3）；结构只作低权重排序参考。",
+          "structure_match": 0,
           "prediction_metrics": {
             "sum": 12,
             "span": 8,
@@ -38569,6 +38583,8 @@
           "rank": 1,
           "confidence": 77.0,
           "copy_text": "排列3 765",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中1/3项（和值18、跨度2、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 1,
           "prediction_metrics": {
             "sum": 18,
             "span": 2,
@@ -38586,6 +38602,8 @@
           "rank": 2,
           "confidence": 71.2,
           "copy_text": "排列3 754",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中3/3项（和值16、跨度3、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 3,
           "prediction_metrics": {
             "sum": 16,
             "span": 3,
@@ -38603,6 +38621,8 @@
           "rank": 3,
           "confidence": 71.0,
           "copy_text": "排列3 855",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值18、跨度3、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 18,
             "span": 3,
@@ -38620,6 +38640,8 @@
           "rank": 4,
           "confidence": 67.3,
           "copy_text": "排列3 156",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值12、跨度5、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 12,
             "span": 5,
@@ -38637,6 +38659,8 @@
           "rank": 5,
           "confidence": 52.0,
           "copy_text": "排列3 804",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中0/3项（和值12、跨度8、奇偶0:3）；结构只作低权重排序参考。",
+          "structure_match": 0,
           "prediction_metrics": {
             "sum": 12,
             "span": 8,
@@ -38656,6 +38680,8 @@
           "rank": 1,
           "confidence": 77.0,
           "copy_text": "排列3 723",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值12、跨度5、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 12,
             "span": 5,
@@ -38673,6 +38699,8 @@
           "rank": 2,
           "confidence": 67.1,
           "copy_text": "排列3 592",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值16、跨度7、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 16,
             "span": 7,
@@ -38690,6 +38718,8 @@
           "rank": 3,
           "confidence": 64.4,
           "copy_text": "排列3 419",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值14、跨度8、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 14,
             "span": 8,
@@ -38707,6 +38737,8 @@
           "rank": 4,
           "confidence": 61.7,
           "copy_text": "排列3 037",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中1/3项（和值10、跨度7、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 1,
           "prediction_metrics": {
             "sum": 10,
             "span": 7,
@@ -38724,6 +38756,8 @@
           "rank": 5,
           "confidence": 52.0,
           "copy_text": "排列3 980",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中1/3项（和值17、跨度9、奇偶1:2）；结构只作低权重排序参考。",
+          "structure_match": 1,
           "prediction_metrics": {
             "sum": 17,
             "span": 9,
@@ -38744,7 +38778,8 @@
           "range": [
             2,
             26
-          ]
+          ],
+          "reason": "近300期按出现频次取前三个结构，作为候选排序的轻量平分信号；和值不单独决定号码，也不代表下一期必然落在其中。"
         },
         "span": {
           "values": [
@@ -38755,7 +38790,8 @@
           "range": [
             0,
             9
-          ]
+          ],
+          "reason": "近300期按出现频次取前三个结构，作为候选排序的轻量平分信号；跨度不单独决定号码，也不代表下一期必然落在其中。"
         },
         "odd_even": {
           "values": [
@@ -38766,7 +38802,8 @@
           "range": [
             "0:3",
             "3:0"
-          ]
+          ],
+          "reason": "近300期按出现频次取前三个结构，作为候选排序的轻量平分信号；奇偶比不单独决定号码，也不代表下一期必然落在其中。"
         }
       },
       "review": {
@@ -38789,7 +38826,8 @@
             "label": "不同数字",
             "value": "3"
           }
-        ]
+        ],
+        "structure_explanation": "和值用于观察三位总量，跨度用于观察最大位与最小位的距离，奇偶比和重复形态用于描述组合外形；它们只给逐位模型做低权重排序与复盘，不会把上一期号码机械地推到下一期。"
       },
       "analysis": {
         "sample": 2000,
@@ -39966,7 +40004,7 @@
         ],
         "model_adjustments": [
           "排列3/福彩3D改为逐位选择衰减周期和历史窗口，避免三个位数共用一个最优参数。",
-          "保留位频、遗漏和组合分的约束；不因一期开出号码直接追热或追冷。"
+          "保留位频、遗漏和组合分的约束；和值、跨度、奇偶和重复形态只作低权重平分信号，不因一期开出号码直接追热或追冷。"
         ],
         "position_pool_coverage": 2,
         "position_count": 3,
@@ -39997,7 +40035,17 @@
             "suggestion": "直选参考：804"
           }
         ],
-        "next_day_advice_text": "直选参考：765；直选参考：754；组选三参考：855（558/585/855）；直选参考：156；直选参考：804"
+        "next_day_advice_text": "直选参考：765；直选参考：754；组选三参考：855（558/585/855）；直选参考：156；直选参考：804",
+        "structure_diagnostics": {
+          "actual": {
+            "sum": 14,
+            "span": 8,
+            "odd_even": "0:3",
+            "distinct": 3,
+            "shape": "三位不同"
+          },
+          "explanation": "本期806的和值14、跨度8、奇偶比0:3、三位不同；这些字段用于解释候选组合为何入选或落选，不能据此断言下一期会重复相同结构。"
+        }
       }
     },
     "pl5": {
@@ -40008,7 +40056,7 @@
       "model_reference": null,
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-04T00:57:05+08:00",
+      "generated_at": "2026-08-04T11:37:46+08:00",
       "latest_issue": "26205",
       "latest_draw_date": "2026-08-03",
       "latest_numbers": [
@@ -40136,7 +40184,8 @@
             "label": "不同数字",
             "value": "3"
           }
-        ]
+        ],
+        "structure_explanation": "和值用于观察三位总量，跨度用于观察最大位与最小位的距离，奇偶比和重复形态用于描述组合外形；它们只给逐位模型做低权重排序与复盘，不会把上一期号码机械地推到下一期。"
       },
       "analysis": {
         "sample": 2000,
@@ -41813,7 +41862,7 @@
       "model_reference": null,
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-04T00:57:05+08:00",
+      "generated_at": "2026-08-04T11:37:46+08:00",
       "latest_issue": "2026205",
       "latest_draw_date": "2026-08-03",
       "latest_numbers": [
@@ -41834,6 +41883,8 @@
           "rank": 1,
           "confidence": 77.0,
           "copy_text": "福彩3D 925",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中1/3项（和值16、跨度7、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 1,
           "prediction_metrics": {
             "sum": 16,
             "span": 7,
@@ -41851,6 +41902,8 @@
           "rank": 2,
           "confidence": 65.1,
           "copy_text": "福彩3D 932",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中1/3项（和值14、跨度7、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 1,
           "prediction_metrics": {
             "sum": 14,
             "span": 7,
@@ -41868,6 +41921,8 @@
           "rank": 3,
           "confidence": 61.5,
           "copy_text": "福彩3D 428",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中1/3项（和值14、跨度6、奇偶0:3）；结构只作低权重排序参考。",
+          "structure_match": 1,
           "prediction_metrics": {
             "sum": 14,
             "span": 6,
@@ -41885,6 +41940,8 @@
           "rank": 4,
           "confidence": 59.8,
           "copy_text": "福彩3D 238",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值13、跨度6、奇偶1:2）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 13,
             "span": 6,
@@ -41902,6 +41959,8 @@
           "rank": 5,
           "confidence": 52.0,
           "copy_text": "福彩3D 412",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值7、跨度3、奇偶1:2）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 7,
             "span": 3,
@@ -41921,6 +41980,8 @@
           "rank": 1,
           "confidence": 77.0,
           "copy_text": "福彩3D 925",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中1/3项（和值16、跨度7、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 1,
           "prediction_metrics": {
             "sum": 16,
             "span": 7,
@@ -41938,6 +41999,8 @@
           "rank": 2,
           "confidence": 65.1,
           "copy_text": "福彩3D 932",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中1/3项（和值14、跨度7、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 1,
           "prediction_metrics": {
             "sum": 14,
             "span": 7,
@@ -41955,6 +42018,8 @@
           "rank": 3,
           "confidence": 61.5,
           "copy_text": "福彩3D 428",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中1/3项（和值14、跨度6、奇偶0:3）；结构只作低权重排序参考。",
+          "structure_match": 1,
           "prediction_metrics": {
             "sum": 14,
             "span": 6,
@@ -41972,6 +42037,8 @@
           "rank": 4,
           "confidence": 59.8,
           "copy_text": "福彩3D 238",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值13、跨度6、奇偶1:2）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 13,
             "span": 6,
@@ -41989,6 +42056,8 @@
           "rank": 5,
           "confidence": 52.0,
           "copy_text": "福彩3D 412",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值7、跨度3、奇偶1:2）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 7,
             "span": 3,
@@ -42008,6 +42077,8 @@
           "rank": 1,
           "confidence": 77.0,
           "copy_text": "福彩3D 925",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中1/3项（和值16、跨度7、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 1,
           "prediction_metrics": {
             "sum": 16,
             "span": 7,
@@ -42025,6 +42096,8 @@
           "rank": 2,
           "confidence": 65.1,
           "copy_text": "福彩3D 932",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中1/3项（和值14、跨度7、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 1,
           "prediction_metrics": {
             "sum": 14,
             "span": 7,
@@ -42042,6 +42115,8 @@
           "rank": 3,
           "confidence": 61.5,
           "copy_text": "福彩3D 428",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中1/3项（和值14、跨度6、奇偶0:3）；结构只作低权重排序参考。",
+          "structure_match": 1,
           "prediction_metrics": {
             "sum": 14,
             "span": 6,
@@ -42059,6 +42134,8 @@
           "rank": 4,
           "confidence": 59.8,
           "copy_text": "福彩3D 238",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值13、跨度6、奇偶1:2）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 13,
             "span": 6,
@@ -42076,6 +42153,8 @@
           "rank": 5,
           "confidence": 52.0,
           "copy_text": "福彩3D 412",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值7、跨度3、奇偶1:2）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 7,
             "span": 3,
@@ -42095,6 +42174,8 @@
           "rank": 1,
           "confidence": 77.0,
           "copy_text": "福彩3D 253",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中3/3项（和值10、跨度3、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 3,
           "prediction_metrics": {
             "sum": 10,
             "span": 3,
@@ -42112,6 +42193,8 @@
           "rank": 2,
           "confidence": 72.6,
           "copy_text": "福彩3D 699",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值24、跨度3、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 24,
             "span": 3,
@@ -42129,6 +42212,8 @@
           "rank": 3,
           "confidence": 62.8,
           "copy_text": "福彩3D 561",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值12、跨度5、奇偶2:1）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 12,
             "span": 5,
@@ -42146,6 +42231,8 @@
           "rank": 4,
           "confidence": 61.9,
           "copy_text": "福彩3D 306",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中1/3项（和值9、跨度6、奇偶1:2）；结构只作低权重排序参考。",
+          "structure_match": 1,
           "prediction_metrics": {
             "sum": 9,
             "span": 6,
@@ -42163,6 +42250,8 @@
           "rank": 5,
           "confidence": 52.0,
           "copy_text": "福彩3D 087",
+          "prediction_reason": "逐位频率/遗漏为主，结构信号命中2/3项（和值15、跨度8、奇偶1:2）；结构只作低权重排序参考。",
+          "structure_match": 2,
           "prediction_metrics": {
             "sum": 15,
             "span": 8,
@@ -42183,7 +42272,8 @@
           "range": [
             2,
             25
-          ]
+          ],
+          "reason": "近300期按出现频次取前三个结构，作为候选排序的轻量平分信号；和值不单独决定号码，也不代表下一期必然落在其中。"
         },
         "span": {
           "values": [
@@ -42194,7 +42284,8 @@
           "range": [
             1,
             9
-          ]
+          ],
+          "reason": "近300期按出现频次取前三个结构，作为候选排序的轻量平分信号；跨度不单独决定号码，也不代表下一期必然落在其中。"
         },
         "odd_even": {
           "values": [
@@ -42205,7 +42296,8 @@
           "range": [
             "0:3",
             "3:0"
-          ]
+          ],
+          "reason": "近300期按出现频次取前三个结构，作为候选排序的轻量平分信号；奇偶比不单独决定号码，也不代表下一期必然落在其中。"
         }
       },
       "review": {
@@ -42228,7 +42320,8 @@
             "label": "不同数字",
             "value": "3"
           }
-        ]
+        ],
+        "structure_explanation": "和值用于观察三位总量，跨度用于观察最大位与最小位的距离，奇偶比和重复形态用于描述组合外形；它们只给逐位模型做低权重排序与复盘，不会把上一期号码机械地推到下一期。"
       },
       "analysis": {
         "sample": 2000,
@@ -43405,7 +43498,7 @@
         ],
         "model_adjustments": [
           "排列3/福彩3D改为逐位选择衰减周期和历史窗口，避免三个位数共用一个最优参数。",
-          "保留位频、遗漏和组合分的约束；不因一期开出号码直接追热或追冷。"
+          "保留位频、遗漏和组合分的约束；和值、跨度、奇偶和重复形态只作低权重平分信号，不因一期开出号码直接追热或追冷。"
         ],
         "position_pool_coverage": 0,
         "position_count": 3,
@@ -43436,7 +43529,17 @@
             "suggestion": "直选参考：412"
           }
         ],
-        "next_day_advice_text": "直选参考：925；直选参考：932；直选参考：428；直选参考：238；直选参考：412"
+        "next_day_advice_text": "直选参考：925；直选参考：932；直选参考：428；直选参考：238；直选参考：412",
+        "structure_diagnostics": {
+          "actual": {
+            "sum": 13,
+            "span": 7,
+            "odd_even": "1:2",
+            "distinct": 3,
+            "shape": "三位不同"
+          },
+          "explanation": "本期814的和值13、跨度7、奇偶比1:2、三位不同；这些字段用于解释候选组合为何入选或落选，不能据此断言下一期会重复相同结构。"
+        }
       }
     },
     "qxc": {
@@ -43447,7 +43550,7 @@
       "model_reference": null,
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-04T00:57:05+08:00",
+      "generated_at": "2026-08-04T11:37:46+08:00",
       "latest_issue": "26088",
       "latest_draw_date": "2026-08-02",
       "latest_numbers": [
@@ -43577,7 +43680,8 @@
             "label": "不同数字",
             "value": "4"
           }
-        ]
+        ],
+        "structure_explanation": "和值用于观察三位总量，跨度用于观察最大位与最小位的距离，奇偶比和重复形态用于描述组合外形；它们只给逐位模型做低权重排序与复盘，不会把上一期号码机械地推到下一期。"
       },
       "analysis": {
         "sample": 2000,
@@ -44421,7 +44525,7 @@
       "model_reference": "src/vendor_models_v3/ssq_model_v3.py",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-04T00:57:05+08:00",
+      "generated_at": "2026-08-04T11:37:46+08:00",
       "latest_issue": "2026088",
       "latest_draw_date": "2026-08-02",
       "latest_numbers": [
@@ -44923,7 +45027,7 @@
       "model_reference": "src/vendor_models_v3/kl8_model_v3.py",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-04T00:57:05+08:00",
+      "generated_at": "2026-08-04T11:37:46+08:00",
       "latest_issue": "2026205",
       "latest_draw_date": "2026-08-03",
       "latest_numbers": [

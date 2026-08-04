@@ -46,11 +46,11 @@ function predictionStructureHtml(game) {
   const summary = game.prediction_summary || {};
   const summaryCard = (key, label) => {
     const item = summary[key] || {};
-    return `<article class="forecast-card"><span>${label}预测</span><strong>${escapeHtml((item.values || []).join(" · "))}</strong><small>近300期参考区间 ${escapeHtml((item.range || []).join(" – "))}</small></article>`;
+    return `<article class="forecast-card"><span>${label}预测</span><strong>${escapeHtml((item.values || []).join(" · "))}</strong><small>近300期参考区间 ${escapeHtml((item.range || []).join(" – "))}</small><small>${escapeHtml(item.reason || "历史结构排序参考")}</small></article>`;
   };
   return `<section class="section prediction-structure"><div class="section-head"><div><p class="section-label">PREDICTION STRUCTURE</p><h2>和值 · 跨度 · 奇偶比</h2></div><p class="section-note">这是预测结构本身：和值、跨度和奇偶比先于具体号码展示；每注明细另列形态。所有内容均为历史统计排序参考。</p></div><div class="forecast-grid">${summaryCard("sum", "和值")}${summaryCard("span", "跨度")}${summaryCard("odd_even", "奇偶比")}</div><div class="structure-grid">${game.top_candidates.map(item => {
     const metrics = item.prediction_metrics || {};
-    return `<article class="structure-card"><strong>${escapeHtml(item.number)}</strong><span>和值 ${escapeHtml(metrics.sum)} · 跨度 ${escapeHtml(metrics.span)}</span><small>奇偶 ${escapeHtml(metrics.odd_even)} · 不同 ${escapeHtml(metrics.distinct)} · ${escapeHtml(metrics.shape)}</small></article>`;
+    return `<article class="structure-card"><strong>${escapeHtml(item.number)}</strong><span>和值 ${escapeHtml(metrics.sum)} · 跨度 ${escapeHtml(metrics.span)}</span><small>奇偶 ${escapeHtml(metrics.odd_even)} · 不同 ${escapeHtml(metrics.distinct)} · ${escapeHtml(metrics.shape)}</small><small>${escapeHtml(item.prediction_reason || "逐位排序参考")}</small></article>`;
   }).join("")}</div></section>`;
 }
 
@@ -101,6 +101,7 @@ function modelReviewHtml(review) {
   const advice = (review.next_day_advice || []).map(item => `<span class="advice-chip">${escapeHtml(item.suggestion)}</span>`).join("");
   const adjustments = (review.model_adjustments || []).map(item => `<li>${escapeHtml(item)}</li>`).join("");
   const attribution = review.error_attribution ? `<div class="review-attribution"><h3>错误归因</h3><p>${escapeHtml(review.error_attribution)}</p></div>` : "";
+  const structure = review.structure_diagnostics ? `<div class="review-attribution"><h3>和值/跨度逻辑</h3><p>${escapeHtml(review.structure_diagnostics.explanation)}</p></div>` : "";
   return `<section class="section">
     <div class="section-head"><div><p class="section-label">MODEL REVIEW</p><h2>第${escapeHtml(review.issue)}期模型复盘</h2></div><p class="section-note">${escapeHtml(review.summary)}</p></div>
     <div class="metrics model-review-metrics">
@@ -108,6 +109,7 @@ function modelReviewHtml(review) {
       <div class="metric"><span>最佳组合命中</span><strong>${escapeHtml(review.best_number_hits)}</strong></div>
     </div>
     ${diagnostics ? `<div class="review-diagnostics">${diagnostics}</div>` : ""}
+    ${structure}
     ${review.number_pool_coverage ? `<div class="review-attribution"><strong>快乐8联合池覆盖 ${escapeHtml(review.number_pool_coverage)}</strong></div>` : ""}
     ${attribution}
     ${advice ? `<div class="next-day-advice"><h3>第二天购买建议（模型参考）</h3><div>${advice}</div></div>` : ""}
@@ -200,7 +202,7 @@ async function load() {
     ${predictionStructureHtml(game)}
     ${directCandidatesHtml(game)}
     <section class="section">
-      <div class="section-head"><div><p class="section-label">LAST DRAW REVIEW</p><h2>${escapeHtml(game.review.title)}</h2></div><p class="section-note">${escapeHtml(game.review.summary)}</p></div>
+      <div class="section-head"><div><p class="section-label">LAST DRAW REVIEW</p><h2>${escapeHtml(game.review.title)}</h2></div><div><p class="section-note">${escapeHtml(game.review.summary)}</p>${game.review.structure_explanation ? `<p class="section-note">${escapeHtml(game.review.structure_explanation)}</p>` : ""}</div></div>
       <div class="metrics">${game.review.metrics.map(item => `<div class="metric"><span>${escapeHtml(item.label)}</span><strong>${escapeHtml(item.value)}</strong></div>`).join("")}</div>
     </section>
     ${modelReviewHtml(game.model_review)}

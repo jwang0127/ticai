@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-04T00:57:03+08:00",
-  "source_status": "cached_verified_data",
+  "updated_at": "2026-08-04T11:34:00+08:00",
+  "source_status": "pending_cross_check",
   "draws": {
     "dlt": [
       {
@@ -188054,50 +188054,37 @@
       "role": "福彩快乐8官方开奖来源"
     }
   ],
-  "errors": {
-    "qxc": "官方接口请求失败: HTTP Error 567: Unknown Status",
-    "pl5": "官方接口请求失败: HTTP Error 567: Unknown Status",
-    "ssq": "中国福彩网福彩双色球接口请求失败: HTTP Error 403: Forbidden",
-    "fc3d": "中国福彩网福彩3D接口请求失败: HTTP Error 403: Forbidden",
-    "kl8": "中国福彩网福彩快乐8接口请求失败: HTTP Error 403: Forbidden",
-    "pl3": "官方接口请求失败: HTTP Error 567: Unknown Status"
-  },
+  "errors": {},
   "verification": {
     "pl3": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26205",
-      "error": "HTTP Error 567: Unknown Status"
+      "issue": "26205"
     },
     "pl5": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26205",
-      "error": "HTTP Error 567: Unknown Status"
+      "issue": "26205"
     },
     "fc3d": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/mkjqxc/?SHA=false",
-      "issue": "2026205",
-      "error": "HTTP Error 567: Unknown Status"
+      "issue": "2026205"
     },
     "qxc": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/tcwm/qxc/",
-      "issue": "26088",
-      "error": "HTTP Error 567: Unknown Status"
+      "issue": "26088"
     },
     "ssq": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/ssq/",
-      "issue": "2026088",
-      "error": "HTTP Error 403: Forbidden"
+      "issue": "2026088"
     },
     "kl8": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/kl8/",
-      "issue": "2026205",
-      "error": "HTTP Error 403: Forbidden"
+      "issue": "2026205"
     },
     "dlt": {
       "status": "pending",

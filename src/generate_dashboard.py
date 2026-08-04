@@ -653,11 +653,16 @@ def direct_prediction_summary(rows: list[dict]) -> dict[str, object]:
         ),
     }
     result = {}
+    labels = {"sum": "和值", "span": "跨度", "odd_even": "奇偶比"}
     for key in ("sum", "span", "odd_even"):
         historical_top = [value for value, _ in historical[key].most_common(3)]
         result[key] = {
             "values": historical_top,
             "range": [min(historical[key]), max(historical[key])],
+            "reason": (
+                f"近{len(recent)}期按出现频次取前三个结构，作为候选排序的轻量平分信号；"
+                f"{labels[key]}不单独决定号码，也不代表下一期必然落在其中。"
+            ),
         }
     return result
 
@@ -1531,6 +1536,10 @@ def build_review(game: str, rows: list[dict]) -> dict:
             {"label": "奇偶", "value": f"{sum(n % 2 for n in latest)}:{sum(n % 2 == 0 for n in latest)}"},
             {"label": "不同数字", "value": str(len(set(latest)))},
         ],
+        "structure_explanation": (
+            "和值用于观察三位总量，跨度用于观察最大位与最小位的距离，奇偶比和重复形态用于描述组合外形；"
+            "它们只给逐位模型做低权重排序与复盘，不会把上一期号码机械地推到下一期。"
+        ),
     }
 
 
@@ -1605,8 +1614,21 @@ def build_model_review(
         review["position_diagnostics"] = diagnostics
         review["model_adjustments"] = [
             "排列3/福彩3D改为逐位选择衰减周期和历史窗口，避免三个位数共用一个最优参数。",
-            "保留位频、遗漏和组合分的约束；不因一期开出号码直接追热或追冷。",
+            "保留位频、遗漏和组合分的约束；和值、跨度、奇偶和重复形态只作低权重平分信号，不因一期开出号码直接追热或追冷。",
         ]
+        actual_metrics = direct_number_metrics(actual)
+        # The full history is not available in this function, so expose the
+        # settled draw's structure and explain why it is not used as a next-draw
+        # rule. The generated daily prediction carries the rolling structure
+        # pools separately.
+        review["structure_diagnostics"] = {
+            "actual": actual_metrics,
+            "explanation": (
+                f"本期{''.join(map(str, actual))}的和值{actual_metrics['sum']}、跨度{actual_metrics['span']}、"
+                f"奇偶比{actual_metrics['odd_even']}、{actual_metrics['shape']}；"
+                "这些字段用于解释候选组合为何入选或落选，不能据此断言下一期会重复相同结构。"
+            ),
+        }
         review["position_pool_coverage"] = sum(item["pool_hit"] for item in diagnostics)
         review["position_count"] = len(diagnostics)
 
@@ -1968,12 +1990,28 @@ def main() -> None:
                 play_prefix = f"{candidate['play_name']} " if game == "kl8" else ""
                 copy_text = f"{cfg['name']} {play_prefix}{text_value}"
                 suggestion = purchase_suggestion(game, candidate)
+                direct_reason = None
+                structure_match = None
+                if game in ("pl3", "fc3d"):
+                    metrics = direct_number_metrics([int(value) for value in candidate["number"]])
+                    pools = direct_structure_filter(rows)
+                    structure_match = sum([
+                        metrics["sum"] in pools["sum"],
+                        metrics["span"] in pools["span"],
+                        metrics["odd_even"] in pools["odd_even"],
+                    ])
+                    direct_reason = (
+                        f"逐位频率/遗漏为主，结构信号命中{structure_match}/3项（和值{metrics['sum']}、"
+                        f"跨度{metrics['span']}、奇偶{metrics['odd_even']}）；结构只作低权重排序参考。"
+                    )
                 enriched_group.append({
                     **candidate,
                     "group": group,
                     "rank": rank,
                     "confidence": confidence,
                     "copy_text": copy_text,
+                    **({"prediction_reason": direct_reason, "structure_match": structure_match}
+                       if direct_reason else {}),
                     **({"prediction_metrics": direct_number_metrics([int(value) for value in candidate["number"]])}
                        if game in ("pl3", "fc3d") else {}),
                     **({"purchase_suggestion": suggestion} if suggestion else {}),
@@ -2094,6 +2132,20 @@ def main() -> None:
         # candidates are regenerated. Keep only the forward-looking advice in
         # lockstep with the composite recommendation shown on this page.
         if game in ("pl3", "fc3d") and output["games"][game].get("model_review"):
+            actual_metrics = direct_number_metrics([int(value) for value in latest["numbers"]])
+            structure_diagnostics = {
+                "actual": actual_metrics,
+                "explanation": (
+                    f"本期{''.join(latest['numbers'])}的和值{actual_metrics['sum']}、跨度{actual_metrics['span']}、"
+                    f"奇偶比{actual_metrics['odd_even']}、{actual_metrics['shape']}；"
+                    "这些字段用于解释候选组合为何入选或落选，不能据此断言下一期会重复相同结构。"
+                ),
+            }
+            output["games"][game]["model_review"]["structure_diagnostics"] = structure_diagnostics
+            output["games"][game]["model_review"]["model_adjustments"] = [
+                "排列3/福彩3D改为逐位选择衰减周期和历史窗口，避免三个位数共用一个最优参数。",
+                "保留位频、遗漏和组合分的约束；和值、跨度、奇偶和重复形态只作低权重平分信号，不因一期开出号码直接追热或追冷。",
+            ]
             advice = build_next_day_advice(game, enriched)
             output["games"][game]["model_review"]["next_day_advice"] = advice
             output["games"][game]["model_review"]["next_day_advice_text"] = (
@@ -2101,6 +2153,8 @@ def main() -> None:
             )
             model_reviews[game]["next_day_advice"] = advice
             model_reviews[game]["next_day_advice_text"] = output["games"][game]["model_review"]["next_day_advice_text"]
+            model_reviews[game]["structure_diagnostics"] = structure_diagnostics
+            model_reviews[game]["model_adjustments"] = output["games"][game]["model_review"]["model_adjustments"]
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     REVIEWS_PATH.write_text(json.dumps(model_reviews, ensure_ascii=False, indent=2), encoding="utf-8")
