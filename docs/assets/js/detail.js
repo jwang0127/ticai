@@ -96,7 +96,7 @@ function modelReviewHtml(review) {
     ${structure}
     ${review.number_pool_coverage ? `<div class="review-attribution"><strong>快乐8联合池覆盖 ${escapeHtml(review.number_pool_coverage)}</strong></div>` : ""}
     ${attribution}
-    ${advice ? `<div class="next-day-advice"><h3>第二天购买建议（模型参考）</h3><div>${advice}</div></div>` : ""}
+    ${advice ? `<div class="next-day-advice"><h3>第二天购买建议</h3><div>${advice}</div></div>` : ""}
     ${adjustments ? `<div class="review-adjustments"><h3>模型调整</h3><ul>${adjustments}</ul></div>` : ""}
     <p class="review-lesson">${escapeHtml(review.lesson)}</p>
   </section>`;
@@ -114,7 +114,7 @@ function positionAnalysisHtml(analysis, mode = null) {
   const directPositionGame = ["pl3", "fc3d"].includes(gameKey);
   const twoDigit = directPositionGame ? (analysis.position_two_digit_predictions || []) : [];
   const twoDigitText = twoDigit.map(item => `${item.position}：${item.digits.join("、")}`).join("\n");
-  const twoDigitHtml = mode !== "cold" && twoDigit.length ? `<div class="two-digit-predictions"><h3>每位两码预测</h3><div class="two-digit-grid">${twoDigit.map(item => `<article><span>${escapeHtml(item.position)}</span><strong>${escapeHtml(item.digits.join(" · "))}</strong></article>`).join("")}</div><button class="copy-bundle" data-copy="${encodeURIComponent(twoDigitText)}">复制两码纯文本</button><small>三个位置独立排序；473 结构仅作轻量平分参考，分数不是中奖概率。</small></div>` : "";
+  const twoDigitHtml = mode !== "cold" && twoDigit.length ? `<div class="two-digit-predictions"><h3>每位两码预测</h3><div class="two-digit-grid">${twoDigit.map(item => `<article><span>${escapeHtml(item.position)}</span><strong>${escapeHtml(item.digits.join(" · "))}</strong></article>`).join("")}</div><button class="copy-bundle" data-copy="${encodeURIComponent(twoDigitText)}">复制两码纯文本</button></div>` : "";
   const rows = analysis.position_analysis.map(item => `
     <article class="position-card">
       <span>${escapeHtml(item.position)}</span>
@@ -186,7 +186,7 @@ async function load() {
     </section>
     ${modelReviewHtml(game.model_review)}
     <section class="section analysis-grid">
-      <div><p class="section-label">MODEL ANALYSIS / ${game.analysis.sample} DRAWS</p><h2>本期分析</h2><p class="model-name">${escapeHtml(game.analysis.model_name || "独立统计模型")}</p><p class="analysis-summary">${escapeHtml(game.analysis.summary)}</p></div>
+      <div><p class="section-label">MODEL ANALYSIS</p><h2>本期分析</h2></div>
       <div><div class="signals">${game.analysis.signals.map(item => `<div class="signal"><span>${escapeHtml(item.label)}</span><strong>${escapeHtml(item.value)}</strong></div>`).join("")}</div><div class="methods">${game.analysis.method.map(item => `<span>${escapeHtml(item)}</span>`).join("")}</div></div>
     </section>
     <section class="section today-recommendation"><div class="section-head"><div><p class="section-label">TODAY'S PICKS</p><h2>今日推荐</h2></div></div>${directCandidatesHtml(game, false) || playTypesHtml(game)}</section>
