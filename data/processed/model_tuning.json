@@ -1,42 +1,6 @@
 {
-  "generated_at": "2026-08-04T03:40:04+00:00",
+  "generated_at": "2026-08-04T03:42:16+00:00",
   "games": {
-    "dlt": {
-      "kind": "set_model",
-      "selected_window": 1500,
-      "backtest": {
-        "100": {
-          "folds": 240,
-          "pool_coverage": 0.6089,
-          "se": 0.0119,
-          "baseline": 0.6486
-        },
-        "300": {
-          "folds": 240,
-          "pool_coverage": 0.6393,
-          "se": 0.0117,
-          "baseline": 0.6486
-        },
-        "500": {
-          "folds": 240,
-          "pool_coverage": 0.6357,
-          "se": 0.0117,
-          "baseline": 0.6486
-        },
-        "1000": {
-          "folds": 240,
-          "pool_coverage": 0.6476,
-          "se": 0.0117,
-          "baseline": 0.6486
-        },
-        "1500": {
-          "folds": 240,
-          "pool_coverage": 0.6542,
-          "se": 0.0116,
-          "baseline": 0.6486
-        }
-      }
-    },
     "pl3": {
       "kind": "positional_digit",
       "selected_decay": 13,
