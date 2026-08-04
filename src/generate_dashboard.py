@@ -656,13 +656,27 @@ def direct_prediction_summary(rows: list[dict]) -> dict[str, object]:
     labels = {"sum": "和值", "span": "跨度", "odd_even": "奇偶比"}
     for key in ("sum", "span", "odd_even"):
         historical_top = [value for value, _ in historical[key].most_common(3)]
+        frequencies = [
+            {
+                "value": value,
+                "count": count,
+                "share": round(count / len(recent), 4),
+            }
+            for value, count in historical[key].most_common(3)
+        ]
         result[key] = {
             "values": historical_top,
             "range": [min(historical[key]), max(historical[key])],
-            "reason": (
-                f"近{len(recent)}期按出现频次取前三个结构，作为候选排序的轻量平分信号；"
-                f"{labels[key]}不单独决定号码，也不代表下一期必然落在其中。"
+            "frequencies": frequencies,
+            "forecast_reason": (
+                f"近{len(recent)}期中，{labels[key]}前三为"
+                + "、".join(f"{item['value']}（{item['count']}期）" for item in frequencies)
+                + f"；因此今天优先观察"
+                + "、".join(str(value) for value in historical_top)
+                + "，不是凭上一期号码顺推。"
             ),
+            # Keep a short compatibility field for older consumers.
+            "reason": f"{labels[key]}按近{len(recent)}期频次预测，前三结构为" + "、".join(map(str, historical_top)) + "。",
         }
     return result
 
@@ -1869,16 +1883,26 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
             "omitted_digits": [{"digit": str(value), "miss": miss} for value, miss in longest],
         })
     structure_note = "排列5使用自身五个位置的独立校准与三数字候选池；" if game == "pl5" else ""
+    structure_forecast = direct_prediction_summary(rows) if game in ("pl3", "fc3d") else None
     model_name = {"pl3": "排列3独立三位置模型", "pl5": "排列5独立五位置模型", "fc3d": "福彩3D独立三位置模型", "qxc": "7星彩七位置束搜索模型"}[game]
     return {
         "sample": sample,
         "model_name": model_name,
-        "summary": f"{structure_note}最近{sample}期按每一个位置分别统计，绝不把号码只当作无序集合。各位置当前热门参考为{' · '.join(position_hot)}。",
+        "summary": (
+            f"{structure_note}最近{sample}期按每一个位置分别统计，绝不把号码只当作无序集合。"
+            f"各位置当前热门参考为{' · '.join(position_hot)}。"
+            + (f"同时以和值{structure_forecast['sum']['values']}、跨度{structure_forecast['span']['values']}、"
+               f"奇偶比{structure_forecast['odd_even']['values']}作为组合解释信号。" if structure_forecast else "")
+        ),
         "signals": [
             {"label": "综合活跃数字", "value": " · ".join(hot)},
             {"label": "各位置最高权重", "value": " · ".join(position_hot)},
             {"label": "较长遗漏", "value": "、".join(omitted)},
-        ],
+        ] + ([
+            {"label": "和值预测", "value": "、".join(map(str, structure_forecast["sum"]["values"]))},
+            {"label": "跨度预测", "value": "、".join(map(str, structure_forecast["span"]["values"]))},
+            {"label": "奇偶比预测", "value": "、".join(map(str, structure_forecast["odd_even"]["values"]))},
+        ] if structure_forecast else []),
         "position_analysis": position_analysis,
         "position_two_digit_predictions": (
             generate_position_two_digit_predictions(rows, game)
@@ -1982,6 +2006,7 @@ def main() -> None:
 
         # Main-list scores are relative to the backtested ranking model. Strategy
         # zones below keep their separate common hot/cold support scale.
+        direct_structure_summary = direct_prediction_summary(rows) if game in ("pl3", "fc3d") else None
         def enrich_group(raw_candidates: list[dict], raw_scores: list[float], group: str) -> list[dict]:
             confidences = relative_confidences(raw_scores)
             enriched_group = []
@@ -2000,9 +2025,24 @@ def main() -> None:
                         metrics["span"] in pools["span"],
                         metrics["odd_even"] in pools["odd_even"],
                     ])
+                    matched = []
+                    missed = []
+                    for key, label in (("sum", "和值"), ("span", "跨度"), ("odd_even", "奇偶比")):
+                        if metrics[key] in pools[key]:
+                            matched.append(f"{label}{metrics[key]}")
+                        else:
+                            missed.append(f"{label}{metrics[key]}")
+                    structure_text = f"命中{structure_match}/3项"
+                    if matched:
+                        structure_text += "（" + "、".join(matched) + "）"
+                    if missed:
+                        structure_text += "，偏离" + "、".join(missed)
                     direct_reason = (
-                        f"逐位频率/遗漏为主，结构信号命中{structure_match}/3项（和值{metrics['sum']}、"
-                        f"跨度{metrics['span']}、奇偶{metrics['odd_even']}）；结构只作低权重排序参考。"
+                        f"百位/十位/个位分别取位频与遗漏排序；{structure_text}。"
+                        f"本日结构重点是和值{direct_structure_summary['sum']['values']}、"
+                        f"跨度{direct_structure_summary['span']['values']}、"
+                        f"奇偶比{direct_structure_summary['odd_even']['values']}，"
+                        "因此这是一注位置模型保留号，不是结构优先号。"
                     )
                 enriched_group.append({
                     **candidate,
