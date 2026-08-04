@@ -95,6 +95,10 @@ body[data-game="kl8"] .pick-number { margin: 28px 0 14px; white-space: normal; o
 .analysis-summary { font-size: 18px; line-height: 1.85; }
 .model-name { display: inline-block; margin: 18px 0 0; padding: 7px 10px; color: var(--sector-accent); border: 1px solid var(--sector-accent); border-radius: 99px; font-size: 12px; font-weight: 800; }
 .position-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 10px; padding: 0 0 50px; }
+.position-zone { margin-top: 18px; padding: 16px; border: 1px solid var(--line); border-radius: 16px; }
+.position-zone.hot-zone { background: rgba(255, 247, 232, .45); }
+.position-zone.cold-zone { background: rgba(236, 244, 255, .48); }
+.position-zone > h3 { margin: 0 0 14px; }
 .position-card { padding: 18px; background: rgba(255,255,255,.55); border: 1px solid var(--line); border-radius: 13px; }
 .position-card span, .position-card small { display: block; color: var(--muted); font-size: 11px; }
 .position-card strong { display: block; margin: 13px 0; font: 500 23px/1 "DM Mono", monospace; }
@@ -102,8 +106,9 @@ body[data-game="kl8"] .pick-number { margin: 28px 0 14px; white-space: normal; o
 .position-card .position-cold { color: var(--blue); }
 .position-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 .position-row > small { width: 34px; }
-.position-digit { display: inline-flex; align-items: baseline; gap: 2px; padding: 5px 7px; border-radius: 7px; font: 600 18px/1 "DM Mono", monospace; }
-.position-digit small { display: inline; font: 10px/1 "Microsoft YaHei", sans-serif; }
+.position-digit { display: inline-flex; flex-direction: column; align-items: center; gap: 4px; min-width: 48px; padding: 7px 8px; border-radius: 7px; font: 600 18px/1 "DM Mono", monospace; }
+.position-digit > strong { margin: 0; font: 700 18px/1 "DM Mono", monospace; }
+.position-digit small { display: block; color: inherit; font: 10px/1 "Microsoft YaHei", sans-serif; opacity: .78; }
 .position-digit.hot { color: var(--red); background: rgba(196, 73, 73, .08); }
 .position-digit.cold { color: var(--blue); background: rgba(54, 105, 176, .08); }
 .position-digit.focus { outline: 2px solid currentColor; box-shadow: 0 0 0 3px rgba(255,255,255,.8); }

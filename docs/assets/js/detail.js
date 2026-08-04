@@ -109,7 +109,7 @@ function positionAnalysisHtml(analysis, mode = null) {
     const digit = item.digit ?? item;
     const count = item.count == null ? "" : `<small>${escapeHtml(item.count)}次</small>`;
     const focused = (focus || []).map(String).includes(String(digit)) ? " focus" : "";
-    return `<span class="position-digit ${className}${focused}">${escapeHtml(digit)}${count}</span>`;
+    return `<span class="position-digit ${className}${focused}"><strong>${escapeHtml(digit)}</strong>${count ? `<small>${escapeHtml(item.count)}次</small>` : ""}</span>`;
   }).join("");
   const directPositionGame = ["pl3", "fc3d"].includes(gameKey);
   const twoDigit = directPositionGame ? (analysis.position_two_digit_predictions || []) : [];
