@@ -60,6 +60,17 @@ function formatCandidate(key, item) {
   return `${front} + ${back}`;
 }
 
+function directStructureFrequencyHtml(game) {
+  const summary = game.prediction_summary;
+  if (!summary) return "";
+  const card = (key, label) => {
+    const item = summary[key] || {};
+    const values = (item.frequencies || []).map(value => `${value.value}（${value.count}期）`).join(" · ");
+    return `<div class="structure-frequency"><span>${label}</span><strong>${escapeHtml(values)}</strong></div>`;
+  };
+  return `<div class="structure-frequency-panel"><div class="structure-frequency-title">今日结构预测 · 近300期频次</div>${card("sum", "和值")}${card("span", "跨度")}${card("odd_even", "奇偶比")}</div>`;
+}
+
 function sectorForGame(key, game) {
   return game?.sector || (["fc3d", "ssq", "kl8"].includes(key) ? "fucai" : "ticai");
 }
@@ -173,6 +184,7 @@ async function load() {
             <div class="meta">上期 ${escapeHtml(game.latest_issue)} · ${escapeHtml(game.latest_draw_date)}</div>
             <div class="latest-number">${escapeHtml(formatLatest(key, game.latest_numbers))}</div>
           </div>
+          ${directStructureFrequencyHtml(game)}
         </div>
         <div class="candidates">
           ${candidates.map(item => `

@@ -141,6 +141,11 @@ h1 em { color: var(--blue); font-style: normal; }
 .latest { margin-top: 20px; padding: 14px; background: rgba(23,26,23,.045); border-radius: 10px; }
 .meta { color: var(--muted); font-size: 11px; }
 .latest-number { margin-top: 7px; font: 500 17px/1.4 "DM Mono", monospace; letter-spacing: .04em; }
+.structure-frequency-panel { margin: 16px 14px 0; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.38); }
+.structure-frequency-title { margin-bottom: 8px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .06em; }
+.structure-frequency { display: grid; grid-template-columns: 52px minmax(0,1fr); gap: 8px; padding: 5px 0; font-size: 11px; }
+.structure-frequency span { color: var(--muted); }
+.structure-frequency strong { color: var(--ink); font-weight: 800; }
 .candidates { padding: 9px 22px 6px; }
 .candidate { display: grid; grid-template-columns: 27px minmax(0,1fr) auto; align-items: center; gap: 7px; padding: 14px 0; border-bottom: 1px solid var(--line); }
 .candidate:last-child { border: 0; }
