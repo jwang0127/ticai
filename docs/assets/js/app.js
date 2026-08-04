@@ -66,7 +66,8 @@ function directStructureFrequencyHtml(game) {
   const card = (key, label) => {
     const item = summary[key] || {};
     const values = (item.frequencies || []).map(value => `${value.value}（${value.count}期）`).join(" · ");
-    return `<div class="structure-frequency"><span>${label}</span><strong>${escapeHtml(values)}</strong></div>`;
+    const cold = (item.cold_frequencies || []).map(value => `${value.value}（${value.count}期）`).join(" · ");
+    return `<div class="structure-frequency"><span>${label}热</span><strong>${escapeHtml(values)}</strong><span>${label}冷</span><strong>${escapeHtml(cold)}</strong></div>`;
   };
   return `<div class="structure-frequency-panel"><div class="structure-frequency-title">今日结构预测 · 近300期频次</div>${card("sum", "和值")}${card("span", "跨度")}${card("odd_even", "奇偶比")}</div>`;
 }

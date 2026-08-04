@@ -47,7 +47,8 @@ function predictionStructureHtml(game) {
   const summaryCard = (key, label) => {
     const item = summary[key] || {};
     const frequency = (item.frequencies || []).map(value => `${value.value}（${value.count}期）`).join(" · ");
-    return `<article class="forecast-card"><span>${label}预测</span><strong>${escapeHtml((item.values || []).join(" · "))}</strong><small>近300期出现次数：${escapeHtml(frequency)}</small><small>${escapeHtml(item.forecast_reason || item.reason || "历史结构排序参考")}</small></article>`;
+    const coldFrequency = (item.cold_frequencies || []).map(value => `${value.value}（${value.count}期）`).join(" · ");
+    return `<article class="forecast-card"><span>${label}预测</span><strong>${escapeHtml((item.values || []).join(" · "))}</strong><small>近300期热结构：${escapeHtml(frequency)}</small><small>近300期冷结构：${escapeHtml(coldFrequency)}</small><small>${escapeHtml(item.forecast_reason || item.reason || "历史结构排序参考")}</small><small>${escapeHtml(item.cold_forecast_reason || "")}</small></article>`;
   };
   return `<section class="section prediction-structure"><div class="section-head"><div><p class="section-label">PREDICTION STRUCTURE</p><h2>和值 · 跨度 · 奇偶比</h2></div><p class="section-note">这是预测结构本身：和值、跨度和奇偶比先于具体号码展示；每注明细另列形态。所有内容均为历史统计排序参考。</p></div><div class="forecast-grid">${summaryCard("sum", "和值")}${summaryCard("span", "跨度")}${summaryCard("odd_even", "奇偶比")}</div><div class="structure-grid">${game.top_candidates.map(item => {
     const metrics = item.prediction_metrics || {};

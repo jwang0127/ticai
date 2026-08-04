@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T13:45:13+08:00",
+  "generated_at": "2026-08-04T13:50:58+08:00",
   "daily_results_date": "2026-08-04",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -37808,7 +37808,7 @@
       "model_reference": "src/vendor_models_v3/dlt_model_v3.py",
       "history_count": 2000,
       "model_scope": "前区/后区排序位独立",
-      "generated_at": "2026-08-04T13:31:37+08:00",
+      "generated_at": "2026-08-04T13:50:58+08:00",
       "latest_issue": "26087",
       "latest_draw_date": "2026-08-03",
       "latest_numbers": [
@@ -38368,7 +38368,7 @@
       "model_reference": null,
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-04T13:45:13+08:00",
+      "generated_at": "2026-08-04T13:50:58+08:00",
       "latest_issue": "26205",
       "latest_draw_date": "2026-08-03",
       "latest_numbers": [
@@ -38796,8 +38796,31 @@
               "share": 0.08
             }
           ],
+          "cold_values": [
+            2,
+            24,
+            25
+          ],
+          "cold_frequencies": [
+            {
+              "value": 2,
+              "count": 1,
+              "share": 0.0033
+            },
+            {
+              "value": 24,
+              "count": 1,
+              "share": 0.0033
+            },
+            {
+              "value": 25,
+              "count": 1,
+              "share": 0.0033
+            }
+          ],
           "forecast_reason": "近300期中，和值前三为14（26期）、15（25期）、16（24期）；因此今天优先观察14、15、16，不是凭上一期号码顺推。",
-          "reason": "和值按近300期频次预测，前三结构为14、15、16。"
+          "reason": "和值按近300期频次预测，前三结构为14、15、16。",
+          "cold_forecast_reason": "低频结构为2（1期）、24（1期）、25（1期），作为冷结构观察，不等于下期必补。"
         },
         "span": {
           "values": [
@@ -38826,8 +38849,31 @@
               "share": 0.1367
             }
           ],
+          "cold_values": [
+            0,
+            1,
+            2
+          ],
+          "cold_frequencies": [
+            {
+              "value": 0,
+              "count": 2,
+              "share": 0.0067
+            },
+            {
+              "value": 1,
+              "count": 20,
+              "share": 0.0667
+            },
+            {
+              "value": 2,
+              "count": 24,
+              "share": 0.08
+            }
+          ],
           "forecast_reason": "近300期中，跨度前三为5（46期）、4（43期）、3（41期）；因此今天优先观察5、4、3，不是凭上一期号码顺推。",
-          "reason": "跨度按近300期频次预测，前三结构为5、4、3。"
+          "reason": "跨度按近300期频次预测，前三结构为5、4、3。",
+          "cold_forecast_reason": "低频结构为0（2期）、1（20期）、2（24期），作为冷结构观察，不等于下期必补。"
         },
         "odd_even": {
           "values": [
@@ -38856,8 +38902,25 @@
               "share": 0.1133
             }
           ],
+          "cold_values": [
+            "0:3",
+            "3:0"
+          ],
+          "cold_frequencies": [
+            {
+              "value": "0:3",
+              "count": 29,
+              "share": 0.0967
+            },
+            {
+              "value": "3:0",
+              "count": 34,
+              "share": 0.1133
+            }
+          ],
           "forecast_reason": "近300期中，奇偶比前三为2:1（123期）、1:2（114期）、3:0（34期）；因此今天优先观察2:1、1:2、3:0，不是凭上一期号码顺推。",
-          "reason": "奇偶比按近300期频次预测，前三结构为2:1、1:2、3:0。"
+          "reason": "奇偶比按近300期频次预测，前三结构为2:1、1:2、3:0。",
+          "cold_forecast_reason": "低频结构为0:3（29期）、3:0（34期），作为冷结构观察，不等于下期必补。"
         }
       },
       "review": {
@@ -40122,7 +40185,7 @@
       "model_reference": null,
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-04T13:45:13+08:00",
+      "generated_at": "2026-08-04T13:50:58+08:00",
       "latest_issue": "26205",
       "latest_draw_date": "2026-08-03",
       "latest_numbers": [
@@ -41928,7 +41991,7 @@
       "model_reference": null,
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-04T13:45:13+08:00",
+      "generated_at": "2026-08-04T13:50:58+08:00",
       "latest_issue": "2026205",
       "latest_draw_date": "2026-08-03",
       "latest_numbers": [
@@ -42356,8 +42419,31 @@
               "share": 0.0733
             }
           ],
+          "cold_values": [
+            3,
+            25,
+            2
+          ],
+          "cold_frequencies": [
+            {
+              "value": 3,
+              "count": 1,
+              "share": 0.0033
+            },
+            {
+              "value": 25,
+              "count": 2,
+              "share": 0.0067
+            },
+            {
+              "value": 2,
+              "count": 3,
+              "share": 0.01
+            }
+          ],
           "forecast_reason": "近300期中，和值前三为15（28期）、10（23期）、13（22期）；因此今天优先观察15、10、13，不是凭上一期号码顺推。",
-          "reason": "和值按近300期频次预测，前三结构为15、10、13。"
+          "reason": "和值按近300期频次预测，前三结构为15、10、13。",
+          "cold_forecast_reason": "低频结构为3（1期）、25（2期）、2（3期），作为冷结构观察，不等于下期必补。"
         },
         "span": {
           "values": [
@@ -42386,8 +42472,31 @@
               "share": 0.1467
             }
           ],
+          "cold_values": [
+            9,
+            1,
+            8
+          ],
+          "cold_frequencies": [
+            {
+              "value": 9,
+              "count": 13,
+              "share": 0.0433
+            },
+            {
+              "value": 1,
+              "count": 21,
+              "share": 0.07
+            },
+            {
+              "value": 8,
+              "count": 27,
+              "share": 0.09
+            }
+          ],
           "forecast_reason": "近300期中，跨度前三为5（46期）、3（44期）、4（44期）；因此今天优先观察5、3、4，不是凭上一期号码顺推。",
-          "reason": "跨度按近300期频次预测，前三结构为5、3、4。"
+          "reason": "跨度按近300期频次预测，前三结构为5、3、4。",
+          "cold_forecast_reason": "低频结构为9（13期）、1（21期）、8（27期），作为冷结构观察，不等于下期必补。"
         },
         "odd_even": {
           "values": [
@@ -42416,8 +42525,25 @@
               "share": 0.13
             }
           ],
+          "cold_values": [
+            "3:0",
+            "0:3"
+          ],
+          "cold_frequencies": [
+            {
+              "value": "3:0",
+              "count": 33,
+              "share": 0.11
+            },
+            {
+              "value": "0:3",
+              "count": 39,
+              "share": 0.13
+            }
+          ],
           "forecast_reason": "近300期中，奇偶比前三为1:2（126期）、2:1（102期）、0:3（39期）；因此今天优先观察1:2、2:1、0:3，不是凭上一期号码顺推。",
-          "reason": "奇偶比按近300期频次预测，前三结构为1:2、2:1、0:3。"
+          "reason": "奇偶比按近300期频次预测，前三结构为1:2、2:1、0:3。",
+          "cold_forecast_reason": "低频结构为3:0（33期）、0:3（39期），作为冷结构观察，不等于下期必补。"
         }
       },
       "review": {
@@ -43682,7 +43808,7 @@
       "model_reference": null,
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-04T13:45:13+08:00",
+      "generated_at": "2026-08-04T13:50:58+08:00",
       "latest_issue": "26088",
       "latest_draw_date": "2026-08-02",
       "latest_numbers": [
@@ -44657,7 +44783,7 @@
       "model_reference": "src/vendor_models_v3/ssq_model_v3.py",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-04T13:45:13+08:00",
+      "generated_at": "2026-08-04T13:50:58+08:00",
       "latest_issue": "2026088",
       "latest_draw_date": "2026-08-02",
       "latest_numbers": [
@@ -45159,7 +45285,7 @@
       "model_reference": "src/vendor_models_v3/kl8_model_v3.py",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-04T13:45:13+08:00",
+      "generated_at": "2026-08-04T13:50:58+08:00",
       "latest_issue": "2026205",
       "latest_draw_date": "2026-08-03",
       "latest_numbers": [

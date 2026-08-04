@@ -664,10 +664,21 @@ def direct_prediction_summary(rows: list[dict]) -> dict[str, object]:
             }
             for value, count in historical[key].most_common(3)
         ]
+        cold_limit = 2 if key == "odd_even" else 3
+        cold_frequencies = [
+            {
+                "value": value,
+                "count": count,
+                "share": round(count / len(recent), 4),
+            }
+            for value, count in sorted(historical[key].items(), key=lambda item: (item[1], str(item[0])))[:cold_limit]
+        ]
         result[key] = {
             "values": historical_top,
             "range": [min(historical[key]), max(historical[key])],
             "frequencies": frequencies,
+            "cold_values": [item["value"] for item in cold_frequencies],
+            "cold_frequencies": cold_frequencies,
             "forecast_reason": (
                 f"近{len(recent)}期中，{labels[key]}前三为"
                 + "、".join(f"{item['value']}（{item['count']}期）" for item in frequencies)
@@ -677,6 +688,10 @@ def direct_prediction_summary(rows: list[dict]) -> dict[str, object]:
             ),
             # Keep a short compatibility field for older consumers.
             "reason": f"{labels[key]}按近{len(recent)}期频次预测，前三结构为" + "、".join(map(str, historical_top)) + "。",
+            "cold_forecast_reason": (
+                f"低频结构为" + "、".join(f"{item['value']}（{item['count']}期）" for item in cold_frequencies)
+                + "，作为冷结构观察，不等于下期必补。"
+            ),
         }
     return result
 
