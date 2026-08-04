@@ -146,6 +146,18 @@ h1 em { color: var(--blue); font-style: normal; }
 .structure-frequency { display: grid; grid-template-columns: 52px minmax(0,1fr); gap: 8px; padding: 5px 0; font-size: 11px; }
 .structure-frequency span { color: var(--muted); }
 .structure-frequency strong { color: var(--ink); font-weight: 800; }
+.candidate-zone { border-top: 1px solid var(--line); }
+.candidate-zone.hot-zone { background: rgba(255, 247, 232, .45); }
+.candidate-zone.cold-zone { background: rgba(236, 244, 255, .48); }
+.candidate-zone-title { display: flex; align-items: baseline; justify-content: space-between; padding: 14px 22px 3px; }
+.candidate-zone-title strong { font-size: 13px; }
+.candidate-zone-title span { color: var(--muted); font-size: 10px; }
+.structure-zone { margin-top: 18px; padding: 16px; border: 1px solid var(--line); border-radius: 16px; }
+.structure-zone.hot-zone { background: rgba(255, 247, 232, .45); }
+.structure-zone.cold-zone { background: rgba(236, 244, 255, .48); }
+.zone-title { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.zone-title h3 { margin: 0; font-size: 18px; }
+.zone-title span { color: var(--muted); font-size: 11px; }
 .candidates { padding: 9px 22px 6px; }
 .candidate { display: grid; grid-template-columns: 27px minmax(0,1fr) auto; align-items: center; gap: 7px; padding: 14px 0; border-bottom: 1px solid var(--line); }
 .candidate:last-child { border: 0; }

@@ -72,6 +72,20 @@ function directStructureFrequencyHtml(game) {
   return `<div class="structure-frequency-panel"><div class="structure-frequency-title">今日结构预测 · 近300期频次</div>${card("sum", "和值")}${card("span", "跨度")}${card("odd_even", "奇偶比")}</div>`;
 }
 
+function candidateZonesHtml(key, game) {
+  const isDirect = ["pl3", "fc3d"].includes(key) && game.hot_candidates && game.cold_candidates;
+  const render = (title, items, className) => `<div class="candidate-zone ${className}"><div class="candidate-zone-title"><strong>${title}</strong><span>5组参考</span></div><div class="candidates">${items.map(item => `
+    <div class="candidate">
+      <span class="rank">0${item.rank}</span>
+      <span class="candidate-main"><span class="candidate-number">${escapeHtml(formatCandidate(key, item))}</span><span class="candidate-label">${escapeHtml(item.mix_label || "综合推荐")}</span></span>
+      <span class="score">${item.confidence}%</span>
+    </div>`).join("")}</div><button class="copy-all" data-copy="${encodeURIComponent(items.map(item => `${game.name} ${formatCandidate(key, item)}`).join("\n"))}">复制${title}</button></div>`;
+  if (isDirect) return `${render("热门号码", game.hot_candidates, "hot-zone")}${render("冷门号码", game.cold_candidates, "cold-zone")}`;
+  const candidates = game.top_candidates || game.candidates;
+    const candidatesLength = candidates.length;
+  return render("综合推荐", candidates, "combined-zone");
+}
+
 function sectorForGame(key, game) {
   return game?.sector || (["fc3d", "ssq", "kl8"].includes(key) ? "fucai" : "ticai");
 }
@@ -165,9 +179,6 @@ async function load() {
 
   $("#games").innerHTML = entries.map(([key, game], index) => {
     const candidates = game.top_candidates || game.candidates;
-    const allText = candidates
-      .map(item => `${game.name} ${formatCandidate(key, item)}`)
-      .join("\n");
     return `
       <article class="game-card sector-${sectorForGame(key, game)}">
         <div class="game-head">
@@ -187,18 +198,7 @@ async function load() {
           </div>
           ${directStructureFrequencyHtml(game)}
         </div>
-        <div class="candidates">
-          ${candidates.map(item => `
-            <div class="candidate">
-              <span class="rank">0${item.rank}</span>
-              <span class="candidate-main">
-                <span class="candidate-number">${escapeHtml(formatCandidate(key, item))}</span>
-                <span class="candidate-label">${escapeHtml(item.mix_label || "综合推荐")}</span>
-              </span>
-              <span class="score">${item.confidence}%</span>
-            </div>`).join("")}
-        </div>
-        <button class="copy-all" data-copy="${encodeURIComponent(allText)}">复制${escapeHtml(game.name)}全部${candidates.length}组</button>
+        ${candidateZonesHtml(key, game)}
       </article>`;
   }).join("");
 
