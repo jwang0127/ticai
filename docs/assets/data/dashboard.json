@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T13:40:49+08:00",
+  "generated_at": "2026-08-06T13:42:32+08:00",
   "daily_results_date": "2026-08-06",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -38371,7 +38371,7 @@
       "model_reference": null,
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-06T13:40:49+08:00",
+      "generated_at": "2026-08-06T13:42:32+08:00",
       "latest_issue": "26207",
       "latest_draw_date": "2026-08-05",
       "latest_numbers": [
@@ -40188,7 +40188,7 @@
       "model_reference": null,
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-05T00:28:14+08:00",
+      "generated_at": "2026-08-06T13:42:32+08:00",
       "latest_issue": "26206",
       "latest_draw_date": "2026-08-04",
       "latest_numbers": [
@@ -40199,8 +40199,8 @@
         "5"
       ],
       "target_issue": "26207",
-      "next_draw_at": "2026-08-05T21:25+08:00",
-      "next_draw_display": "2026年08月05日 21:25（北京时间）",
+      "next_draw_at": "2026-08-06T21:25+08:00",
+      "next_draw_display": "2026年08月06日 21:25（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
@@ -41994,7 +41994,7 @@
       "model_reference": null,
       "history_count": 2000,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-06T13:40:49+08:00",
+      "generated_at": "2026-08-06T13:42:32+08:00",
       "latest_issue": "2026207",
       "latest_draw_date": "2026-08-05",
       "latest_numbers": [
@@ -44790,7 +44790,7 @@
       "model_reference": "src/vendor_models_v3/ssq_model_v3.py",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-04T23:21:37+08:00",
+      "generated_at": "2026-08-06T13:42:32+08:00",
       "latest_issue": "2026089",
       "latest_draw_date": "2026-08-04",
       "latest_numbers": [
@@ -45292,7 +45292,7 @@
       "model_reference": "src/vendor_models_v3/kl8_model_v3.py",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-05T00:28:14+08:00",
+      "generated_at": "2026-08-06T13:42:32+08:00",
       "latest_issue": "2026206",
       "latest_draw_date": "2026-08-04",
       "latest_numbers": [
@@ -45318,8 +45318,8 @@
         "79"
       ],
       "target_issue": "2026207",
-      "next_draw_at": "2026-08-05T21:30+08:00",
-      "next_draw_display": "2026年08月05日 21:30（北京时间）",
+      "next_draw_at": "2026-08-06T21:30+08:00",
+      "next_draw_display": "2026年08月06日 21:30（北京时间）",
       "schedule_note": "每日21:30开奖（休市日除外）",
       "candidates": [
         {
