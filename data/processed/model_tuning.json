@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T05:42:30+00:00",
+  "generated_at": "2026-08-06T07:10:13+00:00",
   "games": {
     "pl3": {
       "kind": "positional_digit",
@@ -755,31 +755,31 @@
       "backtest": {
         "100": {
           "folds": 240,
-          "pool_coverage": 0.4985,
+          "pool_coverage": 0.4981,
           "se": 0.0063,
           "baseline": 0.5
         },
         "300": {
           "folds": 240,
-          "pool_coverage": 0.4915,
+          "pool_coverage": 0.4927,
           "se": 0.0063,
           "baseline": 0.5
         },
         "500": {
           "folds": 240,
-          "pool_coverage": 0.4885,
+          "pool_coverage": 0.4892,
           "se": 0.0063,
           "baseline": 0.5
         },
         "1000": {
           "folds": 240,
-          "pool_coverage": 0.4971,
+          "pool_coverage": 0.4979,
           "se": 0.0063,
           "baseline": 0.5
         },
         "1500": {
           "folds": 240,
-          "pool_coverage": 0.4969,
+          "pool_coverage": 0.4983,
           "se": 0.0063,
           "baseline": 0.5
         }
