@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T13:42:32+08:00",
+  "generated_at": "2026-08-06T15:07:59+08:00",
   "daily_results_date": "2026-08-06",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
@@ -175,8 +175,7 @@
     "kl8": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/kl8/",
-      "issue": "2026206",
-      "error": "HTTP Error 403: Forbidden"
+      "issue": "2026207"
     },
     "dlt": {
       "status": "pending",
@@ -27400,6 +27399,32 @@
     ],
     "kl8": [
       {
+        "issue": "2026207",
+        "draw_date": "2026-08-05",
+        "numbers": [
+          "02",
+          "10",
+          "16",
+          "18",
+          "19",
+          "20",
+          "28",
+          "33",
+          "39",
+          "41",
+          "46",
+          "49",
+          "51",
+          "57",
+          "60",
+          "63",
+          "64",
+          "65",
+          "71",
+          "76"
+        ]
+      },
+      {
         "issue": "2026206",
         "draw_date": "2026-08-04",
         "numbers": [
@@ -37772,32 +37797,6 @@
           "71",
           "80"
         ]
-      },
-      {
-        "issue": "2025158",
-        "draw_date": "2025-06-17",
-        "numbers": [
-          "12",
-          "13",
-          "14",
-          "22",
-          "23",
-          "28",
-          "33",
-          "36",
-          "42",
-          "43",
-          "47",
-          "51",
-          "54",
-          "55",
-          "62",
-          "65",
-          "71",
-          "72",
-          "79",
-          "80"
-        ]
       }
     ]
   },
@@ -45292,32 +45291,32 @@
       "model_reference": "src/vendor_models_v3/kl8_model_v3.py",
       "history_count": 2000,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-06T13:42:32+08:00",
-      "latest_issue": "2026206",
-      "latest_draw_date": "2026-08-04",
+      "generated_at": "2026-08-06T15:07:59+08:00",
+      "latest_issue": "2026207",
+      "latest_draw_date": "2026-08-05",
       "latest_numbers": [
-        "01",
-        "06",
-        "07",
+        "02",
+        "10",
         "16",
-        "17",
-        "21",
-        "27",
-        "32",
+        "18",
+        "19",
+        "20",
+        "28",
         "33",
-        "36",
-        "44",
-        "47",
-        "50",
+        "39",
+        "41",
+        "46",
+        "49",
         "51",
-        "55",
-        "62",
+        "57",
+        "60",
+        "63",
         "64",
-        "76",
-        "78",
-        "79"
+        "65",
+        "71",
+        "76"
       ],
-      "target_issue": "2026207",
+      "target_issue": "2026208",
       "next_draw_at": "2026-08-06T21:30+08:00",
       "next_draw_display": "2026年08月06日 21:30（北京时间）",
       "schedule_note": "每日21:30开奖（休市日除外）",
@@ -45326,98 +45325,98 @@
           "numbers": [
             2,
             12,
-            18,
-            23,
             27,
             30,
+            32,
             39,
             42,
+            53,
             69,
             77
           ],
-          "mix_label": "v3选10",
-          "source": "v3_ensemble",
+          "mix_label": "v3选10跨期软惩罚",
+          "source": "v3_ensemble_cross_draw_soft",
           "pick_count": 10,
           "play_name": "选10",
           "group": "hot",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩快乐8 选10 02 12 18 23 27 30 39 42 69 77"
+          "copy_text": "福彩快乐8 选10 02 12 27 30 32 39 42 53 69 77"
         },
         {
           "numbers": [
-            10,
             23,
-            53,
+            39,
+            44,
             61,
             69,
-            71,
+            73,
             77
           ],
-          "mix_label": "v3选7",
-          "source": "v3_ensemble",
+          "mix_label": "v3选7跨期软惩罚",
+          "source": "v3_ensemble_cross_draw_soft",
           "pick_count": 7,
           "play_name": "选7",
           "group": "hot",
           "rank": 2,
-          "confidence": 56.1,
-          "copy_text": "福彩快乐8 选7 10 23 53 61 69 71 77"
+          "confidence": 58.0,
+          "copy_text": "福彩快乐8 选7 23 39 44 61 69 73 77"
         },
         {
           "numbers": [
-            11,
-            32,
+            14,
+            17,
+            33,
             37,
-            38,
-            44,
+            40,
             45,
-            49,
             54,
-            57
+            59,
+            62
           ],
-          "mix_label": "v3选9",
-          "source": "v3_ensemble",
+          "mix_label": "v3选9跨期软惩罚",
+          "source": "v3_ensemble_cross_draw_soft",
           "pick_count": 9,
           "play_name": "选9",
           "group": "hot",
           "rank": 3,
-          "confidence": 55.6,
-          "copy_text": "福彩快乐8 选9 11 32 37 38 44 45 49 54 57"
+          "confidence": 54.7,
+          "copy_text": "福彩快乐8 选9 14 17 33 37 40 45 54 59 62"
         },
         {
           "numbers": [
-            33,
-            53,
+            11,
+            23,
+            38,
+            44,
             66,
-            71,
-            73,
             75
           ],
-          "mix_label": "v3选6",
-          "source": "v3_ensemble",
+          "mix_label": "v3选6跨期软惩罚",
+          "source": "v3_ensemble_cross_draw_soft",
           "pick_count": 6,
           "play_name": "选6",
           "group": "hot",
           "rank": 4,
-          "confidence": 53.2,
-          "copy_text": "福彩快乐8 选6 33 53 66 71 73 75"
+          "confidence": 53.9,
+          "copy_text": "福彩快乐8 选6 11 23 38 44 66 75"
         },
         {
           "numbers": [
-            32,
-            33,
             37,
+            38,
+            45,
             66,
             75
           ],
-          "mix_label": "v3选5",
-          "source": "v3_ensemble",
+          "mix_label": "v3选5跨期软惩罚",
+          "source": "v3_ensemble_cross_draw_soft",
           "pick_count": 5,
           "play_name": "选5",
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩快乐8 选5 32 33 37 66 75"
+          "copy_text": "福彩快乐8 选5 37 38 45 66 75"
         }
       ],
       "top_candidates": [
@@ -45425,111 +45424,111 @@
           "numbers": [
             2,
             12,
-            18,
-            23,
             27,
             30,
+            32,
             39,
             42,
+            53,
             69,
             77
           ],
-          "mix_label": "v3选10",
-          "source": "v3_ensemble",
+          "mix_label": "v3选10跨期软惩罚",
+          "source": "v3_ensemble_cross_draw_soft",
           "pick_count": 10,
           "play_name": "选10",
           "group": "hot",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩快乐8 选10 02 12 18 23 27 30 39 42 69 77"
+          "copy_text": "福彩快乐8 选10 02 12 27 30 32 39 42 53 69 77"
         },
         {
           "numbers": [
-            10,
             23,
-            53,
+            39,
+            44,
             61,
             69,
-            71,
+            73,
             77
           ],
-          "mix_label": "v3选7",
-          "source": "v3_ensemble",
+          "mix_label": "v3选7跨期软惩罚",
+          "source": "v3_ensemble_cross_draw_soft",
           "pick_count": 7,
           "play_name": "选7",
           "group": "hot",
           "rank": 2,
-          "confidence": 56.1,
-          "copy_text": "福彩快乐8 选7 10 23 53 61 69 71 77"
+          "confidence": 58.0,
+          "copy_text": "福彩快乐8 选7 23 39 44 61 69 73 77"
         },
         {
           "numbers": [
-            11,
-            32,
+            14,
+            17,
+            33,
             37,
-            38,
-            44,
+            40,
             45,
-            49,
             54,
-            57
+            59,
+            62
           ],
-          "mix_label": "v3选9",
-          "source": "v3_ensemble",
+          "mix_label": "v3选9跨期软惩罚",
+          "source": "v3_ensemble_cross_draw_soft",
           "pick_count": 9,
           "play_name": "选9",
           "group": "hot",
           "rank": 3,
-          "confidence": 55.6,
-          "copy_text": "福彩快乐8 选9 11 32 37 38 44 45 49 54 57"
+          "confidence": 54.7,
+          "copy_text": "福彩快乐8 选9 14 17 33 37 40 45 54 59 62"
         },
         {
           "numbers": [
-            33,
-            53,
+            11,
+            23,
+            38,
+            44,
             66,
-            71,
-            73,
             75
           ],
-          "mix_label": "v3选6",
-          "source": "v3_ensemble",
+          "mix_label": "v3选6跨期软惩罚",
+          "source": "v3_ensemble_cross_draw_soft",
           "pick_count": 6,
           "play_name": "选6",
           "group": "hot",
           "rank": 4,
-          "confidence": 53.2,
-          "copy_text": "福彩快乐8 选6 33 53 66 71 73 75"
+          "confidence": 53.9,
+          "copy_text": "福彩快乐8 选6 11 23 38 44 66 75"
         },
         {
           "numbers": [
-            32,
-            33,
             37,
+            38,
+            45,
             66,
             75
           ],
-          "mix_label": "v3选5",
-          "source": "v3_ensemble",
+          "mix_label": "v3选5跨期软惩罚",
+          "source": "v3_ensemble_cross_draw_soft",
           "pick_count": 5,
           "play_name": "选5",
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩快乐8 选5 32 33 37 66 75"
+          "copy_text": "福彩快乐8 选5 37 38 45 66 75"
         }
       ],
       "review": {
-        "title": "第2026206期结构复盘",
-        "summary": "本期开出20个号码，四区比为5 : 5 : 5 : 5，奇偶比10:10，与前一期重号4个。",
+        "title": "第2026207期结构复盘",
+        "summary": "本期开出20个号码，四区比为6 : 3 : 6 : 5，奇偶比10:10，与前一期重号5个。",
         "metrics": [
           {
             "label": "号码和值",
-            "value": "802"
+            "value": "828"
           },
           {
             "label": "四区比",
-            "value": "5 : 5 : 5 : 5"
+            "value": "6 : 3 : 6 : 5"
           },
           {
             "label": "奇偶比",
@@ -45537,7 +45536,7 @@
           },
           {
             "label": "与前期重号",
-            "value": "4"
+            "value": "5"
           }
         ]
       },
@@ -45548,31 +45547,31 @@
         "backtest": {
           "100": {
             "folds": 240,
-            "pool_coverage": 0.4985,
+            "pool_coverage": 0.4981,
             "se": 0.0063,
             "baseline": 0.5
           },
           "300": {
             "folds": 240,
-            "pool_coverage": 0.4915,
+            "pool_coverage": 0.4927,
             "se": 0.0063,
             "baseline": 0.5
           },
           "500": {
             "folds": 240,
-            "pool_coverage": 0.4885,
+            "pool_coverage": 0.4892,
             "se": 0.0063,
             "baseline": 0.5
           },
           "1000": {
             "folds": 240,
-            "pool_coverage": 0.4971,
+            "pool_coverage": 0.4979,
             "se": 0.0063,
             "baseline": 0.5
           },
           "1500": {
             "folds": 240,
-            "pool_coverage": 0.4969,
+            "pool_coverage": 0.4983,
             "se": 0.0063,
             "baseline": 0.5
           }
@@ -45581,11 +45580,11 @@
         "signals": [
           {
             "label": "相对活跃号码",
-            "value": "32 · 42 · 27 · 12 · 44 · 51 · 10 · 02 · 17 · 73"
+            "value": "32 · 42 · 51 · 10 · 02 · 27 · 12 · 44 · 39 · 17"
           },
           {
             "label": "较长遗漏",
-            "value": "08（19期）、23（11期）、41（11期）、69（10期）、72（9期）、30（8期）"
+            "value": "08（20期）、23（12期）、69（11期）、72（10期）、30（9期）、75（9期）"
           },
           {
             "label": "组合目标",
@@ -45600,46 +45599,46 @@
         ]
       },
       "model_review": {
-        "issue": "2026206",
-        "actual": "01 06 07 16 17 21 27 32 33 36 44 47 50 51 55 62 64 76 78 79",
+        "issue": "2026207",
+        "actual": "02 10 16 18 19 20 28 33 39 41 46 49 51 57 60 63 64 65 71 76",
         "previous_candidates": [
-          "02 12 18 27 30 33 39 42 62 69",
-          "18 23 39 44 62 71 75",
-          "06 37 38 45 49 53 54 66 77",
-          "10 17 61 71 73 75",
-          "06 10 17 45 73"
+          "02 12 18 23 27 30 39 42 69 77",
+          "10 23 53 61 69 71 77",
+          "11 32 37 38 44 45 49 54 57",
+          "33 53 66 71 73 75",
+          "32 33 37 66 75"
         ],
         "exact_hits": 0,
         "best_number_hits": 3,
-        "summary": "第2026206期按位复盘：候选池覆盖 0 / 20 个位置；不按单期结果追涨参数。",
+        "summary": "第2026207期按位复盘：候选池覆盖 1 / 20 个位置；不按单期结果追涨参数。",
         "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
-        "union_number_hits": 6,
-        "number_pool_coverage": "6 / 20",
+        "union_number_hits": 8,
+        "number_pool_coverage": "8 / 20",
         "hit_numbers": [
-          "06",
-          "17",
-          "27",
+          "02",
+          "10",
+          "18",
           "33",
-          "44",
-          "62"
+          "39",
+          "49",
+          "57",
+          "71"
         ],
         "missed_numbers": [
-          "01",
-          "07",
           "16",
-          "21",
-          "32",
-          "36",
-          "47",
-          "50",
+          "19",
+          "20",
+          "28",
+          "41",
+          "46",
           "51",
-          "55",
+          "60",
+          "63",
           "64",
-          "76",
-          "78",
-          "79"
+          "65",
+          "76"
         ],
-        "error_attribution": "未覆盖的 14 个号码没有进入五组联合池，主要是单号强度、四区覆盖、共现分和组间重合惩罚共同筛选的结果；不把一次遗漏直接解释成下期必补。",
+        "error_attribution": "未覆盖的 12 个号码没有进入五组联合池，主要是单号强度、四区覆盖、共现分和组间重合惩罚共同筛选的结果；不把一次遗漏直接解释成下期必补。",
         "model_adjustments": [
           "快乐8继续单独使用选五模型，并以滚动联合池覆盖率选择历史窗口。",
           "保持五组之间的重合约束，优先修正长期覆盖不足的区间，不追逐单期遗漏号码。"

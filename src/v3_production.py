@@ -15,12 +15,32 @@ except ModuleNotFoundError:
     from src.vendor_models_v3 import dlt_model_v3, kl8_model_v3, ssq_model_v3
 
 
+# A previous draw is not a hard exclusion: five repeats is the theoretical
+# average for two independent 20-from-80 draws. This soft adjustment reduces
+# sticky hot-number portfolios without forcing an artificial zero overlap.
+KL8_CROSS_DRAW_PENALTY = 0.08
+
+
 def _chronological(rows: list[dict]) -> list[dict]:
     return [dict(row) for row in reversed(rows)]
 
 
 def _score_combo(values: tuple[int, ...], scores: dict[int, float]) -> float:
     return sum(scores.get(value, 0.0) for value in values)
+
+
+def kl8_cross_draw_scores(
+    fused_scores: dict[int, float],
+    previous_numbers: set[int],
+    penalty: float = KL8_CROSS_DRAW_PENALTY,
+) -> dict[int, float]:
+    """Apply a soft penalty to numbers drawn in the immediately prior issue."""
+    if penalty < 0:
+        raise ValueError("KL8 cross-draw penalty must be non-negative")
+    return {
+        int(number): float(score) - (penalty if int(number) in previous_numbers else 0.0)
+        for number, score in fused_scores.items()
+    }
 
 
 def generate_dlt_v3(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]:
@@ -108,8 +128,10 @@ def generate_kl8_v3(rows: list[dict], pick_count: int) -> tuple[list[dict], list
     report = kl8_model_v3.generate_kl8_v3(records, pick=pick_count, next_period="NEXT")
     data = report.get("results_by_pick", {}).get(pick_count, {})
     fused = {int(key): float(value) for key, value in report.get("fused_scores", {}).items()}
-    ranked_numbers = sorted(range(1, 81), key=lambda value: fused.get(value, 0.0), reverse=True)
+    previous_numbers = {int(value) for value in records[-1]["numbers"]}
+    adjusted_scores = kl8_cross_draw_scores(fused, previous_numbers)
+    ranked_numbers = sorted(range(1, 81), key=lambda value: adjusted_scores.get(value, 0.0), reverse=True)
     selected = [tuple(sorted(ranked_numbers[index * pick_count:(index + 1) * pick_count])) for index in range(5)]
-    scores = [_score_combo(combo, fused) for combo in selected]
+    scores = [_score_combo(combo, adjusted_scores) for combo in selected]
     order = sorted(range(5), key=lambda index: scores[index], reverse=True)
-    return [{"numbers": list(selected[index]), "mix_label": f"v3选{pick_count}", "source": "v3_ensemble"} for index in order], [scores[index] for index in order]
+    return [{"numbers": list(selected[index]), "mix_label": f"v3选{pick_count}跨期软惩罚", "source": "v3_ensemble_cross_draw_soft"} for index in order], [scores[index] for index in order]

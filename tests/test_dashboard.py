@@ -34,6 +34,7 @@ from src.generate_dashboard import (
     rolling_region_backtest,
 )
 from src.fetch_draws import today_games
+from src.v3_production import kl8_cross_draw_scores
 
 try:
     TZ = ZoneInfo("Asia/Shanghai")
@@ -195,6 +196,15 @@ class DetailPageTests(unittest.TestCase):
             candidates, _ = generate_kl8(self.kl8_rows, pick_count)
             union = set().union(*(set(item["numbers"]) for item in candidates))
             self.assertEqual(len(union), 5 * pick_count, pick_count)
+
+    def test_kl8_cross_draw_penalty_is_soft_not_hard_exclusion(self):
+        scores = kl8_cross_draw_scores({1: 0.50, 2: 0.50, 3: 0.10}, {1, 3}, penalty=0.08)
+        self.assertAlmostEqual(scores[1], 0.42)
+        self.assertAlmostEqual(scores[2], 0.50)
+        self.assertAlmostEqual(scores[3], 0.02)
+        self.assertIn(1, scores)
+        with self.assertRaises(ValueError):
+            kl8_cross_draw_scores({1: 0.5}, {1}, penalty=-0.01)
 
     def test_position_analysis_is_explicit_for_direct_digit_games(self):
         expected = {
