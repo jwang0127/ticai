@@ -145,55 +145,55 @@
     ]
   },
   "pl3": {
-    "issue": "26206",
-    "actual": "709",
+    "issue": "26207",
+    "actual": "866",
     "previous_candidates": [
-      "765",
+      "705",
+      "165",
       "754",
-      "855",
       "156",
-      "804"
+      "864"
     ],
     "exact_hits": 0,
-    "best_number_hits": 1,
-    "summary": "第26206期按位复盘：候选池覆盖 2 / 3 个位置；不按单期结果追涨参数。",
+    "best_number_hits": 2,
+    "summary": "第26207期按位复盘：候选池覆盖 3 / 3 个位置；不按单期结果追涨参数。",
     "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
     "position_diagnostics": [
       {
         "position": "百位",
-        "actual_digit": "7",
+        "actual_digit": "8",
         "candidate_digits": [
           "1",
           "7",
           "8"
-        ],
-        "candidate_hit_count": 2,
-        "pool_hit": true,
-        "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
-      },
-      {
-        "position": "十位",
-        "actual_digit": "0",
-        "candidate_digits": [
-          "0",
-          "5",
-          "6"
         ],
         "candidate_hit_count": 1,
         "pool_hit": true,
         "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
       },
       {
+        "position": "十位",
+        "actual_digit": "6",
+        "candidate_digits": [
+          "0",
+          "5",
+          "6"
+        ],
+        "candidate_hit_count": 2,
+        "pool_hit": true,
+        "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
+      },
+      {
         "position": "个位",
-        "actual_digit": "9",
+        "actual_digit": "6",
         "candidate_digits": [
           "4",
           "5",
           "6"
         ],
-        "candidate_hit_count": 0,
-        "pool_hit": false,
-        "reason": "未命中：该位的频率、遗漏和组合分均未达到五组入选阈值。"
+        "candidate_hit_count": 1,
+        "pool_hit": true,
+        "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
       }
     ],
     "model_adjustments": [
@@ -202,44 +202,44 @@
     ],
     "structure_diagnostics": {
       "actual": {
-        "sum": 16,
-        "span": 9,
-        "odd_even": "2:1",
-        "distinct": 3,
-        "shape": "三位不同"
+        "sum": 20,
+        "span": 2,
+        "odd_even": "0:3",
+        "distinct": 2,
+        "shape": "两位相同"
       },
-      "explanation": "本期709的和值16、跨度9、奇偶比2:1、三位不同；这些字段用于解释候选组合为何入选或落选，不能据此断言下一期会重复相同结构。"
+      "explanation": "本期866的和值20、跨度2、奇偶比0:3、两位相同；这些字段用于解释候选组合为何入选或落选，不能据此断言下一期会重复相同结构。"
     },
-    "position_pool_coverage": 2,
+    "position_pool_coverage": 3,
     "position_count": 3,
     "next_day_advice": [
       {
-        "number": "705",
+        "number": "865",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：705"
+        "suggestion": "直选参考：865"
       },
       {
-        "number": "165",
+        "number": "706",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：165"
+        "suggestion": "直选参考：706"
       },
       {
-        "number": "754",
+        "number": "856",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：754"
+        "suggestion": "直选参考：856"
       },
       {
-        "number": "156",
+        "number": "764",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：156"
+        "suggestion": "直选参考：764"
       },
       {
-        "number": "864",
+        "number": "154",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：864"
+        "suggestion": "直选参考：154"
       }
     ],
-    "next_day_advice_text": "直选参考：705；直选参考：165；直选参考：754；直选参考：156；直选参考：864"
+    "next_day_advice_text": "直选参考：865；直选参考：706；直选参考：856；直选参考：764；直选参考：154"
   },
   "pl5": {
     "issue": "26206",
@@ -266,53 +266,53 @@
     "position_count": 5
   },
   "fc3d": {
-    "issue": "2026206",
-    "actual": "942",
+    "issue": "2026207",
+    "actual": "415",
     "previous_candidates": [
       "925",
       "932",
-      "428",
+      "918",
       "238",
       "412"
     ],
     "exact_hits": 0,
     "best_number_hits": 2,
-    "summary": "第2026206期按位复盘：候选池覆盖 2 / 3 个位置；不按单期结果追涨参数。",
+    "summary": "第2026207期按位复盘：候选池覆盖 3 / 3 个位置；不按单期结果追涨参数。",
     "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
     "position_diagnostics": [
       {
         "position": "百位",
-        "actual_digit": "9",
+        "actual_digit": "4",
         "candidate_digits": [
           "2",
           "4",
           "9"
+        ],
+        "candidate_hit_count": 1,
+        "pool_hit": true,
+        "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
+      },
+      {
+        "position": "十位",
+        "actual_digit": "1",
+        "candidate_digits": [
+          "1",
+          "2",
+          "3"
         ],
         "candidate_hit_count": 2,
         "pool_hit": true,
         "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
       },
       {
-        "position": "十位",
-        "actual_digit": "4",
-        "candidate_digits": [
-          "1",
-          "2",
-          "3"
-        ],
-        "candidate_hit_count": 0,
-        "pool_hit": false,
-        "reason": "未命中：该位遗漏 19 期，当前模型对长期遗漏只做有限补偿，未强行追冷。"
-      },
-      {
         "position": "个位",
-        "actual_digit": "2",
+        "actual_digit": "5",
         "candidate_digits": [
           "2",
           "5",
           "8"
         ],
-        "candidate_hit_count": 2,
+        "candidate_hit_count": 1,
         "pool_hit": true,
         "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
       }
@@ -323,15 +323,15 @@
     ],
     "structure_diagnostics": {
       "actual": {
-        "sum": 15,
-        "span": 7,
-        "odd_even": "1:2",
+        "sum": 10,
+        "span": 4,
+        "odd_even": "2:1",
         "distinct": 3,
         "shape": "三位不同"
       },
-      "explanation": "本期942的和值15、跨度7、奇偶比1:2、三位不同；这些字段用于解释候选组合为何入选或落选，不能据此断言下一期会重复相同结构。"
+      "explanation": "本期415的和值10、跨度4、奇偶比2:1、三位不同；这些字段用于解释候选组合为何入选或落选，不能据此断言下一期会重复相同结构。"
     },
-    "position_pool_coverage": 2,
+    "position_pool_coverage": 3,
     "position_count": 3,
     "next_day_advice": [
       {
@@ -350,17 +350,17 @@
         "suggestion": "直选参考：918"
       },
       {
-        "number": "238",
+        "number": "438",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：238"
+        "suggestion": "直选参考：438"
       },
       {
-        "number": "412",
-        "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：412"
+        "number": "212",
+        "shape": "组选三",
+        "suggestion": "组选三参考：212（122/212/221）"
       }
     ],
-    "next_day_advice_text": "直选参考：925；直选参考：932；直选参考：918；直选参考：238；直选参考：412"
+    "next_day_advice_text": "直选参考：925；直选参考：932；直选参考：918；直选参考：438；组选三参考：212（122/212/221）"
   },
   "qxc": {
     "issue": "26089",
