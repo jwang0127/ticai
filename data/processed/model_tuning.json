@@ -1,53 +1,6 @@
 {
-  "generated_at": "2026-08-07T04:24:11+00:00",
+  "generated_at": "2026-08-07T04:26:34+00:00",
   "games": {
-    "dlt": {
-      "kind": "set_model",
-      "selected_window": 1500,
-      "backtest": {
-        "100": {
-          "folds": 240,
-          "pool_coverage": 0.6101,
-          "se": 0.0119,
-          "baseline": 0.6486
-        },
-        "300": {
-          "folds": 240,
-          "pool_coverage": 0.6399,
-          "se": 0.0117,
-          "baseline": 0.6486
-        },
-        "500": {
-          "folds": 240,
-          "pool_coverage": 0.6363,
-          "se": 0.0117,
-          "baseline": 0.6486
-        },
-        "1000": {
-          "folds": 240,
-          "pool_coverage": 0.6476,
-          "se": 0.0117,
-          "baseline": 0.6486
-        },
-        "1500": {
-          "folds": 240,
-          "pool_coverage": 0.6542,
-          "se": 0.0116,
-          "baseline": 0.6486
-        }
-      },
-      "latest_issue": "26088",
-      "review_feedback": {
-        "source_issue": "26088",
-        "exploration_positions": [
-          2,
-          3,
-          4,
-          5
-        ],
-        "reason": "上一期这些位置未被候选池覆盖，下一期仅扩大一档候选池做受控探索；不把上一期开奖号码直接升权。"
-      }
-    },
     "pl3": {
       "kind": "positional_digit",
       "selected_decay": 13,
@@ -786,55 +739,6 @@
     },
     "qxc": {
       "kind": "generator_internal_calibration"
-    },
-    "ssq": {
-      "kind": "set_model",
-      "selected_window": 1500,
-      "backtest": {
-        "100": {
-          "folds": 240,
-          "pool_coverage": 0.5125,
-          "se": 0.0113,
-          "baseline": 0.5122
-        },
-        "300": {
-          "folds": 240,
-          "pool_coverage": 0.5208,
-          "se": 0.0113,
-          "baseline": 0.5122
-        },
-        "500": {
-          "folds": 240,
-          "pool_coverage": 0.522,
-          "se": 0.0113,
-          "baseline": 0.5122
-        },
-        "1000": {
-          "folds": 240,
-          "pool_coverage": 0.519,
-          "se": 0.0113,
-          "baseline": 0.5122
-        },
-        "1500": {
-          "folds": 240,
-          "pool_coverage": 0.5179,
-          "se": 0.0113,
-          "baseline": 0.5122
-        }
-      },
-      "latest_issue": "2026090",
-      "review_feedback": {
-        "source_issue": "2026090",
-        "exploration_positions": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ],
-        "reason": "上一期这些位置未被候选池覆盖，下一期仅扩大一档候选池做受控探索；不把上一期开奖号码直接升权。"
-      }
     },
     "kl8": {
       "kind": "set_model",
