@@ -366,6 +366,12 @@ def main() -> None:
         raise SystemExit(f"没有可保留的数据: {', '.join(missing)}")
 
     if args.require_fresh_results:
+        # Keep the upstream error alongside the freshness failure.  Without
+        # this, Actions only reported a generic stale-cache message and it was
+        # impossible to tell whether the source was late, blocked, or malformed.
+        if errors:
+            details = "; ".join(f"{game}: {message}" for game, message in sorted(errors.items()))
+            raise SystemExit(f"Official source errors before freshness gate: {details}")
         require_fresh_results(selected, draws, config)
 
     sources = list(previous.get("sources", []))

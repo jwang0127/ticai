@@ -27,7 +27,11 @@ permissions:
 
 concurrency:
   group: ticai-pages
-  cancel-in-progress: true
+  # GitHub can deliver the four retry schedules close together. Cancelling
+  # the previous run made every retry disappear while the source was slow.
+  # Let retries finish in order so one transient failure cannot erase the
+  # only successful attempt.
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -63,6 +67,22 @@ jobs:
           else
             python src/fetch_draws.py --games "${{ steps.scope.outputs.games }}" --history-limit 2000 --require-fresh-results
           fi
+      - name: Show refresh checkpoint
+        if: always()
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path('data/processed/draws.json')
+          if path.exists():
+              data = json.loads(path.read_text(encoding='utf-8'))
+              print('source_status=', data.get('source_status'))
+              print('updated_at=', data.get('updated_at'))
+              print('errors=', data.get('errors', {}))
+              for game, rows in data.get('draws', {}).items():
+                  if rows:
+                      print(f"{game}: issue={rows[0].get('issue')} date={rows[0].get('draw_date')}")
+          PY
       - name: Optimize models with rolling backtests
         run: |
           if [[ "${{ steps.scope.outputs.games }}" == "today" ]]; then

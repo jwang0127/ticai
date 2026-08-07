@@ -21,6 +21,7 @@ CONFIG_PATH = ROOT / "config" / "games.json"
 DATA_PATH = ROOT / "data" / "processed" / "draws.json"
 OUTPUT_PATH = ROOT / "docs" / "assets" / "data" / "dashboard.json"
 REVIEWS_PATH = ROOT / "data" / "processed" / "model_reviews.json"
+TUNING_PATH = ROOT / "data" / "processed" / "model_tuning.json"
 GAME_SECTORS = {
     "fc3d": ("fucai", "福彩"),
     "ssq": ("fucai", "福彩"),
@@ -70,6 +71,8 @@ UNIFORM_TOP3_BASELINE = 0.3
 # from several call sites (generation, analysis, confidence scaling); memoize
 # on the snapshot identity so each grid is evaluated once per process.
 _CALIBRATION_CACHE: dict[tuple, dict] = {}
+_CALIBRATION_OVERRIDES: dict[str, dict] = {}
+_REVIEW_FEEDBACK: dict[str, dict] = {}
 
 
 def _history_key(game: str, rows: list[dict]) -> tuple:
@@ -200,6 +203,10 @@ def calibrate_digit_model(game: str, rows: list[dict], digits: int) -> dict:
         for decay, window in cells
     }
     chosen_decay, chosen_window = _one_se_choice(cells, scores, "positional_top3_hit_rate", digits)
+    override = _CALIBRATION_OVERRIDES.get(game, {})
+    forced_key = f"{override.get('selected_decay')}@{override.get('selected_window')}"
+    if forced_key in scores:
+        chosen_decay, chosen_window = int(override["selected_decay"]), int(override["selected_window"])
     position_parameters = []
     position_backtest = []
     for position in range(digits):
@@ -208,6 +215,15 @@ def calibrate_digit_model(game: str, rows: list[dict], digits: int) -> dict:
             for decay, window in cells
         }
         position_decay, position_window = _one_se_choice(cells, position_scores, "top3_hit_rate")
+        saved_position = next(
+            (item for item in override.get("selected_position_parameters", [])
+             if int(item.get("position", -1)) == position),
+            None,
+        )
+        saved_key = f"{saved_position.get('decay')}@{saved_position.get('window_size')}" if saved_position else ""
+        if saved_key in position_scores:
+            position_decay = int(saved_position["decay"])
+            position_window = int(saved_position["window_size"])
         position_parameters.append({"position": position, "decay": position_decay, "window_size": position_window})
         position_backtest.append({"position": position, "scores": position_scores})
     base["decay"] = chosen_decay
@@ -405,6 +421,9 @@ def calibrate_set_model(game: str, rows: list[dict]) -> dict:
     pool_observations = {"dlt": 7, "ssq": 7, "kl8": 20}.get(game, len(rows[0]["numbers"]) if rows else 1)
     scores = {str(window): rolling_pool_backtest(game, rows, window) for window in windows}
     chosen = _one_se_window(windows, scores, "pool_coverage", pool_observations)
+    override = _CALIBRATION_OVERRIDES.get(game, {})
+    if str(override.get("selected_window")) in scores:
+        chosen = int(override["selected_window"])
     regions = {"dlt": ("front", "back"), "ssq": ("red", "blue")}.get(game, ())
     region_windows = {}
     region_backtest = {}
@@ -922,12 +941,15 @@ def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict
         position_counts, totals, _, _, _ = components
         # A useful pool should be selective: three independently backtested
         # digits per position, then five combinations from their product.
+        exploration_positions = {
+            int(value) for value in _REVIEW_FEEDBACK.get(game, {}).get("exploration_positions", [])
+        }
         pools = [
             sorted(
                 range(10),
                 key=lambda value: score_digit(value, position_counts[position], totals[position]),
                 reverse=True,
-            )[:3]
+            )[: 4 if position in exploration_positions else 3]
             for position in range(digits)
         ]
         all_values = list(product(*pools))
@@ -1960,6 +1982,24 @@ def main() -> None:
         # entirely from the verified source data instead of preserving fragments.
         previous_output = {}
     previous_games = previous_output.get("games", {})
+    try:
+        tuning_output = json.loads(TUNING_PATH.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        tuning_output = {}
+    # optimize_models.py runs immediately before this generator in Actions.
+    # Consume only tuning produced for the same latest issue; manual dashboard
+    # generation therefore remains safe when the tuning file is stale.
+    _CALIBRATION_OVERRIDES.clear()
+    _REVIEW_FEEDBACK.clear()
+    for game, tuning in tuning_output.get("games", {}).items():
+        rows = source_data.get("draws", {}).get(game, [])
+        if not rows or str(tuning.get("latest_issue")) != str(rows[0].get("issue")):
+            continue
+        if tuning.get("kind") in ("positional_digit", "set_model"):
+            _CALIBRATION_OVERRIDES[game] = tuning
+        feedback = tuning.get("review_feedback")
+        if feedback:
+            _REVIEW_FEEDBACK[game] = feedback
     output = {
         "generated_at": now.isoformat(timespec="seconds"),
         "daily_results_date": now.date().isoformat(),
@@ -2089,6 +2129,14 @@ def main() -> None:
                 f"src/vendor_models_v3/{game}_model_v3.py"
                 if game in ("dlt", "ssq", "kl8") else None
             ),
+            "learning": {
+                "tuning_applied": game in _CALIBRATION_OVERRIDES,
+                "review_feedback": _REVIEW_FEEDBACK.get(game, {
+                    "source_issue": None,
+                    "exploration_positions": [],
+                    "reason": "本次没有可用的上一期复盘快照，保持基础模型。",
+                }),
+            },
             "history_count": len(rows),
             "model_scope": "前区/后区排序位独立" if game == "dlt" else "每一位独立评分" if game in ("pl3", "pl5", "fc3d", "qxc") else "玩法专用结构模型",
             "generated_at": now.isoformat(timespec="seconds"),
@@ -2120,6 +2168,7 @@ def main() -> None:
             game in ("dlt", "pl3", "pl5", "fc3d", "qxc", "ssq", "kl8")
             and model_reviews.get(game, {}).get("issue") == latest["issue"]
             and not model_reviews[game].get("position_diagnostics")
+            and model_reviews[game].get("previous_candidates")
         ):
             # Older generated dashboards kept the prior candidate text in the
             # review file but not the full candidate objects. Rehydrate that
@@ -2153,7 +2202,9 @@ def main() -> None:
                 "top_candidates": saved_candidates,
                 "analysis": output["games"][game]["analysis"],
             }
-            model_reviews[game] = build_model_review(game, latest, saved_prediction, {"top_candidates": enriched})
+            rebuilt_review = build_model_review(game, latest, saved_prediction, {"top_candidates": enriched})
+            rebuilt_review["recovered_reviews"] = saved_review.get("recovered_reviews", [])
+            model_reviews[game] = rebuilt_review
             output["games"][game]["model_review"] = model_reviews[game]
         if model_reviews.get(game, {}).get("issue") != latest["issue"]:
             # Never present an older review as if it explained today's draw.
@@ -2169,6 +2220,13 @@ def main() -> None:
                     + " + "
                     + " ".join(latest["numbers"][split_at:])
                 )
+            recovered_review = None
+            previous_target = str(previous_game.get("target_issue", ""))
+            recovered_row = next((row for row in rows if str(row.get("issue")) == previous_target), None)
+            if recovered_row is not None and previous_target != str(latest["issue"]):
+                # Preserve a review for a skipped target when a scheduled run
+                # missed one or more draws and later catches up.
+                recovered_review = build_model_review(game, recovered_row, previous_game)
             model_reviews[game] = {
                 "issue": latest["issue"],
                 "actual": actual_text,
@@ -2181,6 +2239,7 @@ def main() -> None:
                     "生成器必须在结果期号与上一版 target_issue 对齐时才计算命中率。",
                     "下一期模型使用全部已核实历史，参数仍由滚动留出回测选择。",
                 ],
+                "recovered_reviews": [recovered_review] if recovered_review else [],
             }
             output["games"][game]["model_review"] = model_reviews[game]
         # The historical review may already be complete while today's
@@ -2210,6 +2269,12 @@ def main() -> None:
             model_reviews[game]["next_day_advice_text"] = output["games"][game]["model_review"]["next_day_advice_text"]
             model_reviews[game]["structure_diagnostics"] = structure_diagnostics
             model_reviews[game]["model_adjustments"] = output["games"][game]["model_review"]["model_adjustments"]
+        if output["games"][game].get("model_review"):
+            learning = output["games"][game]["learning"]
+            output["games"][game]["model_review"]["learning_action"] = learning["review_feedback"]["reason"]
+            output["games"][game]["model_review"]["tuning_applied"] = learning["tuning_applied"]
+            model_reviews[game]["learning_action"] = learning["review_feedback"]["reason"]
+            model_reviews[game]["tuning_applied"] = learning["tuning_applied"]
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     REVIEWS_PATH.write_text(json.dumps(model_reviews, ensure_ascii=False, indent=2), encoding="utf-8")
