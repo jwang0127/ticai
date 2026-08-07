@@ -663,6 +663,7 @@ def direct_prediction_summary(rows: list[dict]) -> dict[str, object]:
     # feature window for the next draw, otherwise the forecast leaks today's
     # answer into tomorrow's structure prior.
     recent = rows[1:301] if len(rows) > 1 else rows
+    fast_recent = rows[1:101] if len(rows) > 1 else rows
     historical = {
         "sum": Counter(sum(int(value) for value in row["numbers"]) for row in recent),
         "span": Counter(max(map(int, row["numbers"])) - min(map(int, row["numbers"])) for row in recent),
@@ -671,17 +672,34 @@ def direct_prediction_summary(rows: list[dict]) -> dict[str, object]:
             for row in recent
         ),
     }
+    fast_historical = {
+        "sum": Counter(sum(int(value) for value in row["numbers"]) for row in fast_recent),
+        "span": Counter(max(map(int, row["numbers"])) - min(map(int, row["numbers"])) for row in fast_recent),
+        "odd_even": Counter(
+            f"{sum(int(value) % 2 for value in row['numbers'])}:{len(row['numbers']) - sum(int(value) % 2 for value in row['numbers'])}"
+            for row in fast_recent
+        ),
+    }
     result = {}
     labels = {"sum": "和值", "span": "跨度", "odd_even": "奇偶比"}
     for key in ("sum", "span", "odd_even"):
-        historical_top = [value for value, _ in historical[key].most_common(3)]
+        forecast_score = {
+            value: 0.70 * fast_historical[key][value] / len(fast_recent)
+            + 0.30 * historical[key][value] / len(recent)
+            for value in set(fast_historical[key]) | set(historical[key])
+        }
+        historical_top = sorted(
+            forecast_score,
+            key=lambda value: (forecast_score[value], fast_historical[key][value], historical[key][value]),
+            reverse=True,
+        )[:3]
         frequencies = [
             {
                 "value": value,
-                "count": count,
-                "share": round(count / len(recent), 4),
+                "count": fast_historical[key][value],
+                "share": round(fast_historical[key][value] / len(fast_recent), 4),
             }
-            for value, count in historical[key].most_common(3)
+            for value in historical_top
         ]
         cold_limit = 2 if key == "odd_even" else 3
         cold_frequencies = [
@@ -694,6 +712,9 @@ def direct_prediction_summary(rows: list[dict]) -> dict[str, object]:
         ]
         result[key] = {
             "values": historical_top,
+            "baseline_values": [value for value, _ in historical[key].most_common(3)],
+            "forecast_window": len(fast_recent),
+            "forecast_basis": "70% recent-100 frequency + 30% recent-300 frequency",
             "range": [min(historical[key]), max(historical[key])],
             "frequencies": frequencies,
             "cold_values": [item["value"] for item in cold_frequencies],
@@ -704,6 +725,10 @@ def direct_prediction_summary(rows: list[dict]) -> dict[str, object]:
                 + f"；因此今天优先观察"
                 + "、".join(str(value) for value in historical_top)
                 + "，不是凭上一期号码顺推。"
+            ),
+            "forecast_reason": (
+                f"Rolling forecast: {len(fast_recent)}-draw fast frequency blended with "
+                f"{len(recent)}-draw stable frequency; top values are {', '.join(map(str, historical_top))}."
             ),
             # Keep a short compatibility field for older consumers.
             "reason": f"{labels[key]}按近{len(recent)}期频次预测，前三结构为" + "、".join(map(str, historical_top)) + "。",
