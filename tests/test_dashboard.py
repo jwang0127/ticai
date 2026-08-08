@@ -32,6 +32,7 @@ from src.generate_dashboard import (
     order_statistic_top_mass,
     rolling_pool_backtest,
     rolling_region_backtest,
+    ensure_repeat_shape_coverage,
 )
 from src.fetch_draws import today_games
 from src.v3_production import kl8_cross_draw_scores
@@ -190,6 +191,26 @@ class DetailPageTests(unittest.TestCase):
         for position, pool in enumerate([[1, 2, 3], [1, 4, 5], [0, 1, 2]]):
             present = {int(item[0][position]) for item in repaired}
             self.assertTrue(set(pool) <= present, (position, pool, present))
+
+    def test_fc3d_repeat_shape_coverage_is_bounded(self):
+        rows = [{"numbers": ["7", "5", "5"]}] * 30
+        scored = [
+            ("925", -1.0, 0.0),
+            ("438", -1.1, 0.0),
+            ("217", -1.2, 0.0),
+            ("495", -1.3, 0.0),
+            ("728", -1.4, 0.0),
+            ("922", -1.5, 0.0),
+        ]
+        selected = scored[:5]
+        repaired = ensure_repeat_shape_coverage(selected, scored, rows)
+        self.assertEqual(len(repaired), 5)
+        self.assertTrue(any(len(set(item[0])) == 2 for item in repaired))
+        for position in range(3):
+            self.assertGreaterEqual(
+                len({item[0][position] for item in repaired}),
+                min(3, len({item[0][position] for item in selected})),
+            )
 
     def test_kl8_groups_are_pairwise_disjoint(self):
         for pick_count in range(5, 11):

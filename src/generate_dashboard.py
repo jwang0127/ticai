@@ -843,6 +843,50 @@ def ensure_position_pool_coverage(
     return sorted(selected, key=lambda item: item[1], reverse=True)
 
 
+def ensure_repeat_shape_coverage(
+    selected: list[tuple[str, float, float]],
+    scored: list[tuple[str, float, float]],
+    rows: list[dict],
+    recent_window: int = 300,
+    minimum_repeat_rate: float = 0.24,
+) -> list[tuple[str, float, float]]:
+    """Keep one controlled 组三 line when recent history supports it.
+
+    This is a coverage repair, not a shape prediction rule.  It only runs
+    when the recent sample contains enough two-distinct-digit results, and it
+    will not reduce any position below the existing three-digit coverage
+    floor.  The positional score remains the ordering signal.
+    """
+    if not selected or len(selected[0][0]) != 3:
+        return selected
+    recent = rows[:recent_window]
+    repeat_rate = (
+        sum(len(set(row["numbers"])) == 2 for row in recent) / len(recent)
+        if recent else 0.0
+    )
+    if repeat_rate < minimum_repeat_rate or any(len(set(item[0])) == 2 for item in selected):
+        return selected
+
+    current_coverage = [len({item[0][position] for item in selected}) for position in range(3)]
+    repeat_candidates = sorted(
+        (item for item in scored if len(set(item[0])) == 2),
+        key=lambda item: item[1],
+        reverse=True,
+    )
+    for candidate in repeat_candidates:
+        for victim_index in sorted(range(len(selected)), key=lambda index: selected[index][1]):
+            trial = selected[:victim_index] + selected[victim_index + 1 :] + [candidate]
+            if len({item[0] for item in trial}) != len(selected):
+                continue
+            if any(
+                len({item[0][position] for item in trial}) < min(current_coverage[position], 3)
+                for position in range(3)
+            ):
+                continue
+            return sorted(trial, key=lambda item: item[1], reverse=True)
+    return selected
+
+
 def generate_digit_profile(
     rows: list[dict], digits: int, profile: str, limit: int = 5, game: str = "pl3"
 ) -> list[tuple[str, float, float]]:
@@ -992,9 +1036,11 @@ def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict
             ranked,
             pools,
             lambda text: global_candidate_score([int(value) for value in text], components, model)
-            + (0.08 * hybrid_structure_score([int(value) for value in text], structure_profile)
+               + (0.08 * hybrid_structure_score([int(value) for value in text], structure_profile)
                if structure_profile is not None else 0.0),
         )
+        if game == "fc3d":
+            ranked = ensure_repeat_shape_coverage(ranked, scored, forecast_rows)
         if len({number for number, _, _ in ranked}) != 5:
             raise RuntimeError(f"{game} hot pool did not generate five distinct direct picks")
     else:
