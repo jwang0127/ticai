@@ -1,6 +1,56 @@
 {
-  "generated_at": "2026-08-07T04:40:17+00:00",
+  "generated_at": "2026-08-08T04:46:03+00:00",
   "games": {
+    "qxc": {
+      "kind": "generator_internal_calibration"
+    },
+    "dlt": {
+      "kind": "set_model",
+      "selected_window": 1500,
+      "backtest": {
+        "100": {
+          "folds": 240,
+          "pool_coverage": 0.6101,
+          "se": 0.0119,
+          "baseline": 0.6486
+        },
+        "300": {
+          "folds": 240,
+          "pool_coverage": 0.6399,
+          "se": 0.0117,
+          "baseline": 0.6486
+        },
+        "500": {
+          "folds": 240,
+          "pool_coverage": 0.6363,
+          "se": 0.0117,
+          "baseline": 0.6486
+        },
+        "1000": {
+          "folds": 240,
+          "pool_coverage": 0.6476,
+          "se": 0.0117,
+          "baseline": 0.6486
+        },
+        "1500": {
+          "folds": 240,
+          "pool_coverage": 0.6542,
+          "se": 0.0116,
+          "baseline": 0.6486
+        }
+      },
+      "latest_issue": "26088",
+      "review_feedback": {
+        "source_issue": "26088",
+        "exploration_positions": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "reason": "上一期这些位置未被候选池覆盖，下一期仅扩大一档候选池做受控探索；不把上一期开奖号码直接升权。"
+      }
+    },
     "pl3": {
       "kind": "positional_digit",
       "selected_decay": 13,
@@ -25,151 +75,151 @@
       "backtest": {
         "8@100": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2856,
-          "se": 0.0151,
+          "positional_top3_hit_rate": 0.2844,
+          "se": 0.015,
           "baseline": 0.3
         },
         "8@300": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2856,
-          "se": 0.0151,
+          "positional_top3_hit_rate": 0.2844,
+          "se": 0.015,
           "baseline": 0.3
         },
         "8@500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2856,
-          "se": 0.0151,
+          "positional_top3_hit_rate": 0.2844,
+          "se": 0.015,
           "baseline": 0.3
         },
         "8@1000": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2856,
-          "se": 0.0151,
+          "positional_top3_hit_rate": 0.2844,
+          "se": 0.015,
           "baseline": 0.3
         },
         "8@1500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2856,
-          "se": 0.0151,
+          "positional_top3_hit_rate": 0.2844,
+          "se": 0.015,
           "baseline": 0.3
         },
         "13@100": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.3022,
+          "positional_top3_hit_rate": 0.3011,
           "se": 0.0153,
           "baseline": 0.3
         },
         "13@300": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.3022,
+          "positional_top3_hit_rate": 0.3011,
           "se": 0.0153,
           "baseline": 0.3
         },
         "13@500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.3022,
+          "positional_top3_hit_rate": 0.3011,
           "se": 0.0153,
           "baseline": 0.3
         },
         "13@1000": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.3022,
+          "positional_top3_hit_rate": 0.3011,
           "se": 0.0153,
           "baseline": 0.3
         },
         "13@1500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.3022,
+          "positional_top3_hit_rate": 0.3011,
           "se": 0.0153,
           "baseline": 0.3
         },
         "18@100": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2844,
+          "positional_top3_hit_rate": 0.2833,
           "se": 0.015,
           "baseline": 0.3
         },
         "18@300": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2844,
+          "positional_top3_hit_rate": 0.2833,
           "se": 0.015,
           "baseline": 0.3
         },
         "18@500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2844,
+          "positional_top3_hit_rate": 0.2833,
           "se": 0.015,
           "baseline": 0.3
         },
         "18@1000": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2844,
+          "positional_top3_hit_rate": 0.2833,
           "se": 0.015,
           "baseline": 0.3
         },
         "18@1500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2844,
+          "positional_top3_hit_rate": 0.2833,
           "se": 0.015,
           "baseline": 0.3
         },
         "24@100": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2756,
+          "positional_top3_hit_rate": 0.2744,
           "se": 0.0149,
           "baseline": 0.3
         },
         "24@300": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2756,
+          "positional_top3_hit_rate": 0.2744,
           "se": 0.0149,
           "baseline": 0.3
         },
         "24@500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2756,
+          "positional_top3_hit_rate": 0.2744,
           "se": 0.0149,
           "baseline": 0.3
         },
         "24@1000": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2756,
+          "positional_top3_hit_rate": 0.2744,
           "se": 0.0149,
           "baseline": 0.3
         },
         "24@1500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2756,
+          "positional_top3_hit_rate": 0.2744,
           "se": 0.0149,
           "baseline": 0.3
         },
         "30@100": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2678,
-          "se": 0.0148,
+          "positional_top3_hit_rate": 0.2667,
+          "se": 0.0147,
           "baseline": 0.3
         },
         "30@300": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2722,
+          "positional_top3_hit_rate": 0.2711,
           "se": 0.0148,
           "baseline": 0.3
         },
         "30@500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2722,
+          "positional_top3_hit_rate": 0.2711,
           "se": 0.0148,
           "baseline": 0.3
         },
         "30@1000": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2722,
+          "positional_top3_hit_rate": 0.2711,
           "se": 0.0148,
           "baseline": 0.3
         },
         "30@1500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2722,
+          "positional_top3_hit_rate": 0.2711,
           "se": 0.0148,
           "baseline": 0.3
         },
@@ -234,9 +284,9 @@
           "baseline": 0.3
         }
       },
-      "latest_issue": "26208",
+      "latest_issue": "26209",
       "review_feedback": {
-        "source_issue": "26208",
+        "source_issue": "26209",
         "exploration_positions": [
           0,
           1,
@@ -279,152 +329,152 @@
       "backtest": {
         "8@100": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2947,
+          "positional_top3_hit_rate": 0.2933,
           "se": 0.0118,
           "baseline": 0.3
         },
         "8@300": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2947,
+          "positional_top3_hit_rate": 0.2933,
           "se": 0.0118,
           "baseline": 0.3
         },
         "8@500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2947,
+          "positional_top3_hit_rate": 0.2933,
           "se": 0.0118,
           "baseline": 0.3
         },
         "8@1000": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2947,
+          "positional_top3_hit_rate": 0.2933,
           "se": 0.0118,
           "baseline": 0.3
         },
         "8@1500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2947,
+          "positional_top3_hit_rate": 0.2933,
           "se": 0.0118,
           "baseline": 0.3
         },
         "13@100": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.3087,
+          "positional_top3_hit_rate": 0.308,
           "se": 0.0119,
           "baseline": 0.3
         },
         "13@300": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.3087,
+          "positional_top3_hit_rate": 0.308,
           "se": 0.0119,
           "baseline": 0.3
         },
         "13@500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.3087,
+          "positional_top3_hit_rate": 0.308,
           "se": 0.0119,
           "baseline": 0.3
         },
         "13@1000": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.3087,
+          "positional_top3_hit_rate": 0.308,
           "se": 0.0119,
           "baseline": 0.3
         },
         "13@1500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.3087,
+          "positional_top3_hit_rate": 0.308,
           "se": 0.0119,
           "baseline": 0.3
         },
         "18@100": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2953,
+          "positional_top3_hit_rate": 0.294,
           "se": 0.0118,
           "baseline": 0.3
         },
         "18@300": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2953,
+          "positional_top3_hit_rate": 0.294,
           "se": 0.0118,
           "baseline": 0.3
         },
         "18@500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2953,
+          "positional_top3_hit_rate": 0.294,
           "se": 0.0118,
           "baseline": 0.3
         },
         "18@1000": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2953,
+          "positional_top3_hit_rate": 0.294,
           "se": 0.0118,
           "baseline": 0.3
         },
         "18@1500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2953,
+          "positional_top3_hit_rate": 0.294,
           "se": 0.0118,
           "baseline": 0.3
         },
         "24@100": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2907,
+          "positional_top3_hit_rate": 0.2893,
           "se": 0.0117,
           "baseline": 0.3
         },
         "24@300": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2913,
+          "positional_top3_hit_rate": 0.29,
           "se": 0.0117,
           "baseline": 0.3
         },
         "24@500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2913,
+          "positional_top3_hit_rate": 0.29,
           "se": 0.0117,
           "baseline": 0.3
         },
         "24@1000": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2913,
+          "positional_top3_hit_rate": 0.29,
           "se": 0.0117,
           "baseline": 0.3
         },
         "24@1500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2913,
+          "positional_top3_hit_rate": 0.29,
           "se": 0.0117,
           "baseline": 0.3
         },
         "30@100": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.29,
+          "positional_top3_hit_rate": 0.2887,
           "se": 0.0117,
           "baseline": 0.3
         },
         "30@300": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.294,
-          "se": 0.0118,
+          "positional_top3_hit_rate": 0.2927,
+          "se": 0.0117,
           "baseline": 0.3
         },
         "30@500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.294,
-          "se": 0.0118,
+          "positional_top3_hit_rate": 0.2927,
+          "se": 0.0117,
           "baseline": 0.3
         },
         "30@1000": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.294,
-          "se": 0.0118,
+          "positional_top3_hit_rate": 0.2927,
+          "se": 0.0117,
           "baseline": 0.3
         },
         "30@1500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.294,
-          "se": 0.0118,
+          "positional_top3_hit_rate": 0.2927,
+          "se": 0.0117,
           "baseline": 0.3
         },
         "45@100": {
@@ -488,9 +538,9 @@
           "baseline": 0.3
         }
       },
-      "latest_issue": "26208",
+      "latest_issue": "26209",
       "review_feedback": {
-        "source_issue": "26208",
+        "source_issue": "26209",
         "exploration_positions": [],
         "reason": "上一期各位置均有候选池覆盖，保持三位候选池宽度。"
       }
@@ -519,62 +569,62 @@
       "backtest": {
         "8@100": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2956,
+          "positional_top3_hit_rate": 0.2967,
           "se": 0.0152,
           "baseline": 0.3
         },
         "8@300": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2956,
+          "positional_top3_hit_rate": 0.2967,
           "se": 0.0152,
           "baseline": 0.3
         },
         "8@500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2956,
+          "positional_top3_hit_rate": 0.2967,
           "se": 0.0152,
           "baseline": 0.3
         },
         "8@1000": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2956,
+          "positional_top3_hit_rate": 0.2967,
           "se": 0.0152,
           "baseline": 0.3
         },
         "8@1500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2956,
+          "positional_top3_hit_rate": 0.2967,
           "se": 0.0152,
           "baseline": 0.3
         },
         "13@100": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2989,
-          "se": 0.0153,
+          "positional_top3_hit_rate": 0.2978,
+          "se": 0.0152,
           "baseline": 0.3
         },
         "13@300": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2989,
-          "se": 0.0153,
+          "positional_top3_hit_rate": 0.2978,
+          "se": 0.0152,
           "baseline": 0.3
         },
         "13@500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2989,
-          "se": 0.0153,
+          "positional_top3_hit_rate": 0.2978,
+          "se": 0.0152,
           "baseline": 0.3
         },
         "13@1000": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2989,
-          "se": 0.0153,
+          "positional_top3_hit_rate": 0.2978,
+          "se": 0.0152,
           "baseline": 0.3
         },
         "13@1500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2989,
-          "se": 0.0153,
+          "positional_top3_hit_rate": 0.2978,
+          "se": 0.0152,
           "baseline": 0.3
         },
         "18@100": {
@@ -705,40 +755,87 @@
         },
         "60@300": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2889,
+          "positional_top3_hit_rate": 0.29,
           "se": 0.0151,
           "baseline": 0.3
         },
         "60@500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2889,
+          "positional_top3_hit_rate": 0.29,
           "se": 0.0151,
           "baseline": 0.3
         },
         "60@1000": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2889,
+          "positional_top3_hit_rate": 0.29,
           "se": 0.0151,
           "baseline": 0.3
         },
         "60@1500": {
           "folds": 300,
-          "positional_top3_hit_rate": 0.2889,
+          "positional_top3_hit_rate": 0.29,
           "se": 0.0151,
           "baseline": 0.3
         }
       },
-      "latest_issue": "2026208",
+      "latest_issue": "2026209",
       "review_feedback": {
-        "source_issue": "2026208",
+        "source_issue": "2026209",
         "exploration_positions": [
-          0
+          1,
+          2
         ],
         "reason": "上一期这些位置未被候选池覆盖，下一期仅扩大一档候选池做受控探索；不把上一期开奖号码直接升权。"
       }
     },
-    "qxc": {
-      "kind": "generator_internal_calibration"
+    "ssq": {
+      "kind": "set_model",
+      "selected_window": 1500,
+      "backtest": {
+        "100": {
+          "folds": 240,
+          "pool_coverage": 0.5125,
+          "se": 0.0113,
+          "baseline": 0.5122
+        },
+        "300": {
+          "folds": 240,
+          "pool_coverage": 0.5208,
+          "se": 0.0113,
+          "baseline": 0.5122
+        },
+        "500": {
+          "folds": 240,
+          "pool_coverage": 0.522,
+          "se": 0.0113,
+          "baseline": 0.5122
+        },
+        "1000": {
+          "folds": 240,
+          "pool_coverage": 0.519,
+          "se": 0.0113,
+          "baseline": 0.5122
+        },
+        "1500": {
+          "folds": 240,
+          "pool_coverage": 0.5179,
+          "se": 0.0113,
+          "baseline": 0.5122
+        }
+      },
+      "latest_issue": "2026090",
+      "review_feedback": {
+        "source_issue": "2026090",
+        "exploration_positions": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "reason": "上一期这些位置未被候选池覆盖，下一期仅扩大一档候选池做受控探索；不把上一期开奖号码直接升权。"
+      }
     },
     "kl8": {
       "kind": "set_model",
@@ -746,25 +843,25 @@
       "backtest": {
         "100": {
           "folds": 240,
-          "pool_coverage": 0.4975,
+          "pool_coverage": 0.4973,
           "se": 0.0063,
           "baseline": 0.5
         },
         "300": {
           "folds": 240,
-          "pool_coverage": 0.4929,
+          "pool_coverage": 0.4923,
           "se": 0.0063,
           "baseline": 0.5
         },
         "500": {
           "folds": 240,
-          "pool_coverage": 0.49,
+          "pool_coverage": 0.4896,
           "se": 0.0063,
           "baseline": 0.5
         },
         "1000": {
           "folds": 240,
-          "pool_coverage": 0.4981,
+          "pool_coverage": 0.4988,
           "se": 0.0063,
           "baseline": 0.5
         },
@@ -775,9 +872,9 @@
           "baseline": 0.5
         }
       },
-      "latest_issue": "2026208",
+      "latest_issue": "2026209",
       "review_feedback": {
-        "source_issue": "2026208",
+        "source_issue": "2026209",
         "exploration_positions": [],
         "reason": "上一期各位置均有候选池覆盖，保持三位候选池宽度。"
       }

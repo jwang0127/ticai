@@ -57,7 +57,14 @@ def main() -> None:
     except (FileNotFoundError, json.JSONDecodeError):
         previous_dashboard = {}
     selected = today_games(config) if args.today else [game.strip() for game in args.games.split(",") if game.strip()]
-    tuning = {"generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "games": {}}
+    try:
+        previous_tuning = json.loads(OUTPUT_PATH.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        previous_tuning = {}
+    tuning = {
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "games": dict(previous_tuning.get("games", {})),
+    }
     for game in selected:
         rows = data["draws"][game]
         if game in ("pl3", "pl5", "fc3d"):
