@@ -46,6 +46,11 @@ def main() -> int:
         return 2
 
     succeeded: list[str] = []
+    # Scheduled runs only need the newest page. fetch_draws.py merges that
+    # page into the existing verified cache, so asking each upstream for all
+    # 2,000 rows just makes a transient source delay much more likely to block
+    # the whole Pages deployment.
+    fetch_limit = min(args.history_limit, 100)
     for game in selected:
         command = [
             sys.executable,
@@ -53,7 +58,7 @@ def main() -> int:
             "--games",
             game,
             "--history-limit",
-            str(args.history_limit),
+            str(fetch_limit),
             "--require-fresh-results",
         ]
         print(f"[START] independent refresh: {game}", flush=True)
