@@ -12,12 +12,9 @@ on:
           - "dlt,pl3,pl5,fc3d,qxc,ssq,kl8"
           - "dlt"
           - "pl3,pl5,fc3d,qxc,ssq,kl8"
-  schedule:
-    # GitHub cron is UTC. Retry after the latest daily draw.
-    - cron: "45 13 * * *"
-    - cron: "0 14 * * *"
-    - cron: "15 14 * * *"
-    - cron: "30 14 * * *"
+  # Official lottery endpoints reject GitHub-hosted runner IPs (HTTP 567/403).
+  # The Windows scheduled task in scripts/refresh_and_push.ps1 fetches data
+  # locally and pushes main; GitHub Actions only builds/deploys that push.
   push:
     branches: [main]
 permissions:
