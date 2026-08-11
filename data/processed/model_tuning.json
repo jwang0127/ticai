@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-11T03:34:31+00:00",
+  "generated_at": "2026-08-11T14:42:05+00:00",
   "games": {
     "qxc": {
       "kind": "generator_internal_calibration"
@@ -333,14 +333,14 @@
       "backtest": {
         "50": {
           "folds": 50,
-          "pool_coverage": 0.498,
+          "pool_coverage": 0.497,
           "se": 0.0138,
           "baseline": 0.5
         }
       },
-      "latest_issue": "2026211",
+      "latest_issue": "2026213",
       "review_feedback": {
-        "source_issue": "2026211",
+        "source_issue": "2026212",
         "exploration_positions": [],
         "reason": "上一期各位置均有候选池覆盖，保持三位候选池宽度。"
       }
