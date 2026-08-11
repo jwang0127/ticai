@@ -162,6 +162,18 @@ class DetailPageTests(unittest.TestCase):
                 distinct = {item["number"][position] for item in candidates}
                 self.assertGreaterEqual(len(distinct), 3, (game, position, distinct))
 
+    def test_pl3_uses_four_digit_pool_after_rolling_coverage_review(self):
+        candidates, _ = generate_positional_ensemble("pl3", self.rows)
+        for position in range(3):
+            distinct = {item["number"][position] for item in candidates}
+            self.assertGreaterEqual(len(distinct), 4, (position, distinct))
+
+    def test_fc3d_five_ticket_pool_covers_five_digits_per_position(self):
+        candidates, _ = generate_positional_ensemble("fc3d", self.fc3d_rows)
+        for position in range(3):
+            distinct = {item["number"][position] for item in candidates}
+            self.assertEqual(len(distinct), 5, (position, distinct))
+
     def test_qxc_candidates_cover_three_digits_per_position(self):
         candidates, _ = generate_qxc(self.qxc_rows)
         for position in range(7):
@@ -211,6 +223,21 @@ class DetailPageTests(unittest.TestCase):
                 len({item[0][position] for item in repaired}),
                 min(3, len({item[0][position] for item in selected})),
             )
+
+    def test_pl3_repeat_shape_coverage_is_bounded(self):
+        rows = [{"numbers": ["7", "5", "5"]}] * 30
+        scored = [
+            ("925", -1.0, 0.0),
+            ("438", -1.1, 0.0),
+            ("217", -1.2, 0.0),
+            ("495", -1.3, 0.0),
+            ("728", -1.4, 0.0),
+            ("722", -1.5, 0.0),
+        ]
+        selected = scored[:5]
+        repaired = ensure_repeat_shape_coverage(selected, scored, rows)
+        self.assertEqual(len(repaired), 5)
+        self.assertTrue(any(len(set(item[0])) == 2 for item in repaired))
 
     def test_kl8_groups_are_pairwise_disjoint(self):
         for pick_count in range(5, 11):

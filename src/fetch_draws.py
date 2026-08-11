@@ -253,7 +253,11 @@ def parse_args() -> argparse.Namespace:
         default="dlt,pl3,pl5,fc3d,qxc,ssq,kl8",
         help="逗号分隔的玩法代码，例如 pl3,pl5",
     )
-    parser.add_argument("--history-limit", type=int, default=100, help="每个玩法抓取的历史期数")
+    # A 100-draw snapshot leaves a 50-draw calibration with only one useful
+    # comparison window.  Keep enough official history by default for the
+    # 50/100/300/500/1000/1500 rolling grid; callers can still request a
+    # smaller bounded refresh explicitly.
+    parser.add_argument("--history-limit", type=int, default=2000, help="每个玩法抓取的历史期数")
     parser.add_argument("--today", action="store_true", help="只抓取北京时间今天安排开奖的彩种")
     parser.add_argument(
         "--require-fresh-results",

@@ -62,10 +62,14 @@ DIGIT_MODELS = {
 }
 
 BACKTEST_DECAYS = (8, 13, 18, 24, 30, 45, 60)
-BACKTEST_WINDOWS = (100, 300, 500, 1000, 1500)
+# Keep a meaningful validation sample when the official endpoint only returns
+# the latest 100 draws. Without the 50-draw cell, the fallback window becomes
+# len(rows)-1 and calibration degenerates to a single held-out fold.
+BACKTEST_WINDOWS = (50, 100, 300, 500, 1000, 1500)
 DIGIT_BACKTEST_FOLDS = 300
 POOL_BACKTEST_FOLDS = 240
 UNIFORM_TOP3_BASELINE = 0.3
+FC3D_POSITION_POOL_WIDTH = 5
 
 # Calibration reruns the same rolling grid for one immutable history snapshot
 # from several call sites (generation, analysis, confidence scaling); memoize
@@ -91,8 +95,10 @@ def _digit_sequence(rows: list[dict], position: int) -> list[int]:
     return [int(row["numbers"][position]) for row in rows]
 
 
-def _sliding_top3_hits(sequence: list[int], decay: int, window_size: int, folds: int) -> tuple[int, int]:
-    """Count held-out top-3 hits with an O(1)-per-fold sliding decayed window.
+def _sliding_top3_hits(
+    sequence: list[int], decay: int, window_size: int, folds: int, top_k: int = 3
+) -> tuple[int, int]:
+    """Count held-out top-k hits with an O(1)-per-fold sliding decayed window.
 
     Fold at index i trains on sequence[i:i+window] (age 0 = newest) and tests
     sequence[i-1]. Sliding the window one draw forward rescales every weight
@@ -120,11 +126,11 @@ def _sliding_top3_hits(sequence: list[int], decay: int, window_size: int, folds:
     hits = 0
     index = limit
     while True:
-        top3 = sorted(
+        top_values = sorted(
             (digit for digit in range(10) if occupancy[digit]),
             key=lambda digit: (-counts[digit], digit),
-        )[:3]
-        hits += int(sequence[index - 1] in top3)
+        )[:top_k]
+        hits += int(sequence[index - 1] in top_values)
         index -= 1
         if index < 1:
             break
@@ -138,34 +144,46 @@ def _sliding_top3_hits(sequence: list[int], decay: int, window_size: int, folds:
     return hits, limit
 
 
-def rolling_digit_backtest(rows: list[dict], digits: int, decay: int, window_size: int, folds: int = DIGIT_BACKTEST_FOLDS) -> dict:
-    """Evaluate positional top-three coverage without using the held-out draw."""
+def rolling_digit_backtest(
+    rows: list[dict], digits: int, decay: int, window_size: int,
+    folds: int = DIGIT_BACKTEST_FOLDS, top_k: int = 3,
+) -> dict:
+    """Evaluate positional top-k coverage without using the held-out draw."""
     hits = total = 0
     limit = 0
     for position in range(digits):
-        position_hits, limit = _sliding_top3_hits(_digit_sequence(rows, position), decay, window_size, folds)
+        position_hits, limit = _sliding_top3_hits(
+            _digit_sequence(rows, position), decay, window_size, folds, top_k
+        )
         hits += position_hits
         total += limit
     rate = hits / total if total else 0.0
     return {
         "folds": limit,
-        "positional_top3_hit_rate": round(rate, 4),
+        "positional_top3_hit_rate": round(rate, 4) if top_k == 3 else None,
+        "positional_topk_hit_rate": round(rate, 4),
+        "top_k": top_k,
         "se": round(binomial_se(rate, total), 4),
-        "baseline": UNIFORM_TOP3_BASELINE,
+        "baseline": round(top_k / 10, 4),
     }
 
 
 def rolling_digit_position_backtest(
-    rows: list[dict], position: int, decay: int, window_size: int, folds: int = DIGIT_BACKTEST_FOLDS
+    rows: list[dict], position: int, decay: int, window_size: int,
+    folds: int = DIGIT_BACKTEST_FOLDS, top_k: int = 3,
 ) -> dict:
     """Evaluate one digit position without using the held-out draw."""
-    hits, limit = _sliding_top3_hits(_digit_sequence(rows, position), decay, window_size, folds)
+    hits, limit = _sliding_top3_hits(
+        _digit_sequence(rows, position), decay, window_size, folds, top_k
+    )
     rate = hits / limit if limit else 0.0
     return {
         "folds": limit,
-        "top3_hit_rate": round(rate, 4),
+        "top3_hit_rate": round(rate, 4) if top_k == 3 else None,
+        "topk_hit_rate": round(rate, 4),
+        "top_k": top_k,
         "se": round(binomial_se(rate, limit), 4),
-        "baseline": UNIFORM_TOP3_BASELINE,
+        "baseline": round(top_k / 10, 4),
     }
 
 
@@ -198,11 +216,13 @@ def calibrate_digit_model(game: str, rows: list[dict], digits: int) -> dict:
     base = dict(digit_model(game))
     windows = [window for window in BACKTEST_WINDOWS if window < len(rows)] or [max(1, len(rows) - 1)]
     cells = [(decay, window) for decay in BACKTEST_DECAYS for window in windows]
+    top_k = FC3D_POSITION_POOL_WIDTH if game == "fc3d" else 3
     scores = {
-        f"{decay}@{window}": rolling_digit_backtest(rows, digits, decay, window)
+        f"{decay}@{window}": rolling_digit_backtest(rows, digits, decay, window, top_k=top_k)
         for decay, window in cells
     }
-    chosen_decay, chosen_window = _one_se_choice(cells, scores, "positional_top3_hit_rate", digits)
+    rate_key = "positional_top3_hit_rate" if top_k == 3 else "positional_topk_hit_rate"
+    chosen_decay, chosen_window = _one_se_choice(cells, scores, rate_key, digits)
     override = _CALIBRATION_OVERRIDES.get(game, {})
     forced_key = f"{override.get('selected_decay')}@{override.get('selected_window')}"
     if forced_key in scores:
@@ -211,10 +231,13 @@ def calibrate_digit_model(game: str, rows: list[dict], digits: int) -> dict:
     position_backtest = []
     for position in range(digits):
         position_scores = {
-            f"{decay}@{window}": rolling_digit_position_backtest(rows, position, decay, window)
+            f"{decay}@{window}": rolling_digit_position_backtest(
+                rows, position, decay, window, top_k=top_k
+            )
             for decay, window in cells
         }
-        position_decay, position_window = _one_se_choice(cells, position_scores, "top3_hit_rate")
+        position_rate_key = "top3_hit_rate" if top_k == 3 else "topk_hit_rate"
+        position_decay, position_window = _one_se_choice(cells, position_scores, position_rate_key)
         saved_position = next(
             (item for item in override.get("selected_position_parameters", [])
              if int(item.get("position", -1)) == position),
@@ -235,6 +258,7 @@ def calibrate_digit_model(game: str, rows: list[dict], digits: int) -> dict:
         "position_backtest": position_backtest,
         "selected_decay": chosen_decay,
         "selected_window": chosen_window,
+        "top_k": top_k,
     }
     _CALIBRATION_CACHE[cache_key] = result
     return result
@@ -849,6 +873,7 @@ def ensure_repeat_shape_coverage(
     rows: list[dict],
     recent_window: int = 300,
     minimum_repeat_rate: float = 0.24,
+    minimum_position_coverage: int = 3,
 ) -> list[tuple[str, float, float]]:
     """Keep one controlled 组三 line when recent history supports it.
 
@@ -879,7 +904,9 @@ def ensure_repeat_shape_coverage(
             if len({item[0] for item in trial}) != len(selected):
                 continue
             if any(
-                len({item[0][position] for item in trial}) < min(current_coverage[position], 3)
+                len({item[0][position] for item in trial}) < min(
+                    current_coverage[position], minimum_position_coverage
+                )
                 for position in range(3)
             ):
                 continue
@@ -1008,17 +1035,22 @@ def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict
         model = calibrate_digit_model(game, forecast_rows, digits)["parameters"]
         components = mixed_digit_components(forecast_rows, digits, model)
         position_counts, totals, _, _, _ = components
-        # A useful pool should be selective: three independently backtested
-        # digits per position, then five combinations from their product.
+        # PL3 benefits from one extra controlled hedge per position: recent
+        # rolling tests show Top-4 improves coverage without Top-5 dilution.
         exploration_positions = {
             int(value) for value in _REVIEW_FEEDBACK.get(game, {}).get("exploration_positions", [])
         }
+        pool_width = (
+            FC3D_POSITION_POOL_WIDTH if game == "fc3d"
+            else 4 if game == "pl3" else None
+        )
+        base_pool_width = 4 if game == "pl3" else 3
         pools = [
             sorted(
                 range(10),
                 key=lambda value: score_digit(value, position_counts[position], totals[position]),
                 reverse=True,
-            )[: 4 if position in exploration_positions else 3]
+            )[: (pool_width or (base_pool_width + (1 if position in exploration_positions else 0)))]
             for position in range(digits)
         ]
         all_values = list(product(*pools))
@@ -1031,6 +1063,21 @@ def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict
                 # ZIP signals are deliberately capped as a tie-breaker.
                 score += 0.08 * hybrid_structure_score(list(values), structure_profile)
             scored.append((number, score, 0.0))
+        # PL3 needs one controlled 组三 coverage line when history supports it.
+        # Build that repair pool from all ordered 组三 numbers instead of the
+        # 3x3x3 hot pool; otherwise a weak digit outside a positional Top-3 can
+        # never be recovered by the shape-coverage pass.
+        repeat_scored = scored
+        if game == "pl3":
+            repeat_scored = []
+            for values in product(range(10), repeat=digits):
+                if len(set(values)) != 2:
+                    continue
+                number = "".join(str(value) for value in values)
+                score = global_candidate_score(list(values), components, model)
+                if structure_profile is not None:
+                    score += 0.08 * hybrid_structure_score(list(values), structure_profile)
+                repeat_scored.append((number, score, 0.0))
         ranked = diversified_rank(scored, 5, model["diversity"])
         ranked = ensure_position_pool_coverage(
             ranked,
@@ -1039,8 +1086,23 @@ def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict
                + (0.08 * hybrid_structure_score([int(value) for value in text], structure_profile)
                if structure_profile is not None else 0.0),
         )
-        if game == "fc3d":
-            ranked = ensure_repeat_shape_coverage(ranked, scored, forecast_rows)
+        if game in ("pl3", "fc3d"):
+            ranked = ensure_repeat_shape_coverage(
+                ranked,
+                repeat_scored,
+                forecast_rows,
+                minimum_position_coverage=4 if game == "pl3" else 3,
+            )
+        if game in ("pl3", "fc3d"):
+            # Repeat-shape repair may replace a line; restore the full
+            # positional coverage contract after that portfolio adjustment.
+            ranked = ensure_position_pool_coverage(
+                ranked,
+                pools,
+                lambda text: global_candidate_score([int(value) for value in text], components, model)
+                + (0.08 * hybrid_structure_score([int(value) for value in text], structure_profile)
+                   if structure_profile is not None else 0.0),
+            )
         if len({number for number, _, _ in ranked}) != 5:
             raise RuntimeError(f"{game} hot pool did not generate five distinct direct picks")
     else:
@@ -2017,6 +2079,7 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
             if game in ("pl3", "fc3d") else []
         ),
         "backtest": calibration["backtest"] if calibration else None,
+        "top_k": calibration.get("top_k", 3) if calibration else None,
         "selected_decay": calibration.get("selected_decay") if game in ("pl3", "pl5", "fc3d") else None,
         "selected_window": calibration.get("selected_window") if calibration else None,
         "selected_position_parameters": calibration.get("parameters", {}).get("position_parameters", []) if game in ("pl3", "pl5", "fc3d") else [],
