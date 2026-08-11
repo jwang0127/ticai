@@ -3,9 +3,11 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, time as clock_time
+from html import unescape
 from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError, URLError
@@ -243,7 +245,44 @@ def fetch_welfare_game(game: str, cfg: dict[str, Any], api: str, default_results
         except (HTTPError, URLError, TimeoutError, ValueError, json.JSONDecodeError) as exc:
             error = exc
             time.sleep(2**attempt)
+    if game == "kl8":
+        try:
+            return fetch_kl8_from_provincial_index(history_limit)
+        except Exception as fallback_error:
+            error = fallback_error
     raise RuntimeError(f"中国福彩网{cfg['name']}接口请求失败: {error}")
+
+
+def fetch_kl8_from_provincial_index(history_limit: int) -> list[dict[str, Any]]:
+    """Use official provincial index and official announcement pages if API is 403."""
+    index_url = "https://www.gdfc.org.cn/play_list_game_10.html"
+    with urlopen(Request(index_url, headers={"User-Agent": "Mozilla/5.0"}), timeout=20) as response:
+        index_html = response.read().decode("utf-8", errors="ignore")
+    entries = re.findall(
+        r'<td[^>]*>\s*(20\d{5,})\s*</td>.*?href="(https://www\.cwl\.gov\.cn/[^"]+)"',
+        index_html,
+        flags=re.S,
+    )
+    result: list[dict[str, Any]] = []
+    for issue, detail_url in entries[: min(history_limit, 30)]:
+        detail_html = subprocess.run(
+            [
+                "curl.exe", "-L", "--fail", "--silent", "--show-error", "--max-time", "20",
+                "-A", "Mozilla/5.0", "-e", index_url, detail_url,
+            ],
+            check=True,
+            capture_output=True,
+        ).stdout.decode("utf-8", errors="ignore")
+        number_match = re.search(r"var\s+kjh\s*=\s*'([^']+)'", detail_html)
+        date_match = re.search(r"var\s+kjsj\s*=\s*'([^']+)'", detail_html)
+        if not number_match or not date_match:
+            continue
+        numbers = [value.strip().zfill(2) for value in unescape(number_match.group(1)).split(",")]
+        validate("kl8", numbers, {"draw_count": 20, "number_range": [1, 80]})
+        result.append({"issue": issue, "draw_date": date_match.group(1)[:10], "numbers": numbers})
+    if not result:
+        raise ValueError("official provincial KL8 index returned no usable draw rows")
+    return sorted(result, key=lambda row: row["issue"], reverse=True)
 
 
 def parse_args() -> argparse.Namespace:
