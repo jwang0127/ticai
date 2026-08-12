@@ -2375,11 +2375,45 @@ def main() -> None:
                 ],
                 "recovered_reviews": [recovered_review] if recovered_review else [],
             }
+            if game in ("pl3", "fc3d"):
+                # Keep the review schema positional even when there is no
+                # prior prediction snapshot to score.  An empty pool is
+                # explicit evidence of missing snapshot data, not a claim
+                # that the current prediction missed the settled draw.
+                labels = ["百位", "十位", "个位"]
+                model_reviews[game]["position_diagnostics"] = [
+                    {
+                        "position": labels[index],
+                        "actual_digit": str(value),
+                        "candidate_digits": [],
+                        "candidate_hit_count": 0,
+                        "pool_hit": False,
+                        "reason": "没有上一版预测快照，无法进行本期逐位命中复盘。",
+                    }
+                    for index, value in enumerate(latest["numbers"])
+                ]
+                model_reviews[game]["position_pool_coverage"] = 0
+                model_reviews[game]["position_count"] = 3
             output["games"][game]["model_review"] = model_reviews[game]
         # The historical review may already be complete while today's
         # candidates are regenerated. Keep only the forward-looking advice in
         # lockstep with the composite recommendation shown on this page.
         if game in ("pl3", "fc3d") and output["games"][game].get("model_review"):
+            if not output["games"][game]["model_review"].get("position_diagnostics"):
+                labels = ["百位", "十位", "个位"]
+                output["games"][game]["model_review"]["position_diagnostics"] = [
+                    {
+                        "position": labels[index],
+                        "actual_digit": str(value),
+                        "candidate_digits": [],
+                        "candidate_hit_count": 0,
+                        "pool_hit": False,
+                        "reason": "没有上一版预测快照，无法进行本期逐位命中复盘。",
+                    }
+                    for index, value in enumerate(latest["numbers"])
+                ]
+                output["games"][game]["model_review"]["position_pool_coverage"] = 0
+                output["games"][game]["model_review"]["position_count"] = 3
             actual_metrics = direct_number_metrics([int(value) for value in latest["numbers"]])
             structure_diagnostics = {
                 "actual": actual_metrics,
