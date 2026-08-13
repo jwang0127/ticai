@@ -219,32 +219,32 @@
     "position_count": 3,
     "next_day_advice": [
       {
-        "number": "805",
+        "number": "865",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：805"
+        "suggestion": "直选参考：865"
       },
       {
-        "number": "706",
+        "number": "716",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：706"
+        "suggestion": "直选参考：716"
       },
       {
-        "number": "076",
-        "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：076"
-      },
-      {
-        "number": "764",
-        "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：764"
-      },
-      {
-        "number": "119",
+        "number": "885",
         "shape": "组选三",
-        "suggestion": "组选三参考：119（119/191/911）"
+        "suggestion": "组选三参考：885（588/858/885）"
+      },
+      {
+        "number": "084",
+        "shape": "组六形态，按直选参考",
+        "suggestion": "直选参考：084"
+      },
+      {
+        "number": "509",
+        "shape": "组六形态，按直选参考",
+        "suggestion": "直选参考：509"
       }
     ],
-    "next_day_advice_text": "直选参考：805；直选参考：706；直选参考：076；直选参考：764；组选三参考：119（119/191/911）",
+    "next_day_advice_text": "直选参考：865；直选参考：716；组选三参考：885（588/858/885）；直选参考：084；直选参考：509",
     "learning_action": "上一期这些位置未被候选池覆盖，下一期仅扩大一档候选池做受控探索；不把上一期开奖号码直接升权。",
     "tuning_applied": true
   },
@@ -350,19 +350,19 @@
     "position_count": 3,
     "next_day_advice": [
       {
-        "number": "915",
+        "number": "925",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：915"
+        "suggestion": "直选参考：925"
       },
       {
-        "number": "232",
-        "shape": "组选三",
-        "suggestion": "组选三参考：232（223/232/322）"
+        "number": "432",
+        "shape": "组六形态，按直选参考",
+        "suggestion": "直选参考：432"
       },
       {
-        "number": "428",
+        "number": "218",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：428"
+        "suggestion": "直选参考：218"
       },
       {
         "number": "581",
@@ -370,12 +370,12 @@
         "suggestion": "直选参考：581"
       },
       {
-        "number": "879",
+        "number": "809",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：879"
+        "suggestion": "直选参考：809"
       }
     ],
-    "next_day_advice_text": "直选参考：915；组选三参考：232（223/232/322）；直选参考：428；直选参考：581；直选参考：879",
+    "next_day_advice_text": "直选参考：925；直选参考：432；直选参考：218；直选参考：581；直选参考：809",
     "learning_action": "上一期这些位置未被候选池覆盖，下一期仅扩大一档候选池做受控探索；不把上一期开奖号码直接升权。",
     "tuning_applied": true
   },
