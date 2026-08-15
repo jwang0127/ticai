@@ -318,7 +318,7 @@ class DetailPageTests(unittest.TestCase):
             self.assertTrue(all(item["numbers"] == sorted(set(item["numbers"])) for item in candidates))
 
     def test_kl8_play_types_diversify_lead_lines_across_pick_counts(self):
-        play_types = generate_kl8_play_types(self.kl8_rows, [5, 6, 7, 8, 9, 10])
+        play_types = generate_kl8_play_types(self.kl8_rows, [7, 8, 9, 10])
         lead_groups = [set(play["candidates"][0][0]["numbers"]) for play in play_types.values()]
         pairwise_overlaps = [
             len(left & right)
@@ -341,8 +341,11 @@ class DetailPageTests(unittest.TestCase):
         self.assertNotIn("play_types", games["pl3"])
         self.assertNotIn("play_types", games["fc3d"])
         self.assertNotIn("play_types", games["kl8"])
-        self.assertEqual(len(games["kl8"]["top_candidates"]), 5)
-        self.assertGreater(len({item["pick_count"] for item in games["kl8"]["top_candidates"]}), 1)
+        self.assertEqual(len(games["kl8"]["top_candidates"]), 4)
+        self.assertEqual(
+            {item["pick_count"] for item in games["kl8"]["top_candidates"]},
+            {7, 8, 9, 10},
+        )
         for suffix in ("3", "6"):
             self.assertNotIn("组选" + suffix, text)
 

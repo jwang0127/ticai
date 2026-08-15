@@ -1478,7 +1478,7 @@ def generate_ssq(rows: list[dict], issue: str) -> tuple[list[dict], list[float]]
 def generate_kl8(rows: list[dict], pick_count: int = 5) -> tuple[list[dict], list[float]]:
     return generate_kl8_v3(rows, pick_count)
     # Legacy generator retained below for comparison and emergency rollback.
-    """快乐8“选五”专用模型：单号强度、遗漏、共现和四区覆盖。"""
+    """快乐8选N模型：单号强度、遗漏、共现和四区覆盖。"""
     window = calibrate_set_model("kl8", rows)["selected_window"]
     counts = blended_number_counts(rows, 0, 20, 25, window)
     total = sum(counts.values())
@@ -1881,7 +1881,7 @@ def build_model_review(
             "不把一次遗漏直接解释成下期必补。"
         )
         review["model_adjustments"] = [
-            "快乐8继续单独使用选五模型，并以滚动联合池覆盖率选择历史窗口。",
+            "快乐8继续单独使用选七至选十模型，并以滚动联合池覆盖率选择历史窗口。",
             "保持五组之间的重合约束，优先修正长期覆盖不足的区间，不追逐单期遗漏号码。",
         ]
     else:
@@ -2013,14 +2013,14 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
         omitted = [f"{number:02d}（{miss}期）" for number, miss in omission(rows[:sample], 0, 20, range(1, 81))[:6]]
         return {
             "sample": sample,
-            "model_name": "快乐8选五独立模型",
+            "model_name": "快乐8选七至选十独立模型",
             "selected_window": window,
             "backtest": set_calibration["backtest"],
             "summary": f"最近{sample}期以1–80单号衰减频率、遗漏封顶和两两共现为主，并约束每组号码覆盖至少三个区间。每个选N玩法各自生成5组互不重叠的号码（联合覆盖=5×N个）；顶部清单只展示各玩法得分最高的一组，跨玩法的组之间可能重叠。",
             "signals": [
                 {"label": "相对活跃号码", "value": " · ".join(hot)},
                 {"label": "较长遗漏", "value": "、".join(omitted)},
-                {"label": "组合目标", "value": "选五 · 每组5个号码 · 共5组"},
+                {"label": "组合目标", "value": "选七至选十 · 每组对应号码 · 每种玩法5组"},
             ],
             "method": ["25期单号衰减", "32期号码共现", "四区与奇偶温和约束", "五组候选分散"],
         }
@@ -2164,7 +2164,7 @@ def main() -> None:
         elif game == "ssq":
             candidates, scores = generate_ssq(rows, target_issue)
         elif game == "kl8":
-            play_types = generate_kl8_play_types(rows, cfg.get("pick_counts", [5, 6, 7, 8, 9, 10]))
+            play_types = generate_kl8_play_types(rows, cfg.get("pick_counts", [7, 8, 9, 10]))
             # Raw scores are not comparable across pick counts (more numbers,
             # more log terms), and rescaling each play's own list always hands
             # its top group the same ceiling - that ranking was decided by
