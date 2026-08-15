@@ -1877,12 +1877,12 @@ def build_model_review(
         review["hit_numbers"] = [f"{value:02d}" for value in hit_numbers]
         review["missed_numbers"] = [f"{value:02d}" for value in missed_numbers]
         review["error_attribution"] = (
-            f"未覆盖的 {len(missed_numbers)} 个号码没有进入五组联合池，主要是单号强度、四区覆盖、共现分和组间重合惩罚共同筛选的结果；"
+            f"未覆盖的 {len(missed_numbers)} 个号码没有进入十注联合池，主要是单号强度、四区覆盖、共现分和组间重合惩罚共同筛选的结果；"
             "不把一次遗漏直接解释成下期必补。"
         )
         review["model_adjustments"] = [
             "快乐8继续单独使用选七至选十模型，并以滚动联合池覆盖率选择历史窗口。",
-            "保持五组之间的重合约束，优先修正长期覆盖不足的区间，不追逐单期遗漏号码。",
+            "保持十注之间的组合分散，优先修正长期覆盖不足的区间，不追逐单期遗漏号码。",
         ]
     else:
         review["position_candidate_hits"] = [
@@ -2016,13 +2016,13 @@ def build_analysis(game: str, rows: list[dict]) -> dict:
             "model_name": "快乐8选七至选十独立模型",
             "selected_window": window,
             "backtest": set_calibration["backtest"],
-            "summary": f"最近{sample}期以1–80单号衰减频率、遗漏封顶和两两共现为主，并约束每组号码覆盖至少三个区间。每个选N玩法各自生成5组互不重叠的号码（联合覆盖=5×N个）；顶部清单只展示各玩法得分最高的一组，跨玩法的组之间可能重叠。",
+            "summary": f"最近{sample}期以1–80单号衰减频率、遗漏封顶和两两共现为主，并约束每组号码覆盖至少三个区间。每个选N玩法各自生成5组互不重叠的号码；公开清单固定生成10注，选七至选十各保留至少2注。",
             "signals": [
                 {"label": "相对活跃号码", "value": " · ".join(hot)},
                 {"label": "较长遗漏", "value": "、".join(omitted)},
-                {"label": "组合目标", "value": "选七至选十 · 每组对应号码 · 每种玩法5组"},
+                {"label": "组合目标", "value": "选七至选十 · 每次10注 · 每种玩法至少2注"},
             ],
-            "method": ["25期单号衰减", "32期号码共现", "四区与奇偶温和约束", "五组候选分散"],
+            "method": ["25期单号衰减", "32期号码共现", "四区与奇偶温和约束", "十注候选分散"],
         }
 
     all_counts = Counter(int(value) for row in rows[:sample] for value in row["numbers"])
@@ -2166,18 +2166,36 @@ def main() -> None:
         elif game == "kl8":
             play_types = generate_kl8_play_types(rows, cfg.get("pick_counts", [7, 8, 9, 10]))
             # Raw scores are not comparable across pick counts (more numbers,
-            # more log terms), and rescaling each play's own list always hands
-            # its top group the same ceiling - that ranking was decided by
-            # dict order and silently never showed 选10. Rank plays by how far
-            # the top group stands above its own play's five-group mean.
-            ranked_plays = []
+            # more log terms). Rank each play's candidates by its margin above
+            # that play's own five-group mean, then keep a balanced ten-ticket
+            # portfolio: two lines for each of 选7/8/9/10 plus two strongest
+            # remaining lines across the four plays.
+            ranked_plays = {}
             for key, play in play_types.items():
                 play_candidates, play_scores = play["candidates"]
-                margin = play_scores[0] - sum(play_scores) / len(play_scores)
-                ranked_plays.append((play_candidates[0] | {"pick_count": int(key), "play_name": play["name"]}, margin))
-            ranked_plays.sort(key=lambda item: (item[1], -item[0]["pick_count"]), reverse=True)
-            candidates = [candidate for candidate, _ in ranked_plays[:5]]
-            scores = [margin for _, margin in ranked_plays[:5]]
+                mean_score = sum(play_scores) / len(play_scores)
+                ranked_plays[int(key)] = [
+                    (candidate | {"pick_count": int(key), "play_name": play["name"]}, score - mean_score)
+                    for candidate, score in zip(play_candidates, play_scores)
+                ]
+            selected_kl8 = []
+            for pick_count in sorted(ranked_plays):
+                selected_kl8.extend(ranked_plays[pick_count][:2])
+            selected_keys = {
+                (item.get("pick_count"), tuple(item.get("numbers", [])))
+                for item, _ in selected_kl8
+            }
+            remaining_kl8 = sorted(
+                (
+                    item for pick_lines in ranked_plays.values() for item in pick_lines[2:]
+                    if (item[0].get("pick_count"), tuple(item[0].get("numbers", []))) not in selected_keys
+                ),
+                key=lambda item: (item[1], -item[0]["pick_count"]),
+                reverse=True,
+            )
+            selected_kl8.extend(remaining_kl8[:2])
+            candidates = [candidate for candidate, _ in selected_kl8]
+            scores = [margin for _, margin in selected_kl8]
         else:
             candidates, scores = generate_positional_ensemble(game, rows)
 
@@ -2187,7 +2205,7 @@ def main() -> None:
             forecast_rows = rows[1:] if len(rows) > 1 else rows
             cold_candidates, cold_scores = generate_hybrid_cold_profile(game, rows, 5)
 
-        # Every model exposes the same five-line contract. Direct-digit lines
+        # Every model exposes the same candidate-list contract. Direct-digit lines
         # already carry their hot positional-pool source from the generator.
         for candidate in hot_candidates + cold_candidates:
             if "source" not in candidate:

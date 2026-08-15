@@ -341,11 +341,15 @@ class DetailPageTests(unittest.TestCase):
         self.assertNotIn("play_types", games["pl3"])
         self.assertNotIn("play_types", games["fc3d"])
         self.assertNotIn("play_types", games["kl8"])
-        self.assertEqual(len(games["kl8"]["top_candidates"]), 4)
+        self.assertEqual(len(games["kl8"]["top_candidates"]), 10)
         self.assertEqual(
             {item["pick_count"] for item in games["kl8"]["top_candidates"]},
             {7, 8, 9, 10},
         )
+        self.assertTrue(all(
+            sum(item["pick_count"] == pick_count for item in games["kl8"]["top_candidates"]) >= 2
+            for pick_count in (7, 8, 9, 10)
+        ))
         for suffix in ("3", "6"):
             self.assertNotIn("组选" + suffix, text)
 
