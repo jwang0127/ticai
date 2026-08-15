@@ -14,8 +14,8 @@ from vendor_models_v3 import MODEL_VERSION
 
 
 def build_kl8_model(rows: list[dict], pick_counts: list[int] | None = None) -> dict[str, dict]:
-    """生成快乐八选七至选十玩法的候选结果和回测窗口信息。"""
-    counts = pick_counts or [7, 8, 9, 10]
+    """生成快乐八选二至选四玩法的候选结果和回测窗口信息。"""
+    counts = pick_counts or [2, 3, 4]
     calibration = calibrate_set_model("kl8", rows)
     play_types = generate_kl8_play_types(rows, counts)
     return {

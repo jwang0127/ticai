@@ -318,7 +318,7 @@ class DetailPageTests(unittest.TestCase):
             self.assertTrue(all(item["numbers"] == sorted(set(item["numbers"])) for item in candidates))
 
     def test_kl8_play_types_diversify_lead_lines_across_pick_counts(self):
-        play_types = generate_kl8_play_types(self.kl8_rows, [7, 8, 9, 10])
+        play_types = generate_kl8_play_types(self.kl8_rows, [2, 3, 4])
         lead_groups = [set(play["candidates"][0][0]["numbers"]) for play in play_types.values()]
         pairwise_overlaps = [
             len(left & right)
@@ -326,7 +326,7 @@ class DetailPageTests(unittest.TestCase):
             for right in lead_groups[index + 1:]
         ]
         self.assertLessEqual(max(pairwise_overlaps), 4)
-        self.assertGreaterEqual(len(set().union(*lead_groups)), 25)
+        self.assertGreaterEqual(len(set().union(*lead_groups)), 9)
 
     def test_fc3d_official_history(self):
         self.assertGreaterEqual(len(self.fc3d_rows), 100)
@@ -341,14 +341,14 @@ class DetailPageTests(unittest.TestCase):
         self.assertNotIn("play_types", games["pl3"])
         self.assertNotIn("play_types", games["fc3d"])
         self.assertNotIn("play_types", games["kl8"])
-        self.assertEqual(len(games["kl8"]["top_candidates"]), 10)
+        self.assertEqual(len(games["kl8"]["top_candidates"]), 5)
         self.assertEqual(
             {item["pick_count"] for item in games["kl8"]["top_candidates"]},
-            {7, 8, 9, 10},
+            {2, 3, 4},
         )
         self.assertTrue(all(
-            sum(item["pick_count"] == pick_count for item in games["kl8"]["top_candidates"]) >= 2
-            for pick_count in (7, 8, 9, 10)
+            sum(item["pick_count"] == pick_count for item in games["kl8"]["top_candidates"]) >= 1
+            for pick_count in (2, 3, 4)
         ))
         for suffix in ("3", "6"):
             self.assertNotIn("组选" + suffix, text)
