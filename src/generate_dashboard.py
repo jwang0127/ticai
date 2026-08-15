@@ -2394,7 +2394,34 @@ def main() -> None:
                 ]
                 model_reviews[game]["position_pool_coverage"] = 0
                 model_reviews[game]["position_count"] = 3
+            elif game == "kl8":
+                # Keep the set-game review schema explicit when the preceding
+                # prediction snapshot is missing.  Zero coverage here means
+                # "not scored", rather than a claim that the current model
+                # selected an empty pool.
+                model_reviews[game]["union_number_hits"] = 0
+                model_reviews[game]["number_pool_coverage"] = "0 / 20"
+                model_reviews[game]["hit_numbers"] = []
+                model_reviews[game]["missed_numbers"] = [f"{int(value):02d}" for value in latest["numbers"]]
+                model_reviews[game]["error_attribution"] = (
+                    "未找到与本期目标期号对应的上一版候选快照，快乐8本期只记录结果，"
+                    "不将缺失快照误报为模型漏选。"
+                )
             output["games"][game]["model_review"] = model_reviews[game]
+        # Keep the set-game schema stable even when an older review snapshot
+        # has no candidate list to score against.
+        if game == "kl8" and output["games"][game].get("model_review"):
+            review = output["games"][game]["model_review"]
+            if "number_pool_coverage" not in review:
+                review["union_number_hits"] = 0
+                review["number_pool_coverage"] = "0 / 20"
+                review["hit_numbers"] = []
+                review["missed_numbers"] = [f"{int(value):02d}" for value in latest["numbers"]]
+                review["error_attribution"] = (
+                    "未找到与本期目标期号对应的上一版候选快照，快乐8本期只记录结果，"
+                    "不将缺失快照误报为模型漏选。"
+                )
+
         # The historical review may already be complete while today's
         # candidates are regenerated. Keep only the forward-looking advice in
         # lockstep with the composite recommendation shown on this page.
