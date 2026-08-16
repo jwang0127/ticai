@@ -350,6 +350,8 @@ class DetailPageTests(unittest.TestCase):
             sum(item["pick_count"] == pick_count for item in games["kl8"]["top_candidates"]) >= 1
             for pick_count in (2, 3, 4)
         ))
+        union = set().union(*(set(item["numbers"]) for item in games["kl8"]["top_candidates"]))
+        self.assertGreaterEqual(len(union), 12)
         for suffix in ("3", "6"):
             self.assertNotIn("组选" + suffix, text)
 

@@ -40,6 +40,7 @@ RECENCY_DECAY = 18
 # sorted front positions. This only changes the portfolio mix, not per-number
 # probabilities; the backtest compares the wider union against the old floor.
 DLT_DIVERSITY_PENALTY = 0.12
+KL8_PUBLIC_OVERLAP_PENALTY = 0.90
 DLT_FRONT_UNION_FLOOR = 20
 DLT_BACK_UNION_FLOOR = 8
 SSQ_RED_OVERLAP_LIMIT = 1
@@ -1050,7 +1051,11 @@ def generate_positional_ensemble(game: str, rows: list[dict]) -> tuple[list[dict
                 range(10),
                 key=lambda value: score_digit(value, position_counts[position], totals[position]),
                 reverse=True,
-            )[: (pool_width or (base_pool_width + (1 if position in exploration_positions else 0)))]
+            )[: (
+                (pool_width + (1 if position in exploration_positions else 0))
+                if pool_width is not None
+                else base_pool_width + (1 if position in exploration_positions else 0)
+            )]
             for position in range(digits)
         ]
         all_values = list(product(*pools))
@@ -2167,7 +2172,7 @@ def main() -> None:
             play_types = generate_kl8_play_types(rows, cfg.get("pick_counts", [2, 3, 4]))
             # Raw scores are not comparable across pick counts (more numbers,
             # more log terms). Rank each play's candidates by its margin above
-            # that play's own five-group mean, then keep a balanced ten-ticket
+            # that play's own five-group mean, then keep a balanced five-ticket
             # portfolio: one line for each of 选2/3/4 plus two strongest
             # remaining lines across the three plays.
             ranked_plays = {}
@@ -2179,22 +2184,26 @@ def main() -> None:
                     for candidate, score in zip(play_candidates, play_scores)
                 ]
             selected_kl8 = []
+            all_kl8 = [item for lines in ranked_plays.values() for item in lines]
+
+            def portfolio_margin(item):
+                overlap = sum(
+                    len(set(item[0].get("numbers", [])) & set(chosen.get("numbers", [])))
+                    for chosen, _ in selected_kl8
+                )
+                return item[1] - KL8_PUBLIC_OVERLAP_PENALTY * overlap
+
             base_count = max(1, 5 // len(ranked_plays))
             for pick_count in sorted(ranked_plays):
-                selected_kl8.extend(ranked_plays[pick_count][:base_count])
-            selected_keys = {
-                (item.get("pick_count"), tuple(item.get("numbers", [])))
-                for item, _ in selected_kl8
-            }
-            remaining_kl8 = sorted(
-                (
-                    item for pick_lines in ranked_plays.values() for item in pick_lines[base_count:]
-                    if (item[0].get("pick_count"), tuple(item[0].get("numbers", []))) not in selected_keys
-                ),
-                key=lambda item: (item[1], -item[0]["pick_count"]),
-                reverse=True,
-            )
-            selected_kl8.extend(remaining_kl8[: 5 - len(selected_kl8)])
+                for _ in range(base_count):
+                    choices = [item for item in all_kl8 if item[0]["pick_count"] == pick_count]
+                    chosen = max(choices, key=portfolio_margin)
+                    selected_kl8.append(chosen)
+                    all_kl8.remove(chosen)
+            while len(selected_kl8) < 5 and all_kl8:
+                chosen = max(all_kl8, key=portfolio_margin)
+                selected_kl8.append(chosen)
+                all_kl8.remove(chosen)
             candidates = [candidate for candidate, _ in selected_kl8]
             scores = [margin for _, margin in selected_kl8]
         else:
@@ -2274,8 +2283,10 @@ def main() -> None:
             "sector": GAME_SECTORS.get(game, ("ticai", "体彩"))[0],
             "sector_name": GAME_SECTORS.get(game, ("ticai", "体彩"))[1],
             "model_version": (
-                "v3.5-v3-ensemble-cross-play-diversified"
-                if game in ("dlt", "ssq", "kl8")
+                "v3.6-kl8-pick2-4-portfolio-diversified"
+                if game == "kl8"
+                else "v3.5-v3-ensemble-cross-play-diversified"
+                if game in ("dlt", "ssq")
                 else "v4.1-latest-inclusive-hybrid-positional"
             ),
             "model_reference": (

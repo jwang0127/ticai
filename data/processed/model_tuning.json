@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-15T14:07:21+00:00",
+  "generated_at": "2026-08-16T14:13:41+00:00",
   "games": {
     "qxc": {
       "kind": "generator_internal_calibration"
@@ -418,12 +418,9 @@
       },
       "latest_issue": "26217",
       "review_feedback": {
-        "source_issue": "26216",
-        "exploration_positions": [
-          1,
-          2
-        ],
-        "reason": "上一期这些位置未被候选池覆盖，下一期仅扩大一档候选池做受控探索；不把上一期开奖号码直接升权。"
+        "source_issue": "26217",
+        "exploration_positions": [],
+        "reason": "上一期各位置均有候选池覆盖，保持三位候选池宽度。"
       }
     },
     "pl5": {
@@ -797,7 +794,7 @@
       },
       "latest_issue": "26217",
       "review_feedback": {
-        "source_issue": "26214",
+        "source_issue": "26215",
         "exploration_positions": [],
         "reason": "上一期各位置均有候选池覆盖，保持三位候选池宽度。"
       }
@@ -827,7 +824,7 @@
         "8@50": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5056,
+          "positional_topk_hit_rate": 0.5078,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -835,7 +832,7 @@
         "8@100": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5044,
+          "positional_topk_hit_rate": 0.5067,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -843,7 +840,7 @@
         "8@300": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5044,
+          "positional_topk_hit_rate": 0.5067,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -851,7 +848,7 @@
         "8@500": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5044,
+          "positional_topk_hit_rate": 0.5067,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -859,7 +856,7 @@
         "8@1000": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5044,
+          "positional_topk_hit_rate": 0.5067,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -867,7 +864,7 @@
         "8@1500": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5044,
+          "positional_topk_hit_rate": 0.5067,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -875,7 +872,7 @@
         "13@50": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5256,
+          "positional_topk_hit_rate": 0.5267,
           "top_k": 5,
           "se": 0.0166,
           "baseline": 0.5
@@ -883,7 +880,7 @@
         "13@100": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5267,
+          "positional_topk_hit_rate": 0.5278,
           "top_k": 5,
           "se": 0.0166,
           "baseline": 0.5
@@ -891,7 +888,7 @@
         "13@300": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5267,
+          "positional_topk_hit_rate": 0.5278,
           "top_k": 5,
           "se": 0.0166,
           "baseline": 0.5
@@ -899,7 +896,7 @@
         "13@500": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5267,
+          "positional_topk_hit_rate": 0.5278,
           "top_k": 5,
           "se": 0.0166,
           "baseline": 0.5
@@ -907,7 +904,7 @@
         "13@1000": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5267,
+          "positional_topk_hit_rate": 0.5278,
           "top_k": 5,
           "se": 0.0166,
           "baseline": 0.5
@@ -915,7 +912,7 @@
         "13@1500": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5267,
+          "positional_topk_hit_rate": 0.5278,
           "top_k": 5,
           "se": 0.0166,
           "baseline": 0.5
@@ -923,7 +920,7 @@
         "18@50": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5189,
+          "positional_topk_hit_rate": 0.52,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -931,7 +928,7 @@
         "18@100": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5267,
+          "positional_topk_hit_rate": 0.5278,
           "top_k": 5,
           "se": 0.0166,
           "baseline": 0.5
@@ -939,7 +936,7 @@
         "18@300": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5289,
+          "positional_topk_hit_rate": 0.53,
           "top_k": 5,
           "se": 0.0166,
           "baseline": 0.5
@@ -947,7 +944,7 @@
         "18@500": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5289,
+          "positional_topk_hit_rate": 0.53,
           "top_k": 5,
           "se": 0.0166,
           "baseline": 0.5
@@ -955,7 +952,7 @@
         "18@1000": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5289,
+          "positional_topk_hit_rate": 0.53,
           "top_k": 5,
           "se": 0.0166,
           "baseline": 0.5
@@ -963,7 +960,7 @@
         "18@1500": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5289,
+          "positional_topk_hit_rate": 0.53,
           "top_k": 5,
           "se": 0.0166,
           "baseline": 0.5
@@ -971,7 +968,7 @@
         "24@50": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5044,
+          "positional_topk_hit_rate": 0.5056,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -979,7 +976,7 @@
         "24@100": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5211,
+          "positional_topk_hit_rate": 0.5222,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -987,7 +984,7 @@
         "24@300": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5189,
+          "positional_topk_hit_rate": 0.52,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -995,7 +992,7 @@
         "24@500": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5189,
+          "positional_topk_hit_rate": 0.52,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1003,7 +1000,7 @@
         "24@1000": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5189,
+          "positional_topk_hit_rate": 0.52,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1011,7 +1008,7 @@
         "24@1500": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5189,
+          "positional_topk_hit_rate": 0.52,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1019,7 +1016,7 @@
         "30@50": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5078,
+          "positional_topk_hit_rate": 0.5089,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1027,7 +1024,7 @@
         "30@100": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5056,
+          "positional_topk_hit_rate": 0.5067,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1035,7 +1032,7 @@
         "30@300": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5022,
+          "positional_topk_hit_rate": 0.5033,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1043,7 +1040,7 @@
         "30@500": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5022,
+          "positional_topk_hit_rate": 0.5033,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1051,7 +1048,7 @@
         "30@1000": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5022,
+          "positional_topk_hit_rate": 0.5033,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1059,7 +1056,7 @@
         "30@1500": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5022,
+          "positional_topk_hit_rate": 0.5033,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1067,7 +1064,7 @@
         "45@50": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5078,
+          "positional_topk_hit_rate": 0.5089,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1075,7 +1072,7 @@
         "45@100": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.4978,
+          "positional_topk_hit_rate": 0.4989,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1083,7 +1080,7 @@
         "45@300": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5033,
+          "positional_topk_hit_rate": 0.5044,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1091,7 +1088,7 @@
         "45@500": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5022,
+          "positional_topk_hit_rate": 0.5033,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1099,7 +1096,7 @@
         "45@1000": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5022,
+          "positional_topk_hit_rate": 0.5033,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1107,7 +1104,7 @@
         "45@1500": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.5022,
+          "positional_topk_hit_rate": 0.5033,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1115,7 +1112,7 @@
         "60@50": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.4978,
+          "positional_topk_hit_rate": 0.4989,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1123,7 +1120,7 @@
         "60@100": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.4956,
+          "positional_topk_hit_rate": 0.4967,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1131,7 +1128,7 @@
         "60@300": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.4911,
+          "positional_topk_hit_rate": 0.4922,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1139,7 +1136,7 @@
         "60@500": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.4889,
+          "positional_topk_hit_rate": 0.49,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1147,7 +1144,7 @@
         "60@1000": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.4889,
+          "positional_topk_hit_rate": 0.49,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
@@ -1155,19 +1152,17 @@
         "60@1500": {
           "folds": 300,
           "positional_top3_hit_rate": null,
-          "positional_topk_hit_rate": 0.4889,
+          "positional_topk_hit_rate": 0.49,
           "top_k": 5,
           "se": 0.0167,
           "baseline": 0.5
         }
       },
-      "latest_issue": "2026217",
+      "latest_issue": "2026218",
       "review_feedback": {
-        "source_issue": "2026216",
+        "source_issue": "2026218",
         "exploration_positions": [
-          0,
-          1,
-          2
+          0
         ],
         "reason": "上一期这些位置未被候选池覆盖，下一期仅扩大一档候选池做受控探索；不把上一期开奖号码直接升权。"
       }
@@ -1215,13 +1210,13 @@
       },
       "latest_issue": "2026093",
       "review_feedback": {
-        "source_issue": "2026092",
+        "source_issue": "2026093",
         "exploration_positions": [
           0,
-          1,
           2,
+          3,
           4,
-          6
+          5
         ],
         "reason": "上一期这些位置未被候选池覆盖，下一期仅扩大一档候选池做受控探索；不把上一期开奖号码直接升权。"
       }
@@ -1232,13 +1227,13 @@
       "backtest": {
         "50": {
           "folds": 240,
-          "pool_coverage": 0.4948,
+          "pool_coverage": 0.4946,
           "se": 0.0063,
           "baseline": 0.5
         },
         "100": {
           "folds": 240,
-          "pool_coverage": 0.4969,
+          "pool_coverage": 0.4967,
           "se": 0.0063,
           "baseline": 0.5
         },
@@ -1250,26 +1245,26 @@
         },
         "500": {
           "folds": 240,
-          "pool_coverage": 0.4898,
+          "pool_coverage": 0.4888,
           "se": 0.0063,
           "baseline": 0.5
         },
         "1000": {
           "folds": 240,
-          "pool_coverage": 0.4994,
+          "pool_coverage": 0.4992,
           "se": 0.0063,
           "baseline": 0.5
         },
         "1500": {
           "folds": 240,
-          "pool_coverage": 0.5008,
+          "pool_coverage": 0.5006,
           "se": 0.0063,
           "baseline": 0.5
         }
       },
-      "latest_issue": "2026217",
+      "latest_issue": "2026218",
       "review_feedback": {
-        "source_issue": "2026215",
+        "source_issue": "2026218",
         "exploration_positions": [],
         "reason": "上一期各位置均有候选池覆盖，保持三位候选池宽度。"
       }
