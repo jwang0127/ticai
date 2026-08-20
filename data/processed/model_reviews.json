@@ -149,26 +149,26 @@
     "tuning_applied": true
   },
   "pl3": {
-    "issue": "26221",
-    "actual": "969",
+    "issue": "26222",
+    "actual": "877",
     "previous_candidates": [
       "065",
-      "716",
-      "809",
-      "974",
-      "162"
+      "819",
+      "704",
+      "972",
+      "686"
     ],
     "exact_hits": 0,
     "best_number_hits": 1,
-    "summary": "第26221期按位复盘：候选池覆盖 3 / 3 个位置；不按单期结果追涨参数。",
+    "summary": "第26222期按位复盘：候选池覆盖 2 / 3 个位置；不按单期结果追涨参数。",
     "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
     "position_diagnostics": [
       {
         "position": "百位",
-        "actual_digit": "9",
+        "actual_digit": "8",
         "candidate_digits": [
           "0",
-          "1",
+          "6",
           "7",
           "8",
           "9"
@@ -179,20 +179,21 @@
       },
       {
         "position": "十位",
-        "actual_digit": "6",
+        "actual_digit": "7",
         "candidate_digits": [
           "0",
           "1",
           "6",
-          "7"
+          "7",
+          "8"
         ],
-        "candidate_hit_count": 2,
+        "candidate_hit_count": 1,
         "pool_hit": true,
-        "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
+        "reason": "命中：该位不在位频前三，但多信号综合分仍把它纳入候选池。"
       },
       {
         "position": "个位",
-        "actual_digit": "9",
+        "actual_digit": "7",
         "candidate_digits": [
           "2",
           "4",
@@ -200,9 +201,9 @@
           "6",
           "9"
         ],
-        "candidate_hit_count": 1,
-        "pool_hit": true,
-        "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
+        "candidate_hit_count": 0,
+        "pool_hit": false,
+        "reason": "未命中：该位的频率、遗漏和组合分均未达到五组入选阈值。"
       }
     ],
     "model_adjustments": [
@@ -211,15 +212,15 @@
     ],
     "structure_diagnostics": {
       "actual": {
-        "sum": 24,
-        "span": 3,
+        "sum": 22,
+        "span": 1,
         "odd_even": "2:1",
         "distinct": 2,
         "shape": "两位相同"
       },
-      "explanation": "本期969的和值24、跨度3、奇偶比2:1、两位相同；这些字段用于解释候选组合为何入选或落选，不能据此断言下一期会重复相同结构。"
+      "explanation": "本期877的和值22、跨度1、奇偶比2:1、两位相同；这些字段用于解释候选组合为何入选或落选，不能据此断言下一期会重复相同结构。"
     },
-    "position_pool_coverage": 3,
+    "position_pool_coverage": 2,
     "position_count": 3,
     "next_day_advice": [
       {
@@ -233,9 +234,9 @@
         "suggestion": "直选参考：819"
       },
       {
-        "number": "704",
-        "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：704"
+        "number": "066",
+        "shape": "组选三",
+        "suggestion": "组选三参考：066（066/606/660）"
       },
       {
         "number": "972",
@@ -243,35 +244,35 @@
         "suggestion": "直选参考：972"
       },
       {
-        "number": "686",
-        "shape": "组选三",
-        "suggestion": "组选三参考：686（668/686/866）"
+        "number": "706",
+        "shape": "组六形态，按直选参考",
+        "suggestion": "直选参考：706"
       }
     ],
-    "next_day_advice_text": "直选参考：065；直选参考：819；直选参考：704；直选参考：972；组选三参考：686（668/686/866）",
-    "learning_action": "上一期这些位置未被候选池覆盖，下一期仅扩大一档候选池做受控探索；不把上一期开奖号码直接升权。",
+    "next_day_advice_text": "直选参考：065；直选参考：819；组选三参考：066（066/606/660）；直选参考：972；直选参考：706",
+    "learning_action": "上一期各位置均有候选池覆盖，保持三位候选池宽度。",
     "tuning_applied": true
   },
   "pl5": {
-    "issue": "26221",
-    "actual": "96988",
+    "issue": "26222",
+    "actual": "87771",
     "previous_candidates": [
-      "07570",
-      "06900",
-      "71970",
-      "81901",
-      "76248"
+      "06970",
+      "76571",
+      "01578",
+      "77508",
+      "91241"
     ],
     "exact_hits": 0,
-    "best_number_hits": 2,
-    "summary": "第26221期按位复盘：候选池覆盖 3 / 5 个位置；不按单期结果追涨参数。",
+    "best_number_hits": 3,
+    "summary": "第26222期按位复盘：候选池覆盖 3 / 5 个位置；不按单期结果追涨参数。",
     "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
     "position_candidate_hits": [
       0,
-      2,
-      3,
+      1,
       0,
-      1
+      3,
+      2
     ],
     "position_pool_coverage": 3,
     "position_count": 5,
@@ -279,23 +280,23 @@
     "tuning_applied": true
   },
   "fc3d": {
-    "issue": "2026221",
-    "actual": "296",
+    "issue": "2026222",
+    "actual": "380",
     "previous_candidates": [
-      "982",
-      "275",
-      "528",
+      "285",
+      "922",
+      "478",
       "811",
-      "433"
+      "536"
     ],
     "exact_hits": 0,
-    "best_number_hits": 2,
-    "summary": "第2026221期按位复盘：候选池覆盖 1 / 3 个位置；不按单期结果追涨参数。",
+    "best_number_hits": 1,
+    "summary": "第2026222期按位复盘：候选池覆盖 1 / 3 个位置；不按单期结果追涨参数。",
     "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
     "position_diagnostics": [
       {
         "position": "百位",
-        "actual_digit": "2",
+        "actual_digit": "3",
         "candidate_digits": [
           "2",
           "4",
@@ -303,13 +304,13 @@
           "8",
           "9"
         ],
-        "candidate_hit_count": 1,
-        "pool_hit": true,
-        "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
+        "candidate_hit_count": 0,
+        "pool_hit": false,
+        "reason": "未命中：该位的频率、遗漏和组合分均未达到五组入选阈值。"
       },
       {
         "position": "十位",
-        "actual_digit": "9",
+        "actual_digit": "8",
         "candidate_digits": [
           "1",
           "2",
@@ -317,23 +318,23 @@
           "7",
           "8"
         ],
-        "candidate_hit_count": 0,
-        "pool_hit": false,
-        "reason": "未命中：该位遗漏 21 期，当前模型对长期遗漏只做有限补偿，未强行追冷。"
+        "candidate_hit_count": 1,
+        "pool_hit": true,
+        "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
       },
       {
         "position": "个位",
-        "actual_digit": "6",
+        "actual_digit": "0",
         "candidate_digits": [
           "1",
           "2",
-          "3",
           "5",
+          "6",
           "8"
         ],
         "candidate_hit_count": 0,
         "pool_hit": false,
-        "reason": "未命中：该位的频率、遗漏和组合分均未达到五组入选阈值。"
+        "reason": "未命中：该位遗漏 41 期，当前模型对长期遗漏只做有限补偿，未强行追冷。"
       }
     ],
     "model_adjustments": [
@@ -342,31 +343,31 @@
     ],
     "structure_diagnostics": {
       "actual": {
-        "sum": 17,
-        "span": 7,
+        "sum": 11,
+        "span": 8,
         "odd_even": "1:2",
         "distinct": 3,
         "shape": "三位不同"
       },
-      "explanation": "本期296的和值17、跨度7、奇偶比1:2、三位不同；这些字段用于解释候选组合为何入选或落选，不能据此断言下一期会重复相同结构。"
+      "explanation": "本期380的和值11、跨度8、奇偶比1:2、三位不同；这些字段用于解释候选组合为何入选或落选，不能据此断言下一期会重复相同结构。"
     },
     "position_pool_coverage": 1,
     "position_count": 3,
     "next_day_advice": [
       {
-        "number": "285",
+        "number": "982",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：285"
+        "suggestion": "直选参考：982"
       },
       {
-        "number": "922",
-        "shape": "组选三",
-        "suggestion": "组选三参考：922（229/292/922）"
+        "number": "275",
+        "shape": "组六形态，按直选参考",
+        "suggestion": "直选参考：275"
       },
       {
-        "number": "478",
+        "number": "528",
         "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：478"
+        "suggestion": "直选参考：528"
       },
       {
         "number": "811",
@@ -374,12 +375,12 @@
         "suggestion": "组选三参考：811（118/181/811）"
       },
       {
-        "number": "536",
-        "shape": "组六形态，按直选参考",
-        "suggestion": "直选参考：536"
+        "number": "363",
+        "shape": "组选三",
+        "suggestion": "组选三参考：363（336/363/633）"
       }
     ],
-    "next_day_advice_text": "直选参考：285；组选三参考：922（229/292/922）；直选参考：478；组选三参考：811（118/181/811）；直选参考：536",
+    "next_day_advice_text": "直选参考：982；直选参考：275；直选参考：528；组选三参考：811（118/181/811）；组选三参考：363（336/363/633）",
     "learning_action": "上一期这些位置未被候选池覆盖，下一期仅扩大一档候选池做受控探索；不把上一期开奖号码直接升权。",
     "tuning_applied": true
   },
@@ -513,29 +514,28 @@
     "tuning_applied": false
   },
   "ssq": {
-    "issue": "2026095",
-    "actual": "04 06 14 21 22 33 + 16",
+    "issue": "2026096",
+    "actual": "01 04 16 22 26 31 + 04",
     "previous_candidates": [
-      "01 22 24 25 28 30 + 04",
-      "02 03 09 10 14 18 + 08",
-      "07 08 14 30 31 33 + 02",
-      "04 06 07 19 27 29 + 09",
-      "05 15 16 23 32 33 + 16"
+      "01 03 06 24 28 30 + 04",
+      "02 07 10 18 22 25 + 08",
+      "02 04 08 14 24 27 + 07",
+      "09 19 23 27 29 33 + 10",
+      "05 13 14 15 16 32 + 13"
     ],
     "exact_hits": 0,
     "best_number_hits": 2,
-    "summary": "第2026095期按位复盘：候选池覆盖 5 / 7 个位置；不按单期结果追涨参数。",
+    "summary": "第2026096期按位复盘：候选池覆盖 3 / 7 个位置；不按单期结果追涨参数。",
     "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
     "position_diagnostics": [
       {
         "position": "红球第1位",
-        "actual_digit": "04",
+        "actual_digit": "01",
         "candidate_digits": [
           "01",
           "02",
-          "04",
           "05",
-          "07"
+          "09"
         ],
         "candidate_hit_count": 1,
         "pool_hit": true,
@@ -543,13 +543,13 @@
       },
       {
         "position": "红球第2位",
-        "actual_digit": "06",
+        "actual_digit": "04",
         "candidate_digits": [
           "03",
-          "06",
-          "08",
-          "15",
-          "22"
+          "04",
+          "07",
+          "13",
+          "19"
         ],
         "candidate_hit_count": 1,
         "pool_hit": true,
@@ -557,68 +557,69 @@
       },
       {
         "position": "红球第3位",
-        "actual_digit": "14",
+        "actual_digit": "16",
         "candidate_digits": [
-          "07",
-          "09",
+          "06",
+          "08",
+          "10",
           "14",
-          "16",
-          "24"
+          "23"
         ],
-        "candidate_hit_count": 1,
-        "pool_hit": true,
-        "reason": "命中：红球第3位的历史排序/分区候选池覆盖该号码。"
+        "candidate_hit_count": 0,
+        "pool_hit": false,
+        "reason": "未命中位置：号码进入红球联合池，但没有落在第3位的排序位置。"
       },
       {
         "position": "红球第4位",
-        "actual_digit": "21",
+        "actual_digit": "22",
         "candidate_digits": [
-          "10",
-          "19",
-          "23",
-          "25",
-          "30"
+          "14",
+          "15",
+          "18",
+          "24",
+          "27"
+        ],
+        "candidate_hit_count": 0,
+        "pool_hit": false,
+        "reason": "未命中位置：号码进入红球联合池，但没有落在第4位的排序位置。"
+      },
+      {
+        "position": "红球第5位",
+        "actual_digit": "26",
+        "candidate_digits": [
+          "16",
+          "22",
+          "24",
+          "28",
+          "29"
         ],
         "candidate_hit_count": 0,
         "pool_hit": false,
         "reason": "未命中：号码未进入红球联合池，区域频率、共现和结构分未达到五组阈值。"
       },
       {
-        "position": "红球第5位",
-        "actual_digit": "22",
+        "position": "红球第6位",
+        "actual_digit": "31",
         "candidate_digits": [
-          "14",
+          "25",
           "27",
-          "28",
-          "31",
-          "32"
+          "30",
+          "32",
+          "33"
         ],
         "candidate_hit_count": 0,
         "pool_hit": false,
-        "reason": "未命中位置：号码进入红球联合池，但没有落在第5位的排序位置。"
-      },
-      {
-        "position": "红球第6位",
-        "actual_digit": "33",
-        "candidate_digits": [
-          "18",
-          "29",
-          "30",
-          "33"
-        ],
-        "candidate_hit_count": 2,
-        "pool_hit": true,
-        "reason": "命中：红球第6位的历史排序/分区候选池覆盖该号码。"
+        "reason": "未命中：号码未进入红球联合池，区域频率、共现和结构分未达到五组阈值。"
       },
       {
         "position": "蓝球第1位",
-        "actual_digit": "16",
+        "actual_digit": "04",
         "candidate_digits": [
-          "02",
           "04",
+          "07",
           "08",
-          "09",
-          "16"
+          "10",
+          "13"
         ],
         "candidate_hit_count": 1,
         "pool_hit": true,
@@ -628,30 +629,30 @@
     "region_diagnostics": [
       {
         "region": "红球",
-        "coverage": "5 / 6",
+        "coverage": "4 / 6",
         "hit_numbers": [
+          "01",
           "04",
-          "06",
-          "14",
-          "22",
-          "33"
+          "16",
+          "22"
         ],
         "missed_numbers": [
-          "21"
+          "26",
+          "31"
         ]
       },
       {
         "region": "蓝球",
         "coverage": "1 / 1",
         "hit_numbers": [
-          "16"
+          "04"
         ],
         "missed_numbers": []
       }
     ],
-    "position_pool_coverage": 5,
+    "position_pool_coverage": 3,
     "position_count": 7,
-    "error_attribution": "红球覆盖 5 / 6；蓝球覆盖 1 / 1。未命中项按区域频率、共现、分区/排序位置和五组多样性约束归因，不把单期结果直接变成追涨规则。",
+    "error_attribution": "红球覆盖 4 / 6；蓝球覆盖 1 / 1。未命中项按区域频率、共现、分区/排序位置和五组多样性约束归因，不把单期结果直接变成追涨规则。",
     "model_adjustments": [
       "按区域滚动回测选择历史窗口：大乐透前区/后区、双色球红球/蓝球分开校准。",
       "七星彩继续按七个位置建模，复盘同时区分号码命中与位置命中，避免把无序命中误判为有效预测。"
@@ -660,44 +661,44 @@
     "tuning_applied": true
   },
   "kl8": {
-    "issue": "2026221",
-    "actual": "01 02 03 05 10 18 21 25 28 34 35 41 48 51 54 58 59 60 77 79",
+    "issue": "2026222",
+    "actual": "02 05 07 09 17 18 21 25 28 31 32 33 34 35 38 51 57 58 61 65",
     "previous_candidates": [
-      "02 12",
-      "18 27 37",
-      "32 45 51 77",
-      "11 14",
-      "04 19 30 44"
+      "12 37",
+      "11 27 33",
+      "04 10 39 45",
+      "02 14",
+      "07 19 30 32"
     ],
     "exact_hits": 0,
     "best_number_hits": 2,
-    "summary": "第2026221期按位复盘：候选池覆盖 0 / 20 个位置；不按单期结果追涨参数。",
+    "summary": "第2026222期按位复盘：候选池覆盖 1 / 20 个位置；不按单期结果追涨参数。",
     "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
     "union_number_hits": 4,
     "number_pool_coverage": "4 / 20",
     "hit_numbers": [
       "02",
-      "18",
-      "51",
-      "77"
+      "07",
+      "32",
+      "33"
     ],
     "missed_numbers": [
-      "01",
-      "03",
       "05",
-      "10",
+      "09",
+      "17",
+      "18",
       "21",
       "25",
       "28",
+      "31",
       "34",
       "35",
-      "41",
-      "48",
-      "54",
+      "38",
+      "51",
+      "57",
       "58",
-      "59",
-      "60",
-      "79"
+      "61",
+      "65"
     ],
     "error_attribution": "未覆盖的 16 个号码没有进入五注联合池，主要是单号强度、四区覆盖、共现分和组间重合惩罚共同筛选的结果；不把一次遗漏直接解释成下期必补。",
     "model_adjustments": [

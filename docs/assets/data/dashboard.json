@@ -1,147 +1,147 @@
 {
-  "generated_at": "2026-08-19T22:40:59+08:00",
-  "daily_results_date": "2026-08-19",
+  "generated_at": "2026-08-20T22:41:27+08:00",
+  "daily_results_date": "2026-08-20",
   "daily_model_version": "v2.3-xuanxue-date-game-schemes",
   "daily_results": [
     {
       "game": "dlt",
       "name": "超级大乐透",
-      "result": "20 21 29 31 33 + 04 06；05 14 21 22 28 + 08 11；01 03 07 12 30 + 07 08",
+      "result": "03 04 07 09 12 + 04 07；01 14 21 23 32 + 05 11；13 16 18 23 35 + 04 07",
       "results": [
         {
-          "result": "20 21 29 31 33 + 04 06",
+          "result": "03 04 07 09 12 + 04 07",
           "scheme": "date_hash"
         },
         {
-          "result": "05 14 21 22 28 + 08 11",
+          "result": "01 14 21 23 32 + 05 11",
           "scheme": "position_map"
         },
         {
-          "result": "01 03 07 12 30 + 07 08",
+          "result": "13 16 18 23 35 + 04 07",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "超级大乐透 20 21 29 31 33 + 04 06\n超级大乐透 05 14 21 22 28 + 08 11\n超级大乐透 01 03 07 12 30 + 07 08"
+      "copy_text": "超级大乐透 03 04 07 09 12 + 04 07\n超级大乐透 01 14 21 23 32 + 05 11\n超级大乐透 13 16 18 23 35 + 04 07"
     },
     {
       "game": "pl3",
       "name": "排列3",
-      "result": "608；019；369",
+      "result": "768；622；905",
       "results": [
         {
-          "result": "608",
+          "result": "768",
           "scheme": "date_hash"
         },
         {
-          "result": "019",
+          "result": "622",
           "scheme": "position_map"
         },
         {
-          "result": "369",
+          "result": "905",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "排列3 608\n排列3 019\n排列3 369"
+      "copy_text": "排列3 768\n排列3 622\n排列3 905"
     },
     {
       "game": "pl5",
       "name": "排列5",
-      "result": "55187；20143；22660",
+      "result": "35905；81727；90739",
       "results": [
         {
-          "result": "55187",
+          "result": "35905",
           "scheme": "date_hash"
         },
         {
-          "result": "20143",
+          "result": "81727",
           "scheme": "position_map"
         },
         {
-          "result": "22660",
+          "result": "90739",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "排列5 55187\n排列5 20143\n排列5 22660"
+      "copy_text": "排列5 35905\n排列5 81727\n排列5 90739"
     },
     {
       "game": "fc3d",
       "name": "福彩3D",
-      "result": "977；617；887",
+      "result": "614；770；031",
       "results": [
         {
-          "result": "977",
+          "result": "614",
           "scheme": "date_hash"
         },
         {
-          "result": "617",
+          "result": "770",
           "scheme": "position_map"
         },
         {
-          "result": "887",
+          "result": "031",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "福彩3D 977\n福彩3D 617\n福彩3D 887"
+      "copy_text": "福彩3D 614\n福彩3D 770\n福彩3D 031"
     },
     {
       "game": "qxc",
       "name": "体彩7星彩",
-      "result": "5276426；3707162；9050527",
+      "result": "5493925；0714086；2430402",
       "results": [
         {
-          "result": "5276426",
+          "result": "5493925",
           "scheme": "date_hash"
         },
         {
-          "result": "3707162",
+          "result": "0714086",
           "scheme": "position_map"
         },
         {
-          "result": "9050527",
+          "result": "2430402",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "体彩7星彩 5276426\n体彩7星彩 3707162\n体彩7星彩 9050527"
+      "copy_text": "体彩7星彩 5493925\n体彩7星彩 0714086\n体彩7星彩 2430402"
     },
     {
       "game": "ssq",
       "name": "福彩双色球",
-      "result": "07 08 12 13 30 31 + 15；16 17 22 25 27 33 + 06；12 13 15 16 18 28 + 11",
+      "result": "06 10 14 19 24 30 + 04；11 15 16 25 26 27 + 08；12 19 20 26 28 33 + 01",
       "results": [
         {
-          "result": "07 08 12 13 30 31 + 15",
+          "result": "06 10 14 19 24 30 + 04",
           "scheme": "date_hash"
         },
         {
-          "result": "16 17 22 25 27 33 + 06",
+          "result": "11 15 16 25 26 27 + 08",
           "scheme": "position_map"
         },
         {
-          "result": "12 13 15 16 18 28 + 11",
+          "result": "12 19 20 26 28 33 + 01",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "福彩双色球 07 08 12 13 30 31 + 15\n福彩双色球 16 17 22 25 27 33 + 06\n福彩双色球 12 13 15 16 18 28 + 11"
+      "copy_text": "福彩双色球 06 10 14 19 24 30 + 04\n福彩双色球 11 15 16 25 26 27 + 08\n福彩双色球 12 19 20 26 28 33 + 01"
     },
     {
       "game": "kl8",
       "name": "福彩快乐8",
-      "result": "12 24 45 46 62 65 66 67 74 80；04 18 24 34 36 46 51 52 56 76；01 03 06 07 08 20 21 53 68 71",
+      "result": "02 15 16 29 31 37 50 54 69 71；07 08 25 33 35 37 53 57 64 79；03 19 23 46 47 48 55 60 62 64",
       "results": [
         {
-          "result": "12 24 45 46 62 65 66 67 74 80",
+          "result": "02 15 16 29 31 37 50 54 69 71",
           "scheme": "date_hash"
         },
         {
-          "result": "04 18 24 34 36 46 51 52 56 76",
+          "result": "07 08 25 33 35 37 53 57 64 79",
           "scheme": "position_map"
         },
         {
-          "result": "01 03 06 07 08 20 21 53 68 71",
+          "result": "03 19 23 46 47 48 55 60 62 64",
           "scheme": "neutral_balance"
         }
       ],
-      "copy_text": "福彩快乐8 12 24 45 46 62 65 66 67 74 80\n福彩快乐8 04 18 24 34 36 46 51 52 56 76\n福彩快乐8 01 03 06 07 08 20 21 53 68 71"
+      "copy_text": "福彩快乐8 02 15 16 29 31 37 50 54 69 71\n福彩快乐8 07 08 25 33 35 37 53 57 64 79\n福彩快乐8 03 19 23 46 47 48 55 60 62 64"
     }
   ],
   "source_status": "pending_cross_check",
@@ -149,17 +149,17 @@
     "pl3": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26221"
+      "issue": "26222"
     },
     "pl5": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/zst/pls/",
-      "issue": "26221"
+      "issue": "26222"
     },
     "fc3d": {
       "status": "pending",
       "url": "https://m.lottery.gov.cn/mkjqxc/?SHA=false",
-      "issue": "2026221"
+      "issue": "2026222"
     },
     "qxc": {
       "status": "pending",
@@ -169,12 +169,12 @@
     "ssq": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/ssq/",
-      "issue": "2026095"
+      "issue": "2026096"
     },
     "kl8": {
       "status": "pending",
       "url": "https://www.cwl.gov.cn/ygkj/wqkjgg/kl8/",
-      "issue": "2026221"
+      "issue": "2026222"
     },
     "dlt": {
       "status": "pending",
@@ -1487,6 +1487,15 @@
     ],
     "pl3": [
       {
+        "issue": "26222",
+        "draw_date": "2026-08-20",
+        "numbers": [
+          "8",
+          "7",
+          "7"
+        ]
+      },
+      {
         "issue": "26221",
         "draw_date": "2026-08-19",
         "numbers": [
@@ -2375,20 +2384,22 @@
           "9",
           "5",
           "5"
-        ]
-      },
-      {
-        "issue": "26122",
-        "draw_date": "2026-05-12",
-        "numbers": [
-          "7",
-          "4",
-          "7"
         ]
       }
     ],
     "pl5": [
       {
+        "issue": "26222",
+        "draw_date": "2026-08-20",
+        "numbers": [
+          "8",
+          "7",
+          "7",
+          "7",
+          "1"
+        ]
+      },
+      {
         "issue": "26221",
         "draw_date": "2026-08-19",
         "numbers": [
@@ -3476,20 +3487,18 @@
           "1",
           "2"
         ]
-      },
-      {
-        "issue": "26122",
-        "draw_date": "2026-05-12",
-        "numbers": [
-          "7",
-          "4",
-          "7",
-          "6",
-          "1"
-        ]
       }
     ],
     "fc3d": [
+      {
+        "issue": "2026222",
+        "draw_date": "2026-08-20",
+        "numbers": [
+          "3",
+          "8",
+          "0"
+        ]
+      },
       {
         "issue": "2026221",
         "draw_date": "2026-08-19",
@@ -4379,15 +4388,6 @@
           "2",
           "0",
           "0"
-        ]
-      },
-      {
-        "issue": "2026122",
-        "draw_date": "2026-05-12",
-        "numbers": [
-          "3",
-          "4",
-          "6"
         ]
       }
     ],
@@ -5695,6 +5695,19 @@
     ],
     "ssq": [
       {
+        "issue": "2026096",
+        "draw_date": "2026-08-20",
+        "numbers": [
+          "01",
+          "04",
+          "16",
+          "22",
+          "26",
+          "31",
+          "04"
+        ]
+      },
+      {
         "issue": "2026095",
         "draw_date": "2026-08-18",
         "numbers": [
@@ -6980,22 +6993,35 @@
           "22",
           "16"
         ]
-      },
-      {
-        "issue": "2025147",
-        "draw_date": "2025-12-21",
-        "numbers": [
-          "01",
-          "03",
-          "05",
-          "08",
-          "22",
-          "33",
-          "08"
-        ]
       }
     ],
     "kl8": [
+      {
+        "issue": "2026222",
+        "draw_date": "2026-08-20",
+        "numbers": [
+          "02",
+          "05",
+          "07",
+          "09",
+          "17",
+          "18",
+          "21",
+          "25",
+          "28",
+          "31",
+          "32",
+          "33",
+          "34",
+          "35",
+          "38",
+          "51",
+          "57",
+          "58",
+          "61",
+          "65"
+        ]
+      },
       {
         "issue": "2026221",
         "draw_date": "2026-08-19",
@@ -9569,32 +9595,6 @@
           "78",
           "80"
         ]
-      },
-      {
-        "issue": "2026122",
-        "draw_date": "2026-05-12",
-        "numbers": [
-          "01",
-          "07",
-          "09",
-          "15",
-          "19",
-          "26",
-          "27",
-          "28",
-          "30",
-          "36",
-          "45",
-          "50",
-          "56",
-          "57",
-          "58",
-          "61",
-          "63",
-          "66",
-          "76",
-          "78"
-        ]
       }
     ]
   },
@@ -10116,28 +10116,24 @@
       "learning": {
         "tuning_applied": true,
         "review_feedback": {
-          "source_issue": "26220",
-          "exploration_positions": [
-            0,
-            1,
-            2
-          ],
-          "reason": "上一期这些位置未被候选池覆盖，下一期仅扩大一档候选池做受控探索；不把上一期开奖号码直接升权。"
+          "source_issue": "26221",
+          "exploration_positions": [],
+          "reason": "上一期各位置均有候选池覆盖，保持三位候选池宽度。"
         }
       },
       "history_count": 100,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-19T22:40:59+08:00",
-      "latest_issue": "26221",
-      "latest_draw_date": "2026-08-19",
+      "generated_at": "2026-08-20T22:41:27+08:00",
+      "latest_issue": "26222",
+      "latest_draw_date": "2026-08-20",
       "latest_numbers": [
-        "9",
-        "6",
-        "9"
+        "8",
+        "7",
+        "7"
       ],
-      "target_issue": "26222",
-      "next_draw_at": "2026-08-20T21:25+08:00",
-      "next_draw_display": "2026年08月20日 21:25（北京时间）",
+      "target_issue": "26223",
+      "next_draw_at": "2026-08-21T21:25+08:00",
+      "next_draw_display": "2026年08月21日 21:25（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
@@ -10165,7 +10161,7 @@
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 2,
-          "confidence": 71.2,
+          "confidence": 65.4,
           "copy_text": "排列3 819",
           "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（奇偶比2:1），偏离和值18、跨度8。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 1,
@@ -10179,23 +10175,23 @@
           "purchase_suggestion": "直选参考：819"
         },
         {
-          "number": "704",
-          "mix_label": "热门池组合 · 0/3 位取最高权重数字",
+          "number": "066",
+          "mix_label": "热门池组合 · 2/3 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 3,
-          "confidence": 66.9,
-          "copy_text": "排列3 704",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（和值11、奇偶比1:2），偏离跨度7。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
-          "structure_match": 2,
+          "confidence": 64.7,
+          "copy_text": "排列3 066",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（跨度6），偏离和值12、奇偶比0:3。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
+          "structure_match": 1,
           "prediction_metrics": {
-            "sum": 11,
-            "span": 7,
-            "odd_even": "1:2",
-            "distinct": 3,
-            "shape": "三位不同"
+            "sum": 12,
+            "span": 6,
+            "odd_even": "0:3",
+            "distinct": 2,
+            "shape": "两位相同"
           },
-          "purchase_suggestion": "直选参考：704"
+          "purchase_suggestion": "组选三参考：066（066/606/660）"
         },
         {
           "number": "972",
@@ -10203,7 +10199,7 @@
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 4,
-          "confidence": 65.2,
+          "confidence": 61.5,
           "copy_text": "排列3 972",
           "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（奇偶比2:1），偏离和值18、跨度7。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 1,
@@ -10217,23 +10213,23 @@
           "purchase_suggestion": "直选参考：972"
         },
         {
-          "number": "686",
+          "number": "706",
           "mix_label": "热门池组合 · 0/3 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列3 686",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中0/3项，偏离和值20、跨度2、奇偶比0:3。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
-          "structure_match": 0,
+          "copy_text": "排列3 706",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（奇偶比1:2），偏离和值13、跨度7。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
+          "structure_match": 1,
           "prediction_metrics": {
-            "sum": 20,
-            "span": 2,
-            "odd_even": "0:3",
-            "distinct": 2,
-            "shape": "两位相同"
+            "sum": 13,
+            "span": 7,
+            "odd_even": "1:2",
+            "distinct": 3,
+            "shape": "三位不同"
           },
-          "purchase_suggestion": "组选三参考：686（668/686/866）"
+          "purchase_suggestion": "直选参考：706"
         }
       ],
       "top_candidates": [
@@ -10262,7 +10258,7 @@
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 2,
-          "confidence": 71.2,
+          "confidence": 65.4,
           "copy_text": "排列3 819",
           "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（奇偶比2:1），偏离和值18、跨度8。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 1,
@@ -10276,23 +10272,23 @@
           "purchase_suggestion": "直选参考：819"
         },
         {
-          "number": "704",
-          "mix_label": "热门池组合 · 0/3 位取最高权重数字",
+          "number": "066",
+          "mix_label": "热门池组合 · 2/3 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 3,
-          "confidence": 66.9,
-          "copy_text": "排列3 704",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（和值11、奇偶比1:2），偏离跨度7。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
-          "structure_match": 2,
+          "confidence": 64.7,
+          "copy_text": "排列3 066",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（跨度6），偏离和值12、奇偶比0:3。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
+          "structure_match": 1,
           "prediction_metrics": {
-            "sum": 11,
-            "span": 7,
-            "odd_even": "1:2",
-            "distinct": 3,
-            "shape": "三位不同"
+            "sum": 12,
+            "span": 6,
+            "odd_even": "0:3",
+            "distinct": 2,
+            "shape": "两位相同"
           },
-          "purchase_suggestion": "直选参考：704"
+          "purchase_suggestion": "组选三参考：066（066/606/660）"
         },
         {
           "number": "972",
@@ -10300,7 +10296,7 @@
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 4,
-          "confidence": 65.2,
+          "confidence": 61.5,
           "copy_text": "排列3 972",
           "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（奇偶比2:1），偏离和值18、跨度7。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 1,
@@ -10314,23 +10310,23 @@
           "purchase_suggestion": "直选参考：972"
         },
         {
-          "number": "686",
+          "number": "706",
           "mix_label": "热门池组合 · 0/3 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列3 686",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中0/3项，偏离和值20、跨度2、奇偶比0:3。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
-          "structure_match": 0,
+          "copy_text": "排列3 706",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（奇偶比1:2），偏离和值13、跨度7。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
+          "structure_match": 1,
           "prediction_metrics": {
-            "sum": 20,
-            "span": 2,
-            "odd_even": "0:3",
-            "distinct": 2,
-            "shape": "两位相同"
+            "sum": 13,
+            "span": 7,
+            "odd_even": "1:2",
+            "distinct": 3,
+            "shape": "三位不同"
           },
-          "purchase_suggestion": "组选三参考：686（668/686/866）"
+          "purchase_suggestion": "直选参考：706"
         }
       ],
       "hot_candidates": [
@@ -10359,7 +10355,7 @@
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 2,
-          "confidence": 71.2,
+          "confidence": 65.4,
           "copy_text": "排列3 819",
           "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（奇偶比2:1），偏离和值18、跨度8。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 1,
@@ -10373,23 +10369,23 @@
           "purchase_suggestion": "直选参考：819"
         },
         {
-          "number": "704",
-          "mix_label": "热门池组合 · 0/3 位取最高权重数字",
+          "number": "066",
+          "mix_label": "热门池组合 · 2/3 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 3,
-          "confidence": 66.9,
-          "copy_text": "排列3 704",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（和值11、奇偶比1:2），偏离跨度7。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
-          "structure_match": 2,
+          "confidence": 64.7,
+          "copy_text": "排列3 066",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（跨度6），偏离和值12、奇偶比0:3。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
+          "structure_match": 1,
           "prediction_metrics": {
-            "sum": 11,
-            "span": 7,
-            "odd_even": "1:2",
-            "distinct": 3,
-            "shape": "三位不同"
+            "sum": 12,
+            "span": 6,
+            "odd_even": "0:3",
+            "distinct": 2,
+            "shape": "两位相同"
           },
-          "purchase_suggestion": "直选参考：704"
+          "purchase_suggestion": "组选三参考：066（066/606/660）"
         },
         {
           "number": "972",
@@ -10397,7 +10393,7 @@
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 4,
-          "confidence": 65.2,
+          "confidence": 61.5,
           "copy_text": "排列3 972",
           "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（奇偶比2:1），偏离和值18、跨度7。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 1,
@@ -10411,90 +10407,71 @@
           "purchase_suggestion": "直选参考：972"
         },
         {
-          "number": "686",
+          "number": "706",
           "mix_label": "热门池组合 · 0/3 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列3 686",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中0/3项，偏离和值20、跨度2、奇偶比0:3。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
-          "structure_match": 0,
+          "copy_text": "排列3 706",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（奇偶比1:2），偏离和值13、跨度7。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
+          "structure_match": 1,
           "prediction_metrics": {
-            "sum": 20,
-            "span": 2,
-            "odd_even": "0:3",
-            "distinct": 2,
-            "shape": "两位相同"
+            "sum": 13,
+            "span": 7,
+            "odd_even": "1:2",
+            "distinct": 3,
+            "shape": "三位不同"
           },
-          "purchase_suggestion": "组选三参考：686（668/686/866）"
+          "purchase_suggestion": "直选参考：706"
         }
       ],
       "cold_candidates": [
         {
-          "number": "830",
+          "number": "744",
           "mix_label": "ZIP结构辅助冷门池",
           "source": "cold_hybrid_pool",
           "group": "cold",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "排列3 830",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（和值11、奇偶比1:2），偏离跨度8。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
+          "copy_text": "排列3 744",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度3、奇偶比1:2），偏离和值15。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 2,
           "prediction_metrics": {
-            "sum": 11,
-            "span": 8,
+            "sum": 15,
+            "span": 3,
             "odd_even": "1:2",
-            "distinct": 3,
-            "shape": "三位不同"
+            "distinct": 2,
+            "shape": "两位相同"
           },
-          "purchase_suggestion": "直选参考：830"
+          "purchase_suggestion": "组选三参考：744（447/474/744）"
         },
         {
-          "number": "524",
+          "number": "536",
           "mix_label": "ZIP结构辅助冷门池",
           "source": "cold_hybrid_pool",
           "group": "cold",
           "rank": 2,
-          "confidence": 72.2,
-          "copy_text": "排列3 524",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中3/3项（和值11、跨度3、奇偶比1:2）。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
+          "confidence": 69.5,
+          "copy_text": "排列3 536",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中3/3项（和值14、跨度3、奇偶比2:1）。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 3,
           "prediction_metrics": {
-            "sum": 11,
+            "sum": 14,
             "span": 3,
-            "odd_even": "1:2",
+            "odd_even": "2:1",
             "distinct": 3,
             "shape": "三位不同"
           },
-          "purchase_suggestion": "直选参考：524"
-        },
-        {
-          "number": "747",
-          "mix_label": "ZIP结构辅助冷门池",
-          "source": "cold_hybrid_pool",
-          "group": "cold",
-          "rank": 3,
-          "confidence": 72.2,
-          "copy_text": "排列3 747",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度3、奇偶比2:1），偏离和值18。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
-          "structure_match": 2,
-          "prediction_metrics": {
-            "sum": 18,
-            "span": 3,
-            "odd_even": "2:1",
-            "distinct": 2,
-            "shape": "两位相同"
-          },
-          "purchase_suggestion": "组选三参考：747（477/747/774）"
+          "purchase_suggestion": "直选参考：536"
         },
         {
           "number": "695",
           "mix_label": "ZIP结构辅助冷门池",
           "source": "cold_hybrid_pool",
           "group": "cold",
-          "rank": 4,
-          "confidence": 68.8,
+          "rank": 3,
+          "confidence": 68.6,
           "copy_text": "排列3 695",
           "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度4、奇偶比2:1），偏离和值20。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 2,
@@ -10508,23 +10485,42 @@
           "purchase_suggestion": "直选参考：695"
         },
         {
-          "number": "151",
+          "number": "480",
+          "mix_label": "ZIP结构辅助冷门池",
+          "source": "cold_hybrid_pool",
+          "group": "cold",
+          "rank": 4,
+          "confidence": 56.1,
+          "copy_text": "排列3 480",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中0/3项，偏离和值12、跨度8、奇偶比0:3。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
+          "structure_match": 0,
+          "prediction_metrics": {
+            "sum": 12,
+            "span": 8,
+            "odd_even": "0:3",
+            "distinct": 3,
+            "shape": "三位不同"
+          },
+          "purchase_suggestion": "直选参考：480"
+        },
+        {
+          "number": "322",
           "mix_label": "ZIP结构辅助冷门池",
           "source": "cold_hybrid_pool",
           "group": "cold",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列3 151",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度4、奇偶比3:0），偏离和值7。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
-          "structure_match": 2,
+          "copy_text": "排列3 322",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（奇偶比1:2），偏离和值7、跨度1。本日结构重点是和值[11, 14, 16]、跨度[4, 6, 3]、奇偶比['2:1', '1:2', '3:0']，因此这是一注位置模型保留号，不是结构优先号。",
+          "structure_match": 1,
           "prediction_metrics": {
             "sum": 7,
-            "span": 4,
-            "odd_even": "3:0",
+            "span": 1,
+            "odd_even": "1:2",
             "distinct": 2,
             "shape": "两位相同"
           },
-          "purchase_suggestion": "组选三参考：151（115/151/511）"
+          "purchase_suggestion": "组选三参考：322（223/232/322）"
         }
       ],
       "prediction_summary": {
@@ -10543,7 +10539,7 @@
           "forecast_basis": "70% recent-100 frequency + 30% recent-300 frequency",
           "range": [
             3,
-            23
+            24
           ],
           "frequencies": [
             {
@@ -10564,8 +10560,8 @@
           ],
           "cold_values": [
             23,
-            3,
-            5
+            24,
+            3
           ],
           "cold_frequencies": [
             {
@@ -10574,19 +10570,19 @@
               "share": 0.0101
             },
             {
-              "value": 3,
+              "value": 24,
               "count": 1,
               "share": 0.0101
             },
             {
-              "value": 5,
-              "count": 2,
-              "share": 0.0202
+              "value": 3,
+              "count": 1,
+              "share": 0.0101
             }
           ],
           "forecast_reason": "Rolling forecast: 99-draw fast frequency blended with 99-draw stable frequency; top values are 11, 14, 16.",
           "reason": "和值按近99期频次预测，前三结构为11、14、16。",
-          "cold_forecast_reason": "低频结构为23（1期）、3（1期）、5（2期），作为冷结构观察，不等于下期必补。"
+          "cold_forecast_reason": "低频结构为23（1期）、24（1期）、3（1期），作为冷结构观察，不等于下期必补。"
         },
         "span": {
           "values": [
@@ -10704,16 +10700,16 @@
         }
       },
       "review": {
-        "title": "第26221期结构复盘",
-        "summary": "开奖号969，和值24、跨度3，奇偶比2:1。三位数形态为两位相同。",
+        "title": "第26222期结构复盘",
+        "summary": "开奖号877，和值22、跨度1，奇偶比2:1。三位数形态为两位相同。",
         "metrics": [
           {
             "label": "和值",
-            "value": "24"
+            "value": "22"
           },
           {
             "label": "跨度",
-            "value": "3"
+            "value": "1"
           },
           {
             "label": "奇偶",
@@ -10741,7 +10737,7 @@
           },
           {
             "label": "较长遗漏",
-            "value": "3（5期）、5（5期）、1（4期）"
+            "value": "3（6期）、5（6期）、1（5期）"
           },
           {
             "label": "和值预测",
@@ -10788,7 +10784,7 @@
               },
               {
                 "digit": "8",
-                "count": 11
+                "count": 12
               }
             ],
             "cold_occurrences": [
@@ -10808,11 +10804,11 @@
             "omitted_digits": [
               {
                 "digit": "2",
-                "miss": 48
+                "miss": 49
               },
               {
                 "digit": "3",
-                "miss": 22
+                "miss": 23
               }
             ]
           },
@@ -10820,8 +10816,8 @@
             "position": "十位",
             "hot_digits": [
               "6",
-              "1",
-              "8"
+              "7",
+              "1"
             ],
             "cold_digits": [
               "4",
@@ -10830,7 +10826,7 @@
             ],
             "hot_focus_digits": [
               "6",
-              "1"
+              "7"
             ],
             "cold_focus_digits": [
               "4",
@@ -10842,18 +10838,18 @@
                 "count": 15
               },
               {
-                "digit": "1",
-                "count": 13
+                "digit": "7",
+                "count": 9
               },
               {
-                "digit": "8",
-                "count": 12
+                "digit": "1",
+                "count": 13
               }
             ],
             "cold_occurrences": [
               {
                 "digit": "4",
-                "count": 11
+                "count": 10
               },
               {
                 "digit": "9",
@@ -10867,11 +10863,11 @@
             "omitted_digits": [
               {
                 "digit": "0",
-                "miss": 15
+                "miss": 16
               },
               {
                 "digit": "9",
-                "miss": 11
+                "miss": 12
               }
             ]
           },
@@ -10926,11 +10922,11 @@
             "omitted_digits": [
               {
                 "digit": "8",
-                "miss": 46
+                "miss": 47
               },
               {
                 "digit": "6",
-                "miss": 14
+                "miss": 15
               }
             ]
           }
@@ -10943,8 +10939,8 @@
               "9"
             ],
             "scores": [
-              -6.8924,
-              -6.9385
+              -6.8925,
+              -6.9294
             ],
             "source": "position_ensemble_473_tiebreak"
           },
@@ -10955,8 +10951,8 @@
               "7"
             ],
             "scores": [
-              -6.8924,
-              -6.9293
+              -6.8925,
+              -6.8977
             ],
             "source": "position_ensemble_473_tiebreak"
           },
@@ -10967,8 +10963,8 @@
               "9"
             ],
             "scores": [
-              -6.8924,
-              -6.9111
+              -6.8925,
+              -6.8977
             ],
             "source": "position_ensemble_473_tiebreak"
           }
@@ -10984,29 +10980,21 @@
           },
           "13@50": {
             "folds": 50,
-            "positional_top3_hit_rate": 0.3,
-            "positional_topk_hit_rate": 0.3,
+            "positional_top3_hit_rate": 0.3067,
+            "positional_topk_hit_rate": 0.3067,
             "top_k": 3,
-            "se": 0.0374,
+            "se": 0.0376,
             "baseline": 0.3
           },
           "18@50": {
             "folds": 50,
-            "positional_top3_hit_rate": 0.3,
-            "positional_topk_hit_rate": 0.3,
+            "positional_top3_hit_rate": 0.3133,
+            "positional_topk_hit_rate": 0.3133,
             "top_k": 3,
-            "se": 0.0374,
+            "se": 0.0379,
             "baseline": 0.3
           },
           "24@50": {
-            "folds": 50,
-            "positional_top3_hit_rate": 0.2733,
-            "positional_topk_hit_rate": 0.2733,
-            "top_k": 3,
-            "se": 0.0364,
-            "baseline": 0.3
-          },
-          "30@50": {
             "folds": 50,
             "positional_top3_hit_rate": 0.2867,
             "positional_topk_hit_rate": 0.2867,
@@ -11014,20 +11002,28 @@
             "se": 0.0369,
             "baseline": 0.3
           },
+          "30@50": {
+            "folds": 50,
+            "positional_top3_hit_rate": 0.2933,
+            "positional_topk_hit_rate": 0.2933,
+            "top_k": 3,
+            "se": 0.0372,
+            "baseline": 0.3
+          },
           "45@50": {
             "folds": 50,
-            "positional_top3_hit_rate": 0.2533,
-            "positional_topk_hit_rate": 0.2533,
+            "positional_top3_hit_rate": 0.26,
+            "positional_topk_hit_rate": 0.26,
             "top_k": 3,
-            "se": 0.0355,
+            "se": 0.0358,
             "baseline": 0.3
           },
           "60@50": {
             "folds": 50,
-            "positional_top3_hit_rate": 0.24,
-            "positional_topk_hit_rate": 0.24,
+            "positional_top3_hit_rate": 0.2467,
+            "positional_topk_hit_rate": 0.2467,
             "top_k": 3,
-            "se": 0.0349,
+            "se": 0.0352,
             "baseline": 0.3
           }
         },
@@ -11037,7 +11033,7 @@
         "selected_position_parameters": [
           {
             "position": 0,
-            "decay": 45,
+            "decay": 30,
             "window_size": 50
           },
           {
@@ -11074,18 +11070,18 @@
               },
               "18@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.34,
-                "topk_hit_rate": 0.34,
+                "top3_hit_rate": 0.36,
+                "topk_hit_rate": 0.36,
                 "top_k": 3,
-                "se": 0.067,
+                "se": 0.0679,
                 "baseline": 0.3
               },
               "24@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.32,
-                "topk_hit_rate": 0.32,
+                "top3_hit_rate": 0.34,
+                "topk_hit_rate": 0.34,
                 "top_k": 3,
-                "se": 0.066,
+                "se": 0.067,
                 "baseline": 0.3
               },
               "30@50": {
@@ -11127,50 +11123,50 @@
               },
               "13@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.32,
-                "topk_hit_rate": 0.32,
+                "top3_hit_rate": 0.34,
+                "topk_hit_rate": 0.34,
                 "top_k": 3,
-                "se": 0.066,
+                "se": 0.067,
                 "baseline": 0.3
               },
               "18@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.32,
-                "topk_hit_rate": 0.32,
+                "top3_hit_rate": 0.34,
+                "topk_hit_rate": 0.34,
                 "top_k": 3,
-                "se": 0.066,
+                "se": 0.067,
                 "baseline": 0.3
               },
               "24@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.28,
-                "topk_hit_rate": 0.28,
+                "top3_hit_rate": 0.3,
+                "topk_hit_rate": 0.3,
                 "top_k": 3,
-                "se": 0.0635,
+                "se": 0.0648,
                 "baseline": 0.3
               },
               "30@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.28,
-                "topk_hit_rate": 0.28,
+                "top3_hit_rate": 0.3,
+                "topk_hit_rate": 0.3,
                 "top_k": 3,
-                "se": 0.0635,
+                "se": 0.0648,
                 "baseline": 0.3
               },
               "45@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.2,
-                "topk_hit_rate": 0.2,
+                "top3_hit_rate": 0.22,
+                "topk_hit_rate": 0.22,
                 "top_k": 3,
-                "se": 0.0566,
+                "se": 0.0586,
                 "baseline": 0.3
               },
               "60@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.2,
-                "topk_hit_rate": 0.2,
+                "top3_hit_rate": 0.22,
+                "topk_hit_rate": 0.22,
                 "top_k": 3,
-                "se": 0.0566,
+                "se": 0.0586,
                 "baseline": 0.3
               }
             }
@@ -11245,26 +11241,26 @@
         ]
       },
       "model_review": {
-        "issue": "26221",
-        "actual": "969",
+        "issue": "26222",
+        "actual": "877",
         "previous_candidates": [
           "065",
-          "716",
-          "809",
-          "974",
-          "162"
+          "819",
+          "704",
+          "972",
+          "686"
         ],
         "exact_hits": 0,
         "best_number_hits": 1,
-        "summary": "第26221期按位复盘：候选池覆盖 3 / 3 个位置；不按单期结果追涨参数。",
+        "summary": "第26222期按位复盘：候选池覆盖 2 / 3 个位置；不按单期结果追涨参数。",
         "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
         "position_diagnostics": [
           {
             "position": "百位",
-            "actual_digit": "9",
+            "actual_digit": "8",
             "candidate_digits": [
               "0",
-              "1",
+              "6",
               "7",
               "8",
               "9"
@@ -11275,20 +11271,21 @@
           },
           {
             "position": "十位",
-            "actual_digit": "6",
+            "actual_digit": "7",
             "candidate_digits": [
               "0",
               "1",
               "6",
-              "7"
+              "7",
+              "8"
             ],
-            "candidate_hit_count": 2,
+            "candidate_hit_count": 1,
             "pool_hit": true,
-            "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
+            "reason": "命中：该位不在位频前三，但多信号综合分仍把它纳入候选池。"
           },
           {
             "position": "个位",
-            "actual_digit": "9",
+            "actual_digit": "7",
             "candidate_digits": [
               "2",
               "4",
@@ -11296,9 +11293,9 @@
               "6",
               "9"
             ],
-            "candidate_hit_count": 1,
-            "pool_hit": true,
-            "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：该位的频率、遗漏和组合分均未达到五组入选阈值。"
           }
         ],
         "model_adjustments": [
@@ -11307,15 +11304,15 @@
         ],
         "structure_diagnostics": {
           "actual": {
-            "sum": 24,
-            "span": 3,
+            "sum": 22,
+            "span": 1,
             "odd_even": "2:1",
             "distinct": 2,
             "shape": "两位相同"
           },
-          "explanation": "本期969的和值24、跨度3、奇偶比2:1、两位相同；这些字段用于解释候选组合为何入选或落选，不能据此断言下一期会重复相同结构。"
+          "explanation": "本期877的和值22、跨度1、奇偶比2:1、两位相同；这些字段用于解释候选组合为何入选或落选，不能据此断言下一期会重复相同结构。"
         },
-        "position_pool_coverage": 3,
+        "position_pool_coverage": 2,
         "position_count": 3,
         "next_day_advice": [
           {
@@ -11329,9 +11326,9 @@
             "suggestion": "直选参考：819"
           },
           {
-            "number": "704",
-            "shape": "组六形态，按直选参考",
-            "suggestion": "直选参考：704"
+            "number": "066",
+            "shape": "组选三",
+            "suggestion": "组选三参考：066（066/606/660）"
           },
           {
             "number": "972",
@@ -11339,13 +11336,13 @@
             "suggestion": "直选参考：972"
           },
           {
-            "number": "686",
-            "shape": "组选三",
-            "suggestion": "组选三参考：686（668/686/866）"
+            "number": "706",
+            "shape": "组六形态，按直选参考",
+            "suggestion": "直选参考：706"
           }
         ],
-        "next_day_advice_text": "直选参考：065；直选参考：819；直选参考：704；直选参考：972；组选三参考：686（668/686/866）",
-        "learning_action": "上一期这些位置未被候选池覆盖，下一期仅扩大一档候选池做受控探索；不把上一期开奖号码直接升权。",
+        "next_day_advice_text": "直选参考：065；直选参考：819；组选三参考：066（066/606/660）；直选参考：972；直选参考：706",
+        "learning_action": "上一期各位置均有候选池覆盖，保持三位候选池宽度。",
         "tuning_applied": true
       }
     },
@@ -11358,26 +11355,26 @@
       "learning": {
         "tuning_applied": true,
         "review_feedback": {
-          "source_issue": "26220",
+          "source_issue": "26221",
           "exploration_positions": [],
           "reason": "上一期各位置均有候选池覆盖，保持三位候选池宽度。"
         }
       },
       "history_count": 100,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-19T22:40:59+08:00",
-      "latest_issue": "26221",
-      "latest_draw_date": "2026-08-19",
+      "generated_at": "2026-08-20T22:41:27+08:00",
+      "latest_issue": "26222",
+      "latest_draw_date": "2026-08-20",
       "latest_numbers": [
-        "9",
-        "6",
-        "9",
         "8",
-        "8"
+        "7",
+        "7",
+        "7",
+        "1"
       ],
-      "target_issue": "26222",
-      "next_draw_at": "2026-08-20T21:25+08:00",
-      "next_draw_display": "2026年08月20日 21:25（北京时间）",
+      "target_issue": "26223",
+      "next_draw_at": "2026-08-21T21:25+08:00",
+      "next_draw_display": "2026年08月21日 21:25（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
@@ -11390,40 +11387,40 @@
           "copy_text": "排列5 06970"
         },
         {
-          "number": "76571",
+          "number": "07901",
           "mix_label": "热门池组合 · 2/5 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 2,
-          "confidence": 66.1,
-          "copy_text": "排列5 76571"
+          "confidence": 67.9,
+          "copy_text": "排列5 07901"
         },
         {
-          "number": "01578",
+          "number": "87978",
           "mix_label": "热门池组合 · 2/5 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 3,
-          "confidence": 66.1,
-          "copy_text": "排列5 01578"
+          "confidence": 67.4,
+          "copy_text": "排列5 87978"
         },
         {
-          "number": "77508",
+          "number": "97508",
           "mix_label": "热门池组合 · 0/5 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 4,
-          "confidence": 58.6,
-          "copy_text": "排列5 77508"
+          "confidence": 60.9,
+          "copy_text": "排列5 97508"
         },
         {
-          "number": "91241",
+          "number": "81241",
           "mix_label": "热门池组合 · 0/5 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列5 91241"
+          "copy_text": "排列5 81241"
         }
       ],
       "top_candidates": [
@@ -11437,57 +11434,57 @@
           "copy_text": "排列5 06970"
         },
         {
-          "number": "76571",
+          "number": "07901",
           "mix_label": "热门池组合 · 2/5 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 2,
-          "confidence": 66.1,
-          "copy_text": "排列5 76571"
+          "confidence": 67.9,
+          "copy_text": "排列5 07901"
         },
         {
-          "number": "01578",
+          "number": "87978",
           "mix_label": "热门池组合 · 2/5 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 3,
-          "confidence": 66.1,
-          "copy_text": "排列5 01578"
+          "confidence": 67.4,
+          "copy_text": "排列5 87978"
         },
         {
-          "number": "77508",
+          "number": "97508",
           "mix_label": "热门池组合 · 0/5 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 4,
-          "confidence": 58.6,
-          "copy_text": "排列5 77508"
+          "confidence": 60.9,
+          "copy_text": "排列5 97508"
         },
         {
-          "number": "91241",
+          "number": "81241",
           "mix_label": "热门池组合 · 0/5 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "排列5 91241"
+          "copy_text": "排列5 81241"
         }
       ],
       "review": {
-        "title": "第26221期结构复盘",
-        "summary": "开奖号96988，和值40、跨度3，奇偶比2:3。包含3个不同数字。",
+        "title": "第26222期结构复盘",
+        "summary": "开奖号87771，和值30、跨度7，奇偶比4:1。包含3个不同数字。",
         "metrics": [
           {
             "label": "和值",
-            "value": "40"
+            "value": "30"
           },
           {
             "label": "跨度",
-            "value": "3"
+            "value": "7"
           },
           {
             "label": "奇偶",
-            "value": "2:3"
+            "value": "4:1"
           },
           {
             "label": "不同数字",
@@ -11503,7 +11500,7 @@
         "signals": [
           {
             "label": "综合活跃数字",
-            "value": "6 · 1 · 0 · 7 · 4"
+            "value": "7 · 1 · 6 · 0 · 5"
           },
           {
             "label": "各位置最高权重",
@@ -11511,7 +11508,7 @@
           },
           {
             "label": "较长遗漏",
-            "value": "3（5期）、0（3期）、5（3期）"
+            "value": "3（6期）、0（4期）、5（4期）"
           }
         ],
         "position_analysis": [
@@ -11546,7 +11543,7 @@
               },
               {
                 "digit": "8",
-                "count": 11
+                "count": 12
               }
             ],
             "cold_occurrences": [
@@ -11566,11 +11563,11 @@
             "omitted_digits": [
               {
                 "digit": "2",
-                "miss": 48
+                "miss": 49
               },
               {
                 "digit": "3",
-                "miss": 22
+                "miss": 23
               }
             ]
           },
@@ -11579,7 +11576,7 @@
             "hot_digits": [
               "6",
               "1",
-              "8"
+              "7"
             ],
             "cold_digits": [
               "2",
@@ -11604,8 +11601,8 @@
                 "count": 13
               },
               {
-                "digit": "8",
-                "count": 12
+                "digit": "7",
+                "count": 9
               }
             ],
             "cold_occurrences": [
@@ -11625,11 +11622,11 @@
             "omitted_digits": [
               {
                 "digit": "0",
-                "miss": 15
+                "miss": 16
               },
               {
                 "digit": "9",
-                "miss": 11
+                "miss": 12
               }
             ]
           },
@@ -11684,11 +11681,11 @@
             "omitted_digits": [
               {
                 "digit": "8",
-                "miss": 46
+                "miss": 47
               },
               {
                 "digit": "6",
-                "miss": 14
+                "miss": 15
               }
             ]
           },
@@ -11715,7 +11712,7 @@
             "hot_occurrences": [
               {
                 "digit": "7",
-                "count": 18
+                "count": 19
               },
               {
                 "digit": "0",
@@ -11743,11 +11740,11 @@
             "omitted_digits": [
               {
                 "digit": "2",
-                "miss": 21
+                "miss": 22
               },
               {
                 "digit": "4",
-                "miss": 9
+                "miss": 10
               }
             ]
           },
@@ -11755,8 +11752,8 @@
             "position": "个位",
             "hot_digits": [
               "0",
-              "8",
-              "1"
+              "1",
+              "8"
             ],
             "cold_digits": [
               "5",
@@ -11765,7 +11762,7 @@
             ],
             "hot_focus_digits": [
               "0",
-              "8"
+              "1"
             ],
             "cold_focus_digits": [
               "5",
@@ -11777,12 +11774,12 @@
                 "count": 15
               },
               {
-                "digit": "8",
-                "count": 10
-              },
-              {
                 "digit": "1",
                 "count": 13
+              },
+              {
+                "digit": "8",
+                "count": 10
               }
             ],
             "cold_occurrences": [
@@ -11802,11 +11799,11 @@
             "omitted_digits": [
               {
                 "digit": "2",
-                "miss": 25
+                "miss": 26
               },
               {
                 "digit": "5",
-                "miss": 15
+                "miss": 16
               }
             ]
           }
@@ -11823,13 +11820,21 @@
           },
           "13@50": {
             "folds": 50,
-            "positional_top3_hit_rate": 0.304,
-            "positional_topk_hit_rate": 0.304,
+            "positional_top3_hit_rate": 0.312,
+            "positional_topk_hit_rate": 0.312,
             "top_k": 3,
-            "se": 0.0291,
+            "se": 0.0293,
             "baseline": 0.3
           },
           "18@50": {
+            "folds": 50,
+            "positional_top3_hit_rate": 0.312,
+            "positional_topk_hit_rate": 0.312,
+            "top_k": 3,
+            "se": 0.0293,
+            "baseline": 0.3
+          },
+          "24@50": {
             "folds": 50,
             "positional_top3_hit_rate": 0.3,
             "positional_topk_hit_rate": 0.3,
@@ -11837,36 +11842,28 @@
             "se": 0.029,
             "baseline": 0.3
           },
-          "24@50": {
-            "folds": 50,
-            "positional_top3_hit_rate": 0.288,
-            "positional_topk_hit_rate": 0.288,
-            "top_k": 3,
-            "se": 0.0286,
-            "baseline": 0.3
-          },
           "30@50": {
             "folds": 50,
-            "positional_top3_hit_rate": 0.304,
-            "positional_topk_hit_rate": 0.304,
+            "positional_top3_hit_rate": 0.316,
+            "positional_topk_hit_rate": 0.316,
             "top_k": 3,
-            "se": 0.0291,
+            "se": 0.0294,
             "baseline": 0.3
           },
           "45@50": {
             "folds": 50,
-            "positional_top3_hit_rate": 0.288,
-            "positional_topk_hit_rate": 0.288,
+            "positional_top3_hit_rate": 0.3,
+            "positional_topk_hit_rate": 0.3,
             "top_k": 3,
-            "se": 0.0286,
+            "se": 0.029,
             "baseline": 0.3
           },
           "60@50": {
             "folds": 50,
-            "positional_top3_hit_rate": 0.284,
-            "positional_topk_hit_rate": 0.284,
+            "positional_top3_hit_rate": 0.296,
+            "positional_topk_hit_rate": 0.296,
             "top_k": 3,
-            "se": 0.0285,
+            "se": 0.0289,
             "baseline": 0.3
           }
         },
@@ -11876,7 +11873,7 @@
         "selected_position_parameters": [
           {
             "position": 0,
-            "decay": 45,
+            "decay": 30,
             "window_size": 50
           },
           {
@@ -11923,18 +11920,18 @@
               },
               "18@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.34,
-                "topk_hit_rate": 0.34,
+                "top3_hit_rate": 0.36,
+                "topk_hit_rate": 0.36,
                 "top_k": 3,
-                "se": 0.067,
+                "se": 0.0679,
                 "baseline": 0.3
               },
               "24@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.32,
-                "topk_hit_rate": 0.32,
+                "top3_hit_rate": 0.34,
+                "topk_hit_rate": 0.34,
                 "top_k": 3,
-                "se": 0.066,
+                "se": 0.067,
                 "baseline": 0.3
               },
               "30@50": {
@@ -11976,50 +11973,50 @@
               },
               "13@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.32,
-                "topk_hit_rate": 0.32,
+                "top3_hit_rate": 0.34,
+                "topk_hit_rate": 0.34,
                 "top_k": 3,
-                "se": 0.066,
+                "se": 0.067,
                 "baseline": 0.3
               },
               "18@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.32,
-                "topk_hit_rate": 0.32,
+                "top3_hit_rate": 0.34,
+                "topk_hit_rate": 0.34,
                 "top_k": 3,
-                "se": 0.066,
+                "se": 0.067,
                 "baseline": 0.3
               },
               "24@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.28,
-                "topk_hit_rate": 0.28,
+                "top3_hit_rate": 0.3,
+                "topk_hit_rate": 0.3,
                 "top_k": 3,
-                "se": 0.0635,
+                "se": 0.0648,
                 "baseline": 0.3
               },
               "30@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.28,
-                "topk_hit_rate": 0.28,
+                "top3_hit_rate": 0.3,
+                "topk_hit_rate": 0.3,
                 "top_k": 3,
-                "se": 0.0635,
+                "se": 0.0648,
                 "baseline": 0.3
               },
               "45@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.2,
-                "topk_hit_rate": 0.2,
+                "top3_hit_rate": 0.22,
+                "topk_hit_rate": 0.22,
                 "top_k": 3,
-                "se": 0.0566,
+                "se": 0.0586,
                 "baseline": 0.3
               },
               "60@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.2,
-                "topk_hit_rate": 0.2,
+                "top3_hit_rate": 0.22,
+                "topk_hit_rate": 0.22,
                 "top_k": 3,
-                "se": 0.0566,
+                "se": 0.0586,
                 "baseline": 0.3
               }
             }
@@ -12098,50 +12095,50 @@
               },
               "13@50": {
                 "folds": 50,
+                "top3_hit_rate": 0.44,
+                "topk_hit_rate": 0.44,
+                "top_k": 3,
+                "se": 0.0702,
+                "baseline": 0.3
+              },
+              "18@50": {
+                "folds": 50,
                 "top3_hit_rate": 0.42,
                 "topk_hit_rate": 0.42,
                 "top_k": 3,
                 "se": 0.0698,
                 "baseline": 0.3
               },
-              "18@50": {
-                "folds": 50,
-                "top3_hit_rate": 0.4,
-                "topk_hit_rate": 0.4,
-                "top_k": 3,
-                "se": 0.0693,
-                "baseline": 0.3
-              },
               "24@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.4,
-                "topk_hit_rate": 0.4,
+                "top3_hit_rate": 0.42,
+                "topk_hit_rate": 0.42,
                 "top_k": 3,
-                "se": 0.0693,
+                "se": 0.0698,
                 "baseline": 0.3
               },
               "30@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.44,
-                "topk_hit_rate": 0.44,
+                "top3_hit_rate": 0.46,
+                "topk_hit_rate": 0.46,
                 "top_k": 3,
-                "se": 0.0702,
+                "se": 0.0705,
                 "baseline": 0.3
               },
               "45@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.44,
-                "topk_hit_rate": 0.44,
+                "top3_hit_rate": 0.46,
+                "topk_hit_rate": 0.46,
                 "top_k": 3,
-                "se": 0.0702,
+                "se": 0.0705,
                 "baseline": 0.3
               },
               "60@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.44,
-                "topk_hit_rate": 0.44,
+                "top3_hit_rate": 0.46,
+                "topk_hit_rate": 0.46,
                 "top_k": 3,
-                "se": 0.0702,
+                "se": 0.0705,
                 "baseline": 0.3
               }
             }
@@ -12183,26 +12180,26 @@
               },
               "30@50": {
                 "folds": 50,
-                "top3_hit_rate": 0.22,
-                "topk_hit_rate": 0.22,
-                "top_k": 3,
-                "se": 0.0586,
-                "baseline": 0.3
-              },
-              "45@50": {
-                "folds": 50,
                 "top3_hit_rate": 0.24,
                 "topk_hit_rate": 0.24,
                 "top_k": 3,
                 "se": 0.0604,
                 "baseline": 0.3
               },
-              "60@50": {
+              "45@50": {
                 "folds": 50,
                 "top3_hit_rate": 0.26,
                 "topk_hit_rate": 0.26,
                 "top_k": 3,
                 "se": 0.062,
+                "baseline": 0.3
+              },
+              "60@50": {
+                "folds": 50,
+                "top3_hit_rate": 0.28,
+                "topk_hit_rate": 0.28,
+                "top_k": 3,
+                "se": 0.0635,
                 "baseline": 0.3
               }
             }
@@ -12216,25 +12213,25 @@
         ]
       },
       "model_review": {
-        "issue": "26221",
-        "actual": "96988",
+        "issue": "26222",
+        "actual": "87771",
         "previous_candidates": [
-          "07570",
-          "06900",
-          "71970",
-          "81901",
-          "76248"
+          "06970",
+          "76571",
+          "01578",
+          "77508",
+          "91241"
         ],
         "exact_hits": 0,
-        "best_number_hits": 2,
-        "summary": "第26221期按位复盘：候选池覆盖 3 / 5 个位置；不按单期结果追涨参数。",
+        "best_number_hits": 3,
+        "summary": "第26222期按位复盘：候选池覆盖 3 / 5 个位置；不按单期结果追涨参数。",
         "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
         "position_candidate_hits": [
           0,
-          2,
-          3,
+          1,
           0,
-          1
+          3,
+          2
         ],
         "position_pool_coverage": 3,
         "position_count": 5,
@@ -12251,9 +12248,9 @@
       "learning": {
         "tuning_applied": true,
         "review_feedback": {
-          "source_issue": "2026220",
+          "source_issue": "2026221",
           "exploration_positions": [
-            0,
+            1,
             2
           ],
           "reason": "上一期这些位置未被候选池覆盖，下一期仅扩大一档候选池做受控探索；不把上一期开奖号码直接升权。"
@@ -12261,28 +12258,66 @@
       },
       "history_count": 100,
       "model_scope": "每一位独立评分",
-      "generated_at": "2026-08-19T22:40:59+08:00",
-      "latest_issue": "2026221",
-      "latest_draw_date": "2026-08-19",
+      "generated_at": "2026-08-20T22:41:27+08:00",
+      "latest_issue": "2026222",
+      "latest_draw_date": "2026-08-20",
       "latest_numbers": [
-        "2",
-        "9",
-        "6"
+        "3",
+        "8",
+        "0"
       ],
-      "target_issue": "2026222",
-      "next_draw_at": "2026-08-20T21:15+08:00",
-      "next_draw_display": "2026年08月20日 21:15（北京时间）",
+      "target_issue": "2026223",
+      "next_draw_at": "2026-08-21T21:15+08:00",
+      "next_draw_display": "2026年08月21日 21:15（北京时间）",
       "schedule_note": "每日开奖（休市日除外）",
       "candidates": [
         {
-          "number": "285",
-          "mix_label": "热门池组合 · 2/3 位取最高权重数字",
+          "number": "982",
+          "mix_label": "热门池组合 · 3/3 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩3D 285",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中3/3项（和值15、跨度6、奇偶比1:2）。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "copy_text": "福彩3D 982",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（奇偶比1:2），偏离和值19、跨度7。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "structure_match": 1,
+          "prediction_metrics": {
+            "sum": 19,
+            "span": 7,
+            "odd_even": "1:2",
+            "distinct": 3,
+            "shape": "三位不同"
+          },
+          "purchase_suggestion": "直选参考：982"
+        },
+        {
+          "number": "275",
+          "mix_label": "热门池组合 · 0/3 位取最高权重数字",
+          "source": "hot_position_pool",
+          "group": "hot",
+          "rank": 2,
+          "confidence": 72.5,
+          "copy_text": "福彩3D 275",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度5、奇偶比2:1），偏离和值14。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "structure_match": 2,
+          "prediction_metrics": {
+            "sum": 14,
+            "span": 5,
+            "odd_even": "2:1",
+            "distinct": 3,
+            "shape": "三位不同"
+          },
+          "purchase_suggestion": "直选参考：275"
+        },
+        {
+          "number": "528",
+          "mix_label": "热门池组合 · 0/3 位取最高权重数字",
+          "source": "hot_position_pool",
+          "group": "hot",
+          "rank": 3,
+          "confidence": 61.9,
+          "copy_text": "福彩3D 528",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中3/3项（和值15、跨度6、奇偶比1:2）。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 3,
           "prediction_metrics": {
             "sum": 15,
@@ -12291,45 +12326,7 @@
             "distinct": 3,
             "shape": "三位不同"
           },
-          "purchase_suggestion": "直选参考：285"
-        },
-        {
-          "number": "922",
-          "mix_label": "热门池组合 · 1/3 位取最高权重数字",
-          "source": "hot_position_pool",
-          "group": "hot",
-          "rank": 2,
-          "confidence": 76.8,
-          "copy_text": "福彩3D 922",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（和值13、奇偶比1:2），偏离跨度7。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
-          "structure_match": 2,
-          "prediction_metrics": {
-            "sum": 13,
-            "span": 7,
-            "odd_even": "1:2",
-            "distinct": 2,
-            "shape": "两位相同"
-          },
-          "purchase_suggestion": "组选三参考：922（229/292/922）"
-        },
-        {
-          "number": "478",
-          "mix_label": "热门池组合 · 0/3 位取最高权重数字",
-          "source": "hot_position_pool",
-          "group": "hot",
-          "rank": 3,
-          "confidence": 61.1,
-          "copy_text": "福彩3D 478",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（奇偶比1:2），偏离和值19、跨度4。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
-          "structure_match": 1,
-          "prediction_metrics": {
-            "sum": 19,
-            "span": 4,
-            "odd_even": "1:2",
-            "distinct": 3,
-            "shape": "三位不同"
-          },
-          "purchase_suggestion": "直选参考：478"
+          "purchase_suggestion": "直选参考：528"
         },
         {
           "number": "811",
@@ -12337,9 +12334,9 @@
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 4,
-          "confidence": 54.8,
+          "confidence": 53.4,
           "copy_text": "福彩3D 811",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（和值10、奇偶比2:1），偏离跨度7。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（和值10、奇偶比2:1），偏离跨度7。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 2,
           "prediction_metrics": {
             "sum": 10,
@@ -12351,35 +12348,73 @@
           "purchase_suggestion": "组选三参考：811（118/181/811）"
         },
         {
-          "number": "536",
+          "number": "363",
           "mix_label": "热门池组合 · 0/3 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩3D 536",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度3、奇偶比2:1），偏离和值14。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "copy_text": "福彩3D 363",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度3、奇偶比2:1），偏离和值12。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 2,
           "prediction_metrics": {
-            "sum": 14,
+            "sum": 12,
             "span": 3,
             "odd_even": "2:1",
-            "distinct": 3,
-            "shape": "三位不同"
+            "distinct": 2,
+            "shape": "两位相同"
           },
-          "purchase_suggestion": "直选参考：536"
+          "purchase_suggestion": "组选三参考：363（336/363/633）"
         }
       ],
       "top_candidates": [
         {
-          "number": "285",
-          "mix_label": "热门池组合 · 2/3 位取最高权重数字",
+          "number": "982",
+          "mix_label": "热门池组合 · 3/3 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩3D 285",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中3/3项（和值15、跨度6、奇偶比1:2）。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "copy_text": "福彩3D 982",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（奇偶比1:2），偏离和值19、跨度7。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "structure_match": 1,
+          "prediction_metrics": {
+            "sum": 19,
+            "span": 7,
+            "odd_even": "1:2",
+            "distinct": 3,
+            "shape": "三位不同"
+          },
+          "purchase_suggestion": "直选参考：982"
+        },
+        {
+          "number": "275",
+          "mix_label": "热门池组合 · 0/3 位取最高权重数字",
+          "source": "hot_position_pool",
+          "group": "hot",
+          "rank": 2,
+          "confidence": 72.5,
+          "copy_text": "福彩3D 275",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度5、奇偶比2:1），偏离和值14。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "structure_match": 2,
+          "prediction_metrics": {
+            "sum": 14,
+            "span": 5,
+            "odd_even": "2:1",
+            "distinct": 3,
+            "shape": "三位不同"
+          },
+          "purchase_suggestion": "直选参考：275"
+        },
+        {
+          "number": "528",
+          "mix_label": "热门池组合 · 0/3 位取最高权重数字",
+          "source": "hot_position_pool",
+          "group": "hot",
+          "rank": 3,
+          "confidence": 61.9,
+          "copy_text": "福彩3D 528",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中3/3项（和值15、跨度6、奇偶比1:2）。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 3,
           "prediction_metrics": {
             "sum": 15,
@@ -12388,45 +12423,7 @@
             "distinct": 3,
             "shape": "三位不同"
           },
-          "purchase_suggestion": "直选参考：285"
-        },
-        {
-          "number": "922",
-          "mix_label": "热门池组合 · 1/3 位取最高权重数字",
-          "source": "hot_position_pool",
-          "group": "hot",
-          "rank": 2,
-          "confidence": 76.8,
-          "copy_text": "福彩3D 922",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（和值13、奇偶比1:2），偏离跨度7。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
-          "structure_match": 2,
-          "prediction_metrics": {
-            "sum": 13,
-            "span": 7,
-            "odd_even": "1:2",
-            "distinct": 2,
-            "shape": "两位相同"
-          },
-          "purchase_suggestion": "组选三参考：922（229/292/922）"
-        },
-        {
-          "number": "478",
-          "mix_label": "热门池组合 · 0/3 位取最高权重数字",
-          "source": "hot_position_pool",
-          "group": "hot",
-          "rank": 3,
-          "confidence": 61.1,
-          "copy_text": "福彩3D 478",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（奇偶比1:2），偏离和值19、跨度4。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
-          "structure_match": 1,
-          "prediction_metrics": {
-            "sum": 19,
-            "span": 4,
-            "odd_even": "1:2",
-            "distinct": 3,
-            "shape": "三位不同"
-          },
-          "purchase_suggestion": "直选参考：478"
+          "purchase_suggestion": "直选参考：528"
         },
         {
           "number": "811",
@@ -12434,9 +12431,9 @@
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 4,
-          "confidence": 54.8,
+          "confidence": 53.4,
           "copy_text": "福彩3D 811",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（和值10、奇偶比2:1），偏离跨度7。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（和值10、奇偶比2:1），偏离跨度7。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 2,
           "prediction_metrics": {
             "sum": 10,
@@ -12448,35 +12445,73 @@
           "purchase_suggestion": "组选三参考：811（118/181/811）"
         },
         {
-          "number": "536",
+          "number": "363",
           "mix_label": "热门池组合 · 0/3 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩3D 536",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度3、奇偶比2:1），偏离和值14。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "copy_text": "福彩3D 363",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度3、奇偶比2:1），偏离和值12。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 2,
           "prediction_metrics": {
-            "sum": 14,
+            "sum": 12,
             "span": 3,
             "odd_even": "2:1",
-            "distinct": 3,
-            "shape": "三位不同"
+            "distinct": 2,
+            "shape": "两位相同"
           },
-          "purchase_suggestion": "直选参考：536"
+          "purchase_suggestion": "组选三参考：363（336/363/633）"
         }
       ],
       "hot_candidates": [
         {
-          "number": "285",
-          "mix_label": "热门池组合 · 2/3 位取最高权重数字",
+          "number": "982",
+          "mix_label": "热门池组合 · 3/3 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩3D 285",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中3/3项（和值15、跨度6、奇偶比1:2）。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "copy_text": "福彩3D 982",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（奇偶比1:2），偏离和值19、跨度7。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "structure_match": 1,
+          "prediction_metrics": {
+            "sum": 19,
+            "span": 7,
+            "odd_even": "1:2",
+            "distinct": 3,
+            "shape": "三位不同"
+          },
+          "purchase_suggestion": "直选参考：982"
+        },
+        {
+          "number": "275",
+          "mix_label": "热门池组合 · 0/3 位取最高权重数字",
+          "source": "hot_position_pool",
+          "group": "hot",
+          "rank": 2,
+          "confidence": 72.5,
+          "copy_text": "福彩3D 275",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度5、奇偶比2:1），偏离和值14。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "structure_match": 2,
+          "prediction_metrics": {
+            "sum": 14,
+            "span": 5,
+            "odd_even": "2:1",
+            "distinct": 3,
+            "shape": "三位不同"
+          },
+          "purchase_suggestion": "直选参考：275"
+        },
+        {
+          "number": "528",
+          "mix_label": "热门池组合 · 0/3 位取最高权重数字",
+          "source": "hot_position_pool",
+          "group": "hot",
+          "rank": 3,
+          "confidence": 61.9,
+          "copy_text": "福彩3D 528",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中3/3项（和值15、跨度6、奇偶比1:2）。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 3,
           "prediction_metrics": {
             "sum": 15,
@@ -12485,45 +12520,7 @@
             "distinct": 3,
             "shape": "三位不同"
           },
-          "purchase_suggestion": "直选参考：285"
-        },
-        {
-          "number": "922",
-          "mix_label": "热门池组合 · 1/3 位取最高权重数字",
-          "source": "hot_position_pool",
-          "group": "hot",
-          "rank": 2,
-          "confidence": 76.8,
-          "copy_text": "福彩3D 922",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（和值13、奇偶比1:2），偏离跨度7。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
-          "structure_match": 2,
-          "prediction_metrics": {
-            "sum": 13,
-            "span": 7,
-            "odd_even": "1:2",
-            "distinct": 2,
-            "shape": "两位相同"
-          },
-          "purchase_suggestion": "组选三参考：922（229/292/922）"
-        },
-        {
-          "number": "478",
-          "mix_label": "热门池组合 · 0/3 位取最高权重数字",
-          "source": "hot_position_pool",
-          "group": "hot",
-          "rank": 3,
-          "confidence": 61.1,
-          "copy_text": "福彩3D 478",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中1/3项（奇偶比1:2），偏离和值19、跨度4。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
-          "structure_match": 1,
-          "prediction_metrics": {
-            "sum": 19,
-            "span": 4,
-            "odd_even": "1:2",
-            "distinct": 3,
-            "shape": "三位不同"
-          },
-          "purchase_suggestion": "直选参考：478"
+          "purchase_suggestion": "直选参考：528"
         },
         {
           "number": "811",
@@ -12531,9 +12528,9 @@
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 4,
-          "confidence": 54.8,
+          "confidence": 53.4,
           "copy_text": "福彩3D 811",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（和值10、奇偶比2:1），偏离跨度7。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（和值10、奇偶比2:1），偏离跨度7。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 2,
           "prediction_metrics": {
             "sum": 10,
@@ -12545,54 +12542,35 @@
           "purchase_suggestion": "组选三参考：811（118/181/811）"
         },
         {
-          "number": "536",
+          "number": "363",
           "mix_label": "热门池组合 · 0/3 位取最高权重数字",
           "source": "hot_position_pool",
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩3D 536",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度3、奇偶比2:1），偏离和值14。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "copy_text": "福彩3D 363",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度3、奇偶比2:1），偏离和值12。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 2,
           "prediction_metrics": {
-            "sum": 14,
-            "span": 3,
-            "odd_even": "2:1",
-            "distinct": 3,
-            "shape": "三位不同"
-          },
-          "purchase_suggestion": "直选参考：536"
-        }
-      ],
-      "cold_candidates": [
-        {
-          "number": "558",
-          "mix_label": "ZIP结构辅助冷门池",
-          "source": "cold_hybrid_pool",
-          "group": "cold",
-          "rank": 1,
-          "confidence": 77.0,
-          "copy_text": "福彩3D 558",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度3、奇偶比2:1），偏离和值18。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
-          "structure_match": 2,
-          "prediction_metrics": {
-            "sum": 18,
+            "sum": 12,
             "span": 3,
             "odd_even": "2:1",
             "distinct": 2,
             "shape": "两位相同"
           },
-          "purchase_suggestion": "组选三参考：558（558/585/855）"
-        },
+          "purchase_suggestion": "组选三参考：363（336/363/633）"
+        }
+      ],
+      "cold_candidates": [
         {
           "number": "861",
           "mix_label": "ZIP结构辅助冷门池",
           "source": "cold_hybrid_pool",
           "group": "cold",
-          "rank": 2,
-          "confidence": 74.5,
+          "rank": 1,
+          "confidence": 77.0,
           "copy_text": "福彩3D 861",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（和值15、奇偶比1:2），偏离跨度7。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（和值15、奇偶比1:2），偏离跨度7。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 2,
           "prediction_metrics": {
             "sum": 15,
@@ -12604,23 +12582,42 @@
           "purchase_suggestion": "直选参考：861"
         },
         {
-          "number": "449",
+          "number": "738",
+          "mix_label": "ZIP结构辅助冷门池",
+          "source": "cold_hybrid_pool",
+          "group": "cold",
+          "rank": 2,
+          "confidence": 72.9,
+          "copy_text": "福彩3D 738",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度5、奇偶比2:1），偏离和值18。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "structure_match": 2,
+          "prediction_metrics": {
+            "sum": 18,
+            "span": 5,
+            "odd_even": "2:1",
+            "distinct": 3,
+            "shape": "三位不同"
+          },
+          "purchase_suggestion": "直选参考：738"
+        },
+        {
+          "number": "549",
           "mix_label": "ZIP结构辅助冷门池",
           "source": "cold_hybrid_pool",
           "group": "cold",
           "rank": 3,
-          "confidence": 63.8,
-          "copy_text": "福彩3D 449",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度5、奇偶比1:2），偏离和值17。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "confidence": 67.6,
+          "copy_text": "福彩3D 549",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度5、奇偶比2:1），偏离和值18。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 2,
           "prediction_metrics": {
-            "sum": 17,
+            "sum": 18,
             "span": 5,
-            "odd_even": "1:2",
-            "distinct": 2,
-            "shape": "两位相同"
+            "odd_even": "2:1",
+            "distinct": 3,
+            "shape": "三位不同"
           },
-          "purchase_suggestion": "组选三参考：449（449/494/944）"
+          "purchase_suggestion": "直选参考：549"
         },
         {
           "number": "603",
@@ -12628,9 +12625,9 @@
           "source": "cold_hybrid_pool",
           "group": "cold",
           "rank": 4,
-          "confidence": 56.0,
+          "confidence": 55.6,
           "copy_text": "福彩3D 603",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度6、奇偶比1:2），偏离和值9。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度6、奇偶比1:2），偏离和值9。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 2,
           "prediction_metrics": {
             "sum": 9,
@@ -12642,23 +12639,23 @@
           "purchase_suggestion": "直选参考：603"
         },
         {
-          "number": "716",
+          "number": "456",
           "mix_label": "ZIP结构辅助冷门池",
           "source": "cold_hybrid_pool",
           "group": "cold",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩3D 716",
-          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（跨度6、奇偶比2:1），偏离和值14。本日结构重点是和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
+          "copy_text": "福彩3D 456",
+          "prediction_reason": "百位/十位/个位分别取位频与遗漏排序；命中2/3项（和值15、奇偶比1:2），偏离跨度2。本日结构重点是和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']，因此这是一注位置模型保留号，不是结构优先号。",
           "structure_match": 2,
           "prediction_metrics": {
-            "sum": 14,
-            "span": 6,
-            "odd_even": "2:1",
+            "sum": 15,
+            "span": 2,
+            "odd_even": "1:2",
             "distinct": 3,
             "shape": "三位不同"
           },
-          "purchase_suggestion": "直选参考：716"
+          "purchase_suggestion": "直选参考：456"
         }
       ],
       "prediction_summary": {
@@ -12671,7 +12668,7 @@
           "baseline_values": [
             15,
             13,
-            18
+            17
           ],
           "forecast_window": 99,
           "forecast_basis": "70% recent-100 frequency + 30% recent-300 frequency",
@@ -12687,8 +12684,8 @@
             },
             {
               "value": 13,
-              "count": 9,
-              "share": 0.0909
+              "count": 8,
+              "share": 0.0808
             },
             {
               "value": 10,
@@ -12724,14 +12721,14 @@
         },
         "span": {
           "values": [
-            3,
             6,
+            3,
             5
           ],
           "baseline_values": [
-            3,
             6,
-            5
+            7,
+            3
           ],
           "forecast_window": 99,
           "forecast_basis": "70% recent-100 frequency + 30% recent-300 frequency",
@@ -12741,14 +12738,14 @@
           ],
           "frequencies": [
             {
-              "value": 3,
+              "value": 6,
               "count": 14,
               "share": 0.1414
             },
             {
-              "value": 6,
-              "count": 14,
-              "share": 0.1414
+              "value": 3,
+              "count": 13,
+              "share": 0.1313
             },
             {
               "value": 5,
@@ -12778,8 +12775,8 @@
               "share": 0.0909
             }
           ],
-          "forecast_reason": "Rolling forecast: 99-draw fast frequency blended with 99-draw stable frequency; top values are 3, 6, 5.",
-          "reason": "跨度按近99期频次预测，前三结构为3、6、5。",
+          "forecast_reason": "Rolling forecast: 99-draw fast frequency blended with 99-draw stable frequency; top values are 6, 3, 5.",
+          "reason": "跨度按近99期频次预测，前三结构为6、3、5。",
           "cold_forecast_reason": "低频结构为9（6期）、1（9期）、8（9期），作为冷结构观察，不等于下期必补。"
         },
         "odd_even": {
@@ -12838,16 +12835,16 @@
         }
       },
       "review": {
-        "title": "第2026221期结构复盘",
-        "summary": "开奖号296，和值17、跨度7，奇偶比1:2。三位数形态为三位不同。",
+        "title": "第2026222期结构复盘",
+        "summary": "开奖号380，和值11、跨度8，奇偶比1:2。三位数形态为三位不同。",
         "metrics": [
           {
             "label": "和值",
-            "value": "17"
+            "value": "11"
           },
           {
             "label": "跨度",
-            "value": "7"
+            "value": "8"
           },
           {
             "label": "奇偶",
@@ -12863,19 +12860,19 @@
       "analysis": {
         "sample": 100,
         "model_name": "福彩3D独立三位置模型",
-        "summary": "最近100期按每一个位置分别统计，绝不把号码只当作无序集合。各位置当前热门参考为2 · 2 · 5。同时以和值[15, 13, 10]、跨度[3, 6, 5]、奇偶比['1:2', '2:1', '0:3']作为组合解释信号。",
+        "summary": "最近100期按每一个位置分别统计，绝不把号码只当作无序集合。各位置当前热门参考为2 · 8 · 5。同时以和值[15, 13, 10]、跨度[6, 3, 5]、奇偶比['1:2', '2:1', '0:3']作为组合解释信号。",
         "signals": [
           {
             "label": "综合活跃数字",
-            "value": "2 · 8 · 9 · 6 · 5"
+            "value": "2 · 8 · 9 · 5 · 6"
           },
           {
             "label": "各位置最高权重",
-            "value": "2 · 2 · 5"
+            "value": "2 · 8 · 5"
           },
           {
             "label": "较长遗漏",
-            "value": "0（10期）、4（7期）、1（6期）"
+            "value": "4（8期）、1（7期）、5（3期）"
           },
           {
             "label": "和值预测",
@@ -12883,7 +12880,7 @@
           },
           {
             "label": "跨度预测",
-            "value": "3、6、5"
+            "value": "6、3、5"
           },
           {
             "label": "奇偶比预测",
@@ -12896,7 +12893,7 @@
             "hot_digits": [
               "2",
               "9",
-              "8"
+              "3"
             ],
             "cold_digits": [
               "0",
@@ -12921,8 +12918,8 @@
                 "count": 13
               },
               {
-                "digit": "8",
-                "count": 11
+                "digit": "3",
+                "count": 10
               }
             ],
             "cold_occurrences": [
@@ -12942,19 +12939,19 @@
             "omitted_digits": [
               {
                 "digit": "0",
-                "miss": 31
+                "miss": 32
               },
               {
                 "digit": "4",
-                "miss": 14
+                "miss": 15
               }
             ]
           },
           {
             "position": "十位",
             "hot_digits": [
-              "2",
               "8",
+              "2",
               "7"
             ],
             "cold_digits": [
@@ -12963,8 +12960,8 @@
               "6"
             ],
             "hot_focus_digits": [
-              "2",
-              "8"
+              "8",
+              "2"
             ],
             "cold_focus_digits": [
               "5",
@@ -12972,12 +12969,12 @@
             ],
             "hot_occurrences": [
               {
-                "digit": "2",
+                "digit": "8",
                 "count": 15
               },
               {
-                "digit": "8",
-                "count": 14
+                "digit": "2",
+                "count": 15
               },
               {
                 "digit": "7",
@@ -12991,7 +12988,7 @@
               },
               {
                 "digit": "4",
-                "count": 6
+                "count": 5
               },
               {
                 "digit": "6",
@@ -13001,11 +12998,11 @@
             "omitted_digits": [
               {
                 "digit": "1",
-                "miss": 14
+                "miss": 15
               },
               {
                 "digit": "5",
-                "miss": 11
+                "miss": 12
               }
             ]
           },
@@ -13019,7 +13016,7 @@
             "cold_digits": [
               "7",
               "4",
-              "0"
+              "3"
             ],
             "hot_focus_digits": [
               "5",
@@ -13053,18 +13050,18 @@
                 "count": 8
               },
               {
-                "digit": "0",
-                "count": 11
+                "digit": "3",
+                "count": 6
               }
             ],
             "omitted_digits": [
               {
-                "digit": "0",
-                "miss": 41
+                "digit": "7",
+                "miss": 37
               },
               {
-                "digit": "7",
-                "miss": 36
+                "digit": "4",
+                "miss": 17
               }
             ]
           }
@@ -13073,12 +13070,12 @@
           {
             "position": "百位",
             "digits": [
-              "2",
-              "9"
+              "9",
+              "2"
             ],
             "scores": [
-              -6.8219,
-              -6.8243
+              -6.7998,
+              -6.8119
             ],
             "source": "position_ensemble_473_tiebreak"
           },
@@ -13089,20 +13086,20 @@
               "2"
             ],
             "scores": [
-              -6.8219,
-              -6.8246
+              -6.7998,
+              -6.8275
             ],
             "source": "position_ensemble_473_tiebreak"
           },
           {
             "position": "个位",
             "digits": [
-              "5",
-              "2"
+              "2",
+              "5"
             ],
             "scores": [
-              -6.8219,
-              -6.8243
+              -6.7998,
+              -6.8119
             ],
             "source": "position_ensemble_473_tiebreak"
           }
@@ -13111,9 +13108,9 @@
           "8@50": {
             "folds": 50,
             "positional_top3_hit_rate": null,
-            "positional_topk_hit_rate": 0.54,
+            "positional_topk_hit_rate": 0.5467,
             "top_k": 5,
-            "se": 0.0407,
+            "se": 0.0406,
             "baseline": 0.5
           },
           "13@50": {
@@ -13127,7 +13124,7 @@
           "18@50": {
             "folds": 50,
             "positional_top3_hit_rate": null,
-            "positional_topk_hit_rate": 0.52,
+            "positional_topk_hit_rate": 0.5267,
             "top_k": 5,
             "se": 0.0408,
             "baseline": 0.5
@@ -13135,7 +13132,7 @@
           "24@50": {
             "folds": 50,
             "positional_top3_hit_rate": null,
-            "positional_topk_hit_rate": 0.52,
+            "positional_topk_hit_rate": 0.5267,
             "top_k": 5,
             "se": 0.0408,
             "baseline": 0.5
@@ -13193,9 +13190,9 @@
               "8@50": {
                 "folds": 50,
                 "top3_hit_rate": null,
-                "topk_hit_rate": 0.58,
+                "topk_hit_rate": 0.6,
                 "top_k": 5,
-                "se": 0.0698,
+                "se": 0.0693,
                 "baseline": 0.5
               },
               "13@50": {
@@ -13209,17 +13206,17 @@
               "18@50": {
                 "folds": 50,
                 "top3_hit_rate": null,
-                "topk_hit_rate": 0.56,
+                "topk_hit_rate": 0.58,
                 "top_k": 5,
-                "se": 0.0702,
+                "se": 0.0698,
                 "baseline": 0.5
               },
               "24@50": {
                 "folds": 50,
                 "top3_hit_rate": null,
-                "topk_hit_rate": 0.52,
+                "topk_hit_rate": 0.54,
                 "top_k": 5,
-                "se": 0.0707,
+                "se": 0.0705,
                 "baseline": 0.5
               },
               "30@50": {
@@ -13254,15 +13251,15 @@
               "8@50": {
                 "folds": 50,
                 "top3_hit_rate": null,
-                "topk_hit_rate": 0.52,
+                "topk_hit_rate": 0.54,
                 "top_k": 5,
-                "se": 0.0707,
+                "se": 0.0705,
                 "baseline": 0.5
               },
               "13@50": {
                 "folds": 50,
                 "top3_hit_rate": null,
-                "topk_hit_rate": 0.48,
+                "topk_hit_rate": 0.5,
                 "top_k": 5,
                 "se": 0.0707,
                 "baseline": 0.5
@@ -13270,7 +13267,7 @@
               "18@50": {
                 "folds": 50,
                 "top3_hit_rate": null,
-                "topk_hit_rate": 0.5,
+                "topk_hit_rate": 0.52,
                 "top_k": 5,
                 "se": 0.0707,
                 "baseline": 0.5
@@ -13278,7 +13275,7 @@
               "24@50": {
                 "folds": 50,
                 "top3_hit_rate": null,
-                "topk_hit_rate": 0.5,
+                "topk_hit_rate": 0.52,
                 "top_k": 5,
                 "se": 0.0707,
                 "baseline": 0.5
@@ -13286,15 +13283,15 @@
               "30@50": {
                 "folds": 50,
                 "top3_hit_rate": null,
-                "topk_hit_rate": 0.52,
+                "topk_hit_rate": 0.54,
                 "top_k": 5,
-                "se": 0.0707,
+                "se": 0.0705,
                 "baseline": 0.5
               },
               "45@50": {
                 "folds": 50,
                 "top3_hit_rate": null,
-                "topk_hit_rate": 0.48,
+                "topk_hit_rate": 0.5,
                 "top_k": 5,
                 "se": 0.0707,
                 "baseline": 0.5
@@ -13302,9 +13299,9 @@
               "60@50": {
                 "folds": 50,
                 "top3_hit_rate": null,
-                "topk_hit_rate": 0.44,
+                "topk_hit_rate": 0.46,
                 "top_k": 5,
-                "se": 0.0702,
+                "se": 0.0705,
                 "baseline": 0.5
               }
             }
@@ -13315,7 +13312,7 @@
               "8@50": {
                 "folds": 50,
                 "top3_hit_rate": null,
-                "topk_hit_rate": 0.52,
+                "topk_hit_rate": 0.5,
                 "top_k": 5,
                 "se": 0.0707,
                 "baseline": 0.5
@@ -13323,15 +13320,15 @@
               "13@50": {
                 "folds": 50,
                 "top3_hit_rate": null,
-                "topk_hit_rate": 0.54,
+                "topk_hit_rate": 0.52,
                 "top_k": 5,
-                "se": 0.0705,
+                "se": 0.0707,
                 "baseline": 0.5
               },
               "18@50": {
                 "folds": 50,
                 "top3_hit_rate": null,
-                "topk_hit_rate": 0.5,
+                "topk_hit_rate": 0.48,
                 "top_k": 5,
                 "se": 0.0707,
                 "baseline": 0.5
@@ -13339,33 +13336,33 @@
               "24@50": {
                 "folds": 50,
                 "top3_hit_rate": null,
-                "topk_hit_rate": 0.54,
+                "topk_hit_rate": 0.52,
                 "top_k": 5,
-                "se": 0.0705,
+                "se": 0.0707,
                 "baseline": 0.5
               },
               "30@50": {
                 "folds": 50,
                 "top3_hit_rate": null,
-                "topk_hit_rate": 0.56,
+                "topk_hit_rate": 0.54,
                 "top_k": 5,
-                "se": 0.0702,
+                "se": 0.0705,
                 "baseline": 0.5
               },
               "45@50": {
                 "folds": 50,
                 "top3_hit_rate": null,
-                "topk_hit_rate": 0.56,
+                "topk_hit_rate": 0.54,
                 "top_k": 5,
-                "se": 0.0702,
+                "se": 0.0705,
                 "baseline": 0.5
               },
               "60@50": {
                 "folds": 50,
                 "top3_hit_rate": null,
-                "topk_hit_rate": 0.56,
+                "topk_hit_rate": 0.54,
                 "top_k": 5,
-                "se": 0.0702,
+                "se": 0.0705,
                 "baseline": 0.5
               }
             }
@@ -13379,23 +13376,23 @@
         ]
       },
       "model_review": {
-        "issue": "2026221",
-        "actual": "296",
+        "issue": "2026222",
+        "actual": "380",
         "previous_candidates": [
-          "982",
-          "275",
-          "528",
+          "285",
+          "922",
+          "478",
           "811",
-          "433"
+          "536"
         ],
         "exact_hits": 0,
-        "best_number_hits": 2,
-        "summary": "第2026221期按位复盘：候选池覆盖 1 / 3 个位置；不按单期结果追涨参数。",
+        "best_number_hits": 1,
+        "summary": "第2026222期按位复盘：候选池覆盖 1 / 3 个位置；不按单期结果追涨参数。",
         "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
         "position_diagnostics": [
           {
             "position": "百位",
-            "actual_digit": "2",
+            "actual_digit": "3",
             "candidate_digits": [
               "2",
               "4",
@@ -13403,13 +13400,13 @@
               "8",
               "9"
             ],
-            "candidate_hit_count": 1,
-            "pool_hit": true,
-            "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中：该位的频率、遗漏和组合分均未达到五组入选阈值。"
           },
           {
             "position": "十位",
-            "actual_digit": "9",
+            "actual_digit": "8",
             "candidate_digits": [
               "1",
               "2",
@@ -13417,23 +13414,23 @@
               "7",
               "8"
             ],
-            "candidate_hit_count": 0,
-            "pool_hit": false,
-            "reason": "未命中：该位遗漏 21 期，当前模型对长期遗漏只做有限补偿，未强行追冷。"
+            "candidate_hit_count": 1,
+            "pool_hit": true,
+            "reason": "命中：该位进入历史位频前三，综合候选池保留了它。"
           },
           {
             "position": "个位",
-            "actual_digit": "6",
+            "actual_digit": "0",
             "candidate_digits": [
               "1",
               "2",
-              "3",
               "5",
+              "6",
               "8"
             ],
             "candidate_hit_count": 0,
             "pool_hit": false,
-            "reason": "未命中：该位的频率、遗漏和组合分均未达到五组入选阈值。"
+            "reason": "未命中：该位遗漏 41 期，当前模型对长期遗漏只做有限补偿，未强行追冷。"
           }
         ],
         "model_adjustments": [
@@ -13442,31 +13439,31 @@
         ],
         "structure_diagnostics": {
           "actual": {
-            "sum": 17,
-            "span": 7,
+            "sum": 11,
+            "span": 8,
             "odd_even": "1:2",
             "distinct": 3,
             "shape": "三位不同"
           },
-          "explanation": "本期296的和值17、跨度7、奇偶比1:2、三位不同；这些字段用于解释候选组合为何入选或落选，不能据此断言下一期会重复相同结构。"
+          "explanation": "本期380的和值11、跨度8、奇偶比1:2、三位不同；这些字段用于解释候选组合为何入选或落选，不能据此断言下一期会重复相同结构。"
         },
         "position_pool_coverage": 1,
         "position_count": 3,
         "next_day_advice": [
           {
-            "number": "285",
+            "number": "982",
             "shape": "组六形态，按直选参考",
-            "suggestion": "直选参考：285"
+            "suggestion": "直选参考：982"
           },
           {
-            "number": "922",
-            "shape": "组选三",
-            "suggestion": "组选三参考：922（229/292/922）"
+            "number": "275",
+            "shape": "组六形态，按直选参考",
+            "suggestion": "直选参考：275"
           },
           {
-            "number": "478",
+            "number": "528",
             "shape": "组六形态，按直选参考",
-            "suggestion": "直选参考：478"
+            "suggestion": "直选参考：528"
           },
           {
             "number": "811",
@@ -13474,12 +13471,12 @@
             "suggestion": "组选三参考：811（118/181/811）"
           },
           {
-            "number": "536",
-            "shape": "组六形态，按直选参考",
-            "suggestion": "直选参考：536"
+            "number": "363",
+            "shape": "组选三",
+            "suggestion": "组选三参考：363（336/363/633）"
           }
         ],
-        "next_day_advice_text": "直选参考：285；组选三参考：922（229/292/922）；直选参考：478；组选三参考：811（118/181/811）；直选参考：536",
+        "next_day_advice_text": "直选参考：982；直选参考：275；直选参考：528；组选三参考：811（118/181/811）；组选三参考：363（336/363/633）",
         "learning_action": "上一期这些位置未被候选池覆盖，下一期仅扩大一档候选池做受控探索；不把上一期开奖号码直接升权。",
         "tuning_applied": true
       }
@@ -14305,116 +14302,113 @@
       "learning": {
         "tuning_applied": true,
         "review_feedback": {
-          "source_issue": "2026094",
+          "source_issue": "2026095",
           "exploration_positions": [
-            0,
-            1,
-            2,
-            4,
-            5
+            3,
+            4
           ],
           "reason": "上一期这些位置未被候选池覆盖，下一期仅扩大一档候选池做受控探索；不把上一期开奖号码直接升权。"
         }
       },
       "history_count": 100,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-18T22:41:05+08:00",
-      "latest_issue": "2026095",
-      "latest_draw_date": "2026-08-18",
+      "generated_at": "2026-08-20T22:41:27+08:00",
+      "latest_issue": "2026096",
+      "latest_draw_date": "2026-08-20",
       "latest_numbers": [
+        "01",
         "04",
-        "06",
-        "14",
-        "21",
+        "16",
         "22",
-        "33",
-        "16"
+        "26",
+        "31",
+        "04"
       ],
-      "target_issue": "2026096",
-      "next_draw_at": "2026-08-20T21:15+08:00",
-      "next_draw_display": "2026年08月20日 21:15（北京时间）",
+      "target_issue": "2026097",
+      "next_draw_at": "2026-08-23T21:15+08:00",
+      "next_draw_display": "2026年08月23日 21:15（北京时间）",
       "schedule_note": "每周二、四、日开奖",
       "candidates": [
         {
           "red": [
-            1,
-            3,
+            2,
             6,
             24,
+            25,
             28,
             30
           ],
           "blue": [
-            4
+            1
           ],
           "source": "v3_ensemble",
           "group": "hot",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩双色球 01 03 06 24 28 30 + 04"
+          "copy_text": "福彩双色球 02 06 24 25 28 30 + 01"
         },
         {
           "red": [
-            2,
-            7,
-            10,
-            18,
-            22,
-            25
-          ],
-          "blue": [
-            8
-          ],
-          "source": "v3_ensemble",
-          "group": "hot",
-          "rank": 2,
-          "confidence": 63.5,
-          "copy_text": "福彩双色球 02 07 10 18 22 25 + 08"
-        },
-        {
-          "red": [
-            2,
-            4,
             8,
-            14,
+            16,
+            18,
+            23,
             24,
             27
           ],
           "blue": [
-            7
+            3
+          ],
+          "source": "v3_ensemble",
+          "group": "hot",
+          "rank": 2,
+          "confidence": 69.1,
+          "copy_text": "福彩双色球 08 16 18 23 24 27 + 03"
+        },
+        {
+          "red": [
+            3,
+            7,
+            13,
+            14,
+            18,
+            22
+          ],
+          "blue": [
+            5
           ],
           "source": "v3_ensemble",
           "group": "hot",
           "rank": 3,
-          "confidence": 60.3,
-          "copy_text": "福彩双色球 02 04 08 14 24 27 + 07"
+          "confidence": 68.2,
+          "copy_text": "福彩双色球 03 07 13 14 18 22 + 05"
         },
         {
           "red": [
+            1,
+            4,
+            5,
             9,
-            19,
-            23,
-            27,
-            29,
-            33
+            10,
+            27
           ],
           "blue": [
-            10
+            11
           ],
           "source": "v3_ensemble",
           "group": "hot",
           "rank": 4,
-          "confidence": 54.9,
-          "copy_text": "福彩双色球 09 19 23 27 29 33 + 10"
+          "confidence": 60.2,
+          "copy_text": "福彩双色球 01 04 05 09 10 27 + 11"
         },
         {
           "red": [
-            5,
-            13,
-            14,
             15,
-            16,
-            32
+            19,
+            23,
+            29,
+            32,
+            33
           ],
           "blue": [
             13
@@ -14423,90 +14417,90 @@
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩双色球 05 13 14 15 16 32 + 13"
+          "copy_text": "福彩双色球 15 19 23 29 32 33 + 13"
         }
       ],
       "top_candidates": [
         {
           "red": [
-            1,
-            3,
+            2,
             6,
             24,
+            25,
             28,
             30
           ],
           "blue": [
-            4
+            1
           ],
           "source": "v3_ensemble",
           "group": "hot",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩双色球 01 03 06 24 28 30 + 04"
+          "copy_text": "福彩双色球 02 06 24 25 28 30 + 01"
         },
         {
           "red": [
-            2,
-            7,
-            10,
-            18,
-            22,
-            25
-          ],
-          "blue": [
-            8
-          ],
-          "source": "v3_ensemble",
-          "group": "hot",
-          "rank": 2,
-          "confidence": 63.5,
-          "copy_text": "福彩双色球 02 07 10 18 22 25 + 08"
-        },
-        {
-          "red": [
-            2,
-            4,
             8,
-            14,
+            16,
+            18,
+            23,
             24,
             27
           ],
           "blue": [
-            7
+            3
+          ],
+          "source": "v3_ensemble",
+          "group": "hot",
+          "rank": 2,
+          "confidence": 69.1,
+          "copy_text": "福彩双色球 08 16 18 23 24 27 + 03"
+        },
+        {
+          "red": [
+            3,
+            7,
+            13,
+            14,
+            18,
+            22
+          ],
+          "blue": [
+            5
           ],
           "source": "v3_ensemble",
           "group": "hot",
           "rank": 3,
-          "confidence": 60.3,
-          "copy_text": "福彩双色球 02 04 08 14 24 27 + 07"
+          "confidence": 68.2,
+          "copy_text": "福彩双色球 03 07 13 14 18 22 + 05"
         },
         {
           "red": [
+            1,
+            4,
+            5,
             9,
-            19,
-            23,
-            27,
-            29,
-            33
+            10,
+            27
           ],
           "blue": [
-            10
+            11
           ],
           "source": "v3_ensemble",
           "group": "hot",
           "rank": 4,
-          "confidence": 54.9,
-          "copy_text": "福彩双色球 09 19 23 27 29 33 + 10"
+          "confidence": 60.2,
+          "copy_text": "福彩双色球 01 04 05 09 10 27 + 11"
         },
         {
           "red": [
-            5,
-            13,
-            14,
             15,
-            16,
-            32
+            19,
+            23,
+            29,
+            32,
+            33
           ],
           "blue": [
             13
@@ -14515,12 +14509,12 @@
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩双色球 05 13 14 15 16 32 + 13"
+          "copy_text": "福彩双色球 15 19 23 29 32 33 + 13"
         }
       ],
       "review": {
-        "title": "第2026095期结构复盘",
-        "summary": "红球和值100、跨度29，奇偶比2:4；蓝球号码16。与前一期红球重号1个。",
+        "title": "第2026096期结构复盘",
+        "summary": "红球和值100、跨度30，奇偶比2:4；蓝球号码4。与前一期红球重号2个。",
         "metrics": [
           {
             "label": "红球和值",
@@ -14528,7 +14522,7 @@
           },
           {
             "label": "红球跨度",
-            "value": "29"
+            "value": "30"
           },
           {
             "label": "红球奇偶",
@@ -14536,7 +14530,7 @@
           },
           {
             "label": "蓝球",
-            "value": "16"
+            "value": "4"
           }
         ]
       },
@@ -14552,16 +14546,16 @@
           "red": {
             "50": {
               "folds": 50,
-              "pool_coverage": 0.5367,
-              "se": 0.0264,
+              "pool_coverage": 0.53,
+              "se": 0.0265,
               "baseline": 0.5455
             }
           },
           "blue": {
             "50": {
               "folds": 50,
-              "pool_coverage": 0.4,
-              "se": 0.0693,
+              "pool_coverage": 0.42,
+              "se": 0.0698,
               "baseline": 0.3125
             }
           }
@@ -14569,7 +14563,7 @@
         "backtest": {
           "50": {
             "folds": 50,
-            "pool_coverage": 0.5171,
+            "pool_coverage": 0.5143,
             "se": 0.0249,
             "baseline": 0.5122
           }
@@ -14578,11 +14572,11 @@
         "signals": [
           {
             "label": "红球相对活跃",
-            "value": "24 · 14 · 06 · 33 · 05 · 25"
+            "value": "24 · 14 · 04 · 06 · 05 · 25"
           },
           {
             "label": "蓝球相对活跃",
-            "value": "05 · 01 · 03"
+            "value": "05 · 04 · 01"
           },
           {
             "label": "红球结构",
@@ -14596,29 +14590,28 @@
         ]
       },
       "model_review": {
-        "issue": "2026095",
-        "actual": "04 06 14 21 22 33 + 16",
+        "issue": "2026096",
+        "actual": "01 04 16 22 26 31 + 04",
         "previous_candidates": [
-          "01 22 24 25 28 30 + 04",
-          "02 03 09 10 14 18 + 08",
-          "07 08 14 30 31 33 + 02",
-          "04 06 07 19 27 29 + 09",
-          "05 15 16 23 32 33 + 16"
+          "01 03 06 24 28 30 + 04",
+          "02 07 10 18 22 25 + 08",
+          "02 04 08 14 24 27 + 07",
+          "09 19 23 27 29 33 + 10",
+          "05 13 14 15 16 32 + 13"
         ],
         "exact_hits": 0,
         "best_number_hits": 2,
-        "summary": "第2026095期按位复盘：候选池覆盖 5 / 7 个位置；不按单期结果追涨参数。",
+        "summary": "第2026096期按位复盘：候选池覆盖 3 / 7 个位置；不按单期结果追涨参数。",
         "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
         "position_diagnostics": [
           {
             "position": "红球第1位",
-            "actual_digit": "04",
+            "actual_digit": "01",
             "candidate_digits": [
               "01",
               "02",
-              "04",
               "05",
-              "07"
+              "09"
             ],
             "candidate_hit_count": 1,
             "pool_hit": true,
@@ -14626,13 +14619,13 @@
           },
           {
             "position": "红球第2位",
-            "actual_digit": "06",
+            "actual_digit": "04",
             "candidate_digits": [
               "03",
-              "06",
-              "08",
-              "15",
-              "22"
+              "04",
+              "07",
+              "13",
+              "19"
             ],
             "candidate_hit_count": 1,
             "pool_hit": true,
@@ -14640,68 +14633,69 @@
           },
           {
             "position": "红球第3位",
-            "actual_digit": "14",
+            "actual_digit": "16",
             "candidate_digits": [
-              "07",
-              "09",
+              "06",
+              "08",
+              "10",
               "14",
-              "16",
-              "24"
+              "23"
             ],
-            "candidate_hit_count": 1,
-            "pool_hit": true,
-            "reason": "命中：红球第3位的历史排序/分区候选池覆盖该号码。"
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中位置：号码进入红球联合池，但没有落在第3位的排序位置。"
           },
           {
             "position": "红球第4位",
-            "actual_digit": "21",
+            "actual_digit": "22",
             "candidate_digits": [
-              "10",
-              "19",
-              "23",
-              "25",
-              "30"
+              "14",
+              "15",
+              "18",
+              "24",
+              "27"
+            ],
+            "candidate_hit_count": 0,
+            "pool_hit": false,
+            "reason": "未命中位置：号码进入红球联合池，但没有落在第4位的排序位置。"
+          },
+          {
+            "position": "红球第5位",
+            "actual_digit": "26",
+            "candidate_digits": [
+              "16",
+              "22",
+              "24",
+              "28",
+              "29"
             ],
             "candidate_hit_count": 0,
             "pool_hit": false,
             "reason": "未命中：号码未进入红球联合池，区域频率、共现和结构分未达到五组阈值。"
           },
           {
-            "position": "红球第5位",
-            "actual_digit": "22",
+            "position": "红球第6位",
+            "actual_digit": "31",
             "candidate_digits": [
-              "14",
+              "25",
               "27",
-              "28",
-              "31",
-              "32"
+              "30",
+              "32",
+              "33"
             ],
             "candidate_hit_count": 0,
             "pool_hit": false,
-            "reason": "未命中位置：号码进入红球联合池，但没有落在第5位的排序位置。"
-          },
-          {
-            "position": "红球第6位",
-            "actual_digit": "33",
-            "candidate_digits": [
-              "18",
-              "29",
-              "30",
-              "33"
-            ],
-            "candidate_hit_count": 2,
-            "pool_hit": true,
-            "reason": "命中：红球第6位的历史排序/分区候选池覆盖该号码。"
+            "reason": "未命中：号码未进入红球联合池，区域频率、共现和结构分未达到五组阈值。"
           },
           {
             "position": "蓝球第1位",
-            "actual_digit": "16",
+            "actual_digit": "04",
             "candidate_digits": [
-              "02",
               "04",
+              "07",
               "08",
-              "09",
-              "16"
+              "10",
+              "13"
             ],
             "candidate_hit_count": 1,
             "pool_hit": true,
@@ -14711,30 +14705,30 @@
         "region_diagnostics": [
           {
             "region": "红球",
-            "coverage": "5 / 6",
+            "coverage": "4 / 6",
             "hit_numbers": [
+              "01",
               "04",
-              "06",
-              "14",
-              "22",
-              "33"
+              "16",
+              "22"
             ],
             "missed_numbers": [
-              "21"
+              "26",
+              "31"
             ]
           },
           {
             "region": "蓝球",
             "coverage": "1 / 1",
             "hit_numbers": [
-              "16"
+              "04"
             ],
             "missed_numbers": []
           }
         ],
-        "position_pool_coverage": 5,
+        "position_pool_coverage": 3,
         "position_count": 7,
-        "error_attribution": "红球覆盖 5 / 6；蓝球覆盖 1 / 1。未命中项按区域频率、共现、分区/排序位置和五组多样性约束归因，不把单期结果直接变成追涨规则。",
+        "error_attribution": "红球覆盖 4 / 6；蓝球覆盖 1 / 1。未命中项按区域频率、共现、分区/排序位置和五组多样性约束归因，不把单期结果直接变成追涨规则。",
         "model_adjustments": [
           "按区域滚动回测选择历史窗口：大乐透前区/后区、双色球红球/蓝球分开校准。",
           "七星彩继续按七个位置建模，复盘同时区分号码命中与位置命中，避免把无序命中误判为有效预测。"
@@ -14752,47 +14746,47 @@
       "learning": {
         "tuning_applied": true,
         "review_feedback": {
-          "source_issue": "2026220",
+          "source_issue": "2026221",
           "exploration_positions": [],
           "reason": "上一期各位置均有候选池覆盖，保持三位候选池宽度。"
         }
       },
       "history_count": 100,
       "model_scope": "玩法专用结构模型",
-      "generated_at": "2026-08-19T22:40:59+08:00",
-      "latest_issue": "2026221",
-      "latest_draw_date": "2026-08-19",
+      "generated_at": "2026-08-20T22:41:27+08:00",
+      "latest_issue": "2026222",
+      "latest_draw_date": "2026-08-20",
       "latest_numbers": [
-        "01",
         "02",
-        "03",
         "05",
-        "10",
+        "07",
+        "09",
+        "17",
         "18",
         "21",
         "25",
         "28",
+        "31",
+        "32",
+        "33",
         "34",
         "35",
-        "41",
-        "48",
+        "38",
         "51",
-        "54",
+        "57",
         "58",
-        "59",
-        "60",
-        "77",
-        "79"
+        "61",
+        "65"
       ],
-      "target_issue": "2026222",
-      "next_draw_at": "2026-08-20T21:30+08:00",
-      "next_draw_display": "2026年08月20日 21:30（北京时间）",
+      "target_issue": "2026223",
+      "next_draw_at": "2026-08-21T21:30+08:00",
+      "next_draw_display": "2026年08月21日 21:30（北京时间）",
       "schedule_note": "每日21:30开奖（休市日除外）",
       "candidates": [
         {
           "numbers": [
             12,
-            37
+            27
           ],
           "mix_label": "v3选2跨期软惩罚",
           "source": "v3_ensemble_cross_draw_soft",
@@ -14801,13 +14795,13 @@
           "group": "hot",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩快乐8 选2 12 37"
+          "copy_text": "福彩快乐8 选2 12 27"
         },
         {
           "numbers": [
-            11,
-            27,
-            33
+            2,
+            10,
+            42
           ],
           "mix_label": "v3选3跨期软惩罚",
           "source": "v3_ensemble_cross_draw_soft",
@@ -14815,15 +14809,15 @@
           "play_name": "选3",
           "group": "hot",
           "rank": 2,
-          "confidence": 65.8,
-          "copy_text": "福彩快乐8 选3 11 27 33"
+          "confidence": 64.5,
+          "copy_text": "福彩快乐8 选3 02 10 42"
         },
         {
           "numbers": [
-            4,
-            10,
-            39,
-            45
+            14,
+            24,
+            51,
+            77
           ],
           "mix_label": "v3选4跨期软惩罚",
           "source": "v3_ensemble_cross_draw_soft",
@@ -14831,13 +14825,13 @@
           "play_name": "选4",
           "group": "hot",
           "rank": 3,
-          "confidence": 55.6,
-          "copy_text": "福彩快乐8 选4 04 10 39 45"
+          "confidence": 58.3,
+          "copy_text": "福彩快乐8 选4 14 24 51 77"
         },
         {
           "numbers": [
-            2,
-            14
+            37,
+            39
           ],
           "mix_label": "v3选2跨期软惩罚",
           "source": "v3_ensemble_cross_draw_soft",
@@ -14845,15 +14839,15 @@
           "play_name": "选2",
           "group": "hot",
           "rank": 4,
-          "confidence": 56.4,
-          "copy_text": "福彩快乐8 选2 02 14"
+          "confidence": 58.7,
+          "copy_text": "福彩快乐8 选2 37 39"
         },
         {
           "numbers": [
-            7,
-            19,
-            30,
-            32
+            4,
+            18,
+            23,
+            45
           ],
           "mix_label": "v3选4跨期软惩罚",
           "source": "v3_ensemble_cross_draw_soft",
@@ -14862,14 +14856,14 @@
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩快乐8 选4 07 19 30 32"
+          "copy_text": "福彩快乐8 选4 04 18 23 45"
         }
       ],
       "top_candidates": [
         {
           "numbers": [
             12,
-            37
+            27
           ],
           "mix_label": "v3选2跨期软惩罚",
           "source": "v3_ensemble_cross_draw_soft",
@@ -14878,13 +14872,13 @@
           "group": "hot",
           "rank": 1,
           "confidence": 77.0,
-          "copy_text": "福彩快乐8 选2 12 37"
+          "copy_text": "福彩快乐8 选2 12 27"
         },
         {
           "numbers": [
-            11,
-            27,
-            33
+            2,
+            10,
+            42
           ],
           "mix_label": "v3选3跨期软惩罚",
           "source": "v3_ensemble_cross_draw_soft",
@@ -14892,15 +14886,15 @@
           "play_name": "选3",
           "group": "hot",
           "rank": 2,
-          "confidence": 65.8,
-          "copy_text": "福彩快乐8 选3 11 27 33"
+          "confidence": 64.5,
+          "copy_text": "福彩快乐8 选3 02 10 42"
         },
         {
           "numbers": [
-            4,
-            10,
-            39,
-            45
+            14,
+            24,
+            51,
+            77
           ],
           "mix_label": "v3选4跨期软惩罚",
           "source": "v3_ensemble_cross_draw_soft",
@@ -14908,13 +14902,13 @@
           "play_name": "选4",
           "group": "hot",
           "rank": 3,
-          "confidence": 55.6,
-          "copy_text": "福彩快乐8 选4 04 10 39 45"
+          "confidence": 58.3,
+          "copy_text": "福彩快乐8 选4 14 24 51 77"
         },
         {
           "numbers": [
-            2,
-            14
+            37,
+            39
           ],
           "mix_label": "v3选2跨期软惩罚",
           "source": "v3_ensemble_cross_draw_soft",
@@ -14922,15 +14916,15 @@
           "play_name": "选2",
           "group": "hot",
           "rank": 4,
-          "confidence": 56.4,
-          "copy_text": "福彩快乐8 选2 02 14"
+          "confidence": 58.7,
+          "copy_text": "福彩快乐8 选2 37 39"
         },
         {
           "numbers": [
-            7,
-            19,
-            30,
-            32
+            4,
+            18,
+            23,
+            45
           ],
           "mix_label": "v3选4跨期软惩罚",
           "source": "v3_ensemble_cross_draw_soft",
@@ -14939,28 +14933,28 @@
           "group": "hot",
           "rank": 5,
           "confidence": 52.0,
-          "copy_text": "福彩快乐8 选4 07 19 30 32"
+          "copy_text": "福彩快乐8 选4 04 18 23 45"
         }
       ],
       "review": {
-        "title": "第2026221期结构复盘",
-        "summary": "本期开出20个号码，四区比为6 : 5 : 7 : 2，奇偶比11:9，与前一期重号6个。",
+        "title": "第2026222期结构复盘",
+        "summary": "本期开出20个号码，四区比为6 : 9 : 3 : 2，奇偶比13:7，与前一期重号10个。",
         "metrics": [
           {
             "label": "号码和值",
-            "value": "709"
+            "value": "627"
           },
           {
             "label": "四区比",
-            "value": "6 : 5 : 7 : 2"
+            "value": "6 : 9 : 3 : 2"
           },
           {
             "label": "奇偶比",
-            "value": "11:9"
+            "value": "13:7"
           },
           {
             "label": "与前期重号",
-            "value": "6"
+            "value": "10"
           }
         ]
       },
@@ -14980,11 +14974,11 @@
         "signals": [
           {
             "label": "相对活跃号码",
-            "value": "51 · 12 · 21 · 10 · 24 · 02 · 18 · 35 · 80 · 59"
+            "value": "51 · 21 · 02 · 18 · 12 · 35 · 10 · 24 · 05 · 07"
           },
           {
             "label": "较长遗漏",
-            "value": "64（14期）、16（12期）、52（12期）、04（10期）、30（10期）、53（10期）"
+            "value": "64（15期）、16（13期）、52（13期）、04（11期）、30（11期）、53（11期）"
           },
           {
             "label": "组合目标",
@@ -14999,44 +14993,44 @@
         ]
       },
       "model_review": {
-        "issue": "2026221",
-        "actual": "01 02 03 05 10 18 21 25 28 34 35 41 48 51 54 58 59 60 77 79",
+        "issue": "2026222",
+        "actual": "02 05 07 09 17 18 21 25 28 31 32 33 34 35 38 51 57 58 61 65",
         "previous_candidates": [
-          "02 12",
-          "18 27 37",
-          "32 45 51 77",
-          "11 14",
-          "04 19 30 44"
+          "12 37",
+          "11 27 33",
+          "04 10 39 45",
+          "02 14",
+          "07 19 30 32"
         ],
         "exact_hits": 0,
         "best_number_hits": 2,
-        "summary": "第2026221期按位复盘：候选池覆盖 0 / 20 个位置；不按单期结果追涨参数。",
+        "summary": "第2026222期按位复盘：候选池覆盖 1 / 20 个位置；不按单期结果追涨参数。",
         "lesson": "按位回测继续作为主调参依据；单期命中只用于定位错误，不直接把某个数字升权。",
         "union_number_hits": 4,
         "number_pool_coverage": "4 / 20",
         "hit_numbers": [
           "02",
-          "18",
-          "51",
-          "77"
+          "07",
+          "32",
+          "33"
         ],
         "missed_numbers": [
-          "01",
-          "03",
           "05",
-          "10",
+          "09",
+          "17",
+          "18",
           "21",
           "25",
           "28",
+          "31",
           "34",
           "35",
-          "41",
-          "48",
-          "54",
+          "38",
+          "51",
+          "57",
           "58",
-          "59",
-          "60",
-          "79"
+          "61",
+          "65"
         ],
         "error_attribution": "未覆盖的 16 个号码没有进入五注联合池，主要是单号强度、四区覆盖、共现分和组间重合惩罚共同筛选的结果；不把一次遗漏直接解释成下期必补。",
         "model_adjustments": [
